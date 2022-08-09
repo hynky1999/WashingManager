@@ -1,0 +1,78 @@
+@*
+@inject IWashingMachineService WmService
+@inject IManualService ManualService
+@inject ILocationService LocationService
+
+<PageTitle>DbGenerator</PageTitle>
+@if (Wm is not null)
+{
+    <EditForm Model="@Wm" OnValidSubmit="HandleOnValidSubmit">
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+        <p>
+            <label>Status</label>
+            <InputSelect @bind-Value="Wm.Status">
+                @foreach (var name in Enum.GetNames(typeof(Status)))
+                {
+                    <option value="@Enum.Parse(typeof(Status), name)">@name</option>
+                }
+            </InputSelect>
+        </p>
+        <p>
+            <label>Manual</label>
+            <InputSelect @bind-Value="Wm.ManualID">
+                @for (int i = 0; i < Manuals.Count; ++i)
+                {
+                    var tmpManual = Manuals[i];
+                    <option value="@tmpManual.ManualID"> @tmpManual.Name </option>
+                }
+            </InputSelect>
+        </p>
+        <p>
+            <label>Manufacturer</label>
+            <InputText @bind-Value="Wm.Manufacturer"></InputText>
+        </p>
+        <p>
+            <label>Location</label>
+            <InputSelect @bind-Value="Wm.LocationID">
+                @for (int i = 0; i < Locations.Count; ++i)
+                {
+                    var tmpLoc = Locations[i];
+                    <option value="@tmpLoc.LocationID"> @($"{tmpLoc.Building}: {tmpLoc.Floor}/{tmpLoc.RoomNum}") </option>
+                }
+            </InputSelect>
+        </p>
+        <button type="submit">Submit</button>
+    </EditForm>
+}
+
+
+@code {
+
+    [Parameter]
+    public WashingMachine? Wm { get; set; }
+    private List<Manual> Manuals { get; set; } = new();
+    private List<Location> Locations { get; set; } = new();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await WmService.GetAllWashingMachines();
+        Manuals = await ManualService.GetAllManuals();
+        Locations = await LocationService.GetAllLocations();
+        Wm = new WashingMachine()
+        {
+            LocationID = Locations.FirstOrDefault()?.LocationID ?? 0,
+            ManualID = Manuals.FirstOrDefault()?.ManualID ?? 0
+        };
+    }
+
+    private async void HandleOnValidSubmit()
+    {
+        if (Wm is not null)
+        {
+            await WmService.AddWashingMachine(Wm);
+        }
+    }
+
+}
+*@

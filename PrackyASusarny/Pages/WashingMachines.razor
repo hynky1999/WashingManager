@@ -1,0 +1,48 @@
+@page "/Pracky"
+@inject LocationService LocationService;
+@inject WashingMachineService WashingMachineService;
+<h3>Pracky</h3>
+@if (FloorMarks.Length > 0)
+{
+    <Slider TValue="(double, double)" DefaultValue="@FloorRange" Min="@FloorMarks[0].Key" Max="@FloorMarks[^1].Key" OnAfterChange="@((args) =>{FloorRange = args; UpdateWashingMachines();})" Marks="@FloorMarks"></Slider>
+}
+@foreach(var wm in _wms)
+{
+    <p>
+        @wm.WashingMachineID
+    </p>
+    <p>
+        @wm.Location
+    </p>
+}
+
+
+@code {
+    private List<WashingMachine> _wms = new List<WashingMachine>();
+    private SliderMark[] FloorMarks { get; set; } = {};
+    // Must be double because of component
+    private (double, double) FloorRange { get; set; } = (0,0);
+    private int? SelectedRoomNum { get; set; }
+    private int? SelectedBuilding { get; set; }
+    private bool Loading { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        var floorOpts = await LocationService.GetFloorOptions();
+        if (floorOpts.Count > 0)
+        {
+            FloorRange = (floorOpts[0], floorOpts[^1]);
+        }
+        FloorMarks = floorOpts.Select(x => new SliderMark(x, x.ToString())).ToArray();
+    }
+
+    private async void UpdateWashingMachines()
+    {
+        _wms = await WashingMachineService.GetFiltered(
+            roomNum: SelectedRoomNum,
+            floorRange: ((int, int))FloorRange,
+            building: SelectedBuilding
+            );
+        StateHasChanged();
+    }
+}
