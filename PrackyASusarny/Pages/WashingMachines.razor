@@ -1,48 +1,100 @@
 @page "/Pracky"
-@inject LocationService LocationService;
+@using PrackyASusarny.Shared.Features.WMGrid
+@using PrackyASusarny.Shared.Features.WMManagment
 @inject WashingMachineService WashingMachineService;
 <h3>Pracky</h3>
-@if (FloorMarks.Length > 0)
-{
-    <Slider TValue="(double, double)" DefaultValue="@FloorRange" Min="@FloorMarks[0].Key" Max="@FloorMarks[^1].Key" OnAfterChange="@((args) =>{FloorRange = args; UpdateWashingMachines();})" Marks="@FloorMarks"></Slider>
-}
-@foreach(var wm in _wms)
-{
-    <p>
-        @wm.WashingMachineID
-    </p>
-    <p>
-        @wm.Location
-    </p>
-}
-
+<div class="container-fluid">
+    <div class="row justify-content-between">
+        <div class="col-4">
+            <SideOptions @bind-FloorRange="SelectedFloor" @bind-AllowedBuildings="SelectedBuildings" @bind-AllowedStates="SelectedStates" OnOptionChange="@UpdateWashingMachines"></SideOptions>
+        </div>
+        <div class="col">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Výrobce</th>
+                    <th>Stav</th>
+                    <th>Budova</th>
+                    <th>Patro</th>
+                    <th>Pokoj</th>
+                    <th>Číslo</th>
+                    <th>Manuál</th>
+                </tr>
+                </thead>
+                <tbody>
+                @{ var i = 0;}
+                @foreach (var wm in _wms)
+                {
+                    <tr class="@GetRowClass(wm)">
+                        <td>@(i++)</td>
+                        <td>
+                            @wm.Manufacturer
+                        </td>
+                        <td>
+                            @wm.Status
+                        </td>
+                        <td>
+                            @wm.Location.Building
+                        </td>
+                        <td>
+                            @wm.Location.Floor
+                        </td>
+                        <td>
+                            @wm.Location.RoomNum
+                        </td>
+                        <td>
+                            @wm.Location.DoorNum
+                        </td>
+                        <td>
+                            <a href="@($"/Manuals/{wm.Manual.FileName}")">
+                                <Icon Type="file" Theme="outline"/>
+                            </a>
+                        </td>
+                        <td>
+                            <CreateBorrow WashingMachine="@wm" />
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            </div>
+    </div>
+</div>
 
 @code {
     private List<WashingMachine> _wms = new List<WashingMachine>();
-    private SliderMark[] FloorMarks { get; set; } = {};
     // Must be double because of component
-    private (double, double) FloorRange { get; set; } = (0,0);
-    private int? SelectedRoomNum { get; set; }
-    private int? SelectedBuilding { get; set; }
-    private bool Loading { get; set; }
+    private (int, int)? SelectedFloor { get; set; }
+    private char[]? SelectedBuildings { get; set; }
+    private Status[]? SelectedStates { get; set; }
+    
 
     protected async override Task OnInitializedAsync()
     {
-        var floorOpts = await LocationService.GetFloorOptions();
-        if (floorOpts.Count > 0)
-        {
-            FloorRange = (floorOpts[0], floorOpts[^1]);
-        }
-        FloorMarks = floorOpts.Select(x => new SliderMark(x, x.ToString())).ToArray();
+        await UpdateWashingMachines();
     }
 
-    private async void UpdateWashingMachines()
+    private async Task UpdateWashingMachines()
     {
         _wms = await WashingMachineService.GetFiltered(
-            roomNum: SelectedRoomNum,
-            floorRange: ((int, int))FloorRange,
-            building: SelectedBuilding
+            floorRange: SelectedFloor,
+            allowedBuildings: SelectedBuildings,
+            allowedStates: SelectedStates
             );
-        StateHasChanged();
+    }
+
+    private string GetRowClass(WashingMachine wm)
+    {
+        switch (wm.Status)
+        {
+            case Status.Broken:
+                return "table-danger";
+            case Status.Free:
+                return "table-success";
+            case Status.Taken:
+                return "table-warning";
+        }
+        return "";
     }
 }

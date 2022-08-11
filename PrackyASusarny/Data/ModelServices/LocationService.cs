@@ -17,7 +17,7 @@ public class LocationService : ModelService<Location>
         return await dbContext.Locations.AsNoTracking().Select(x => x.Floor).Distinct().OrderBy(x => x).ToListAsync();
     }
 
-    public async Task<List<char>> GetUniqueBuildings()
+    public async Task<List<char>> GetBuildingOptions()
     {
         using var dbContext = await _dbFactory.CreateDbContextAsync();
         return await dbContext.Locations.AsNoTracking().Select(x => x.Building).Distinct().ToListAsync();
