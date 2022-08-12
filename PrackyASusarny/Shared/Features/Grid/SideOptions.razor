@@ -22,7 +22,6 @@
                                 <div class="col-2">
                                     <Checkbox Label="@building.ToString()">@building.ToString()</Checkbox>
                                 </div>
-
                             }
                         </div>
                     </div>
@@ -34,47 +33,48 @@
             <h5>Stav</h5>
             <CheckboxGroup ValueChanged="@OnStateCheckboxChange">
                 <div class="container">
-                        @foreach (var state in Enum.GetNames(typeof(Status)))
-                        {
-                            <div class="row">
-                                <div class="col-2">
-                                    <Checkbox Label="@state">@state</Checkbox>
-                                </div>
+                    @foreach (var state in Enum.GetNames(typeof(Status)))
+                    {
+                        <div class="row">
+                            <div class="col-2">
+                                <Checkbox Label="@state">@state</Checkbox>
                             </div>
-                        }
+                        </div>
+                    }
                 </div>
 
             </CheckboxGroup>
-            
 
 
         </li>
     </ul>
 </div>
+
 @code {
+
     [Parameter]
     public EventCallback OnOptionChange { get; set; }
 
     [Parameter]
     public (int, int)? FloorRange { get; set; }
-    
-    
+
+
     [Parameter]
     public EventCallback<(int, int)?> FloorRangeChanged { get; set; }
 
     [Parameter]
     public char[]? AllowedBuildings { get; set; }
-    
+
     [Parameter]
     public EventCallback<char[]?> AllowedBuildingsChanged { get; set; }
 
     [Parameter]
     public Status[]? AllowedStates { get; set; }
-    
+
     [Parameter]
     public EventCallback<Status[]?> AllowedStatesChanged { get; set; }
-    
-    
+
+
     private SliderMark[] FloorMarks { get; set; } = {};
     private int _marksStep = 5;
     private char[] BuildingOptions { get; set; } = {};
@@ -94,6 +94,7 @@
         }
         FloorMarks = floorOpts.Where(f => f % _marksStep == 0).Select(x => new SliderMark(x, x.ToString())).ToArray();
     }
+
     private async Task InitializeBuildings()
     {
         var buildingOpts = await LocationService.GetBuildingOptions();
@@ -129,10 +130,6 @@
         }).ToArray();
         await AllowedStatesChanged.InvokeAsync(AllowedStates);
         await OnOptionChange.InvokeAsync();
-        
-
-
-
     }
 
 }

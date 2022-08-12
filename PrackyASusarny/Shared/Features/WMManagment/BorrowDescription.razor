@@ -1,0 +1,26 @@
+<h3>BorrowDescription</h3>
+@if (Borrow is not null)
+{
+    <Card Title="Výpůjčka">
+        <Body>
+        <ul class="container">
+            <li>
+                <h6>Lokalita</h6>
+                <p>@Borrow.startDate</p>
+            </li>
+            <li>
+                <h6>Student</h6>
+                <p>@Borrow.BorrowPerson.Name</p>
+                <p>@Borrow.BorrowPerson.Surname</p>
+            </li>
+        </ul>
+        </Body>
+    </Card>
+}
+
+@code {
+
+    [Parameter]
+    public Borrow? Borrow { get; set; }
+
+}

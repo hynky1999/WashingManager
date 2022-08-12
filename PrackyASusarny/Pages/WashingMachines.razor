@@ -1,5 +1,5 @@
 @page "/Pracky"
-@using PrackyASusarny.Shared.Features.WMGrid
+@using PrackyASusarny.Shared.Features.Grid
 @using PrackyASusarny.Shared.Features.WMManagment
 @inject WashingMachineService WashingMachineService;
 <h3>Pracky</h3>
@@ -15,15 +15,12 @@
                     <th>#</th>
                     <th>Výrobce</th>
                     <th>Stav</th>
-                    <th>Budova</th>
-                    <th>Patro</th>
-                    <th>Pokoj</th>
-                    <th>Číslo</th>
+                    <th>Lokace</th>
                     <th>Manuál</th>
                 </tr>
                 </thead>
                 <tbody>
-                @{ var i = 0;}
+                @{ var i = 0; }
                 @foreach (var wm in _wms)
                 {
                     <tr class="@GetRowClass(wm)">
@@ -35,16 +32,7 @@
                             @wm.Status
                         </td>
                         <td>
-                            @wm.Location.Building
-                        </td>
-                        <td>
-                            @wm.Location.Floor
-                        </td>
-                        <td>
-                            @wm.Location.RoomNum
-                        </td>
-                        <td>
-                            @wm.Location.DoorNum
+                            @($"{wm.Location.Building} {wm.Location.Floor}/{wm.Location.RoomNum} - {wm.Location.DoorNum}")
                         </td>
                         <td>
                             <a href="@($"/Manuals/{wm.Manual.FileName}")">
@@ -52,13 +40,20 @@
                             </a>
                         </td>
                         <td>
-                            <CreateBorrow WashingMachine="@wm" />
+                            @if (wm.Status == Status.Free)
+                            {
+                                <BorrowFormModal WashingMachine="@wm" OnSuccess="@(_ => wm.Status = Status.Taken)"/>
+                            }
+                            else if (wm.Status == Status.Taken)
+                            {
+                                <BorrowRemoveModal WashingMachine="@wm" OnSuccess="@(_ => wm.Status = Status.Free)"/>
+                            }
                         </td>
                     </tr>
                 }
                 </tbody>
             </table>
-            </div>
+        </div>
     </div>
 </div>
 
@@ -68,7 +63,7 @@
     private (int, int)? SelectedFloor { get; set; }
     private char[]? SelectedBuildings { get; set; }
     private Status[]? SelectedStates { get; set; }
-    
+
 
     protected async override Task OnInitializedAsync()
     {
@@ -97,4 +92,5 @@
         }
         return "";
     }
+
 }

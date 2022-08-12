@@ -1,0 +1,52 @@
+@using PrackyASusarny.Errors.Folder
+@inject BorrowService BorrowService
+@inject ILogger<PriceBorrowCompute> Logger
+
+@if (_price is not null)
+{
+    <h6>Aktuální cena za výpůjčku</h6>
+    <p>@_price</p>
+    <Button OnClick="UpdatePrice">Obnovit cenu</Button>
+}
+
+@code {
+
+    [Parameter]
+    public Borrow Borrow { get; set; }
+
+    [Parameter]
+    public EventCallback<Price?> OnBorrowEnd { get; set; }
+
+    private Price? _price = null;
+
+    protected async override Task OnInitializedAsync()
+    {
+        await UpdatePrice();
+        await base.OnInitializedAsync();
+    }
+
+    protected async override Task OnParametersSetAsync()
+    {
+        await UpdatePrice();
+        await base.OnParametersSetAsync();
+    }
+
+    private async Task UpdatePrice()
+    {
+        try
+        {
+            _price = await BorrowService.GetPrice(Borrow);
+        }
+        catch (DbException ex)
+        {
+            Logger.LogError(ex.Message);
+        }
+    }
+
+
+
+
+
+
+
+}

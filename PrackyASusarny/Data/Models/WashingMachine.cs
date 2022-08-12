@@ -9,15 +9,13 @@ public enum Status
 
 public class WashingMachine
 {
-    public int WashingMachineID { get; set; }
-    public Manual Manual {get; set; }
-    public int ManualID { get; set; }
+    public int WashingMachineId { get; set; }
+    public Manual Manual { get; set; }
     public Status Status { get; set; }
-    public string Manufacturer { get; set;}
+    public string Manufacturer { get; set; }
 
-    public Location Location { get; set;}
-    public int LocationID { get; set; }
-    
+    public Location Location { get; set; }
+
     // Concurency token
     public uint xmin { get; set; }
 }

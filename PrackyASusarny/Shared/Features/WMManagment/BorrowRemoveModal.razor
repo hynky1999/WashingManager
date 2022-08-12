@@ -1,0 +1,74 @@
+@using PrackyASusarny.Errors.Folder
+@inject BorrowService BorrowService
+@inject ILogger<BorrowFormModal> Logger
+
+
+<Modal Visible="@_visibility" Footer="@null" OnCancel="@CloseModal">
+    <h2>Ukonči výpůjčku</h2>
+    @if (ShowWashingMachine && WashingMachine is not null)
+    {
+        <WmDescription WashingMachine="@WashingMachine"/>
+    }
+    @if (_borrow is not null)
+    {
+        <BorrowDescription Borrow="@_borrow"/>
+        <PriceBorrowCompute Borrow="@_borrow"/>
+        <Button OnClick="EndBorrow">Ukončit výpůjčku</Button>
+    }
+    else
+    {
+        <Spin/>
+    }
+</Modal>
+<Button OnClick="@OpenModal">Ukončit výpůjčku</Button>
+
+
+@code {
+
+    [Parameter]
+    public WashingMachine? WashingMachine { get; set; }
+
+    [Parameter]
+    public bool ShowWashingMachine { get; set; } = true;
+
+    [Parameter]
+    public EventCallback<Borrow> OnSuccess { get; set; }
+
+    private Borrow? _borrow = null;
+    private bool _visibility = false;
+
+    protected async override Task OnInitializedAsync()
+    {
+    }
+
+    private async void OpenModal()
+    {
+    // TODO is it really good idea to fetch jsut once ?
+        _visibility = true;
+        if (_borrow is null)
+        {
+            _borrow = await BorrowService.GetBorrowByWm(WashingMachine);
+        }
+    }
+
+    private async void CloseModal()
+    {
+        _visibility = false;
+    }
+
+    private async Task EndBorrow()
+    {
+        try
+        {
+            await BorrowService.EndBorrow(_borrow);
+            OnSuccess.InvokeAsync(_borrow);
+            CloseModal();
+        }
+        catch (DbException ex)
+        {
+        }
+    }
+
+
+
+}

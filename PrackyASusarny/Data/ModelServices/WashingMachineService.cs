@@ -1,17 +1,16 @@
-using System.Linq.Expressions;
-using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using PrackyASusarny.Data.Models;
 
 namespace PrackyASusarny.Data;
 
-public sealed class WashingMachineService: ModelService<WashingMachine>
+public sealed class WashingMachineService : ModelService<WashingMachine>
 {
     public WashingMachineService(IDbContextFactory<ApplicationDbContext> dbFactory) : base(dbFactory)
     {
     }
 
-    public async Task<List<WashingMachine>> GetFiltered((int, int)? floorRange, char[]? allowedBuildings, Status[]? allowedStates)
+    public async Task<List<WashingMachine>> GetFiltered((int, int)? floorRange, char[]? allowedBuildings,
+        Status[]? allowedStates)
     {
         using var context = await _dbFactory.CreateDbContextAsync();
         var query = context.WashingMachines.AsQueryable();
@@ -19,8 +18,9 @@ public sealed class WashingMachineService: ModelService<WashingMachine>
         {
             query = query.Where(wm =>
                 (wm.Location.Floor >= floorRange.Value.Item1 &&
-                                        wm.Location.Floor <= floorRange.Value.Item2));
+                 wm.Location.Floor <= floorRange.Value.Item2));
         }
+
         if (allowedBuildings != null)
         {
             query = query.Where(wm => allowedBuildings.Contains(wm.Location.Building));
@@ -32,7 +32,7 @@ public sealed class WashingMachineService: ModelService<WashingMachine>
         }
 
         query = query.Include(wm => wm.Location).Include(wm => wm.Manual);
-            
-        return await query.ToListAsync();
+
+        return await query.Take(4).ToListAsync();
     }
 }

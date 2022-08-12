@@ -1,0 +1,64 @@
+@typeparam TMod where TMod : class
+@typeparam TResult where TResult : class
+@inject MessageService Message
+<Modal Title="Form" Visible="@_visible" OnOk="OnFinish" OkButtonProps="@(new ButtonProps() {Block = true})" OnCancel="@(_ => _visible = false)">
+    <Form ref="@_form" Model="@Model" OnFinish="@OnFinish" Loading="_loading">
+        @ChildContent
+    </Form>
+</Modal>
+<Button Type="@ButtonType.Primary" OnClick="@(() => _visible = true)">Create</Button>
+
+@code {
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public TMod? Model { get; set; }
+
+    [Parameter]
+    public string MessageSuccess { get; set; } = "Sucess";
+
+    [Parameter]
+    public string MessageFail { get; set; } = "Fail";
+
+    [Parameter]
+    public Func<Task<TResult>>? OnSubmit { get; set; }
+
+    [Parameter]
+    public EventCallback<TResult> OnSuccess { get; set; }
+
+    private bool _visible = false;
+    private bool _loading = false;
+    private Form<TMod> _form;
+
+
+    private async Task OnFinish()
+    {
+        var validationReuslt = _form.Validate();
+        if (validationReuslt)
+            _loading = true;
+        TResult? submitedModel = null;
+
+        if (OnSubmit != null)
+        {
+            submitedModel = await OnSubmit();
+        }
+        _loading = false;
+        if (submitedModel != null || OnSubmit == null)
+        {
+            Message.Info(
+                MessageSuccess
+                );
+            _visible = false;
+            await OnSuccess.InvokeAsync();
+        }
+        else
+        {
+            Message.Error(
+                MessageFail
+                );
+        }
+    }
+
+}
