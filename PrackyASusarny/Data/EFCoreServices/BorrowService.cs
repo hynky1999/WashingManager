@@ -1,19 +1,36 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using PrackyASusarny.Data.Models;
+using PrackyASusarny.Data.ServiceInterfaces;
 using PrackyASusarny.Errors.Folder;
 using DbUpdateException = Microsoft.EntityFrameworkCore.DbUpdateException;
 
-namespace PrackyASusarny.Data;
+namespace PrackyASusarny.Data.EFCoreServices;
 
-public class BorrowService : ModelService<BorrowService>
+public class BorrowService : CrudService<Borrow>, IBorrowService
 {
     private BorrowPersonService _borrowPersonService;
 
-    public BorrowService(IDbContextFactory<ApplicationDbContext> dbFactory, BorrowPersonService borrowPersonService) :
-        base(dbFactory)
+    public BorrowService(IDbContextFactory<ApplicationDbContext> dbFactory, BorrowPersonService borrowPersonService,
+        ILogger logger) :
+        base(dbFactory, logger, typeof(ApplicationDbContext).GetProperty("Borrow")!)
     {
         _borrowPersonService = borrowPersonService;
+    }
+
+    public Task<Price> GetPriceAsync(Borrow borrow)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Borrow?> GetBorrowByWmAsync(WashingMachine wm)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task EndBorrowAsync(Borrow borrow)
+    {
+        throw new NotImplementedException();
     }
 
     public async Task AddBorrow(Borrow borrow)
@@ -63,7 +80,7 @@ public class BorrowService : ModelService<BorrowService>
         };
     }
 
-    public async Task<Borrow?> GetBorrowByWm(WashingMachine? wm)
+    public async Task<Borrow?> GetBorrowByWm(WashingMachine wm)
     {
         if (wm == null)
         {

@@ -1,4 +1,4 @@
-namespace PrackyASusarny.Data;
+namespace PrackyASusarny.Data.EFCoreServices;
 
 public static class Rates
 {

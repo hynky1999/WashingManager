@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PrackyASusarny.Data.Models;
 
-namespace PrackyASusarny.Data;
+namespace PrackyASusarny.Data.EFCoreServices;
 
 public sealed class WashingMachineService : ModelService<WashingMachine>
 {
