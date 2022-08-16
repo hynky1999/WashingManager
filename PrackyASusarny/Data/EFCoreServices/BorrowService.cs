@@ -1,24 +1,41 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using PrackyASusarny.Data.Models;
+using PrackyASusarny.Data.ServiceInterfaces;
 using PrackyASusarny.Errors.Folder;
 using DbUpdateException = Microsoft.EntityFrameworkCore.DbUpdateException;
 
-namespace PrackyASusarny.Data;
+namespace PrackyASusarny.Data.EFCoreServices;
 
-public class BorrowService : ModelService<BorrowService>
+public class BorrowService : CrudService<Borrow>, IBorrowService
 {
-    private BorrowPersonService _borrowPersonService;
+    private IBorrowPersonService _borrowPersonService;
 
-    public BorrowService(IDbContextFactory<ApplicationDbContext> dbFactory, BorrowPersonService borrowPersonService) :
-        base(dbFactory)
+    public BorrowService(IDbContextFactory<ApplicationDbContext> dbFactory, IBorrowPersonService borrowPersonService,
+        ILogger<BorrowService> logger) :
+        base(dbFactory, logger, context => context.Borrows, (borrow) => borrow.BorrowId)
     {
         _borrowPersonService = borrowPersonService;
     }
 
+    public Task<Price> GetPriceAsync(Borrow borrow)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Borrow?> GetBorrowByWmAsync(WashingMachine wm)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task EndBorrowAsync(Borrow borrow)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task AddBorrow(Borrow borrow)
     {
-        using var dbContext = await _dbFactory.CreateDbContextAsync();
+        using var dbContext = await DbFactory.CreateDbContextAsync();
         if (borrow.WashingMachine.Status != Status.Free)
         {
             throw new ArgumentException("Invalid Value");
@@ -63,14 +80,14 @@ public class BorrowService : ModelService<BorrowService>
         };
     }
 
-    public async Task<Borrow?> GetBorrowByWm(WashingMachine? wm)
+    public async Task<Borrow?> GetBorrowByWm(WashingMachine wm)
     {
         if (wm == null)
         {
             throw new ArgumentNullException("Washing Machine missing");
         }
 
-        using var dbContext = await _dbFactory.CreateDbContextAsync();
+        using var dbContext = await DbFactory.CreateDbContextAsync();
         var query = dbContext.Borrows.Where(b => b.WashingMachine.WashingMachineId == wm.WashingMachineId)
             .Include(b => b.BorrowPerson);
         var borrow = await query.FirstOrDefaultAsync();
@@ -84,7 +101,7 @@ public class BorrowService : ModelService<BorrowService>
 
     public async Task EndBorrow(Borrow borrow)
     {
-        using var dbContext = await _dbFactory.CreateDbContextAsync();
+        using var dbContext = await DbFactory.CreateDbContextAsync();
         dbContext.Borrows.Attach(borrow);
         borrow.endDate = DateTime.UtcNow;
         try

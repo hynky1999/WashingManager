@@ -1,0 +1,100 @@
+@inject IServiceProvider ServiceManager
+@inject MessageService MessageService
+@using PrackyASusarny.Errors.Folder
+@typeparam T where T : new()
+
+@if (_crudService is not null && _model is not null)
+{
+    <GenericForm Loading="@_loading" @bind-Model="@_model" OnFinish="@OnFinish">
+    </GenericForm>
+}
+else
+{
+    <Title Level="2">@_err</Title>
+}
+
+@code {
+
+    [Parameter]
+    public CrudAction Action { get; set; }
+
+    [Parameter]
+    public int? Id { get; set; }
+
+
+    private T? _model;
+    private ICrudService<T>? _crudService;
+    private string _err = "";
+    private bool _loading = true;
+
+    protected async override Task OnParametersSetAsync()
+    {
+        _loading = true;
+        if (_crudService is null)
+        {
+            _crudService = ServiceManager.GetService<ICrudService<T>>();
+        }
+        if (_crudService is not null)
+        {
+            _loading = true;
+            if (Action == CrudAction.Create)
+            {
+                _model = new T();
+            }
+            else if (Action == CrudAction.Update && Id is not null)
+            {
+                _model = await _crudService.GetByIdAsync(Id.Value, true);
+                if (_model is null)
+                {
+                    _err = "Model not found";
+                }
+            }
+        }
+        else
+        {
+            _err = "Model is not able to load itself";
+        }
+        _loading = false;
+        Console.WriteLine(_model);
+        await base.OnParametersSetAsync();
+    }
+
+    private async Task OnFinish()
+    {
+        if (_crudService is null)
+        {
+            return;
+        }
+
+
+        _loading = true;
+        if (Action == CrudAction.Create)
+        {
+            try
+            {
+                await _crudService.CreateAsync(_model);
+                MessageService.Success("Successfully created record");
+                _model = new T();
+            }
+            catch (DbException e)
+            {
+                MessageService.Error("Unable to create record");
+            }
+        }
+        else if (Action == CrudAction.Update && Id is not null)
+        {
+            try
+            {
+                await _crudService.UpdateAsync(_model);
+                MessageService.Success("Successfully updated record");
+            }
+            catch (DbException e)
+            {
+                MessageService.Error("Unable to update record");
+            }
+        }
+        _loading = false;
+    }
+
+}
+

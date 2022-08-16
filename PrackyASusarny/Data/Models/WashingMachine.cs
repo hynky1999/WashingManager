@@ -1,3 +1,7 @@
+using System.ComponentModel.DataAnnotations;
+using PrackyASusarny.Data.ModelInterfaces;
+using PrackyASusarny.Data.Utils;
+
 namespace PrackyASusarny.Data.Models;
 
 public enum Status
@@ -7,9 +11,10 @@ public enum Status
     Free
 }
 
-public class WashingMachine
+public sealed class WashingMachine : DBModel
 {
-    public int WashingMachineId { get; set; }
+    [Key] public int WashingMachineId { get; set; }
+
     public Manual Manual { get; set; }
     public Status Status { get; set; }
     public string Manufacturer { get; set; }
@@ -17,5 +22,12 @@ public class WashingMachine
     public Location Location { get; set; }
 
     // Concurency token
+    [UIVisibility(UIVisibilityEnum.Hidden)]
     public uint xmin { get; set; }
+
+    public override bool Equals(object? obj)
+    {
+        var wm = obj as WashingMachine;
+        return wm is not null && wm.WashingMachineId == WashingMachineId;
+    }
 }

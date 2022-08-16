@@ -1,6 +1,8 @@
+using PrackyASusarny.Data.ModelInterfaces;
+
 namespace PrackyASusarny.Data.Models;
 
-public class Borrow
+public class Borrow : DBModel
 {
     public int BorrowId { get; set; }
     public WashingMachine WashingMachine { get; set; }

@@ -1,18 +1,21 @@
 using Microsoft.EntityFrameworkCore;
 using PrackyASusarny.Data.Models;
+using PrackyASusarny.Data.ServiceInterfaces;
 
-namespace PrackyASusarny.Data;
+namespace PrackyASusarny.Data.EFCoreServices;
 
-public sealed class WashingMachineService : ModelService<WashingMachine>
+public sealed class WashingMachineService : CrudService<WashingMachine>, IWashingMachineService
 {
-    public WashingMachineService(IDbContextFactory<ApplicationDbContext> dbFactory) : base(dbFactory)
+    public WashingMachineService(IDbContextFactory<ApplicationDbContext> dbFactory,
+        ILogger<WashingMachineService> logger) : base(dbFactory, logger, context => context.WashingMachines,
+        (machine) => machine.WashingMachineId)
     {
     }
 
     public async Task<List<WashingMachine>> GetFiltered((int, int)? floorRange, char[]? allowedBuildings,
         Status[]? allowedStates)
     {
-        using var context = await _dbFactory.CreateDbContextAsync();
+        using var context = await DbFactory.CreateDbContextAsync();
         var query = context.WashingMachines.AsQueryable();
         if (floorRange != null)
         {
