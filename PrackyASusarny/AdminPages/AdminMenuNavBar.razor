@@ -1,0 +1,13 @@
+<Menu Mode=MenuMode.Horizontal>
+    @foreach (var option in _menuOptions)
+    {
+        <MenuItem Key="@option" RouterLink="@($"adminMenu/{option}/List")">
+            <Icon Type="edit" Theme="outline"></Icon>
+            @option
+        </MenuItem>
+    }
+</Menu>
+
+@code {
+    private string[] _menuOptions = AdminConfig.ModelNameToType.Keys.ToArray();
+}

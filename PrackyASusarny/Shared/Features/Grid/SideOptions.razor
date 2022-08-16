@@ -88,7 +88,7 @@
 
     private async Task InitializeFloors()
     {
-        var floorOpts = await LocationService.GetFloorOptions();
+        var floorOpts = await LocationService.GetFloorOptionsAsync();
         if (floorOpts.Count > 0)
         {
             FloorRange = (floorOpts[0], floorOpts[^1]);
@@ -98,7 +98,7 @@
 
     private async Task InitializeBuildings()
     {
-        var buildingOpts = await LocationService.GetBuildingOptions();
+        var buildingOpts = await LocationService.GetBuildingOptionsAsync();
         if (buildingOpts.Count > 0)
         {
             BuildingOptions = buildingOpts.ToArray();

@@ -1,17 +1,61 @@
 using System.Linq.Expressions;
 using System.Reflection;
+using Microsoft.AspNetCore.Components;
 
 namespace PrackyASusarny.Utils;
 
 public static class ReflectionExtensions
 {
-    public static Func<T, P> GetGetMethod<T, P>(Type ownerType, PropertyInfo propertyInfo)
+    // Initialize EventCallbackGenericMethod
+    private static readonly MethodInfo EventCallbackGenericMethod;
+
+    static ReflectionExtensions()
     {
-        var parameter = Expression.Parameter(ownerType, "context");
-        var property = Expression.Property(parameter, propertyInfo);
-        var lambda = Expression.Lambda(typeof(Func<,>).MakeGenericType(ownerType, propertyInfo.PropertyType), property,
-            parameter);
-        var xd = Expression.Lambda<Func<T, P>>(property, parameter).Compile();
-        return xd;
+        EventCallbackGenericMethod = GetGenericEventCallback();
+    }
+
+    private static MethodInfo GetGenericEventCallback()
+    {
+        return typeof(EventCallbackFactory).GetMethods().Single(m =>
+        {
+            // Source https://github.com/meziantou/Meziantou.Framework/blob/ee664b6cf25ab0ae70ceaee55fcd3ef77c30dc4d/src/Meziantou.AspNetCore.Components/GenericFormField.cs
+            if (m.Name != "Create" || !m.IsPublic || m.IsStatic || !m.IsGenericMethod)
+                return false;
+
+            var generic = m.GetGenericArguments();
+            if (generic.Length != 1)
+                return false;
+
+            var args = m.GetParameters();
+            return args.Length == 2 && args[0].ParameterType == typeof(object) &&
+                   args[1].ParameterType.IsGenericType &&
+                   args[1].ParameterType.GetGenericTypeDefinition() == typeof(Action<>);
+        });
+    }
+
+    public static Expression<Func<T, K>> GetConcretePropertyExpression<T, K>(this PropertyInfo propertyInfo)
+    {
+        var modelExprParam = Expression.Parameter(typeof(T));
+        var property = Expression.Property(modelExprParam, propertyInfo);
+        return Expression.Lambda<Func<T, K>>(Expression.Convert(property, typeof(K)));
+    }
+
+    public static LambdaExpression GetPropertyExpression<T>(this T model, PropertyInfo propertyInfo)
+    {
+        // (model) => model.Property
+        var modelExpr = Expression.Constant(model);
+        var property = Expression.Property(modelExpr, propertyInfo);
+        return Expression.Lambda(typeof(Func<>).MakeGenericType(propertyInfo.PropertyType), property);
+    }
+
+    public static object? GetSetPropertyEventCallback<T>(this T model, object receiver, PropertyInfo propertyInfo)
+    {
+        // EventCallback<P>(receiver, (value) => model.Property = value)
+        var propertyAccess = model.GetPropertyExpression(propertyInfo);
+        var param = Expression.Parameter(propertyInfo.PropertyType, "value");
+        var body = Expression.Assign(propertyAccess.Body, param);
+        var lamda = Expression.Lambda(typeof(Action<>).MakeGenericType(propertyInfo.PropertyType), body, param);
+        return EventCallbackGenericMethod.MakeGenericMethod(propertyInfo.PropertyType)
+            .Invoke(EventCallback.Factory, new[] {receiver, lamda.Compile()});
     }
 }

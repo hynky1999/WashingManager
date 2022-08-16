@@ -1,14 +1,9 @@
-using System.ComponentModel.DataAnnotations.Schema;
-using PrackyASusarny.Data.EFCoreServices;
+using PrackyASusarny.Data.ModelInterfaces;
 
 namespace PrackyASusarny.Data.Models;
 
-public class Borrow : IModelWithService<Borrow>
+public class Borrow : DBModel
 {
-    public Borrow()
-    {
-    }
-
     public int BorrowId { get; set; }
     public WashingMachine WashingMachine { get; set; }
 
@@ -17,6 +12,4 @@ public class Borrow : IModelWithService<Borrow>
     public DateTime? endDate { get; set; }
 
     public uint xmin { get; set; }
-
-    [NotMapped] public ICrudService<Borrow> Service { get; }
 }

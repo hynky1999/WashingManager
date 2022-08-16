@@ -1,6 +1,8 @@
+using PrackyASusarny.Data.ModelInterfaces;
+
 namespace PrackyASusarny.Data.Models;
 
-public class Location
+public sealed class Location : DBModel
 {
     public int LocationID { get; set; }
     public int Floor { get; set; }
@@ -9,7 +11,13 @@ public class Location
     public int DoorNum { get; set; }
     public char Building { get; set; }
 
-    public string Print()
+    public override bool Equals(object? obj)
+    {
+        var wm = obj as Location;
+        return wm is not null && wm.LocationID == LocationID;
+    }
+
+    public override string ToString()
     {
         return $"{Building} {Floor}/{RoomNum}-{DoorNum}";
     }
