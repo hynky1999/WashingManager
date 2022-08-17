@@ -1,17 +1,18 @@
 using Microsoft.EntityFrameworkCore;
-using PrackyASusarny.Data.Models;
 using PrackyASusarny.Data.ServiceInterfaces;
 
 namespace PrackyASusarny.Data.EFCoreServices;
 
-public class BorrowPersonService : CrudService<BorrowPerson>, IBorrowPersonService
+public class BorrowPersonService : IBorrowPersonService
 {
-    public BorrowPersonService(IDbContextFactory<ApplicationDbContext> dbFactory, ILogger<BorrowPersonService> logger) :
-        base(dbFactory, logger, context => context.BorrowPeople, (person) => person.BorrowPersonID)
+    private readonly IDbContextFactory<ApplicationDbContext> DbFactory;
+
+    public BorrowPersonService(IDbContextFactory<ApplicationDbContext> dbFactory)
     {
+        DbFactory = dbFactory;
     }
 
-    public async Task<int> GetIDByNameAndSurname(string name, string surname)
+    public async Task<int> GetIdByNameAndSurnameAsync(string name, string surname)
     {
         using var dbContext = await DbFactory.CreateDbContextAsync();
         var pQuery = dbContext.BorrowPeople.Where(p => p.Name == name && p.Surname == surname)

@@ -11,7 +11,7 @@ public enum Status
     Free
 }
 
-public sealed class WashingMachine : DBModel
+public sealed class WashingMachine : IDbModel
 {
     [Key] public int WashingMachineId { get; set; }
 

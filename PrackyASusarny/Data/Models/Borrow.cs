@@ -3,7 +3,7 @@ using PrackyASusarny.Data.ModelInterfaces;
 
 namespace PrackyASusarny.Data.Models;
 
-public class Borrow : DBModel
+public class Borrow : IDbModel
 {
     [Key] public int BorrowID { get; set; }
 

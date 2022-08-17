@@ -42,7 +42,7 @@ else
     private List<T> _models = new List<T>();
     private ICrudService<T>? _crudService;
 
-    private readonly Type[] supportedFilters = new[]
+    private readonly Type[] _supportedFilters = new[]
     {
         typeof(int), typeof(uint), typeof(long), typeof(string), typeof(Enum), typeof(DateTime), typeof(Guid), typeof(bool)
     };
@@ -64,7 +64,7 @@ else
         {
             builder.AddAttribute(4, "Sortable", true);
         }
-        if (supportedFilters.Contains(propertyInfo.PropertyType))
+        if (_supportedFilters.Contains(propertyInfo.PropertyType))
         {
             builder.AddAttribute(5, "Filterable", true);
         }
@@ -79,7 +79,7 @@ else
         }
         if (_crudService is not null)
         {
-            _models = await _crudService.GetAllAsync(true);
+            _models = await _crudService.GetAllAsync(eager: true);
         }
         await base.OnParametersSetAsync();
     }
