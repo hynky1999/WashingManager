@@ -5,10 +5,11 @@ namespace PrackyASusarny.Data.Models;
 
 public class Manual : DBModel
 {
-    public int ManualID { get; set; }
-    public string FileName { get; set; }
+    [Key] public int ManualID { get; set; }
 
-    [Required] [MaxLength(10)] public string Name { get; set; }
+    [Required] public string FileName { get; set; }
+
+    [Required] [MaxLength(40)] public string Name { get; set; }
 
     public override bool Equals(object? obj)
     {

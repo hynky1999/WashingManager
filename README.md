@@ -74,3 +74,5 @@ The system will be developed in C# 10.0 in Blazor server ?framework? using dotne
 ### *Advanced* c# concepts used:
 - Linq for DB queries
 - Async/Await
+
+![Alt DB Architecture](./Svgs/PrackyDBForV1.svg)

@@ -13,7 +13,7 @@ public class BorrowService : CrudService<Borrow>, IBorrowService
 
     public BorrowService(IDbContextFactory<ApplicationDbContext> dbFactory, IBorrowPersonService borrowPersonService,
         ILogger<BorrowService> logger) :
-        base(dbFactory, logger, context => context.Borrows, (borrow) => borrow.BorrowId)
+        base(dbFactory, logger, context => context.Borrows, (borrow) => borrow.BorrowID)
     {
         _borrowPersonService = borrowPersonService;
     }

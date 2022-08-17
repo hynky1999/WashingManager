@@ -1,15 +1,19 @@
+using System.ComponentModel.DataAnnotations;
 using PrackyASusarny.Data.ModelInterfaces;
 
 namespace PrackyASusarny.Data.Models;
 
 public sealed class Location : DBModel
 {
-    public int LocationID { get; set; }
-    public int Floor { get; set; }
-    public int RoomNum { get; set; }
+    [Key] public int LocationID { get; set; }
 
-    public int DoorNum { get; set; }
-    public char Building { get; set; }
+    [Required] public int Floor { get; set; }
+
+    [Required] public int RoomNum { get; set; }
+
+    [Required] public int DoorNum { get; set; }
+
+    [Required] public char Building { get; set; }
 
     public override bool Equals(object? obj)
     {
