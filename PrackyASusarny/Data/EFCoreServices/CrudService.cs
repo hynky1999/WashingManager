@@ -1,69 +1,78 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using PrackyASusarny.Data.ServiceInterfaces;
 using PrackyASusarny.Utils;
 
 namespace PrackyASusarny.Data.EFCoreServices;
 
-public abstract class CrudService<T> : ICrudService<T> where T : class
+public class CrudService<T> : ICrudService<T> where T : class
 {
-    private readonly Func<ApplicationDbContext, DbSet<T>> _dbSetGetter;
     private readonly Func<T, object> _idGetter;
     private readonly Expression<Func<T, object>> _idGetterExpr;
     private readonly ILogger<CrudService<T>> _logger;
-    protected readonly IDbContextFactory<ApplicationDbContext> DbFactory;
+    private readonly IDbContextFactory<ApplicationDbContext> DbFactory;
+    private IEntityType _entityType;
 
     public CrudService(IDbContextFactory<ApplicationDbContext> dbFactory, ILogger<CrudService<T>> logger,
-        Func<ApplicationDbContext, DbSet<T>> dbSetGetter, Expression<Func<T, object>> idGetter)
+        Expression<Func<T, object>> idGetter)
     {
         DbFactory = dbFactory;
-        _dbSetGetter = dbSetGetter;
         _idGetterExpr = idGetter;
         _idGetter = idGetter.Compile();
+        _entityType = dbFactory.CreateDbContext().Model.FindEntityType(typeof(T)) ??
+                      throw new InvalidOperationException("Entity type not found");
         _logger = logger;
     }
 
-    public CrudService(IDbContextFactory<ApplicationDbContext> dbFactory, ILogger<CrudService<T>> logger)
+    public CrudService(IDbContextFactory<ApplicationDbContext> dbFactory, ILogger<CrudService<T>> logger) : this(
+        dbFactory, logger, GetKeyGetter(dbFactory))
     {
-        DbFactory = dbFactory;
-        _logger = logger;
-        _dbSetGetter = GetDbSetGetter();
-        _idGetterExpr = GetKeyGetterAndSetter(dbFactory);
-        _idGetter = _idGetterExpr.Compile();
     }
 
 
-    public async Task<List<T>> GetAllAsync(bool eager = false)
+    public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>>[]? filters = null, bool eager = false)
     {
         using var dbContext = await DbFactory.CreateDbContextAsync();
-        var dbSet = _dbSetGetter(dbContext);
-        var query = dbSet.AsQueryable();
-        if (eager)
-        {
-            query = query.MakeEager(dbSet.EntityType);
-        }
+        var query = dbContext.Set<T>().AsQueryable();
+        query = GetBoilerplate(query, filters, eager);
 
         return await query.ToListAsync();
     }
 
-    public async Task<T?> GetByIdAsync(object id, bool eager)
+    public async Task<List<TResult>> GetAllAsync<TResult, TKey>(Expression<Func<T, TResult>> selector,
+        Expression<Func<T, bool>>[]? filters = null, SortOption<T, TKey>[]? sortKeys = null, bool eager = false)
     {
-        await using var dbContext = await DbFactory.CreateDbContextAsync();
-        var dbSet = _dbSetGetter(dbContext);
-        var query = dbSet.AsQueryable();
-        if (eager)
-        {
-            query = query.MakeEager(dbSet.EntityType);
-        }
+        using var dbContext = await DbFactory.CreateDbContextAsync();
+        var query = dbContext.Set<T>().AsQueryable();
+        query = GetBoilerplate<TKey>(query, filters, sortKeys, eager);
 
+        return await query.Select(selector).ToListAsync();
+    }
+
+    public async Task<T?> GetByIdAsync(object id, bool eager = false)
+    {
+        using var dbContext = await DbFactory.CreateDbContextAsync();
+        var query = dbContext.Set<T>().AsQueryable();
+        query = GetBoilerplate(query, eager: eager);
         var result = query.Where(GetIdEquals(id)).SingleOrDefaultAsync();
+        return await result;
+    }
+
+    public async Task<TResult?> GetByIdAsync<TResult>(object id, Expression<Func<T, TResult>> selector,
+        bool eager = false)
+    {
+        using var dbContext = await DbFactory.CreateDbContextAsync();
+        var query = dbContext.Set<T>().AsQueryable();
+        query = GetBoilerplate(query, eager: eager);
+        var result = query.Where(GetIdEquals(id)).Select(selector).SingleOrDefaultAsync();
         return await result;
     }
 
     public async Task CreateAsync(T entity)
     {
         await using var dbContext = await DbFactory.CreateDbContextAsync();
-        var dbset = _dbSetGetter(dbContext);
+        var dbset = dbContext.Set<T>();
         dbset.Attach(entity);
         dbContext.Entry(entity).State = EntityState.Added;
         try
@@ -79,8 +88,8 @@ public abstract class CrudService<T> : ICrudService<T> where T : class
     public async Task UpdateAsync(T entity)
     {
         await using var dbContext = await DbFactory.CreateDbContextAsync();
-        var dbset = _dbSetGetter(dbContext);
-        _dbSetGetter(dbContext).Attach(entity);
+        var dbset = dbContext.Set<T>();
+        dbset.Attach(entity);
         dbContext.Entry(entity).State = EntityState.Modified;
         try
         {
@@ -96,7 +105,7 @@ public abstract class CrudService<T> : ICrudService<T> where T : class
     public async Task DeleteAsync(T entity)
     {
         await using var dbContext = await DbFactory.CreateDbContextAsync();
-        var dbSet = _dbSetGetter(dbContext);
+        var dbSet = dbContext.Set<T>();
         dbSet.Attach(entity);
         dbSet.Remove(entity);
         try
@@ -122,7 +131,7 @@ public abstract class CrudService<T> : ICrudService<T> where T : class
         return lamda;
     }
 
-    private Expression<Func<T, object>> GetKeyGetterAndSetter(IDbContextFactory<ApplicationDbContext> dbFactory)
+    static private Expression<Func<T, object>> GetKeyGetter(IDbContextFactory<ApplicationDbContext> dbFactory)
     {
         // Only supports non composite keys
         using var context = dbFactory.CreateDbContext();
@@ -148,5 +157,33 @@ public abstract class CrudService<T> : ICrudService<T> where T : class
                        && m.GetParameters().Length == 1;
             });
         return dbsetMethod.MakeGenericMethod(typeof(T)).CreateDelegate<Func<ApplicationDbContext, DbSet<T>>>();
+    }
+
+    private IQueryable<T> GetBoilerplate<TKey>(IQueryable<T> query, Expression<Func<T, bool>>[]? filters = null,
+        SortOption<T, TKey>[]? sortKeys = null, bool eager = false)
+    {
+        query = GetBoilerplate(query, filters, eager);
+        if (sortKeys != null)
+        {
+            query.SortWithKeys(sortKeys);
+        }
+
+        return query;
+    }
+
+    private IQueryable<T> GetBoilerplate(IQueryable<T> query, Expression<Func<T, bool>>[]? filters = null,
+        bool eager = false)
+    {
+        if (eager)
+        {
+            query = query.MakeEager(_entityType);
+        }
+
+        if (filters != null)
+        {
+            query.FilterWithExpressions(filters);
+        }
+
+        return query;
     }
 }

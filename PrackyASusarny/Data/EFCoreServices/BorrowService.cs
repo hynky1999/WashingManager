@@ -7,14 +7,15 @@ using DbUpdateException = Microsoft.EntityFrameworkCore.DbUpdateException;
 
 namespace PrackyASusarny.Data.EFCoreServices;
 
-public class BorrowService : CrudService<Borrow>, IBorrowService
+public class BorrowService : IBorrowService
 {
+    private readonly IDbContextFactory<ApplicationDbContext> DbFactory;
     private IBorrowPersonService _borrowPersonService;
 
     public BorrowService(IDbContextFactory<ApplicationDbContext> dbFactory, IBorrowPersonService borrowPersonService,
-        ILogger<BorrowService> logger) :
-        base(dbFactory, logger, context => context.Borrows, (borrow) => borrow.BorrowId)
+        ILogger<BorrowService> logger)
     {
+        DbFactory = dbFactory;
         _borrowPersonService = borrowPersonService;
     }
 
@@ -33,6 +34,26 @@ public class BorrowService : CrudService<Borrow>, IBorrowService
         throw new NotImplementedException();
     }
 
+    public Task<(DateTime time, double value)> GetUsageByHourAsync(object id, DateTime day)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<(DateTime time, double value)> GetUsageByHourAllAsync(DateTime day)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<(DateTime time, double value)> GetUsageByDayAsync(object id, DateTime start, DateTime? end)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<(DateTime time, double value)> GetUsageByDayAllAsync(DateTime start, DateTime? end)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task AddBorrow(Borrow borrow)
     {
         using var dbContext = await DbFactory.CreateDbContextAsync();
@@ -45,7 +66,7 @@ public class BorrowService : CrudService<Borrow>, IBorrowService
 
         if (borrow.BorrowPerson.BorrowPersonID == 0)
         {
-            var id = await _borrowPersonService.GetIDByNameAndSurname(borrow.BorrowPerson.Name,
+            var id = await _borrowPersonService.GetIdByNameAndSurnameAsync(borrow.BorrowPerson.Name,
                 borrow.BorrowPerson.Surname);
             borrow.BorrowPerson.BorrowPersonID = id;
         }

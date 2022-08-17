@@ -1,10 +1,10 @@
 @inject IServiceProvider ServiceProvider
 @typeparam TModel
 
-@if (fields != null)
+@if (_fields != null)
 {
     <Form Loading="@Loading" Model="@Model" OnFinish="@OnFinish">
-        @foreach (var field in fields)
+        @foreach (var field in _fields)
         {
             @if (FieldTemplate != null)
             {
@@ -23,7 +23,7 @@
 }
 
 @code{
-    private List<GenericInput<TModel>>? fields;
+    private List<GenericInput<TModel>>? _fields;
 
     [Parameter]
     public TModel? Model { get; set; }
@@ -44,9 +44,9 @@
     {
         base.OnParametersSet();
 
-        if (fields != null)
+        if (_fields != null)
         {
-            foreach (var field in fields)
+            foreach (var field in _fields)
             {
                 field.ValueChanged = EventCallback.Factory.Create(this, OnValueChanged);
             }
@@ -54,15 +54,15 @@
 
         if (Model != null)
         {
-            fields = GenericInput<TModel>.Create(Model, ServiceProvider);
-            foreach (var field in fields)
+            _fields = GenericInput<TModel>.Create(Model, ServiceProvider);
+            foreach (var field in _fields)
             {
                 field.ValueChanged = EventCallback.Empty;
             }
         }
         else
         {
-            fields = null;
+            _fields = null;
         }
     }
 

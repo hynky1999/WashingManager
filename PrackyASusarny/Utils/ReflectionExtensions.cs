@@ -33,11 +33,11 @@ public static class ReflectionExtensions
         });
     }
 
-    public static Expression<Func<T, K>> GetConcretePropertyExpression<T, K>(this PropertyInfo propertyInfo)
+    public static Expression<Func<T, TK>> GetConcretePropertyExpression<T, TK>(this PropertyInfo propertyInfo)
     {
         var modelExprParam = Expression.Parameter(typeof(T));
         var property = Expression.Property(modelExprParam, propertyInfo);
-        return Expression.Lambda<Func<T, K>>(Expression.Convert(property, typeof(K)));
+        return Expression.Lambda<Func<T, TK>>(Expression.Convert(property, typeof(TK)));
     }
 
     public static LambdaExpression GetPropertyExpression<T>(this T model, PropertyInfo propertyInfo)

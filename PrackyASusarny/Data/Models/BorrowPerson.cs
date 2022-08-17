@@ -4,7 +4,7 @@ namespace PrackyASusarny.Data.Models;
 
 public class BorrowPerson
 {
-    public int BorrowPersonID { get; set; }
+    [Key] public int BorrowPersonID { get; set; }
 
     [Required] public string Name { get; set; }
 

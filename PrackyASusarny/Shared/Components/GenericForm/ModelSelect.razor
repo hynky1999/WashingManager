@@ -2,7 +2,7 @@
 @typeparam TItem
 @inject ICrudService<TItem> CrudService
 
-<Select Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" DataSource="@dataSource" Disabled="@Disabled"></Select>
+<Select Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" DataSource="@_dataSource" Disabled="@Disabled"></Select>
 
 @code {
 
@@ -16,17 +16,17 @@
     public Expression<Func<TItem>> ValueExpression { get; set; }
 
     [Parameter]
-    public string id { get; set; }
+    public string Id { get; set; }
 
     [Parameter]
     public bool Disabled { get; set; }
 
-    private List<TItem> dataSource = new List<TItem>();
+    private List<TItem> _dataSource = new List<TItem>();
 
 
     protected async override Task OnParametersSetAsync()
     {
-        dataSource = (await CrudService.GetAllAsync(false));
+        _dataSource = (await CrudService.GetAllAsync(eager: false));
     }
 
 }

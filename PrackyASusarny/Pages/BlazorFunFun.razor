@@ -3,7 +3,7 @@
 @using System.Reflection
 @using System.Text.Json
 
-<Form Model="@Manual" ValidateOnChange="@true" OnFinish="OnFinish" OnFinishFailed="OnFinishFailed">
+<Form Model="@_manual" ValidateOnChange="@true" OnFinish="OnFinish" OnFinishFailed="OnFinishFailed">
     <FormItem >
         @CustomRender
     </FormItem>
@@ -11,10 +11,10 @@
         <Button HtmlType="submit">Submit</Button>
     </FormItem>
 </Form>
-<Button OnClick="@((e) => Manual.ManualID += 1)">Inc manualid</Button>
+<Button OnClick="@((e) => _manual.ManualID += 1)">Inc manualid</Button>
 
 @code {
-    Manual Manual = new Manual();
+    Manual _manual = new Manual();
 
     RenderFragment? CustomRender
     {
@@ -25,9 +25,9 @@
                 PropertyInfo p = typeof(Manual).GetProperty("ManualID");
                 EventCallbackFactory ecf = new EventCallbackFactory();
                 builder.OpenComponent(0, typeof(AntDesign.InputNumber<>).MakeGenericType(p.PropertyType));
-                builder.AddAttribute(1, "Value", p.GetValue(Manual));
-                builder.AddAttribute(2, "ValueChanged", Manual.GetSetPropertyEventCallback(this, p));
-                builder.AddAttribute(3, "ValueExpression", Manual.GetPropertyExpression(p));
+                builder.AddAttribute(1, "Value", p.GetValue(_manual));
+                builder.AddAttribute(2, "ValueChanged", _manual.GetSetPropertyEventCallback(this, p));
+                builder.AddAttribute(3, "ValueExpression", _manual.GetPropertyExpression(p));
                 builder.CloseComponent();
             };
         }
@@ -35,12 +35,12 @@
 
     private void OnFinish(EditContext editContext)
     {
-        Console.WriteLine($"Success:{JsonSerializer.Serialize(Manual)}");
+        Console.WriteLine($"Success:{JsonSerializer.Serialize(_manual)}");
     }
 
     private void OnFinishFailed(EditContext editContext)
     {
-        Console.WriteLine($"Failed:{JsonSerializer.Serialize(Manual)}");
+        Console.WriteLine($"Failed:{JsonSerializer.Serialize(_manual)}");
     }
 
 }

@@ -11,12 +11,14 @@ public enum Status
     Free
 }
 
-public sealed class WashingMachine : DBModel
+public sealed class WashingMachine : IDbModel
 {
     [Key] public int WashingMachineId { get; set; }
 
     public Manual Manual { get; set; }
-    public Status Status { get; set; }
+
+    [Required] public Status Status { get; set; }
+
     public string Manufacturer { get; set; }
 
     public Location Location { get; set; }
