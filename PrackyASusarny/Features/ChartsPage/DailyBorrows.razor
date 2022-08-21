@@ -1,0 +1,65 @@
+@using PrackyASusarny.Pages.Features.DefaultChartPage
+@typeparam T where T : BorrowableEntity
+@inject IUsageChartingService<T> Charts
+@if (_statData.Length == 0) {
+    <Empty Description=@("No Data Found")/>
+} else {
+    <AntDesign.Charts.Column Data="@_statData" Config="@_config"/>
+    <RangePicker TValue="DateTime?[]" OnChange="@((args) => InitializeData(args.Dates))" DefaultValue="@(new DateTime?[] {SinceDate, ToDate})"/>
+}
+
+@code {
+
+    [Parameter]
+    public DateTime SinceDate { get; set; }
+
+    [Parameter]
+    public DateTime ToDate { get; set; }
+
+
+        private const string Usage = "Daily borrows";
+
+    private object[] _statData = {};
+    private ColumnConfig _config = new();
+
+    protected override async Task OnParametersSetAsync() {
+        var entityName = typeof(T).GetProperty(nameof(DbModel.HumanReadableName))?.GetValue(typeof(T)) ?? nameof(T);
+        var entityNameStr = (string) entityName;
+
+        _config = SetUpConfig(ChartsUtils.GetChartDescription(Usage, entityNameStr, 0, (null, null)));
+        await InitializeData(new DateTime?[] {SinceDate, ToDate});
+        await base.OnParametersSetAsync();
+    }
+
+    private async Task InitializeData(DateTime?[] range) {
+        if (range.Length == 2 && range[0] is not null && range[1] is not null) {
+            _statData = (await Charts.GetBorrowsByDayAsync(range[0]!.Value, range[1]!.Value)).Select(usage => new {Day = usage.time.Date, Value = usage.value}).ToArray();
+        }
+    }
+
+    private ColumnConfig SetUpConfig(string description) {
+        return new ColumnConfig {
+            Title = new AntDesign.Charts.Title() {
+                Visible = true,
+                Text = Usage
+            },
+            Description = new Description {
+                Visible = true,
+                Text = description
+            },
+            ForceFit = true,
+            Padding = "auto",
+            XField = "Date",
+            YField = "Borrows",
+            Label = new ColumnViewConfigLabel {
+                Visible = true,
+                Style = new TextStyle {
+                    FontSize = 12,
+                    FontWeight = 600,
+                    Opacity = 0.6
+                }
+            }
+        };
+    }
+
+}

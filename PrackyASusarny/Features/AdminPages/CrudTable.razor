@@ -7,13 +7,10 @@
 @inject IServiceProvider ServiceManager
 @inject MessageService MessageService
 
-@if (_crudService is not null)
-{
-    @if (_models.Count > 0)
-    {
+@if (_crudService is not null) {
+    @if (_models.Count > 0) {
         <Table TItem="T" DataSource="@_models" Responsive>
-            @foreach (var property in typeof(T).GetProperties())
-            {
+            @foreach (var property in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy)) {
                 @ProperityColumn(context, property)
             }
             <ActionColumn>
@@ -27,96 +24,78 @@
                 </Space>
             </ActionColumn>
         </Table>
-    }
-    else
-    {
+    } else {
         <Empty/>
     }
-}
-else
-{
+} else {
     <Title Level="2">Model is not able to load itself</Title>
 }
 
 @code {
-    private List<T> _models = new List<T>();
+    private List<T> _models = new();
     private ICrudService<T>? _crudService;
 
-    private readonly Type[] _supportedFilters = new[]
-    {
+    private readonly Type[] _supportedFilters = {
         typeof(int), typeof(uint), typeof(long), typeof(string), typeof(Enum), typeof(DateTime), typeof(Guid), typeof(bool)
     };
 
-    private RenderFragment ProperityColumn(T context, PropertyInfo propertyInfo) => builder =>
-    {
-        var visibilityAttr = propertyInfo.GetCustomAttribute<UIVisibility>();
-        if (visibilityAttr?.Visibility == UIVisibilityEnum.Hidden)
-        {
-            return;
-        }
+    private RenderFragment ProperityColumn(T context, PropertyInfo propertyInfo) {
+        return builder => {
+            var visibilityAttr = propertyInfo.GetCustomAttribute<UIVisibility>();
+            if (visibilityAttr?.Visibility == UIVisibilityEnum.Hidden) {
+                return;
+            }
     // No idea how to make this in raozor syntax because of runtime type
     // TODO add support for Filtering and Sorting of DB Types
-        builder.OpenComponent(0, typeof(Column<>).MakeGenericType(propertyInfo.PropertyType));
-        builder.AddAttribute(1, "Field", propertyInfo.GetValue(context));
-        builder.AddAttribute(2, "FieldChanged", context.GetSetPropertyEventCallback(this, propertyInfo));
-        builder.AddAttribute(3, "FieldExpression", context.GetPropertyExpression(propertyInfo));
-        if (propertyInfo.PropertyType.GetInterface("IComparable") != null)
-        {
-            builder.AddAttribute(4, "Sortable", true);
-        }
-        if (_supportedFilters.Contains(propertyInfo.PropertyType))
-        {
-            builder.AddAttribute(5, "Filterable", true);
-        }
-        builder.CloseComponent();
-    };
+            builder.OpenComponent(0, typeof(Column<>).MakeGenericType(propertyInfo.PropertyType));
+            builder.AddAttribute(1, "Field", propertyInfo.GetValue(context));
+            builder.AddAttribute(2, "FieldChanged", context.GetSetPropertyEventCallback(this, propertyInfo));
+            builder.AddAttribute(3, "FieldExpression", context.GetPropertyExpression(propertyInfo));
+            if (propertyInfo.PropertyType.GetInterface("IComparable") != null) {
+                builder.AddAttribute(4, "Sortable", true);
+            }
+            if (_supportedFilters.Contains(propertyInfo.PropertyType)) {
+                builder.AddAttribute(5, "Filterable", true);
+            }
+            builder.CloseComponent();
+        };
+    }
 
-    protected async override Task OnParametersSetAsync()
-    {
-        if (_crudService is null)
-        {
+    protected override async Task OnParametersSetAsync() {
+        if (_crudService is null) {
             _crudService = ServiceManager.GetService<ICrudService<T>>();
         }
-        if (_crudService is not null)
-        {
+        if (_crudService is not null) {
             _models = await _crudService.GetAllAsync(eager: true);
         }
         await base.OnParametersSetAsync();
     }
 
-    private void Update(T model)
-    {
-        if (_crudService is null)
-        {
+    private void Update(T model) {
+        if (_crudService is null) {
             return;
         }
-        try
-        {
+        try {
             var id = _crudService.GetId(model);
-            var baseResourceApi = string.Join('/', NavManager.Uri.Split("/")[0..^1]);
+            var baseResourceApi = string.Join('/', NavManager.Uri.Split("/")[..^1]);
             NavManager.NavigateTo($"{baseResourceApi}/Update/{id}");
         }
-        catch (DbException)
-        {
+        catch (DbException) {
             MessageService.Error("Cannot update the model");
         }
     }
 
-    private async void Delete(T model)
-    {
-        if (_crudService is null)
-        {
+    private async void Delete(T model) {
+        if (_crudService is null) {
             return;
         }
-        try
-        {
+        try {
             await _crudService.DeleteAsync(model);
             _models.Remove(model);
             StateHasChanged();
             MessageService.Success($"Successfully deleted item {model}");
         }
-        catch (DbException e)
-        {
+        catch (DbException e) {
             MessageService.Error("Failed to delete model");
         }
     }

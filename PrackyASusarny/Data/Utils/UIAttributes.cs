@@ -1,7 +1,7 @@
 namespace PrackyASusarny.Data.Utils;
 
-[System.AttributeUsage(System.AttributeTargets.Property)]
-public class UIVisibility : System.Attribute
+[AttributeUsage(AttributeTargets.Property)]
+public class UIVisibility : Attribute
 {
     public UIVisibility(UIVisibilityEnum visibility)
     {

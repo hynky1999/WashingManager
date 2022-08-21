@@ -3,7 +3,7 @@ using PrackyASusarny.Data.ModelInterfaces;
 
 namespace PrackyASusarny.Data.Models;
 
-public sealed class Location : IDbModel
+public sealed class Location : DbModel
 {
     [Key] public int LocationID { get; set; }
 

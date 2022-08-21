@@ -8,11 +8,11 @@ namespace PrackyASusarny.Data.EFCoreServices;
 
 public class CrudService<T> : ICrudService<T> where T : class
 {
+    private readonly IEntityType _entityType;
     private readonly Func<T, object> _idGetter;
     private readonly Expression<Func<T, object>> _idGetterExpr;
     private readonly ILogger<CrudService<T>> _logger;
     private readonly IDbContextFactory<ApplicationDbContext> DbFactory;
-    private IEntityType _entityType;
 
     public CrudService(IDbContextFactory<ApplicationDbContext> dbFactory, ILogger<CrudService<T>> logger,
         Expression<Func<T, object>> idGetter)
@@ -45,7 +45,7 @@ public class CrudService<T> : ICrudService<T> where T : class
     {
         using var dbContext = await DbFactory.CreateDbContextAsync();
         var query = dbContext.Set<T>().AsQueryable();
-        query = GetBoilerplate<TKey>(query, filters, sortKeys, eager);
+        query = GetBoilerplate(query, filters, sortKeys, eager);
 
         return await query.Select(selector).ToListAsync();
     }
@@ -131,16 +131,13 @@ public class CrudService<T> : ICrudService<T> where T : class
         return lamda;
     }
 
-    static private Expression<Func<T, object>> GetKeyGetter(IDbContextFactory<ApplicationDbContext> dbFactory)
+    private static Expression<Func<T, object>> GetKeyGetter(IDbContextFactory<ApplicationDbContext> dbFactory)
     {
         // Only supports non composite keys
         using var context = dbFactory.CreateDbContext();
         var key = context.Model.FindEntityType(typeof(T))?.FindPrimaryKey();
         var property = key?.Properties[0];
-        if (property is null)
-        {
-            throw new InvalidOperationException("No primary key found");
-        }
+        if (property is null) throw new InvalidOperationException("No primary key found");
 
         var propertyInfo = property.PropertyInfo;
         return propertyInfo.GetConcretePropertyExpression<T, object>();
@@ -163,10 +160,7 @@ public class CrudService<T> : ICrudService<T> where T : class
         SortOption<T, TKey>[]? sortKeys = null, bool eager = false)
     {
         query = GetBoilerplate(query, filters, eager);
-        if (sortKeys != null)
-        {
-            query.SortWithKeys(sortKeys);
-        }
+        if (sortKeys != null) query.SortWithKeys(sortKeys);
 
         return query;
     }
@@ -174,15 +168,9 @@ public class CrudService<T> : ICrudService<T> where T : class
     private IQueryable<T> GetBoilerplate(IQueryable<T> query, Expression<Func<T, bool>>[]? filters = null,
         bool eager = false)
     {
-        if (eager)
-        {
-            query = query.MakeEager(_entityType);
-        }
+        if (eager) query = query.MakeEager(_entityType);
 
-        if (filters != null)
-        {
-            query.FilterWithExpressions(filters);
-        }
+        if (filters != null) query.FilterWithExpressions(filters);
 
         return query;
     }

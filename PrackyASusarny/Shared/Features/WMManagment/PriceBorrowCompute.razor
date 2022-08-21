@@ -3,8 +3,7 @@
 @inject BorrowService BorrowService
 @inject ILogger<PriceBorrowCompute> Logger
 
-@if (_price is not null)
-{
+@if (_price is not null) {
     <h6>Aktuální cena za výpůjčku</h6>
     <p>@_price</p>
     <Button OnClick="UpdatePrice">Obnovit cenu</Button>
@@ -20,26 +19,21 @@
 
     private Price? _price = null;
 
-    protected async override Task OnInitializedAsync()
-    {
+    protected override async Task OnInitializedAsync() {
         await UpdatePrice();
         await base.OnInitializedAsync();
     }
 
-    protected async override Task OnParametersSetAsync()
-    {
+    protected override async Task OnParametersSetAsync() {
         await UpdatePrice();
         await base.OnParametersSetAsync();
     }
 
-    private async Task UpdatePrice()
-    {
-        try
-        {
+    private async Task UpdatePrice() {
+        try {
             _price = await BorrowService.GetPrice(Borrow);
         }
-        catch (DbException ex)
-        {
+        catch (DbException ex) {
             Logger.LogError(ex.Message);
         }
     }

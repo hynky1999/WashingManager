@@ -6,8 +6,7 @@
 
 <ModalForm TMod="@BorrowPerson" TResult="@Borrow" Model="@_tmpBorrowPerson" OnSubmit="@SubmitForm" OnSuccess="@OnSuccess">
     <h2>Vytvoř výpůjčku</h2>
-    @if (ShowWashingMachine)
-    {
+    @if (ShowWashingMachine) {
         <WmDescription WashingMachine="@WashingMachine"/>
     }
     <FormItem Label="Name">
@@ -31,32 +30,26 @@
     [Parameter]
     public bool ShowWashingMachine { get; set; } = true;
 
-    private BorrowPerson _tmpBorrowPerson = new BorrowPerson();
+    private readonly BorrowPerson _tmpBorrowPerson = new();
 
-    private async Task<Borrow?> SubmitForm()
-    {
-        if (WashingMachine is null)
-        {
+    private async Task<Borrow?> SubmitForm() {
+        if (WashingMachine is null) {
             Logger.LogError("Washing machine is null");
             return null;
         }
-        var borrow = new Borrow()
-        {
-            BorrowPerson = new BorrowPerson
-            {
+        var borrow = new Borrow {
+            BorrowPerson = new BorrowPerson {
                 Name = _tmpBorrowPerson.Name,
                 Surname = _tmpBorrowPerson.Surname
             },
-            WashingMachine = WashingMachine,
+            BorrowableEntity = WashingMachine,
             startDate = DateTime.UtcNow
         };
-        try
-        {
+        try {
             await BorrowService.AddBorrow(borrow);
             return borrow;
         }
-        catch (Exception ex) when (ex is ArgumentException || ex is DbException)
-        {
+        catch (Exception ex) when (ex is ArgumentException || ex is DbException) {
             Logger.LogError(ex.Message);
             return null;
         }

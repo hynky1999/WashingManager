@@ -10,12 +10,12 @@ public interface ICrudService<T>
 
     public Task<List<T>> GetAllAsync(Expression<Func<T, bool>>[]? filters = null, bool eager = false);
 
-    public new Task<TResult?> GetByIdAsync<TResult>(object id, Expression<Func<T, TResult>> selector,
+    public Task<TResult?> GetByIdAsync<TResult>(object id, Expression<Func<T, TResult>> selector,
         bool eager = false);
 
-    public new Task<T?> GetByIdAsync(object id, bool eager = false);
+    public Task<T?> GetByIdAsync(object id, bool eager = false);
     public Task CreateAsync(T entity);
     public Task UpdateAsync(T entity);
-    public new Task DeleteAsync(T entity);
+    public Task DeleteAsync(T entity);
     public object GetId(T entity);
 }

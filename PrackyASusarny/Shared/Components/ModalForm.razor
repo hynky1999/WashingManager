@@ -1,7 +1,7 @@
 @typeparam TMod where TMod : class
 @typeparam TResult where TResult : class
 @inject MessageService Message
-<Modal Title="Form" Visible="@_visible" OnOk="OnFinish" OkButtonProps="@(new ButtonProps() {Block = true})" OnCancel="@(_ => _visible = false)">
+<Modal Title="Form" Visible="@_visible" OnOk="OnFinish" OkButtonProps="@(new ButtonProps {Block = true})" OnCancel="@(_ => _visible = false)">
     <Form ref="@_form" Model="@Model" OnFinish="@OnFinish" Loading="_loading">
         @ChildContent
     </Form>
@@ -33,28 +33,23 @@
     private Form<TMod> _form;
 
 
-    private async Task OnFinish()
-    {
+    private async Task OnFinish() {
         var validationReuslt = _form.Validate();
         if (validationReuslt)
             _loading = true;
         TResult? submitedModel = null;
 
-        if (OnSubmit != null)
-        {
+        if (OnSubmit != null) {
             submitedModel = await OnSubmit();
         }
         _loading = false;
-        if (submitedModel != null || OnSubmit == null)
-        {
+        if (submitedModel != null || OnSubmit == null) {
             Message.Info(
                 MessageSuccess
                 );
             _visible = false;
             await OnSuccess.InvokeAsync();
-        }
-        else
-        {
+        } else {
             Message.Error(
                 MessageFail
                 );

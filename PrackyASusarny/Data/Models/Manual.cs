@@ -3,7 +3,7 @@ using PrackyASusarny.Data.ModelInterfaces;
 
 namespace PrackyASusarny.Data.Models;
 
-public class Manual : IDbModel
+public class Manual : DbModel
 {
     [Key] public int ManualID { get; set; }
 

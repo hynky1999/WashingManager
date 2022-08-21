@@ -1,0 +1,51 @@
+@using PrackyASusarny.Pages.Features.DefaultChartPage
+@typeparam T where T : BorrowableEntity
+@inject IUsageChartingService<T> Charts
+@if (_statData.Length == 0) {
+    <Empty Description=@("No Data Found")/>
+} else {
+    <AntDesign.Charts.Column Data="@_statData" Config="@_config"/>
+}
+
+@code {
+
+    [Parameter]
+    public string? Entity { get; set; }
+
+        private const string Usage = "Average Daily usage";
+
+    private object[] _statData = {};
+    private ColumnConfig _config = new();
+
+    protected override async Task OnParametersSetAsync() {
+        _config = SetUpConfig(ChartsUtils.GetChartDescription(Usage, Entity ?? "", 0, (null, null)));
+        _statData = (await Charts.GetWeekUsageAsync()).Select(usage => new {Day = usage.dayOfWeek, Value = usage.value}).ToArray();
+        await base.OnParametersSetAsync();
+    }
+
+    private ColumnConfig SetUpConfig(string description) {
+        return new ColumnConfig {
+            Title = new AntDesign.Charts.Title() {
+                Visible = true,
+                Text = Usage
+            },
+            Description = new Description {
+                Visible = true,
+                Text = description
+            },
+            ForceFit = true,
+            Padding = "auto",
+            XField = "Day",
+            YField = "Usage",
+            Label = new ColumnViewConfigLabel {
+                Visible = true,
+                Style = new TextStyle {
+                    FontSize = 12,
+                    FontWeight = 600,
+                    Opacity = 0.6
+                }
+            }
+        };
+    }
+
+}

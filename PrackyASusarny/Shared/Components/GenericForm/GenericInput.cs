@@ -1,6 +1,8 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Reflection;
+using AntDesign;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using PrackyASusarny.Data.ServiceInterfaces;
@@ -44,10 +46,7 @@ public sealed class GenericInput<TModel>
         {
             var visibilityAttr = _propertyInfo.GetCustomAttribute<UIVisibility>();
 
-            if (_fieldFragment != null)
-            {
-                return _fieldFragment;
-            }
+            if (_fieldFragment != null) return _fieldFragment;
 
             var propertyExpression = _owner.GetPropertyExpression(_propertyInfo);
             var valueChangedCallback = _owner.GetSetPropertyEventCallback(this, _propertyInfo);
@@ -60,8 +59,12 @@ public sealed class GenericInput<TModel>
                 builder.AddAttribute(1, "Value", Value);
                 builder.AddAttribute(2, "ValueChanged", valueChangedCallback);
                 builder.AddAttribute(3, "ValueExpression", propertyExpression);
-                builder.AddAttribute(4, "Disabled", visibilityAttr?.Visibility == UIVisibilityEnum.Disabled);
-                builder.AddMultipleAttributes(6, additonalAttributes);
+                if (visibilityAttr?.Visibility != null)
+                {
+                    builder.AddAttribute(4, "Disabled", true);
+                }
+
+                builder.AddMultipleAttributes(5, additonalAttributes);
                 builder.CloseComponent();
             };
         }
@@ -121,54 +124,59 @@ public sealed class GenericInput<TModel>
     {
         var editorAttributes = propertyInfo.GetCustomAttributes<EditorAttribute>();
         foreach (var editorAttribute in editorAttributes)
-        {
             if (editorAttribute.EditorBaseTypeName == typeof(InputBase<>).AssemblyQualifiedName)
-                return (Type.GetType(editorAttribute.EditorTypeName, throwOnError: true)!, null);
-        }
+                return (Type.GetType(editorAttribute.EditorTypeName, true)!, null);
 
-        if (propertyInfo.PropertyType == typeof(bool))
-            return (typeof(AntDesign.Checkbox), null);
+        var realType = Nullable.GetUnderlyingType(propertyInfo.PropertyType);
+        realType ??= propertyInfo.PropertyType;
 
-        if (propertyInfo.PropertyType == typeof(string))
-        {
-            return (typeof(AntDesign.Input<string>), null);
-        }
+        if (realType == typeof(bool))
+            return (typeof(Checkbox), null);
 
-        if (propertyInfo.PropertyType == typeof(short))
+        if (realType == typeof(string)) return (typeof(Input<string>), null);
+
+        if (realType == typeof(short))
             return (typeof(AntDesign.InputNumber<short>), null);
 
-        if (propertyInfo.PropertyType == typeof(int))
+        if (realType == typeof(int))
             return (typeof(AntDesign.InputNumber<int>), null);
 
-        if (propertyInfo.PropertyType == typeof(uint))
+        if (realType == typeof(uint))
             return (typeof(AntDesign.InputNumber<uint>), null);
 
-        if (propertyInfo.PropertyType == typeof(long))
+        if (realType == typeof(long))
             return (typeof(AntDesign.InputNumber<long>), null);
 
-        if (propertyInfo.PropertyType == typeof(float))
+        if (realType == typeof(float))
             return (typeof(AntDesign.InputNumber<float>), null);
 
-        if (propertyInfo.PropertyType == typeof(double))
+        if (realType == typeof(double))
             return (typeof(AntDesign.InputNumber<double>), null);
 
-        if (propertyInfo.PropertyType == typeof(decimal))
+        if (realType == typeof(decimal))
             return (typeof(AntDesign.InputNumber<decimal>), null);
 
-        if (propertyInfo.PropertyType == typeof(DateTime))
+        if (realType == typeof(DateTime))
         {
-            return (typeof(AntDesign.DatePicker<DateTime>), null);
+            var attrs = new List<KeyValuePair<string, object>>
+            {
+                new("CultureInfo", CultureInfo.GetCultureInfo("en-US")),
+            };
+            var dateTimeType = propertyInfo.GetCustomAttribute<DataTypeAttribute>();
+            if (dateTimeType is null || dateTimeType.DataType == DataType.DateTime)
+            {
+                attrs.Add(new KeyValuePair<string, object>("showTime", OneOf.OneOf<bool, string>.FromT0(true)));
+            }
+
+            return (typeof(DatePicker<>).MakeGenericType(propertyInfo.PropertyType), attrs.ToArray());
         }
 
-        if (propertyInfo.PropertyType.IsEnum)
-        {
-            return (typeof(AntDesign.EnumSelect<>).MakeGenericType(propertyInfo.PropertyType), null);
-        }
 
-        if (sp.GetService(typeof(ICrudService<>).MakeGenericType(propertyInfo.PropertyType)) is not null)
-        {
+        if (realType.IsEnum)
+            return (typeof(EnumSelect<>).MakeGenericType(propertyInfo.PropertyType), null);
+
+        if (sp.GetService(typeof(ICrudService<>).MakeGenericType(realType)) is not null)
             return (typeof(ModelSelect<>).MakeGenericType(propertyInfo.PropertyType), null);
-        }
 
         throw new NotSupportedException($"The type {propertyInfo.PropertyType} is not supported.");
     }
@@ -186,10 +194,7 @@ public sealed class GenericInput<TModel>
 
             if (prop.GetCustomAttribute<EditableAttribute>() is { } editor && !editor.AllowEdit)
                 continue;
-            if (prop.GetCustomAttribute<UIVisibility>() is {Visibility: UIVisibilityEnum.Hidden})
-            {
-                continue;
-            }
+            if (prop.GetCustomAttribute<UIVisibility>() is {Visibility: UIVisibilityEnum.Hidden}) continue;
 
             var field = new GenericInput<TModel>(model, prop, serviceProvider);
             result.Add(field);

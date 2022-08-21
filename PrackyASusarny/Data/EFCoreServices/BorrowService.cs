@@ -9,8 +9,8 @@ namespace PrackyASusarny.Data.EFCoreServices;
 
 public class BorrowService : IBorrowService
 {
+    private readonly IBorrowPersonService _borrowPersonService;
     private readonly IDbContextFactory<ApplicationDbContext> DbFactory;
-    private IBorrowPersonService _borrowPersonService;
 
     public BorrowService(IDbContextFactory<ApplicationDbContext> dbFactory, IBorrowPersonService borrowPersonService,
         ILogger<BorrowService> logger)
@@ -57,12 +57,9 @@ public class BorrowService : IBorrowService
     public async Task AddBorrow(Borrow borrow)
     {
         using var dbContext = await DbFactory.CreateDbContextAsync();
-        if (borrow.WashingMachine.Status != Status.Free)
-        {
-            throw new ArgumentException("Invalid Value");
-        }
+        if (borrow.BorrowableEntity.Status != Status.Free) throw new ArgumentException("Invalid Value");
 
-        borrow.WashingMachine.Status = Status.Taken;
+        borrow.BorrowableEntity.Status = Status.Taken;
 
         if (borrow.BorrowPerson.BorrowPersonID == 0)
         {
@@ -93,7 +90,7 @@ public class BorrowService : IBorrowService
     {
         // This could be based on locale with facotry at price
         var time = borrow.startDate - DateTime.UtcNow;
-        var pricePerTime = (time.Minutes / 30) * Rates.WMpricePerHalfHour;
+        var pricePerTime = time.Minutes / 30 * Rates.WMpricePerHalfHour;
         return new Price
         {
             Amount = pricePerTime,
@@ -103,19 +100,13 @@ public class BorrowService : IBorrowService
 
     public async Task<Borrow?> GetBorrowByWm(WashingMachine wm)
     {
-        if (wm == null)
-        {
-            throw new ArgumentNullException("Washing Machine missing");
-        }
+        if (wm == null) throw new ArgumentNullException("Washing Machine missing");
 
         using var dbContext = await DbFactory.CreateDbContextAsync();
-        var query = dbContext.Borrows.Where(b => b.WashingMachine.WashingMachineId == wm.WashingMachineId)
+        var query = dbContext.Borrows.Where(b => b.BorrowableEntity.BorrowableEntityID == wm.BorrowableEntityID)
             .Include(b => b.BorrowPerson);
         var borrow = await query.FirstOrDefaultAsync();
-        if (borrow is not null)
-        {
-            borrow.WashingMachine = wm;
-        }
+        if (borrow is not null) borrow.BorrowableEntity = wm;
 
         return borrow;
     }
@@ -142,19 +133,11 @@ public class BorrowService : IBorrowService
     private void CreateBorrowTraversal(EntityEntryGraphNode node)
     {
         node.Entry.State = EntityState.Unchanged;
-        if (node.Entry.Entity is Borrow)
-        {
-            node.Entry.State = EntityState.Added;
-        }
+        if (node.Entry.Entity is Borrow) node.Entry.State = EntityState.Added;
 
-        if (node.Entry.Entity is BorrowPerson {BorrowPersonID: 0})
-        {
-            node.Entry.State = EntityState.Added;
-        }
+        if (node.Entry.Entity is BorrowPerson {BorrowPersonID: 0}) node.Entry.State = EntityState.Added;
 
         if (node.Entry.Entity is WashingMachine wm)
-        {
             node.Entry.Property(nameof(WashingMachine.Status)).IsModified = true;
-        }
     }
 }

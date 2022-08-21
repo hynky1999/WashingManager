@@ -37,7 +37,7 @@ public static class ReflectionExtensions
     {
         var modelExprParam = Expression.Parameter(typeof(T));
         var property = Expression.Property(modelExprParam, propertyInfo);
-        return Expression.Lambda<Func<T, TK>>(Expression.Convert(property, typeof(TK)));
+        return Expression.Lambda<Func<T, TK>>(Expression.Convert(property, typeof(TK)), modelExprParam);
     }
 
     public static LambdaExpression GetPropertyExpression<T>(this T model, PropertyInfo propertyInfo)

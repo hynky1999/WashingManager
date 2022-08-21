@@ -1,6 +1,6 @@
-<Menu Mode=MenuMode.Horizontal>
-    @foreach (var option in _menuOptions)
-    {
+@using PrackyASusarny.Pages.Features.AdminPages
+<Menu Mode="MenuMode.Horizontal">
+    @foreach (var option in _menuOptions) {
         <MenuItem Key="@option" RouterLink="@($"adminMenu/{option}/List")">
             <Icon Type="edit" Theme="outline"></Icon>
             @option
