@@ -5,18 +5,15 @@
 <Select Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" DataSource="@_dataSource" Disabled="@Disabled"></Select>
 
 @code {
-
+    // TODO add required handling
     [Parameter]
-    public TItem Value { get; set; }
+    public TItem? Value { get; set; }
 
     [Parameter]
     public EventCallback<TItem> ValueChanged { get; set; }
 
     [Parameter]
-    public Expression<Func<TItem>> ValueExpression { get; set; }
-
-    [Parameter]
-    public string Id { get; set; }
+    public Expression<Func<TItem>>? ValueExpression { get; set; }
 
     [Parameter]
     public bool Disabled { get; set; }

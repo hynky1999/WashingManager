@@ -11,7 +11,7 @@
 @code {
 
     [Parameter]
-    public RenderFragment ChildContent { get; set; }
+    public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
     public TMod? Model { get; set; }
@@ -30,7 +30,7 @@
 
     private bool _visible = false;
     private bool _loading = false;
-    private Form<TMod> _form;
+    private Form<TMod> _form = new();
 
 
     private async Task OnFinish() {
@@ -44,13 +44,17 @@
         }
         _loading = false;
         if (submitedModel != null || OnSubmit == null) {
+#pragma warning disable CS4014
             Message.Info(
+#pragma warning restore CS4014
                 MessageSuccess
                 );
             _visible = false;
             await OnSuccess.InvokeAsync();
         } else {
+#pragma warning disable CS4014
             Message.Error(
+#pragma warning restore CS4014
                 MessageFail
                 );
         }

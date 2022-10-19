@@ -1,0 +1,54 @@
+@page "/charts/{Entity}"
+@using PrackyASusarny.Data.EFCoreServices
+@inject ILocalizationService LocaliztionService
+
+<Tabs>
+    @foreach (var chart in _charts) {
+        <TabPane Tab="@chart.name">
+            <DynamicComponent Type="@chart.type" Parameters="@chart.args"/>
+        </TabPane>
+    }
+</Tabs>
+
+@code {
+
+    [Parameter]
+    public string? Entity { get; set; }
+
+    private (string name, Type type, Dictionary<string, object> args)[] _charts = {};
+
+
+    protected override void OnParametersSet() {
+        var entityType = BorrowableEntity.TypeFactory(Entity ?? "");
+        if (entityType is not null) {
+            _charts = GetChartsConfig(entityType);
+        } else {
+            _charts = new (string, Type, Dictionary<string, object>)[] {};
+        }
+
+
+        base.OnInitialized();
+    }
+
+    private (string name, Type type, Dictionary<string, object> args)[] GetChartsConfig(Type entityType) {
+        return new[] {
+            ("Daily Borrows", typeof(DailyBorrows<>).MakeGenericType(entityType),
+                new Dictionary<string, object> {
+                    {"SinceDate", LocaliztionService.NowInTimeZone.Date.PlusDays(-10)},
+                    {"ToDate", LocaliztionService.NowInTimeZone.Date}
+                }
+                ),
+            ("Hourly Borrows", typeof(HourlyBorrows<>).MakeGenericType(entityType),
+                new Dictionary<string, object>() {
+                    {"Date", LocaliztionService.NowInTimeZone.Date}
+                }
+                ),
+            ("Weekly usage", typeof(WeeklyUsage<>).MakeGenericType(entityType), new Dictionary<string, object>()),
+            ("Avg Hourly Usage", typeof(AvgHourlyUsage<>).MakeGenericType(entityType), new Dictionary<string, object>()),
+            ("Hourly Usage", typeof(HourlyUsage<>).MakeGenericType(entityType), new Dictionary<string, object>() {{"Day", DayOfWeek.Monday}}),
+        };
+    }
+
+
+
+}

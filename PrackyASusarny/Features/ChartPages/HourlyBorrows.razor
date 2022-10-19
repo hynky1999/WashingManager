@@ -1,0 +1,71 @@
+@inject IUsageChartingService<T> Charts
+@using PrackyASusarny.Features.ChartsPage
+@using Title = AntDesign.Charts.Title
+@typeparam T where T : BorrowableEntity
+@if (_statData.Length == 0) {
+    <Empty Description=@("No Data Found")/>
+} else {
+    <AntDesign.Charts.Column @ref="_chart" Data="@_statData" Config="@_config"/>
+}
+<LocalDatePickerNullable @bind-Value="Date"></LocalDatePickerNullable>
+<Button OnClick="() => InitializeData(Date)">Chart</Button>
+
+@code {
+
+    [Parameter]
+    public LocalDate? Date { get; set; }
+
+        private const string Usage = "Hourly borrows";
+    private Column? _chart;
+
+    private object[] _statData = {};
+    private ColumnConfig _config = new();
+
+    protected override async Task OnParametersSetAsync() {
+        var entityName = typeof(T).GetProperty(nameof(DbModel.HumanReadableName))?.GetValue(typeof(T)) ?? nameof(T);
+        var entityNameStr = (string) entityName;
+
+        _config = SetUpConfig(ChartsUtils.GetChartDescription(Usage, entityNameStr, 0, (null, null)));
+        await InitializeData(Date);
+
+        await base.OnParametersSetAsync();
+    }
+
+    private async Task InitializeData(LocalDate? val) {
+        if (val is not null) {
+            _statData = (await Charts.GetBorrowsByHourAsync(val.Value)).Select(usage => new {hour = usage.hour.ToString(), usage.value}).ToArray();
+            if (_chart != null) {
+    // Idk doesn't react to statHasCHanged
+                await _chart.UpdateChart(csData: _statData);
+            }
+        }
+    }
+
+    // Todo resolve Title and description not showing
+
+    private ColumnConfig SetUpConfig(string description) {
+        return new ColumnConfig {
+            Title = new Title {
+                Visible = true,
+                Text = Usage
+            },
+            Description = new Description {
+                Visible = true,
+                Text = description
+            },
+            ForceFit = true,
+            Padding = "auto",
+            XField = "hour",
+            YField = "value",
+            Meta = new {
+                Hour = new {
+                    Alias = "Hour"
+                },
+                Value = new {
+                    Alias = "Borrows"
+                }
+            },
+        };
+    }
+
+}

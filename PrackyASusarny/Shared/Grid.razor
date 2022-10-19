@@ -14,7 +14,7 @@
 
     [Parameter]
     [EditorRequired]
-    public Func<ApplicationDbContext, DbSet<T>> GetDbSet { get; set; }
+    public Func<ApplicationDbContext, DbSet<T>>? GetDbSet { get; set; }
 
     [Parameter]
     public EventCallback<List<T>> OnItemsChanged { get; set; }
@@ -26,8 +26,11 @@
     }
 
     public async Task OnFilterChanged() {
+        if (GetDbSet is null) {
+            throw new InvalidOperationException("GetDbSet is null");
+        }
         using var context = await DbContextFactory.CreateDbContextAsync();
-        var query = GetDbSet(context).AsQueryable();
+        var query = GetDbSet.Invoke(context).AsQueryable();
         foreach (var filter in Filters) {
             query = filter(query);
         }

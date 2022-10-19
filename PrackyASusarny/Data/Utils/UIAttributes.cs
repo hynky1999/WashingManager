@@ -1,3 +1,5 @@
+// ReSharper disable InconsistentNaming
+
 namespace PrackyASusarny.Data.Utils;
 
 [AttributeUsage(AttributeTargets.Property)]

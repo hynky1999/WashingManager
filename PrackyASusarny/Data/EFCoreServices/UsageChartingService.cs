@@ -7,64 +7,64 @@ namespace PrackyASusarny.Data.EFCoreServices;
 public class UsageChartingService<T> : IUsageChartingService<T> where T : BorrowableEntity
 {
     private readonly IDbContextFactory<ApplicationDbContext> _dbFactory;
+    private readonly ILocalizationService _localizationService;
 
-    public UsageChartingService(IDbContextFactory<ApplicationDbContext> dbFactory)
+    public UsageChartingService(IDbContextFactory<ApplicationDbContext> dbFactory,
+        ILocalizationService localizationService)
     {
         _dbFactory = dbFactory;
+        _localizationService = localizationService;
     }
 
-    public async Task<(DateTime hour, int value)[]> GetBorrowsByHourAsync(DateTime day)
+    public async Task<(LocalTime hour, int value)[]> GetBorrowsByHourAsync(LocalDate date)
     {
-        var start = day.Date.ToUniversalTime();
-        var end = day.Date.AddHours(24).ToUniversalTime();
-
+        var tz = _localizationService.TimeZone;
+        var startInstant = date.AtStartOfDayInZone(tz).ToInstant();
+        var endInstant = date.PlusDays(1).AtStartOfDayInZone(tz).ToInstant();
         var context = await _dbFactory.CreateDbContextAsync();
         var dbset = context.Set<Borrow>();
         // We cannot just check on equality of day because of timezones
-        var query = dbset.Where(borrow => borrow.startDate >= start && borrow.startDate < end);
-        var grouped = query.GroupBy(borrow => new {hour = borrow.startDate.Hour})
+        var query = dbset.Where(borrow => borrow.startDate >= startInstant && borrow.startDate < endInstant);
+        var grouped = query.GroupBy(borrow => new
+                {hour = borrow.startDate.InZone(DateTimeZoneProviders.Tzdb[tz.Id]).LocalDateTime.Hour})
             .Select(group => new {group.Key.hour, count = group.Count()});
         var sqlResult = await grouped.ToDictionaryAsync(usage => usage.hour, usage => usage.count);
         var resultArray = Enumerable.Range(0, 24).Select(hour =>
         {
-            var date = start.AddHours(hour);
-            return (start.AddHours(hour), sqlResult.TryGetValue(date.Hour, out var val) ? val : 0);
+            var localeTime = new LocalTime(hour, 0);
+            return (locale_date: localeTime, sqlResult.TryGetValue(hour, out var val) ? val : 0);
         }).ToArray();
 
         return resultArray;
     }
 
-    public async Task<(DateTime time, int value)[]> GetBorrowsByDayAsync(DateTime start, DateTime end)
-    {
-        if (end < start)
-        {
-            throw new ArgumentException("End date is earlier than start date");
-        }
 
-        end = end.Date;
-        start = start.Date;
+    public async Task<(LocalDate time, int value)[]> GetBorrowsByDayAsync(LocalDate start, LocalDate end)
+    {
+        if (end < start) throw new ArgumentException("End date is earlier than start date");
+
         var context = await _dbFactory.CreateDbContextAsync();
         // Don't just take date because of timezones
+        var tz = _localizationService.TimeZone;
+        var startInstant = start.AtStartOfDayInZone(tz).ToInstant();
+        var endInstant = end.PlusDays(1).AtStartOfDayInZone(tz).ToInstant();
         var query = context.Borrows.Where(borrow =>
-            borrow.startDate >= start && borrow.startDate <= end);
-        var grouped = query.GroupBy(borrow => new {date = borrow.startDate.ToLocalTime().Date})
+            borrow.startDate >= startInstant && borrow.startDate <= endInstant);
+        var grouped = query.GroupBy(borrow => new
+                {date = borrow.startDate.InZone(DateTimeZoneProviders.Tzdb[tz.Id]).LocalDateTime.Date})
             .Select(group => new {group.Key.date, count = group.Count()});
-        Console.WriteLine(grouped.ToQueryString());
         var sqlResult = await grouped.ToDictionaryAsync(usage => usage.date, usage => usage.count);
-        var a = context.Borrows.Select(borrow => borrow.startDate.ToLocalTime().Date);
-        var querys = a.ToQueryString();
-        var resultx = a.ToList();
 
-        var resultArray = Enumerable.Range(0, (end - start).Days + 1).Select(
+        var resultArray = Enumerable.Range(0, Period.DaysBetween(start, end) + 1).Select(
             offset =>
             {
-                var date = start.AddDays(offset);
+                var date = start.PlusDays(offset);
                 return (date, sqlResult.TryGetValue(date, out var val) ? val : 0);
             }).ToArray();
         return resultArray;
     }
 
-    public async Task<(DayOfWeek dayOfWeek, double value)[]> GetWeekUsageAsync()
+    public async Task<(IsoDayOfWeek dayOfWeek, double value)[]> GetWeekUsageAsync()
     {
         var context = await _dbFactory.CreateDbContextAsync();
         var query = context.Set<BorrowableEntityUsage<T>>();
@@ -96,31 +96,30 @@ public class UsageChartingService<T> : IUsageChartingService<T> where T : Borrow
                                       + usage.Hour23Total
         });
         var sqlDict = await summed.ToDictionaryAsync(usage => usage.DayId, usage => usage.totalUsage);
-        var mondaysSinceStart = (DateTime.Now - BorrowableEntityUsage.CalculatedSince).TotalDays / 7;
+        double mondaysSinceStart = Period.DaysBetween(BorrowableEntityUsage.CalculatedSince.Date,
+            _localizationService.NowInTimeZone.Date) / 7.0;
 
-        var resultArray = Enum.GetValues<DayOfWeek>().Select(day =>
+        var resultArray = Enum.GetValues<IsoDayOfWeek>().Where(val => val != IsoDayOfWeek.None).Select(day =>
             (day, sqlDict.TryGetValue(day, out var val) ? val / mondaysSinceStart : 0)
         ).ToArray();
         return resultArray;
     }
 
-    public async Task<(int hour, double value)[]> GetHourlyUsageAsync(DayOfWeek dayOfWeek)
+    public async Task<(LocalTime hour, double value)[]> GetHourlyUsageAsync(IsoDayOfWeek dayOfWeek)
     {
         var context = await _dbFactory.CreateDbContextAsync();
         var dbset = context.Set<BorrowableEntityUsage<T>>();
         var query = dbset.Where(entity => entity.DayId == dayOfWeek);
         var sqlResult = await query.FirstOrDefaultAsync();
-        if (sqlResult == null)
-        {
-            return Array.Empty<(int hour, double value)>();
-        }
+        if (sqlResult == null) return Array.Empty<(LocalTime hour, double value)>();
 
         //Qualified aproximation :)
-        var mondaysSinceStart = (DateTime.Now - BorrowableEntityUsage.CalculatedSince).TotalDays / 7;
+        double mondaysSinceStart = Period.DaysBetween(BorrowableEntityUsage.CalculatedSince.Date,
+            _localizationService.NowInTimeZone.Date) / 7.0;
         return EntityUsageToStat(sqlResult, 1 / mondaysSinceStart);
     }
 
-    public async Task<(int hour, double value)[]> GetAvgHourlyUsageAsync()
+    public async Task<(LocalTime hour, double value)[]> GetAvgHourlyUsageAsync()
     {
         var context = await _dbFactory.CreateDbContextAsync();
         var dbset = context.Set<BorrowableEntityUsage<T>>();
@@ -150,16 +149,14 @@ public class UsageChartingService<T> : IUsageChartingService<T> where T : Borrow
                 hour20 = usage.Sum(x => x.Hour20Total),
                 hour21 = usage.Sum(x => x.Hour21Total),
                 hour22 = usage.Sum(x => x.Hour22Total),
-                hour23 = usage.Sum(x => x.Hour23Total),
+                hour23 = usage.Sum(x => x.Hour23Total)
             });
         var sqlResult = await query.FirstOrDefaultAsync();
-        if (sqlResult == null)
-        {
-            return Array.Empty<(int hour, double value)>();
-        }
+        if (sqlResult == null) return Array.Empty<(LocalTime hour, double value)>();
 
-        var mondaysSinceStart = (DateTime.Now - BorrowableEntityUsage.CalculatedSince).TotalDays / 7;
-        return EntityUsageToStat(new BorrowableEntityUsage<T>()
+        double mondaysSinceStart = Period.DaysBetween(BorrowableEntityUsage.CalculatedSince.Date,
+            _localizationService.NowInTimeZone.Date) / 7.0;
+        return EntityUsageToStat(new BorrowableEntityUsage<T>
         {
             Hour0Total = sqlResult.hour0,
             Hour1Total = sqlResult.hour1,
@@ -188,7 +185,7 @@ public class UsageChartingService<T> : IUsageChartingService<T> where T : Borrow
         }, 1 / mondaysSinceStart);
     }
 
-    private (int hour, double value)[] EntityUsageToStat(BorrowableEntityUsage e, double mod)
+    private (LocalTime hour, double value)[] EntityUsageToStat(BorrowableEntityUsage e, double mod)
     {
         var resultArray = new (int hour, double value)[]
         {
@@ -215,8 +212,10 @@ public class UsageChartingService<T> : IUsageChartingService<T> where T : Borrow
             (20, e.Hour20Total * mod),
             (21, e.Hour21Total * mod),
             (22, e.Hour22Total * mod),
-            (23, e.Hour23Total * mod),
+            (23, e.Hour23Total * mod)
         };
-        return resultArray;
+        var localTimed = resultArray.Select(x => (new LocalTime(x.hour, 0), x.value)).ToArray();
+
+        return localTimed;
     }
 }

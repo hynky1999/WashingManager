@@ -93,10 +93,14 @@
             await _crudService.DeleteAsync(model);
             _models.Remove(model);
             StateHasChanged();
+#pragma warning disable CS4014
             MessageService.Success($"Successfully deleted item {model}");
+#pragma warning restore CS4014
         }
-        catch (DbException e) {
+        catch (DbException) {
+#pragma warning disable CS4014
             MessageService.Error("Failed to delete model");
+#pragma warning restore CS4014
         }
     }
 

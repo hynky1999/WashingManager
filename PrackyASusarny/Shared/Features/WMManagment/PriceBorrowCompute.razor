@@ -12,7 +12,7 @@
 @code {
 
     [Parameter]
-    public Borrow Borrow { get; set; }
+    public Borrow? Borrow { get; set; }
 
     [Parameter]
     public EventCallback<Price?> OnBorrowEnd { get; set; }
@@ -29,13 +29,18 @@
         await base.OnParametersSetAsync();
     }
 
-    private async Task UpdatePrice() {
+    private Task UpdatePrice() {
+        if (Borrow is null) {
+            _price = null;
+            return Task.CompletedTask;
+        }
         try {
-            _price = await BorrowService.GetPrice(Borrow);
+            _price = BorrowService.GetPrice(Borrow);
         }
         catch (DbException ex) {
-            Logger.LogError(ex.Message);
+            Logger.LogError(ex, "Error while getting price for borrow");
         }
+        return Task.CompletedTask;
     }
 
 

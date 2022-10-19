@@ -1,6 +1,6 @@
 using PrackyASusarny.Data.Models;
 
-namespace PrackyASusarny.Pages.Features.AdminPages;
+namespace PrackyASusarny.Features.AdminPages;
 
 public static class AdminConfig
 {

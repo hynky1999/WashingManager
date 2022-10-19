@@ -1,4 +1,4 @@
-namespace PrackyASusarny.Pages.Features.AdminPages;
+namespace PrackyASusarny.Features.AdminPages;
 
 public enum CrudAction
 {

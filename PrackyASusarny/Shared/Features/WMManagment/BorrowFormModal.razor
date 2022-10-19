@@ -42,15 +42,14 @@
                 Name = _tmpBorrowPerson.Name,
                 Surname = _tmpBorrowPerson.Surname
             },
-            BorrowableEntity = WashingMachine,
-            startDate = DateTime.UtcNow
+            BorrowableEntity = WashingMachine
         };
         try {
             await BorrowService.AddBorrow(borrow);
             return borrow;
         }
         catch (Exception ex) when (ex is ArgumentException || ex is DbException) {
-            Logger.LogError(ex.Message);
+            Logger.LogError(ex, "Error while adding borrow");
             return null;
         }
     }

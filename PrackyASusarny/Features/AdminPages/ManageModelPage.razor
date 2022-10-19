@@ -1,5 +1,4 @@
 @page "/adminMenu/{modelName}/{Action}/{Id:int?}"
-@using PrackyASusarny.Pages.Features.AdminPages
 @inject ILogger<ManageModelPage> Logger
 @inject NavigationManager NavManager
 
@@ -9,15 +8,13 @@
 <Divider/>
 @if (_listType is not null) {
     @if (Action == "List") {
-        <Button OnClick="@(e => NavManager.NavigateTo($"adminMenu/{ModelName}/Create"))">Create</Button>
+        <Button OnClick="@(_ => NavManager.NavigateTo($"adminMenu/{ModelName}/Create"))">Create</Button>
         <Divider/>
         @CrudListTableFragment()
     } else if (Action == "Create") {
         @CrudForm(CrudAction.Create, Id)
-        ;
     } else if (Action == "Update") {
         @CrudForm(CrudAction.Update, Id)
-        ;
     } else {
         <Title Level="2">@("Unknow Action")</Title>
     }
@@ -55,12 +52,15 @@
                 builder.CloseComponent();
             }
             catch (ArgumentException e) {
-                Logger.LogError("Error in CrudListTableFragment: " + e.Message);
+                Logger.LogError(e, "Error in CrudListTableFragment");
             }
         };
     }
 
     private RenderFragment CrudForm(CrudAction action, int? id) {
+        if (_listType is null) {
+            return _ => { };
+        }
         return builder => {
             builder.OpenComponent(0, typeof(CrudForm<>).MakeGenericType(_listType));
             builder.AddAttribute(1, "Action", action);

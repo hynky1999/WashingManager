@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using PrackyASusarny.Data.EFCoreServices;
 
+// ReSharper disable InconsistentNaming
+
 namespace PrackyASusarny.Utils;
 
 public static class EFExtensions

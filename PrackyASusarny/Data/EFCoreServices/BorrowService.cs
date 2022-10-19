@@ -10,13 +10,15 @@ namespace PrackyASusarny.Data.EFCoreServices;
 public class BorrowService : IBorrowService
 {
     private readonly IBorrowPersonService _borrowPersonService;
-    private readonly IDbContextFactory<ApplicationDbContext> DbFactory;
+    private readonly IDbContextFactory<ApplicationDbContext> _dbFactory;
+    private readonly ILocalizationService _localizationService;
 
     public BorrowService(IDbContextFactory<ApplicationDbContext> dbFactory, IBorrowPersonService borrowPersonService,
-        ILogger<BorrowService> logger)
+        ILocalizationService localizationService)
     {
-        DbFactory = dbFactory;
+        _dbFactory = dbFactory;
         _borrowPersonService = borrowPersonService;
+        _localizationService = localizationService;
     }
 
     public Task<Price> GetPriceAsync(Borrow borrow)
@@ -56,7 +58,7 @@ public class BorrowService : IBorrowService
 
     public async Task AddBorrow(Borrow borrow)
     {
-        using var dbContext = await DbFactory.CreateDbContextAsync();
+        using var dbContext = await _dbFactory.CreateDbContextAsync();
         if (borrow.BorrowableEntity.Status != Status.Free) throw new ArgumentException("Invalid Value");
 
         borrow.BorrowableEntity.Status = Status.Taken;
@@ -86,10 +88,10 @@ public class BorrowService : IBorrowService
         }
     }
 
-    public async Task<Price> GetPrice(Borrow borrow)
+    public Price GetPrice(Borrow borrow)
     {
         // This could be based on locale with facotry at price
-        var time = borrow.startDate - DateTime.UtcNow;
+        var time = borrow.startDate - _localizationService.Now;
         var pricePerTime = time.Minutes / 30 * Rates.WMpricePerHalfHour;
         return new Price
         {
@@ -100,9 +102,7 @@ public class BorrowService : IBorrowService
 
     public async Task<Borrow?> GetBorrowByWm(WashingMachine wm)
     {
-        if (wm == null) throw new ArgumentNullException("Washing Machine missing");
-
-        using var dbContext = await DbFactory.CreateDbContextAsync();
+        using var dbContext = await _dbFactory.CreateDbContextAsync();
         var query = dbContext.Borrows.Where(b => b.BorrowableEntity.BorrowableEntityID == wm.BorrowableEntityID)
             .Include(b => b.BorrowPerson);
         var borrow = await query.FirstOrDefaultAsync();
@@ -113,9 +113,9 @@ public class BorrowService : IBorrowService
 
     public async Task EndBorrow(Borrow borrow)
     {
-        using var dbContext = await DbFactory.CreateDbContextAsync();
+        using var dbContext = await _dbFactory.CreateDbContextAsync();
         dbContext.Borrows.Attach(borrow);
-        borrow.endDate = DateTime.UtcNow;
+        borrow.endDate = _localizationService.Now;
         try
         {
             await dbContext.SaveChangesAsync();
@@ -137,7 +137,7 @@ public class BorrowService : IBorrowService
 
         if (node.Entry.Entity is BorrowPerson {BorrowPersonID: 0}) node.Entry.State = EntityState.Added;
 
-        if (node.Entry.Entity is WashingMachine wm)
+        if (node.Entry.Entity is WashingMachine)
             node.Entry.Property(nameof(WashingMachine.Status)).IsModified = true;
     }
 }

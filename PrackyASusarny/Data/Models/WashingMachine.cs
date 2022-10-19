@@ -1,5 +1,8 @@
 namespace PrackyASusarny.Data.Models;
 
+// ReSharper disable UnusedAutoPropertyAccessor.Global
+// ReSharper disable InconsistentNaming
+// ReSharper disable NonReadonlyMemberInGetHashCode
 public enum Status
 {
     Taken,
@@ -19,5 +22,10 @@ public sealed class WashingMachine : BorrowableEntity
     {
         var wm = obj as WashingMachine;
         return wm is not null && wm.BorrowableEntityID == BorrowableEntityID;
+    }
+
+    public override int GetHashCode()
+    {
+        return BorrowableEntityID;
     }
 }

@@ -2,11 +2,15 @@ using System.ComponentModel.DataAnnotations;
 using PrackyASusarny.Data.ModelInterfaces;
 using PrackyASusarny.Data.Utils;
 
+// ReSharper disable UnusedAutoPropertyAccessor.Global
+// ReSharper disable InconsistentNaming
+// ReSharper disable NonReadonlyMemberInGetHashCode
+
 namespace PrackyASusarny.Data.Models;
 
 public abstract class BorrowableEntity : DbModel
 {
-    private static Dictionary<string, Type> _typeCache = new Dictionary<string, Type>()
+    private static readonly Dictionary<string, Type> _typeCache = new()
     {
         {"WashingMachine", typeof(WashingMachine)}
     };
@@ -15,13 +19,13 @@ public abstract class BorrowableEntity : DbModel
 
     [Required] public Status Status { get; set; }
 
-    public Location Location { get; set; }
+    public Location? Location { get; set; }
 
     // Concurency token
     [UIVisibility(UIVisibilityEnum.Hidden)]
     public uint xmin { get; set; }
 
-    public static string HumanReadableName => "Borrowable Entity";
+    public new static string HumanReadableName => "Borrowable Entity";
 
 
     public static Type? TypeFactory(string typeName)

@@ -1,7 +1,6 @@
 @using PrackyASusarny.Data.EFCoreServices
 @using PrackyASusarny.Errors.Folder
 @inject BorrowService BorrowService
-@inject ILogger<BorrowFormModal> Logger
 
 
 <Modal Visible="@_visibility" Footer="@null" OnCancel="@CloseModal">
@@ -34,28 +33,30 @@
     private Borrow? _borrow;
     private bool _visibility;
 
-    protected override async Task OnInitializedAsync() {
-    }
-
     private async void OpenModal() {
-    // TODO is it really good idea to fetch jsut once ?
         _visibility = true;
-        if (_borrow is null) {
+        if (_borrow is null && WashingMachine is not null) {
             _borrow = await BorrowService.GetBorrowByWm(WashingMachine);
         }
     }
 
-    private async void CloseModal() {
+    private void CloseModal() {
         _visibility = false;
     }
 
     private async Task EndBorrow() {
+        if (_borrow is null) {
+            return;
+        }
+
         try {
             await BorrowService.EndBorrow(_borrow);
+#pragma warning disable CS4014
             OnSuccess.InvokeAsync(_borrow);
+#pragma warning restore CS4014
             CloseModal();
         }
-        catch (DbException ex) {
+        catch (DbException) {
         }
     }
 

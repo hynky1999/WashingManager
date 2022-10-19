@@ -1,12 +1,12 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Globalization;
 using System.Reflection;
 using AntDesign;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using PrackyASusarny.Data.ServiceInterfaces;
 using PrackyASusarny.Data.Utils;
+using PrackyASusarny.Shared.Components.NodaComponents;
 using PrackyASusarny.Utils;
 
 namespace PrackyASusarny.Shared.Components.GenericForm;
@@ -16,9 +16,9 @@ public sealed class GenericInput<TModel>
     private readonly TModel _owner;
     private readonly PropertyInfo _propertyInfo;
     private readonly IServiceProvider _serviceProvider;
+    private readonly PropertyInfo _valuePropertyInfo = typeof(GenericInput<TModel>).GetProperty(nameof(Value))!;
 
     private RenderFragment? _fieldFragment;
-    public EventCallback ValueChanged;
 
     public GenericInput(TModel owner, PropertyInfo propertyInfo, IServiceProvider serviceProvider)
     {
@@ -27,16 +27,15 @@ public sealed class GenericInput<TModel>
         _serviceProvider = serviceProvider;
     }
 
+    public EventHandler? ValueChanged { get; set; }
+
     public object? Value
     {
         get => _propertyInfo.GetValue(_owner);
         set
         {
-            if (_propertyInfo.SetMethod != null && !Equals(Value, value))
-            {
-                _propertyInfo.SetValue(_owner, value);
-                ValueChanged.InvokeAsync();
-            }
+            _propertyInfo.SetValue(_owner, value);
+            ValueChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -49,7 +48,8 @@ public sealed class GenericInput<TModel>
             if (_fieldFragment != null) return _fieldFragment;
 
             var propertyExpression = _owner.GetPropertyExpression(_propertyInfo);
-            var valueChangedCallback = _owner.GetSetPropertyEventCallback(this, _propertyInfo);
+            var valueChangedCallback =
+                this.GetSetPropertyEventCallback(this, _valuePropertyInfo, _propertyInfo.PropertyType);
 
 
             return _fieldFragment ??= builder =>
@@ -59,10 +59,7 @@ public sealed class GenericInput<TModel>
                 builder.AddAttribute(1, "Value", Value);
                 builder.AddAttribute(2, "ValueChanged", valueChangedCallback);
                 builder.AddAttribute(3, "ValueExpression", propertyExpression);
-                if (visibilityAttr?.Visibility != null)
-                {
-                    builder.AddAttribute(4, "Disabled", true);
-                }
+                if (visibilityAttr?.Visibility != null) builder.AddAttribute(4, "Disabled", true);
 
                 builder.AddMultipleAttributes(5, additonalAttributes);
                 builder.CloseComponent();
@@ -156,19 +153,20 @@ public sealed class GenericInput<TModel>
         if (realType == typeof(decimal))
             return (typeof(AntDesign.InputNumber<decimal>), null);
 
-        if (realType == typeof(DateTime))
+        if (realType == typeof(Instant))
         {
-            var attrs = new List<KeyValuePair<string, object>>
-            {
-                new("CultureInfo", CultureInfo.GetCultureInfo("en-US")),
-            };
+            var attrs = new List<KeyValuePair<string, object>>();
             var dateTimeType = propertyInfo.GetCustomAttribute<DataTypeAttribute>();
             if (dateTimeType is null || dateTimeType.DataType == DataType.DateTime)
+                attrs.Add(new KeyValuePair<string, object>("showTime", true));
+
+            // Nullable
+            if (realType != propertyInfo.PropertyType)
             {
-                attrs.Add(new KeyValuePair<string, object>("showTime", OneOf.OneOf<bool, string>.FromT0(true)));
+                return (typeof(InstantPickerNullable), attrs);
             }
 
-            return (typeof(DatePicker<>).MakeGenericType(propertyInfo.PropertyType), attrs.ToArray());
+            return (typeof(InstantPicker), attrs);
         }
 
 
@@ -177,6 +175,7 @@ public sealed class GenericInput<TModel>
 
         if (sp.GetService(typeof(ICrudService<>).MakeGenericType(realType)) is not null)
             return (typeof(ModelSelect<>).MakeGenericType(propertyInfo.PropertyType), null);
+
 
         throw new NotSupportedException($"The type {propertyInfo.PropertyType} is not supported.");
     }
