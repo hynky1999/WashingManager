@@ -1,0 +1,30 @@
+@using System.Linq.Expressions
+<DatePicker @bind-Value="DateTimeValue" ShowTime="@showTime" Disabled="Disabled"></DatePicker>
+
+@code {
+
+    private DateTime? DateTimeValue {
+        get => NodaUtils.LocalDateToDateTime(Value);
+        set {
+            Value = NodaUtils.DateTimeToLocalDate(value);
+            ValueChanged.InvokeAsync(Value);
+        }
+    }
+
+    [Parameter]
+    // ReSharper disable once InconsistentNaming
+    public bool showTime { get; set; }
+
+    [Parameter]
+    public LocalDate? Value { get; set; }
+
+    [Parameter]
+    public EventCallback<LocalDate?> ValueChanged { get; set; }
+
+    [Parameter]
+    public Expression<Func<LocalDate?>>? ValueExpression { get; set; }
+
+    [Parameter]
+    public bool Disabled { get; set; }
+
+}

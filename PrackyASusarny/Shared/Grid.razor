@@ -1,7 +1,6 @@
-@using System.Collections.Concurrent
-@using System.Linq.Expressions
 @inject IDbContextFactory<ApplicationDbContext> DbContextFactory;
-@typeparam T where T: class
+@using System.Collections.Concurrent
+@typeparam T where T : class
 <CascadingValue Value="@OnFilterChanged" Name="OnFilterChanged">
     <CascadingValue Value="@RegisterFilter" Name="RegisterFilter">
         @ChildContent
@@ -9,32 +8,34 @@
 </CascadingValue>
 
 @code {
+
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
-    
-    [Parameter, EditorRequired]
-    public Func<ApplicationDbContext, DbSet<T>> GetDbSet { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public Func<ApplicationDbContext, DbSet<T>>? GetDbSet { get; set; }
 
     [Parameter]
     public EventCallback<List<T>> OnItemsChanged { get; set; }
 
     ConcurrentBag<Func<IQueryable<T>, IQueryable<T>>> Filters { get; } = new();
 
-    public void RegisterFilter(Func<IQueryable<T>, IQueryable<T>> filter)
-    {
+    public void RegisterFilter(Func<IQueryable<T>, IQueryable<T>> filter) {
         Filters.Add(filter);
     }
 
-    public async Task OnFilterChanged()
-    {
+    public async Task OnFilterChanged() {
+        if (GetDbSet is null) {
+            throw new InvalidOperationException("GetDbSet is null");
+        }
         using var context = await DbContextFactory.CreateDbContextAsync();
-        var query = GetDbSet(context).AsQueryable();
-        foreach (var filter in Filters)
-        {
+        var query = GetDbSet.Invoke(context).AsQueryable();
+        foreach (var filter in Filters) {
             query = filter(query);
         }
         await OnItemsChanged.InvokeAsync(query.ToList());
     }
-    
-    
+
+
 }

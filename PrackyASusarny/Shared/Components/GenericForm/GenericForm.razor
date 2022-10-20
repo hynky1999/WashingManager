@@ -1,17 +1,13 @@
+@namespace PrackyASusarny.Shared.Components.GenericForm
 @inject IServiceProvider ServiceProvider
-@typeparam TModel
+@typeparam TMod
 
-@if (_fields != null)
-{
+@if (_fields != null) {
     <Form Loading="@Loading" Model="@Model" OnFinish="@OnFinish">
-        @foreach (var field in _fields)
-        {
-            @if (FieldTemplate != null)
-            {
+        @foreach (var field in _fields) {
+            @if (FieldTemplate != null) {
                 @FieldTemplate(field)
-            }
-            else
-            {
+            } else {
                 <FormItem Label="@field.DisplayName">
                     @field.FieldFragment
                     <Paragraph>@field.Description</Paragraph>
@@ -23,53 +19,43 @@
 }
 
 @code{
-    private List<GenericInput<TModel>>? _fields;
+    private List<GenericInput<TMod>>? _fields;
 
     [Parameter]
-    public TModel? Model { get; set; }
+    public TMod? Model { get; set; }
 
     [Parameter]
-    public EventCallback<TModel> ModelChanged { get; set; }
+    public bool Loading { get; set; }
 
     [Parameter]
-    public bool Loading { get; set; } = false;
-
-    [Parameter]
-    public RenderFragment<GenericInput<TModel>>? FieldTemplate { get; set; }
+    public RenderFragment<GenericInput<TMod>>? FieldTemplate { get; set; }
 
     [Parameter]
     public EventCallback OnFinish { get; set; }
 
-    protected override void OnParametersSet()
-    {
+    [Parameter]
+    public EventCallback<TMod> ModelChanged { get; set; }
+
+    protected override void OnParametersSet() {
         base.OnParametersSet();
-
-        if (_fields != null)
-        {
-            foreach (var field in _fields)
-            {
-                field.ValueChanged = EventCallback.Factory.Create(this, OnValueChanged);
+        if (_fields != null) {
+            foreach (var field in _fields) {
+                field.ValueChanged -= OnValueChanged;
             }
         }
 
-        if (Model != null)
-        {
-            _fields = GenericInput<TModel>.Create(Model, ServiceProvider);
-            foreach (var field in _fields)
-            {
-                field.ValueChanged = EventCallback.Empty;
+        if (Model != null) {
+            _fields = GenericInput<TMod>.Create(Model, ServiceProvider);
+            foreach (var field in _fields) {
+                field.ValueChanged += OnValueChanged;
             }
-        }
-        else
-        {
+        } else {
             _fields = null;
         }
     }
 
-    private void OnValueChanged()
-    {
+    private void OnValueChanged(object? sender, EventArgs e) {
         ModelChanged.InvokeAsync(Model);
     }
-
 
 }

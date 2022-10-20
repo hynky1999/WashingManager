@@ -1,10 +1,12 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
+using AntDesign;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using PrackyASusarny.Data.ServiceInterfaces;
 using PrackyASusarny.Data.Utils;
+using PrackyASusarny.Shared.Components.NodaComponents;
 using PrackyASusarny.Utils;
 
 namespace PrackyASusarny.Shared.Components.GenericForm;
@@ -14,9 +16,9 @@ public sealed class GenericInput<TModel>
     private readonly TModel _owner;
     private readonly PropertyInfo _propertyInfo;
     private readonly IServiceProvider _serviceProvider;
+    private readonly PropertyInfo _valuePropertyInfo = typeof(GenericInput<TModel>).GetProperty(nameof(Value))!;
 
     private RenderFragment? _fieldFragment;
-    public EventCallback ValueChanged;
 
     public GenericInput(TModel owner, PropertyInfo propertyInfo, IServiceProvider serviceProvider)
     {
@@ -25,16 +27,15 @@ public sealed class GenericInput<TModel>
         _serviceProvider = serviceProvider;
     }
 
+    public EventHandler? ValueChanged { get; set; }
+
     public object? Value
     {
         get => _propertyInfo.GetValue(_owner);
         set
         {
-            if (_propertyInfo.SetMethod != null && !Equals(Value, value))
-            {
-                _propertyInfo.SetValue(_owner, value);
-                ValueChanged.InvokeAsync();
-            }
+            _propertyInfo.SetValue(_owner, value);
+            ValueChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -44,13 +45,11 @@ public sealed class GenericInput<TModel>
         {
             var visibilityAttr = _propertyInfo.GetCustomAttribute<UIVisibility>();
 
-            if (_fieldFragment != null)
-            {
-                return _fieldFragment;
-            }
+            if (_fieldFragment != null) return _fieldFragment;
 
             var propertyExpression = _owner.GetPropertyExpression(_propertyInfo);
-            var valueChangedCallback = _owner.GetSetPropertyEventCallback(this, _propertyInfo);
+            var valueChangedCallback =
+                this.GetSetPropertyEventCallback(this, _valuePropertyInfo, _propertyInfo.PropertyType);
 
 
             return _fieldFragment ??= builder =>
@@ -60,8 +59,9 @@ public sealed class GenericInput<TModel>
                 builder.AddAttribute(1, "Value", Value);
                 builder.AddAttribute(2, "ValueChanged", valueChangedCallback);
                 builder.AddAttribute(3, "ValueExpression", propertyExpression);
-                builder.AddAttribute(4, "Disabled", visibilityAttr?.Visibility == UIVisibilityEnum.Disabled);
-                builder.AddMultipleAttributes(6, additonalAttributes);
+                if (visibilityAttr?.Visibility != null) builder.AddAttribute(4, "Disabled", true);
+
+                builder.AddMultipleAttributes(5, additonalAttributes);
                 builder.CloseComponent();
             };
         }
@@ -121,54 +121,61 @@ public sealed class GenericInput<TModel>
     {
         var editorAttributes = propertyInfo.GetCustomAttributes<EditorAttribute>();
         foreach (var editorAttribute in editorAttributes)
-        {
             if (editorAttribute.EditorBaseTypeName == typeof(InputBase<>).AssemblyQualifiedName)
-                return (Type.GetType(editorAttribute.EditorTypeName, throwOnError: true)!, null);
-        }
+                return (Type.GetType(editorAttribute.EditorTypeName, true)!, null);
 
-        if (propertyInfo.PropertyType == typeof(bool))
-            return (typeof(AntDesign.Checkbox), null);
+        var realType = Nullable.GetUnderlyingType(propertyInfo.PropertyType);
+        realType ??= propertyInfo.PropertyType;
 
-        if (propertyInfo.PropertyType == typeof(string))
-        {
-            return (typeof(AntDesign.Input<string>), null);
-        }
+        if (realType == typeof(bool))
+            return (typeof(Checkbox), null);
 
-        if (propertyInfo.PropertyType == typeof(short))
+        if (realType == typeof(string)) return (typeof(Input<string>), null);
+
+        if (realType == typeof(short))
             return (typeof(AntDesign.InputNumber<short>), null);
 
-        if (propertyInfo.PropertyType == typeof(int))
+        if (realType == typeof(int))
             return (typeof(AntDesign.InputNumber<int>), null);
 
-        if (propertyInfo.PropertyType == typeof(uint))
+        if (realType == typeof(uint))
             return (typeof(AntDesign.InputNumber<uint>), null);
 
-        if (propertyInfo.PropertyType == typeof(long))
+        if (realType == typeof(long))
             return (typeof(AntDesign.InputNumber<long>), null);
 
-        if (propertyInfo.PropertyType == typeof(float))
+        if (realType == typeof(float))
             return (typeof(AntDesign.InputNumber<float>), null);
 
-        if (propertyInfo.PropertyType == typeof(double))
+        if (realType == typeof(double))
             return (typeof(AntDesign.InputNumber<double>), null);
 
-        if (propertyInfo.PropertyType == typeof(decimal))
+        if (realType == typeof(decimal))
             return (typeof(AntDesign.InputNumber<decimal>), null);
 
-        if (propertyInfo.PropertyType == typeof(DateTime))
+        if (realType == typeof(Instant))
         {
-            return (typeof(AntDesign.DatePicker<DateTime>), null);
+            var attrs = new List<KeyValuePair<string, object>>();
+            var dateTimeType = propertyInfo.GetCustomAttribute<DataTypeAttribute>();
+            if (dateTimeType is null || dateTimeType.DataType == DataType.DateTime)
+                attrs.Add(new KeyValuePair<string, object>("showTime", true));
+
+            // Nullable
+            if (realType != propertyInfo.PropertyType)
+            {
+                return (typeof(InstantPickerNullable), attrs);
+            }
+
+            return (typeof(InstantPicker), attrs);
         }
 
-        if (propertyInfo.PropertyType.IsEnum)
-        {
-            return (typeof(AntDesign.EnumSelect<>).MakeGenericType(propertyInfo.PropertyType), null);
-        }
 
-        if (sp.GetService(typeof(ICrudService<>).MakeGenericType(propertyInfo.PropertyType)) is not null)
-        {
+        if (realType.IsEnum)
+            return (typeof(EnumSelect<>).MakeGenericType(propertyInfo.PropertyType), null);
+
+        if (sp.GetService(typeof(ICrudService<>).MakeGenericType(realType)) is not null)
             return (typeof(ModelSelect<>).MakeGenericType(propertyInfo.PropertyType), null);
-        }
+
 
         throw new NotSupportedException($"The type {propertyInfo.PropertyType} is not supported.");
     }
@@ -186,10 +193,7 @@ public sealed class GenericInput<TModel>
 
             if (prop.GetCustomAttribute<EditableAttribute>() is { } editor && !editor.AllowEdit)
                 continue;
-            if (prop.GetCustomAttribute<UIVisibility>() is {Visibility: UIVisibilityEnum.Hidden})
-            {
-                continue;
-            }
+            if (prop.GetCustomAttribute<UIVisibility>() is {Visibility: UIVisibilityEnum.Hidden}) continue;
 
             var field = new GenericInput<TModel>(model, prop, serviceProvider);
             result.Add(field);

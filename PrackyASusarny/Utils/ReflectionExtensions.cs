@@ -37,25 +37,35 @@ public static class ReflectionExtensions
     {
         var modelExprParam = Expression.Parameter(typeof(T));
         var property = Expression.Property(modelExprParam, propertyInfo);
-        return Expression.Lambda<Func<T, TK>>(Expression.Convert(property, typeof(TK)));
+        return Expression.Lambda<Func<T, TK>>(Expression.Convert(property, typeof(TK)), modelExprParam);
     }
 
-    public static LambdaExpression GetPropertyExpression<T>(this T model, PropertyInfo propertyInfo)
+    public static LambdaExpression GetPropertyExpression<T>(this T model, PropertyInfo propertyInfo,
+        bool castToObject = false)
     {
         // (model) => model.Property
         var modelExpr = Expression.Constant(model);
         var property = Expression.Property(modelExpr, propertyInfo);
+        if (castToObject)
+        {
+            var casted = Expression.Convert(property, typeof(object));
+            return Expression.Lambda(typeof(Func<>).MakeGenericType(propertyInfo.PropertyType), casted);
+        }
+
         return Expression.Lambda(typeof(Func<>).MakeGenericType(propertyInfo.PropertyType), property);
     }
 
-    public static object? GetSetPropertyEventCallback<T>(this T model, object receiver, PropertyInfo propertyInfo)
+    public static object? GetSetPropertyEventCallback<T>(this T model, object receiver, PropertyInfo propertyInfo,
+        Type? parameterType = null)
     {
+        Type parameterTypeNotNull = parameterType ?? propertyInfo.PropertyType;
         // EventCallback<P>(receiver, (value) => model.Property = value)
         var propertyAccess = model.GetPropertyExpression(propertyInfo);
-        var param = Expression.Parameter(propertyInfo.PropertyType, "value");
-        var body = Expression.Assign(propertyAccess.Body, param);
-        var lamda = Expression.Lambda(typeof(Action<>).MakeGenericType(propertyInfo.PropertyType), body, param);
-        return EventCallbackGenericMethod.MakeGenericMethod(propertyInfo.PropertyType)
+        var param = Expression.Parameter(parameterTypeNotNull, "value");
+        BinaryExpression body;
+        body = Expression.Assign(propertyAccess.Body, Expression.Convert(param, propertyInfo.PropertyType));
+        var lamda = Expression.Lambda(typeof(Action<>).MakeGenericType(parameterTypeNotNull), body, param);
+        return EventCallbackGenericMethod.MakeGenericMethod(parameterTypeNotNull)
             .Invoke(EventCallback.Factory, new[] {receiver, lamda.Compile()});
     }
 }

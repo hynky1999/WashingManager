@@ -1,0 +1,32 @@
+@using PrackyASusarny.Data.EFCoreServices
+@using System.Linq.Expressions
+@inject ILocalizationService LocalizationService
+<DatePicker @bind-Value="DateTimeValue" ShowTime="@showTime" Disabled="Disabled"></DatePicker>
+
+@code {
+
+    private DateTime DateTimeValue {
+        get => NodaUtils.InstantToDateTime(Value, LocalizationService);
+        set {
+            Value = NodaUtils.DateTimeToInstant(value, LocalizationService);
+            ValueChanged.InvokeAsync(Value);
+        }
+    }
+
+    [Parameter]
+    // ReSharper disable once InconsistentNaming
+    public bool showTime { get; set; }
+
+    [Parameter]
+    public Instant Value { get; set; }
+
+    [Parameter]
+    public EventCallback<Instant> ValueChanged { get; set; }
+
+    [Parameter]
+    public Expression<Func<Instant>>? ValueExpression { get; set; }
+
+    [Parameter]
+    public bool Disabled { get; set; }
+
+}

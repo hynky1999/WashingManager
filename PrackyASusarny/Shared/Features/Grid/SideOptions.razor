@@ -5,20 +5,17 @@
     <ul class="list-group">
         <li class="list-group-item">
             <h5>Patro</h5>
-            @if (FloorMarks.Length > 0)
-            {
+            @if (FloorMarks.Length > 0) {
                 <Slider TValue="(double, double)" DefaultValue="@((FloorMarks[0].Key, FloorMarks[^1].Key))" Min="@FloorMarks[0].Key" Max="@FloorMarks[^1].Key" OnAfterChange="@OnFloorSliderChange" Marks="@FloorMarks"></Slider>
             }
         </li>
         <li class="list-group-item">
             <h5>Budova</h5>
-            @if (BuildingOptions.Length > 0)
-            {
+            @if (BuildingOptions.Length > 0) {
                 <CheckboxGroup ValueChanged="@OnBuildingCheckBoxChange">
                     <div class="container">
                         <div class="row">
-                            @foreach (var building in BuildingOptions)
-                            {
+                            @foreach (var building in BuildingOptions) {
                                 <div class="col-2">
                                     <Checkbox Label="@building.ToString()">@building.ToString()</Checkbox>
                                 </div>
@@ -33,8 +30,7 @@
             <h5>Stav</h5>
             <CheckboxGroup ValueChanged="@OnStateCheckboxChange">
                 <div class="container">
-                    @foreach (var state in Enum.GetNames(typeof(Status)))
-                    {
+                    @foreach (var state in Enum.GetNames(typeof(Status))) {
                         <div class="row">
                             <div class="col-2">
                                 <Checkbox Label="@state">@state</Checkbox>
@@ -76,54 +72,44 @@
 
 
     private SliderMark[] FloorMarks { get; set; } = {};
-    private int _marksStep = 5;
+    private readonly int _marksStep = 5;
     private char[] BuildingOptions { get; set; } = {};
 
-    protected async override Task OnInitializedAsync()
-    {
+    protected override async Task OnInitializedAsync() {
         await InitializeFloors();
         await InitializeBuildings();
     }
 
-    private async Task InitializeFloors()
-    {
+    private async Task InitializeFloors() {
         var floorOpts = await LocationService.GetFloorOptionsAsync();
-        if (floorOpts.Count > 0)
-        {
+        if (floorOpts.Count > 0) {
             FloorRange = (floorOpts[0], floorOpts[^1]);
         }
         FloorMarks = floorOpts.Where(f => f % _marksStep == 0).Select(x => new SliderMark(x, x.ToString())).ToArray();
     }
 
-    private async Task InitializeBuildings()
-    {
+    private async Task InitializeBuildings() {
         var buildingOpts = await LocationService.GetBuildingOptionsAsync();
-        if (buildingOpts.Count > 0)
-        {
+        if (buildingOpts.Count > 0) {
             BuildingOptions = buildingOpts.ToArray();
         }
     }
 
-    private async void OnBuildingCheckBoxChange(string[] checkedValues)
-    {
+    private async void OnBuildingCheckBoxChange(string[] checkedValues) {
         AllowedBuildings = checkedValues.Select(b => b.Length > 0 ? b[0] : ' ').ToArray();
         await AllowedBuildingsChanged.InvokeAsync(AllowedBuildings);
         await OnOptionChange.InvokeAsync();
     }
 
-    private async void OnFloorSliderChange((double, double) value)
-    {
+    private async void OnFloorSliderChange((double, double) value) {
         FloorRange = ((int, int)) value;
         await FloorRangeChanged.InvokeAsync(FloorRange);
         await OnOptionChange.InvokeAsync();
     }
 
-    private async void OnStateCheckboxChange(string[] checkedValues)
-    {
-        AllowedStates = checkedValues.Select(s =>
-        {
-            if (!Status.TryParse(s, out Status parsedEnum))
-            {
+    private async void OnStateCheckboxChange(string[] checkedValues) {
+        AllowedStates = checkedValues.Select(s => {
+            if (!Enum.TryParse(s, out Status parsedEnum)) {
                 throw new InvalidEnumArgumentException(s);
             }
             return parsedEnum;

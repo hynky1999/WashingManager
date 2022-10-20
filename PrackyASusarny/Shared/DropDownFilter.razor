@@ -1,13 +1,10 @@
 @typeparam T
-@inject IDbContextFactory<ApplicationDbContext> DbContextFactory;
-
 <select @onchange="@OnChangeEventHandler">
     <option value="0"></option>
-    @{ int i = 1; };
-    @if (Options is not null)
-    {
-        @foreach (var opt in Options)
-        {
+    @{ var i = 1; }
+    ;
+    @if (Options is not null) {
+        @foreach (var opt in Options) {
             <option value="@i">@(opt?.ToString() ?? "Invalid Value")</option>
             {
                 ++i;
@@ -15,22 +12,23 @@
         }
     }
 </select>
+
 @code {
-    [Parameter, EditorRequired]
+
+    [Parameter]
+    [EditorRequired]
     public List<T>? Options { get; set; }
+
     [Parameter]
     public EventCallback<T> SelectedOptionChanged { get; set; }
 
-    
-    private async void OnChangeEventHandler(ChangeEventArgs e)
-    {
-        if (Options is null)
-        {
+
+    private async void OnChangeEventHandler(ChangeEventArgs e) {
+        if (Options is null) {
             return;
         }
-        
-        if (!int.TryParse(e.ToString(),out var optionNum))
-        {
+
+        if (!int.TryParse(e.ToString(), out var optionNum)) {
             optionNum = 0;
         }
         await SelectedOptionChanged.InvokeAsync(Options[optionNum]);

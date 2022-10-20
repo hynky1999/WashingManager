@@ -1,9 +1,8 @@
-using System.ComponentModel.DataAnnotations;
-using PrackyASusarny.Data.ModelInterfaces;
-using PrackyASusarny.Data.Utils;
-
 namespace PrackyASusarny.Data.Models;
 
+// ReSharper disable UnusedAutoPropertyAccessor.Global
+// ReSharper disable InconsistentNaming
+// ReSharper disable NonReadonlyMemberInGetHashCode
 public enum Status
 {
     Taken,
@@ -11,25 +10,22 @@ public enum Status
     Free
 }
 
-public sealed class WashingMachine : IDbModel
+public sealed class WashingMachine : BorrowableEntity
 {
-    [Key] public int WashingMachineId { get; set; }
+    public Manual? Manual { get; set; }
 
-    public Manual Manual { get; set; }
+    public string? Manufacturer { get; set; }
 
-    [Required] public Status Status { get; set; }
-
-    public string Manufacturer { get; set; }
-
-    public Location Location { get; set; }
-
-    // Concurency token
-    [UIVisibility(UIVisibilityEnum.Hidden)]
-    public uint xmin { get; set; }
+    public new static string HumanReadableName => "Washing Machine";
 
     public override bool Equals(object? obj)
     {
         var wm = obj as WashingMachine;
-        return wm is not null && wm.WashingMachineId == WashingMachineId;
+        return wm is not null && wm.BorrowableEntityID == BorrowableEntityID;
+    }
+
+    public override int GetHashCode()
+    {
+        return BorrowableEntityID;
     }
 }

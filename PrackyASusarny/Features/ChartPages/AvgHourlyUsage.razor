@@ -1,0 +1,61 @@
+@using PrackyASusarny.Data.EFCoreServices
+@using PrackyASusarny.Features.ChartsPage
+@using Title = AntDesign.Charts.Title
+@typeparam T where T : BorrowableEntity
+@inject IUsageChartingService<T> Charts
+@inject ILocalizationService LocalizationService
+@if (_statData.Length == 0) {
+    <Empty Description=@("No Data Found")/>
+} else {
+    <AntDesign.Charts.Column Data="@_statData" Config="@_config"/>
+}
+
+@code {
+        private const string Usage = "Average hourly usage";
+
+    private object[] _statData = {};
+    private ColumnConfig _config = new();
+
+    protected override async Task OnParametersSetAsync() {
+        var entityName = typeof(T).GetProperty(nameof(DbModel.HumanReadableName))?.GetValue(typeof(T)) ?? nameof(T);
+        var entityNameStr = (string) entityName;
+
+        _config = SetUpConfig(ChartsUtils.GetChartDescription(Usage, entityNameStr, 0, (null, null)));
+        _statData = (await Charts.GetAvgHourlyUsageAsync()).Select(usage => new {day = usage.hour.ToString(), usage = Math.Round(usage.value, LocalizationService.DecimalPlaces)}).ToArray();
+        await base.OnParametersSetAsync();
+    }
+
+    private ColumnConfig SetUpConfig(string description) {
+        return new ColumnConfig {
+            Title = new Title {
+                Visible = true,
+                Text = Usage
+            },
+            Description = new Description {
+                Visible = true,
+                Text = description
+            },
+            ForceFit = true,
+            Padding = "auto",
+            XField = "day",
+            YField = "usage",
+            Label = new ColumnViewConfigLabel {
+                Visible = true,
+                Style = new TextStyle {
+                    FontSize = 12,
+                    FontWeight = 600,
+                    Opacity = 0.6
+                }
+            },
+            Meta = new {
+                day = new {
+                    Alias = "Hour"
+                },
+                usage = new {
+                    Alias = "Avg. Borrows"
+                }
+            }
+        };
+    }
+
+}

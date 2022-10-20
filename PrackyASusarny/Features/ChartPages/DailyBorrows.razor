@@ -1,0 +1,75 @@
+@using PrackyASusarny.Features.ChartsPage
+@using Title = AntDesign.Charts.Title
+@typeparam T where T : BorrowableEntity
+@inject IUsageChartingService<T> Charts
+@if (_statData.Length == 0) {
+    <Empty Description=@("No Data Found")/>
+} else {
+    <AntDesign.Charts.Column @ref=_chart Data="_statData" Config="_config"/>
+}
+<LocalDateRangePicker @bind-Value="_dateRange"/>
+<Button OnClick="() => InitializeData(_dateRange)">Chart</Button>
+
+@code {
+
+    [Parameter]
+    public LocalDate SinceDate { get; set; }
+
+    [Parameter]
+    public LocalDate ToDate { get; set; }
+
+        private const string Usage = "Daily borrows";
+
+    private object[] _statData = {};
+    private ColumnConfig _config = new();
+    private (LocalDate?, LocalDate?)? _dateRange;
+    private Column? _chart;
+
+    protected override async Task OnParametersSetAsync() {
+        _dateRange = (SinceDate, ToDate);
+        var entityName = typeof(T).GetProperty(nameof(DbModel.HumanReadableName))?.GetValue(typeof(T)) ?? nameof(T);
+        var entityNameStr = (string) entityName;
+
+        _config = SetUpConfig(ChartsUtils.GetChartDescription(Usage, entityNameStr, 0, (null, null)));
+        await InitializeData(_dateRange);
+        await base.OnParametersSetAsync();
+    }
+
+    private async Task InitializeData((LocalDate? start, LocalDate? end)? val) {
+        if (val is not null && val.Value.start is not null && val.Value.end is not null) {
+            LocalDate start = val.Value.start.Value;
+            LocalDate end = val.Value.end.Value;
+            _statData = (await Charts.GetBorrowsByDayAsync(start, end)).Select(usage => new {day = usage.time.ToString(), usage.value}).ToArray();
+            if (_chart != null) {
+    // Idk doesn't react to statHasCHanged
+                await _chart.UpdateChart(csData: _statData);
+            }
+        }
+    }
+
+    private ColumnConfig SetUpConfig(string description) {
+        return new ColumnConfig {
+            Title = new Title {
+                Visible = true,
+                Text = Usage
+            },
+            ForceFit = true,
+            Padding = "auto",
+            XField = "day",
+            YField = "value",
+            Description = new Description {
+                Visible = true,
+                Text = description
+            },
+            Meta = new {
+                Day = new {
+                    Alias = "Day"
+                },
+                Value = new {
+                    Alias = "Borrows"
+                }
+            }
+        };
+    }
+
+}

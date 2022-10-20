@@ -1,9 +1,13 @@
 using System.ComponentModel.DataAnnotations;
 using PrackyASusarny.Data.ModelInterfaces;
 
+// ReSharper disable UnusedAutoPropertyAccessor.Global
+// ReSharper disable InconsistentNaming
+// ReSharper disable NonReadonlyMemberInGetHashCode
+
 namespace PrackyASusarny.Data.Models;
 
-public sealed class Location : IDbModel
+public sealed class Location : DbModel
 {
     [Key] public int LocationID { get; set; }
 
@@ -19,6 +23,11 @@ public sealed class Location : IDbModel
     {
         var wm = obj as Location;
         return wm is not null && wm.LocationID == LocationID;
+    }
+
+    public override int GetHashCode()
+    {
+        return LocationID;
     }
 
     public override string ToString()

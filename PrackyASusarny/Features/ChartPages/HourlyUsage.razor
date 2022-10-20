@@ -1,0 +1,86 @@
+@using PrackyASusarny.Data.EFCoreServices
+@using PrackyASusarny.Features.ChartsPage
+@using Title = AntDesign.Charts.Title
+@typeparam T where T : BorrowableEntity
+@inject IUsageChartingService<T> Charts
+@inject ILocalizationService LocalizationService
+@if (_statData.Length == 0) {
+    <Empty Description=@("No Data Found")/>
+} else {
+    <AntDesign.Charts.Column @ref="_chart" Data="@_statData" Config="@_config"/>
+}
+<Select TItem="IsoDayWeekSelect" TItemValue="IsoDayOfWeek" @bind-Value="Day" DataSource="_availableDays" LabelName="@nameof(IsoDayWeekSelect.Name)" ValueName="@nameof(IsoDayWeekSelect.Value)"></Select>
+<Button OnClick="() => InitializeData(Day)">Chart</Button>
+
+@code {
+
+    struct IsoDayWeekSelect {
+        public string Name { get; set; }
+        public IsoDayOfWeek Value { get; set; }
+    }
+
+    [Parameter]
+    public IsoDayOfWeek Day { get; set; }
+
+    private string _usage = "Daily usage at {0}";
+
+    private object[] _statData = {};
+    private ColumnConfig _config = new();
+    private AntDesign.Charts.Column? _chart;
+
+    private readonly IsoDayWeekSelect[] _availableDays = Enum.GetNames<IsoDayOfWeek>().Where(name => Enum.Parse<IsoDayOfWeek>(name) != IsoDayOfWeek.None).Select(
+        val => new IsoDayWeekSelect() {Name = val, Value = Enum.Parse<IsoDayOfWeek>(val)}
+        ).ToArray();
+
+    protected override async Task OnParametersSetAsync() {
+        var entityName = typeof(T).GetProperty(nameof(DbModel.HumanReadableName))?.GetValue(typeof(T)) ?? nameof(T);
+        var entityNameStr = (string) entityName;
+        _usage = string.Format(_usage, Day.ToString());
+
+        _config = SetUpConfig(ChartsUtils.GetChartDescription(_usage, entityNameStr, 0, (null, null)));
+        await InitializeData(Day);
+        await base.OnParametersSetAsync();
+    }
+
+    private async Task InitializeData(IsoDayOfWeek day) {
+        _statData = (await Charts.GetHourlyUsageAsync(day)).Select(usage => new {hour = usage.hour.ToString(), usage = Math.Round(usage.value, LocalizationService.DecimalPlaces)}).ToArray();
+        if (_chart != null) {
+    // Idk doesn't react to statHasCHanged
+            await _chart.UpdateChart(csData: _statData);
+        }
+    }
+
+    private ColumnConfig SetUpConfig(string description) {
+        return new ColumnConfig {
+            Title = new Title {
+                Visible = true,
+                Text = _usage
+            },
+            Description = new Description {
+                Visible = true,
+                Text = description
+            },
+            ForceFit = true,
+            Padding = "auto",
+            XField = "hour",
+            YField = "usage",
+            Label = new ColumnViewConfigLabel {
+                Visible = true,
+                Style = new TextStyle {
+                    FontSize = 12,
+                    FontWeight = 600,
+                    Opacity = 0.6
+                }
+            },
+            Meta = new {
+                hour = new {
+                    Alias = "Hour"
+                },
+                usage = new {
+                    Alias = "Usage"
+                }
+            }
+        };
+    }
+
+}

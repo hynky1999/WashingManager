@@ -1,0 +1,52 @@
+@page "/WashingMachine"
+@using AntDesign.TableModels
+@inject ICrudService<WashingMachine> WashingMachineService
+<Table TItem="WashingMachine" DataSource="_data" @bind-PageIndex="_pageIndex" PageSize="_pageSize" Total="_total" Loading="_loading" OnChange=@HandleTableChange RemoteDataSource>
+    <PropertyColumn Property="@(c => c.Status)" Filters="_statusFilter" Sortable SorterMultiple="1"/>
+    <PropertyColumn Property="c => c.Manufacturer"/>
+    <PropertyColumn Property="c => c.Manual"/>
+    <AntDesign.Column TData="char?" Filters="_buildingFilters" SorterMultiple="2" Sortable DataIndex="Location.Building">@context?.Location?.Building</AntDesign.Column>
+    <AntDesign.Column TData="int?" Filters=_floorFilters Sortable SorterMultiple="3" DataIndex="Location.Floor">@context?.Location?.Floor</AntDesign.Column>
+    <AntDesign.Column TData="int?" Filters=_roomFilters Sortable SorterMultiple="4" DataIndex="Location.RoomNum">@context?.Location?.RoomNum</AntDesign.Column>
+    <AntDesign.Column TData="int?" DataIndex="Location.RoomNum">@context?.Location?.DoorNum</AntDesign.Column>
+</Table>
+
+@code{
+    bool _loading = false;
+    int _lastPageIndex = 1;
+    int _pageIndex = 1;
+    int _pageSize = 5;
+    int _total;
+    WashingMachine[] _data = Array.Empty<WashingMachine>();
+
+    private TableFilter<int?>[] _floorFilters = Enumerable.Range(0, 21).Select(
+        x => new TableFilter<int?>() {Text = x.ToString(), Value = x}).ToArray();
+
+    private TableFilter<char?>[] _buildingFilters = new[] {
+        new TableFilter<char?>() {Text = "A", Value = 'A'},
+        new TableFilter<char?>() {Text = "B", Value = 'B'},
+    };
+
+    private TableFilter<Status>[] _statusFilter = Enum.GetNames<Status>().Select(
+        e => {
+            var en = Enum.Parse<Status>(e);
+            return new TableFilter<Status>() {Text = e, Value = en, Selected = (en == Status.Free)};
+        }).ToArray();
+
+    private TableFilter<int?>[] _roomFilters = Enumerable.Range(0, 21).Select(
+        x => new TableFilter<int?>() {Text = x.ToString(), Value = x}).ToArray();
+
+    async Task HandleTableChange(QueryModel<WashingMachine> queryModel) {
+        _loading = true;
+    // Filter
+        if (_lastPageIndex == queryModel.PageIndex) {
+            queryModel = new QueryModel<WashingMachine>(1, _pageSize, queryModel.SortModel, queryModel.FilterModel);
+            _total = await WashingMachineService.GetCountAsync(queryModel: queryModel);
+        }
+        _data = (await WashingMachineService.GetAllAsync(queryModel: queryModel, eager: true)).ToArray();
+        _pageIndex = queryModel.PageIndex;
+        _lastPageIndex = queryModel.PageIndex;
+        _loading = false;
+    }
+
+}
