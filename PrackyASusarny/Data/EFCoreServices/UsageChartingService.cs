@@ -111,8 +111,7 @@ public class UsageChartingService<T> : IUsageChartingService<T> where T : Borrow
         var dbset = context.Set<BorrowableEntityUsage<T>>();
         var query = dbset.Where(entity => entity.DayId == dayOfWeek);
         var sqlResult = await query.FirstOrDefaultAsync();
-        if (sqlResult == null) return Array.Empty<(LocalTime hour, double value)>();
-
+        if (sqlResult == null) return Enumerable.Range(0, 24).Select(hour => (new LocalTime(hour, 0), 0.0)).ToArray();
         //Qualified aproximation :)
         double mondaysSinceStart = Period.DaysBetween(BorrowableEntityUsage.CalculatedSince.Date,
             _localizationService.NowInTimeZone.Date) / 7.0;
@@ -152,7 +151,7 @@ public class UsageChartingService<T> : IUsageChartingService<T> where T : Borrow
                 hour23 = usage.Sum(x => x.Hour23Total)
             });
         var sqlResult = await query.FirstOrDefaultAsync();
-        if (sqlResult == null) return Array.Empty<(LocalTime hour, double value)>();
+        if (sqlResult == null) return Enumerable.Range(0, 24).Select(hour => (new LocalTime(hour, 0), 0.0)).ToArray();
 
         double mondaysSinceStart = Period.DaysBetween(BorrowableEntityUsage.CalculatedSince.Date,
             _localizationService.NowInTimeZone.Date) / 7.0;
