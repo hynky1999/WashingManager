@@ -1,72 +1,52 @@
 @page "/WashingMachine"
 @using AntDesign.TableModels
 @inject ICrudService<WashingMachine> WashingMachineService
-<Table TItem="WashingMachine" DataSource="_data" @bind-PageIndex="_pageIndex" @bind-PageSize="_pageSize" Total="_total" Loading="_loading" OnChange=@HandleTableChange RemoteDataSource>
-    <PropertyColumn Property="c => c.Status">@context.Status</PropertyColumn>
-    <PropertyColumn Filters="_man" Property="c => c.Manufacturer">@context.Manufacturer</PropertyColumn>
-    <PropertyColumn Property="c => c.Manual">@context?.Manual</PropertyColumn>
-    <AntDesign.Column TData="int?" Filterable DataIndex="Location.Building">@context?.Location?.Building</AntDesign.Column>
-    <AntDesign.Column TData="int?" Filters=_floorFilters DataIndex="Location.Floor">@context?.Location?.Floor</AntDesign.Column>
+<Table TItem="WashingMachine" DataSource="_data" @bind-PageIndex="_pageIndex" PageSize="_pageSize" Total="_total" Loading="_loading" OnChange=@HandleTableChange RemoteDataSource>
+    <PropertyColumn Property="@(c => c.Status)" Filters="_statusFilter" Sortable SorterMultiple="1"/>
+    <PropertyColumn Property="c => c.Manufacturer"/>
+    <PropertyColumn Property="c => c.Manual"/>
+    <AntDesign.Column TData="char?" Filters="_buildingFilters" SorterMultiple="2" Sortable DataIndex="Location.Building">@context?.Location?.Building</AntDesign.Column>
+    <AntDesign.Column TData="int?" Filters=_floorFilters Sortable SorterMultiple="3" DataIndex="Location.Floor">@context?.Location?.Floor</AntDesign.Column>
+    <AntDesign.Column TData="int?" Filters=_roomFilters Sortable SorterMultiple="4" DataIndex="Location.RoomNum">@context?.Location?.RoomNum</AntDesign.Column>
+    <AntDesign.Column TData="int?" DataIndex="Location.RoomNum">@context?.Location?.DoorNum</AntDesign.Column>
 </Table>
 
 @code{
     bool _loading = false;
+    int _lastPageIndex = 1;
     int _pageIndex = 1;
     int _pageSize = 5;
     int _total;
     WashingMachine[] _data = Array.Empty<WashingMachine>();
 
-    protected async override Task OnInitializedAsync() {
-        _data = (await WashingMachineService.GetAllAsync(eager: true)).ToArray();
-    }
-
     private TableFilter<int?>[] _floorFilters = Enumerable.Range(0, 21).Select(
-        x => new TableFilter<int?>(x.ToString(), x, false, TableFilterCompareOperator.Equals, TableFilterCondition.Or)).ToArray();
+        x => new TableFilter<int?>() {Text = x.ToString(), Value = x}).ToArray();
 
-    private TableFilter<string>[] _man = Enumerable.Range(0, 21).Select(
-        x => new TableFilter<string>() {Text = x.ToString(), Value = x.ToString()}).ToArray();
+    private TableFilter<char?>[] _buildingFilters = new[] {
+        new TableFilter<char?>() {Text = "A", Value = 'A'},
+        new TableFilter<char?>() {Text = "B", Value = 'B'},
+    };
+
+    private TableFilter<Status>[] _statusFilter = Enum.GetNames<Status>().Select(
+        e => {
+            var en = Enum.Parse<Status>(e);
+            return new TableFilter<Status>() {Text = e, Value = en, Selected = (en == Status.Free)};
+        }).ToArray();
+
+    private TableFilter<int?>[] _roomFilters = Enumerable.Range(0, 21).Select(
+        x => new TableFilter<int?>() {Text = x.ToString(), Value = x}).ToArray();
 
     async Task HandleTableChange(QueryModel<WashingMachine> queryModel) {
         _loading = true;
-
+    // Filter
+        if (_lastPageIndex == queryModel.PageIndex) {
+            queryModel = new QueryModel<WashingMachine>(1, _pageSize, queryModel.SortModel, queryModel.FilterModel);
+            _total = await WashingMachineService.GetCountAsync(queryModel: queryModel);
+        }
+        _data = (await WashingMachineService.GetAllAsync(queryModel: queryModel, eager: true)).ToArray();
+        _pageIndex = queryModel.PageIndex;
+        _lastPageIndex = queryModel.PageIndex;
         _loading = false;
-
-        _total = 200; // 200 is mock data, you should read it from server,e.g. _total = data.TotalCount;
-        var x = ParseQueryModel(queryModel);
-    }
-
-    string ParseQueryModel(QueryModel<WashingMachine> queryModel) {
-    /*
-        List<string> query = new List<string>()
-        {
-            $"results={queryModel.PageSize}",
-            $"page={queryModel.PageIndex}",
-        };
-
-        queryModel.SortModel.ForEach(x =>
-        {
-            query.Add($"sortField={x.FieldName.ToLower()}");
-            query.Add($"sortOrder={x.Sort}");
-        });
-        var filters = new List<Expression<Func<WashingMachine, int, bool>>>();
-
-        queryModel.FilterModel.ForEach(filter =>
-        {
-            Expression left;
-            var wm = Expression.Parameter(typeof(WashingMachine));
-            filter.SelectedValues.ForEach(value => {
-                var right = Expression.Property(wm,filter.FieldName);
-                var rightComp = Expression.Equal(value,right);
-
-
-                Expression.Or()
-                query.Add($"{filter.FieldName.ToLower()}={value}");
-            });
-        });
-
-        return string.Join('&', query);
-        */
-        return "xd";
     }
 
 }

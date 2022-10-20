@@ -1,18 +1,11 @@
-using System.Linq.Expressions;
 using AntDesign.TableModels;
-using PrackyASusarny.Data.EFCoreServices;
 
 namespace PrackyASusarny.Data.ServiceInterfaces;
 
 public interface ICrudService<T>
 {
-    public Task<List<TResult>> GetAllAsync<TResult, TKey>(Expression<Func<T, TResult>> selector,
-        Expression<Func<T, bool>>[]? filters = null, SortOption<T, TKey>[]? sortKeys = null, bool eager = false);
-
     public Task<List<T>> GetAllAsync(QueryModel<T>? queryModel = null, bool eager = false);
-
-    public Task<TResult?> GetByIdAsync<TResult>(object id, Expression<Func<T, TResult>> selector,
-        bool eager = false);
+    public Task<int> GetCountAsync(QueryModel<T>? queryModel);
 
     public Task<T?> GetByIdAsync(object id, bool eager = false);
     public Task CreateAsync(T entity);

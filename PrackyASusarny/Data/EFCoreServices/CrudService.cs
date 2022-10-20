@@ -32,23 +32,25 @@ public class CrudService<T> : ICrudService<T> where T : class
     }
 
 
-    public async Task<List<T>> GetAllAsync(QueryModel<T>? queryModel = null, bool eager = false)
+    public async Task<List<T>> GetAllAsync(QueryModel<T>? queryModel, bool eager = false)
     {
         using var dbContext = await _dbFactory.CreateDbContextAsync();
         var query = dbContext.Set<T>().AsQueryable();
         query = GetBoilerplate(query, queryModel, eager);
+        if (queryModel != null)
+        {
+            query = queryModel.CurrentPagedRecords(query);
+        }
 
         return await query.ToListAsync();
     }
 
-    public async Task<List<TResult>> GetAllAsync<TResult, TKey>(Expression<Func<T, TResult>> selector,
-        Expression<Func<T, bool>>[]? filters = null, SortOption<T, TKey>[]? sortKeys = null, bool eager = false)
+    public async Task<int> GetCountAsync(QueryModel<T>? queryModel)
     {
         using var dbContext = await _dbFactory.CreateDbContextAsync();
         var query = dbContext.Set<T>().AsQueryable();
-        query = GetBoilerplate(query, filters, sortKeys, eager);
-
-        return await query.Select(selector).ToListAsync();
+        query = GetBoilerplate(query, queryModel);
+        return await query.CountAsync();
     }
 
     public async Task<T?> GetByIdAsync(object id, bool eager = false)
@@ -57,16 +59,6 @@ public class CrudService<T> : ICrudService<T> where T : class
         var query = dbContext.Set<T>().AsQueryable();
         query = GetBoilerplate(query, eager: eager);
         var result = query.Where(GetIdEquals(id)).SingleOrDefaultAsync();
-        return await result;
-    }
-
-    public async Task<TResult?> GetByIdAsync<TResult>(object id, Expression<Func<T, TResult>> selector,
-        bool eager = false)
-    {
-        using var dbContext = await _dbFactory.CreateDbContextAsync();
-        var query = dbContext.Set<T>().AsQueryable();
-        query = GetBoilerplate(query, eager: eager);
-        var result = query.Where(GetIdEquals(id)).Select(selector).SingleOrDefaultAsync();
         return await result;
     }
 
@@ -125,6 +117,16 @@ public class CrudService<T> : ICrudService<T> where T : class
         return _idGetter(entity);
     }
 
+    public async Task<TResult?> GetByIdAsync<TResult>(object id, Expression<Func<T, TResult>> selector,
+        bool eager = false)
+    {
+        using var dbContext = await _dbFactory.CreateDbContextAsync();
+        var query = dbContext.Set<T>().AsQueryable();
+        query = GetBoilerplate(query, eager: eager);
+        var result = query.Where(GetIdEquals(id)).Select(selector).SingleOrDefaultAsync();
+        return await result;
+    }
+
     public Expression<Func<T, bool>> GetIdEquals(object id)
     {
         var equal = Expression.Equal(_idGetterExpr.Body, Expression.Constant(id, typeof(object)));
@@ -145,21 +147,16 @@ public class CrudService<T> : ICrudService<T> where T : class
         return propertyInfo.GetConcretePropertyExpression<T, object>();
     }
 
-    private IQueryable<T> GetBoilerplate<TKey>(IQueryable<T> query, Expression<Func<T, bool>>[]? filters = null,
-        SortOption<T, TKey>[]? sortKeys = null, bool eager = false)
-    {
-        query = GetBoilerplate(query, filters, eager);
-        if (sortKeys != null) query.SortWithKeys(sortKeys);
-
-        return query;
-    }
-
     private IQueryable<T> GetBoilerplate(IQueryable<T> query, QueryModel<T>? queryModel = null,
         bool eager = false)
     {
         if (eager) query = query.MakeEager(_entityType);
 
-        if (filters != null) query.FilterWithExpressions(filters);
+        if (queryModel is not null)
+        {
+            // I Would od this manually but no way to call SortList and I don't have access to internal functions
+            query = query.ExecuteTableQuery(queryModel);
+        }
 
         return query;
     }
