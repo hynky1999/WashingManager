@@ -1,0 +1,56 @@
+@page "/WashingMachine/Manage-borrows"
+@using AntDesign.TableModels
+@inject ICrudService<Borrow> BorrowService
+<AuthorizeView>
+    <ChildContent Context="authContext">
+        <Table TItem="Borrow" DataSource="_data" @bind-PageIndex="_pageIndex" PageSize="_pageSize" Total="_total" Loading="_loading" OnChange=@HandleTableChange RemoteDataSource>
+            <AntDesign.Column TData="Instant" @bind-Field="@context.startDate">@context.startDate</AntDesign.Column>
+            <AntDesign.Column TData="Instant?" @bind-Field="@context.endDate" Filters="_endDate" DefaultSortOrder="SortDirection.Descending" OnFilter="@((value, name) => value == null ? name == null : name != null)">@(context.endDate?.ToString() ?? "Ongoing")</AntDesign.Column>
+            <PropertyColumn Property="@(c => c.BorrowPerson.Name)" Filterable/>
+            <PropertyColumn Property="@(c => c.BorrowPerson.Surname)" Filterable/>
+            <AntDesign.Column TData="char?" Filters="_buildingFilters" SorterMultiple="1" Sortable DataIndex="BorrowableEntity.Location.Building">@context.BorrowableEntity.Location?.Building</AntDesign.Column>
+            <AntDesign.Column TData="int?" Filters=_floorFilters Sortable SorterMultiple="2" DataIndex="BorrowableEntity.Location.Floor">@context.BorrowableEntity.Location?.Floor</AntDesign.Column>
+            <AntDesign.Column TData="int?" Filters=_roomFilters Sortable SorterMultiple="3" DataIndex="BorrowableEntity.Location.RoomNum">@context.BorrowableEntity.Location?.RoomNum</AntDesign.Column>
+            <AntDesign.Column TData="int?" DataIndex="BorrowableEntity.Location.DoorNum">@context.BorrowableEntity.Location?.DoorNum</AntDesign.Column>
+        </Table>
+    </ChildContent>
+</AuthorizeView>
+
+@code{
+    bool _loading;
+    int _lastPageIndex = 1;
+    int _pageIndex = 1;
+    int _pageSize = 5;
+    int _total;
+    Borrow[] _data = Array.Empty<Borrow>();
+
+    private TableFilter<int?>[] _floorFilters = Enumerable.Range(0, 21).Select(
+        x => new TableFilter<int?> {Text = x.ToString(), Value = x}).ToArray();
+
+    private TableFilter<char?>[] _buildingFilters = {
+        new TableFilter<char?> {Text = "A", Value = 'A'},
+        new TableFilter<char?> {Text = "B", Value = 'B'},
+    };
+
+    private TableFilter<Instant?>[] _endDate = {
+        new TableFilter<Instant?> {Text = "Open", Value = null, Selected = true},
+        new TableFilter<Instant?> {Text = "Ended", Value = Instant.MaxValue, Selected = false},
+    };
+
+    private TableFilter<int?>[] _roomFilters = Enumerable.Range(0, 21).Select(
+        x => new TableFilter<int?> {Text = x.ToString(), Value = x}).ToArray();
+
+    async Task HandleTableChange(QueryModel<Borrow> queryModel) {
+        _loading = true;
+    // Filter
+        if (_lastPageIndex == queryModel.PageIndex) {
+            queryModel = new QueryModel<Borrow>(1, _pageSize, queryModel.SortModel, queryModel.FilterModel);
+            _total = await BorrowService.GetCountAsync(queryModel: queryModel);
+        }
+        _data = (await BorrowService.GetAllAsync(queryModel: queryModel, eager: true)).ToArray();
+        _pageIndex = queryModel.PageIndex;
+        _lastPageIndex = queryModel.PageIndex;
+        _loading = false;
+    }
+
+}

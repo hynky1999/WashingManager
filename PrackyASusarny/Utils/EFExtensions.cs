@@ -9,14 +9,20 @@ namespace PrackyASusarny.Utils;
 
 public static class EFExtensions
 {
-    public static IQueryable<T> MakeEager<T>(this IQueryable<T> query, IEntityType entity) where T : class
+    public static IQueryable<T> MakeEager<T>(this IQueryable<T> query, IEntityType entity, string? parent = null)
+        where T : class
     {
         var navigations = entity
             .GetDerivedTypesInclusive()
             .SelectMany(type => type.GetNavigations())
             .Distinct();
 
-        foreach (var property in navigations) query = query.Include(property.Name);
+        foreach (var property in navigations)
+        {
+            string newParent = parent == null ? property.Name : $"{parent}.{property.Name}";
+            query = query.Include(newParent);
+            query = query.MakeEager(property.TargetEntityType, newParent);
+        }
 
         return query;
     }
