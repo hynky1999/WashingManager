@@ -1,4 +1,4 @@
-namespace PrackyASusarny.Features.ChartsPage;
+namespace PrackyASusarny.Features.ChartPages;
 
 public static class ChartsUtils
 {
