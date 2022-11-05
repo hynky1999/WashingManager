@@ -34,7 +34,6 @@ public class SeedData
         await EnsureRole(serviceProvider, IdentityRoles.Receptionist, Enumerable.Empty<Claim>());
         await AddToRole(serviceProvider, managerId, IdentityRoles.Receptionist);
         var factory = serviceProvider.GetRequiredService<IDbContextFactory<ApplicationDbContext>>();
-
         SeedDb(factory);
     }
 
@@ -103,6 +102,7 @@ public class SeedData
             return;
         }
 
+        var wmUsage = CreateWmUsage();
         var manuals = Enumerable.Range(0, 10).Select(_ => CreateRandomManual()).ToArray();
         var locs = Enumerable.Range(0, 20).Select(_ => CreateRandomLocation()).ToArray();
         var wm = Enumerable.Range(0, 20).Select(_ => CreateRandomWashingMachines(locs, manuals)).ToArray();
@@ -111,12 +111,24 @@ public class SeedData
         Borrow[] borrows = Enumerable.Range(0, 30).Select(_ => CreateRandomBorrow(persons, wm))
             .Where(x => x is not null).ToArray()!;
 
+        context.AddRange(wmUsage);
         context.AddRange(manuals);
         context.AddRange(locs);
         context.AddRange(wm);
         context.AddRange(persons);
         context.AddRange(borrows);
         context.SaveChanges();
+    }
+
+    private static IEnumerable<BorrowableEntityUsage<WashingMachine>> CreateWmUsage()
+    {
+        return Enum.GetValues<IsoDayOfWeek>().Select(d =>
+        {
+            return new BorrowableEntityUsage<WashingMachine>()
+            {
+                DayId = d
+            };
+        });
     }
 
     private static string RandomString(int length)

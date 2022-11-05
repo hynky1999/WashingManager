@@ -12,6 +12,7 @@ public enum Status
 
 public sealed class WashingMachine : BorrowableEntity
 {
+    public int ManualID { get; set; }
     public Manual? Manual { get; set; }
 
     public string? Manufacturer { get; set; }
@@ -27,5 +28,12 @@ public sealed class WashingMachine : BorrowableEntity
     public override int GetHashCode()
     {
         return BorrowableEntityID;
+    }
+
+    public new object Clone()
+    {
+        var wm = (WashingMachine) MemberwiseClone();
+        wm.Manual = Manual?.Clone() as Manual;
+        return wm;
     }
 }

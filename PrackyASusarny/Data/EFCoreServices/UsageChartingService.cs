@@ -122,6 +122,7 @@ public class UsageChartingService<T> : IUsageChartingService<T> where T : Borrow
     {
         var context = await _dbFactory.CreateDbContextAsync();
         var dbset = context.Set<BorrowableEntityUsage<T>>();
+        //TODO
         var query = dbset.GroupBy(p => 1).Select(usage =>
             new
             {

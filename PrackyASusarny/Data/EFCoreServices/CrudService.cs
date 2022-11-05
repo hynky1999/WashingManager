@@ -68,14 +68,7 @@ public class CrudService<T> : ICrudService<T> where T : class
         var dbset = dbContext.Set<T>();
         dbset.Attach(entity);
         dbContext.Entry(entity).State = EntityState.Added;
-        try
-        {
-            await dbContext.SaveChangesAsync();
-        }
-        catch (DbUpdateException e)
-        {
-            throw new Errors.Folder.DbUpdateException(e.Message);
-        }
+        await dbContext.SaveChangeAsyncRethrow();
     }
 
     public async Task UpdateAsync(T entity)
@@ -84,15 +77,7 @@ public class CrudService<T> : ICrudService<T> where T : class
         var dbset = dbContext.Set<T>();
         dbset.Attach(entity);
         dbContext.Entry(entity).State = EntityState.Modified;
-        try
-        {
-            await dbContext.SaveChangesAsync();
-        }
-        catch (DbUpdateException e)
-        {
-            _logger.LogError(e, "Error updating entity");
-            throw new Errors.Folder.DbUpdateException(e.Message);
-        }
+        await dbContext.SaveChangeAsyncRethrow();
     }
 
     public async Task DeleteAsync(T entity)
@@ -101,15 +86,7 @@ public class CrudService<T> : ICrudService<T> where T : class
         var dbSet = dbContext.Set<T>();
         dbSet.Attach(entity);
         dbSet.Remove(entity);
-        try
-        {
-            await dbContext.SaveChangesAsync();
-        }
-        catch (DbUpdateException e)
-        {
-            _logger.LogError(e, "Error while deleting entity");
-            throw new Errors.Folder.DbUpdateException(e.Message);
-        }
+        await dbContext.SaveChangeAsyncRethrow();
     }
 
     public object GetId(T entity)

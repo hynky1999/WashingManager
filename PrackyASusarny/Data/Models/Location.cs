@@ -7,7 +7,7 @@ using PrackyASusarny.Data.ModelInterfaces;
 
 namespace PrackyASusarny.Data.Models;
 
-public sealed class Location : DbModel
+public sealed class Location : DbModel, ICloneable
 {
     [Key] public int LocationID { get; set; }
 
@@ -18,6 +18,11 @@ public sealed class Location : DbModel
     [Required] public int DoorNum { get; set; }
 
     [Required] public char Building { get; set; }
+
+    public object Clone()
+    {
+        return MemberwiseClone();
+    }
 
     public override bool Equals(object? obj)
     {

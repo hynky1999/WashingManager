@@ -1,0 +1,13 @@
+@if (Wm != null) {
+    <li>
+        <h6>Manufacturer</h6>
+        <p>@(Wm.Manufacturer)</p>
+    </li>
+}
+
+@code{
+
+    [Parameter]
+    public WashingMachine? Wm { get; set; }
+
+}

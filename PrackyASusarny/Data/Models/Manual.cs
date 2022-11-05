@@ -7,13 +7,18 @@ using PrackyASusarny.Data.ModelInterfaces;
 
 namespace PrackyASusarny.Data.Models;
 
-public class Manual : DbModel
+public class Manual : DbModel, ICloneable
 {
     [Key] public int ManualID { get; set; }
 
     [Required] public string FileName { get; set; } = null!;
 
     [Required] [MaxLength(40)] public string? Name { get; set; }
+
+    public object Clone()
+    {
+        return MemberwiseClone();
+    }
 
     public override bool Equals(object? obj)
     {

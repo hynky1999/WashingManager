@@ -8,7 +8,7 @@ using PrackyASusarny.Data.Utils;
 
 namespace PrackyASusarny.Data.Models;
 
-public abstract class BorrowableEntity : DbModel
+public abstract class BorrowableEntity : DbModel, ICloneable
 {
     private static readonly Dictionary<string, Type> _typeCache = new()
     {
@@ -19,6 +19,7 @@ public abstract class BorrowableEntity : DbModel
 
     [Required] public Status Status { get; set; }
 
+    public int LocationID { get; set; }
     public Location? Location { get; set; }
 
     // Concurency token
@@ -27,6 +28,12 @@ public abstract class BorrowableEntity : DbModel
 
     public new static string HumanReadableName => "Borrowable Entity";
 
+    public object Clone()
+    {
+        var be = (BorrowableEntity) MemberwiseClone();
+        be.Location = Location?.Clone() as Location;
+        return be;
+    }
 
     public static Type? TypeFactory(string typeName)
     {

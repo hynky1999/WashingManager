@@ -1,5 +1,7 @@
 @page "/WashingMachine/Availability"
+@using PrackyASusarny.Features.BEManagment.Modals
 @using AntDesign.TableModels
+
 @inject ICrudService<WashingMachine> WashingMachineService
 <Table TItem="WashingMachine" Responsive DataSource="_data" @bind-PageIndex="_pageIndex" PageSize="_pageSize" Total="_total" Loading="_loading" OnChange=@HandleTableChange RemoteDataSource>
     <PropertyColumn Property="@(c => c.Status)" Filters="_statusFilter" Sortable SorterMultiple="1"/>
@@ -11,19 +13,21 @@
     <AntDesign.Column TData="int?" DataIndex="Location.RoomNum">@context?.Location?.DoorNum</AntDesign.Column>
     <AuthorizeView>
         <ChildContent Context="authContext">
-            <ActionColumn Tittle="Action">
+            <ActionColumn Title="Actions">
                 <Space Size=@("middle")>
                     @if (@context.Status == Status.Free) {
                         <SpaceItem>
-                            <a>Borrow</a>
+                            <Button Type="@ButtonType.Primary" Color="Color.Blue3" Size="small" OnClick="@(() => OpenCreateModal(context))">Borrow</Button>
+                        </SpaceItem>
+                        <SpaceItem>
+                            <Button Type="@ButtonType.Primary" Color="Color.Red3" Size="small" OnClick="@(() => OpenStatusModal(context, Status.Broken))">Broken</Button>
                         </SpaceItem>
                     } else if (@context.Status == Status.Taken) {
                         <SpaceItem>
-                            <a>Return</a>
                         </SpaceItem>
                     } else if (@context.Status == Status.Broken) {
                         <SpaceItem>
-                            <a>Repair</a>
+                            <Button Type="@ButtonType.Primary" Color="Color.Green3" Size="small" OnClick="@(() => OpenStatusModal(context, Status.Free))">Repair</Button>
                         </SpaceItem>
                     }
                 </Space>
@@ -31,6 +35,8 @@
         </ChildContent>
     </AuthorizeView>
 </Table>
+<BorrowFormModal @ref="_modalBorrow" T="WashingMachine" DefaultBe="@defaultBE" ShowWashingMachine="true" OnFinish="OnBorrowCreated"/>
+<StatusChangeModal @ref="_modalStatus" T="WashingMachine" DefaultBe="@defaultBE" Status="_repairStatus" OnFinish="(wm) => wm.Status = _repairStatus"/>
 
 @code{
     bool _loading = false;
@@ -57,6 +63,22 @@
     private TableFilter<int?>[] _roomFilters = Enumerable.Range(0, 21).Select(
         x => new TableFilter<int?>() {Text = x.ToString(), Value = x}).ToArray();
 
+    private WashingMachine? defaultBE = null;
+    private StatusChangeModal<WashingMachine> _modalStatus;
+    private BorrowFormModal<WashingMachine> _modalBorrow;
+    private Status _repairStatus = Status.Broken;
+
+    private void OpenCreateModal(WashingMachine washingMachine) {
+        defaultBE = washingMachine;
+        _modalBorrow.OpenModal();
+    }
+
+    private void OpenStatusModal(WashingMachine washingMachine, Status s) {
+        defaultBE = washingMachine;
+        _repairStatus = s;
+        _modalStatus.OpenModal();
+    }
+
     async Task HandleTableChange(QueryModel<WashingMachine> queryModel) {
         _loading = true;
     // Filter
@@ -64,11 +86,14 @@
             queryModel = new QueryModel<WashingMachine>(1, _pageSize, queryModel.SortModel, queryModel.FilterModel);
             _total = await WashingMachineService.GetCountAsync(queryModel: queryModel);
         }
-        var z = queryModel.Clone();
         _data = (await WashingMachineService.GetAllAsync(queryModel: queryModel, eager: true)).ToArray();
         _pageIndex = queryModel.PageIndex;
         _lastPageIndex = queryModel.PageIndex;
         _loading = false;
+    }
+
+    void OnBorrowCreated(Borrow borrow) {
+        borrow.BorrowableEntity.Status = Status.Taken;
     }
 
 }

@@ -6,11 +6,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PrackyASusarny.Data.Models;
 
-public class BorrowPerson
+public class BorrowPerson : ICloneable
 {
     [Key] public int BorrowPersonID { get; set; }
 
     [Required] public string Name { get; set; } = null!;
 
     [Required] public string Surname { get; set; } = null!;
+
+    public object Clone()
+    {
+        return MemberwiseClone();
+    }
 }

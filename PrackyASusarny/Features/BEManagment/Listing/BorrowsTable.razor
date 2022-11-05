@@ -1,10 +1,12 @@
 @page "/WashingMachine/Manage-borrows"
+@using PrackyASusarny.Features.BEManagment.Modals
 @using AntDesign.TableModels
+
 @inject ICrudService<Borrow> BorrowService
 <AuthorizeView>
     <ChildContent Context="authContext">
         <Table TItem="Borrow" DataSource="_data" @bind-PageIndex="_pageIndex" PageSize="_pageSize" Total="_total" Loading="_loading" OnChange=@HandleTableChange RemoteDataSource>
-            <AntDesign.Column TData="Instant" @bind-Field="@context.startDate">@context.startDate</AntDesign.Column>
+            <AntDesign.Column TData="Instant" @bind-Field="@context.startDate" Sortable DefaultSortOrder="SortDirection.Ascending">@context.startDate</AntDesign.Column>
             <AntDesign.Column TData="Instant?" @bind-Field="@context.endDate" Filters="_endDate" DefaultSortOrder="SortDirection.Descending" OnFilter="@((value, name) => value == null ? name == null : name != null)">@(context.endDate?.ToString() ?? "Ongoing")</AntDesign.Column>
             <PropertyColumn Property="@(c => c.BorrowPerson.Name)" Filterable/>
             <PropertyColumn Property="@(c => c.BorrowPerson.Surname)" Filterable/>
@@ -12,7 +14,13 @@
             <AntDesign.Column TData="int?" Filters=_floorFilters Sortable SorterMultiple="2" DataIndex="BorrowableEntity.Location.Floor">@context.BorrowableEntity.Location?.Floor</AntDesign.Column>
             <AntDesign.Column TData="int?" Filters=_roomFilters Sortable SorterMultiple="3" DataIndex="BorrowableEntity.Location.RoomNum">@context.BorrowableEntity.Location?.RoomNum</AntDesign.Column>
             <AntDesign.Column TData="int?" DataIndex="BorrowableEntity.Location.DoorNum">@context.BorrowableEntity.Location?.DoorNum</AntDesign.Column>
+            <ActionColumn>
+                <Space>
+                    <Button OnClick="() => OpenRemoveModal(context)" Color="Color.Blue1" Type="@ButtonType.Primary" Size="small">End Borrow</Button>
+                </Space>
+            </ActionColumn>
         </Table>
+        <BorrowRemoveModal @ref="modal" T="WashingMachine" DefaultBorrow="defaultBorrow" OnSuccess="@(EndBorrow)" ShowBorrowableEntity="true"></BorrowRemoveModal>
     </ChildContent>
 </AuthorizeView>
 
@@ -40,6 +48,9 @@
     private TableFilter<int?>[] _roomFilters = Enumerable.Range(0, 21).Select(
         x => new TableFilter<int?> {Text = x.ToString(), Value = x}).ToArray();
 
+    private Borrow? defaultBorrow = null;
+    private BorrowRemoveModal<WashingMachine> modal;
+
     async Task HandleTableChange(QueryModel<Borrow> queryModel) {
         _loading = true;
     // Filter
@@ -51,6 +62,15 @@
         _pageIndex = queryModel.PageIndex;
         _lastPageIndex = queryModel.PageIndex;
         _loading = false;
+    }
+
+    void OpenRemoveModal(Borrow b) {
+        defaultBorrow = b;
+        modal.OpenModal();
+    }
+
+    async Task EndBorrow(Borrow borrow) {
+        _data = _data.Where(x => x.BorrowID != borrow.BorrowID).ToArray();
     }
 
 }

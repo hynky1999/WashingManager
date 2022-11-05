@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using PrackyASusarny.Data;
 using PrackyASusarny.Data.EFCoreServices;
 
 // ReSharper disable InconsistentNaming
@@ -50,5 +51,21 @@ public static class EFExtensions
                 : querySort.ThenByDescending(filter.KeyAccessor);
 
         return querySort;
+    }
+
+    public async static Task SaveChangeAsyncRethrow(this ApplicationDbContext context)
+    {
+        try
+        {
+            await context.SaveChangesAsync();
+        }
+        catch (Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException e)
+        {
+            throw new Errors.Folder.DbConcurrencyException(e.Message);
+        }
+        catch (Microsoft.EntityFrameworkCore.DbUpdateException e)
+        {
+            throw new Errors.Folder.DbUpdateException(e.Message);
+        }
     }
 }

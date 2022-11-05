@@ -1,0 +1,44 @@
+@using Microsoft.Build.Framework
+@using PrackyASusarny.Errors.Folder
+@typeparam T where T : BorrowableEntity
+@inject ModalService ModalService
+@inject IBorrowableEntityService BorrowableEntityService
+@inject MessageService MessageService
+
+@code {
+
+    [Parameter]
+    public EventCallback<T> OnFinish { get; set; }
+
+    [Required]
+    [Parameter]
+    public Status Status { get; set; }
+
+    [Parameter]
+    public T? DefaultBE { get; set; }
+
+    private async Task OnOkClick(ModalClosingEventArgs e) {
+        if (DefaultBE == null) {
+            MessageService.Error($"No item selected");
+        }
+        try {
+            await BorrowableEntityService.ChangeStatus(DefaultBE, Status);
+            await OnFinish.InvokeAsync(DefaultBE);
+            MessageService.Success($"The item has been marked as {Status.ToString()}.");
+        }
+        catch (DbException) {
+            MessageService.Error($"Failed to mark the item as {Status.ToString()}.");
+        }
+    }
+
+    public void OpenModal() {
+        RenderFragment icon = @<Icon Type="exclamation-circle" Theme="outline"></Icon>;
+
+        ModalService.Confirm(new ConfirmOptions() {
+            Title = "Do you want to make this entity broken?",
+            Icon = icon,
+            OnOk = OnOkClick,
+        });
+    }
+
+}
