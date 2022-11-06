@@ -58,7 +58,7 @@ public static class ReflectionExtensions
     public static object? GetSetPropertyEventCallback<T>(this T model, object receiver, PropertyInfo propertyInfo,
         Type? parameterType = null)
     {
-        Type parameterTypeNotNull = parameterType ?? propertyInfo.PropertyType;
+        var parameterTypeNotNull = parameterType ?? propertyInfo.PropertyType;
         // EventCallback<P>(receiver, (value) => model.Property = value)
         var propertyAccess = model.GetPropertyExpression(propertyInfo);
         var param = Expression.Parameter(parameterTypeNotNull, "value");

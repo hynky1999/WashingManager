@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using PrackyASusarny.Data.ModelInterfaces;
+using PrackyASusarny.Data.Utils;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 // ReSharper disable InconsistentNaming
@@ -7,9 +8,11 @@ using PrackyASusarny.Data.ModelInterfaces;
 
 namespace PrackyASusarny.Data.Models;
 
-public sealed class Location : DbModel
+public sealed class Location : DbModel, ICloneable
 {
-    [Key] public int LocationID { get; set; }
+    [UIVisibility(UIVisibilityEnum.Disabled)]
+    [Key]
+    public int LocationID { get; set; }
 
     [Required] public int Floor { get; set; }
 
@@ -18,6 +21,13 @@ public sealed class Location : DbModel
     [Required] public int DoorNum { get; set; }
 
     [Required] public char Building { get; set; }
+
+    public override string Label => $"ID: {LocationID}, {Building} {Floor}/{RoomNum}-{DoorNum}";
+
+    public object Clone()
+    {
+        return MemberwiseClone();
+    }
 
     public override bool Equals(object? obj)
     {

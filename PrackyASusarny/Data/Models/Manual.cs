@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using PrackyASusarny.Data.ModelInterfaces;
+using PrackyASusarny.Data.Utils;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 // ReSharper disable InconsistentNaming
@@ -7,13 +8,22 @@ using PrackyASusarny.Data.ModelInterfaces;
 
 namespace PrackyASusarny.Data.Models;
 
-public class Manual : DbModel
+public class Manual : DbModel, ICloneable
 {
-    [Key] public int ManualID { get; set; }
+    [UIVisibility(UIVisibilityEnum.Disabled)]
+    [Key]
+    public int ManualID { get; set; }
 
     [Required] public string FileName { get; set; } = null!;
 
     [Required] [MaxLength(40)] public string? Name { get; set; }
+
+    public override string Label => $"Manual {ManualID}, {Name}";
+
+    public object Clone()
+    {
+        return MemberwiseClone();
+    }
 
     public override bool Equals(object? obj)
     {

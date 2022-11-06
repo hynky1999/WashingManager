@@ -9,7 +9,7 @@ public class Role : IdentityRole
     {
     }
 
-    public Role() : base()
+    public Role()
     {
     }
 }

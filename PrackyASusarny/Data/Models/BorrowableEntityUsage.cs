@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 // ReSharper disable InconsistentNaming
@@ -9,7 +10,7 @@ namespace PrackyASusarny.Data.Models;
 public abstract class BorrowableEntityUsage
 {
     public static readonly ZonedDateTime CalculatedSince =
-        new ZonedDateTime(new LocalDateTime(2022, 8, 8, 0, 0), DateTimeZone.Utc, Offset.Zero);
+        new(new LocalDateTime(2022, 8, 8, 0, 0), DateTimeZone.Utc, Offset.Zero);
 
     [Key] public IsoDayOfWeek DayId { get; set; }
 
@@ -40,9 +41,32 @@ public abstract class BorrowableEntityUsage
     public long Hour22Total { get; set; }
     public long Hour23Total { get; set; }
 
-    public static TimeZoneInfo TimeZone()
+    public static DateTimeZone TimeZone()
     {
-        return TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
+        return DateTimeZoneProviders.Tzdb["Europe/Prague"];
+    }
+
+    public PropertyInfo hourToProperty(int hour)
+    {
+        var p = GetType().GetProperty($"Hour{hour}Total")!;
+        return p;
+    }
+
+    public void SetHour(int hour, long value)
+    {
+        hourToProperty(hour).SetValue(this, value);
+    }
+
+    public long GetHour(int hour)
+    {
+        return (long) hourToProperty(hour).GetValue(this)!;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        var other = obj as BorrowableEntityUsage;
+        if (other == null) return false;
+        return DayId == other.DayId && Enumerable.Range(0, 24).All(i => GetHour(i) == other.GetHour(i));
     }
 }
 

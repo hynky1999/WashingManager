@@ -1,0 +1,86 @@
+@using PrackyASusarny.Errors.Folder
+@using PrackyASusarny.Features.BEManagment.Desc
+@typeparam T where T : BorrowableEntity
+@inject IBorrowService BorrowService
+@inject ICrudService<T> CrudService
+@inject MessageService Message
+
+
+<Modal Visible="@_visibility"OnCancel="@CloseModal" Footer="@null">
+    <h2>End Borrow</h2>
+    <Divider/>
+    @if (_borrowableEntity != null) {
+        <BEDescription T="T" BEntity="_borrowableEntity"/>
+    }
+    @if (_borrow is not null) {
+        <BorrowDescription Borrow="@_borrow"/>
+        <Divider/>
+        <PriceBorrowCompute Borrow="@_borrow"/>
+        <Divider/>
+    } else {
+        <Spin/>
+    }
+    <Button Type="@ButtonType.Primary" OnClick="EndBorrow" Block="true" HtmlType="submit">Submit</Button>
+</Modal>
+
+
+@code {
+
+    [Parameter]
+    public Borrow? DefaultBorrow { get; set; }
+
+    [Parameter]
+    public bool ShowBorrowableEntity { get; set; } = true;
+
+    [Parameter]
+    public EventCallback<Borrow> OnSuccess { get; set; }
+
+    private Borrow? _borrow;
+    private T? _borrowableEntity;
+    private bool _visibility = false;
+    private bool _loading = false;
+
+
+    public void OpenModal() {
+        _visibility = true;
+    }
+
+    protected override async Task OnParametersSetAsync() {
+        _borrow = DefaultBorrow;
+        _borrowableEntity = _borrow?.BorrowableEntity as T;
+        if (_borrow is not null) {
+            if (ShowBorrowableEntity && _borrowableEntity == null) {
+                _loading = true;
+                _borrowableEntity = await CrudService.GetByIdAsync(_borrow.BorrowableEntityID);
+                _loading = false;
+            }
+        }
+        await base.OnParametersSetAsync();
+    }
+
+    private void CloseModal() {
+        _visibility = false;
+    }
+
+    private async Task EndBorrow() {
+        await OnSuccess.InvokeAsync(_borrow);
+        if (_borrow is null) {
+            Message.Error("No borrow selected");
+            return;
+        }
+        _loading = true;
+        try {
+            await BorrowService.EndBorrowAsync(_borrow);
+            await OnSuccess.InvokeAsync(_borrow);
+            Message.Success("Borrow ended");
+            CloseModal();
+            return;
+        }
+        catch (DbException) {
+            Message.Error("Failed to end borrow");
+        }
+        _loading = false;
+    }
+
+
+}

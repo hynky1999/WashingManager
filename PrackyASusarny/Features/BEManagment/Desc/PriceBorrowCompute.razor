@@ -1,12 +1,16 @@
-@using PrackyASusarny.Data.EFCoreServices
 @using PrackyASusarny.Errors.Folder
-@inject BorrowService BorrowService
+@inject IBorrowService BorrowService
 @inject ILogger<PriceBorrowCompute> Logger
 
 @if (_price is not null) {
-    <h6>Aktuální cena za výpůjčku</h6>
-    <p>@_price</p>
-    <Button OnClick="UpdatePrice">Obnovit cenu</Button>
+    <Space>
+        <SpaceItem>
+            <h6>@($"Current price: {_price}")</h6>
+        </SpaceItem>
+        <SpaceItem>
+            <Button OnClick="UpdatePrice">Refresh</Button>
+        </SpaceItem>
+    </Space>
 }
 
 @code {
@@ -29,18 +33,17 @@
         await base.OnParametersSetAsync();
     }
 
-    private Task UpdatePrice() {
+    private async Task UpdatePrice() {
         if (Borrow is null) {
             _price = null;
-            return Task.CompletedTask;
+            return;
         }
         try {
-            _price = BorrowService.GetPrice(Borrow);
+            _price = await BorrowService.GetPriceAsync(Borrow);
         }
         catch (DbException ex) {
             Logger.LogError(ex, "Error while getting price for borrow");
         }
-        return Task.CompletedTask;
     }
 
 

@@ -1,18 +1,30 @@
-@typeparam TMod where TMod : class
+@typeparam TMod where TMod : class, new()
+@using System.ComponentModel.DataAnnotations
 @typeparam TResult where TResult : class
+@inject ILogger<ModalForm<TMod, TResult>> Logger
 @inject MessageService Message
-<Modal Title="Form" Visible="@_visible" OnOk="OnFinish" OkButtonProps="@(new ButtonProps {Block = true})" OnCancel="@(_ => _visible = false)">
-    <Form ref="@_form" Model="@Model" OnFinish="@OnFinish" Loading="_loading">
-        @ChildContent
+<Modal Title="@Title" Visible="@_visible" Footer="@null" OnCancel="CloseModal">
+    @Header
+    <Divider/>
+    <Form @ref="@_form" Model="@Model" Loading="_loading">
+        @FormContent
     </Form>
+    <Divider/>
+    <Button Type="@ButtonType.Primary" OnClick="OnFinishForm" Block="true" HtmlType="submit">Submit</Button>
 </Modal>
-<Button Type="@ButtonType.Primary" OnClick="@(() => _visible = true)">Create</Button>
 
 @code {
 
     [Parameter]
-    public RenderFragment? ChildContent { get; set; }
+    public RenderFragment? FormContent { get; set; }
 
+    [Parameter]
+    public RenderFragment? Header { get; set; }
+
+    [Parameter]
+    public string Title { get; set; } = "Form";
+
+    [Required]
     [Parameter]
     public TMod? Model { get; set; }
 
@@ -23,41 +35,53 @@
     public string MessageFail { get; set; } = "Fail";
 
     [Parameter]
-    public Func<Task<TResult>>? OnSubmit { get; set; }
+    [Required]
+    public Func<Task<TResult?>>? OnSubmit { get; set; }
 
     [Parameter]
-    public EventCallback<TResult> OnSuccess { get; set; }
+    public EventCallback<TResult> OnFinish { get; set; }
+
+    [Parameter]
+    public EventCallback<TResult> OnFinishFailed { get; set; }
 
     private bool _visible = false;
     private bool _loading = false;
     private Form<TMod> _form = new();
 
 
-    private async Task OnFinish() {
-        var validationReuslt = _form.Validate();
-        if (validationReuslt)
+    private async Task OnFinishForm() {
+        var validationResult = _form.Validate();
+        if (validationResult)
             _loading = true;
+        else {
+            return;
+        }
         TResult? submitedModel = null;
-
         if (OnSubmit != null) {
             submitedModel = await OnSubmit();
         }
-        _loading = false;
-        if (submitedModel != null || OnSubmit == null) {
-#pragma warning disable CS4014
-            Message.Info(
-#pragma warning restore CS4014
+        if (submitedModel != null) {
+            Model = new TMod();
+            await OnFinish.InvokeAsync(submitedModel);
+            Message.Success(
                 MessageSuccess
                 );
-            _visible = false;
-            await OnSuccess.InvokeAsync();
         } else {
-#pragma warning disable CS4014
+            await OnFinishFailed.InvokeAsync(submitedModel);
             Message.Error(
-#pragma warning restore CS4014
                 MessageFail
                 );
         }
+        _loading = false;
+        CloseModal();
+    }
+
+    public void OpenModal() {
+        _visible = true;
+    }
+
+    public void CloseModal() {
+        _visible = false;
     }
 
 }

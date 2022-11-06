@@ -1,0 +1,24 @@
+@typeparam T where T : BorrowableEntity
+@if (BEntity is not null) {
+    <Card Title="Object info" Bordered="true">
+        <Body>
+        <ul>
+            <li>
+                <h6>Location</h6>
+                <p>@BEntity.Location</p>
+            </li>
+            @if (typeof(T) == typeof(WashingMachine)) {
+                // Why ?
+                <WmDescription Wm="@((WashingMachine) (object) BEntity)"/>
+            }
+        </ul>
+        </Body>
+    </Card>
+}
+
+@code {
+
+    [Parameter]
+    public T? BEntity { get; set; }
+
+}

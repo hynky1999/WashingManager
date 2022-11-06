@@ -1,7 +1,5 @@
-@page "/AdminMenu"
+@page "/AdminMenu/ManageModels"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Policy = Policies.ModelManagement)]
 <PageHeader Title="Models" SubTitle="Select model to edit"/>
 <AdminMenuNavBar/>
-
-@code {
-
-}

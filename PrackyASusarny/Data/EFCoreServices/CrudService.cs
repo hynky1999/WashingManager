@@ -37,10 +37,7 @@ public class CrudService<T> : ICrudService<T> where T : class
         using var dbContext = await _dbFactory.CreateDbContextAsync();
         var query = dbContext.Set<T>().AsQueryable();
         query = GetBoilerplate(query, queryModel, eager);
-        if (queryModel != null)
-        {
-            query = queryModel.CurrentPagedRecords(query);
-        }
+        if (queryModel != null) query = queryModel.CurrentPagedRecords(query);
 
         return await query.ToListAsync();
     }
@@ -68,14 +65,7 @@ public class CrudService<T> : ICrudService<T> where T : class
         var dbset = dbContext.Set<T>();
         dbset.Attach(entity);
         dbContext.Entry(entity).State = EntityState.Added;
-        try
-        {
-            await dbContext.SaveChangesAsync();
-        }
-        catch (DbUpdateException e)
-        {
-            throw new Errors.Folder.DbUpdateException(e.Message);
-        }
+        await dbContext.SaveChangeAsyncRethrow();
     }
 
     public async Task UpdateAsync(T entity)
@@ -84,15 +74,7 @@ public class CrudService<T> : ICrudService<T> where T : class
         var dbset = dbContext.Set<T>();
         dbset.Attach(entity);
         dbContext.Entry(entity).State = EntityState.Modified;
-        try
-        {
-            await dbContext.SaveChangesAsync();
-        }
-        catch (DbUpdateException e)
-        {
-            _logger.LogError(e, "Error updating entity");
-            throw new Errors.Folder.DbUpdateException(e.Message);
-        }
+        await dbContext.SaveChangeAsyncRethrow();
     }
 
     public async Task DeleteAsync(T entity)
@@ -101,15 +83,7 @@ public class CrudService<T> : ICrudService<T> where T : class
         var dbSet = dbContext.Set<T>();
         dbSet.Attach(entity);
         dbSet.Remove(entity);
-        try
-        {
-            await dbContext.SaveChangesAsync();
-        }
-        catch (DbUpdateException e)
-        {
-            _logger.LogError(e, "Error while deleting entity");
-            throw new Errors.Folder.DbUpdateException(e.Message);
-        }
+        await dbContext.SaveChangeAsyncRethrow();
     }
 
     public object GetId(T entity)
@@ -153,10 +127,8 @@ public class CrudService<T> : ICrudService<T> where T : class
         if (eager) query = query.MakeEager(_entityType);
 
         if (queryModel is not null)
-        {
             // I Would od this manually but no way to call SortList and I don't have access to internal functions
             query = query.ExecuteTableQuery(queryModel);
-        }
 
         return query;
     }

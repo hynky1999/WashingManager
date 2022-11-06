@@ -2,7 +2,8 @@
 @typeparam TItem
 @inject ICrudService<TItem> CrudService
 
-<Select Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" DataSource="@_dataSource" Disabled="@Disabled"></Select>
+<Select DefaultValue="Value" LabelName="@_labelName" ValueChanged="ValueChanged" ValueExpression="@ValueExpression" DataSource="@_dataSource" Disabled="@Disabled"></Select>
+
 
 @code {
     // TODO add required handling
@@ -19,10 +20,10 @@
     public bool Disabled { get; set; }
 
     private List<TItem> _dataSource = new();
+    private string _labelName = typeof(TItem).IsSubclassOf(typeof(DbModel)) ? "Label" : "";
 
-
-    protected override async Task OnParametersSetAsync() {
-        _dataSource = await CrudService.GetAllAsync(eager: false);
+    protected override async Task OnInitializedAsync() {
+        _dataSource = await CrudService.GetAllAsync(eager: true);
     }
 
 }

@@ -1,4 +1,4 @@
-namespace PrackyASusarny.Data.EFCoreServices;
+namespace PrackyASusarny.Data.ServiceInterfaces;
 
 public interface ILocalizationService
 {
@@ -7,4 +7,6 @@ public interface ILocalizationService
     ZonedDateTime NowInTimeZone { get; }
 
     int DecimalPlaces { get; }
+
+    string GetLocalizedDate(LocalDate? date);
 }
