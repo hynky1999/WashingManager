@@ -4,7 +4,7 @@ namespace PrackyASusarny.Auth.Models;
 
 public class User : IdentityUser
 {
-    public User() : base()
+    public User()
     {
     }
 

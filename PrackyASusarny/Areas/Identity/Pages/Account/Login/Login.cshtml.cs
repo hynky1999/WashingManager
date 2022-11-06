@@ -7,71 +7,65 @@ using PrackyASusarny.Auth.Models;
 
 // Mostly scrapped from scaffolding
 #nullable disable
-namespace PrackyASusarny.Areas.Identity.Pages.Account
+namespace PrackyASusarny.Areas.Identity.Pages.Account;
+
+public class LoginModel : PageModel
 {
-    public class LoginModel : PageModel
+    private readonly ILogger<LoginModel> _logger;
+    private readonly SignInManager<User> _signInManager;
+
+    public LoginModel(SignInManager<User> signInManager, ILogger<LoginModel> logger)
     {
-        private readonly ILogger<LoginModel> _logger;
-        private readonly SignInManager<User> _signInManager;
+        _signInManager = signInManager;
+        _logger = logger;
+    }
 
-        public LoginModel(SignInManager<User> signInManager, ILogger<LoginModel> logger)
+    [BindProperty] public InputModel Input { get; set; }
+
+    public string ReturnUrl { get; set; }
+
+    [TempData] public string ErrorMessage { get; set; }
+
+    public async Task OnGetAsync(string returnUrl = null)
+    {
+        if (!string.IsNullOrEmpty(ErrorMessage)) ModelState.AddModelError(string.Empty, ErrorMessage);
+
+        returnUrl ??= Url.Content("~/");
+
+        await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+        ReturnUrl = returnUrl;
+    }
+
+    public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+    {
+        returnUrl ??= Url.Content("~/");
+
+        if (ModelState.IsValid)
         {
-            _signInManager = signInManager;
-            _logger = logger;
-        }
-
-        [BindProperty] public InputModel Input { get; set; }
-
-        public string ReturnUrl { get; set; }
-
-        [TempData] public string ErrorMessage { get; set; }
-
-        public async Task OnGetAsync(string returnUrl = null)
-        {
-            if (!string.IsNullOrEmpty(ErrorMessage))
+            var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe,
+                false);
+            if (result.Succeeded)
             {
-                ModelState.AddModelError(string.Empty, ErrorMessage);
+                _logger.LogInformation("User logged in");
+                return LocalRedirect(returnUrl);
             }
 
-            returnUrl ??= Url.Content("~/");
-
-            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
-            ReturnUrl = returnUrl;
-        }
-
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
-        {
-            returnUrl ??= Url.Content("~/");
-
-            if (ModelState.IsValid)
-            {
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe,
-                    lockoutOnFailure: false);
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation("User logged in");
-                    return LocalRedirect(returnUrl);
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
-                }
-            }
-
-            // If we got this far, something failed, redisplay form
+            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             return Page();
         }
 
-        public class InputModel
-        {
-            [Required] [EmailAddress] public string Email { get; set; }
+        // If we got this far, something failed, redisplay form
+        return Page();
+    }
 
-            [Required]
-            [DataType(DataType.Password)]
-            public string Password { get; set; }
+    public class InputModel
+    {
+        [Required] [EmailAddress] public string Email { get; set; }
 
-            [Display(Name = "Remember me?")] public bool RememberMe { get; set; }
-        }
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Display(Name = "Remember me?")] public bool RememberMe { get; set; }
     }
 }

@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using PrackyASusarny.Data;
 using PrackyASusarny.Data.EFCoreServices;
+using PrackyASusarny.Errors.Folder;
+using DbUpdateException = Microsoft.EntityFrameworkCore.DbUpdateException;
 
 // ReSharper disable InconsistentNaming
 
@@ -20,7 +22,7 @@ public static class EFExtensions
 
         foreach (var property in navigations)
         {
-            string newParent = parent == null ? property.Name : $"{parent}.{property.Name}";
+            var newParent = parent == null ? property.Name : $"{parent}.{property.Name}";
             query = query.Include(newParent);
             query = query.MakeEager(property.TargetEntityType, newParent);
         }
@@ -53,17 +55,17 @@ public static class EFExtensions
         return querySort;
     }
 
-    public async static Task SaveChangeAsyncRethrow(this ApplicationDbContext context)
+    public static async Task SaveChangeAsyncRethrow(this ApplicationDbContext context)
     {
         try
         {
             await context.SaveChangesAsync();
         }
-        catch (Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException e)
+        catch (DbUpdateConcurrencyException e)
         {
-            throw new Errors.Folder.DbConcurrencyException(e.Message);
+            throw new DbConcurrencyException(e.Message);
         }
-        catch (Microsoft.EntityFrameworkCore.DbUpdateException e)
+        catch (DbUpdateException e)
         {
             throw new Errors.Folder.DbUpdateException(e.Message);
         }

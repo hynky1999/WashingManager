@@ -1,9 +1,9 @@
 @typeparam TMod where TMod : class, new()
 @using System.ComponentModel.DataAnnotations
 @typeparam TResult where TResult : class
-@inject ILogger<ModalForm<TMod, TResult>> _logger
+@inject ILogger<ModalForm<TMod, TResult>> Logger
 @inject MessageService Message
-<Modal Title=@Title Visible="@_visible" Footer="@null" OnCancel="CloseModal">
+<Modal Title="@Title" Visible="@_visible" Footer="@null" OnCancel="CloseModal">
     @Header
     <Divider/>
     <Form @ref="@_form" Model="@Model" Loading="_loading">

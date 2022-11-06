@@ -1,76 +1,83 @@
 @page "/WashingMachine/Manage-borrows"
 @using PrackyASusarny.Features.BEManagment.Modals
 @using AntDesign.TableModels
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Policy = Policies.BorrowManagement)]
+@inject ILocationService LocationService
 
 @inject ICrudService<Borrow> BorrowService
-<AuthorizeView>
-    <ChildContent Context="authContext">
-        <Table TItem="Borrow" DataSource="_data" @bind-PageIndex="_pageIndex" PageSize="_pageSize" Total="_total" Loading="_loading" OnChange=@HandleTableChange RemoteDataSource>
-            <AntDesign.Column TData="Instant" @bind-Field="@context.startDate" Sortable DefaultSortOrder="SortDirection.Ascending">@context.startDate</AntDesign.Column>
-            <AntDesign.Column TData="Instant?" @bind-Field="@context.endDate" Filters="_endDate" DefaultSortOrder="SortDirection.Descending" OnFilter="@((value, name) => value == null ? name == null : name != null)">@(context.endDate?.ToString() ?? "Ongoing")</AntDesign.Column>
-            <PropertyColumn Property="@(c => c.BorrowPerson.Name)" Filterable/>
-            <PropertyColumn Property="@(c => c.BorrowPerson.Surname)" Filterable/>
-            <AntDesign.Column TData="char?" Filters="_buildingFilters" SorterMultiple="1" Sortable DataIndex="BorrowableEntity.Location.Building">@context.BorrowableEntity.Location?.Building</AntDesign.Column>
-            <AntDesign.Column TData="int?" Filters=_floorFilters Sortable SorterMultiple="2" DataIndex="BorrowableEntity.Location.Floor">@context.BorrowableEntity.Location?.Floor</AntDesign.Column>
-            <AntDesign.Column TData="int?" Filters=_roomFilters Sortable SorterMultiple="3" DataIndex="BorrowableEntity.Location.RoomNum">@context.BorrowableEntity.Location?.RoomNum</AntDesign.Column>
-            <AntDesign.Column TData="int?" DataIndex="BorrowableEntity.Location.DoorNum">@context.BorrowableEntity.Location?.DoorNum</AntDesign.Column>
-            <ActionColumn>
-                <Space>
-                    <Button OnClick="() => OpenRemoveModal(context)" Color="Color.Blue1" Type="@ButtonType.Primary" Size="small">End Borrow</Button>
-                </Space>
-            </ActionColumn>
-        </Table>
-        <BorrowRemoveModal @ref="modal" T="WashingMachine" DefaultBorrow="defaultBorrow" OnSuccess="@(EndBorrow)" ShowBorrowableEntity="true"></BorrowRemoveModal>
-    </ChildContent>
-</AuthorizeView>
+<Table TItem="Borrow" DataSource="_data" @bind-PageIndex="_pageIndex" PageSize="_pageSize" Total="_total" Loading="_loading" OnChange="@HandleTableChange" RemoteDataSource>
+    <AntDesign.Column TData="Instant" @bind-Field="@context.startDate" Sortable DefaultSortOrder="SortDirection.Ascending">@context.startDate</AntDesign.Column>
+    <AntDesign.Column TData="Instant?" @bind-Field="@context.endDate" Filters="_endDate" DefaultSortOrder="SortDirection.Descending" OnFilter="@((value, name) => value == null ? name == null : name != null)">@(context.endDate?.ToString() ?? "Ongoing")</AntDesign.Column>
+    <PropertyColumn Property="@(c => c.BorrowPerson.Name)" Filterable/>
+    <PropertyColumn Property="@(c => c.BorrowPerson.Surname)" Filterable/>
+    <AntDesign.Column TData="char?" Filters="_buildingFilters" SorterMultiple="1" Sortable DataIndex="BorrowableEntity.Location.Building">@context.BorrowableEntity.Location?.Building</AntDesign.Column>
+    <AntDesign.Column TData="int?" Filters="_floorFilters" Sortable SorterMultiple="2" DataIndex="BorrowableEntity.Location.Floor">@context.BorrowableEntity.Location?.Floor</AntDesign.Column>
+    <AntDesign.Column TData="int?" Filters="_roomFilters" Sortable SorterMultiple="3" DataIndex="BorrowableEntity.Location.RoomNum">@context.BorrowableEntity.Location?.RoomNum</AntDesign.Column>
+    <AntDesign.Column TData="int?" DataIndex="BorrowableEntity.Location.DoorNum">@context.BorrowableEntity.Location?.DoorNum</AntDesign.Column>
+    <ActionColumn>
+        <Space>
+            <Button OnClick="() => OpenRemoveModal(context)" Color="Color.Blue3" Type="@ButtonType.Primary" Size="small">End Borrow</Button>
+        </Space>
+    </ActionColumn>
+</Table>
+<BorrowRemoveModal @ref="_modal" T="WashingMachine" DefaultBorrow="_defaultBorrow" OnSuccess="@(EndBorrow)" ShowBorrowableEntity="true"></BorrowRemoveModal>
 
 @code{
     bool _loading;
     int _lastPageIndex = 1;
     int _pageIndex = 1;
-    int _pageSize = 5;
+    readonly int _pageSize = 5;
     int _total;
     Borrow[] _data = Array.Empty<Borrow>();
 
-    private TableFilter<int?>[] _floorFilters = Enumerable.Range(0, 21).Select(
-        x => new TableFilter<int?> {Text = x.ToString(), Value = x}).ToArray();
+    private TableFilter<int?>[] _floorFilters = new TableFilter<int?>[0];
+    private TableFilter<char?>[] _buildingFilters = new TableFilter<char?>[0];
+    private TableFilter<int?>[] _roomFilters = new TableFilter<int?>[0];
 
-    private TableFilter<char?>[] _buildingFilters = {
-        new TableFilter<char?> {Text = "A", Value = 'A'},
-        new TableFilter<char?> {Text = "B", Value = 'B'},
+    private readonly TableFilter<Instant?>[] _endDate = {
+        new() {Text = "Open", Value = null, Selected = true},
+        new() {Text = "Ended", Value = Instant.MaxValue, Selected = false}
     };
 
-    private TableFilter<Instant?>[] _endDate = {
-        new TableFilter<Instant?> {Text = "Open", Value = null, Selected = true},
-        new TableFilter<Instant?> {Text = "Ended", Value = Instant.MaxValue, Selected = false},
-    };
 
-    private TableFilter<int?>[] _roomFilters = Enumerable.Range(0, 21).Select(
-        x => new TableFilter<int?> {Text = x.ToString(), Value = x}).ToArray();
+    private Borrow? _defaultBorrow;
+    private BorrowRemoveModal<WashingMachine> _modal = new();
 
-    private Borrow? defaultBorrow = null;
-    private BorrowRemoveModal<WashingMachine> modal;
+    protected override Task OnInitializedAsync() {
+        _buildingFilters = LocationService.GetBuildingOptions().Select(
+            x => new TableFilter<char?> {Text = x.ToString(), Value = x}).ToArray();
+
+        _roomFilters = LocationService.GetRoomOptions().Select(
+            x => new TableFilter<int?> {Text = x.ToString(), Value = x}).ToArray();
+
+        _floorFilters = LocationService.GetFloorOptions().Select(
+            x => new TableFilter<int?> {Text = x.ToString(), Value = x}).ToArray();
+
+        return base.OnInitializedAsync();
+    }
 
     async Task HandleTableChange(QueryModel<Borrow> queryModel) {
         _loading = true;
     // Filter
         if (_lastPageIndex == queryModel.PageIndex) {
             queryModel = new QueryModel<Borrow>(1, _pageSize, queryModel.SortModel, queryModel.FilterModel);
-            _total = await BorrowService.GetCountAsync(queryModel: queryModel);
+            _total = await BorrowService.GetCountAsync(queryModel);
         }
-        _data = (await BorrowService.GetAllAsync(queryModel: queryModel, eager: true)).ToArray();
+        _data = (await BorrowService.GetAllAsync(queryModel, true)).ToArray();
         _pageIndex = queryModel.PageIndex;
         _lastPageIndex = queryModel.PageIndex;
         _loading = false;
     }
 
     void OpenRemoveModal(Borrow b) {
-        defaultBorrow = b;
-        modal.OpenModal();
+        _defaultBorrow = b;
+        _modal.OpenModal();
     }
 
-    async Task EndBorrow(Borrow borrow) {
+    Task EndBorrow(Borrow borrow) {
         _data = _data.Where(x => x.BorrowID != borrow.BorrowID).ToArray();
+        return Task.CompletedTask;
     }
 
 }

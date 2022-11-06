@@ -15,10 +15,14 @@ public class Borrow : DbModel, ICloneable
     public int BorrowID { get; set; }
 
 
+    [UIVisibility(UIVisibilityEnum.Disabled)]
     public int BorrowableEntityID { get; set; }
+
     [Required] public BorrowableEntity BorrowableEntity { get; set; }
 
+    [UIVisibility(UIVisibilityEnum.Disabled)]
     public int BorrowPersonID { get; set; }
+
     [Required] public BorrowPerson BorrowPerson { get; set; }
 
     [Required] public Instant startDate { get; set; }
@@ -27,6 +31,8 @@ public class Borrow : DbModel, ICloneable
 
     [UIVisibility(UIVisibilityEnum.Hidden)]
     public uint xmin { get; set; }
+
+    public override string Label => $"ID: {BorrowID}, {BorrowableEntity.Label} by {BorrowPerson.Label}";
 
     public object Clone()
     {

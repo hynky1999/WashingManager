@@ -31,7 +31,7 @@ public class BorrowService : IBorrowService
     public async Task<Price> GetPriceAsync(Borrow borrow)
     {
         var duration = _localizationService.Now - borrow.startDate;
-        var price = new Price() {Amount = (int) (duration.Minutes / 30.0 * Rates.WMpricePerHalfHour), Currency = "CZK"};
+        var price = new Price {Amount = (int) (duration.Minutes / 30.0 * Rates.WMpricePerHalfHour), Currency = "CZK"};
         return price;
     }
 

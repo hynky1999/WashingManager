@@ -1,8 +1,7 @@
-@using PrackyASusarny.Data.EFCoreServices
-@using Title = AntDesign.Charts.Title
 @typeparam T where T : BorrowableEntity
 @inject IUsageChartingService<T> Charts
 @inject ILocalizationService LocalizationService
+@inherits GenericEntityBase<T>
 @if (_statData.Length == 0) {
     <Empty Description=@("No Data Found")/>
 } else {
@@ -12,50 +11,16 @@
 @code {
 
         private const string Usage = "Average Daily usage";
-
     private object[] _statData = {};
     private ColumnConfig _config = new();
 
-    protected override async Task OnParametersSetAsync() {
-        var entityName = typeof(T).GetProperty(nameof(DbModel.HumanReadableName))?.GetValue(typeof(T)) ?? nameof(T);
-        var entityNameStr = (string) entityName;
-
-        _config = SetUpConfig(ChartsUtils.GetChartDescription(Usage, entityNameStr, 0, (null, null)));
-        _statData = (await Charts.GetWeekUsageAsync()).Select(usage => new {day = usage.dayOfWeek.ToString(), usage = Math.Round(usage.value, LocalizationService.DecimalPlaces)}).ToArray();
+    protected override async Task OnInitializedAsync() {
+        var description = ChartsUtils.GetChartDescription(Usage, EntityName, (null, null), LocalizationService);
+        _config = ChartsUtils.CreateColumnConfig(Usage, description, "Day of Week", "Usage");
+        _statData = (await Charts.GetWeekUsageAsync()).Select(usage => new {x = usage.dayOfWeek.ToString(), y = Math.Round(usage.value, LocalizationService.DecimalPlaces)}).ToArray();
         await base.OnParametersSetAsync();
+        base.OnInitialized();
     }
 
-    private ColumnConfig SetUpConfig(string description) {
-        return new ColumnConfig {
-            Title = new Title {
-                Visible = true,
-                Text = Usage
-            },
-            Description = new Description {
-                Visible = true,
-                Text = description
-            },
-            ForceFit = true,
-            Padding = "auto",
-            XField = "day",
-            YField = "usage",
-            Label = new ColumnViewConfigLabel {
-                Visible = true,
-                Style = new TextStyle {
-                    FontSize = 12,
-                    FontWeight = 600,
-                    Opacity = 0.6
-                }
-            },
-            Meta = new {
-                day = new {
-                    Alias = "Day of the week"
-                },
-                usage = new {
-                    Alias = "Borrows"
-                }
-            }
-        };
-    }
 
 }

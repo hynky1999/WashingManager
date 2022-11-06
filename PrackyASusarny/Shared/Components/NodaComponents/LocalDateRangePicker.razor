@@ -1,5 +1,5 @@
 @using System.Linq.Expressions
-<RangePicker Value="_dateTimeValue" OnClearClick="@(() => _OnChange(new DateRangeChangedEventArgs() {Dates = new DateTime?[] {null, null}}))" OnChange="_OnChange" Disabled="Disabled"></RangePicker>
+<RangePicker Value="_dateTimeValue" OnClearClick="@(() => _OnChange(new DateRangeChangedEventArgs {Dates = new DateTime?[] {null, null}}))" OnChange="_OnChange" Disabled="Disabled"></RangePicker>
 
 @code {
     // Generic class because of nullability

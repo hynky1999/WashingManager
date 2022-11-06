@@ -1,5 +1,4 @@
 @page "/{Entity}/Charts"
-@using PrackyASusarny.Data.EFCoreServices
 @inject ILocalizationService LocaliztionService
 
 <Tabs>
@@ -18,35 +17,15 @@
     private (string name, Type type, Dictionary<string, object> args)[] _charts = {};
 
 
-    protected override void OnParametersSet() {
-        var entityType = BorrowableEntity.TypeFactory(Entity ?? "");
-        if (entityType is not null) {
-            _charts = GetChartsConfig(entityType);
-        } else {
-            _charts = new (string, Type, Dictionary<string, object>)[] {};
+    protected override void OnInitialized() {
+        Type? entityType = null;
+        if (ModelUtils.ModelNameToType.TryGetValue(Entity ?? "", out var tmpType) && ChartsConfig.allowedChartModels.Contains(tmpType)) {
+            entityType = tmpType;
         }
-
-
+        if (entityType is not null) {
+            _charts = ChartsConfig.GetChartsConfig(entityType, LocaliztionService);
+        }
         base.OnInitialized();
-    }
-
-    private (string name, Type type, Dictionary<string, object> args)[] GetChartsConfig(Type entityType) {
-        return new[] {
-            ("Daily Borrows", typeof(DailyBorrows<>).MakeGenericType(entityType),
-                new Dictionary<string, object> {
-                    {"SinceDate", LocaliztionService.NowInTimeZone.Date.PlusDays(-10)},
-                    {"ToDate", LocaliztionService.NowInTimeZone.Date}
-                }
-                ),
-            ("Hourly Borrows", typeof(HourlyBorrows<>).MakeGenericType(entityType),
-                new Dictionary<string, object>() {
-                    {"Date", LocaliztionService.NowInTimeZone.Date}
-                }
-                ),
-            ("Weekly usage", typeof(WeeklyUsage<>).MakeGenericType(entityType), new Dictionary<string, object>()),
-            ("Avg Hourly Usage", typeof(AvgHourlyUsage<>).MakeGenericType(entityType), new Dictionary<string, object>()),
-            ("Hourly Usage", typeof(HourlyUsage<>).MakeGenericType(entityType), new Dictionary<string, object>() {{"Day", DayOfWeek.Monday}}),
-        };
     }
 
 

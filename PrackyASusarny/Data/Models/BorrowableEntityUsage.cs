@@ -10,7 +10,7 @@ namespace PrackyASusarny.Data.Models;
 public abstract class BorrowableEntityUsage
 {
     public static readonly ZonedDateTime CalculatedSince =
-        new ZonedDateTime(new LocalDateTime(2022, 8, 8, 0, 0), DateTimeZone.Utc, Offset.Zero);
+        new(new LocalDateTime(2022, 8, 8, 0, 0), DateTimeZone.Utc, Offset.Zero);
 
     [Key] public IsoDayOfWeek DayId { get; set; }
 
@@ -48,7 +48,7 @@ public abstract class BorrowableEntityUsage
 
     public PropertyInfo hourToProperty(int hour)
     {
-        PropertyInfo p = GetType().GetProperty($"Hour{hour}Total")!;
+        var p = GetType().GetProperty($"Hour{hour}Total")!;
         return p;
     }
 
@@ -64,7 +64,7 @@ public abstract class BorrowableEntityUsage
 
     public override bool Equals(object? obj)
     {
-        BorrowableEntityUsage? other = obj as BorrowableEntityUsage;
+        var other = obj as BorrowableEntityUsage;
         if (other == null) return false;
         return DayId == other.DayId && Enumerable.Range(0, 24).All(i => GetHour(i) == other.GetHour(i));
     }

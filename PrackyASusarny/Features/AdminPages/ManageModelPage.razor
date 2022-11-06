@@ -1,4 +1,6 @@
-@page "/adminMenu/{modelName}/{Action}/{Id:int?}"
+@page "/AdminMenu/{modelName}/{Action}/{Id:int?}"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Policy = Policies.ModelManagement)]
 @inject ILogger<ManageModelPage> Logger
 @inject NavigationManager NavManager
 
@@ -8,7 +10,7 @@
 <Divider/>
 @if (_listType is not null) {
     @if (Action == "List") {
-        <Button OnClick="@(_ => NavManager.NavigateTo($"adminMenu/{ModelName}/Create"))">Create</Button>
+        <Button OnClick="@(_ => NavManager.NavigateTo($"adminMenu/{ModelName}/Create"))">Create New</Button>
         <Divider/>
         @CrudListTableFragment()
     } else if (Action == "Create") {
@@ -21,7 +23,6 @@
 } else {
     <Title Level="2">@($"{ModelName} is not showable or doesn't exist")</Title>
 }
-
 
 @code{
 
@@ -37,8 +38,8 @@
     private Type? _listType;
 
     protected override void OnParametersSet() {
-        if (ModelName is not null) {
-            AdminConfig.ModelNameToType.TryGetValue(ModelName, out _listType);
+        if (ModelUtils.ModelNameToType.TryGetValue(ModelName ?? "", out var tmplistType) && AdminConfig.AllowedTypes.Contains(tmplistType)) {
+            _listType = tmplistType;
         }
     }
 

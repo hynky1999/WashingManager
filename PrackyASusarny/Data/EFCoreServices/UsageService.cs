@@ -6,16 +6,11 @@ namespace PrackyASusarny.Data.EFCoreServices;
 
 public class UsageService : IUsageService
 {
-    private readonly IDbContextFactory<ApplicationDbContext> _dbFactory;
     private readonly ILocalizationService _localizationService;
-    private readonly ILogger<UsageService> _logger;
 
-    public UsageService(IDbContextFactory<ApplicationDbContext> dbFactory,
-        ILocalizationService localizationService, ILogger<UsageService> logger)
+    public UsageService(ILocalizationService localizationService)
     {
-        _dbFactory = dbFactory;
         _localizationService = localizationService;
-        _logger = logger;
     }
 
     public async Task<ApplicationDbContext> UpdateUsageStatisticsAsync<T>(Borrow borrow, ApplicationDbContext dbContext)
@@ -36,18 +31,12 @@ public class UsageService : IUsageService
             long baseDays = duration / 7;
             long remainder = Enumerable.Range(0, (duration + 1) % 7)
                 .Count(x => startDateInCet.Date.PlusDays(x).DayOfWeek == day.DayId);
-            for (int i = 0; i < 24; i++)
+            for (var i = 0; i < 24; i++)
             {
                 long minus = 0;
-                if (i < startDateInCet.Hour && startDateInCet.DayOfWeek == day.DayId)
-                {
-                    minus += 1;
-                }
+                if (i < startDateInCet.Hour && startDateInCet.DayOfWeek == day.DayId) minus += 1;
 
-                if (i >= endDateInCet.Hour && endDateInCet.DayOfWeek == day.DayId)
-                {
-                    minus += 1;
-                }
+                if (i >= endDateInCet.Hour && endDateInCet.DayOfWeek == day.DayId) minus += 1;
 
                 day.SetHour(i, day.GetHour(i) + baseDays + remainder - minus);
             }

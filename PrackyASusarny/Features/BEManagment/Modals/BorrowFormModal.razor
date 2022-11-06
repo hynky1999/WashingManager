@@ -6,7 +6,7 @@
 @inject ILogger<BorrowFormModal<T>> Logger
 
 
-<ModalForm @ref="_modal" TResult="Borrow" TMod="BorrowPerson" Model="_tmpBorrowPerson" Title="Create borrow" OnSubmit="OnSubmit" OnFinish="OnFinish" OnFinishFailed="OnFinishFailed" MessageFail="messageFail" MessageSuccess="messageSuccess">
+<ModalForm @ref="_modal" TResult="Borrow" TMod="BorrowPerson" Model="_tmpBorrowPerson" Title="Create borrow" OnSubmit="OnSubmit" OnFinish="OnFinish" OnFinishFailed="OnFinishFailed" MessageFail="@_messageFail" MessageSuccess="@_messageSuccess">
     <Header>
         @if (ShowWashingMachine) {
             <BEDescription T="T" BEntity="DefaultBe"/>
@@ -38,9 +38,9 @@
     public EventCallback OnFinishFailed { get; set; }
 
     private BorrowPerson _tmpBorrowPerson = new();
-    private string messageSuccess = "Borrow created successfully";
-    private string messageFail = "Failed to create borrow";
-    private ModalForm<BorrowPerson, Borrow> _modal;
+    private string _messageSuccess = "Borrow created successfully";
+    private string _messageFail = "Failed to create borrow";
+    private ModalForm<BorrowPerson, Borrow> _modal = new();
 
     private async Task<Borrow?> OnSubmit() {
         if (DefaultBe is null) {

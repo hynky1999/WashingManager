@@ -4,36 +4,31 @@
 @using PrackyASusarny.Errors.Folder
 @typeparam T where T : class
 @inject NavigationManager NavManager
-@inject IServiceProvider ServiceManager
 @inject MessageService MessageService
+@inject ICrudService<T> CrudService
 
-@if (_crudService is not null) {
-    @if (_models.Count > 0) {
-        <Table TItem="T" DataSource="@_models" Responsive>
-            @foreach (var property in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy)) {
-                @ProperityColumn(context, property)
-            }
-            <ActionColumn>
-                <Space>
-                    <SpaceItem>
-                        <Button Danger OnClick="() => Delete(context)">Delete</Button>
-                    </SpaceItem>
-                    <SpaceItem>
-                        <Button Type="@ButtonType.Dashed" OnClick="() => Update(context)">Update</Button>
-                    </SpaceItem>
-                </Space>
-            </ActionColumn>
-        </Table>
-    } else {
-        <Empty/>
-    }
+@if (_models.Count > 0) {
+    <Table TItem="T" DataSource="@_models" Responsive>
+        @foreach (var property in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy)) {
+            @ProperityColumn(context, property)
+        }
+        <ActionColumn>
+            <Space>
+                <SpaceItem>
+                    <Button Type="@ButtonType.Primary" Size="@AntSizeLDSType.Small" Color="Color.Red3" OnClick="() => Delete(context)">Delete</Button>
+                </SpaceItem>
+                <SpaceItem>
+                    <Button Type="@ButtonType.Primary" Size="@AntSizeLDSType.Small" Color="Color.Green3" OnClick="() => Update(context)">Update</Button>
+                </SpaceItem>
+            </Space>
+        </ActionColumn>
+    </Table>
 } else {
-    <Title Level="2">Model is not able to load itself</Title>
+    <Empty/>
 }
 
 @code {
     private List<T> _models = new();
-    private ICrudService<T>? _crudService;
 
     private readonly Type[] _supportedFilters = {
         typeof(int), typeof(uint), typeof(long), typeof(string), typeof(Enum), typeof(DateTime), typeof(Guid), typeof(bool)
@@ -42,41 +37,40 @@
     private RenderFragment ProperityColumn(T context, PropertyInfo propertyInfo) {
         return builder => {
             var visibilityAttr = propertyInfo.GetCustomAttribute<UIVisibility>();
-            if (visibilityAttr?.Visibility == UIVisibilityEnum.Hidden) {
+    // Must be writable to pass as fieldChanged
+            if (visibilityAttr?.Visibility == UIVisibilityEnum.Hidden || !propertyInfo.CanWrite) {
                 return;
             }
-    // No idea how to make this in raozor syntax because of runtime type
-    // TODO add support for Filtering and Sorting of DB Types
             builder.OpenComponent(0, typeof(Column<>).MakeGenericType(propertyInfo.PropertyType));
-            builder.AddAttribute(1, "Field", propertyInfo.GetValue(context));
+            var val = propertyInfo.GetValue(context);
+            builder.AddAttribute(1, "Field", val);
             builder.AddAttribute(2, "FieldChanged", context.GetSetPropertyEventCallback(this, propertyInfo));
             builder.AddAttribute(3, "FieldExpression", context.GetPropertyExpression(propertyInfo));
+            var content = (val as DbModel)?.Label ?? val?.ToString() ?? "";
+            builder.AddAttribute(4, "ChildContent", (RenderFragment) (builder2 => { builder2.AddContent(0, content); }));
+
             if (propertyInfo.PropertyType.GetInterface("IComparable") != null) {
-                builder.AddAttribute(4, "Sortable", true);
+                builder.AddAttribute(5, "Sortable", true);
             }
             if (_supportedFilters.Contains(propertyInfo.PropertyType)) {
-                builder.AddAttribute(5, "Filterable", true);
+                builder.AddAttribute(6, "Filterable", true);
             }
+            builder.AddContent(7, content);
             builder.CloseComponent();
         };
     }
 
     protected override async Task OnParametersSetAsync() {
-        if (_crudService is null) {
-            _crudService = ServiceManager.GetService<ICrudService<T>>();
+        if (!AdminConfig.AllowedTypes.Contains(typeof(T))) {
+            return;
         }
-        if (_crudService is not null) {
-            _models = await _crudService.GetAllAsync(eager: true);
-        }
+        _models = await CrudService.GetAllAsync(eager: true);
         await base.OnParametersSetAsync();
     }
 
     private void Update(T model) {
-        if (_crudService is null) {
-            return;
-        }
         try {
-            var id = _crudService.GetId(model);
+            var id = CrudService.GetId(model);
             var baseResourceApi = string.Join('/', NavManager.Uri.Split("/")[..^1]);
             NavManager.NavigateTo($"{baseResourceApi}/Update/{id}");
         }
@@ -86,11 +80,8 @@
     }
 
     private async void Delete(T model) {
-        if (_crudService is null) {
-            return;
-        }
         try {
-            await _crudService.DeleteAsync(model);
+            await CrudService.DeleteAsync(model);
             _models.Remove(model);
             StateHasChanged();
 #pragma warning disable CS4014

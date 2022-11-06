@@ -40,10 +40,7 @@ public class RegisterModel : PageModel
                 return Page();
             }
 
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError(string.Empty, error.Description);
-            }
+            foreach (var error in result.Errors) ModelState.AddModelError(string.Empty, error.Description);
         }
 
         return Page();
@@ -51,7 +48,7 @@ public class RegisterModel : PageModel
 
     private string GeneratePassword(int length)
     {
-        string[] randomChars = new[]
+        string[] randomChars =
         {
             "ABCDEFGHJKLMNOPQRSTUVWXYZ", // uppercase 
             "abcdefghijkmnopqrstuvwxyz", // lowercase
@@ -59,7 +56,7 @@ public class RegisterModel : PageModel
             "!@$?_-" // non-alphanumeric
         };
 
-        Random rand = new Random(Environment.TickCount);
+        var rand = new Random(Environment.TickCount);
         return new string(Enumerable.Range(0, length).Select(_ =>
         {
             var chosenSet = randomChars[rand.Next(0, randomChars.Length)];

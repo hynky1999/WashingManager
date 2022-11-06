@@ -15,15 +15,16 @@
     public Status Status { get; set; }
 
     [Parameter]
-    public T? DefaultBE { get; set; }
+    public T? DefaultBe { get; set; }
 
     private async Task OnOkClick(ModalClosingEventArgs e) {
-        if (DefaultBE == null) {
-            MessageService.Error($"No item selected");
+        if (DefaultBe == null) {
+            MessageService.Error("No item selected");
+            return;
         }
         try {
-            await BorrowableEntityService.ChangeStatus(DefaultBE, Status);
-            await OnFinish.InvokeAsync(DefaultBE);
+            await BorrowableEntityService.ChangeStatus(DefaultBe, Status);
+            await OnFinish.InvokeAsync(DefaultBe);
             MessageService.Success($"The item has been marked as {Status.ToString()}.");
         }
         catch (DbException) {
@@ -34,10 +35,10 @@
     public void OpenModal() {
         RenderFragment icon = @<Icon Type="exclamation-circle" Theme="outline"></Icon>;
 
-        ModalService.Confirm(new ConfirmOptions() {
+        ModalService.Confirm(new ConfirmOptions {
             Title = "Do you want to make this entity broken?",
             Icon = icon,
-            OnOk = OnOkClick,
+            OnOk = OnOkClick
         });
     }
 

@@ -1,31 +1,32 @@
 @page "/WashingMachine/Availability"
 @using PrackyASusarny.Features.BEManagment.Modals
 @using AntDesign.TableModels
+@inject ILocationService LocationService
 
 @inject ICrudService<WashingMachine> WashingMachineService
-<Table TItem="WashingMachine" Responsive DataSource="_data" @bind-PageIndex="_pageIndex" PageSize="_pageSize" Total="_total" Loading="_loading" OnChange=@HandleTableChange RemoteDataSource>
+<Table TItem="WashingMachine" Responsive DataSource="_data" @bind-PageIndex="_pageIndex" PageSize="_pageSize" Total="_total" Loading="_loading" OnChange="@HandleTableChange" RemoteDataSource>
     <PropertyColumn Property="@(c => c.Status)" Filters="_statusFilter" Sortable SorterMultiple="1"/>
     <PropertyColumn Property="c => c.Manufacturer"/>
     <PropertyColumn Property="c => c.Manual"/>
-    <AntDesign.Column TData="char?" Filters="_buildingFilters" SorterMultiple="2" Sortable DataIndex="Location.Building">@context?.Location?.Building</AntDesign.Column>
-    <AntDesign.Column TData="int?" Filters=_floorFilters Sortable SorterMultiple="3" DataIndex="Location.Floor">@context?.Location?.Floor</AntDesign.Column>
-    <AntDesign.Column TData="int?" Filters=_roomFilters Sortable SorterMultiple="4" DataIndex="Location.RoomNum">@context?.Location?.RoomNum</AntDesign.Column>
-    <AntDesign.Column TData="int?" DataIndex="Location.RoomNum">@context?.Location?.DoorNum</AntDesign.Column>
-    <AuthorizeView>
-        <ChildContent Context="authContext">
+    <AntDesign.Column TData="char?" Filters="_buildingFilters" SorterMultiple="2" Sortable DataIndex="Location.Building">@context.Location?.Building</AntDesign.Column>
+    <AntDesign.Column TData="int?" Filters="_floorFilters" Sortable SorterMultiple="3" DataIndex="Location.Floor">@context.Location?.Floor</AntDesign.Column>
+    <AntDesign.Column TData="int?" Filters="_roomFilters" Sortable SorterMultiple="4" DataIndex="Location.RoomNum">@context.Location?.RoomNum</AntDesign.Column>
+    <AntDesign.Column TData="int?" DataIndex="Location.RoomNum">@context.Location?.DoorNum</AntDesign.Column>
+    <AuthorizeView Policy="@Policies.BorrowManagement">
+        <ChildContent Context="_">
             <ActionColumn Title="Actions">
                 <Space Size=@("middle")>
-                    @if (@context.Status == Status.Free) {
+                    @if (context.Status == Status.Free) {
                         <SpaceItem>
                             <Button Type="@ButtonType.Primary" Color="Color.Blue3" Size="small" OnClick="@(() => OpenCreateModal(context))">Borrow</Button>
                         </SpaceItem>
                         <SpaceItem>
                             <Button Type="@ButtonType.Primary" Color="Color.Red3" Size="small" OnClick="@(() => OpenStatusModal(context, Status.Broken))">Broken</Button>
                         </SpaceItem>
-                    } else if (@context.Status == Status.Taken) {
+                    } else if (context.Status == Status.Taken) {
                         <SpaceItem>
                         </SpaceItem>
-                    } else if (@context.Status == Status.Broken) {
+                    } else if (context.Status == Status.Broken) {
                         <SpaceItem>
                             <Button Type="@ButtonType.Primary" Color="Color.Green3" Size="small" OnClick="@(() => OpenStatusModal(context, Status.Free))">Repair</Button>
                         </SpaceItem>
@@ -35,46 +36,54 @@
         </ChildContent>
     </AuthorizeView>
 </Table>
-<BorrowFormModal @ref="_modalBorrow" T="WashingMachine" DefaultBe="@defaultBE" ShowWashingMachine="true" OnFinish="OnBorrowCreated"/>
-<StatusChangeModal @ref="_modalStatus" T="WashingMachine" DefaultBe="@defaultBE" Status="_repairStatus" OnFinish="(wm) => wm.Status = _repairStatus"/>
+<BorrowFormModal @ref="_modalBorrow" T="WashingMachine" DefaultBe="@_defaultBe" ShowWashingMachine="true" OnFinish="OnBorrowCreated"/>
+<StatusChangeModal @ref="_modalStatus" T="WashingMachine" DefaultBe="@_defaultBe" Status="_repairStatus" OnFinish="wm => wm.Status = _repairStatus"/>
 
 @code{
-    bool _loading = false;
+    bool _loading;
     int _lastPageIndex = 1;
     int _pageIndex = 1;
-    int _pageSize = 5;
+    readonly int _pageSize = 5;
     int _total;
     WashingMachine[] _data = Array.Empty<WashingMachine>();
 
-    private TableFilter<int?>[] _floorFilters = Enumerable.Range(0, 21).Select(
-        x => new TableFilter<int?>() {Text = x.ToString(), Value = x}).ToArray();
+    private TableFilter<int?>[] _floorFilters = new TableFilter<int?>[0];
+    private TableFilter<char?>[] _buildingFilters = new TableFilter<char?>[0];
+    private TableFilter<int?>[] _roomFilters = new TableFilter<int?>[0];
 
-    private TableFilter<char?>[] _buildingFilters = new[] {
-        new TableFilter<char?>() {Text = "A", Value = 'A'},
-        new TableFilter<char?>() {Text = "B", Value = 'B'},
-    };
 
-    private TableFilter<Status>[] _statusFilter = Enum.GetNames<Status>().Select(
+    private readonly TableFilter<Status>[] _statusFilter = Enum.GetNames<Status>().Select(
         e => {
             var en = Enum.Parse<Status>(e);
-            return new TableFilter<Status>() {Text = e, Value = en, Selected = (en == Status.Free)};
+            return new TableFilter<Status> {Text = e, Value = en, Selected = en == Status.Free};
         }).ToArray();
 
-    private TableFilter<int?>[] _roomFilters = Enumerable.Range(0, 21).Select(
-        x => new TableFilter<int?>() {Text = x.ToString(), Value = x}).ToArray();
 
-    private WashingMachine? defaultBE = null;
-    private StatusChangeModal<WashingMachine> _modalStatus;
-    private BorrowFormModal<WashingMachine> _modalBorrow;
+    private WashingMachine? _defaultBe;
+    private StatusChangeModal<WashingMachine> _modalStatus = new();
+    private BorrowFormModal<WashingMachine> _modalBorrow = new();
     private Status _repairStatus = Status.Broken;
 
+    protected override Task OnInitializedAsync() {
+        _buildingFilters = LocationService.GetBuildingOptions().Select(
+            x => new TableFilter<char?> {Text = x.ToString(), Value = x}).ToArray();
+
+        _roomFilters = LocationService.GetRoomOptions().Select(
+            x => new TableFilter<int?> {Text = x.ToString(), Value = x}).ToArray();
+
+        _floorFilters = LocationService.GetFloorOptions().Select(
+            x => new TableFilter<int?> {Text = x.ToString(), Value = x}).ToArray();
+
+        return base.OnInitializedAsync();
+    }
+
     private void OpenCreateModal(WashingMachine washingMachine) {
-        defaultBE = washingMachine;
+        _defaultBe = washingMachine;
         _modalBorrow.OpenModal();
     }
 
     private void OpenStatusModal(WashingMachine washingMachine, Status s) {
-        defaultBE = washingMachine;
+        _defaultBe = washingMachine;
         _repairStatus = s;
         _modalStatus.OpenModal();
     }
@@ -84,9 +93,9 @@
     // Filter
         if (_lastPageIndex == queryModel.PageIndex) {
             queryModel = new QueryModel<WashingMachine>(1, _pageSize, queryModel.SortModel, queryModel.FilterModel);
-            _total = await WashingMachineService.GetCountAsync(queryModel: queryModel);
+            _total = await WashingMachineService.GetCountAsync(queryModel);
         }
-        _data = (await WashingMachineService.GetAllAsync(queryModel: queryModel, eager: true)).ToArray();
+        _data = (await WashingMachineService.GetAllAsync(queryModel, true)).ToArray();
         _pageIndex = queryModel.PageIndex;
         _lastPageIndex = queryModel.PageIndex;
         _loading = false;

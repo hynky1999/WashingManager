@@ -37,10 +37,7 @@ public class CrudService<T> : ICrudService<T> where T : class
         using var dbContext = await _dbFactory.CreateDbContextAsync();
         var query = dbContext.Set<T>().AsQueryable();
         query = GetBoilerplate(query, queryModel, eager);
-        if (queryModel != null)
-        {
-            query = queryModel.CurrentPagedRecords(query);
-        }
+        if (queryModel != null) query = queryModel.CurrentPagedRecords(query);
 
         return await query.ToListAsync();
     }
@@ -130,10 +127,8 @@ public class CrudService<T> : ICrudService<T> where T : class
         if (eager) query = query.MakeEager(_entityType);
 
         if (queryModel is not null)
-        {
             // I Would od this manually but no way to call SortList and I don't have access to internal functions
             query = query.ExecuteTableQuery(queryModel);
-        }
 
         return query;
     }

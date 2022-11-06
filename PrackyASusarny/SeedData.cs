@@ -5,7 +5,6 @@ using NodaTime.Extensions;
 using PrackyASusarny.Auth.Models;
 using PrackyASusarny.Data;
 using PrackyASusarny.Data.Models;
-using PrackyASusarny.Identity;
 
 // ReSharper disable CoVariantArrayConversion
 
@@ -25,13 +24,18 @@ public class SeedData
         await EnsureRole(serviceProvider, IdentityRoles.Administrator, new[]
         {
             new Claim("ManageUsers", true.ToString()),
+            new Claim("ManageModels", true.ToString()),
+            new Claim("ManageBorrows", true.ToString())
         });
         await AddToRole(serviceProvider, adminId, IdentityRoles.Administrator);
 
 
         // allowed user can create and edit contacts that they create
         var managerId = await EnsureUser(serviceProvider, testUserPw, "manager@contoso.com");
-        await EnsureRole(serviceProvider, IdentityRoles.Receptionist, Enumerable.Empty<Claim>());
+        await EnsureRole(serviceProvider, IdentityRoles.Receptionist, new[]
+        {
+            new Claim("ManageBorrows", true.ToString())
+        });
         await AddToRole(serviceProvider, managerId, IdentityRoles.Receptionist);
         var factory = serviceProvider.GetRequiredService<IDbContextFactory<ApplicationDbContext>>();
         SeedDb(factory);
@@ -54,10 +58,7 @@ public class SeedData
             await userManager.CreateAsync(user, testUserPw);
         }
 
-        if (user == null)
-        {
-            throw new Exception("The password is probably not strong enough!");
-        }
+        if (user == null) throw new Exception("The password is probably not strong enough!");
 
         return user.Id;
     }
@@ -66,10 +67,7 @@ public class SeedData
     {
         var userManager = serviceProvider.GetService<UserManager<User>>();
         var user = await userManager!.FindByIdAsync(userId);
-        if (user == null)
-        {
-            throw new Exception("The password is probably not strong enough!");
-        }
+        if (user == null) throw new Exception("The password is probably not strong enough!");
 
         await userManager.AddToRoleAsync(user, role);
     }
@@ -78,29 +76,20 @@ public class SeedData
     {
         var roleManager = serviceProvider.GetService<RoleManager<Role>>();
 
-        if (roleManager == null)
-        {
-            throw new Exception("roleManager null");
-        }
+        if (roleManager == null) throw new Exception("roleManager null");
 
         var newRole = new Role(role);
         if (!await roleManager.RoleExistsAsync(role))
         {
             await roleManager.CreateAsync(newRole);
-            foreach (var claim in claims)
-            {
-                await roleManager.AddClaimAsync(newRole, claim);
-            }
+            foreach (var claim in claims) await roleManager.AddClaimAsync(newRole, claim);
         }
     }
 
     private static void SeedDb(IDbContextFactory<ApplicationDbContext> factory)
     {
         using var context = factory.CreateDbContext();
-        if (context.WashingMachines.Any())
-        {
-            return;
-        }
+        if (context.WashingMachines.Any()) return;
 
         var wmUsage = CreateWmUsage();
         var manuals = Enumerable.Range(0, 10).Select(_ => CreateRandomManual()).ToArray();
@@ -124,7 +113,7 @@ public class SeedData
     {
         return Enum.GetValues<IsoDayOfWeek>().Select(d =>
         {
-            return new BorrowableEntityUsage<WashingMachine>()
+            return new BorrowableEntityUsage<WashingMachine>
             {
                 DayId = d
             };
@@ -144,17 +133,17 @@ public class SeedData
         return new BorrowPerson
         {
             Name = RandomString(10),
-            Surname = RandomString(10),
+            Surname = RandomString(10)
         };
     }
 
     private static Manual CreateRandomManual()
     {
         var rnd = new Random().Next(20);
-        return new Manual()
+        return new Manual
         {
             FileName = "/manuals/" + rnd + ".pdf",
-            Name = "Manual " + rnd,
+            Name = "Manual " + rnd
         };
     }
 
@@ -166,7 +155,7 @@ public class SeedData
             "Bosh", "Samsung", "LG", "Miele", "AEG", "Electrolux", "Whirlpool", "Siemens", "Zanussi", "Hotpoint"
         };
         var stats = Enum.GetValues<Status>().Where(x => x != Status.Taken).ToArray();
-        return new WashingMachine()
+        return new WashingMachine
         {
             Location = locs[rnd.Next(locs.Length)],
             Manufacturer = manfacs[rnd.Next(manfacs.Length)],
@@ -182,7 +171,7 @@ public class SeedData
         var maxFloor = 20;
         var maxRoom = 20;
         var maxDoorNum = 3;
-        return new Location()
+        return new Location
         {
             Floor = rnd.Next(maxFloor),
             Building = avbBuildings[rnd.Next(2)],
@@ -195,25 +184,19 @@ public class SeedData
     {
         var rnd = new Random();
         var availableWms = wm.Where(x => x.Status == Status.Free).ToArray();
-        if (availableWms.Length == 0)
-        {
-            return null;
-        }
+        if (availableWms.Length == 0) return null;
 
         var start = DateTime.UtcNow.AddDays(-rnd.Next(1, 100)).ToInstant();
         Instant? end = rnd.Next(0, 2) == 0 ? DateTime.UtcNow.AddDays(rnd.Next(2, 100)).ToInstant() : null;
         var chosenWm = availableWms[rnd.Next(availableWms.Length)];
-        if (end != null)
-        {
-            chosenWm.Status = Status.Taken;
-        }
+        if (end != null) chosenWm.Status = Status.Taken;
 
-        return new Borrow()
+        return new Borrow
         {
             BorrowPerson = persons[rnd.Next(persons.Length)],
             BorrowableEntity = chosenWm,
             startDate = start,
-            endDate = end,
+            endDate = end
         };
     }
 }

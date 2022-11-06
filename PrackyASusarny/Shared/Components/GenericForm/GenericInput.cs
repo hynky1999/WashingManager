@@ -161,10 +161,7 @@ public sealed class GenericInput<TModel>
                 attrs.Add(new KeyValuePair<string, object>("showTime", true));
 
             // Nullable
-            if (realType != propertyInfo.PropertyType)
-            {
-                return (typeof(InstantPickerNullable), attrs);
-            }
+            if (realType != propertyInfo.PropertyType) return (typeof(InstantPickerNullable), attrs);
 
             return (typeof(InstantPicker), attrs);
         }

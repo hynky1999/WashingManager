@@ -1,7 +1,7 @@
-namespace PrackyASusarny.Identity;
+namespace PrackyASusarny.Auth.Models;
 
-public class IdentityRoles
+public static class IdentityRoles
 {
-    public static string Administrator = "Administrator";
-    public static string Receptionist = "Receptionist";
+    public const string Administrator = "Administrator";
+    public const string Receptionist = "Receptionist";
 }

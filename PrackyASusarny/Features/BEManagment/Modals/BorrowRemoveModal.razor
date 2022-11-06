@@ -45,7 +45,7 @@
         _visibility = true;
     }
 
-    protected async override Task OnParametersSetAsync() {
+    protected override async Task OnParametersSetAsync() {
         _borrow = DefaultBorrow;
         _borrowableEntity = _borrow?.BorrowableEntity as T;
         if (_borrow is not null) {
