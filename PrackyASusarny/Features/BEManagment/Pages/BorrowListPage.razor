@@ -1,0 +1,26 @@
+@page "/{BEntity}/Borrows"
+@using Microsoft.AspNetCore.Authorization
+@using PrackyASusarny.Features.BEManagment.Listing
+
+@attribute [Authorize(Policy = Policies.BorrowManagement)]
+
+@if (_listType != null) {
+    <DynamicComponent Type="@(typeof(BorrowsTable<>).MakeGenericType(_listType))"/>
+} else {
+    <Title Level="2">@($"{BEntity} not supported")</Title>
+}
+
+@code {
+
+    [Parameter]
+    public string? BEntity { get; set; }
+
+    private Type? _listType;
+
+    protected override void OnParametersSet() {
+        if (ModelUtils.ModelNameToType.TryGetValue(BEntity ?? "", out var tmplistType) && ManagementConfig.AllowedEntities.Contains(tmplistType)) {
+            _listType = tmplistType;
+        }
+    }
+
+}

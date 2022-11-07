@@ -1,5 +1,6 @@
 @page "/AdminMenu/{modelName}/{Action}/{Id:int?}"
 @using Microsoft.AspNetCore.Authorization
+@using PrackyASusarny.Features.AdminPanel.Componenets
 @attribute [Authorize(Policy = Policies.ModelManagement)]
 @inject ILogger<ManageModelPage> Logger
 @inject NavigationManager NavManager
@@ -21,7 +22,7 @@
         <Title Level="2">@("Unknow Action")</Title>
     }
 } else {
-    <Title Level="2">@($"{ModelName} is not showable or doesn't exist")</Title>
+    <Title Level="2">@($"{ModelName} is not supported")</Title>
 }
 
 @code{

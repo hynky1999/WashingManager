@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PrackyASusarny.Auth.Models;
 
-namespace PrackyASusarny.Areas.Identity.Pages.Account;
+namespace PrackyASusarny.Areas.Identity.Pages.Account.Login;
 
 public class LogoutModel : PageModel
 {

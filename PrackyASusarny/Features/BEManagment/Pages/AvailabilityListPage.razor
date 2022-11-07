@@ -1,0 +1,24 @@
+@page "/{BEntity}/Availability"
+@using PrackyASusarny.Features.BEManagment.Listing
+
+
+@if (_listType != null) {
+    <DynamicComponent Type="@(typeof(BETable<>).MakeGenericType(_listType))"/>
+} else {
+    <Title Level="2">@($"{BEntity} not supported")</Title>
+}
+
+@code {
+
+    [Parameter]
+    public string? BEntity { get; set; }
+
+    private Type? _listType;
+
+    protected override void OnParametersSet() {
+        if (ModelUtils.ModelNameToType.TryGetValue(BEntity ?? "", out var tmplistType) && ManagementConfig.AllowedEntities.Contains(tmplistType)) {
+            _listType = tmplistType;
+        }
+    }
+
+}

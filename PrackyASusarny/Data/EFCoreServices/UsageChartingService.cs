@@ -25,6 +25,7 @@ public class UsageChartingService<T> : IUsageChartingService<T> where T : Borrow
         var dbset = context.Set<Borrow>();
         // We cannot just check on equality of day because of timezones
         var query = dbset.Where(borrow => borrow.startDate >= startInstant && borrow.startDate < endInstant);
+        query = query.Where(borrow => borrow.BorrowableEntity is T);
         var grouped = query.GroupBy(borrow => new
                 {hour = borrow.startDate.InZone(DateTimeZoneProviders.Tzdb[tz.Id]).LocalDateTime.Hour})
             .Select(group => new {group.Key.hour, count = group.Count()});
@@ -50,6 +51,7 @@ public class UsageChartingService<T> : IUsageChartingService<T> where T : Borrow
         var endInstant = end.PlusDays(1).AtStartOfDayInZone(tz).ToInstant();
         var query = context.Borrows.Where(borrow =>
             borrow.startDate >= startInstant && borrow.startDate <= endInstant);
+        query = query.Where(borrow => borrow.BorrowableEntity is T);
         var grouped = query.GroupBy(borrow => new
                 {date = borrow.startDate.InZone(DateTimeZoneProviders.Tzdb[tz.Id]).LocalDateTime.Date})
             .Select(group => new {group.Key.date, count = group.Count()});
@@ -70,7 +72,30 @@ public class UsageChartingService<T> : IUsageChartingService<T> where T : Borrow
         var query = context.Set<BorrowableEntityUsage<T>>();
         var summed = query.Select(usage => new
         {
-            usage.DayId, totalUsage = Enumerable.Range(0, 24).Select(h => usage.GetHour(h)).Sum()
+            usage.DayId, totalUsage = usage.Hour0Total
+                                      + usage.Hour1Total
+                                      + usage.Hour2Total
+                                      + usage.Hour3Total
+                                      + usage.Hour4Total
+                                      + usage.Hour5Total
+                                      + usage.Hour6Total
+                                      + usage.Hour7Total
+                                      + usage.Hour8Total
+                                      + usage.Hour9Total
+                                      + usage.Hour10Total
+                                      + usage.Hour11Total
+                                      + usage.Hour12Total
+                                      + usage.Hour13Total
+                                      + usage.Hour14Total
+                                      + usage.Hour15Total
+                                      + usage.Hour16Total
+                                      + usage.Hour17Total
+                                      + usage.Hour18Total
+                                      + usage.Hour19Total
+                                      + usage.Hour20Total
+                                      + usage.Hour21Total
+                                      + usage.Hour22Total
+                                      + usage.Hour23Total
         });
         var sqlDict = await summed.ToDictionaryAsync(usage => usage.DayId, usage => usage.totalUsage);
         var mondaysSinceStart = Period.DaysBetween(BorrowableEntityUsage.CalculatedSince.Date,

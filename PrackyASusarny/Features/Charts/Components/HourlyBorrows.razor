@@ -22,8 +22,7 @@
     private ColumnConfig _config = new();
 
     protected override void OnInitialized() {
-        var description = ChartsUtils.GetChartDescription(Usage, EntityName, (Date, null), LocalizationService);
-        _config = ChartsUtils.CreateColumnConfig(Usage, description, "Hour", "Borrows");
+        _config = ChartsUtils.CreateColumnConfig(Usage, "", "Hour", "Borrows");
         base.OnInitialized();
     }
 
@@ -37,7 +36,9 @@
             _statData = (await Charts.GetBorrowsByHourAsync(val.Value)).Select(usage => new {x = usage.hour.ToString(), y = usage.value}).ToArray();
             if (_chart != null) {
     // Idk doesn't react to statHasCHanged
-                await _chart.UpdateChart(csData: _statData);
+                var description = ChartsUtils.GetChartDescription(Usage, EntityName, (Date, null), LocalizationService);
+                _config.Description.Text = description;
+                await _chart.UpdateChart(csData: _statData, csConfig: _config);
             }
         }
     }

@@ -9,7 +9,7 @@ using PrackyASusarny.Data.Utils;
 using PrackyASusarny.Shared.Components.NodaComponents;
 using PrackyASusarny.Utils;
 
-namespace PrackyASusarny.Shared.Components.GenericForm;
+namespace PrackyASusarny.Shared.GenericComponenets.GenericForm;
 
 public sealed class GenericInput<TModel>
 {

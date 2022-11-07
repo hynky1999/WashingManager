@@ -1,4 +1,5 @@
 using System.Reflection;
+using AntDesign.TableModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using PrackyASusarny.Data.Models;
@@ -68,6 +69,28 @@ public class BorrowService : IBorrowService
         dbContext.ChangeTracker.TrackGraph(borrowC, CreateBorrowTraversal);
         // Since we use concurency token this will fail if status was modified in meantime.
         await dbContext.SaveChangeAsyncRethrow();
+    }
+
+    public async Task<Borrow[]> GetBorrowsByBEAsync<T>(QueryModel<Borrow> qM) where T : BorrowableEntity
+    {
+        using var ctx = _dbFactory.CreateDbContext();
+        return await GetBorrowsQuery<T>(ctx, qM).ToArrayAsync();
+    }
+
+    public async Task<int> CountBorrowsByBEAsync<T>(QueryModel<Borrow> qM) where T : BorrowableEntity
+    {
+        using var ctx = _dbFactory.CreateDbContext();
+        return await GetBorrowsQuery<T>(ctx, qM).CountAsync();
+    }
+
+    private IQueryable<Borrow> GetBorrowsQuery<T>(ApplicationDbContext dbContext, QueryModel<Borrow> qM)
+    {
+        var filtered = qM.ExecuteQuery(dbContext.Borrows);
+        var byType = filtered.Where(b => b.BorrowableEntity is T);
+        return byType
+            .Include(b => b.BorrowPerson)
+            .Include(b => b.BorrowableEntity)
+            .ThenInclude(be => be.Location);
     }
 
     public async Task<ApplicationDbContext> EndBorrowStatisticsAsync(Borrow borrow, ApplicationDbContext dbContext)

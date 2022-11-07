@@ -1,16 +1,14 @@
-@page "/WashingMachine/Manage-borrows"
+@inject ILocationService LocationService
+@inject IBorrowService BorrowService
 @using PrackyASusarny.Features.BEManagment.Modals
 @using AntDesign.TableModels
-@using Microsoft.AspNetCore.Authorization
-@attribute [Authorize(Policy = Policies.BorrowManagement)]
-@inject ILocationService LocationService
+@typeparam T where T : BorrowableEntity
 
-@inject ICrudService<Borrow> BorrowService
-<Table TItem="Borrow" DataSource="_data" @bind-PageIndex="_pageIndex" PageSize="_pageSize" Total="_total" Loading="_loading" OnChange="@HandleTableChange" RemoteDataSource>
+<Table TItem="Borrow" DataSource="_data" @bind-PageIndex="_pageIndex" PageSize="PageSize" Total="_total" Loading="_loading" OnChange="@HandleTableChange" RemoteDataSource>
     <AntDesign.Column TData="Instant" @bind-Field="@context.startDate" Sortable DefaultSortOrder="SortDirection.Ascending">@context.startDate</AntDesign.Column>
     <AntDesign.Column TData="Instant?" @bind-Field="@context.endDate" Filters="_endDate" DefaultSortOrder="SortDirection.Descending" OnFilter="@((value, name) => value == null ? name == null : name != null)">@(context.endDate?.ToString() ?? "Ongoing")</AntDesign.Column>
-    <PropertyColumn Property="@(c => c.BorrowPerson.Name)" Filterable/>
-    <PropertyColumn Property="@(c => c.BorrowPerson.Surname)" Filterable/>
+    <AntDesign.Column TData="string" DataIndex="BorrowPerson.Name" Filterable> </AntDesign.Column>
+    <AntDesign.Column TData="string" DataIndex="BorrowPerson.Surname" Filterable> </AntDesign.Column>
     <AntDesign.Column TData="char?" Filters="_buildingFilters" SorterMultiple="1" Sortable DataIndex="BorrowableEntity.Location.Building">@context.BorrowableEntity.Location?.Building</AntDesign.Column>
     <AntDesign.Column TData="int?" Filters="_floorFilters" Sortable SorterMultiple="2" DataIndex="BorrowableEntity.Location.Floor">@context.BorrowableEntity.Location?.Floor</AntDesign.Column>
     <AntDesign.Column TData="int?" Filters="_roomFilters" Sortable SorterMultiple="3" DataIndex="BorrowableEntity.Location.RoomNum">@context.BorrowableEntity.Location?.RoomNum</AntDesign.Column>
@@ -21,13 +19,16 @@
         </Space>
     </ActionColumn>
 </Table>
-<BorrowRemoveModal @ref="_modal" T="WashingMachine" DefaultBorrow="_defaultBorrow" OnSuccess="@(EndBorrow)" ShowBorrowableEntity="true"></BorrowRemoveModal>
+<BorrowRemoveModal @ref="_modal" T="T" DefaultBorrow="_defaultBorrow" OnSuccess="@(EndBorrow)" ShowBorrowableEntity="true"></BorrowRemoveModal>
 
 @code{
+
+    [Parameter]
+    public int PageSize { get; set; } = 5;
+
     bool _loading;
     int _lastPageIndex = 1;
     int _pageIndex = 1;
-    readonly int _pageSize = 5;
     int _total;
     Borrow[] _data = Array.Empty<Borrow>();
 
@@ -42,7 +43,7 @@
 
 
     private Borrow? _defaultBorrow;
-    private BorrowRemoveModal<WashingMachine> _modal = new();
+    private BorrowRemoveModal<T> _modal = new();
 
     protected override Task OnInitializedAsync() {
         _buildingFilters = LocationService.GetBuildingOptions().Select(
@@ -61,10 +62,10 @@
         _loading = true;
     // Filter
         if (_lastPageIndex == queryModel.PageIndex) {
-            queryModel = new QueryModel<Borrow>(1, _pageSize, queryModel.SortModel, queryModel.FilterModel);
-            _total = await BorrowService.GetCountAsync(queryModel);
+            queryModel = new QueryModel<Borrow>(1, PageSize, queryModel.SortModel, queryModel.FilterModel);
+            _total = await BorrowService.CountBorrowsByBEAsync<T>(queryModel);
         }
-        _data = (await BorrowService.GetAllAsync(queryModel, true)).ToArray();
+        _data = await BorrowService.GetBorrowsByBEAsync<T>(queryModel);
         _pageIndex = queryModel.PageIndex;
         _lastPageIndex = queryModel.PageIndex;
         _loading = false;

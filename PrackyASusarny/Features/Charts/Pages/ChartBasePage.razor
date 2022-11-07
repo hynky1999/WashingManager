@@ -1,0 +1,37 @@
+@page "/{Entity}/Charts"
+@inject ILocalizationService LocaliztionService
+
+@if (_charts.Length > 0) {
+    <Tabs>
+        @foreach (var chart in _charts) {
+            <TabPane Tab="@chart.name">
+                <DynamicComponent Type="@chart.type" Parameters="@chart.args"/>
+            </TabPane>
+        }
+    </Tabs>
+} else {
+    <Title Level="2">@($"{Entity} not supported")</Title>
+}
+
+@code {
+
+    [Parameter]
+    public string? Entity { get; set; }
+
+    private (string name, Type type, Dictionary<string, object> args)[] _charts = {};
+
+
+    protected override void OnParametersSet() {
+        Type? entityType = null;
+        if (ModelUtils.ModelNameToType.TryGetValue(Entity ?? "", out var tmpType) && ChartsConfig.AllowedChartModels.Contains(tmpType)) {
+            entityType = tmpType;
+        }
+        if (entityType is not null) {
+            _charts = ChartsConfig.GetChartsConfig(entityType, LocaliztionService);
+        }
+        base.OnParametersSet();
+    }
+
+
+
+}

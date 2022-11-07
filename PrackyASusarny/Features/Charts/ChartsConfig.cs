@@ -1,11 +1,12 @@
 using PrackyASusarny.Data.Models;
 using PrackyASusarny.Data.ServiceInterfaces;
+using PrackyASusarny.Features.Charts.Components;
 
-namespace PrackyASusarny.Features.ChartPages;
+namespace PrackyASusarny.Features.Charts;
 
 public static class ChartsConfig
 {
-    public static Type[] allowedChartModels = {typeof(WashingMachine)};
+    public static readonly Type[] AllowedChartModels = {typeof(WashingMachine), typeof(DryingRoom)};
 
     public static (string name, Type type, Dictionary<string, object> args)[] GetChartsConfig(Type entityType,
         ILocalizationService loc)

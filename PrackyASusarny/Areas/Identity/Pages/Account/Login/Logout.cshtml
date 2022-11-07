@@ -1,5 +1,5 @@
 @page
-@model LogoutModel
+@model PrackyASusarny.Areas.Identity.Pages.Account.Login.LogoutModel
 @{
     ViewData["Title"] = "Log out";
     Layout = "/Pages/_Layout.cshtml";
@@ -8,7 +8,7 @@
 <header>
     <h1>@ViewData["Title"]</h1>
     @{
-        if (User.Identity.IsAuthenticated) {
+        if (User.Identity?.IsAuthenticated == true) {
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Login/Logout" asp-route-returnUrl="@Url.Page("/", new {area = ""})" method="post">
                 <button type="submit" class="nav-link btn btn-link text-dark">Click here to Logout</button>
             </form>

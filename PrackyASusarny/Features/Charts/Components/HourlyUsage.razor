@@ -42,8 +42,6 @@
     }
 
     protected override async Task OnParametersSetAsync() {
-        var description = $"{Usage} - {Day} for {EntityName}";
-        _config.Description.Text = description;
         await InitializeData(Day);
         await base.OnParametersSetAsync();
     }
@@ -52,7 +50,9 @@
         _statData = (await Charts.GetHourlyUsageAsync(day)).Select(usage => new {x = usage.hour.ToString(), y = Math.Round(usage.value, LocalizationService.DecimalPlaces)}).ToArray();
         if (_chart != null) {
     // Idk doesn't react to statHasCHanged
-            await _chart.UpdateChart(csData: _statData);
+            var description = $"{Usage} - {Day} for {EntityName}";
+            _config.Description.Text = description;
+            await _chart.UpdateChart(csData: _statData, csConfig: _config);
         }
     }
 

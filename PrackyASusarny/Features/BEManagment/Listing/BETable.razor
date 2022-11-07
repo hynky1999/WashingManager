@@ -1,13 +1,16 @@
-@page "/WashingMachine/Availability"
+@inject ILocationService LocationService
+@inject ICrudService<T> CrudService
+
 @using PrackyASusarny.Features.BEManagment.Modals
 @using AntDesign.TableModels
-@inject ILocationService LocationService
+@typeparam T where T : BorrowableEntity
 
-@inject ICrudService<WashingMachine> WashingMachineService
-<Table TItem="WashingMachine" Responsive DataSource="_data" @bind-PageIndex="_pageIndex" PageSize="_pageSize" Total="_total" Loading="_loading" OnChange="@HandleTableChange" RemoteDataSource>
-    <PropertyColumn Property="@(c => c.Status)" Filters="_statusFilter" Sortable SorterMultiple="1"/>
-    <PropertyColumn Property="c => c.Manufacturer"/>
-    <PropertyColumn Property="c => c.Manual"/>
+<Table TItem="T" Responsive DataSource="_data" @bind-PageIndex="_pageIndex" PageSize="_pageSize" Total="_total" Loading="_loading" OnChange="@HandleTableChange" RemoteDataSource>
+    <AntDesign.Column TData="Status" @bind-Field="@context.Status" Filters="_statusFilter" Sortable SorterMultiple="1"/>
+    @if (typeof(T) == typeof(WashingMachine)) {
+        <AntDesign.Column TData="string" DataIndex="Manufacturer"/>
+        <AntDesign.Column TData="Manual" DataIndex="Manual"/>
+    }
     <AntDesign.Column TData="char?" Filters="_buildingFilters" SorterMultiple="2" Sortable DataIndex="Location.Building">@context.Location?.Building</AntDesign.Column>
     <AntDesign.Column TData="int?" Filters="_floorFilters" Sortable SorterMultiple="3" DataIndex="Location.Floor">@context.Location?.Floor</AntDesign.Column>
     <AntDesign.Column TData="int?" Filters="_roomFilters" Sortable SorterMultiple="4" DataIndex="Location.RoomNum">@context.Location?.RoomNum</AntDesign.Column>
@@ -36,8 +39,8 @@
         </ChildContent>
     </AuthorizeView>
 </Table>
-<BorrowFormModal @ref="_modalBorrow" T="WashingMachine" DefaultBe="@_defaultBe" ShowWashingMachine="true" OnFinish="OnBorrowCreated"/>
-<StatusChangeModal @ref="_modalStatus" T="WashingMachine" DefaultBe="@_defaultBe" Status="_repairStatus" OnFinish="wm => wm.Status = _repairStatus"/>
+<BorrowFormModal @ref="_modalBorrow" T="T" DefaultBe="@_defaultBe" ShowWashingMachine="true" OnFinish="OnBorrowCreated"/>
+<StatusChangeModal @ref="_modalStatus" T="T" DefaultBe="@_defaultBe" Status="_repairStatus" OnFinish="wm => wm.Status = _repairStatus"/>
 
 @code{
     bool _loading;
@@ -45,7 +48,7 @@
     int _pageIndex = 1;
     readonly int _pageSize = 5;
     int _total;
-    WashingMachine[] _data = Array.Empty<WashingMachine>();
+    T[] _data = Array.Empty<T>();
 
     private TableFilter<int?>[] _floorFilters = new TableFilter<int?>[0];
     private TableFilter<char?>[] _buildingFilters = new TableFilter<char?>[0];
@@ -59,9 +62,9 @@
         }).ToArray();
 
 
-    private WashingMachine? _defaultBe;
-    private StatusChangeModal<WashingMachine> _modalStatus = new();
-    private BorrowFormModal<WashingMachine> _modalBorrow = new();
+    private T? _defaultBe;
+    private StatusChangeModal<T> _modalStatus = new();
+    private BorrowFormModal<T> _modalBorrow = new();
     private Status _repairStatus = Status.Broken;
 
     protected override Task OnInitializedAsync() {
@@ -77,25 +80,25 @@
         return base.OnInitializedAsync();
     }
 
-    private void OpenCreateModal(WashingMachine washingMachine) {
-        _defaultBe = washingMachine;
+    private void OpenCreateModal(T be) {
+        _defaultBe = be;
         _modalBorrow.OpenModal();
     }
 
-    private void OpenStatusModal(WashingMachine washingMachine, Status s) {
-        _defaultBe = washingMachine;
+    private void OpenStatusModal(T be, Status s) {
+        _defaultBe = be;
         _repairStatus = s;
         _modalStatus.OpenModal();
     }
 
-    async Task HandleTableChange(QueryModel<WashingMachine> queryModel) {
+    async Task HandleTableChange(QueryModel<T> queryModel) {
         _loading = true;
     // Filter
         if (_lastPageIndex == queryModel.PageIndex) {
-            queryModel = new QueryModel<WashingMachine>(1, _pageSize, queryModel.SortModel, queryModel.FilterModel);
-            _total = await WashingMachineService.GetCountAsync(queryModel);
+            queryModel = new QueryModel<T>(1, _pageSize, queryModel.SortModel, queryModel.FilterModel);
+            _total = await CrudService.GetCountAsync(queryModel);
         }
-        _data = (await WashingMachineService.GetAllAsync(queryModel, true)).ToArray();
+        _data = (await CrudService.GetAllAsync(queryModel, true)).ToArray();
         _pageIndex = queryModel.PageIndex;
         _lastPageIndex = queryModel.PageIndex;
         _loading = false;

@@ -1,5 +1,3 @@
-using System.Reflection;
-
 namespace PrackyASusarny.Data.ModelInterfaces;
 // Todo add more key options
 
@@ -10,10 +8,4 @@ public abstract class DbModel
     // human readable name on themselves instead of running central dict.
     public static string HumanReadableName => "IDbModel";
     public abstract string Label { get; }
-}
-
-public interface IKeyable
-{
-    public int GetKey();
-    public bool GetIsKeyProperty(PropertyInfo propertyInfo);
 }

@@ -8,6 +8,7 @@ public static class ModelUtils
         {nameof(BorrowPerson), typeof(BorrowPerson)},
         {nameof(Location), typeof(Location)},
         {nameof(Manual), typeof(Manual)},
-        {nameof(Borrow), typeof(Borrow)}
+        {nameof(Borrow), typeof(Borrow)},
+        {nameof(DryingRoom), typeof(DryingRoom)}
     };
 }

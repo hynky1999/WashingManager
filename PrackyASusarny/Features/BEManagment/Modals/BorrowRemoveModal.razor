@@ -9,7 +9,7 @@
 <Modal Visible="@_visibility"OnCancel="@CloseModal" Footer="@null">
     <h2>End Borrow</h2>
     <Divider/>
-    @if (_borrowableEntity != null) {
+    @if (_borrowableEntity != null && ShowBorrowableEntity) {
         <BEDescription T="T" BEntity="_borrowableEntity"/>
     }
     @if (_borrow is not null) {
@@ -20,7 +20,7 @@
     } else {
         <Spin/>
     }
-    <Button Type="@ButtonType.Primary" OnClick="EndBorrow" Block="true" HtmlType="submit">Submit</Button>
+    <Button Type="@ButtonType.Primary" OnClick="EndBorrow" Loading="_loading" Block="true" HtmlType="submit">Submit</Button>
 </Modal>
 
 
@@ -42,23 +42,25 @@
 
 
     public void OpenModal() {
+        _loading = false;
         _visibility = true;
     }
 
     protected override async Task OnParametersSetAsync() {
+        _loading = true;
         _borrow = DefaultBorrow;
         _borrowableEntity = _borrow?.BorrowableEntity as T;
         if (_borrow is not null) {
             if (ShowBorrowableEntity && _borrowableEntity == null) {
-                _loading = true;
                 _borrowableEntity = await CrudService.GetByIdAsync(_borrow.BorrowableEntityID);
-                _loading = false;
             }
         }
+        _loading = false;
         await base.OnParametersSetAsync();
     }
 
     private void CloseModal() {
+        _loading = false;
         _visibility = false;
     }
 

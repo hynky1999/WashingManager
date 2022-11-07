@@ -61,9 +61,6 @@
     }
 
     protected override async Task OnParametersSetAsync() {
-        if (!AdminConfig.AllowedTypes.Contains(typeof(T))) {
-            return;
-        }
         _models = await CrudService.GetAllAsync(eager: true);
         await base.OnParametersSetAsync();
     }

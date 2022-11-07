@@ -1,5 +1,6 @@
 @inject MessageService MessageService
 @inject ICrudService<T> CrudService
+@using PrackyASusarny.Features.AdminPanel
 @using PrackyASusarny.Errors.Folder
 @typeparam T where T : new() 
 
@@ -23,11 +24,6 @@
     private bool _loading = true;
 
     protected override async Task OnParametersSetAsync() {
-        if (!AdminConfig.AllowedTypes.Contains(typeof(T))) {
-            return;
-        }
-
-
         _loading = true;
         if (Action == CrudAction.Create) {
             _model = new T();

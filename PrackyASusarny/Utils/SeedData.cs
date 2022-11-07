@@ -8,7 +8,7 @@ using PrackyASusarny.Data.Models;
 
 // ReSharper disable CoVariantArrayConversion
 
-namespace PrackyASusarny;
+namespace PrackyASusarny.Utils;
 // Scafolded from https://learn.microsoft.com/en-us/aspnet/core/security/authorization/secure-data?source=recommendations&view=aspnetcore-6.0
 
 public class SeedData

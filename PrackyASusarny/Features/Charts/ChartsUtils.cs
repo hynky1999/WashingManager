@@ -2,7 +2,7 @@ using AntDesign.Charts;
 using Humanizer;
 using PrackyASusarny.Data.ServiceInterfaces;
 
-namespace PrackyASusarny.Features.ChartPages;
+namespace PrackyASusarny.Features.Charts;
 
 public static class ChartsUtils
 {

@@ -7,7 +7,7 @@ using PrackyASusarny.Auth.Models;
 
 // Mostly scrapped from scaffolding
 #nullable disable
-namespace PrackyASusarny.Areas.Identity.Pages.Account;
+namespace PrackyASusarny.Areas.Identity.Pages.Account.Login;
 
 public class LoginModel : PageModel
 {
