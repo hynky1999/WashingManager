@@ -1,6 +1,8 @@
 @typeparam T
+@using Castle.Core.Internal
+@using System.ComponentModel
 @inherits ComponentBase
 
 @code{
-    protected string EntityName = (string) (typeof(T).GetProperty(nameof(DbModel.HumanReadableName))?.GetValue(typeof(T)) ?? nameof(T));
+    protected string EntityName = (typeof(T).GetAttribute<DisplayNameAttribute>()?.DisplayName ?? typeof(T).Name);
 }

@@ -1,37 +1,96 @@
 @inject ILocationService LocationService
 @inject ICrudService<T> CrudService
-
+@inject ILocalizationService Loc
 @using PrackyASusarny.Features.BEManagment.Modals
 @using AntDesign.TableModels
 @typeparam T where T : BorrowableEntity
 
-<Table TItem="T" Responsive DataSource="_data" @bind-PageIndex="_pageIndex" PageSize="_pageSize" Total="_total" Loading="_loading" OnChange="@HandleTableChange" RemoteDataSource>
-    <AntDesign.Column TData="Status" @bind-Field="@context.Status" Filters="_statusFilter" Sortable SorterMultiple="1"/>
+<Table TItem="T" Responsive DataSource="_data" @bind-PageIndex="_pageIndex" 
+       PageSize="_pageSize" Total="_total" 
+       Loading="_loading" OnChange="@HandleTableChange" 
+       RemoteDataSource>
+       
+    <AntDesign.Column TData="Status" @bind-Field="@context.Status" 
+                      Title=@Loc["Status"] 
+                      Filters="_statusFilter" 
+                      Sortable SorterMultiple="1"
+    />
+    
     @if (typeof(T) == typeof(WashingMachine)) {
-        <AntDesign.Column TData="string" DataIndex="Manufacturer"/>
-        <AntDesign.Column TData="Manual" DataIndex="Manual"/>
+        <AntDesign.Column TData="string" 
+                          Title=@Loc["Washing Machine Type"]
+                          DataIndex="Manufacturer"/>
+        <AntDesign.Column TData="Manual"
+                          Title=@Loc["Manual"]
+                          DataIndex="Manual">
+            @{
+                var manual = (context as WashingMachine)?.Manual;
+            }
+            @if (manual != null) {
+                <a href="@manual.FileName">@manual.Name</a>
+            } else {
+                @Loc["None"]
+            }
+        </AntDesign.Column>
     }
-    <AntDesign.Column TData="char?" Filters="_buildingFilters" SorterMultiple="2" Sortable DataIndex="Location.Building">@context.Location?.Building</AntDesign.Column>
-    <AntDesign.Column TData="int?" Filters="_floorFilters" Sortable SorterMultiple="3" DataIndex="Location.Floor">@context.Location?.Floor</AntDesign.Column>
-    <AntDesign.Column TData="int?" Filters="_roomFilters" Sortable SorterMultiple="4" DataIndex="Location.RoomNum">@context.Location?.RoomNum</AntDesign.Column>
-    <AntDesign.Column TData="int?" DataIndex="Location.RoomNum">@context.Location?.DoorNum</AntDesign.Column>
+    <AntDesign.Column TData="char?"
+                      Title=@Loc["Building"]
+                      Filters="_buildingFilters"
+                      SorterMultiple="2"
+                      Sortable
+                      DataIndex="Location.Building">
+        @context.Location?.Building
+    </AntDesign.Column>
+    <AntDesign.Column TData="int?"
+                      Title=@Loc["Floor"]
+                      Filters="_floorFilters"
+                      Sortable SorterMultiple="3"
+                      DataIndex="Location.Floor">
+        @context.Location?.Floor
+    </AntDesign.Column>
+    <AntDesign.Column TData="int?"
+                      Title=@Loc["Room"]
+                      Filters="_roomFilters"
+                      Sortable
+                      SorterMultiple="4"
+                      DataIndex="Location.RoomNum">
+        @context.Location?.RoomNum
+    </AntDesign.Column>
+    <AntDesign.Column 
+        Title=@Loc["Door"]
+        TData="int?" DataIndex="Location.DoorNum">
+        @context.Location?.DoorNum
+    </AntDesign.Column>
     <AuthorizeView Policy="@Policies.BorrowManagement">
         <ChildContent Context="_">
-            <ActionColumn Title="Actions">
+            <ActionColumn Title=@Loc["Actions"]>
                 <Space Size=@("middle")>
                     @if (context.Status == Status.Free) {
                         <SpaceItem>
-                            <Button Type="@ButtonType.Primary" Color="Color.Blue3" Size="small" OnClick="@(() => OpenCreateModal(context))">Borrow</Button>
+                            <Button Type="@ButtonType.Primary"
+                                    Color="Color.Blue3" Size="small"
+                                    OnClick="@(() => OpenCreateModal(context))">
+                                @Loc["Borrow"]
+                            </Button>
                         </SpaceItem>
                         <SpaceItem>
-                            <Button Type="@ButtonType.Primary" Color="Color.Red3" Size="small" OnClick="@(() => OpenStatusModal(context, Status.Broken))">Broken</Button>
+                            <Button Type="@ButtonType.Primary"
+                                    Color="Color.Red3"
+                                    Size=@AntSizeLDSType.Small
+                                    OnClick="@(() => OpenStatusModal(context, Status.Broken))">
+                                @Loc["Broken"]
+                            </Button>
                         </SpaceItem>
-                    } else if (context.Status == Status.Taken) {
+                    }
+                    else if (context.Status == Status.Broken) {
                         <SpaceItem>
-                        </SpaceItem>
-                    } else if (context.Status == Status.Broken) {
-                        <SpaceItem>
-                            <Button Type="@ButtonType.Primary" Color="Color.Green3" Size="small" OnClick="@(() => OpenStatusModal(context, Status.Free))">Repair</Button>
+                            <Button
+                                Type="@ButtonType.Primary"
+                                Color="Color.Green3"
+                                Size=@AntSizeLDSType.Small
+                                OnClick="@(() => OpenStatusModal(context, Status.Free))">
+                                @Loc["Repair"]
+                            </Button>
                         </SpaceItem>
                     }
                 </Space>
@@ -93,7 +152,6 @@
 
     async Task HandleTableChange(QueryModel<T> queryModel) {
         _loading = true;
-    // Filter
         if (_lastPageIndex == queryModel.PageIndex) {
             queryModel = new QueryModel<T>(1, _pageSize, queryModel.SortModel, queryModel.FilterModel);
             _total = await CrudService.GetCountAsync(queryModel);

@@ -12,7 +12,8 @@ namespace PrackyASusarny.Utils;
 
 public static class EFExtensions
 {
-    public static IQueryable<T> MakeEager<T>(this IQueryable<T> query, IEntityType entity, string? parent = null)
+    public static IQueryable<T> MakeEager<T>(this IQueryable<T> query,
+        IEntityType entity, string? parent = null)
         where T : class
     {
         var navigations = entity
@@ -22,7 +23,9 @@ public static class EFExtensions
 
         foreach (var property in navigations)
         {
-            var newParent = parent == null ? property.Name : $"{parent}.{property.Name}";
+            var newParent = parent == null
+                ? property.Name
+                : $"{parent}.{property.Name}";
             query = query.Include(newParent);
             query = query.MakeEager(property.TargetEntityType, newParent);
         }
@@ -30,7 +33,8 @@ public static class EFExtensions
         return query;
     }
 
-    public static IQueryable<T> FilterWithExpressions<T>(this IQueryable<T> query, Expression<Func<T, bool>>[] filters)
+    public static IQueryable<T> FilterWithExpressions<T>(
+        this IQueryable<T> query, Expression<Func<T, bool>>[] filters)
         where T : class
     {
         foreach (var filter in filters) query = query.Where(filter);
@@ -38,7 +42,8 @@ public static class EFExtensions
         return query;
     }
 
-    public static IQueryable<T> SortWithKeys<T, TKey>(this IQueryable<T> query, SortOption<T, TKey>[] sortKeys)
+    public static IQueryable<T> SortWithKeys<T, TKey>(this IQueryable<T> query,
+        SortOption<T, TKey>[] sortKeys)
         where T : class
     {
         if (sortKeys.Length == 0) return query;
@@ -55,7 +60,8 @@ public static class EFExtensions
         return querySort;
     }
 
-    public static async Task SaveChangeAsyncRethrow(this ApplicationDbContext context)
+    public static async Task SaveChangeAsyncRethrow(
+        this ApplicationDbContext context)
     {
         try
         {

@@ -1,9 +1,9 @@
 @typeparam T where T : BorrowableEntity
 @inherits GenericEntityBase<T>
 @inject IUsageChartingService<T> Charts
-@inject ILocalizationService LocalizationService
+@inject ILocalizationService Loc
 @if (_statData.Length == 0) {
-    <Empty Description=@("No Data Found")/>
+    <Empty />
 } else {
     <AntDesign.Charts.Column @ref="_chart" Data="@_statData" Config="@_config"/>
 }
@@ -37,7 +37,7 @@
         ).ToArray();
 
     protected override void OnInitialized() {
-        _config = ChartsUtils.CreateColumnConfig(Usage, "", "Hour", "Usage");
+        _config = ChartsUtils.CreateColumnConfig(Usage, "", "Hour", "Usage", Loc);
         base.OnInitialized();
     }
 
@@ -47,10 +47,10 @@
     }
 
     private async Task InitializeData(IsoDayOfWeek day) {
-        _statData = (await Charts.GetHourlyUsageAsync(day)).Select(usage => new {x = usage.hour.ToString(), y = Math.Round(usage.value, LocalizationService.DecimalPlaces)}).ToArray();
+        _statData = (await Charts.GetHourlyUsageAsync(day)).Select(usage => new {x = usage.hour.ToString(), y = Loc.Round(usage.value)}).ToArray();
         if (_chart != null) {
     // Idk doesn't react to statHasCHanged
-            var description = $"{Usage} - {Day} for {EntityName}";
+            var description = $"{Loc[Usage]} - {Loc[Day.ToString()]} for {Loc[EntityName]}";
             _config.Description.Text = description;
             await _chart.UpdateChart(csData: _statData, csConfig: _config);
         }

@@ -66,10 +66,12 @@ public abstract class BorrowableEntityUsage
     {
         var other = obj as BorrowableEntityUsage;
         if (other == null) return false;
-        return DayId == other.DayId && Enumerable.Range(0, 24).All(i => GetHour(i) == other.GetHour(i));
+        return DayId == other.DayId && Enumerable.Range(0, 24)
+            .All(i => GetHour(i) == other.GetHour(i));
     }
 }
 
-public class BorrowableEntityUsage<T> : BorrowableEntityUsage where T : BorrowableEntity
+public class BorrowableEntityUsage<T> : BorrowableEntityUsage
+    where T : BorrowableEntity
 {
 }

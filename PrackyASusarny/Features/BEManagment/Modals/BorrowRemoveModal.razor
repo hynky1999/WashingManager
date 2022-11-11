@@ -4,10 +4,11 @@
 @inject IBorrowService BorrowService
 @inject ICrudService<T> CrudService
 @inject MessageService Message
+@inject ILocalizationService Loc
 
 
-<Modal Visible="@_visibility"OnCancel="@CloseModal" Footer="@null">
-    <h2>End Borrow</h2>
+<Modal Visible="@_visibility" OnCancel="@CloseModal" Footer="@null">
+    <Title Level="2">@Loc["End Borrow"]</Title>
     <Divider/>
     @if (_borrowableEntity != null && ShowBorrowableEntity) {
         <BEDescription T="T" BEntity="_borrowableEntity"/>
@@ -20,7 +21,9 @@
     } else {
         <Spin/>
     }
-    <Button Type="@ButtonType.Primary" OnClick="EndBorrow" Loading="_loading" Block="true" HtmlType="submit">Submit</Button>
+    <Button Type="@ButtonType.Primary" OnClick="EndBorrow" 
+            Loading="_loading" Block="true" 
+            HtmlType="submit">@Loc["Submit"]</Button>
 </Modal>
 
 
@@ -67,19 +70,19 @@
     private async Task EndBorrow() {
         await OnSuccess.InvokeAsync(_borrow);
         if (_borrow is null) {
-            Message.Error("No borrow selected");
+            Message.Error(Loc["No borrow selected"].ToString());
             return;
         }
         _loading = true;
         try {
             await BorrowService.EndBorrowAsync(_borrow);
             await OnSuccess.InvokeAsync(_borrow);
-            Message.Success("Borrow ended");
+            Message.Success(Loc["Borrow ended"].ToString());
             CloseModal();
             return;
         }
         catch (DbException) {
-            Message.Error("Failed to end borrow");
+            Message.Error(Loc["Failed to end borrow"].ToString());
         }
         _loading = false;
     }

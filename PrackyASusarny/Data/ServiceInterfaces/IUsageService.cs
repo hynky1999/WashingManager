@@ -4,6 +4,7 @@ namespace PrackyASusarny.Data.ServiceInterfaces;
 
 public interface IUsageService
 {
-    public Task<ApplicationDbContext> UpdateUsageStatisticsAsync<T>(Borrow borrow, ApplicationDbContext dbContext)
+    public Task<ApplicationDbContext> UpdateUsageStatisticsAsync<T>(
+        Borrow borrow, ApplicationDbContext dbContext)
         where T : BorrowableEntity;
 }

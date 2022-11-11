@@ -1,16 +1,17 @@
 @using PrackyASusarny.Errors.Folder
 @inject IBorrowService BorrowService
 @inject ILogger<PriceBorrowCompute> Logger
+@inject ILocalizationService Loc
 
 @if (_price is not null) {
-    <Space>
-        <SpaceItem>
-            <h6>@($"Current price: {_price}")</h6>
-        </SpaceItem>
-        <SpaceItem>
-            <Button OnClick="UpdatePrice">Refresh</Button>
-        </SpaceItem>
-    </Space>
+    <GridRow Class="px-4" Justify="space-between" Align="middle">
+        <GridCol>
+            @($"{Loc["Current price"]}: {_price}")
+        </GridCol>
+        <GridCol>
+            <Button OnClick="UpdatePrice">@Loc["Refresh"]</Button>
+        </GridCol>
+    </GridRow>
 }
 
 @code {

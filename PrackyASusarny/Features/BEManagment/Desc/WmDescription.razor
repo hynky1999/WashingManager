@@ -1,8 +1,8 @@
+@inject ILocalizationService Loc
 @if (Wm != null) {
-    <li>
-        <h6>Manufacturer</h6>
-        <p>@(Wm.Manufacturer)</p>
-    </li>
+    <DescriptionsItem Title=@Loc["Manufacturer"]>
+        @Wm.Manufacturer
+    </DescriptionsItem>
 }
 
 @code{

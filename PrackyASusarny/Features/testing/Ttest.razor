@@ -1,7 +1,0 @@
-@page "/Test"
-@inject ILogger<Ttest> Logger
-<ModelSelect TItem="BorrowPerson" Value="Value" ValueChanged="@(x => Logger.LogInformation(x.ToString()))"></ModelSelect>
-
-@code {
-    public BorrowPerson Value { get; set; } = new();
-}

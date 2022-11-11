@@ -9,7 +9,8 @@ public class BorrowableEntityService : IBorrowableEntityService
 {
     private readonly IDbContextFactory<ApplicationDbContext> _dbFactory;
 
-    public BorrowableEntityService(IDbContextFactory<ApplicationDbContext> dbFactory)
+    public BorrowableEntityService(
+        IDbContextFactory<ApplicationDbContext> dbFactory)
     {
         _dbFactory = dbFactory;
     }

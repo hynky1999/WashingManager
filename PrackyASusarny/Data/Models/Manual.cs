@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using PrackyASusarny.Data.ModelInterfaces;
 using PrackyASusarny.Data.Utils;
@@ -8,17 +9,21 @@ using PrackyASusarny.Data.Utils;
 
 namespace PrackyASusarny.Data.Models;
 
+[DisplayName("Manual")]
 public class Manual : DbModel, ICloneable
 {
     [UIVisibility(UIVisibilityEnum.Disabled)]
     [Key]
+    [DisplayName("Manual ID")]
     public int ManualID { get; set; }
 
+    [DisplayName ("File Name")]
     [Required] public string FileName { get; set; } = null!;
 
+    [DisplayName ("Name")]
     [Required] [MaxLength(40)] public string? Name { get; set; }
 
-    public override string Label => $"Manual {ManualID}, {Name}";
+    public override string HumanReadable => $"Manual {ManualID}, {Name}";
 
     public object Clone()
     {

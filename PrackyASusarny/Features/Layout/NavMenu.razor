@@ -1,0 +1,18 @@
+﻿@using PrackyASusarny.Features.BEManagment
+@inject ILocalizationService Loc
+<Menu Mode="MenuMode.Inline">
+    @foreach (var be in ManagementConfig.AllowedEntities) {
+        <SubMenu Title="@(be.Name)" Key=@($"sub{be.Name}")>
+            <MenuItem RouterLink=@($"/{be.Name}/Availability") Key=@($"{be.Name}avail")>@Loc["Availability"]</MenuItem>
+            <AuthorizeView Policy="@Policies.BorrowManagement">
+                <MenuItem RouterLink=@($"/{be.Name}/Borrows") Key=@($"{be.Name}borrow")>@Loc["Manage Borrows"]</MenuItem>
+            </AuthorizeView>
+            <MenuItem RouterLink=@($"/{be.Name}/Charts") Key=@($"{be.Name}graph")>@Loc["Graphs"]</MenuItem>
+        </SubMenu>
+    }
+    <AuthorizeView Policy="@Policies.ModelManagement">
+        <SubMenu Title="Admin Panel" Key="sub3">
+            <MenuItem RouterLink="/AdminMenu/ManageModels" Key="6">@Loc["Manage Models"]</MenuItem>
+        </SubMenu>
+    </AuthorizeView>
+</Menu>

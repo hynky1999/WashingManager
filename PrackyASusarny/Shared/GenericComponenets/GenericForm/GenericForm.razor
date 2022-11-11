@@ -1,5 +1,6 @@
 @namespace PrackyASusarny.Shared.GenericComponenets.GenericForm
 @inject IServiceProvider ServiceProvider
+@inject ILocalizationService Loc
 @typeparam TMod
 
 @if (_fields != null) {
@@ -8,13 +9,13 @@
             @if (FieldTemplate != null) {
                 @FieldTemplate(field)
             } else {
-                <FormItem Label="@field.DisplayName">
+                <FormItem Label=@(Localize ? Loc[field.DisplayName] : field.DisplayName)>
                     @field.FieldFragment
                     <Paragraph>@field.Description</Paragraph>
                 </FormItem>
             }
         }
-        <Button Type="@ButtonType.Primary" HtmlType="submit">Submit</Button>
+        <Button Type="@ButtonType.Primary" HtmlType="submit">@Loc["Submit"]</Button>
     </Form>
 }
 
@@ -26,6 +27,9 @@
 
     [Parameter]
     public bool Loading { get; set; }
+    
+    [Parameter]
+    public bool Localize { get; set; }
 
     [Parameter]
     public RenderFragment<GenericInput<TMod>>? FieldTemplate { get; set; }

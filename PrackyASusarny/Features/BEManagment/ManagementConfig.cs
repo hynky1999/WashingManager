@@ -4,5 +4,6 @@ namespace PrackyASusarny.Features.BEManagment;
 
 public static class ManagementConfig
 {
-    public static Type[] AllowedEntities = new Type[] {typeof(WashingMachine), typeof(DryingRoom)};
+    public static Type[] AllowedEntities =
+        {typeof(WashingMachine), typeof(DryingRoom)};
 }

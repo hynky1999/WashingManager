@@ -3,10 +3,14 @@
 @typeparam TResult where TResult : class
 @inject ILogger<ModalForm<TMod, TResult>> Logger
 @inject MessageService Message
-<Modal Title="@Title" Visible="@_visible" Footer="@null" OnCancel="CloseModal">
+<Modal Visible="@_visible" Footer="@null" OnCancel="CloseModal">
+    @if(Title != null)
+    {
+        <Title Level="2">@Title</Title>
+    }
     @Header
     <Divider/>
-    <Form @ref="@_form" Model="@Model" Loading="_loading">
+    <Form @ref="@_form" Model="@Model" Loading="_loading" Class="p-4">
         @FormContent
     </Form>
     <Divider/>
@@ -22,7 +26,7 @@
     public RenderFragment? Header { get; set; }
 
     [Parameter]
-    public string Title { get; set; } = "Form";
+    public string? Title { get; set; }
 
     [Required]
     [Parameter]

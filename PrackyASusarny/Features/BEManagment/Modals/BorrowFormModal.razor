@@ -4,19 +4,26 @@
 @typeparam T where T : BorrowableEntity
 @inject MessageService Message
 @inject ILogger<BorrowFormModal<T>> Logger
+@inject ILocalizationService Loc
 
 
-<ModalForm @ref="_modal" TResult="Borrow" TMod="BorrowPerson" Model="_tmpBorrowPerson" Title="Create borrow" OnSubmit="OnSubmit" OnFinish="OnFinish" OnFinishFailed="OnFinishFailed" MessageFail="@_messageFail" MessageSuccess="@_messageSuccess">
+<ModalForm MessageFail="@_messageFail" MessageSuccess="@_messageSuccess"
+           Model="_tmpBorrowPerson"
+           OnFinish="OnFinish"
+           OnFinishFailed="OnFinishFailed"
+           OnSubmit="OnSubmit"
+           @ref="_modal"
+           Title=@Loc["Create borrow"] TMod="BorrowPerson" TResult="Borrow">
     <Header>
         @if (ShowWashingMachine) {
-            <BEDescription T="T" BEntity="DefaultBe"/>
+            <BEDescription BEntity="DefaultBe" T="T"/>
         }
     </Header>
     <FormContent>
-        <FormItem Label="Name">
+        <FormItem Label=@Loc["Name"]>
             <Input @bind-Value="_tmpBorrowPerson.Name" id="Name"/>
         </FormItem>
-        <FormItem Label="Surname">
+        <FormItem Label=@Loc["Surname"]>
             <Input @bind-Value="_tmpBorrowPerson.Surname" id="Surname"/>
         </FormItem>
     </FormContent>

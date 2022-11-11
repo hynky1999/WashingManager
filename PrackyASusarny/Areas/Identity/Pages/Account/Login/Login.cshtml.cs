@@ -14,7 +14,8 @@ public class LoginModel : PageModel
     private readonly ILogger<LoginModel> _logger;
     private readonly SignInManager<User> _signInManager;
 
-    public LoginModel(SignInManager<User> signInManager, ILogger<LoginModel> logger)
+    public LoginModel(SignInManager<User> signInManager,
+        ILogger<LoginModel> logger)
     {
         _signInManager = signInManager;
         _logger = logger;
@@ -28,7 +29,8 @@ public class LoginModel : PageModel
 
     public async Task OnGetAsync(string returnUrl = null)
     {
-        if (!string.IsNullOrEmpty(ErrorMessage)) ModelState.AddModelError(string.Empty, ErrorMessage);
+        if (!string.IsNullOrEmpty(ErrorMessage))
+            ModelState.AddModelError(string.Empty, ErrorMessage);
 
         returnUrl ??= Url.Content("~/");
 
@@ -42,7 +44,8 @@ public class LoginModel : PageModel
 
         if (ModelState.IsValid)
         {
-            var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe,
+            var result = await _signInManager.PasswordSignInAsync(Input.Email,
+                Input.Password, Input.RememberMe,
                 false);
             if (result.Succeeded)
             {

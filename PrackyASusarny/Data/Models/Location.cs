@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using PrackyASusarny.Data.ModelInterfaces;
 using PrackyASusarny.Data.Utils;
@@ -8,21 +9,28 @@ using PrackyASusarny.Data.Utils;
 
 namespace PrackyASusarny.Data.Models;
 
+[DisplayName ("Location")]
 public sealed class Location : DbModel, ICloneable
 {
     [UIVisibility(UIVisibilityEnum.Disabled)]
     [Key]
+    [DisplayName ("Location ID")]
     public int LocationID { get; set; }
 
+    [DisplayName ("Floor Number")]
     [Required] public int Floor { get; set; }
 
+    [DisplayName ("Room Number")]
     [Required] public int RoomNum { get; set; }
 
+    [DisplayName ("Door Number")]
     [Required] public int DoorNum { get; set; }
 
+    [DisplayName ("Building")]
     [Required] public char Building { get; set; }
 
-    public override string Label => $"ID: {LocationID}, {Building} {Floor}/{RoomNum}-{DoorNum}";
+    public override string HumanReadable =>
+        $"Location ID: {LocationID}, {Building} {Floor}/{RoomNum}-{DoorNum}";
 
     public object Clone()
     {

@@ -4,7 +4,9 @@ namespace PrackyASusarny.Data.ServiceInterfaces;
 
 public interface ICrudService<T>
 {
-    public Task<List<T>> GetAllAsync(QueryModel<T>? queryModel = null, bool eager = false);
+    public Task<List<T>> GetAllAsync(QueryModel<T>? queryModel = null,
+        bool eager = false);
+
     public Task<int> GetCountAsync(QueryModel<T>? queryModel);
 
     public Task<T?> GetByIdAsync(object id, bool eager = false);

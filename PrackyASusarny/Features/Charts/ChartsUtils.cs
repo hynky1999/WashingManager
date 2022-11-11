@@ -6,31 +6,31 @@ namespace PrackyASusarny.Features.Charts;
 
 public static class ChartsUtils
 {
-    private static readonly string DescriptionFormat = "{0} {1} for {2}";
 
     public static string GetChartDescription(string chartUsage, string entity,
-        (LocalDate? startDate, LocalDate? endDate) dateSpan, ILocalizationService loc)
+        (LocalDate? startDate, LocalDate? endDate) dateSpan,
+        ILocalizationService loc)
     {
-        string dateSpanStr;
-        if (dateSpan.startDate != null && dateSpan.endDate != null)
-            dateSpanStr = $"at {loc.GetLocalizedDate(dateSpan.startDate)} - {loc.GetLocalizedDate(dateSpan.endDate)}";
-        else if (dateSpan.startDate != null)
-            dateSpanStr = $"at {loc.GetLocalizedDate(dateSpan.startDate)}";
-        else if (dateSpan.endDate != null)
-            dateSpanStr = $"at {loc.GetLocalizedDate(dateSpan.endDate)}";
-        else
-            dateSpanStr = "";
-        return string.Format(DescriptionFormat, chartUsage, dateSpanStr, entity);
+        var dateSpanStrs = new[] {loc[dateSpan.startDate], loc[dateSpan.endDate]};
+        var dateStr = String.Join("-", dateSpanStrs);
+        string? at = null;
+        if (dateStr != "")
+        {
+            at = loc["at"];
+        }
+
+        return $"{loc[chartUsage]} {at} {dateStr} {loc["for"]} {loc[entity]}";
     }
 
-    public static ColumnConfig CreateColumnConfig(string title, string description, string xfield, string yfield)
+    public static ColumnConfig CreateColumnConfig(string title,
+        string description, string xfield, string yfield, ILocalizationService loc)
     {
         return new ColumnConfig
         {
             Title = new Title
             {
                 Visible = true,
-                Text = title
+                Text = loc[title]
             },
             Description = new Description
             {
@@ -55,11 +55,11 @@ public static class ChartsUtils
             {
                 x = new
                 {
-                    Alias = xfield.Pascalize()
+                    Alias = loc[xfield.Pascalize()]
                 },
                 y = new
                 {
-                    Alias = yfield.Pascalize()
+                    Alias = loc[yfield.Pascalize()]
                 }
             }
         };

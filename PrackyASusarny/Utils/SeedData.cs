@@ -13,14 +13,16 @@ namespace PrackyASusarny.Utils;
 
 public class SeedData
 {
-    public static async Task Initialize(IServiceProvider serviceProvider, string testUserPw)
+    public static async Task Initialize(IServiceProvider serviceProvider,
+        string testUserPw)
     {
         // For sample purposes seed both with the same password.
         // Password is set with the following:
         // dotnet user-secrets set SeedUserPW <pw>
         // The admin user can do anything
 
-        var adminId = await EnsureUser(serviceProvider, testUserPw, "kydlicek.hynek@gmail.com");
+        var adminId = await EnsureUser(serviceProvider, testUserPw,
+            "kydlicek.hynek@gmail.com");
         await EnsureRole(serviceProvider, IdentityRoles.Administrator, new[]
         {
             new Claim("ManageUsers", true.ToString()),
@@ -31,18 +33,21 @@ public class SeedData
 
 
         // allowed user can create and edit contacts that they create
-        var managerId = await EnsureUser(serviceProvider, testUserPw, "manager@contoso.com");
+        var managerId = await EnsureUser(serviceProvider, testUserPw,
+            "manager@contoso.com");
         await EnsureRole(serviceProvider, IdentityRoles.Receptionist, new[]
         {
             new Claim("ManageBorrows", true.ToString())
         });
         await AddToRole(serviceProvider, managerId, IdentityRoles.Receptionist);
-        var factory = serviceProvider.GetRequiredService<IDbContextFactory<ApplicationDbContext>>();
+        var factory = serviceProvider
+            .GetRequiredService<IDbContextFactory<ApplicationDbContext>>();
         SeedDb(factory);
     }
 
 
-    private static async Task<string> EnsureUser(IServiceProvider serviceProvider,
+    private static async Task<string> EnsureUser(
+        IServiceProvider serviceProvider,
         string testUserPw, string userName)
     {
         var userManager = serviceProvider.GetService<UserManager<User>>();
@@ -58,21 +63,25 @@ public class SeedData
             await userManager.CreateAsync(user, testUserPw);
         }
 
-        if (user == null) throw new Exception("The password is probably not strong enough!");
+        if (user == null)
+            throw new Exception("The password is probably not strong enough!");
 
         return user.Id;
     }
 
-    private static async Task AddToRole(IServiceProvider serviceProvider, string userId, string role)
+    private static async Task AddToRole(IServiceProvider serviceProvider,
+        string userId, string role)
     {
         var userManager = serviceProvider.GetService<UserManager<User>>();
         var user = await userManager!.FindByIdAsync(userId);
-        if (user == null) throw new Exception("The password is probably not strong enough!");
+        if (user == null)
+            throw new Exception("The password is probably not strong enough!");
 
         await userManager.AddToRoleAsync(user, role);
     }
 
-    private static async Task EnsureRole(IServiceProvider serviceProvider, string role, IEnumerable<Claim> claims)
+    private static async Task EnsureRole(IServiceProvider serviceProvider,
+        string role, IEnumerable<Claim> claims)
     {
         var roleManager = serviceProvider.GetService<RoleManager<Role>>();
 
@@ -82,7 +91,8 @@ public class SeedData
         if (!await roleManager.RoleExistsAsync(role))
         {
             await roleManager.CreateAsync(newRole);
-            foreach (var claim in claims) await roleManager.AddClaimAsync(newRole, claim);
+            foreach (var claim in claims)
+                await roleManager.AddClaimAsync(newRole, claim);
         }
     }
 
@@ -92,12 +102,17 @@ public class SeedData
         if (context.WashingMachines.Any()) return;
 
         var wmUsage = CreateWmUsage();
-        var manuals = Enumerable.Range(0, 10).Select(_ => CreateRandomManual()).ToArray();
-        var locs = Enumerable.Range(0, 20).Select(_ => CreateRandomLocation()).ToArray();
-        var wm = Enumerable.Range(0, 20).Select(_ => CreateRandomWashingMachines(locs, manuals)).ToArray();
+        var manuals = Enumerable.Range(0, 10).Select(_ => CreateRandomManual())
+            .ToArray();
+        var locs = Enumerable.Range(0, 20).Select(_ => CreateRandomLocation())
+            .ToArray();
+        var wm = Enumerable.Range(0, 20)
+            .Select(_ => CreateRandomWashingMachines(locs, manuals)).ToArray();
 
-        var persons = Enumerable.Range(0, 10).Select(_ => CreateRandomBorrowPerson()).ToArray();
-        Borrow[] borrows = Enumerable.Range(0, 30).Select(_ => CreateRandomBorrow(persons, wm))
+        var persons = Enumerable.Range(0, 10)
+            .Select(_ => CreateRandomBorrowPerson()).ToArray();
+        Borrow[] borrows = Enumerable.Range(0, 30)
+            .Select(_ => CreateRandomBorrow(persons, wm))
             .Where(x => x is not null).ToArray()!;
 
         context.AddRange(wmUsage);
@@ -109,7 +124,8 @@ public class SeedData
         context.SaveChanges();
     }
 
-    private static IEnumerable<BorrowableEntityUsage<WashingMachine>> CreateWmUsage()
+    private static IEnumerable<BorrowableEntityUsage<WashingMachine>>
+        CreateWmUsage()
     {
         return Enum.GetValues<IsoDayOfWeek>().Select(d =>
         {
@@ -147,14 +163,17 @@ public class SeedData
         };
     }
 
-    private static WashingMachine CreateRandomWashingMachines(Location[] locs, Manual[] mans)
+    private static WashingMachine CreateRandomWashingMachines(Location[] locs,
+        Manual[] mans)
     {
         var rnd = new Random();
         var manfacs = new[]
         {
-            "Bosh", "Samsung", "LG", "Miele", "AEG", "Electrolux", "Whirlpool", "Siemens", "Zanussi", "Hotpoint"
+            "Bosh", "Samsung", "LG", "Miele", "AEG", "Electrolux", "Whirlpool",
+            "Siemens", "Zanussi", "Hotpoint"
         };
-        var stats = Enum.GetValues<Status>().Where(x => x != Status.Taken).ToArray();
+        var stats = Enum.GetValues<Status>().Where(x => x != Status.Taken)
+            .ToArray();
         return new WashingMachine
         {
             Location = locs[rnd.Next(locs.Length)],
@@ -180,14 +199,17 @@ public class SeedData
         };
     }
 
-    private static Borrow? CreateRandomBorrow(BorrowPerson[] persons, WashingMachine[] wm)
+    private static Borrow? CreateRandomBorrow(BorrowPerson[] persons,
+        WashingMachine[] wm)
     {
         var rnd = new Random();
         var availableWms = wm.Where(x => x.Status == Status.Free).ToArray();
         if (availableWms.Length == 0) return null;
 
         var start = DateTime.UtcNow.AddDays(-rnd.Next(1, 100)).ToInstant();
-        Instant? end = rnd.Next(0, 2) == 0 ? DateTime.UtcNow.AddDays(rnd.Next(2, 100)).ToInstant() : null;
+        Instant? end = rnd.Next(0, 2) == 0
+            ? DateTime.UtcNow.AddDays(rnd.Next(2, 100)).ToInstant()
+            : null;
         var chosenWm = availableWms[rnd.Next(availableWms.Length)];
         if (end != null) chosenWm.Status = Status.Taken;
 

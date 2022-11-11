@@ -9,6 +9,9 @@ public interface IBorrowService
     Task EndBorrowAsync(Borrow borrowC);
     Task AddBorrowAsync(Borrow borrowC);
 
-    Task<Borrow[]> GetBorrowsByBEAsync<T>(QueryModel<Borrow> qM) where T : BorrowableEntity;
-    Task<int> CountBorrowsByBEAsync<T>(QueryModel<Borrow> qM) where T : BorrowableEntity;
+    Task<Borrow[]> GetBorrowsByBEAsync<T>(QueryModel<Borrow> qM)
+        where T : BorrowableEntity;
+
+    Task<int> CountBorrowsByBEAsync<T>(QueryModel<Borrow> qM)
+        where T : BorrowableEntity;
 }

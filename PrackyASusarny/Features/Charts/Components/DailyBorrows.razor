@@ -1,9 +1,9 @@
 @typeparam T where T : BorrowableEntity
 @inherits GenericEntityBase<T>
 @inject IUsageChartingService<T> Charts
-@inject ILocalizationService LocalizationService
+@inject ILocalizationService Loc
 @if (_statData.Length == 0) {
-    <Empty Description=@("No Data Found")/>
+    <Empty />
 } else {
     <AntDesign.Charts.Column @ref=_chart Data="_statData" Config="_config"/>
 }
@@ -26,7 +26,7 @@
     private Column? _chart;
 
     protected override void OnInitialized() {
-        _config = ChartsUtils.CreateColumnConfig(Usage, "", "Date", "Borrows");
+        _config = ChartsUtils.CreateColumnConfig(Usage, "", "Date", "Borrows", Loc);
         base.OnInitialized();
     }
 
@@ -43,7 +43,7 @@
             _statData = (await Charts.GetBorrowsByDayAsync(start, end)).Select(usage => new {x = usage.time.ToString(), y = usage.value}).ToArray();
             if (_chart != null) {
     // Idk doesn't react to statHasCHanged
-                var description = ChartsUtils.GetChartDescription(Usage, EntityName, (SinceDate, ToDate), LocalizationService);
+                var description = ChartsUtils.GetChartDescription(Usage, EntityName, (SinceDate, ToDate), Loc);
                 _config.Description.Text = description;
                 await _chart.UpdateChart(csData: _statData, csConfig: _config);
             }

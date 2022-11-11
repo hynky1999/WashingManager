@@ -12,7 +12,8 @@ public class RegisterModel : PageModel
     private readonly SignInManager<User> _signInManager;
     private readonly UserManager<User> _userManager;
 
-    public RegisterModel(SignInManager<User> signInManager, UserManager<User> userManager)
+    public RegisterModel(SignInManager<User> signInManager,
+        UserManager<User> userManager)
     {
         _signInManager = signInManager;
         _userManager = userManager;
@@ -31,16 +32,19 @@ public class RegisterModel : PageModel
     {
         if (ModelState.IsValid)
         {
-            var user = new User {UserName = Input.UserName, Email = Input.Email};
+            var user = new User
+                {UserName = Input.UserName, Email = Input.Email};
             var password = GeneratePassword(12);
             var result = await _userManager.CreateAsync(user, password);
             if (result.Succeeded)
             {
-                StatusMessage = $"User's password is {password}. Please change it as soon as possible.";
+                StatusMessage =
+                    $"User's password is {password}. Please change it as soon as possible.";
                 return Page();
             }
 
-            foreach (var error in result.Errors) ModelState.AddModelError(string.Empty, error.Description);
+            foreach (var error in result.Errors)
+                ModelState.AddModelError(string.Empty, error.Description);
         }
 
         return Page();

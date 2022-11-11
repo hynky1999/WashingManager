@@ -1,6 +1,6 @@
 @typeparam T where T : BorrowableEntity
 @inject IUsageChartingService<T> Charts
-@inject ILocalizationService LocalizationService
+@inject ILocalizationService Loc
 @inherits GenericEntityBase<T>
 @if (_statData.Length == 0) {
     <Empty Description=@("No Data Found")/>
@@ -15,9 +15,9 @@
     private ColumnConfig _config = new();
 
     protected override async Task OnInitializedAsync() {
-        var description = ChartsUtils.GetChartDescription(Usage, EntityName, (null, null), LocalizationService);
-        _config = ChartsUtils.CreateColumnConfig(Usage, description, "Day of Week", "Usage");
-        _statData = (await Charts.GetWeekUsageAsync()).Select(usage => new {x = usage.dayOfWeek.ToString(), y = Math.Round(usage.value, LocalizationService.DecimalPlaces)}).ToArray();
+        var description = ChartsUtils.GetChartDescription(Usage, EntityName, (null, null), Loc);
+        _config = ChartsUtils.CreateColumnConfig(Usage, description, "Day of Week", "Usage", Loc);
+        _statData = (await Charts.GetWeekUsageAsync()).Select(usage => new {x = usage.dayOfWeek.ToString(), y = Loc.Round(usage.value)}).ToArray();
         await base.OnParametersSetAsync();
         base.OnInitialized();
     }

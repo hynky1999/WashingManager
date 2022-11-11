@@ -1,13 +1,14 @@
 @page "/{BEntity}/Borrows"
 @using Microsoft.AspNetCore.Authorization
 @using PrackyASusarny.Features.BEManagment.Listing
+@inject ILocalizationService Loc
 
 @attribute [Authorize(Policy = Policies.BorrowManagement)]
 
 @if (_listType != null) {
     <DynamicComponent Type="@(typeof(BorrowsTable<>).MakeGenericType(_listType))"/>
 } else {
-    <Title Level="2">@($"{BEntity} not supported")</Title>
+    <Title Level="2">@($"{Loc[BEntity!]} {Loc["is not supported"]}")</Title>
 }
 
 @code {

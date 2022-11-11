@@ -1,5 +1,6 @@
 @inject MessageService MessageService
 @inject ICrudService<T> CrudService
+@inject ILocalizationService Loc
 @using PrackyASusarny.Features.AdminPanel
 @using PrackyASusarny.Errors.Folder
 @typeparam T where T : new() 
@@ -8,7 +9,7 @@
     <GenericForm Loading="@_loading" @bind-Model="@_model" OnFinish="@OnFinish">
     </GenericForm>
 } else {
-    <Title Level="2">Model not found</Title>
+    <Title Level="2">@Loc["Model not found"]</Title>
 }
 
 @code {

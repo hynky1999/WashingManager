@@ -4,14 +4,15 @@
 @attribute [Authorize(Policy = Policies.ModelManagement)]
 @inject ILogger<ManageModelPage> Logger
 @inject NavigationManager NavManager
+@inject ILocalizationService Loc
 
 
-<PageHeader Title=@($"{ModelName}") SubTitle="@Action"/>
+<PageHeader Title=@Loc[ModelName!] SubTitle="@Loc[Action!]"/>
 <AdminMenuNavBar/>
 <Divider/>
 @if (_listType is not null) {
     @if (Action == "List") {
-        <Button OnClick="@(_ => NavManager.NavigateTo($"adminMenu/{ModelName}/Create"))">Create New</Button>
+        <Button OnClick="@(_ => NavManager.NavigateTo($"adminMenu/{ModelName}/Create"))">@Loc["Create New"]</Button>
         <Divider/>
         @CrudListTableFragment()
     } else if (Action == "Create") {
@@ -19,10 +20,10 @@
     } else if (Action == "Update") {
         @CrudForm(CrudAction.Update, Id)
     } else {
-        <Title Level="2">@("Unknow Action")</Title>
+        <Title Level="2">@Loc["Unknow Action"]</Title>
     }
 } else {
-    <Title Level="2">@($"{ModelName} is not supported")</Title>
+    <Title Level="2">@Loc[$"{ModelName} is not supported"]</Title>
 }
 
 @code{

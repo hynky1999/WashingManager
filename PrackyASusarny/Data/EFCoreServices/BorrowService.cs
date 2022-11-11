@@ -17,22 +17,29 @@ public class BorrowService : IBorrowService
     private readonly IUsageService _usageService;
     private readonly MethodInfo _usageUpdateStatisticsMethod;
 
-    public BorrowService(IDbContextFactory<ApplicationDbContext> dbFactory, IBorrowPersonService borrowPersonService,
-        ILocalizationService localizationService, IUsageService usageService, ILogger<BorrowService> logger)
+    public BorrowService(IDbContextFactory<ApplicationDbContext> dbFactory,
+        IBorrowPersonService borrowPersonService,
+        ILocalizationService localizationService, IUsageService usageService,
+        ILogger<BorrowService> logger)
     {
         _dbFactory = dbFactory;
         _borrowPersonService = borrowPersonService;
         _localizationService = localizationService;
         _usageService = usageService;
         _usageUpdateStatisticsMethod = typeof(UsageService).GetMethods()
-            .FirstOrDefault(m => m.IsGenericMethod && m.Name == "UpdateUsageStatisticsAsync")!;
+            .FirstOrDefault(m =>
+                m.IsGenericMethod && m.Name == "UpdateUsageStatisticsAsync")!;
         _logger = logger;
     }
 
     public async Task<Price> GetPriceAsync(Borrow borrow)
     {
         var duration = _localizationService.Now - borrow.startDate;
-        var price = new Price {Amount = (int) (duration.Minutes / 30.0 * Rates.WMpricePerHalfHour), Currency = "CZK"};
+        var price = new Price
+        {
+            Amount = (int) (duration.Minutes / 30.0 * Rates.WMpricePerHalfHour),
+            Currency = "CZK"
+        };
         return price;
     }
 
@@ -40,7 +47,8 @@ public class BorrowService : IBorrowService
     {
         var borrowC = (Borrow) borrow.Clone();
         using var dbContext = await _dbFactory.CreateDbContextAsync();
-        var contextWithStat = await EndBorrowStatisticsAsync(borrowC, dbContext);
+        var contextWithStat =
+            await EndBorrowStatisticsAsync(borrowC, dbContext);
         contextWithStat.Borrows.Attach(borrowC);
         borrowC.endDate = _localizationService.Now;
         borrowC.BorrowableEntity.Status = Status.Free;
@@ -53,14 +61,16 @@ public class BorrowService : IBorrowService
         // Deepcopy to prevent overwriting original
         var borrowC = (Borrow) borrow.Clone();
 
-        if (borrowC.BorrowableEntity.Status != Status.Free) throw new ArgumentException("Invalid Value");
+        if (borrowC.BorrowableEntity.Status != Status.Free)
+            throw new ArgumentException("Invalid Value");
 
         borrowC.BorrowableEntity.Status = Status.Taken;
         borrowC.startDate = _localizationService.Now;
 
         if (borrowC.BorrowPerson.BorrowPersonID == 0)
         {
-            var id = await _borrowPersonService.GetIdByNameAndSurnameAsync(borrowC.BorrowPerson.Name,
+            var id = await _borrowPersonService.GetIdByNameAndSurnameAsync(
+                borrowC.BorrowPerson.Name,
                 borrowC.BorrowPerson.Surname);
             borrowC.BorrowPerson.BorrowPersonID = id;
         }
@@ -71,19 +81,22 @@ public class BorrowService : IBorrowService
         await dbContext.SaveChangeAsyncRethrow();
     }
 
-    public async Task<Borrow[]> GetBorrowsByBEAsync<T>(QueryModel<Borrow> qM) where T : BorrowableEntity
+    public async Task<Borrow[]> GetBorrowsByBEAsync<T>(QueryModel<Borrow> qM)
+        where T : BorrowableEntity
     {
         using var ctx = _dbFactory.CreateDbContext();
         return await GetBorrowsQuery<T>(ctx, qM).ToArrayAsync();
     }
 
-    public async Task<int> CountBorrowsByBEAsync<T>(QueryModel<Borrow> qM) where T : BorrowableEntity
+    public async Task<int> CountBorrowsByBEAsync<T>(QueryModel<Borrow> qM)
+        where T : BorrowableEntity
     {
         using var ctx = _dbFactory.CreateDbContext();
         return await GetBorrowsQuery<T>(ctx, qM).CountAsync();
     }
 
-    private IQueryable<Borrow> GetBorrowsQuery<T>(ApplicationDbContext dbContext, QueryModel<Borrow> qM)
+    private IQueryable<Borrow> GetBorrowsQuery<T>(
+        ApplicationDbContext dbContext, QueryModel<Borrow> qM)
     {
         var filtered = qM.ExecuteQuery(dbContext.Borrows);
         var byType = filtered.Where(b => b.BorrowableEntity is T);
@@ -93,13 +106,16 @@ public class BorrowService : IBorrowService
             .ThenInclude(be => be.Location);
     }
 
-    public async Task<ApplicationDbContext> EndBorrowStatisticsAsync(Borrow borrow, ApplicationDbContext dbContext)
+    public async Task<ApplicationDbContext> EndBorrowStatisticsAsync(
+        Borrow borrow, ApplicationDbContext dbContext)
     {
         // Take dbContext to be able to use it in transaction
         var borrowEntityT = borrow.BorrowableEntity.GetType();
         // Update statistics based on type
-        dbContext = await (Task<ApplicationDbContext>) _usageUpdateStatisticsMethod.MakeGenericMethod(borrowEntityT)
-            .Invoke(_usageService, new object[] {borrow, dbContext})!;
+        dbContext =
+            await (Task<ApplicationDbContext>) _usageUpdateStatisticsMethod
+                .MakeGenericMethod(borrowEntityT)
+                .Invoke(_usageService, new object[] {borrow, dbContext})!;
         return dbContext;
     }
 
@@ -108,9 +124,11 @@ public class BorrowService : IBorrowService
         node.Entry.State = EntityState.Unchanged;
         if (node.Entry.Entity is Borrow) node.Entry.State = EntityState.Added;
 
-        if (node.Entry.Entity is BorrowPerson {BorrowPersonID: 0}) node.Entry.State = EntityState.Added;
+        if (node.Entry.Entity is BorrowPerson {BorrowPersonID: 0})
+            node.Entry.State = EntityState.Added;
 
         if (node.Entry.Entity is BorrowableEntity)
-            node.Entry.Property(nameof(BorrowableEntity.Status)).IsModified = true;
+            node.Entry.Property(nameof(BorrowableEntity.Status)).IsModified =
+                true;
     }
 }

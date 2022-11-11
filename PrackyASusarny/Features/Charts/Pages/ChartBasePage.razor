@@ -1,5 +1,5 @@
 @page "/{Entity}/Charts"
-@inject ILocalizationService LocaliztionService
+@inject ILocalizationService Loc
 
 @if (_charts.Length > 0) {
     <Tabs>
@@ -10,7 +10,7 @@
         }
     </Tabs>
 } else {
-    <Title Level="2">@($"{Entity} not supported")</Title>
+    <Title Level="2">@($"{Loc[Entity!]} {Loc["is not supported"]}")</Title>
 }
 
 @code {
@@ -27,7 +27,7 @@
             entityType = tmpType;
         }
         if (entityType is not null) {
-            _charts = ChartsConfig.GetChartsConfig(entityType, LocaliztionService);
+            _charts = ChartsConfig.GetChartsConfig(entityType, Loc);
         }
         base.OnParametersSet();
     }

@@ -4,6 +4,7 @@
 @inject ModalService ModalService
 @inject IBorrowableEntityService BorrowableEntityService
 @inject MessageService MessageService
+@inject ILocalizationService Loc
 
 @code {
 
@@ -36,7 +37,7 @@
         RenderFragment icon = @<Icon Type="exclamation-circle" Theme="outline"></Icon>;
 
         ModalService.Confirm(new ConfirmOptions {
-            Title = "Do you want to make this entity broken?",
+            Title = Loc["Do you want to make this entity broken?"],
             Icon = icon,
             OnOk = OnOkClick
         });

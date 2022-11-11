@@ -5,14 +5,18 @@ namespace PrackyASusarny.Shared.Components.NodaComponents;
 
 public static class NodaUtils
 {
-    public static Instant DateTimeToInstant(DateTime dateTime, ILocalizationService localizationService)
+    public static Instant DateTimeToInstant(DateTime dateTime,
+        ILocalizationService localizationService)
     {
-        return dateTime.ToLocalDateTime().InZoneLeniently(localizationService.TimeZone).ToInstant();
+        return dateTime.ToLocalDateTime()
+            .InZoneLeniently(localizationService.TimeZone).ToInstant();
     }
 
-    public static DateTime InstantToDateTime(Instant instant, ILocalizationService localizationService)
+    public static DateTime InstantToDateTime(Instant instant,
+        ILocalizationService localizationService)
     {
-        return instant.InZone(localizationService.TimeZone).ToDateTimeUnspecified();
+        return instant.InZone(localizationService.TimeZone)
+            .ToDateTimeUnspecified();
     }
 
     public static LocalDate? DateTimeToLocalDate(DateTime? val)

@@ -1,11 +1,12 @@
 @page "/{BEntity}/Availability"
 @using PrackyASusarny.Features.BEManagment.Listing
+@inject ILocalizationService Loc
 
 
 @if (_listType != null) {
     <DynamicComponent Type="@(typeof(BETable<>).MakeGenericType(_listType))"/>
 } else {
-    <Title Level="2">@($"{BEntity} not supported")</Title>
+    <Title Level="2">@($"{Loc[BEntity!]} {Loc["is not supported"]}")</Title>
 }
 
 @code {

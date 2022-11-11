@@ -1,17 +1,15 @@
+@inject ILocalizationService Loc
 @if (Borrow is not null) {
-    <Card Title="Borrow Description">
+    <Card Title=@Loc["Borrow Description"] >
         <Body>
-        <ul>
-            <li>
-                <h6>Start time</h6>
-                <p>@Borrow.startDate</p>
-            </li>
-            <li>
-                <h6>Student</h6>
-                <p>@Borrow.BorrowPerson.Name</p>
-                <p>@Borrow.BorrowPerson.Surname</p>
-            </li>
-        </ul>
+        <Descriptions Column="column">
+            <DescriptionsItem Title=@Loc["Start time"]>
+                @Loc[Borrow.startDate]
+            </DescriptionsItem>
+            <DescriptionsItem Title=@Loc["Person"]>
+                @($"{Borrow.BorrowPerson.Name} {Borrow.BorrowPerson.Surname}")
+            </DescriptionsItem>
+        </Descriptions>
         </Body>
     </Card>
 }
@@ -20,5 +18,13 @@
 
     [Parameter]
     public Borrow? Borrow { get; set; }
+    private Dictionary<string, int> column = new Dictionary<string, int> {
+            { "xxl", 1 },
+            { "xl", 1},
+            { "lg", 1},
+            { "md", 1},
+            { "sm", 1},
+            { "xs", 1}
+        };
 
 }

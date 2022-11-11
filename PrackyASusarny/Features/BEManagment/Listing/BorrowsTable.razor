@@ -1,25 +1,66 @@
 @inject ILocationService LocationService
 @inject IBorrowService BorrowService
+@inject ILocalizationService Loc
+
 @using PrackyASusarny.Features.BEManagment.Modals
 @using AntDesign.TableModels
+@using System.Linq.Expressions
 @typeparam T where T : BorrowableEntity
 
-<Table TItem="Borrow" DataSource="_data" @bind-PageIndex="_pageIndex" PageSize="PageSize" Total="_total" Loading="_loading" OnChange="@HandleTableChange" RemoteDataSource>
-    <AntDesign.Column TData="Instant" @bind-Field="@context.startDate" Sortable DefaultSortOrder="SortDirection.Ascending">@context.startDate</AntDesign.Column>
-    <AntDesign.Column TData="Instant?" @bind-Field="@context.endDate" Filters="_endDate" DefaultSortOrder="SortDirection.Descending" OnFilter="@((value, name) => value == null ? name == null : name != null)">@(context.endDate?.ToString() ?? "Ongoing")</AntDesign.Column>
-    <AntDesign.Column TData="string" DataIndex="BorrowPerson.Name" Filterable> </AntDesign.Column>
-    <AntDesign.Column TData="string" DataIndex="BorrowPerson.Surname" Filterable> </AntDesign.Column>
-    <AntDesign.Column TData="char?" Filters="_buildingFilters" SorterMultiple="1" Sortable DataIndex="BorrowableEntity.Location.Building">@context.BorrowableEntity.Location?.Building</AntDesign.Column>
-    <AntDesign.Column TData="int?" Filters="_floorFilters" Sortable SorterMultiple="2" DataIndex="BorrowableEntity.Location.Floor">@context.BorrowableEntity.Location?.Floor</AntDesign.Column>
-    <AntDesign.Column TData="int?" Filters="_roomFilters" Sortable SorterMultiple="3" DataIndex="BorrowableEntity.Location.RoomNum">@context.BorrowableEntity.Location?.RoomNum</AntDesign.Column>
-    <AntDesign.Column TData="int?" DataIndex="BorrowableEntity.Location.DoorNum">@context.BorrowableEntity.Location?.DoorNum</AntDesign.Column>
+<Table @bind-PageIndex="_pageIndex" DataSource="_data" Loading="_loading"
+       OnChange="@HandleTableChange" PageSize="PageSize" RemoteDataSource
+       TItem="Borrow" Total="_total" Responsive>
+
+    <AntDesign.Column @bind-Field="@context.startDate" Title="@Loc["Start Time"]" 
+                      DefaultSortOrder="SortDirection.Ascending"
+                      Sortable TData="Instant">
+        @Loc[context.startDate]
+    </AntDesign.Column>
+    <AntDesign.Column @bind-Field="@context.endDate" Title="@Loc["End Time"]" 
+                      DefaultSortOrder="SortDirection.Descending"
+                      Filters="_endDateFilters" OnFilter=@_endDateOnFilter
+                      TData="Instant?">
+        @(Loc[context.endDate] ?? Loc["Ongoing"])
+    </AntDesign.Column>
+    <AntDesign.Column DataIndex="BorrowPerson.Name" Title="@Loc["Name"]" 
+                      Filterable TData="string"/> 
+    <AntDesign.Column DataIndex="BorrowPerson.Surname" Title="@Loc["Surname"]" 
+                      Filterable TData="string"/> 
+    <AntDesign.Column DataIndex="BorrowableEntity.Location.Building"
+                      Title=@Loc["Building"]
+                      Filters="_buildingFilters"
+                      Sortable SorterMultiple="1" TData="char?">
+        @context.BorrowableEntity.Location?.Building
+    </AntDesign.Column>
+    <AntDesign.Column DataIndex="BorrowableEntity.Location.Floor"
+                      Title=@Loc["Floor"]
+                      Filters="_floorFilters"
+                      Sortable SorterMultiple="2" TData="int?">
+        @context.BorrowableEntity.Location?.Floor
+    </AntDesign.Column>
+    <AntDesign.Column DataIndex="BorrowableEntity.Location.RoomNum"
+                      Title=@Loc["Room"]
+                      Filters="_roomFilters"
+                      Sortable SorterMultiple="3" TData="int?">
+        @context.BorrowableEntity.Location?.RoomNum
+    </AntDesign.Column>
+    <AntDesign.Column DataIndex="BorrowableEntity.Location.DoorNum" TData="int?"
+        Title=@Loc["Door"]>
+        @context.BorrowableEntity.Location?.DoorNum
+    </AntDesign.Column>
     <ActionColumn>
         <Space>
-            <Button OnClick="() => OpenRemoveModal(context)" Color="Color.Blue3" Type="@ButtonType.Primary" Size="small">End Borrow</Button>
+            <Button Color="Color.Blue3" 
+                    OnClick="() => OpenRemoveModal(context)" 
+                    Size="@AntSizeLDSType.Small" 
+                    Type="@ButtonType.Primary">@(Loc["End Borrow"])</Button>
         </Space>
     </ActionColumn>
 </Table>
-<BorrowRemoveModal @ref="_modal" T="T" DefaultBorrow="_defaultBorrow" OnSuccess="@(EndBorrow)" ShowBorrowableEntity="true"></BorrowRemoveModal>
+<BorrowRemoveModal 
+    DefaultBorrow="_defaultBorrow" OnSuccess="@(EndBorrow)" 
+    @ref="_modal" ShowBorrowableEntity="true" 
+    T="T"/>
 
 @code{
 
@@ -36,10 +77,11 @@
     private TableFilter<char?>[] _buildingFilters = new TableFilter<char?>[0];
     private TableFilter<int?>[] _roomFilters = new TableFilter<int?>[0];
 
-    private readonly TableFilter<Instant?>[] _endDate = {
-        new() {Text = "Open", Value = null, Selected = true},
-        new() {Text = "Ended", Value = Instant.MaxValue, Selected = false}
-    };
+    Expression<Func<Instant?, Instant?, bool>> _endDateOnFilter = (value, name) =>
+        value == null ?
+            name == null : name != null;
+
+    private TableFilter<Instant?>[] _endDateFilters = new TableFilter<Instant?>[0];
 
 
     private Borrow? _defaultBorrow;
@@ -54,7 +96,11 @@
 
         _floorFilters = LocationService.GetFloorOptions().Select(
             x => new TableFilter<int?> {Text = x.ToString(), Value = x}).ToArray();
-
+        _endDateFilters = new[] {
+            
+            new TableFilter<Instant?>(){Text = Loc["Ongoing"], Value = null, Selected = true},
+            new TableFilter<Instant?>() {Text = Loc["Ended"], Value = Instant.MaxValue, Selected = false}
+        };
         return base.OnInitializedAsync();
     }
 
