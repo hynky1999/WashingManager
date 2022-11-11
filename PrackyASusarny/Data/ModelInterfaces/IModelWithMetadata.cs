@@ -1,7 +1,7 @@
 namespace PrackyASusarny.Data.ModelInterfaces;
 // Todo add more key options
 
-public abstract class DbModel
+public interface IDbModel
 {
-    public abstract string HumanReadable { get; }
+    public string HumanReadable { get; }
 }

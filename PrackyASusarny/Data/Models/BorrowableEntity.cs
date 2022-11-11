@@ -9,7 +9,7 @@ using PrackyASusarny.Data.Utils;
 
 namespace PrackyASusarny.Data.Models;
 
-public abstract class BorrowableEntity : DbModel, ICloneable
+public abstract class BorrowableEntity : IDbModel ,ICloneable
 {
     [UIVisibility(UIVisibilityEnum.Disabled)]
     [Key]
@@ -37,4 +37,7 @@ public abstract class BorrowableEntity : DbModel, ICloneable
         be.Location = Location?.Clone() as Location;
         return be;
     }
+    public string HumanReadable =>
+        $"Borrowable Entity ID: {BorrowableEntityID}";
+
 }

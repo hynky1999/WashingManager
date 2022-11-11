@@ -20,7 +20,7 @@
     public bool Disabled { get; set; }
 
     private List<TItem> _dataSource = new();
-    private string _labelName = typeof(TItem).IsSubclassOf(typeof(DbModel)) ? nameof(DbModel.HumanReadable) : "";
+    private string _labelName = typeof(TItem).IsSubclassOf(typeof(IDbModel)) ? nameof(IDbModel.HumanReadable) : "";
 
     protected override async Task OnInitializedAsync() {
         _dataSource = await CrudService.GetAllAsync(eager: true);

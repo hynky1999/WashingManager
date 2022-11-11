@@ -11,7 +11,7 @@ namespace PrackyASusarny.Data.Models;
 #nullable disable
 
 [DisplayName ("Borrow")]
-public class Borrow : DbModel, ICloneable
+public class Borrow : IDbModel, ICloneable
 {
     [UIVisibility(UIVisibilityEnum.Disabled)]
     [Key]
@@ -25,10 +25,22 @@ public class Borrow : DbModel, ICloneable
 
     [DisplayName ("Borrowable Entity")]
     [Required] public BorrowableEntity BorrowableEntity { get; set; }
+    
+    
+    [DisplayName ("Reservation ID")]
+    [UIVisibility(UIVisibilityEnum.Disabled)]
+    public int ReservationID { get; set; }
 
+    [DisplayName ("Reservation")]
+    [Required]
+    public Reservation Reservation { get; set; }
+    
+    // Why keep ? In future it might be possible to make borrow without reservation
     [DisplayName ("Borrowable Person ID")]
     [UIVisibility(UIVisibilityEnum.Disabled)]
     public int BorrowPersonID { get; set; }
+    
+
 
     [DisplayName ("Borrowable Person")]
     [Required] public BorrowPerson BorrowPerson { get; set; }
@@ -42,7 +54,7 @@ public class Borrow : DbModel, ICloneable
     [UIVisibility(UIVisibilityEnum.Hidden)]
     public uint xmin { get; set; }
 
-    public override string HumanReadable =>
+    public string HumanReadable =>
         $"Borrow ID: {BorrowID}, {BorrowableEntity.HumanReadable} by {BorrowPerson.HumanReadable}";
 
     public object Clone()

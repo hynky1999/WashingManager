@@ -6,6 +6,6 @@ namespace PrackyASusarny.Data.Models;
 public class DryingRoom : BorrowableEntity
 {
 
-    public override string HumanReadable =>
+    public new string HumanReadable =>
         $"DR ID: {BorrowableEntityID} at {Location?.HumanReadable}";
 }

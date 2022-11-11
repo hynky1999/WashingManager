@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using PrackyASusarny.Data.ModelInterfaces;
 using PrackyASusarny.Data.Utils;
 
 namespace PrackyASusarny.Data.Models;
@@ -14,7 +15,7 @@ public enum Status
 }
 
 [DisplayName ("Washing Machine")]
-public sealed class WashingMachine : BorrowableEntity
+public sealed class WashingMachine : BorrowableEntity, IDbModel
 {
     [UIVisibility(UIVisibilityEnum.Disabled)]
     [DisplayName ("Manual ID")]
@@ -26,7 +27,7 @@ public sealed class WashingMachine : BorrowableEntity
     [DisplayName ("Manufacturer")]
     public string? Manufacturer { get; set; }
 
-    public override string HumanReadable =>
+    public new string HumanReadable =>
         $"WM ID: {BorrowableEntityID} by {Manufacturer} at {Location?.HumanReadable}";
 
     public override bool Equals(object? obj)

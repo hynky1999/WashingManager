@@ -57,7 +57,7 @@
         if (val is Instant i) {
             return Loc[i] ?? i.ToString();
         }
-        if (val is DbModel dbModel) {
+        if (val is IDbModel dbModel) {
             return dbModel.HumanReadable;
         }
         

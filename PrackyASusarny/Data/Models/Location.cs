@@ -10,7 +10,7 @@ using PrackyASusarny.Data.Utils;
 namespace PrackyASusarny.Data.Models;
 
 [DisplayName ("Location")]
-public sealed class Location : DbModel, ICloneable
+public sealed class Location : IDbModel, ICloneable
 {
     [UIVisibility(UIVisibilityEnum.Disabled)]
     [Key]
@@ -29,7 +29,7 @@ public sealed class Location : DbModel, ICloneable
     [DisplayName ("Building")]
     [Required] public char Building { get; set; }
 
-    public override string HumanReadable =>
+    public string HumanReadable =>
         $"Location ID: {LocationID}, {Building} {Floor}/{RoomNum}-{DoorNum}";
 
     public object Clone()

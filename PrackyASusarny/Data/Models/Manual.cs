@@ -10,7 +10,7 @@ using PrackyASusarny.Data.Utils;
 namespace PrackyASusarny.Data.Models;
 
 [DisplayName("Manual")]
-public class Manual : DbModel, ICloneable
+public class Manual : IDbModel, ICloneable
 {
     [UIVisibility(UIVisibilityEnum.Disabled)]
     [Key]
@@ -23,7 +23,7 @@ public class Manual : DbModel, ICloneable
     [DisplayName ("Name")]
     [Required] [MaxLength(40)] public string? Name { get; set; }
 
-    public override string HumanReadable => $"Manual {ManualID}, {Name}";
+    public string HumanReadable => $"Manual {ManualID}, {Name}";
 
     public object Clone()
     {
