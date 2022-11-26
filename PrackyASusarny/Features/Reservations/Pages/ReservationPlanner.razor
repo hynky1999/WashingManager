@@ -1,0 +1,23 @@
+@page "/{BEntity}/CreateReservation"
+@using PrackyASusarny.Features.Reservations.Components
+@inject ILocalizationService Loc
+
+<GenericBE BEntity=@BEntity>
+    <Row Gutter="12">
+        <Col Lg="12" Xs="24">
+            <Title Level="2">@Loc["Manually Selection"]</Title>
+            <DynamicComponent Type="@(typeof(CreateReservation<>).MakeGenericType(context))"/>
+        </Col>
+        <Col Lg="12" Xs="24">
+            <Title Level="2">@Loc["Suggest Time"]</Title>
+            <DynamicComponent Type="@(typeof(SuggestReservation<>).MakeGenericType(context))"/>
+        </Col>
+    </Row>
+</GenericBE>
+
+@code{
+
+    [Parameter]
+    public string? BEntity { get; set; }
+
+}

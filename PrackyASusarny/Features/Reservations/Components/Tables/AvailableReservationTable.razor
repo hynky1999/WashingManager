@@ -1,0 +1,56 @@
+@inject ILocalizationService Loc
+@inject IReservationsService ReservationService
+@inject IMessageService MessageService
+
+@using System.Linq.Expressions
+@typeparam T where T : BorrowableEntity
+
+
+<LazyRemoteTable
+    @ref=@_table
+    T="Reservation"
+    Bordered="@true"
+    OnQuery=@(ReservationService.GetReservationsAsync<T>)
+    OnQueryCount=@(ReservationService.GetReservationsCountAsync<T>)
+    PageSize="@(10)">
+
+
+    <LocDNColumn @bind-Field="@context.BorrowableEntity"/>
+    <LocDNColumn @bind-Field="@context.Start" OnFilter="OnStartFilter" Sortable DefaultSortOrder=@SortDirection.Ascending Filters="_startFilters"/>
+    <LocDNColumn @bind-Field="@context.End"/>
+    <LocDNColumn @bind-Field="@context.User"/>
+    <ActionColumn>
+        @if (context.Start >= Loc.Now && context.End < Loc.Now) {
+            <Button
+                Type="@ButtonType.Primary"
+                Color="Color.Blue3"
+                Size="@AntSizeLDSType.Small"
+                OnClick=@(() => MakeBorrowFromReservation(context))>
+                @Loc["Borrow"]
+            </Button>
+        }
+    </ActionColumn>
+</LazyRemoteTable>
+
+@code{
+    private LazyRemoteTable<Reservation> _table = new();
+
+    private async void MakeBorrowFromReservation(Reservation reservation) {
+        await MessageService.GenericOnDBError(async () => {
+            await ReservationService.MakeBorrowFromReservationAsync(reservation);
+            _table.ChangeLocally(reservations => reservations.Where(res => res.ReservationID != reservation.ReservationID).ToArray());
+            MessageService.Success("Borrow created");
+        });
+    }
+
+    private Expression<Func<Instant, Instant, bool>>? OnStartFilter;
+    private TableFilter<Instant>[]? _startFilters;
+
+    protected override void OnInitialized() {
+        OnStartFilter = (value, start) => start > value;
+        _startFilters = new[] {
+            new TableFilter<Instant>() {Selected = true, Text = Loc["Upcoming"], Value = Loc.Now}
+        };
+    }
+
+}

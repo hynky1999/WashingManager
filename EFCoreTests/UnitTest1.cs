@@ -1,156 +1,12 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Abstractions;
 using NodaTime;
-using PrackyASusarny.Data;
 using PrackyASusarny.Data.EFCoreServices;
 using PrackyASusarny.Data.Models;
 using Xunit;
 
 namespace EFCoreTests;
-
-public class DbFactory : IDbContextFactory<ApplicationDbContext>
-{
-    private const string ConnectionString =
-        @"Host=localhost;Database=efcoretest;Username=hynky;Password=sirecek007";
-
-    private static readonly object Lock = new();
-    private static bool _databaseInitialized;
-
-    public DbFactory()
-    {
-        lock (Lock)
-        {
-            if (!_databaseInitialized)
-            {
-                using (var context = CreateDbContext())
-                {
-                    context.Database.EnsureDeleted();
-                    context.Database.EnsureCreated();
-                    var wms = CreateWashingMachines();
-                    var borrows = CreateBorrows(wms);
-                    context.AddRange(wms);
-                    context.AddRange(borrows);
-
-                    var usage = CreateUsages();
-                    context.AddRange(usage);
-                    context.SaveChanges();
-                }
-
-                _databaseInitialized = true;
-            }
-        }
-    }
-
-    public Task<ApplicationDbContext> CreateDbContextAsync(
-        CancellationToken cancellationToken = new())
-    {
-        return Task.FromResult(CreateDbContext());
-    }
-
-    public ApplicationDbContext CreateDbContext()
-    {
-        return new ApplicationDbContext(
-            new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseNpgsql(ConnectionString, o => o.UseNodaTime()).Options);
-    }
-
-    public List<BorrowableEntityUsage<WashingMachine>> CreateUsages()
-    {
-        var usages = Enum.GetValues<IsoDayOfWeek>().Select(x =>
-            new BorrowableEntityUsage<WashingMachine>
-            {
-                DayId = x
-            }).ToList();
-        usages[(int) IsoDayOfWeek.Tuesday].Hour5Total = 100;
-        usages[(int) IsoDayOfWeek.Tuesday].Hour9Total = 800;
-        usages[(int) IsoDayOfWeek.Saturday].Hour0Total = 100;
-        usages[(int) IsoDayOfWeek.Saturday].Hour9Total = 900;
-        usages[(int) IsoDayOfWeek.Saturday].Hour10Total = 200;
-        return usages;
-    }
-
-    private List<WashingMachine> CreateWashingMachines()
-    {
-        var washingMachines = new List<WashingMachine>
-        {
-            new()
-            {
-                Location = new Location
-                {
-                    Building = 'A',
-                    DoorNum = 1,
-                    Floor = 0
-                },
-                Manual = new Manual
-                {
-                    FileName = "xd.pdf", Name = "xd"
-                }
-            }
-        };
-        return washingMachines;
-    }
-
-    private List<Borrow> CreateBorrows(List<WashingMachine> washingMachines)
-    {
-        var dater = new LocalizationService(SystemClock.Instance);
-        var borrowPersons = new List<BorrowPerson>
-        {
-            new() {Name = "Hlynka", Surname = "Sirecek"},
-            new() {Name = "Pechoun", Surname = "Buh"},
-            new() {Name = "Samuel", Surname = "Lehoun"}
-        };
-        var borrows = new List<Borrow>
-        {
-            new()
-            {
-                BorrowableEntity = washingMachines[0],
-                startDate = new LocalDateTime(2020, 1, 1, 1, 0)
-                    .InZoneLeniently(dater.TimeZone).ToInstant(),
-                BorrowPerson = borrowPersons[0],
-                endDate = null, xmin = 0
-            },
-            new()
-            {
-                BorrowableEntity = washingMachines[0],
-                startDate = new LocalDateTime(2020, 1, 2, 0, 0)
-                    .InZoneLeniently(dater.TimeZone).ToInstant(),
-                BorrowPerson = borrowPersons[0],
-                endDate = null, xmin = 0
-            },
-            new()
-            {
-                BorrowableEntity = washingMachines[0],
-                startDate = new LocalDateTime(2020, 1, 2, 5, 0)
-                    .InZoneLeniently(dater.TimeZone).ToInstant(),
-                BorrowPerson = borrowPersons[0],
-                endDate = null, xmin = 0
-            },
-            new()
-            {
-                BorrowableEntity = washingMachines[0],
-                startDate = new LocalDateTime(2020, 1, 2, 5, 3)
-                    .InZoneLeniently(dater.TimeZone).ToInstant(),
-                BorrowPerson = borrowPersons[0],
-                endDate = null, xmin = 0
-            },
-
-            new()
-            {
-                BorrowableEntity = washingMachines[0],
-                startDate = new LocalDateTime(2020, 1, 4, 10, 0)
-                    .InZoneLeniently(dater.TimeZone).ToInstant(),
-                BorrowPerson = borrowPersons[0],
-                endDate = null, xmin = 0
-            }
-        };
-        return borrows;
-    }
-}
 
 public class Clock14082022 : IClock
 {
@@ -161,11 +17,11 @@ public class Clock14082022 : IClock
     }
 }
 
-public class ChartingTests : IClassFixture<DbFactory>
+public class ChartingTests : IClassFixture<DBFullFactory>
 {
     private readonly double _mondaysSinceStart;
 
-    public ChartingTests(DbFactory factory)
+    public ChartingTests(DBFullFactory factory)
     {
         var localization = new LocalizationService(new Clock14082022());
         var loggerFactory = new NullLoggerFactory();
@@ -178,7 +34,7 @@ public class ChartingTests : IClassFixture<DbFactory>
     }
 
     private UsageChartingService<WashingMachine> UsageService { get; }
-    private DbFactory Factory { get; }
+    private DBFullFactory Factory { get; }
     private UsageService UsageUpdateService { get; }
 
 

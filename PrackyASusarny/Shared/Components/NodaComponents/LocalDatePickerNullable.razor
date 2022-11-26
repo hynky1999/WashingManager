@@ -1,12 +1,12 @@
 @using System.Linq.Expressions
-<DatePicker @bind-Value="DateTimeValue" ShowTime="@showTime" Disabled="Disabled"></DatePicker>
+<DatePicker @bind-Value="DateTimeValue" Disabled="Disabled" ShowTime="@showTime"></DatePicker>
 
 @code {
 
     private DateTime? DateTimeValue {
-        get => NodaUtils.LocalDateToDateTime(Value);
+        get => NodaUtils.ToDateTime(Value);
         set {
-            Value = NodaUtils.DateTimeToLocalDate(value);
+            Value = NodaUtils.ToLocalDate(value);
             ValueChanged.InvokeAsync(Value);
         }
     }

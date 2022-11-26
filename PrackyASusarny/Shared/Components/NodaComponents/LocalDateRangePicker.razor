@@ -1,5 +1,5 @@
 @using System.Linq.Expressions
-<RangePicker Value="_dateTimeValue" OnClearClick="@(() => _OnChange(new DateRangeChangedEventArgs {Dates = new DateTime?[] {null, null}}))" OnChange="_OnChange" Disabled="Disabled"></RangePicker>
+<RangePicker Disabled="Disabled" OnChange="_OnChange" OnClearClick="@(() => _OnChange(new DateRangeChangedEventArgs {Dates = new DateTime?[] {null, null}}))" Value="_dateTimeValue"></RangePicker>
 
 @code {
     // Generic class because of nullability
@@ -8,7 +8,7 @@
         if (args.Dates.Length != 2) {
             throw new ArgumentException("Expected 2 dates");
         }
-        Value = (NodaUtils.DateTimeToLocalDate(args.Dates[0]), NodaUtils.DateTimeToLocalDate(args.Dates[1]));
+        Value = (NodaUtils.ToLocalDate(args.Dates[0]), NodaUtils.ToLocalDate(args.Dates[1]));
         await ValueChanged.InvokeAsync(Value);
         await OnChange.InvokeAsync(Value);
     }
@@ -17,7 +17,7 @@
         if (Value == null) {
             _dateTimeValue = new DateTime?[] {null, null};
         } else {
-            _dateTimeValue = new[] {NodaUtils.LocalDateToDateTime(Value.Value.Item1), NodaUtils.LocalDateToDateTime(Value.Value.Item2)};
+            _dateTimeValue = new[] {NodaUtils.ToDateTime(Value.Value.Item1), NodaUtils.ToDateTime(Value.Value.Item2)};
         }
     }
 

@@ -1,0 +1,85 @@
+@inject IReservationsService ReservationsService
+@inject ILocalizationService Loc
+@inject MessageService MessageService
+@typeparam T where T : BorrowableEntity
+
+<Form WrapperColSpan="16"
+      Model="_reservationMixin" OnFinish="() => CreateReservationAsync(_reservationMixin)">
+    <FormItem WrapperColSpan="12" Label="@Loc["Entity"]">
+        <ModelSelect TItem="T" @bind-Value="@context.BE" OnChange=@ChangeDisabled></ModelSelect>
+    </FormItem>
+
+    <FormItem WrapperColSpan="12" Label="@Loc["Date Ranges"]">
+        <LocalDateTimeRange @bind-Value="@context.Range" DisabledDates=@IsDisabledDate DisabledTime=@IsDisabledTime TimeFormat="@("HH:mm")"/>
+    </FormItem>
+
+    <FormItem WrapperColSpan="8">
+        <Button Type="@ButtonType.Primary" HtmlType="submit">
+            @Loc["Create"]
+        </Button>
+    </FormItem>
+</Form>
+
+
+@code{
+
+    [CascadingParameter]
+    public Task<AuthenticationState>? authTask { get; set; }
+
+    private class ReservationMixin {
+        public T? BE { get; set; }
+        public (LocalDateTime?, LocalDateTime?)? Range { get; set; }
+    }
+
+
+    private ReservationMixin _reservationMixin = new();
+    private DisabledDateTimesStore _disabledDateTimesStore = DisabledDateTimesStore.Empty();
+
+    private DatePickerDisabledTime IsDisabledTime(LocalDateTime dt) {
+        return _disabledDateTimesStore.AsDatePickerDisabledTime(dt);
+    }
+
+    private bool IsDisabledDate(LocalDate dt) {
+        return dt < Loc.NowInTimeZone.LocalDateTime.Date || _disabledDateTimesStore.DisabledDate(dt);
+    }
+
+    private async Task ChangeDisabled(T selectedBE) {
+        var reservations = await ReservationsService.GetUpcomingReservationsByEntityAsync(selectedBE);
+        _disabledDateTimesStore = DisabledDateTimesStore.FromNodaRanges(reservations.Select(r => (r.Start.InZone(Loc.TimeZone).LocalDateTime, r.End.InZone(Loc.TimeZone).LocalDateTime)));
+    }
+
+    private async Task CreateReservationAsync(ReservationMixin reservationMixin) {
+        if (reservationMixin.BE == null) {
+            MessageService.Error("Please select a borrowable entity");
+            return;
+        }
+
+        if (reservationMixin.Range == null || reservationMixin.Range.Value.Item1 == null || reservationMixin.Range.Value.Item2 == null) {
+            MessageService.Error("Please select a valid date range");
+            return;
+        }
+        if (authTask == null) {
+            MessageService.Error("Something went wrong");
+            return;
+        }
+        var authState = await authTask;
+        await MessageService.GenericOnDBError(async () => {
+            await ReservationsService.CreateReservationAsync(reservationMixin.Range.Value.Item1.Value, reservationMixin.Range.Value.Item2.Value, authState.User, reservationMixin.BE);
+            MessageService.Success("Reservation created");
+            _reservationMixin = new();
+        });
+    }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+

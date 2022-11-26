@@ -84,7 +84,7 @@ public class BorrowService : IBorrowService
     public async Task<Borrow[]> GetBorrowsByBEAsync<T>(QueryModel<Borrow> qM)
         where T : BorrowableEntity
     {
-        using var ctx = _dbFactory.CreateDbContext();
+        using var ctx = await _dbFactory.CreateDbContextAsync();
         return await GetBorrowsQuery<T>(ctx, qM).ToArrayAsync();
     }
 

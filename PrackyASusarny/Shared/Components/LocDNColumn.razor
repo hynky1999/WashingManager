@@ -1,0 +1,72 @@
+@inject ILocalizationService Loc
+@using System.Reflection
+@using System.ComponentModel
+@using System.Linq.Expressions
+@typeparam T
+<AntDesign.Column DefaultSortOrder="DefaultSortOrder" Field="Field" FieldChanged="FieldChanged" FieldExpression="FieldExpression" Filters=Filters OnFilter=@OnFilter Sortable=@Sortable Title=@(Title ?? Loc[_label])>
+    @if (ChildContent != null) {
+        @ChildContent
+    } else {
+        <p>@_localizedField</p>
+    }
+
+</AntDesign.Column>
+
+@code {
+
+    [Parameter]
+    public T? Field { get; set; }
+
+    [Parameter]
+    public EventCallback<T> FieldChanged { get; set; }
+
+    [Parameter]
+    public Expression<Func<T>>? FieldExpression { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Parameter]
+    public bool Sortable { get; set; }
+
+    [Parameter]
+    public SortDirection? DefaultSortOrder { get; set; }
+
+    [Parameter]
+    public Expression<Func<T, T, bool>>? OnFilter { get; set; }
+
+    [Parameter]
+    public TableFilter<T>[]? Filters { get; set; }
+
+    [Parameter]
+    public bool BlankIfNonLocalizable { get; set; }
+
+    private string _label = typeof(T).Name;
+
+    protected override void OnParametersSet() {
+        var member = FieldExpression?.Body as MemberExpression;
+        if (member?.Member is PropertyInfo propertyInfo) {
+            _label = propertyInfo.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? _label;
+        }
+        if (ChildContent == null) {
+            try {
+                _localizedField = Loc[Field];
+            }
+            catch (NotImplementedException) {
+                if (BlankIfNonLocalizable) {
+                    _localizedField = "";
+                } else {
+    // Rethrow
+                    throw new NotImplementedException();
+                }
+            }
+        }
+
+        base.OnParametersSet();
+    }
+
+    private string? _localizedField;
+}

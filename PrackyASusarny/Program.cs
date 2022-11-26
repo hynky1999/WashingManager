@@ -18,9 +18,8 @@ var connectionString =
 Action<DbContextOptionsBuilder> contextOpts = options =>
     options.UseNpgsql(connectionString, o => o.UseNodaTime());
 builder.Services.AddDbContextFactory<ApplicationDbContext>(contextOpts);
-// Just to get Identity to work
 builder.Services.AddDbContext<ApplicationDbContext>(contextOpts);
-builder.Services.AddIdentity<User, Role>(options =>
+builder.Services.AddIdentity<ApplicationUser, Role>(options =>
     {
         options.SignIn.RequireConfirmedAccount = false;
         options.Password.RequiredLength = 8;
@@ -29,8 +28,9 @@ builder.Services.AddIdentity<User, Role>(options =>
         options.Password.RequireUppercase = false;
         options.Password.RequiredUniqueChars = 1;
     }).AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddTokenProvider<DataProtectorTokenProvider<User>>(TokenOptions
-        .DefaultProvider);
+    .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions
+        .DefaultProvider)
+    ;
 
 
 builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
@@ -41,6 +41,11 @@ builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
 });
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<IBorrowPersonService, BorrowPersonService>();
+builder.Services.AddSingleton<IReservationsService, ReservationService>();
+builder.Services.AddSingleton<IUsageService, UsageService>();
+builder.Services.AddSingleton<IUserService, UserService>();
+
+
 builder.Services.AddSingleton<IBorrowService, BorrowService>();
 builder.Services
     .AddSingleton<IUsageChartingService<WashingMachine>,
@@ -73,11 +78,11 @@ builder.Services.AddAntDesign();
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy(Policies.UserManagement,
-        policy => policy.RequireClaim("ManageUsers", true.ToString()));
+        policy => policy.RequireClaim(Claims.ManageUsers, true.ToString()));
     options.AddPolicy(Policies.ModelManagement,
-        policy => policy.RequireClaim("ManageModels", true.ToString()));
+        policy => policy.RequireClaim(Claims.ManageModels, true.ToString()));
     options.AddPolicy(Policies.BorrowManagement,
-        policy => policy.RequireClaim("ManageBorrows", true.ToString()));
+        policy => policy.RequireClaim(Claims.ManageBorrows, true.ToString()));
 });
 
 builder.Services.AddLocalization(options =>

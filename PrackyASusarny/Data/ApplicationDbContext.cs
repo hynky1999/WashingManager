@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using PrackyASusarny.Auth.Models;
 using PrackyASusarny.Data.Models;
 
 namespace PrackyASusarny.Data;
 
-public class ApplicationDbContext : IdentityDbContext<User, Role, string>
+public class
+    ApplicationDbContext : IdentityDbContext<ApplicationUser, Role, int>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
@@ -26,6 +30,8 @@ public class ApplicationDbContext : IdentityDbContext<User, Role, string>
     public DbSet<BorrowableEntityUsage<DryingRoom>> DryingRoomUsage =>
         Set<BorrowableEntityUsage<DryingRoom>>();
 
+    public DbSet<Reservation> Reservations => Set<Reservation>();
+
     public virtual DbSet<Borrow> Borrows => Set<Borrow>();
     public DbSet<Manual> Manuals => Set<Manual>();
     public DbSet<BorrowPerson> BorrowPeople => Set<BorrowPerson>();
@@ -35,5 +41,28 @@ public class ApplicationDbContext : IdentityDbContext<User, Role, string>
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Borrow>().UseXminAsConcurrencyToken();
         modelBuilder.Entity<BorrowableEntity>().UseXminAsConcurrencyToken();
+        modelBuilder.Entity<Reservation>().UseXminAsConcurrencyToken();
+    }
+}
+
+public class ApplicationUserClaimsPrincipalFactory :
+    UserClaimsPrincipalFactory<ApplicationUser>
+{
+    public ApplicationUserClaimsPrincipalFactory(
+        UserManager<ApplicationUser> userManager,
+        IOptions<IdentityOptions> optionsAccessor) : base(userManager,
+        optionsAccessor)
+    {
+    }
+
+    protected override async Task<ClaimsIdentity>
+        GenerateClaimsAsync(ApplicationUser user)
+    {
+        ClaimsIdentity claims = await
+            base.GenerateClaimsAsync(user);
+
+
+        claims.AddClaim(new Claim(Claims.UserID, user.Id.ToString()));
+        return claims;
     }
 }

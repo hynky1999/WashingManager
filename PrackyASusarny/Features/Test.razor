@@ -1,0 +1,35 @@
+@page "/test"
+@using OneOf
+@inject ILogger<Test> Logger
+
+
+<RangePicker @bind-Value="time" DisabledTime=@DisabledTime showTime="@((OneOf<Boolean, string>) true)"></RangePicker>
+
+@code {
+
+    private DateTime[] time = new[] {
+        DateTime.Now, DateTime.Now
+    };
+
+    private DatePickerDisabledTime DisabledTime(DateTime time) {
+        Logger.LogInformation(time.Hour.ToString());
+        if (time.Day == 1) {
+            return new DatePickerDisabledTime(
+                new[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11},
+                new[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11},
+                new[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+                );
+        }
+
+        if (time.Hour == 2) {
+            return new DatePickerDisabledTime(
+                Array.Empty<int>(),
+                new[] {0, 10},
+                Array.Empty<int>()
+                );
+        }
+
+        return new DatePickerDisabledTime(Array.Empty<int>(), Array.Empty<int>(), Array.Empty<int>());
+    }
+
+}

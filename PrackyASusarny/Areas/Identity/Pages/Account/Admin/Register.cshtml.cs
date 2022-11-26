@@ -9,11 +9,11 @@ namespace PrackyASusarny.Areas.Identity.Pages.Account.Admin;
 #nullable disable
 public class RegisterModel : PageModel
 {
-    private readonly SignInManager<User> _signInManager;
-    private readonly UserManager<User> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public RegisterModel(SignInManager<User> signInManager,
-        UserManager<User> userManager)
+    public RegisterModel(SignInManager<ApplicationUser> signInManager,
+        UserManager<ApplicationUser> userManager)
     {
         _signInManager = signInManager;
         _userManager = userManager;
@@ -32,7 +32,7 @@ public class RegisterModel : PageModel
     {
         if (ModelState.IsValid)
         {
-            var user = new User
+            var user = new ApplicationUser
                 {UserName = Input.UserName, Email = Input.Email};
             var password = GeneratePassword(12);
             var result = await _userManager.CreateAsync(user, password);

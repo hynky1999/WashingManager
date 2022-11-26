@@ -23,4 +23,12 @@ public class BorrowableEntityService : IBorrowableEntityService
         beC.Status = status;
         await dbContext.SaveChangeAsyncRethrow();
     }
+
+    public async Task<T[]> GetAllBorrowableEntitites<T>()
+        where T : BorrowableEntity
+    {
+        using var dbContext = await _dbFactory.CreateDbContextAsync();
+        return await dbContext.Set<T>().Include(be => be.Location)
+            .ToArrayAsync();
+    }
 }

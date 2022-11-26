@@ -1,13 +1,13 @@
 @using System.Linq.Expressions
 @inject ILocalizationService LocalizationService
-<DatePicker @bind-Value="DateTimeValue" ShowTime="@showTime" Disabled="Disabled"></DatePicker>
+<DatePicker @bind-Value="DateTimeValue" Disabled="Disabled" ShowTime="@showTime"></DatePicker>
 
 @code {
 
     private DateTime DateTimeValue {
-        get => NodaUtils.InstantToDateTime(Value, LocalizationService);
+        get => NodaUtils.ToDateTime(Value, LocalizationService);
         set {
-            Value = NodaUtils.DateTimeToInstant(value, LocalizationService);
+            Value = NodaUtils.ToInstant(value, LocalizationService);
             ValueChanged.InvokeAsync(Value);
         }
     }

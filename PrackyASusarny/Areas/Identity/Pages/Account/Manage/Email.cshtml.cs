@@ -13,12 +13,12 @@ namespace PrackyASusarny.Areas.Identity.Pages.Account.Manage;
 
 public class EmailModel : PageModel
 {
-    private readonly SignInManager<User> _signInManager;
-    private readonly UserManager<User> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
 
     public EmailModel(
-        UserManager<User> userManager,
-        SignInManager<User> signInManager)
+        UserManager<ApplicationUser> userManager,
+        SignInManager<ApplicationUser> signInManager)
     {
         _userManager = userManager;
         _signInManager = signInManager;
@@ -32,9 +32,9 @@ public class EmailModel : PageModel
 
     [BindProperty] public InputModel Input { get; set; }
 
-    private async Task LoadAsync(User user)
+    private async Task LoadAsync(ApplicationUser applicationUser)
     {
-        var email = await _userManager.GetEmailAsync(user);
+        var email = await _userManager.GetEmailAsync(applicationUser);
 
         Email = email;
 
@@ -43,7 +43,8 @@ public class EmailModel : PageModel
             NewEmail = email
         };
 
-        IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
+        IsEmailConfirmed =
+            await _userManager.IsEmailConfirmedAsync(applicationUser);
     }
 
     public async Task<IActionResult> OnGetAsync()

@@ -5,60 +5,59 @@
 @using AntDesign.TableModels
 @typeparam T where T : BorrowableEntity
 
-<Table TItem="T" Responsive DataSource="_data" @bind-PageIndex="_pageIndex" 
-       PageSize="_pageSize" Total="_total" 
-       Loading="_loading" OnChange="@HandleTableChange" 
-       RemoteDataSource>
-       
-    <AntDesign.Column TData="Status" @bind-Field="@context.Status" 
-                      Title=@Loc["Status"] 
-                      Filters="_statusFilter" 
-                      Sortable SorterMultiple="1"
-    />
-    
+<Table @bind-PageIndex="_pageIndex" DataSource="_data" Loading="_loading" OnChange="@HandleTableChange"
+       PageSize="_pageSize" RemoteDataSource
+       Responsive TItem="T"
+       Total="_total">
+
+    <AntDesign.Column @bind-Field="@context.Status" Filters="_statusFilter"
+                      Sortable
+                      SorterMultiple="1"
+                      TData="Status" Title=@Loc["Status"]/>
+
     @if (typeof(T) == typeof(WashingMachine)) {
-        <AntDesign.Column TData="string" 
-                          Title=@Loc["Washing Machine Type"]
-                          DataIndex="Manufacturer"/>
-        <AntDesign.Column TData="Manual"
-                          Title=@Loc["Manual"]
-                          DataIndex="Manual">
+        <AntDesign.Column DataIndex="Manufacturer"
+                          TData="string"
+                          Title=@Loc["Washing Machine Type"]/>
+        <AntDesign.Column DataIndex="Manual"
+                          TData="Manual"
+                          Title=@Loc["Manual"]>
             @{
                 var manual = (context as WashingMachine)?.Manual;
             }
             @if (manual != null) {
-                <a href="@manual.FileName">@manual.Name</a>
+                <a href="@manual.FileName">Manual</a>
             } else {
                 @Loc["None"]
             }
         </AntDesign.Column>
     }
-    <AntDesign.Column TData="char?"
-                      Title=@Loc["Building"]
+    <AntDesign.Column DataIndex="Location.Building"
                       Filters="_buildingFilters"
-                      SorterMultiple="2"
                       Sortable
-                      DataIndex="Location.Building">
+                      SorterMultiple="2"
+                      TData="char?"
+                      Title=@Loc["Building"]>
         @context.Location?.Building
     </AntDesign.Column>
-    <AntDesign.Column TData="int?"
-                      Title=@Loc["Floor"]
+    <AntDesign.Column DataIndex="Location.Floor"
                       Filters="_floorFilters"
-                      Sortable SorterMultiple="3"
-                      DataIndex="Location.Floor">
+                      Sortable
+                      SorterMultiple="3" TData="int?"
+                      Title=@Loc["Floor"]>
         @context.Location?.Floor
     </AntDesign.Column>
-    <AntDesign.Column TData="int?"
-                      Title=@Loc["Room"]
+    <AntDesign.Column DataIndex="Location.RoomNum"
                       Filters="_roomFilters"
                       Sortable
                       SorterMultiple="4"
-                      DataIndex="Location.RoomNum">
+                      TData="int?"
+                      Title=@Loc["Room"]>
         @context.Location?.RoomNum
     </AntDesign.Column>
-    <AntDesign.Column 
-        Title=@Loc["Door"]
-        TData="int?" DataIndex="Location.DoorNum">
+    <AntDesign.Column
+        DataIndex="Location.DoorNum"
+        TData="int?" Title=@Loc["Door"]>
         @context.Location?.DoorNum
     </AntDesign.Column>
     <AuthorizeView Policy="@Policies.BorrowManagement">
@@ -67,28 +66,27 @@
                 <Space Size=@("middle")>
                     @if (context.Status == Status.Free) {
                         <SpaceItem>
-                            <Button Type="@ButtonType.Primary"
-                                    Color="Color.Blue3" Size="small"
-                                    OnClick="@(() => OpenCreateModal(context))">
+                            <Button Color="Color.Blue3"
+                                    OnClick="@(() => OpenCreateModal(context))" Size="small"
+                                    Type="@ButtonType.Primary">
                                 @Loc["Borrow"]
                             </Button>
                         </SpaceItem>
                         <SpaceItem>
-                            <Button Type="@ButtonType.Primary"
-                                    Color="Color.Red3"
+                            <Button Color="Color.Red3"
+                                    OnClick="@(() => OpenStatusModal(context, Status.Broken))"
                                     Size=@AntSizeLDSType.Small
-                                    OnClick="@(() => OpenStatusModal(context, Status.Broken))">
+                                    Type="@ButtonType.Primary">
                                 @Loc["Broken"]
                             </Button>
                         </SpaceItem>
-                    }
-                    else if (context.Status == Status.Broken) {
+                    } else if (context.Status == Status.Broken) {
                         <SpaceItem>
                             <Button
-                                Type="@ButtonType.Primary"
                                 Color="Color.Green3"
+                                OnClick="@(() => OpenStatusModal(context, Status.Free))"
                                 Size=@AntSizeLDSType.Small
-                                OnClick="@(() => OpenStatusModal(context, Status.Free))">
+                                Type="@ButtonType.Primary">
                                 @Loc["Repair"]
                             </Button>
                         </SpaceItem>
@@ -98,8 +96,8 @@
         </ChildContent>
     </AuthorizeView>
 </Table>
-<BorrowFormModal @ref="_modalBorrow" T="T" DefaultBe="@_defaultBe" ShowWashingMachine="true" OnFinish="OnBorrowCreated"/>
-<StatusChangeModal @ref="_modalStatus" T="T" DefaultBe="@_defaultBe" Status="_repairStatus" OnFinish="wm => wm.Status = _repairStatus"/>
+<BorrowFormModal DefaultBe="@_defaultBe" OnFinish="OnBorrowCreated" @ref="_modalBorrow" ShowWashingMachine="true" T="T"/>
+<StatusChangeModal DefaultBe="@_defaultBe" OnFinish="wm => wm.Status = _repairStatus" @ref="_modalStatus" Status="_repairStatus" T="T"/>
 
 @code{
     bool _loading;

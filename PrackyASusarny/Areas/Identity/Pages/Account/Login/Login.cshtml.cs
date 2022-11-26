@@ -12,9 +12,9 @@ namespace PrackyASusarny.Areas.Identity.Pages.Account.Login;
 public class LoginModel : PageModel
 {
     private readonly ILogger<LoginModel> _logger;
-    private readonly SignInManager<User> _signInManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
 
-    public LoginModel(SignInManager<User> signInManager,
+    public LoginModel(SignInManager<ApplicationUser> signInManager,
         ILogger<LoginModel> logger)
     {
         _signInManager = signInManager;

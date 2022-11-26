@@ -1,12 +1,30 @@
 @using System.Linq.Expressions
 @typeparam TItem
+@inject ILocalizationService Loc
 @inject ICrudService<TItem> CrudService
 
-<Select DefaultValue="Value" LabelName="@_labelName" ValueChanged="ValueChanged" ValueExpression="@ValueExpression" DataSource="@_dataSource" Disabled="@Disabled"></Select>
+<Select
+    DataSource="@_dataSource"
+    DefaultValue="Value"
+    Disabled="@Disabled"
+    LabelName=@(nameof(SelectItem.Label))
+    OnSelectedItemChanged=@((x) => OnChange.InvokeAsync(x.Value))
+    TItem="SelectItem"
+    TItemValue="TItem"
+    ValueChanged="ValueChanged"
+    ValueExpression="@ValueExpression"
+    ValueName=@(nameof(SelectItem.Value))>
 
+</Select>
 
 @code {
-    // TODO add required handling
+
+    private class SelectItem {
+        public TItem Value { get; set; } = default(TItem)!;
+        public string Label { get; set; } = string.Empty;
+    }
+
+
     [Parameter]
     public TItem? Value { get; set; }
 
@@ -19,11 +37,25 @@
     [Parameter]
     public bool Disabled { get; set; }
 
-    private List<TItem> _dataSource = new();
-    private string _labelName = typeof(TItem).IsSubclassOf(typeof(IDbModel)) ? nameof(IDbModel.HumanReadable) : "";
+    [Parameter]
+    public EventCallback<TItem> OnChange { get; set; }
+
+    private SelectItem[] _dataSource = Array.Empty<SelectItem>();
 
     protected override async Task OnInitializedAsync() {
-        _dataSource = await CrudService.GetAllAsync(eager: true);
+        var _ds = await CrudService.GetAllAsync(eager: true);
+        _dataSource = _ds.Select(e => {
+            string _label = e.ToString() ?? "";
+            if (e is IDBModel model) {
+                _label = model.HumanReadableLoc(Loc);
+            }
+
+            return new SelectItem {
+                Value = e,
+                Label = _label
+            };
+        }).ToArray();
+        await base.OnInitializedAsync();
     }
 
 }

@@ -1,0 +1,85 @@
+@using System.Linq.Expressions
+<RangePicker
+    TValue="DateTime?[]"
+    Value="_dateTimeValue"
+    ShowTime="@_showTime"
+    OnClearClick="@(() => _OnChange(new DateRangeChangedEventArgs {Dates = new DateTime?[] {null, null}}))"
+    OnChange="_OnChange"
+    ValueChanged="@((dates) => _dateTimeValue = dates)"
+    ValueExpression="@(() => _dateTimeValue)"
+    DisabledTime=_disabledTime
+    DisabledDate=_disabledDates
+    Disabled="Disabled"/>
+
+
+@code {
+
+    private async void _OnChange(DateRangeChangedEventArgs args) {
+        if (args.Dates.Length != 2) {
+            throw new ArgumentException("Expected 2 dates");
+        }
+        Value = (NodaUtils.ToLocalDateTime(args.Dates[0]), NodaUtils.ToLocalDateTime(args.Dates[1]));
+        await ValueChanged.InvokeAsync(Value);
+        await OnChange.InvokeAsync(Value);
+    }
+
+    protected override void OnParametersSet() {
+        if (Value == null) {
+            _dateTimeValue = new DateTime?[] {null, null};
+        } else {
+            _dateTimeValue = new[] {NodaUtils.ToDateTime(Value.Value.Item1), NodaUtils.ToDateTime(Value.Value.Item2)};
+        }
+    }
+
+    // ReSharper disable once InconsistentNaming
+
+    [Parameter]
+    public (LocalDateTime?, LocalDateTime?)? Value { get; set; }
+
+
+    [Parameter]
+    public EventCallback<(LocalDateTime?, LocalDateTime?)?> ValueChanged { get; set; }
+
+    [Parameter]
+    public Expression<Func<(LocalDateTime?, LocalDateTime?)?>>? ValueExpression { get; set; }
+
+
+    [Parameter]
+    public Func<LocalDateTime, DatePickerDisabledTime>? DisabledTime { get; set; }
+
+    [Parameter]
+    public Func<LocalDate, bool>? DisabledDates { get; set; }
+
+    [Parameter]
+    public bool Disabled { get; set; }
+
+    [Parameter]
+    public EventCallback<(LocalDateTime?, LocalDateTime?)?> OnChange { get; set; }
+
+    [Parameter]
+    public string? TimeFormat { get; set; }
+
+
+    private DateTime?[] _dateTimeValue = new DateTime?[2];
+
+    private Func<DateTime, DatePickerDisabledTime>? _disabledTime;
+    private Func<DateTime, bool>? _disabledDates;
+    private OneOf.OneOf<bool, string> _showTime;
+
+    protected override void OnInitialized() {
+        if (DisabledTime != null) {
+            _disabledTime = time => DisabledTime(NodaUtils.ToLocalDateTime(time));
+        }
+        if (DisabledDates != null) {
+            _disabledDates = time => DisabledDates(NodaUtils.ToLocalDate(time));
+        }
+
+        if (TimeFormat != null) {
+            _showTime = TimeFormat;
+        } else {
+            _showTime = true;
+        }
+        base.OnInitialized();
+    }
+
+}

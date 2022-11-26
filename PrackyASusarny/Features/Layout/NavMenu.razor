@@ -2,17 +2,32 @@
 @inject ILocalizationService Loc
 <Menu Mode="MenuMode.Inline">
     @foreach (var be in ManagementConfig.AllowedEntities) {
-        <SubMenu Title="@(be.Name)" Key=@($"sub{be.Name}")>
-            <MenuItem RouterLink=@($"/{be.Name}/Availability") Key=@($"{be.Name}avail")>@Loc["Availability"]</MenuItem>
+        <SubMenu Key=@($"sub{be.Name}") Title="@(be.Name)">
+            <MenuItem Key=@($"{be.Name}avail") RouterLink=@($"/{be.Name}/Availability")>@Loc["Availability"]</MenuItem>
+            <MenuItem Key=@($"{be.Name}graph") RouterLink=@($"/{be.Name}/Charts")>@Loc["Graphs"]</MenuItem>
+
+            <MenuItem Key=@($"{be.Name}createRes") RouterLink="@($"/{be.Name}/CreateReservation")">@Loc["Create Reservation"]</MenuItem>
+
             <AuthorizeView Policy="@Policies.BorrowManagement">
-                <MenuItem RouterLink=@($"/{be.Name}/Borrows") Key=@($"{be.Name}borrow")>@Loc["Manage Borrows"]</MenuItem>
+                <MenuItem Key=@($"{be.Name}borrow") RouterLink=@($"/{be.Name}/Borrows")>@Loc["Manage Borrows"]</MenuItem>
+
+                <MenuItem Key=@($"{be.Name}reservatoin") RouterLink=@($"/{be.Name}/Reservations")>@Loc["Manage Reservations"]</MenuItem>
             </AuthorizeView>
-            <MenuItem RouterLink=@($"/{be.Name}/Charts") Key=@($"{be.Name}graph")>@Loc["Graphs"]</MenuItem>
         </SubMenu>
     }
+
+    <AuthorizeView>
+        <SubMenu Key="sub2" Title="My account">
+            <MenuItem Key="MyRes" RouterLink="/Account/Reservations">@Loc["My Reservations"]</MenuItem>
+
+            <MenuItem Key="MyBalance" RouterLink="/Account/Balance">@Loc["My Balance"]</MenuItem>
+        </SubMenu>
+    </AuthorizeView>
+
+
     <AuthorizeView Policy="@Policies.ModelManagement">
-        <SubMenu Title="Admin Panel" Key="sub3">
-            <MenuItem RouterLink="/AdminMenu/ManageModels" Key="6">@Loc["Manage Models"]</MenuItem>
+        <SubMenu Key="sub3" Title="Admin Panel">
+            <MenuItem Key="ManageModels" RouterLink="/AdminMenu/ManageModels">@Loc["Manage Models"]</MenuItem>
         </SubMenu>
     </AuthorizeView>
 </Menu>

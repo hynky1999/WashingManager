@@ -2,7 +2,7 @@ namespace PrackyASusarny.Data;
 
 public static class Rates
 {
-    public static int WMpricePerHalfHour = 6;
+    public const int WMpricePerHalfHour = 6;
 }
 
 public struct Price
@@ -14,4 +14,12 @@ public struct Price
     {
         return $"{Amount} {Currency}";
     }
+}
+
+public static class ReservationConstant
+{
+    public static Duration MaxReservationHours = Duration.FromHours(24 * 4);
+    public static Duration MinReservationHours = Duration.FromHours(1);
+    public static Duration MinHoursBeforeReservation = Duration.FromHours(2);
+    public static Duration MinReservationCancelHours = Duration.FromHours(24);
 }
