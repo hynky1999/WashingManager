@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NodaTime.Extensions;
 using PrackyASusarny.Auth.Models;
+using PrackyASusarny.Auth.Utils;
 using PrackyASusarny.Data;
 using PrackyASusarny.Data.Models;
 
@@ -14,91 +15,80 @@ namespace PrackyASusarny.Utils;
 
 public class SeedData
 {
-    public static async Task Initialize(IServiceProvider serviceProvider,
-        string testUserPw)
+    public static async Task Initialize(
+        IDbContextFactory<ApplicationDbContext> dbContextFactory,
+        UserManager<ApplicationUser> userManager, RoleManager<Role> roleManager,
+        ApplicationUser? admin, string adminPass, ApplicationUser? manager,
+        string managerPass, bool initData = true)
     {
-        // For sample purposes seed both with the same password.
-        // Password is set with the following:
-        // dotnet user-secrets set SeedUserPW <pw>
-        // The admin user can do anything
-
-        var admin = await EnsureUser(serviceProvider, testUserPw,
-            "kydlicek.hynek@gmail.com");
-        await EnsureRole(serviceProvider, IdentityRoles.Administrator, new[]
+        // Roles setting
+        await EnsureRole(roleManager, IdentityRoles.Administrator, new[]
         {
             new Claim(Claims.ManageBorrows, true.ToString()),
             new Claim(Claims.ManageModels, true.ToString()),
             new Claim(Claims.ManageUsers, true.ToString())
         });
-        await AddToRole(serviceProvider, admin.Id, IdentityRoles.Administrator);
-
-
-        // allowed user can create and edit contacts that they create
-        var manager = await EnsureUser(serviceProvider, testUserPw,
-            "manager@contoso.com");
-        await EnsureRole(serviceProvider, IdentityRoles.Receptionist, new[]
+        await EnsureRole(roleManager, IdentityRoles.Receptionist, new[]
         {
-            new Claim("ManageBorrows", true.ToString())
+            new Claim(Claims.ManageBorrows, true.ToString()),
         });
-        await AddToRole(serviceProvider, manager.Id,
-            IdentityRoles.Receptionist);
-        var factory = serviceProvider
-            .GetRequiredService<IDbContextFactory<ApplicationDbContext>>();
-        SeedDb(factory, new ApplicationUser[] {admin, manager});
+
+
+        if (admin != null)
+        {
+            var user = await EnsureUser(userManager, admin, adminPass);
+            await AddToRole(userManager, user.Id,
+                IdentityRoles.Administrator);
+        }
+
+        if (manager != null)
+        {
+            var user = await EnsureUser(userManager, manager, managerPass
+            );
+            await AddToRole(userManager, user.Id,
+                IdentityRoles.Receptionist);
+        }
+
+        if (initData && admin != null && manager != null)
+        {
+            SeedDb(dbContextFactory, new ApplicationUser[] {admin, manager});
+        }
     }
 
 
     private static async Task<ApplicationUser> EnsureUser(
-        IServiceProvider serviceProvider,
-        string testUserPw, string userName)
+        UserManager<ApplicationUser> userManager,
+        ApplicationUser user, string password)
     {
-        var userManager =
-            serviceProvider.GetService<UserManager<ApplicationUser>>();
-
-        var user = await userManager!.FindByNameAsync(userName);
-        if (user != null)
+        var dupUser = await userManager.FindByNameAsync(user.UserName);
+        if (dupUser != null)
         {
-            return user;
+            return dupUser;
         }
 
-        user = new ApplicationUser
-        {
-            Name = "Hyne",
-            Surname = "Kydlicek",
-            EmailConfirmed = true,
-            UserName = userName,
-        };
-        var result = await userManager.CreateAsync(user, testUserPw);
+        IdentityResult result =
+            await userManager.CreateWithClaimAsync(user, password);
 
 
-        if (user == null)
+        if (!result.Succeeded)
             throw new Exception("The password is probably not strong enough!");
-
-
-        await userManager.AddClaimAsync(user,
-            new Claim(Claims.UserID, user.Id.ToString()));
-
-
         return user;
     }
 
-    private static async Task AddToRole(IServiceProvider serviceProvider,
+    private static async Task AddToRole(
+        UserManager<ApplicationUser> userManager,
         int userId, string role)
     {
-        var userManager =
-            serviceProvider.GetService<UserManager<ApplicationUser>>();
         var user = await userManager!.FindByIdAsync(userId.ToString());
         if (user == null)
-            throw new Exception("The password is probably not strong enough!");
+            throw new Exception("User not found");
 
         await userManager.AddToRoleAsync(user, role);
     }
 
-    private static async Task EnsureRole(IServiceProvider serviceProvider,
+    private static async Task EnsureRole(RoleManager<Role> roleManager,
         string role, IEnumerable<Claim> claims)
     {
-        var roleManager = serviceProvider.GetService<RoleManager<Role>>();
-
         if (roleManager == null) throw new Exception("roleManager null");
 
         var newRole = new Role(role);
@@ -148,10 +138,10 @@ public class SeedData
         context.AddRange(wmUsage);
         context.AddRange(manuals);
         context.AddRange(locs);
-        context.AddRange(wm);
+        //context.AddRange(wm);
         context.AddRange(persons);
-        context.AddRange(borrows);
-        context.AddRange(reservations);
+        //context.AddRange(borrows);
+        //context.AddRange(reservations);
         context.SaveChanges();
     }
 

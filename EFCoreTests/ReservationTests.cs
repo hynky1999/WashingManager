@@ -2,31 +2,52 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging.Abstractions;
 using NodaTime;
 using PrackyASusarny.Auth.Models;
 using PrackyASusarny.Data;
+using PrackyASusarny.Data.Constants;
 using PrackyASusarny.Data.EFCoreServices;
 using PrackyASusarny.Data.Models;
 using PrackyASusarny.Data.ServiceInterfaces;
+using PrackyASusarny.Middlewares;
 using Xunit;
 
 namespace EFCoreTests;
 
-public class ReservationTests : IClassFixture<DBEmpty>, IDisposable
+public class _TEST_DB_RESS : DBEmpty
 {
-    public ReservationTests(DBEmpty factory)
+    public _TEST_DB_RESS() : base("test_reservation")
     {
-        Loc = new LocalizationService(new Clock14082022());
-        var loggerFactory = new NullLoggerFactory();
+    }
+}
 
-        ReservationsService = new ReservationService(factory, Loc);
+public class ReservationTests : IClassFixture<_TEST_DB_RESS>, IDisposable
+{
+    public ReservationTests(_TEST_DB_RESS factory)
+    {
+        var curService = new CurrencyService();
+        Loc = new LocalizationService(new Utils.Clock14082022(), curService);
+        ReservationConstant = new ReservationConstant();
+        Rates = new Rates();
+
+
+        // No need to add hooks as we won't need them
+        IContextHookMiddleware middleware = new ContextHookMiddleware();
+        IUsageService usageService = new UsageService(Loc);
+        IBorrowPersonService bpService = new BorrowPersonService(factory);
+        IBorrowService BorrowService =
+            new BorrowService(factory, bpService, Loc, usageService, Rates);
+        ReservationsService = new ReservationService(factory, BorrowService,
+            Loc, ReservationConstant, middleware);
         Factory = factory;
     }
+
 
     private IDbContextFactory<ApplicationDbContext> Factory { get; }
     private IReservationsService ReservationsService { get; }
     private ILocalizationService Loc { get; }
+    private IRates Rates { get; }
+    private IReservationConstant ReservationConstant { get; }
 
 
     public void Dispose()
@@ -67,10 +88,11 @@ public class ReservationTests : IClassFixture<DBEmpty>, IDisposable
                 .SuggestReservation<WashingMachine>(dur, 5);
         // Should be pickup up by inbetween
         Assert.Equal(2, suggestions.Length);
-        var start = Loc.Now + ReservationConstant.MinHoursBeforeReservation;
+        var start = Loc.Now + ReservationConstant.MinDurBeforeReservation +
+                    ReservationConstant.SuggestReservationDurForBorrow;
         var startLoc = start.InZone(Loc.TimeZone).LocalDateTime;
-        Assert.Equal(suggestions[0].start, startLoc);
-        Assert.Equal(suggestions[1].start, startLoc);
+        Assert.Equal(startLoc, suggestions[0].start);
+        Assert.Equal(startLoc, suggestions[1].start);
         var end = start + dur;
         var endLoc = end.InZone(Loc.TimeZone).LocalDateTime;
         Assert.Equal(suggestions[0].end, endLoc);

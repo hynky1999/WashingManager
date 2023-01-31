@@ -1,6 +1,8 @@
 using AntDesign;
 using PrackyASusarny.Errors.Folder;
 
+namespace PrackyASusarny.Utils;
+
 public static class IMessageServiceExtensions
 {
     public async static Task<T?> GenericOnDBError<T>(this IMessageService msg,

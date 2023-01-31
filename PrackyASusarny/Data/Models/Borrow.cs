@@ -9,7 +9,6 @@ using PrackyASusarny.Data.Utils;
 // ReSharper disable NonReadonlyMemberInGetHashCode
 
 namespace PrackyASusarny.Data.Models;
-#nullable disable
 
 [DisplayName("Borrow")]
 public class Borrow : IDBModel, ICloneable

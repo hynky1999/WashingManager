@@ -1,4 +1,4 @@
-namespace PrackyASusarny.Auth.Models;
+namespace PrackyASusarny.Auth.Utils;
 
 public static class IdentityRoles
 {

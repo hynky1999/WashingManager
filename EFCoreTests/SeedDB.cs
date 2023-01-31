@@ -11,46 +11,24 @@ namespace EFCoreTests;
 
 public class DBFullFactory : DbFactory
 {
+    public DBFullFactory(string name) : base(name)
+    {
+    }
+
+
     protected override void FillData(ApplicationDbContext context)
     {
         var wms = CreateWashingMachines();
         var borrows = CreateBorrows(wms);
         var users = new List<ApplicationUser> {new ApplicationUser("admin")};
-        var reservations = CreateReservations(wms, users);
         // Ok for just testing
         context.AddRange(wms);
         context.AddRange(borrows);
-        context.AddRange(reservations);
         context.AddRange(users);
         var usage = CreateUsages();
         context.AddRange(usage);
     }
 
-    private List<Reservation> CreateReservations(List<WashingMachine> wms,
-        List<ApplicationUser> users)
-    {
-        var reservations = new List<Reservation>()
-        {
-            new()
-            {
-                User = users[0],
-                BorrowableEntity = wms[0],
-                Start =
-                    new LocalDateTime(2022, 12, 1, 12, 0).InUtc().ToInstant(),
-                End = new LocalDateTime(2022, 12, 1, 14, 0).InUtc().ToInstant(),
-            },
-
-            new()
-            {
-                User = users[0],
-                BorrowableEntity = wms[0],
-                Start =
-                    new LocalDateTime(2021, 5, 1, 16, 0).InUtc().ToInstant(),
-                End = new LocalDateTime(2021, 5, 1, 18, 0).InUtc().ToInstant(),
-            },
-        };
-        return reservations;
-    }
 
     private List<BorrowableEntityUsage<WashingMachine>> CreateUsages()
     {
@@ -83,6 +61,20 @@ public class DBFullFactory : DbFactory
                 {
                     FileName = "xd.pdf",
                 }
+            },
+            new()
+            {
+                Location = new Location
+                {
+                    Building = 'B',
+                    DoorNum = 2,
+                    Floor = 0
+                },
+                Manual = new Manual
+                {
+                    FileName = "xd.pdf",
+                },
+                Status = Status.Free
             }
         };
         return washingMachines;
@@ -90,7 +82,9 @@ public class DBFullFactory : DbFactory
 
     private List<Borrow> CreateBorrows(List<WashingMachine> washingMachines)
     {
-        var dater = new LocalizationService(SystemClock.Instance);
+        var dater =
+            new LocalizationService(SystemClock.Instance,
+                new CurrencyService());
         var borrowPersons = new List<BorrowPerson>
         {
             new() {Name = "Hlynka", Surname = "Sirecek"},
@@ -147,6 +141,10 @@ public class DBFullFactory : DbFactory
 
 public class DBEmpty : DbFactory
 {
+    public DBEmpty(string name) : base(name)
+    {
+    }
+
     protected override void FillData(ApplicationDbContext context)
     {
     }

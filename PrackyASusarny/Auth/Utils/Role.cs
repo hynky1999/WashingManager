@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace PrackyASusarny.Auth.Models;
+namespace PrackyASusarny.Auth.Utils;
 
 // Might be useful for future use
 public class Role : IdentityRole<int>

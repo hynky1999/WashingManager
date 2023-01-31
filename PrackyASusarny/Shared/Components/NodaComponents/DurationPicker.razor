@@ -29,29 +29,8 @@
         set { CurrentValue = Duration.FromDays(Days) + Duration.FromHours(Hour) + Duration.FromMinutes(value); }
     }
 
-    protected override void OnInitialized() {
-        Days = CurrentValue.Days;
-        Hour = CurrentValue.Hours;
-        Minute = CurrentValue.Minutes;
-        base.OnInitialized();
-    }
-
     private FormValidationRule[] positive = new FormValidationRule[] {
         new() {Type = FormFieldType.Integer, Min = 0}
     };
-
-
-    protected override string FormatValueAsString(Duration value) {
-        return $"{value.Days} {value.Hours} {value.Minutes}";
-    }
-
-    protected override bool TryParseValueFromString(string value, out Duration result, out string validationErrorMessage) {
-        validationErrorMessage = null;
-        var splitted = value.Split(' ');
-        var (days, hours, minutes) = (int.Parse(splitted[0]), int.Parse(splitted[1]), int.Parse(splitted[2]));
-
-        result = Duration.FromDays(days) + Duration.FromHours(hours) + Duration.FromMinutes(minutes);
-        return true;
-    }
 
 }

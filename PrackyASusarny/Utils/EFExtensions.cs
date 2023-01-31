@@ -1,7 +1,6 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using PrackyASusarny.Data;
 using PrackyASusarny.Data.EFCoreServices;
 using PrackyASusarny.Errors.Folder;
 using DbUpdateException = Microsoft.EntityFrameworkCore.DbUpdateException;
@@ -61,7 +60,7 @@ public static class EFExtensions
     }
 
     public static async Task SaveChangeAsyncRethrow(
-        this ApplicationDbContext context)
+        this DbContext context)
     {
         try
         {
@@ -74,6 +73,25 @@ public static class EFExtensions
         catch (DbUpdateException e)
         {
             throw new Errors.Folder.DbUpdateException(e.Message);
+        }
+    }
+
+    public static async Task TryNTimesAsync(Func<Task> action, int n = 10,
+        int delay = 5000)
+    {
+        for (var i = 0; i < n; i++)
+        {
+            try
+            {
+                await action();
+                return;
+            }
+            catch (Exception)
+            {
+                if (i == n - 1) throw;
+            }
+
+            await Task.Delay(delay);
         }
     }
 }

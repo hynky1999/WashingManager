@@ -1,7 +1,8 @@
 @inject MessageService MessageService
-@inject ILogger<LazyRemoteTable<T>> Logger
+@inject ILogger<LazyRemoteTable<TItem>> Logger
+@using PrackyASusarny.Utils
 @using AntDesign.TableModels
-@typeparam T
+@typeparam TItem
 <Table @bind-PageIndex="_pageIndex"
        Bordered="Bordered"
        Class="@Class"
@@ -13,7 +14,7 @@
        RemoteDataSource
        Responsive
        Style="@Style"
-       TItem="T"
+       TItem="TItem"
        Total="_total">
 
     @if (ChildContent != null) {
@@ -25,14 +26,14 @@
 @code {
 
     [Parameter]
-    public RenderFragment<T>? ChildContent { get; set; }
+    public RenderFragment<TItem>? ChildContent { get; set; }
 
 
     [Parameter, EditorRequired]
-    public Func<QueryModel<T>, Task<T[]>>? OnQuery { get; set; }
+    public Func<QueryModel<TItem>, Task<TItem[]>>? OnQuery { get; set; }
 
     [Parameter, EditorRequired]
-    public Func<QueryModel<T>, Task<int>>? OnQueryCount { get; set; }
+    public Func<QueryModel<TItem>, Task<int>>? OnQueryCount { get; set; }
 
     [Parameter]
     public bool Bordered { get; set; }
@@ -52,15 +53,15 @@
 
     int _total;
     private bool _loading = false;
-    private T[] _data = Array.Empty<T>();
+    private TItem[] _data = Array.Empty<TItem>();
 
 
-    async Task HandleTableChange(QueryModel<T> queryModel) {
+    async Task HandleTableChange(QueryModel<TItem> queryModel) {
         _loading = true;
     // If the page hasn't change -> filter was changed -> need to recalculated total
         if (_lastPageIndex == queryModel.PageIndex) {
     // Reset to first page
-            queryModel = new QueryModel<T>(1, PageSize, queryModel.SortModel, queryModel.FilterModel);
+            queryModel = new QueryModel<TItem>(1, PageSize, queryModel.SortModel, queryModel.FilterModel);
             if (OnQueryCount != null) {
                 _total = await MessageService.GenericOnDBError(async () => await OnQueryCount(queryModel));
             }
@@ -70,7 +71,7 @@
     // On page one the update will not be called because the page index is the same after reset
         if (_pageIndex == 1 || _lastPageIndex != queryModel.PageIndex) {
             if (OnQuery != null) {
-                _data = await MessageService.GenericOnDBError(async () => _data = await OnQuery(queryModel)) ?? Array.Empty<T>();
+                _data = await MessageService.GenericOnDBError(async () => _data = await OnQuery(queryModel)) ?? Array.Empty<TItem>();
             }
         }
         _pageIndex = queryModel.PageIndex;
@@ -78,7 +79,7 @@
         _loading = false;
     }
 
-    public void ChangeLocally(Func<T[], T[]> func) {
+    public void ChangeLocally(Func<TItem[], TItem[]> func) {
         _data = func(_data);
         StateHasChanged();
     }

@@ -7,7 +7,7 @@ namespace PrackyASusarny.Auth.Models;
 
 public sealed class ApplicationUser : IdentityUser<int>, IDBModel
 {
-    public ApplicationUser() : base()
+    public ApplicationUser()
     {
     }
 
@@ -19,6 +19,9 @@ public sealed class ApplicationUser : IdentityUser<int>, IDBModel
     [ProtectedPersonalData] public string Name { get; set; }
 
     [ProtectedPersonalData] public string Surname { get; set; }
+
+    [ProtectedPersonalData] public double Cash { get; set; }
+
 
     public string HumanReadableLoc(ILocalizationService loc)
     {

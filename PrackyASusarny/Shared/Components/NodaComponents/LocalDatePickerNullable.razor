@@ -1,28 +1,12 @@
-@using System.Linq.Expressions
-<DatePicker @bind-Value="DateTimeValue" Disabled="Disabled" ShowTime="@showTime"></DatePicker>
+@inherits AntDesign.AntInputComponentBase<LocalDate?>
+<DatePicker @bind-Value="DateTimeValue" Disabled="Disabled"></DatePicker>
 
 @code {
 
     private DateTime? DateTimeValue {
-        get => NodaUtils.ToDateTime(Value);
-        set {
-            Value = NodaUtils.ToLocalDate(value);
-            ValueChanged.InvokeAsync(Value);
-        }
+        get { return NodaUtils.ToDateTime(CurrentValue); }
+        set { CurrentValue = NodaUtils.ToLocalDate(value); }
     }
-
-    [Parameter]
-    // ReSharper disable once InconsistentNaming
-    public bool showTime { get; set; }
-
-    [Parameter]
-    public LocalDate? Value { get; set; }
-
-    [Parameter]
-    public EventCallback<LocalDate?> ValueChanged { get; set; }
-
-    [Parameter]
-    public Expression<Func<LocalDate?>>? ValueExpression { get; set; }
 
     [Parameter]
     public bool Disabled { get; set; }

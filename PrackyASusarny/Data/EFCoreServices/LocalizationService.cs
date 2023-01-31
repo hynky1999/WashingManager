@@ -1,4 +1,5 @@
 using NodaTime.Text;
+using PrackyASusarny.Data.Constants;
 using PrackyASusarny.Data.ModelInterfaces;
 using PrackyASusarny.Data.ServiceInterfaces;
 
@@ -7,11 +8,14 @@ namespace PrackyASusarny.Data.EFCoreServices;
 public class LocalizationService : ILocalizationService
 {
     private readonly IClock _clock;
+    private ICurrencyService _currencyService;
+    private Currency _userCurrency = Currency.CZK;
     private int DecimalPlaces = 2;
 
-    public LocalizationService(IClock clock)
+    public LocalizationService(IClock clock, ICurrencyService currencyService)
     {
         _clock = clock;
+        _currencyService = currencyService;
     }
 
     public DateTimeZone TimeZone { get; } =
@@ -56,6 +60,12 @@ public class LocalizationService : ILocalizationService
     }
 
     public string? this[Instant? instant] => this[instant?.InZone(TimeZone)];
+
+    // This is kinda meh, the localiztoinService should be able to make async calls in future
+    public string? this[Money? money] =>
+        money != null
+            ? _currencyService.ApproximateTo(money, _userCurrency).ToString()
+            : null;
 
     public string? this[params string?[] keys]
     {

@@ -1,48 +1,29 @@
-@using System.Linq.Expressions
+@inject ILocalizationService Loc
+@inherits AntDesign.AntInputComponentBase<(LocalDateTime, LocalDateTime)>
 <RangePicker
-    TValue="DateTime?[]"
-    Value="_dateTimeValue"
     ShowTime="@_showTime"
-    OnClearClick="@(() => _OnChange(new DateRangeChangedEventArgs {Dates = new DateTime?[] {null, null}}))"
-    OnChange="_OnChange"
-    ValueChanged="@((dates) => _dateTimeValue = dates)"
-    ValueExpression="@(() => _dateTimeValue)"
+    DefaultValue=_defaultValue
+    OnClearClick="@(() => _dateTimeValue = _defaultValue)"
+    OnChange=@(args => _dateTimeValue = Array.ConvertAll(args.Dates, d => d ?? new DateTime()))
+
+
+    DefaultPickerValue=_defaultValue
     DisabledTime=_disabledTime
     DisabledDate=_disabledDates
     Disabled="Disabled"/>
 
 
 @code {
-
-    private async void _OnChange(DateRangeChangedEventArgs args) {
-        if (args.Dates.Length != 2) {
-            throw new ArgumentException("Expected 2 dates");
+    // For some reason RangePicker doesn't support binding.
+    private DateTime[] _dateTimeValue {
+        get {
+            return new DateTime[] {
+                NodaUtils.ToDateTime(CurrentValue.Item1),
+                NodaUtils.ToDateTime(CurrentValue.Item2)
+            };
         }
-        Value = (NodaUtils.ToLocalDateTime(args.Dates[0]), NodaUtils.ToLocalDateTime(args.Dates[1]));
-        await ValueChanged.InvokeAsync(Value);
-        await OnChange.InvokeAsync(Value);
+        set { CurrentValue = (NodaUtils.ToLocalDateTime(value[0]), NodaUtils.ToLocalDateTime(value[1])); }
     }
-
-    protected override void OnParametersSet() {
-        if (Value == null) {
-            _dateTimeValue = new DateTime?[] {null, null};
-        } else {
-            _dateTimeValue = new[] {NodaUtils.ToDateTime(Value.Value.Item1), NodaUtils.ToDateTime(Value.Value.Item2)};
-        }
-    }
-
-    // ReSharper disable once InconsistentNaming
-
-    [Parameter]
-    public (LocalDateTime?, LocalDateTime?)? Value { get; set; }
-
-
-    [Parameter]
-    public EventCallback<(LocalDateTime?, LocalDateTime?)?> ValueChanged { get; set; }
-
-    [Parameter]
-    public Expression<Func<(LocalDateTime?, LocalDateTime?)?>>? ValueExpression { get; set; }
-
 
     [Parameter]
     public Func<LocalDateTime, DatePickerDisabledTime>? DisabledTime { get; set; }
@@ -54,17 +35,16 @@
     public bool Disabled { get; set; }
 
     [Parameter]
-    public EventCallback<(LocalDateTime?, LocalDateTime?)?> OnChange { get; set; }
-
-    [Parameter]
     public string? TimeFormat { get; set; }
 
-
-    private DateTime?[] _dateTimeValue = new DateTime?[2];
+    [Parameter]
+    public (LocalDateTime, LocalDateTime)? DefaultValue { get; set; }
 
     private Func<DateTime, DatePickerDisabledTime>? _disabledTime;
     private Func<DateTime, bool>? _disabledDates;
     private OneOf.OneOf<bool, string> _showTime;
+    private DateTime[] _defaultValue = Array.Empty<DateTime>();
+
 
     protected override void OnInitialized() {
         if (DisabledTime != null) {
@@ -79,7 +59,32 @@
         } else {
             _showTime = true;
         }
+
+        _defaultValue = InitDefaultValue(DefaultValue);
+    // Set it here because Range picker won't call onChange at start
+        _dateTimeValue = _defaultValue;
+
+
         base.OnInitialized();
     }
+
+
+    private DateTime[] InitDefaultValue((LocalDateTime, LocalDateTime)? defaultValue) {
+        if (defaultValue == null) {
+            return new[] {
+                Loc.NowInTimeZone.LocalDateTime.ToDateTimeUnspecified(),
+                Loc.NowInTimeZone.LocalDateTime.ToDateTimeUnspecified()
+            };
+        }
+
+        return new[] {
+            NodaUtils.ToDateTime(defaultValue.Value.Item1),
+            NodaUtils.ToDateTime(defaultValue.Value.Item2)
+        };
+    }
+
+    protected override void OnParametersSet() {
+    }
+
 
 }

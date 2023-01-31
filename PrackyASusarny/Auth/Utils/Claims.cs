@@ -1,6 +1,6 @@
 using System.Security.Claims;
 
-namespace PrackyASusarny.Auth.Models;
+namespace PrackyASusarny.Auth.Utils;
 
 public static class Claims
 {
@@ -12,12 +12,12 @@ public static class Claims
 
     public static int GetUserId(ClaimsPrincipal user)
     {
-        var id = user.FindFirstValue(Claims.UserID);
-        if (id == null)
+        var claim = user.FindFirst(Claims.UserID);
+        if (claim == null)
         {
             throw new ArgumentException("User not logged in");
         }
 
-        return int.Parse(id);
+        return int.Parse(claim.Value);
     }
 }

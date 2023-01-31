@@ -1,32 +1,33 @@
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging.Abstractions;
 using NodaTime;
+using PrackyASusarny.Data.Constants;
 using PrackyASusarny.Data.EFCoreServices;
 using PrackyASusarny.Data.Models;
 using Xunit;
 
 namespace EFCoreTests;
 
-public class Clock14082022 : IClock
+// Since we want to use the same db for all tests, we need parameterless constructor
+public class _TEST_DB_USAGE : DBFullFactory
 {
-    public Instant GetCurrentInstant()
+    public _TEST_DB_USAGE() : base("usage_test")
     {
-        return new ZonedDateTime(new LocalDateTime(2022, 8, 14, 0, 0),
-            DateTimeZone.Utc, Offset.Zero).ToInstant();
     }
 }
 
-public class ChartingTests : IClassFixture<DBFullFactory>
+public class ChartingTests : IClassFixture<_TEST_DB_USAGE>
 {
     private readonly double _mondaysSinceStart;
 
-    public ChartingTests(DBFullFactory factory)
+    public ChartingTests(_TEST_DB_USAGE factory)
     {
-        var localization = new LocalizationService(new Clock14082022());
-        var loggerFactory = new NullLoggerFactory();
+        CurrencyService currencyService = new CurrencyService();
+        var localization =
+            new LocalizationService(new Utils.Clock14082022(), currencyService);
         UsageService =
-            new UsageChartingService<WashingMachine>(factory, localization);
+            new UsageChartingService<WashingMachine>(factory,
+                new MyUsageConstants(), localization);
         UsageUpdateService = new UsageService(localization);
         Factory = factory;
 
@@ -163,5 +164,11 @@ public class ChartingTests : IClassFixture<DBFullFactory>
         var result = resultCtx.WashingMachineUsage.ToList();
         Assert.Equal(expected, result);
         // Don't save
+    }
+
+    private class MyUsageConstants : IUsageConstants
+    {
+        public ZonedDateTime CalculatedSince => new(
+            new LocalDateTime(2022, 8, 8, 0, 0), DateTimeZone.Utc, Offset.Zero);
     }
 }

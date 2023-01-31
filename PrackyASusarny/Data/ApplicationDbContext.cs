@@ -1,9 +1,7 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using PrackyASusarny.Auth.Models;
+using PrackyASusarny.Auth.Utils;
 using PrackyASusarny.Data.Models;
 
 namespace PrackyASusarny.Data;
@@ -42,27 +40,5 @@ public class
         modelBuilder.Entity<Borrow>().UseXminAsConcurrencyToken();
         modelBuilder.Entity<BorrowableEntity>().UseXminAsConcurrencyToken();
         modelBuilder.Entity<Reservation>().UseXminAsConcurrencyToken();
-    }
-}
-
-public class ApplicationUserClaimsPrincipalFactory :
-    UserClaimsPrincipalFactory<ApplicationUser>
-{
-    public ApplicationUserClaimsPrincipalFactory(
-        UserManager<ApplicationUser> userManager,
-        IOptions<IdentityOptions> optionsAccessor) : base(userManager,
-        optionsAccessor)
-    {
-    }
-
-    protected override async Task<ClaimsIdentity>
-        GenerateClaimsAsync(ApplicationUser user)
-    {
-        ClaimsIdentity claims = await
-            base.GenerateClaimsAsync(user);
-
-
-        claims.AddClaim(new Claim(Claims.UserID, user.Id.ToString()));
-        return claims;
     }
 }

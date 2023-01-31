@@ -20,7 +20,7 @@ public sealed class WashingMachine : BorrowableEntity, IDBModel
 {
     [UIVisibility(UIVisibilityEnum.Disabled)]
     [DisplayName("Manual ID")]
-    public int ManualID { get; set; }
+    public int? ManualID { get; set; }
 
     [DisplayName("Manual")] public Manual? Manual { get; set; }
 

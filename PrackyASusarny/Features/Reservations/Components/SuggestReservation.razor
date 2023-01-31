@@ -1,6 +1,9 @@
 @inject ILocalizationService Loc
 @inject IReservationsService ReservationsService
 @inject MessageService MessageService
+@inject IReservationConstant ReservationConstant
+@using PrackyASusarny.Utils
+@using PrackyASusarny.Data.Constants
 @typeparam T where T : BorrowableEntity
 
 
@@ -86,9 +89,9 @@
         durationRules = new FormValidationRule[] {
             new FormValidationRule {
                 Transform = value => (int) ((Duration) value).TotalHours,
-                Min = (int) ReservationConstant.MinReservationHours.TotalHours,
-                Max = (int) ReservationConstant.MaxReservationHours.TotalHours, Type = FormFieldType.Number,
-                Message = Loc[$"The duration must be at least {(int) ReservationConstant.MinReservationHours.TotalHours} hour and at maximum {(int) ReservationConstant.MaxReservationHours.TotalHours} hour"],
+                Min = (int) ReservationConstant.MinReservationDur.TotalHours,
+                Max = (int) ReservationConstant.MaxReservationDur.TotalHours, Type = FormFieldType.Number,
+                Message = Loc[$"The duration must be at least {(int) ReservationConstant.MinReservationDur.TotalHours} hour and at maximum {(int) ReservationConstant.MaxReservationDur.TotalHours} hour"],
             }
         };
     }

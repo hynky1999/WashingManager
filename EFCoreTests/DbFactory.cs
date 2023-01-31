@@ -1,6 +1,8 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using PrackyASusarny.Data;
 
 namespace EFCoreTests;
@@ -10,32 +12,26 @@ namespace EFCoreTests;
 /// Context is generated only once and then reused
 /// This is because every service uses it's own context but we need shared
 /// </summary>
-public abstract class DbFactory : IDbContextFactory<ApplicationDbContext>
+public abstract class DbFactory : IDbContextFactory<ApplicationDbContext>,
+    IDisposable
 {
     private const string ConnectionString =
-        @"Host=localhost;Database=efcoretest;Username=hynky;Password=sirecek007";
+        @"Host={0};Database=efcoretest_{1};Username={2};Password={3}";
 
-    private static readonly object Lock = new();
-    private static bool _databaseInitialized;
+    private string _databaseName;
 
-    public DbFactory()
+    public DbFactory(string name)
     {
-        lock (Lock)
+        // Set new db name to use
+        _databaseName = name;
+        using (var context = CreateDbContext())
         {
-            if (!_databaseInitialized)
-            {
-                using (var context = CreateDbContext())
-                {
-                    context.Database.EnsureDeleted();
-                    context.Database.EnsureCreated();
-                    // While not something to do in production code it is fine for testing.
-                    // ReSharper disable once VirtualMemberCallInConstructor
-                    FillData(context);
-                    context.SaveChanges();
-                }
-
-                _databaseInitialized = true;
-            }
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
+            // While not something to do in production code it is fine for testing.
+            // ReSharper disable once VirtualMemberCallInConstructor
+            FillData(context);
+            context.SaveChanges();
         }
     }
 
@@ -47,9 +43,23 @@ public abstract class DbFactory : IDbContextFactory<ApplicationDbContext>
 
     public ApplicationDbContext CreateDbContext()
     {
+        var configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json")
+            .Build();
+        var pass = configuration.GetConnectionString("PostgresPassword");
+        var user = configuration.GetConnectionString("PostgresUsername");
+        var host = configuration.GetConnectionString("PostgresHost");
+        var conn_string = string.Format(ConnectionString, host, _databaseName,
+            user, pass);
         return new ApplicationDbContext(
             new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseNpgsql(ConnectionString, o => o.UseNodaTime()).Options);
+                .UseNpgsql(conn_string, o => o.UseNodaTime()).Options);
+    }
+
+    public void Dispose()
+    {
+        using var context = CreateDbContext();
+        context.Database.EnsureDeleted();
     }
 
     protected abstract void FillData(ApplicationDbContext context);

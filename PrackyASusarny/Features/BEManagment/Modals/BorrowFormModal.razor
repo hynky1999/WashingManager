@@ -1,5 +1,5 @@
 @inject IBorrowService BorrowService
-@using PrackyASusarny.Errors.Folder
+@using PrackyASusarny.Utils
 @using PrackyASusarny.Features.BEManagment.Desc
 @typeparam T where T : BorrowableEntity
 @inject MessageService Message
@@ -7,10 +7,9 @@
 @inject ILocalizationService Loc
 
 
-<ModalForm MessageFail="@_messageFail" MessageSuccess="@_messageSuccess"
+<ModalForm MessageSuccess="@_messageSuccess"
            Model="_tmpBorrowPerson"
            OnFinish="OnFinish"
-           OnFinishFailed="OnFinishFailed"
            OnSubmit="OnSubmit"
            @ref="_modal"
            Title=@Loc["Create borrow"] TMod="BorrowPerson" TResult="Borrow">
@@ -41,29 +40,22 @@
     [Parameter]
     public EventCallback<Borrow> OnFinish { get; set; }
 
-    [Parameter]
-    public EventCallback OnFinishFailed { get; set; }
-
     private BorrowPerson _tmpBorrowPerson = new();
     private string _messageSuccess = "Borrow created successfully";
-    private string _messageFail = "Failed to create borrow";
     private ModalForm<BorrowPerson, Borrow> _modal = new();
 
-    private async Task<Borrow?> OnSubmit() {
+    private async Task<Borrow?> OnSubmit(BorrowPerson borrowPerson) {
         if (DefaultBe is null) {
-            Logger.LogError("Washing machine is null");
+            Message.Error("DefaultBe is null");
         }
         var borrow = new Borrow {
             BorrowPerson = _tmpBorrowPerson,
             BorrowableEntity = DefaultBe
         };
-        try {
+        return await Message.GenericOnDBError(async () => {
             await BorrowService.AddBorrowAsync(borrow);
             return borrow;
-        }
-        catch (Exception ex) when (ex is ArgumentException || ex is DbException) {
-            return null;
-        }
+        });
     }
 
     public void OpenModal() {

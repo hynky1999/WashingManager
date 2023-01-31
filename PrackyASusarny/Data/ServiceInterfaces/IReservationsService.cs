@@ -6,12 +6,12 @@ namespace PrackyASusarny.Data.ServiceInterfaces;
 
 public interface IReservationsService
 {
-    Task CreateReservationAsync(LocalDateTime start, LocalDateTime end,
+    Task<Reservation?> CreateReservationAsync(LocalDateTime start,
+        LocalDateTime end,
         ClaimsPrincipal user, BorrowableEntity entity);
 
     Task<Borrow?> MakeBorrowFromReservationAsync(Reservation reservation);
     Task CancelReservationAsync(Reservation reservation);
-    Task DeleteUnTakenReservationAsync(Reservation reservation);
 
     Task<Reservation[]> GetReservationsAsync(ClaimsPrincipal user,
         QueryModel<Reservation> queryModel);

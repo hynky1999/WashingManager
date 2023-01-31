@@ -7,21 +7,24 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <base href="~/"/>
-    <link href="css/site.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-    <component type="typeof(HeadOutlet)" render-mode="Server"/>
+    <link href="css/site.css" rel="stylesheet"/>
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+    <component render-mode="Server" type="typeof(HeadOutlet)"/>
 </head>
 
-<body class="p-4">
-    <nav class="navbar sticky-top navbar-light px-2">
-        <a class="navbar-brand text-black" href="#">Kolej 17. Listopadu</a>
-        <ul class="navbar-nav">
-            <partial name="/Pages/_LoginPartial.cshtml" />
-        </ul>
-    </nav>
+<body class="bg-body p-4">
+<nav class="bg-primary fixed-top mt-3 mx-3 navbar navbar-light px-2 rounded-4" style="z-index: 999">
+    <a class="navbar-brand text-black" href="#">Kolej 17. Listopadu</a>
+    <ul class="navbar-nav">
+        <partial name="/Pages/_LoginPartial.cshtml"/>
+    </ul>
+</nav>
+<main style="padding-top: 100px">
     @RenderBody()
+
+
     <div id="blazor-error-ui">
         <environment include="Staging,Production">
             An error has occurred. This application may no longer respond until reloaded.
@@ -29,9 +32,10 @@
         <environment include="Development">
             An unhandled exception has occurred. See browser dev tools for details.
         </environment>
-        <a href="" class="reload">Reload</a>
+        <a class="reload" href="">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
+</main>
 <script src="_framework/blazor.server.js"></script>
 @await RenderSectionAsync("Scripts", false)
 </body>

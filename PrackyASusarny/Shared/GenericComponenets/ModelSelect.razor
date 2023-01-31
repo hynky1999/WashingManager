@@ -1,18 +1,17 @@
-@using System.Linq.Expressions
-@typeparam TItem
+@typeparam TItem where TItem : class?
+
 @inject ILocalizationService Loc
 @inject ICrudService<TItem> CrudService
+@inherits AntInputComponentBase<TItem>
 
 <Select
+    AllowClear="@AllowClear"
+    @bind-Value="@CurrentValue"
     DataSource="@_dataSource"
-    DefaultValue="Value"
     Disabled="@Disabled"
     LabelName=@(nameof(SelectItem.Label))
-    OnSelectedItemChanged=@((x) => OnChange.InvokeAsync(x.Value))
     TItem="SelectItem"
     TItemValue="TItem"
-    ValueChanged="ValueChanged"
-    ValueExpression="@ValueExpression"
     ValueName=@(nameof(SelectItem.Value))>
 
 </Select>
@@ -20,19 +19,15 @@
 @code {
 
     private class SelectItem {
-        public TItem Value { get; set; } = default(TItem)!;
-        public string Label { get; set; } = string.Empty;
+        public TItem Value { get; set; }
+        public string Label { get; set; }
+
+        public SelectItem(TItem value, string label) {
+            Value = value;
+            Label = label;
+        }
     }
 
-
-    [Parameter]
-    public TItem? Value { get; set; }
-
-    [Parameter]
-    public EventCallback<TItem> ValueChanged { get; set; }
-
-    [Parameter]
-    public Expression<Func<TItem>>? ValueExpression { get; set; }
 
     [Parameter]
     public bool Disabled { get; set; }
@@ -40,22 +35,46 @@
     [Parameter]
     public EventCallback<TItem> OnChange { get; set; }
 
-    private SelectItem[] _dataSource = Array.Empty<SelectItem>();
+    [Parameter]
+    public TItem[]? DataSource { get; set; }
 
-    protected override async Task OnInitializedAsync() {
-        var _ds = await CrudService.GetAllAsync(eager: true);
-        _dataSource = _ds.Select(e => {
-            string _label = e.ToString() ?? "";
+    [Parameter]
+    public bool AllowClear { get; set; } = true;
+
+
+    private SelectItem[] _dataSource = Array.Empty<SelectItem>();
+    private TItem[] _dataSourceValues = Array.Empty<TItem>();
+    private bool _isCRUDInitialized = false;
+
+    protected async override Task OnParametersSetAsync() {
+    // If the data source is set, use it and don't reload as it reloads select
+        if (DataSource != null && _dataSourceValues != DataSource) {
+            _dataSourceValues = DataSource;
+            _isCRUDInitialized = false;
+        } else if (!_isCRUDInitialized) {
+            _dataSourceValues = (await CrudService.GetAllAsync(eager: true)).ToArray();
+            _isCRUDInitialized = true;
+        }
+        _dataSource = prepareSource(_dataSourceValues);
+
+
+        await base.OnParametersSetAsync();
+    }
+
+
+    private SelectItem[] prepareSource(TItem[] data) {
+        var source = data.Select(e => {
+            string _label = e?.ToString() ?? "";
             if (e is IDBModel model) {
                 _label = model.HumanReadableLoc(Loc);
             }
 
-            return new SelectItem {
-                Value = e,
-                Label = _label
-            };
-        }).ToArray();
-        await base.OnInitializedAsync();
+            return new SelectItem(
+                e,
+                _label
+                );
+        });
+        return source.ToArray();
     }
 
 }

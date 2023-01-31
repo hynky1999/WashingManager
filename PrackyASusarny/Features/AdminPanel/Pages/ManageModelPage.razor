@@ -1,30 +1,27 @@
 @page "/AdminMenu/{modelName}/{Action}/{Id:int?}"
 @using Microsoft.AspNetCore.Authorization
+@using PrackyASusarny.Auth.Utils
 @using PrackyASusarny.Features.AdminPanel.Componenets
 @attribute [Authorize(Policy = Policies.ModelManagement)]
-@inject ILogger<ManageModelPage> Logger
 @inject NavigationManager NavManager
 @inject ILocalizationService Loc
 
 
-<PageHeader Title=@Loc[ModelName!] SubTitle="@Loc[Action!]"/>
+<PageHeader SubTitle="@Loc[Action!]" Title=@Loc[ModelName!]/>
 <AdminMenuNavBar/>
 <Divider/>
-@if (_listType is not null) {
-    @if (Action == "List") {
+<ModelLoader AllowedTypes="@AdminConfig.AllowedTypes" Model="@ModelName">
+    @if (_action == CrudAction.List) {
         <Button OnClick="@(_ => NavManager.NavigateTo($"adminMenu/{ModelName}/Create"))">@Loc["Create New"]</Button>
         <Divider/>
-        @CrudListTableFragment()
-    } else if (Action == "Create") {
-        @CrudForm(CrudAction.Create, Id)
-    } else if (Action == "Update") {
-        @CrudForm(CrudAction.Update, Id)
+        <DynamicComponent Type="@(typeof(CrudTable<>).MakeGenericType(context))"/>
+    } else if (_action == CrudAction.Create || _action == CrudAction.Update) {
+        <DynamicComponent Parameters="@(new Dictionary<string, object>() {{"Action", _action}, {"Id", Id ?? 0}})"
+                          Type="@(typeof(CrudForm<>).MakeGenericType(context))"/>
     } else {
         <Title Level="2">@Loc["Unknow Action"]</Title>
     }
-} else {
-    <Title Level="2">@Loc[$"{ModelName} is not supported"]</Title>
-}
+</ModelLoader>
 
 @code{
 
@@ -37,39 +34,14 @@
     [Parameter]
     public int? Id { get; set; }
 
-    private Type? _listType;
+    private CrudAction? _action;
 
     protected override void OnParametersSet() {
-        if (ModelUtils.ModelNameToType.TryGetValue(ModelName ?? "", out var tmplistType) && AdminConfig.AllowedTypes.Contains(tmplistType)) {
-            _listType = tmplistType;
+        if (Enum.TryParse<CrudAction>(Action, out var acc)) {
+            _action = acc;
+        } else {
+            _action = null;
         }
-    }
-
-    private RenderFragment CrudListTableFragment() {
-        return builder => {
-            if (_listType is null) {
-                return;
-            }
-            try {
-                builder.OpenComponent(0, typeof(CrudTable<>).MakeGenericType(_listType));
-                builder.CloseComponent();
-            }
-            catch (ArgumentException e) {
-                Logger.LogError(e, "Error in CrudListTableFragment");
-            }
-        };
-    }
-
-    private RenderFragment CrudForm(CrudAction action, int? id) {
-        if (_listType is null) {
-            return _ => { };
-        }
-        return builder => {
-            builder.OpenComponent(0, typeof(CrudForm<>).MakeGenericType(_listType));
-            builder.AddAttribute(1, "Action", action);
-            builder.AddAttribute(2, "Id", id);
-            builder.CloseComponent();
-        };
     }
 
 }

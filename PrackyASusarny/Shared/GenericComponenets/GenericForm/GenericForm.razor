@@ -1,8 +1,9 @@
 @namespace PrackyASusarny.Shared.GenericComponenets.GenericForm
 @inject IServiceProvider ServiceProvider
 @inject ILocalizationService Loc
-@typeparam TMod
+@implements IDisposable
 
+@typeparam TMod
 @if (_fields != null) {
     <Form Loading="@Loading" Model="@Model" OnFinish="@OnFinish">
         @foreach (var field in _fields) {
@@ -15,7 +16,7 @@
                 </FormItem>
             }
         }
-        <Button Type="@ButtonType.Primary" HtmlType="submit">@Loc["Submit"]</Button>
+        <Button HtmlType="submit" Type="@ButtonType.Primary">@Loc["Submit"]</Button>
     </Form>
 }
 
@@ -27,7 +28,7 @@
 
     [Parameter]
     public bool Loading { get; set; }
-    
+
     [Parameter]
     public bool Localize { get; set; }
 
@@ -60,6 +61,14 @@
 
     private void OnValueChanged(object? sender, EventArgs e) {
         ModelChanged.InvokeAsync(Model);
+    }
+
+    public void Dispose() {
+        if (_fields != null) {
+            foreach (var field in _fields) {
+                field.ValueChanged -= OnValueChanged;
+            }
+        }
     }
 
 }

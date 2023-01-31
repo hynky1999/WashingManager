@@ -21,7 +21,7 @@ public abstract class BorrowableEntity : IDBModel, ICloneable
 
     [UIVisibility(UIVisibilityEnum.Disabled)]
     [DisplayName("Location ID")]
-    public int LocationID { get; set; }
+    public int? LocationID { get; set; }
 
     [DisplayName("Location")] public Location? Location { get; set; }
 

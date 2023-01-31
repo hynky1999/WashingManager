@@ -9,9 +9,6 @@ namespace PrackyASusarny.Data.Models;
 
 public abstract class BorrowableEntityUsage
 {
-    public static readonly ZonedDateTime CalculatedSince =
-        new(new LocalDateTime(2022, 8, 8, 0, 0), DateTimeZone.Utc, Offset.Zero);
-
     [Key] public IsoDayOfWeek DayId { get; set; }
 
     // Ugly but faster than having array since since won't change

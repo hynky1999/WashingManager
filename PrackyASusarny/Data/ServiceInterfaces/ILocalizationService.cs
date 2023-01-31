@@ -1,3 +1,4 @@
+using PrackyASusarny.Data.Constants;
 using PrackyASusarny.Data.ModelInterfaces;
 
 namespace PrackyASusarny.Data.ServiceInterfaces;
@@ -18,7 +19,9 @@ public interface ILocalizationService
     public string? this[ZonedDateTime? time] { get; }
     public string? this[double? d] { get; }
     public string? this[IDBModel? model] { get; }
+    public string? this[Money? money] { get; }
 
     public string? this[params string?[] keys] { get; }
+
     public double? Round(double? d);
 }

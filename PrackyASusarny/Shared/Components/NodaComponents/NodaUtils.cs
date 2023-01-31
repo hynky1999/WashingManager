@@ -22,12 +22,31 @@ public static class NodaUtils
             .InZoneLeniently(localizationService.TimeZone).ToInstant();
     }
 
+    public static Instant? ToInstant(DateTime? dateTime,
+        ILocalizationService localizationService)
+    {
+        if (dateTime == null)
+        {
+            return null;
+        }
+
+        return ToInstant(dateTime, localizationService);
+    }
+
     public static DateTime ToDateTime(Instant instant,
         ILocalizationService localizationService)
     {
         return instant.InZone(localizationService.TimeZone)
             .ToDateTimeUnspecified();
     }
+
+    public static DateTime? ToDateTime(Instant? val,
+        ILocalizationService localizationService)
+    {
+        if (val is null) return null;
+        return ToDateTime(val.Value, localizationService);
+    }
+
 
     public static LocalDate ToLocalDate(DateTime val)
     {

@@ -1,35 +1,24 @@
 @page "/test"
-@using OneOf
 @inject ILogger<Test> Logger
 
+<LocalDateRangePicker @bind-Value="_dateRange"/>
+<LocalDateTimeRange @bind-Value="_dateRange2"/>
+<LocalDatePickerNullable @bind-Value="val"></LocalDatePickerNullable>
+<ModelSelect TItem="Reservation" @bind-Value="_reservation"/>
+<InstantPicker TItem="Instant" @bind-Value="_instant"></InstantPicker>
+<CharInput @bind-Value="xd" AllowedChars=@(new[] {'A', 'B'})/>
 
-<RangePicker @bind-Value="time" DisabledTime=@DisabledTime showTime="@((OneOf<Boolean, string>) true)"></RangePicker>
+@_dateRange
+@_dateRange2
+@val
 
-@code {
 
-    private DateTime[] time = new[] {
-        DateTime.Now, DateTime.Now
-    };
-
-    private DatePickerDisabledTime DisabledTime(DateTime time) {
-        Logger.LogInformation(time.Hour.ToString());
-        if (time.Day == 1) {
-            return new DatePickerDisabledTime(
-                new[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11},
-                new[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11},
-                new[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
-                );
-        }
-
-        if (time.Hour == 2) {
-            return new DatePickerDisabledTime(
-                Array.Empty<int>(),
-                new[] {0, 10},
-                Array.Empty<int>()
-                );
-        }
-
-        return new DatePickerDisabledTime(Array.Empty<int>(), Array.Empty<int>(), Array.Empty<int>());
-    }
+@code{
+    private (LocalDate, LocalDate) _dateRange;
+    private (LocalDateTime, LocalDateTime) _dateRange2;
+    private LocalDate? val = null;
+    private Reservation? _reservation = null;
+    private Instant _instant;
+    private char? xd = 'a';
 
 }

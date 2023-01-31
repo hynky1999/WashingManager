@@ -1,3 +1,5 @@
+@using PrackyASusarny.Utils
+@using PrackyASusarny.Data.Constants
 @using System.Linq.Expressions
 @using AntDesign.TableModels
 @using System.Security.Claims
@@ -5,16 +7,19 @@
 @inject IUserService UserService
 @inject IReservationsService ReservationService
 @inject IMessageService MessageService
+@inject IReservationConstant ReservationConstant
 
 <AuthorizeView Context="auth">
-    <LazyRemoteTable Bordered="@true" Class="border border-primary" OnQuery=@OnQueryReservations(auth.User) OnQueryCount="@OnQueryCountReservations(auth.User)" PageSize="PageSize" @ref=@_table T="Reservation">
+    <LazyRemoteTable Bordered="@true" Class="border border-primary" OnQuery=@OnQueryReservations(auth.User) OnQueryCount="@OnQueryCountReservations(auth.User)" PageSize="PageSize" @ref=@_table TItem="Reservation">
 
 
         <LocDNColumn @bind-Field="@context.BorrowableEntity"/>
-        <LocDNColumn @bind-Field="@context.Start" DefaultSortOrder=_startSortDirectionFilters="_startFilters" OnFilter=@OnStartFilter  Sortable=@true/>
+        <LocDNColumn @bind-Field="@context.Start"
+                     DefaultSortOrder="@_startSortDirection"
+                     Filters="@_startFilters" OnFilter=@OnStartFilter Sortable=@true/>
         <LocDNColumn @bind-Field="@context.End"/>
         <ActionColumn>
-            @if (context.Start >= Loc.Now + ReservationConstant.MinReservationCancelHours) {
+            @if (context.Start >= Loc.Now + ReservationConstant.MinReservationCancelDur) {
                 <Button Color="Color.Blue3"
                         OnClick="@(() => CancelReservation(context))" Size="@AntSizeLDSType.Small"
                         Type="@ButtonType.Primary">
@@ -75,6 +80,7 @@
             };
             _startSortDirection = SortDirection.Descending;
         }
+        base.OnInitialized();
     }
 
 }

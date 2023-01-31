@@ -3,6 +3,7 @@
 @inject ILocalizationService Loc
 @using PrackyASusarny.Features.BEManagment.Modals
 @using AntDesign.TableModels
+@using PrackyASusarny.Auth.Utils
 @typeparam T where T : BorrowableEntity
 
 <Table @bind-PageIndex="_pageIndex" DataSource="_data" Loading="_loading" OnChange="@HandleTableChange"
@@ -64,6 +65,7 @@
         <ChildContent Context="_">
             <ActionColumn Title=@Loc["Actions"]>
                 <Space Size=@("middle")>
+                    @*
                     @if (context.Status == Status.Free) {
                         <SpaceItem>
                             <Button Color="Color.Blue3"
@@ -72,6 +74,9 @@
                                 @Loc["Borrow"]
                             </Button>
                         </SpaceItem>
+                    Not Available in current version
+                    *@
+                    @if (context.Status == Status.Free) {
                         <SpaceItem>
                             <Button Color="Color.Red3"
                                     OnClick="@(() => OpenStatusModal(context, Status.Broken))"
@@ -97,7 +102,7 @@
     </AuthorizeView>
 </Table>
 <BorrowFormModal DefaultBe="@_defaultBe" OnFinish="OnBorrowCreated" @ref="_modalBorrow" ShowWashingMachine="true" T="T"/>
-<StatusChangeModal DefaultBe="@_defaultBe" OnFinish="wm => wm.Status = _repairStatus" @ref="_modalStatus" Status="_repairStatus" T="T"/>
+<StatusChangeModal DefaultBe="@_defaultBe" OnFinish="wm => wm.Status = _repairStatus" @ref="_modalStatus" T="T"/>
 
 @code{
     bool _loading;
@@ -145,7 +150,7 @@
     private void OpenStatusModal(T be, Status s) {
         _defaultBe = be;
         _repairStatus = s;
-        _modalStatus.OpenModal();
+        _modalStatus.OpenModal(_repairStatus);
     }
 
     async Task HandleTableChange(QueryModel<T> queryModel) {

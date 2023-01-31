@@ -3,18 +3,20 @@
 @typeparam TResult where TResult : class
 @inject ILogger<ModalForm<TMod, TResult>> Logger
 @inject MessageService Message
-<Modal Visible="@_visible" Footer="@null" OnCancel="CloseModal">
-    @if(Title != null)
-    {
+@inject ILocalizationService Loc
+
+<Modal Footer="@null" OnCancel="CloseModal" Visible="@_visible">
+    @if (Title != null) {
         <Title Level="2">@Title</Title>
     }
     @Header
     <Divider/>
-    <Form @ref="@_form" Model="@Model" Loading="_loading" Class="p-4">
+    <Form Class="p-4"
+          Loading="_loading" Model="@Model"
+          OnFinish="@(async (_) => await OnFinishForm(Model))">
         @FormContent
+        <Button Block="true" HtmlType="submit" Type="@ButtonType.Primary">@Loc["Submit"]</Button>
     </Form>
-    <Divider/>
-    <Button Type="@ButtonType.Primary" OnClick="OnFinishForm" Block="true" HtmlType="submit">Submit</Button>
 </Modal>
 
 @code {
@@ -39,8 +41,8 @@
     public string MessageFail { get; set; } = "Fail";
 
     [Parameter]
-    [Required]
-    public Func<Task<TResult?>>? OnSubmit { get; set; }
+    [Required, EditorRequired]
+    public Func<TMod, Task<TResult?>>? OnSubmit { get; set; }
 
     [Parameter]
     public EventCallback<TResult> OnFinish { get; set; }
@@ -50,31 +52,21 @@
 
     private bool _visible = false;
     private bool _loading = false;
-    private Form<TMod> _form = new();
 
 
-    private async Task OnFinishForm() {
-        var validationResult = _form.Validate();
-        if (validationResult)
-            _loading = true;
-        else {
-            return;
-        }
+    private async Task OnFinishForm(TMod model) {
         TResult? submitedModel = null;
         if (OnSubmit != null) {
-            submitedModel = await OnSubmit();
+            submitedModel = await OnSubmit(model);
         }
+    // Just check for null, we don't check for default value as it could be valid
         if (submitedModel != null) {
-            Model = new TMod();
             await OnFinish.InvokeAsync(submitedModel);
             Message.Success(
                 MessageSuccess
                 );
         } else {
             await OnFinishFailed.InvokeAsync(submitedModel);
-            Message.Error(
-                MessageFail
-                );
         }
         _loading = false;
         CloseModal();

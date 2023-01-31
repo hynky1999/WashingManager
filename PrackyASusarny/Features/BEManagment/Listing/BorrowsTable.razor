@@ -3,21 +3,24 @@
 @inject ILocalizationService Loc
 @using System.Linq.Expressions
 @using PrackyASusarny.Features.BEManagment.Modals
-@using AntDesign.TableModels
 @typeparam T where T : BorrowableEntity
 
-<LazyRemoteTable PageSize="@(10)" T="Borrow">
-    <AntDesign.Column @bind-Field="@context.startDate" DefaultSortOrder="SortDirection.Ascending"
-                      Sortable
-                      TData="Instant" Title="@Loc["Start Time"]">
-        @Loc[context.startDate]
-    </AntDesign.Column>
-    <AntDesign.Column @bind-Field="@context.endDate" DefaultSortOrder="SortDirection.Descending"
-                      Filters="_endDateFilters"
-                      OnFilter=@_endDateOnFilter TData="Instant?"
-                      Title="@Loc["End Time"]">
-        @(Loc[context.endDate] ?? Loc["Ongoing"])
-    </AntDesign.Column>
+<LazyRemoteTable OnQuery="BorrowService.GetBorrowsByBEAsync<T>"
+                 OnQueryCount="BorrowService.CountBorrowsByBEAsync<T>"
+                 PageSize="@PageSize"
+                 @ref="_tableRef"
+                 TItem="Borrow">
+
+
+    <LocDNColumn @bind-Field="@context.startDate" DefaultSortOrder="SortDirection.Ascending"
+                 Sortable
+                 Title="Start Time">
+    </LocDNColumn>
+    <LocDNColumn @bind-Field="@context.endDate" DefaultSortOrder="SortDirection.Descending"
+                 Filters="@_endDateFilters"
+                 OnFilter=@_endDateOnFilter
+                 Title="End Time">
+    </LocDNColumn>
     <AntDesign.Column DataIndex="BorrowPerson.Name" Filterable
                       TData="string" Title="@Loc["Name"]"/>
     <AntDesign.Column DataIndex="BorrowPerson.Surname" Filterable
@@ -45,14 +48,16 @@
         @context.BorrowableEntity.Location?.DoorNum
     </AntDesign.Column>
     <ActionColumn>
-        <Space>
-            <Button Color="Color.Blue3"
-                    OnClick="() => OpenRemoveModal(context)"
-                    Size="@AntSizeLDSType.Small"
-                    Type="@ButtonType.Primary">
-                @(Loc["End Borrow"])
-            </Button>
-        </Space>
+        @if (context.endDate == null) {
+            <Space>
+                <Button Color="Color.Blue3"
+                        OnClick="() => OpenRemoveModal(context)"
+                        Size="@AntSizeLDSType.Small"
+                        Type="@ButtonType.Primary">
+                    @(Loc["End Borrow"])
+                </Button>
+            </Space>
+        }
     </ActionColumn>
 </LazyRemoteTable>
 <BorrowRemoveModal
@@ -65,27 +70,21 @@
     [Parameter]
     public int PageSize { get; set; } = 5;
 
-    bool _loading;
-    int _lastPageIndex = 1;
-    int _pageIndex = 1;
-    int _total;
-    Borrow[] _data = Array.Empty<Borrow>();
 
     private TableFilter<int?>[] _floorFilters = new TableFilter<int?>[0];
     private TableFilter<char?>[] _buildingFilters = new TableFilter<char?>[0];
     private TableFilter<int?>[] _roomFilters = new TableFilter<int?>[0];
+    private LazyRemoteTable<Borrow>? _tableRef;
 
-    Expression<Func<Instant?, Instant?, bool>> _endDateOnFilter = (value, name) =>
-        value == null ?
-            name == null : name != null;
+    Expression<Func<Instant?, Instant?, bool>>? _endDateOnFilter;
 
-    private TableFilter<Instant?>[] _endDateFilters = new TableFilter<Instant?>[0];
+    private TableFilter<Instant?>[]? _endDateFilters;
 
 
     private Borrow? _defaultBorrow;
     private BorrowRemoveModal<T> _modal = new();
 
-    protected override Task OnInitializedAsync() {
+    protected override void OnInitialized() {
         _buildingFilters = LocationService.GetBuildingOptions().Select(
             x => new TableFilter<char?> {Text = x.ToString(), Value = x}).ToArray();
 
@@ -96,22 +95,10 @@
             x => new TableFilter<int?> {Text = x.ToString(), Value = x}).ToArray();
         _endDateFilters = new[] {
             new TableFilter<Instant?>() {Text = Loc["Ongoing"], Value = null, Selected = true},
-            new TableFilter<Instant?>() {Text = Loc["Ended"], Value = Instant.MaxValue, Selected = false}
+            new TableFilter<Instant?>() {Text = Loc["Ended"], Value = Instant.MaxValue, Selected = false},
         };
-        return base.OnInitializedAsync();
-    }
-
-    async Task HandleTableChange(QueryModel<Borrow> queryModel) {
-        _loading = true;
-    // Filter
-        if (_lastPageIndex == queryModel.PageIndex) {
-            queryModel = new QueryModel<Borrow>(1, PageSize, queryModel.SortModel, queryModel.FilterModel);
-            _total = await BorrowService.CountBorrowsByBEAsync<T>(queryModel);
-        }
-        _data = await BorrowService.GetBorrowsByBEAsync<T>(queryModel);
-        _pageIndex = queryModel.PageIndex;
-        _lastPageIndex = queryModel.PageIndex;
-        _loading = false;
+        _endDateOnFilter = (value, name) => value == null ? name == null : name != null;
+        base.OnInitialized();
     }
 
     void OpenRemoveModal(Borrow b) {
@@ -120,7 +107,7 @@
     }
 
     Task EndBorrow(Borrow borrow) {
-        _data = _data.Where(x => x.BorrowID != borrow.BorrowID).ToArray();
+        _tableRef?.ChangeLocally(data => data.Where(x => x.BorrowID != borrow.BorrowID).ToArray());
         return Task.CompletedTask;
     }
 

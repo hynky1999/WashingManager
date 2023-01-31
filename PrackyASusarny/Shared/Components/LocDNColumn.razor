@@ -3,7 +3,7 @@
 @using System.ComponentModel
 @using System.Linq.Expressions
 @typeparam T
-<AntDesign.Column DefaultSortOrder="DefaultSortOrder" Field="Field" FieldChanged="FieldChanged" FieldExpression="FieldExpression" Filters=Filters OnFilter=@OnFilter Sortable=@Sortable Title=@(Title ?? Loc[_label])>
+<AntDesign.Column DefaultSortOrder="DefaultSortOrder" Field="Field" FieldChanged="FieldChanged" FieldExpression="FieldExpression" Filterable Filters=Filters OnFilter=@OnFilter Sortable=@Sortable Title=@(Title ?? Loc[_label])>
     @if (ChildContent != null) {
         @ChildContent
     } else {
@@ -13,6 +13,7 @@
 </AntDesign.Column>
 
 @code {
+    // Doesn't support DataIndex as would be non trivial to implement
 
     [Parameter]
     public T? Field { get; set; }
@@ -42,7 +43,10 @@
     public TableFilter<T>[]? Filters { get; set; }
 
     [Parameter]
-    public bool BlankIfNonLocalizable { get; set; }
+    public bool ShowIfNotLocalizable { get; set; } = true;
+
+    [Parameter]
+    public bool Filterable { get; set; }
 
     private string _label = typeof(T).Name;
 
@@ -56,8 +60,8 @@
                 _localizedField = Loc[Field];
             }
             catch (NotImplementedException) {
-                if (BlankIfNonLocalizable) {
-                    _localizedField = "";
+                if (ShowIfNotLocalizable) {
+                    _localizedField = Field?.ToString();
                 } else {
     // Rethrow
                     throw new NotImplementedException();

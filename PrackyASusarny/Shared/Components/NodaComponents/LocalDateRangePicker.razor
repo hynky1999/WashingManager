@@ -1,43 +1,50 @@
-@using System.Linq.Expressions
-<RangePicker Disabled="Disabled" OnChange="_OnChange" OnClearClick="@(() => _OnChange(new DateRangeChangedEventArgs {Dates = new DateTime?[] {null, null}}))" Value="_dateTimeValue"></RangePicker>
+@inject ILocalizationService Loc
+@inherits AntDesign.AntInputComponentBase<(LocalDate, LocalDate)>
+<RangePicker
+    DefaultValue=_defaultValue
+    OnChange=@(args => _dateTimeValue = Array.ConvertAll(args.Dates, d => d ?? new DateTime()))
+    OnClearClick="@(() => _dateTimeValue = _defaultValue)"
+    TValue="DateTime[]"/>
 
 @code {
-    // Generic class because of nullability
-    // FOr some reason I coulnd't get bind-Value play with RangePicker so had to use functions
-    private async void _OnChange(DateRangeChangedEventArgs args) {
-        if (args.Dates.Length != 2) {
-            throw new ArgumentException("Expected 2 dates");
+    // Bind value on Rnage picker doesn't call value changed event for some reason :/
+
+    private DateTime[] _dateTimeValue {
+        get {
+            return new[] {
+                NodaUtils.ToDateTime(CurrentValue.Item1),
+                NodaUtils.ToDateTime(CurrentValue.Item2)
+            };
         }
-        Value = (NodaUtils.ToLocalDate(args.Dates[0]), NodaUtils.ToLocalDate(args.Dates[1]));
-        await ValueChanged.InvokeAsync(Value);
-        await OnChange.InvokeAsync(Value);
+        set { CurrentValue = (NodaUtils.ToLocalDate(value[0]), NodaUtils.ToLocalDate(value[1])); }
     }
-
-    protected override void OnParametersSet() {
-        if (Value == null) {
-            _dateTimeValue = new DateTime?[] {null, null};
-        } else {
-            _dateTimeValue = new[] {NodaUtils.ToDateTime(Value.Value.Item1), NodaUtils.ToDateTime(Value.Value.Item2)};
-        }
-    }
-
-    // ReSharper disable once InconsistentNaming
-
-    [Parameter]
-    public (LocalDate?, LocalDate?)? Value { get; set; }
-
-    [Parameter]
-    public EventCallback<(LocalDate?, LocalDate?)?> ValueChanged { get; set; }
-
-    [Parameter]
-    public Expression<Func<(LocalDate?, LocalDate?)?>>? ValueExpression { get; set; }
 
     [Parameter]
     public bool Disabled { get; set; }
 
     [Parameter]
-    public EventCallback<(LocalDate?, LocalDate?)?> OnChange { get; set; }
+    public (LocalDate, LocalDate)? DefaultValue { get; set; }
 
-    private DateTime?[] _dateTimeValue = new DateTime?[2];
+    private DateTime[] _defaultValue = Array.Empty<DateTime>();
+
+
+    protected override void OnInitialized() {
+        _defaultValue = InitDefaultValue(DefaultValue);
+        _dateTimeValue = _defaultValue;
+    }
+
+    private DateTime[] InitDefaultValue((LocalDate, LocalDate)? defaultValue) {
+        if (defaultValue == null) {
+            return new[] {
+                Loc.NowInTimeZone.Date.ToDateTimeUnspecified(),
+                Loc.NowInTimeZone.Date.ToDateTimeUnspecified()
+            };
+        }
+
+        return new[] {
+            NodaUtils.ToDateTime(defaultValue.Value.Item1),
+            NodaUtils.ToDateTime(defaultValue.Value.Item2)
+        };
+    }
 
 }
