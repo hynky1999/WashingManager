@@ -1,0 +1,23 @@
+@inject ILocalizationService Loc
+
+@attribute [Authorize(Policy = Policies.BorrowManagement)]
+@page "/{BEntity}/Reservations"
+@using Microsoft.AspNetCore.Authorization
+@using PrackyASusarny.Auth.Utils
+@using PrackyASusarny.Features.BEManagment
+@using PrackyASusarny.Features.Reservations.Components.Tables
+
+<PageHeader Title="@Loc["Manage Reservations"]"/>
+<ModelLoader Model="@BEntity" AllowedTypes="@ManagementConfig.AllowedEntities">
+    <DynamicComponent Type="@(typeof(AvailableReservationTable<>).MakeGenericType(context))"/>
+</ModelLoader>
+
+
+@code{
+
+    [Parameter]
+    public string? BEntity { get; set; }
+
+
+}
+

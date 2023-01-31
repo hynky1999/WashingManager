@@ -1,0 +1,56 @@
+@inject ILocalizationService Loc
+@inject IReservationsService ReservationService
+@inject IMessageService MessageService
+@using PrackyASusarny.Utils
+@using System.Linq.Expressions
+@typeparam T where T : BorrowableEntity
+
+
+<LazyRemoteTable
+    @ref=@_table
+    TItem="Reservation"
+    Bordered="@true"
+    OnQuery=@(ReservationService.GetReservationsAsync<T>)
+    OnQueryCount=@(ReservationService.GetReservationsCountAsync<T>)
+    PageSize="@(10)">
+
+
+    <LocDNColumn @bind-Field="@context.BorrowableEntity"/>
+    <LocDNColumn @bind-Field="@context.Start" Sortable DefaultSortOrder=@SortDirection.Ascending/>
+    <LocDNColumn @bind-Field="@context.End" OnFilter="OnEndFilter" Filters="_endFilters"/>
+    <LocDNColumn @bind-Field="@context.User"/>
+    <ActionColumn>
+        @if (context.Start <= Loc.Now && context.End > Loc.Now && context.BorrowableEntity.Status == Status.Free) {
+            <Button
+                Type="@ButtonType.Primary"
+                Color="Color.Blue3"
+                Size="@AntSizeLDSType.Small"
+                OnClick=@(() => MakeBorrowFromReservation(context))>
+                @Loc["Borrow"]
+            </Button>
+        }
+    </ActionColumn>
+</LazyRemoteTable>
+
+@code{
+    private LazyRemoteTable<Reservation> _table = new();
+
+    private async void MakeBorrowFromReservation(Reservation reservation) {
+        await MessageService.GenericOnDBError(async () => {
+            await ReservationService.MakeBorrowFromReservationAsync(reservation);
+            _table.ChangeLocally(reservations => reservations.Where(res => res.ReservationID != reservation.ReservationID).ToArray());
+            MessageService.Success("Borrow created");
+        });
+    }
+
+    private Expression<Func<Instant, Instant, bool>>? OnEndFilter;
+    private TableFilter<Instant>[]? _endFilters;
+
+    protected override void OnInitialized() {
+        OnEndFilter = (value, end) => end > value;
+        _endFilters = new[] {
+            new TableFilter<Instant>() {Selected = true, Text = Loc["Upcoming"], Value = Loc.Now}
+        };
+    }
+
+}

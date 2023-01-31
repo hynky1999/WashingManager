@@ -1,12 +1,13 @@
+@using PrackyASusarny.Data.Constants
 @using PrackyASusarny.Errors.Folder
 @inject IBorrowService BorrowService
 @inject ILogger<PriceBorrowCompute> Logger
 @inject ILocalizationService Loc
 
 @if (_price is not null) {
-    <GridRow Class="px-4" Justify="space-between" Align="middle">
+    <GridRow Align="middle" Class="px-4" Justify="space-between">
         <GridCol>
-            @($"{Loc["Current price"]}: {_price}")
+            @($"{Loc["Current price"]}: {Loc[_price]}")
         </GridCol>
         <GridCol>
             <Button OnClick="UpdatePrice">@Loc["Refresh"]</Button>
@@ -20,14 +21,9 @@
     public Borrow? Borrow { get; set; }
 
     [Parameter]
-    public EventCallback<Price?> OnBorrowEnd { get; set; }
+    public EventCallback<Money?> OnBorrowEnd { get; set; }
 
-    private Price? _price = null;
-
-    protected override async Task OnInitializedAsync() {
-        await UpdatePrice();
-        await base.OnInitializedAsync();
-    }
+    private Money? _price = null;
 
     protected override async Task OnParametersSetAsync() {
         await UpdatePrice();

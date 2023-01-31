@@ -47,14 +47,14 @@ public static class ReflectionExtensions
 
     public static LambdaExpression GetPropertyExpression<T>(this T model,
         PropertyInfo propertyInfo,
-        bool castToObject = false)
+        Type? castType = null)
     {
         // (model) => model.Property
         var modelExpr = Expression.Constant(model);
         var property = Expression.Property(modelExpr, propertyInfo);
-        if (castToObject)
+        if (castType != null)
         {
-            var casted = Expression.Convert(property, typeof(object));
+            var casted = Expression.Convert(property, castType);
             return Expression.Lambda(
                 typeof(Func<>).MakeGenericType(propertyInfo.PropertyType),
                 casted);

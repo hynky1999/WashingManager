@@ -12,12 +12,12 @@ namespace PrackyASusarny.Areas.Identity.Pages.Account.Manage;
 
 public class IndexModel : PageModel
 {
-    private readonly SignInManager<User> _signInManager;
-    private readonly UserManager<User> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
 
     public IndexModel(
-        UserManager<User> userManager,
-        SignInManager<User> signInManager)
+        UserManager<ApplicationUser> userManager,
+        SignInManager<ApplicationUser> signInManager)
     {
         _userManager = userManager;
         _signInManager = signInManager;
@@ -27,9 +27,9 @@ public class IndexModel : PageModel
 
     [TempData] public string StatusMessage { get; set; }
 
-    private async Task LoadAsync(User user)
+    private async Task LoadAsync(ApplicationUser applicationUser)
     {
-        var userName = await _userManager.GetUserNameAsync(user);
+        var userName = await _userManager.GetUserNameAsync(applicationUser);
         Username = userName;
     }
 

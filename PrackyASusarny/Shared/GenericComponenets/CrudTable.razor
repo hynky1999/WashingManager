@@ -1,121 +1,82 @@
 @using System.Reflection
 @using PrackyASusarny.Utils
 @using PrackyASusarny.Data.Utils
-@using PrackyASusarny.Errors.Folder
-@using System.ComponentModel.DataAnnotations
-@using System.ComponentModel
 @typeparam T where T : class
 @inject NavigationManager NavManager
 @inject MessageService MessageService
 @inject ILocalizationService Loc
 @inject ICrudService<T> CrudService
 
-@if (_models.Count > 0) {
-    <Table TItem="T" DataSource="@_models" Responsive>
-        @foreach (var property in typeof(T).
-            GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy).
-            Where(p => p.CanWrite &&
-                       p.GetCustomAttribute<UIVisibility>()?.Visibility != UIVisibilityEnum.Hidden) )
-        {
-            @ProperityColumn(context, property)
-        }
-        <ActionColumn>
-            <Space>
-                <SpaceItem>
-                    <Button Type="@ButtonType.Primary" Size="@AntSizeLDSType.Small" Color="Color.Red3" OnClick="() => Delete(context)">@Loc["Delete"]</Button>
-                </SpaceItem>
-                <SpaceItem>
-                    <Button Type="@ButtonType.Primary" Size="@AntSizeLDSType.Small" Color="Color.Green3" OnClick="() => Update(context)">@Loc["Update"]</Button>
-                </SpaceItem>
-            </Space>
-        </ActionColumn>
-    </Table>
-} else {
-    <Empty/>
-}
+<LazyRemoteTable
+    OnQuery="@(async (qModel) => await CrudService.GetAllAsync(qModel, true))"
+    OnQueryCount="CrudService.GetCountAsync"
+    @ref="_table"
+    TItem="T">
+    @foreach (var property in typeof(T).
+        GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy).
+        Where(p => p.CanWrite &&
+                   p.GetCustomAttribute<UIVisibility>()?.Visibility != UIVisibilityEnum.Hidden)) {
+        @ProperityColumn(context, property)
+    }
+    <ActionColumn>
+        <Space>
+            <SpaceItem>
+                <Button Color="Color.Red3" OnClick="() => Delete(context)" Size="@AntSizeLDSType.Small" Type="@ButtonType.Primary">@Loc["Delete"]</Button>
+            </SpaceItem>
+            <SpaceItem>
+                <Button Color="Color.Green3" OnClick="() => Update(context)" Size="@AntSizeLDSType.Small" Type="@ButtonType.Primary">@Loc["Update"]</Button>
+            </SpaceItem>
+        </Space>
+    </ActionColumn>
+</LazyRemoteTable>
 
 @code {
-    private List<T> _models = new();
 
     private readonly Type[] _supportedFilters = {
         typeof(int), typeof(uint), typeof(long), typeof(string), typeof(Enum), typeof(DateTime), typeof(Guid), typeof(bool)
     };
 
+    private LazyRemoteTable<T>? _table;
+
     private RenderFragment ProperityColumn(T context, PropertyInfo propertyInfo) {
         return builder => {
-            builder.OpenComponent(0, typeof(Column<>).MakeGenericType(propertyInfo.PropertyType));
+            builder.OpenComponent(0, typeof(LocDNColumn<>).MakeGenericType(propertyInfo.PropertyType));
             var val = propertyInfo.GetValue(context);
             builder.AddAttribute(1, "Field", val);
             builder.AddAttribute(2, "FieldChanged", context.GetSetPropertyEventCallback(this, propertyInfo));
             builder.AddAttribute(3, "FieldExpression", context.GetPropertyExpression(propertyInfo));
-            builder.AddMultipleAttributes(4, GetColumnParams(context, propertyInfo));
+            builder.AddMultipleAttributes(4, GetColumnParams(propertyInfo));
             builder.CloseComponent();
         };
     }
-    private string GetContent(T context, PropertyInfo propertyInfo) {
-        var val = propertyInfo.GetValue(context);
-        if (val is Instant i) {
-            return Loc[i] ?? i.ToString();
-        }
-        if (val is DbModel dbModel) {
-            return dbModel.HumanReadable;
-        }
-        
-        return val?.ToString() ?? "";
-    }
 
-    private IEnumerable<KeyValuePair<string,object>> GetColumnParams(T context, PropertyInfo info) {
+    private IEnumerable<KeyValuePair<string, object>> GetColumnParams(PropertyInfo info) {
         var attrs = new List<KeyValuePair<string, object>>();
-        attrs.Add(new KeyValuePair<string, object>("ChildContent", (RenderFragment) (builder2 => {
-            builder2.AddContent(0,GetContent(context, info));
-        })));
-
-        var displayAtt = info.GetCustomAttribute<DisplayNameAttribute>();
-        if (displayAtt != null) {
-            attrs.Add(new KeyValuePair<string, object>("Title", Loc[displayAtt.DisplayName]!));
-        }
-        
         if (info.PropertyType.GetInterface("IComparable") != null) {
             attrs.Add(new KeyValuePair<string, object>("Sortable", true));
         }
-        
-        
+
         if (_supportedFilters.Contains(info.PropertyType)) {
             attrs.Add(new KeyValuePair<string, object>("Filterable", true));
         }
         return attrs;
     }
 
-    protected override async Task OnParametersSetAsync() {
-        _models = await CrudService.GetAllAsync(eager: true);
-        await base.OnParametersSetAsync();
-    }
-
-    private void Update(T model) {
-        try {
+    private async void Update(T model) {
+        await MessageService.GenericOnDBError(() => {
             var id = CrudService.GetId(model);
             var baseResourceApi = string.Join('/', NavManager.Uri.Split("/")[..^1]);
             NavManager.NavigateTo($"{baseResourceApi}/Update/{id}");
-        }
-        catch (DbException) {
-            MessageService.Error("Cannot update the model");
-        }
+            return Task.CompletedTask;
+        });
     }
 
     private async void Delete(T model) {
-        try {
+        await MessageService.GenericOnDBError(async () => {
             await CrudService.DeleteAsync(model);
-            _models.Remove(model);
-            StateHasChanged();
-#pragma warning disable CS4014
+            _table?.ChangeLocally(models => models.Remove(model));
             MessageService.Success($"Successfully deleted item {model}");
-#pragma warning restore CS4014
-        }
-        catch (DbException) {
-#pragma warning disable CS4014
-            MessageService.Error("Failed to delete model");
-#pragma warning restore CS4014
-        }
+        });
     }
 
 }

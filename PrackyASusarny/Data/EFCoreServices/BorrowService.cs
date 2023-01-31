@@ -2,6 +2,7 @@ using System.Reflection;
 using AntDesign.TableModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using PrackyASusarny.Data.Constants;
 using PrackyASusarny.Data.Models;
 using PrackyASusarny.Data.ServiceInterfaces;
 using PrackyASusarny.Utils;
@@ -13,78 +14,84 @@ public class BorrowService : IBorrowService
     private readonly IBorrowPersonService _borrowPersonService;
     private readonly IDbContextFactory<ApplicationDbContext> _dbFactory;
     private readonly ILocalizationService _localizationService;
-    private readonly ILogger<BorrowService> _logger;
+    private readonly IRates _rates;
     private readonly IUsageService _usageService;
     private readonly MethodInfo _usageUpdateStatisticsMethod;
 
     public BorrowService(IDbContextFactory<ApplicationDbContext> dbFactory,
         IBorrowPersonService borrowPersonService,
         ILocalizationService localizationService, IUsageService usageService,
-        ILogger<BorrowService> logger)
+        IRates rates)
     {
         _dbFactory = dbFactory;
         _borrowPersonService = borrowPersonService;
         _localizationService = localizationService;
         _usageService = usageService;
+        _rates = rates;
         _usageUpdateStatisticsMethod = typeof(UsageService).GetMethods()
             .FirstOrDefault(m =>
                 m.IsGenericMethod && m.Name == "UpdateUsageStatisticsAsync")!;
-        _logger = logger;
     }
 
-    public async Task<Price> GetPriceAsync(Borrow borrow)
+    public async Task<Money> GetPriceAsync(Borrow borrow)
     {
-        var duration = _localizationService.Now - borrow.startDate;
-        var price = new Price
+        using var db = await _dbFactory.CreateDbContextAsync();
+        var end = borrow.endDate ?? _localizationService.Now;
+        var duration = end - borrow.startDate;
+        var forLength =
+            duration.TotalMinutes / 30.0 * _rates.WMpricePerHalfHour;
+        var total = forLength + _rates.FlatBorrowPrice;
+        var price = new Money
         {
-            Amount = (int) (duration.Minutes / 30.0 * Rates.WMpricePerHalfHour),
-            Currency = "CZK"
+            Amount = (int) total,
+            Currency = Currency.CZK
         };
         return price;
     }
 
     public async Task EndBorrowAsync(Borrow borrow)
     {
-        var borrowC = (Borrow) borrow.Clone();
         using var dbContext = await _dbFactory.CreateDbContextAsync();
+
         var contextWithStat =
-            await EndBorrowStatisticsAsync(borrowC, dbContext);
-        contextWithStat.Borrows.Attach(borrowC);
-        borrowC.endDate = _localizationService.Now;
-        borrowC.BorrowableEntity.Status = Status.Free;
+            await EndBorrowStatisticsAsync(borrow, dbContext);
+
+        contextWithStat.Borrows.Attach(borrow);
+        borrow.endDate = _localizationService.Now;
+        borrow.BorrowableEntity.Status = Status.Free;
         await contextWithStat.SaveChangeAsyncRethrow();
     }
 
-    public async Task AddBorrowAsync(Borrow borrow)
+    public async Task<Borrow?> AddBorrowAsync(Borrow borrow)
     {
         using var dbContext = await _dbFactory.CreateDbContextAsync();
-        // Deepcopy to prevent overwriting original
-        var borrowC = (Borrow) borrow.Clone();
+        if (borrow.BorrowableEntity.Status != Status.Free)
+            throw new ArgumentException("Must be free");
 
-        if (borrowC.BorrowableEntity.Status != Status.Free)
-            throw new ArgumentException("Invalid Value");
+        borrow.BorrowableEntity.Status = Status.Taken;
+        borrow.startDate = _localizationService.Now;
 
-        borrowC.BorrowableEntity.Status = Status.Taken;
-        borrowC.startDate = _localizationService.Now;
-
-        if (borrowC.BorrowPerson.BorrowPersonID == 0)
+        if (borrow.BorrowPerson.BorrowPersonID == 0)
         {
+            // Will create if returns 0 with traversal
             var id = await _borrowPersonService.GetIdByNameAndSurnameAsync(
-                borrowC.BorrowPerson.Name,
-                borrowC.BorrowPerson.Surname);
-            borrowC.BorrowPerson.BorrowPersonID = id;
+                borrow.BorrowPerson.Name,
+                borrow.BorrowPerson.Surname);
+            borrow.BorrowPerson.BorrowPersonID = id;
         }
 
         // Register to context
-        dbContext.ChangeTracker.TrackGraph(borrowC, CreateBorrowTraversal);
+        dbContext.ChangeTracker.TrackGraph(borrow, CreateBorrowTraversal);
+
         // Since we use concurency token this will fail if status was modified in meantime.
         await dbContext.SaveChangeAsyncRethrow();
+        return borrow;
     }
 
     public async Task<Borrow[]> GetBorrowsByBEAsync<T>(QueryModel<Borrow> qM)
         where T : BorrowableEntity
     {
-        using var ctx = _dbFactory.CreateDbContext();
+        using var ctx = await _dbFactory.CreateDbContextAsync();
         return await GetBorrowsQuery<T>(ctx, qM).ToArrayAsync();
     }
 
@@ -93,6 +100,15 @@ public class BorrowService : IBorrowService
     {
         using var ctx = _dbFactory.CreateDbContext();
         return await GetBorrowsQuery<T>(ctx, qM).CountAsync();
+    }
+
+    public async Task<Borrow?> GetBorrowAsync(Reservation res)
+    {
+        using var ctx = await _dbFactory.CreateDbContextAsync();
+        var borrowQuery = from b in ctx.Borrows
+            where b.ReservationID == res.ReservationID
+            select b;
+        return await borrowQuery.FirstOrDefaultAsync();
     }
 
     private IQueryable<Borrow> GetBorrowsQuery<T>(
@@ -121,7 +137,6 @@ public class BorrowService : IBorrowService
 
     private void CreateBorrowTraversal(EntityEntryGraphNode node)
     {
-        node.Entry.State = EntityState.Unchanged;
         if (node.Entry.Entity is Borrow) node.Entry.State = EntityState.Added;
 
         if (node.Entry.Entity is BorrowPerson {BorrowPersonID: 0})

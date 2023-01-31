@@ -3,12 +3,14 @@ using AntDesign.TableModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using PrackyASusarny.Data.ServiceInterfaces;
+using PrackyASusarny.Middlewares;
 using PrackyASusarny.Utils;
 
 namespace PrackyASusarny.Data.EFCoreServices;
 
 public class CrudService<T> : ICrudService<T> where T : class
 {
+    private readonly IContextHookMiddleware _contextHookMiddleware;
     private readonly IDbContextFactory<ApplicationDbContext> _dbFactory;
     private readonly IEntityType _entityType;
     private readonly Func<T, object> _idGetter;
@@ -17,11 +19,13 @@ public class CrudService<T> : ICrudService<T> where T : class
 
     public CrudService(IDbContextFactory<ApplicationDbContext> dbFactory,
         ILogger<CrudService<T>> logger,
+        IContextHookMiddleware contextHookMiddleware,
         Expression<Func<T, object>> idGetter)
     {
         _dbFactory = dbFactory;
         _idGetterExpr = idGetter;
         _idGetter = idGetter.Compile();
+        _contextHookMiddleware = contextHookMiddleware;
         _entityType =
             dbFactory.CreateDbContext().Model.FindEntityType(typeof(T)) ??
             throw new InvalidOperationException("Entity type not found");
@@ -29,13 +33,14 @@ public class CrudService<T> : ICrudService<T> where T : class
     }
 
     public CrudService(IDbContextFactory<ApplicationDbContext> dbFactory,
-        ILogger<CrudService<T>> logger) : this(
-        dbFactory, logger, GetKeyGetter(dbFactory))
+        ILogger<CrudService<T>> logger,
+        IContextHookMiddleware middleware) : this(
+        dbFactory, logger, middleware, GetKeyGetter(dbFactory))
     {
     }
 
 
-    public async Task<List<T>> GetAllAsync(QueryModel<T>? queryModel,
+    public async Task<T[]> GetAllAsync(QueryModel<T>? queryModel,
         bool eager = false)
     {
         using var dbContext = await _dbFactory.CreateDbContextAsync();
@@ -43,7 +48,7 @@ public class CrudService<T> : ICrudService<T> where T : class
         query = GetBoilerplate(query, queryModel, eager);
         if (queryModel != null) query = queryModel.CurrentPagedRecords(query);
 
-        return await query.ToListAsync();
+        return await query.ToArrayAsync();
     }
 
     public async Task<int> GetCountAsync(QueryModel<T>? queryModel)
@@ -63,22 +68,28 @@ public class CrudService<T> : ICrudService<T> where T : class
         return await result;
     }
 
-    public async Task CreateAsync(T entity)
+    public async Task<T> CreateAsync(T entity)
     {
         await using var dbContext = await _dbFactory.CreateDbContextAsync();
         var dbset = dbContext.Set<T>();
         dbset.Attach(entity);
         dbContext.Entry(entity).State = EntityState.Added;
         await dbContext.SaveChangeAsyncRethrow();
+        // Fire and forget
+        _contextHookMiddleware.OnSave(EntityState.Added, entity);
+        return entity;
     }
 
-    public async Task UpdateAsync(T entity)
+    public async Task<T> UpdateAsync(T entity)
     {
         await using var dbContext = await _dbFactory.CreateDbContextAsync();
         var dbset = dbContext.Set<T>();
         dbset.Attach(entity);
         dbContext.Entry(entity).State = EntityState.Modified;
         await dbContext.SaveChangeAsyncRethrow();
+        // Fire and forget
+        _contextHookMiddleware.OnSave(EntityState.Modified, entity);
+        return entity;
     }
 
     public async Task DeleteAsync(T entity)
@@ -88,6 +99,8 @@ public class CrudService<T> : ICrudService<T> where T : class
         dbSet.Attach(entity);
         dbSet.Remove(entity);
         await dbContext.SaveChangeAsyncRethrow();
+        // Fire and forget
+        _contextHookMiddleware.OnSave(EntityState.Deleted, entity);
     }
 
     public object GetId(T entity)

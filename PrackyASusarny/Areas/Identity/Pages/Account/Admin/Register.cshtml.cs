@@ -3,19 +3,18 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PrackyASusarny.Auth.Models;
+using PrackyASusarny.Auth.Utils;
 
 namespace PrackyASusarny.Areas.Identity.Pages.Account.Admin;
 
 #nullable disable
 public class RegisterModel : PageModel
 {
-    private readonly SignInManager<User> _signInManager;
-    private readonly UserManager<User> _userManager;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public RegisterModel(SignInManager<User> signInManager,
-        UserManager<User> userManager)
+    public RegisterModel(
+        UserManager<ApplicationUser> userManager)
     {
-        _signInManager = signInManager;
         _userManager = userManager;
     }
 
@@ -32,10 +31,11 @@ public class RegisterModel : PageModel
     {
         if (ModelState.IsValid)
         {
-            var user = new User
-                {UserName = Input.UserName, Email = Input.Email};
+            var user = new ApplicationUser
+                {UserName = Input.UserName, Email = Input.Email, Cash = 0};
             var password = GeneratePassword(12);
-            var result = await _userManager.CreateAsync(user, password);
+            var result =
+                await _userManager.CreateWithClaimAsync(user, password);
             if (result.Succeeded)
             {
                 StatusMessage =

@@ -14,12 +14,12 @@ namespace PrackyASusarny.Areas.Identity.Pages.Account.Manage;
 public class ChangePasswordModel : PageModel
 {
     private readonly ILogger<ChangePasswordModel> _logger;
-    private readonly SignInManager<User> _signInManager;
-    private readonly UserManager<User> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
 
     public ChangePasswordModel(
-        UserManager<User> userManager,
-        SignInManager<User> signInManager,
+        UserManager<ApplicationUser> userManager,
+        SignInManager<ApplicationUser> signInManager,
         ILogger<ChangePasswordModel> logger)
     {
         _userManager = userManager;

@@ -11,10 +11,10 @@ namespace PrackyASusarny.Areas.Identity.Pages.Account.Manage;
 public class PersonalDataModel : PageModel
 {
     private readonly ILogger<PersonalDataModel> _logger;
-    private readonly UserManager<User> _userManager;
+    private readonly UserManager<ApplicationUser> _userManager;
 
     public PersonalDataModel(
-        UserManager<User> userManager,
+        UserManager<ApplicationUser> userManager,
         ILogger<PersonalDataModel> logger)
     {
         _userManager = userManager;

@@ -25,13 +25,24 @@ public class UsageService : IUsageService
 
         var usedIsoWeek = Enumerable.Range(0, Math.Min(duration + 1, 7))
             .Select(x => startDateInCet.Date.PlusDays(x).DayOfWeek).ToList();
-        // Statistics will be precreated for every day so we should get one for every day
         var foundDays = await dbContext.Set<BorrowableEntityUsage<T>>()
             .Where(x => usedIsoWeek.Contains(x.DayId))
             .ToListAsync();
+
+        // Add new days if not in db
+        var notInDBusage = usedIsoWeek.Except(foundDays.Select(x => x.DayId))
+            .Select(x => new BorrowableEntityUsage<T>
+            {
+                DayId = x,
+            }).ToArray();
+        await dbContext.Set<BorrowableEntityUsage<T>>()
+            .AddRangeAsync(notInDBusage);
+        foundDays = foundDays.Concat(notInDBusage).ToList();
+
+
+        long baseDays = duration / 7;
         foreach (var day in foundDays)
         {
-            long baseDays = duration / 7;
             long remainder = Enumerable.Range(0, (duration + 1) % 7)
                 .Count(x =>
                     startDateInCet.Date.PlusDays(x).DayOfWeek == day.DayId);

@@ -3,23 +3,14 @@
 @inject ILocalizationService Loc
 
 
-@if (_listType != null) {
-    <DynamicComponent Type="@(typeof(BETable<>).MakeGenericType(_listType))"/>
-} else {
-    <Title Level="2">@($"{Loc[BEntity!]} {Loc["is not supported"]}")</Title>
-}
+<PageHeader Title="@Loc["Available Entities"]"/>
+<ModelLoader AllowedTypes="@ManagementConfig.AllowedEntities" Model="@BEntity">
+    <DynamicComponent Type="@(typeof(BETable<>).MakeGenericType(context))"/>
+</ModelLoader>
 
 @code {
 
     [Parameter]
     public string? BEntity { get; set; }
-
-    private Type? _listType;
-
-    protected override void OnParametersSet() {
-        if (ModelUtils.ModelNameToType.TryGetValue(BEntity ?? "", out var tmplistType) && ManagementConfig.AllowedEntities.Contains(tmplistType)) {
-            _listType = tmplistType;
-        }
-    }
 
 }

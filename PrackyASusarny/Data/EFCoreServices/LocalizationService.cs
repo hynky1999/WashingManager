@@ -1,4 +1,6 @@
 using NodaTime.Text;
+using PrackyASusarny.Data.Constants;
+using PrackyASusarny.Data.ModelInterfaces;
 using PrackyASusarny.Data.ServiceInterfaces;
 
 namespace PrackyASusarny.Data.EFCoreServices;
@@ -6,10 +8,14 @@ namespace PrackyASusarny.Data.EFCoreServices;
 public class LocalizationService : ILocalizationService
 {
     private readonly IClock _clock;
+    private ICurrencyService _currencyService;
+    private Currency _userCurrency = Currency.CZK;
+    private int DecimalPlaces = 2;
 
-    public LocalizationService(IClock clock)
+    public LocalizationService(IClock clock, ICurrencyService currencyService)
     {
         _clock = clock;
+        _currencyService = currencyService;
     }
 
     public DateTimeZone TimeZone { get; } =
@@ -19,12 +25,14 @@ public class LocalizationService : ILocalizationService
 
     public ZonedDateTime NowInTimeZone =>
         _clock.GetCurrentInstant().InZone(TimeZone);
-    
+
+
     public string? this[string? key] => key;
 
     public string? this[LocalDate? date]
     {
-        get {
+        get
+        {
             if (date == null) return null;
             return LocalDatePattern.CreateWithCurrentCulture("d")
                 .Format(date.Value);
@@ -33,7 +41,8 @@ public class LocalizationService : ILocalizationService
 
     public string? this[LocalDateTime? date]
     {
-        get {
+        get
+        {
             if (date == null) return null;
             return LocalDateTimePattern.CreateWithCurrentCulture("g")
                 .Format(date.Value);
@@ -52,5 +61,32 @@ public class LocalizationService : ILocalizationService
 
     public string? this[Instant? instant] => this[instant?.InZone(TimeZone)];
 
-    public int DecimalPlaces => 2;
+    // This is kinda meh, the localiztoinService should be able to make async calls in future
+    public string? this[Money? money] =>
+        money != null
+            ? _currencyService.ApproximateTo(money, _userCurrency).ToString()
+            : null;
+
+    public string? this[params string?[] keys]
+    {
+        get { return string.Join(" ", keys.Select(k => this[k])); }
+    }
+
+    public string? this[IDBModel? model] => model?.HumanReadableLoc(this);
+
+    public string? this[object? key]
+    {
+        get
+        {
+            if (key == null) return null;
+            if (key is string s) return this[s];
+            if (key is LocalDate ld) return this[ld];
+            if (key is LocalDateTime ldt) return this[ldt];
+            if (key is ZonedDateTime zdt) return this[zdt];
+            if (key is Instant i) return this[i];
+            if (key is double d) return this[d];
+            if (key is IDBModel m) return this[m];
+            throw new NotImplementedException();
+        }
+    }
 }

@@ -1,5 +1,4 @@
-@using Microsoft.Build.Framework
-@using PrackyASusarny.Errors.Folder
+@using PrackyASusarny.Utils
 @typeparam T where T : BorrowableEntity
 @inject ModalService ModalService
 @inject IBorrowableEntityService BorrowableEntityService
@@ -11,9 +10,7 @@
     [Parameter]
     public EventCallback<T> OnFinish { get; set; }
 
-    [Required]
-    [Parameter]
-    public Status Status { get; set; }
+    private Status status { get; set; }
 
     [Parameter]
     public T? DefaultBe { get; set; }
@@ -23,21 +20,20 @@
             MessageService.Error("No item selected");
             return;
         }
-        try {
-            await BorrowableEntityService.ChangeStatus(DefaultBe, Status);
+        await MessageService.GenericOnDBError(async () => {
+            await BorrowableEntityService.ChangeStatus(DefaultBe, status);
             await OnFinish.InvokeAsync(DefaultBe);
-            MessageService.Success($"The item has been marked as {Status.ToString()}.");
-        }
-        catch (DbException) {
-            MessageService.Error($"Failed to mark the item as {Status.ToString()}.");
-        }
+            MessageService.Success($"The item has been marked as {status.ToString()}.");
+        });
     }
 
-    public void OpenModal() {
-        RenderFragment icon = @<Icon Type="exclamation-circle" Theme="outline"></Icon>;
+    public void OpenModal(Status statusIn) {
+        RenderFragment icon = @<Icon Theme="outline" Type="exclamation-circle"></Icon>;
+        // We take status as parameter rather than binding as when this method is called, the status is not yet set
+        this.status = statusIn;
 
         ModalService.Confirm(new ConfirmOptions {
-            Title = Loc["Do you want to make this entity broken?"],
+            Title = Loc[$"Do you want to make this entity {status.ToString()}?"],
             Icon = icon,
             OnOk = OnOkClick
         });

@@ -1,0 +1,86 @@
+@using PrackyASusarny.Utils
+@using PrackyASusarny.Data.Constants
+@using System.Linq.Expressions
+@using AntDesign.TableModels
+@using System.Security.Claims
+@inject ILocalizationService Loc
+@inject IUserService UserService
+@inject IReservationsService ReservationService
+@inject IMessageService MessageService
+@inject IReservationConstant ReservationConstant
+
+<AuthorizeView Context="auth">
+    <LazyRemoteTable Bordered="@true" Class="border border-primary" OnQuery=@OnQueryReservations(auth.User) OnQueryCount="@OnQueryCountReservations(auth.User)" PageSize="PageSize" @ref=@_table TItem="Reservation">
+
+
+        <LocDNColumn @bind-Field="@context.BorrowableEntity"/>
+        <LocDNColumn @bind-Field="@context.Start"
+                     DefaultSortOrder="@_startSortDirection"
+                     Filters="@_startFilters" OnFilter=@OnStartFilter Sortable=@true/>
+        <LocDNColumn @bind-Field="@context.End"/>
+        <ActionColumn>
+            @if (context.Start >= Loc.Now + ReservationConstant.MinReservationCancelDur) {
+                <Button Color="Color.Blue3"
+                        OnClick="@(() => CancelReservation(context))" Size="@AntSizeLDSType.Small"
+                        Type="@ButtonType.Primary">
+                    @Loc["Cancel Reservation"]
+                </Button>
+            }
+        </ActionColumn>
+    </LazyRemoteTable>
+</AuthorizeView>
+
+@code{
+
+    public enum ReservationStatus {
+        New,
+        Old
+    }
+
+    [Parameter]
+    public ReservationStatus Status { get; set; }
+
+    [Parameter]
+    public int PageSize { get; set; } = 10;
+
+    private LazyRemoteTable<Reservation> _table = new();
+
+    private Expression<Func<Instant, Instant, bool>>? OnStartFilter;
+    private TableFilter<Instant>[]? _startFilters;
+    private SortDirection _startSortDirection = SortDirection.Descending;
+
+    private Func<QueryModel<Reservation>, Task<Reservation[]>> OnQueryReservations(ClaimsPrincipal user) {
+        return async (q) => await ReservationService.GetReservationsAsync(user, q);
+    }
+
+    private Func<QueryModel<Reservation>, Task<int>> OnQueryCountReservations(ClaimsPrincipal user) {
+        return async (q) => await ReservationService.GetReservationsCountAsync(user, q);
+    }
+
+
+    private async void CancelReservation(Reservation reservation) {
+        await MessageService.GenericOnDBError(async () => {
+            await ReservationService.CancelReservationAsync(reservation);
+            _table.ChangeLocally(data => data.Where(r => r.ReservationID != reservation.ReservationID).ToArray());
+            MessageService.Success("Reservation canceled");
+        });
+    }
+
+    protected override void OnInitialized() {
+        if (Status == ReservationStatus.New) {
+            OnStartFilter = (value, start) => start > value;
+            _startFilters = new[] {
+                new TableFilter<Instant>() {Selected = true, Text = Loc["Upcoming"], Value = Loc.Now}
+            };
+            _startSortDirection = SortDirection.Ascending;
+        } else {
+            OnStartFilter = (value, start) => start <= value;
+            _startFilters = new[] {
+                new TableFilter<Instant>() {Selected = true, Text = Loc["Past"], Value = Loc.Now}
+            };
+            _startSortDirection = SortDirection.Descending;
+        }
+        base.OnInitialized();
+    }
+
+}

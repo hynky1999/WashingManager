@@ -1,4 +1,4 @@
-@using PrackyASusarny.Errors.Folder
+@using PrackyASusarny.Utils
 @using PrackyASusarny.Features.BEManagment.Desc
 @typeparam T where T : BorrowableEntity
 @inject IBorrowService BorrowService
@@ -7,11 +7,11 @@
 @inject ILocalizationService Loc
 
 
-<Modal Visible="@_visibility" OnCancel="@CloseModal" Footer="@null">
+<Modal Footer="@null" OnCancel="@CloseModal" Visible="@_visibility">
     <Title Level="2">@Loc["End Borrow"]</Title>
     <Divider/>
     @if (_borrowableEntity != null && ShowBorrowableEntity) {
-        <BEDescription T="T" BEntity="_borrowableEntity"/>
+        <BEDescription BEntity="_borrowableEntity" T="T"/>
     }
     @if (_borrow is not null) {
         <BorrowDescription Borrow="@_borrow"/>
@@ -21,9 +21,11 @@
     } else {
         <Spin/>
     }
-    <Button Type="@ButtonType.Primary" OnClick="EndBorrow" 
-            Loading="_loading" Block="true" 
-            HtmlType="submit">@Loc["Submit"]</Button>
+    <Button Block="true" HtmlType="submit"
+            Loading="_loading" OnClick="EndBorrow"
+            Type="@ButtonType.Primary">
+        @Loc["End"]
+    </Button>
 </Modal>
 
 
@@ -68,22 +70,18 @@
     }
 
     private async Task EndBorrow() {
-        await OnSuccess.InvokeAsync(_borrow);
+        _loading = true;
         if (_borrow is null) {
-            Message.Error(Loc["No borrow selected"].ToString());
+            Message.Error("No borrow selected");
             return;
         }
-        _loading = true;
-        try {
+
+        await Message.GenericOnDBError(async () => {
             await BorrowService.EndBorrowAsync(_borrow);
             await OnSuccess.InvokeAsync(_borrow);
-            Message.Success(Loc["Borrow ended"].ToString());
+            Message.Success(Loc["Borrow ended"]);
             CloseModal();
-            return;
-        }
-        catch (DbException) {
-            Message.Error(Loc["Failed to end borrow"].ToString());
-        }
+        });
         _loading = false;
     }
 

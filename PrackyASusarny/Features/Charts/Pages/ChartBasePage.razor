@@ -1,37 +1,23 @@
 @page "/{Entity}/Charts"
 @inject ILocalizationService Loc
 
-@if (_charts.Length > 0) {
+<PageHeader Title="@Loc["Charts"]"/>
+<ModelLoader AllowedTypes="ChartsConfig.AllowedChartModels" Model="@Entity">
+    @{
+        var charts = ChartsConfig.GetChartsConfig(context, Loc);
+    }
     <Tabs>
-        @foreach (var chart in _charts) {
+        @foreach (var chart in charts) {
             <TabPane Tab="@chart.name">
-                <DynamicComponent Type="@chart.type" Parameters="@chart.args"/>
+                <DynamicComponent Parameters="@chart.args" Type="@chart.type"/>
             </TabPane>
         }
     </Tabs>
-} else {
-    <Title Level="2">@($"{Loc[Entity!]} {Loc["is not supported"]}")</Title>
-}
+</ModelLoader>
 
 @code {
 
     [Parameter]
     public string? Entity { get; set; }
-
-    private (string name, Type type, Dictionary<string, object> args)[] _charts = {};
-
-
-    protected override void OnParametersSet() {
-        Type? entityType = null;
-        if (ModelUtils.ModelNameToType.TryGetValue(Entity ?? "", out var tmpType) && ChartsConfig.AllowedChartModels.Contains(tmpType)) {
-            entityType = tmpType;
-        }
-        if (entityType is not null) {
-            _charts = ChartsConfig.GetChartsConfig(entityType, Loc);
-        }
-        base.OnParametersSet();
-    }
-
-
 
 }

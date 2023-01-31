@@ -147,28 +147,32 @@ public sealed class GenericInput<TModel>
         if (realType == typeof(bool))
             return (typeof(Checkbox), null);
 
-        if (realType == typeof(string)) return (typeof(Input<string>), null);
+        if (realType == typeof(string))
+            return (typeof(Input<>).MakeGenericType(propertyInfo.PropertyType),
+                null);
+        if (realType == typeof(char))
+        {
+            var uppers = Enumerable.Range('A', 'Z' - 'A' + 1)
+                .Select(x => (char) x);
+            var lowers = Enumerable.Range('a', 'z' - 'a' + 1)
+                .Select(x => (char) x);
 
-        if (realType == typeof(short))
-            return (typeof(AntDesign.InputNumber<short>), null);
+            char[] allowedChars = uppers.Concat(lowers).ToArray();
+            return (
+                typeof(CharInput<>).MakeGenericType(propertyInfo.PropertyType),
+                new Dictionary<string, object>()
+                {
+                    {"AllowedChars", allowedChars}
+                });
+        }
 
-        if (realType == typeof(int))
-            return (typeof(AntDesign.InputNumber<int>), null);
-
-        if (realType == typeof(uint))
-            return (typeof(AntDesign.InputNumber<uint>), null);
-
-        if (realType == typeof(long))
-            return (typeof(AntDesign.InputNumber<long>), null);
-
-        if (realType == typeof(float))
-            return (typeof(AntDesign.InputNumber<float>), null);
-
-        if (realType == typeof(double))
-            return (typeof(AntDesign.InputNumber<double>), null);
-
-        if (realType == typeof(decimal))
-            return (typeof(AntDesign.InputNumber<decimal>), null);
+        if (realType == typeof(short) || realType == typeof(uint) ||
+            realType == typeof(int) || realType == typeof(long) ||
+            realType == typeof(float) || realType == typeof(double) ||
+            realType == typeof(decimal))
+            return (
+                typeof(AntDesign.InputNumber<>).MakeGenericType(propertyInfo
+                    .PropertyType), null);
 
         if (realType == typeof(Instant))
         {

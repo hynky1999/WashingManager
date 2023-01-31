@@ -12,9 +12,9 @@ namespace PrackyASusarny.Areas.Identity.Pages.Account.Login;
 public class LoginModel : PageModel
 {
     private readonly ILogger<LoginModel> _logger;
-    private readonly SignInManager<User> _signInManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
 
-    public LoginModel(SignInManager<User> signInManager,
+    public LoginModel(SignInManager<ApplicationUser> signInManager,
         ILogger<LoginModel> logger)
     {
         _signInManager = signInManager;
@@ -44,7 +44,8 @@ public class LoginModel : PageModel
 
         if (ModelState.IsValid)
         {
-            var result = await _signInManager.PasswordSignInAsync(Input.Email,
+            var result = await _signInManager.PasswordSignInAsync(
+                Input.UserName,
                 Input.Password, Input.RememberMe,
                 false);
             if (result.Succeeded)
@@ -63,7 +64,7 @@ public class LoginModel : PageModel
 
     public class InputModel
     {
-        [Required] [EmailAddress] public string Email { get; set; }
+        [Required] public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

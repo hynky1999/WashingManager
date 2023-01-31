@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PrackyASusarny.Data.Constants;
 using PrackyASusarny.Data.Models;
 using PrackyASusarny.Data.ServiceInterfaces;
 
@@ -9,13 +10,16 @@ public class UsageChartingService<T> : IUsageChartingService<T>
 {
     private readonly IDbContextFactory<ApplicationDbContext> _dbFactory;
     private readonly ILocalizationService _localizationService;
+    private readonly IUsageConstants _usageConstants;
 
     public UsageChartingService(
         IDbContextFactory<ApplicationDbContext> dbFactory,
+        IUsageConstants usageConstants,
         ILocalizationService localizationService)
     {
         _dbFactory = dbFactory;
         _localizationService = localizationService;
+        _usageConstants = usageConstants;
     }
 
     public async Task<(LocalTime hour, int value)[]> GetBorrowsByHourAsync(
@@ -122,7 +126,7 @@ public class UsageChartingService<T> : IUsageChartingService<T>
         var sqlDict = await summed.ToDictionaryAsync(usage => usage.DayId,
             usage => usage.totalUsage);
         var mondaysSinceStart = Period.DaysBetween(
-            BorrowableEntityUsage.CalculatedSince.Date,
+            _usageConstants.CalculatedSince.Date,
             _localizationService.NowInTimeZone.Date) / 7.0;
 
         var resultArray = Enum.GetValues<IsoDayOfWeek>()
@@ -147,7 +151,7 @@ public class UsageChartingService<T> : IUsageChartingService<T>
                 .Select(hour => (new LocalTime(hour, 0), 0.0)).ToArray();
         //Qualified aproximation :)
         var mondaysSinceStart = Period.DaysBetween(
-            BorrowableEntityUsage.CalculatedSince.Date,
+            _usageConstants.CalculatedSince.Date,
             _localizationService.NowInTimeZone.Date) / 7.0;
         return Enumerable.Range(0, 24)
             .Select(hour => (new LocalTime(hour, 0),
@@ -196,7 +200,7 @@ public class UsageChartingService<T> : IUsageChartingService<T>
                 .Select(hour => (new LocalTime(hour, 0), 0.0)).ToArray();
 
         var mondaysSinceStart = Period.DaysBetween(
-            BorrowableEntityUsage.CalculatedSince.Date,
+            _usageConstants.CalculatedSince.Date,
             _localizationService.NowInTimeZone.Date) / 7.0;
         return sqlResult.sum.Select((sum, hour) =>
             (new LocalTime(hour, 0), sum / mondaysSinceStart)).ToArray();

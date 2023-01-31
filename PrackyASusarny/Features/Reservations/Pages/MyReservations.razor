@@ -1,0 +1,17 @@
+@page "/Account/Reservations"
+@using Microsoft.AspNetCore.Authorization
+@using PrackyASusarny.Features.Reservations.Components.Tables
+@inject ILocalizationService Loc
+@attribute [Authorize]
+
+<PageHeader Title="@Loc["My Reservations"]"/>
+<Row Gutter="10">
+    <Col Lg="12" Xs="24">
+        <Title Level="4">@Loc["New Reservations"]</Title>
+        <UserReservationTable PageSize="@(10)" Status="UserReservationTable.ReservationStatus.New"/>
+    </Col>
+    <Col Lg="12" Xs="24">
+        <Title Level="4">@Loc["Old Reservations"]</Title>
+        <UserReservationTable PageSize="@(5)" Status="UserReservationTable.ReservationStatus.Old"/>
+    </Col>
+</Row>

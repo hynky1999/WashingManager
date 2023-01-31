@@ -14,12 +14,12 @@ namespace PrackyASusarny.Areas.Identity.Pages.Account.Manage;
 public class DeletePersonalDataModel : PageModel
 {
     private readonly ILogger<DeletePersonalDataModel> _logger;
-    private readonly SignInManager<User> _signInManager;
-    private readonly UserManager<User> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
 
     public DeletePersonalDataModel(
-        UserManager<User> userManager,
-        SignInManager<User> signInManager,
+        UserManager<ApplicationUser> userManager,
+        SignInManager<ApplicationUser> signInManager,
         ILogger<DeletePersonalDataModel> logger)
     {
         _userManager = userManager;

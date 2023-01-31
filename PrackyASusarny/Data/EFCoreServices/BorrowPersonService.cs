@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PrackyASusarny.Data.Models;
 using PrackyASusarny.Data.ServiceInterfaces;
 
 namespace PrackyASusarny.Data.EFCoreServices;
@@ -22,5 +23,12 @@ public class BorrowPersonService : IBorrowPersonService
             .Select(p => p.BorrowPersonID);
         var personId = await pQuery.FirstOrDefaultAsync();
         return personId;
+    }
+
+    public async Task<BorrowPerson?> GetByIdAsync(int id)
+    {
+        using var dbContext = await _dbFactory.CreateDbContextAsync();
+        var person = await dbContext.BorrowPeople.FindAsync(id);
+        return person;
     }
 }

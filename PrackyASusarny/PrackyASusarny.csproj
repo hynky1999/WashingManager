@@ -37,7 +37,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Features\testing" />
+        <Folder Include="Features\Reservations\Components\Modals"/>
         <Folder Include="Migrations" />
     </ItemGroup>
 

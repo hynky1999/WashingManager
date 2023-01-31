@@ -1,0 +1,89 @@
+@inject IReservationsService ReservationsService
+@inject ILocalizationService Loc
+@inject MessageService MessageService
+@inject IBorrowableEntityService BorrowableEntityService
+@using PrackyASusarny.Utils
+@using System.ComponentModel.DataAnnotations
+@typeparam T where T : BorrowableEntity
+
+<Form WrapperColSpan="16"
+      Model="_reservationMixin" OnFinish="() => CreateReservationAsync(_reservationMixin)">
+    <FormItem WrapperColSpan="12" Label="@Loc["Entity"]">
+        <ModelSelect TItem="T" @bind-Value="@context.BE" OnChange=@ChangeDisabled
+                     DataSource="_nonBrokenEntities">
+        </ModelSelect>
+    </FormItem>
+
+    <FormItem WrapperColSpan="12" Label="@Loc["Date Ranges"]">
+        <LocalDateTimeRange @bind-Value="@context.Range" DisabledDates=@IsDisabledDate DisabledTime=@IsDisabledTime TimeFormat="@("HH:mm")"/>
+    </FormItem>
+
+    <FormItem WrapperColSpan="8">
+        <Button Type="@ButtonType.Primary" HtmlType="submit">
+            @Loc["Create"]
+        </Button>
+    </FormItem>
+</Form>
+
+
+@code{
+
+    [CascadingParameter]
+    public Task<AuthenticationState>? authTask { get; set; }
+
+    private class ReservationMixin {
+        [Required]
+    // We are using Annotation to make the form validation work
+        public T? BE { get; set; } = null;
+
+        public (LocalDateTime, LocalDateTime) Range { get; set; }
+    }
+
+
+    private ReservationMixin _reservationMixin = new();
+    private DisabledDateTimesStore _disabledDateTimesStore = DisabledDateTimesStore.Empty();
+
+    private DatePickerDisabledTime IsDisabledTime(LocalDateTime dt) {
+        return _disabledDateTimesStore.AsDatePickerDisabledTime(dt);
+    }
+
+    private T[]? _nonBrokenEntities = null;
+
+    protected async override Task OnInitializedAsync() {
+        var entities = await BorrowableEntityService.GetAllBorrowableEntitites<T>();
+        _nonBrokenEntities = entities.Where(e => e.Status != Status.Broken).ToArray();
+        await base.OnInitializedAsync();
+    }
+
+    private bool IsDisabledDate(LocalDate dt) {
+        return dt < Loc.NowInTimeZone.LocalDateTime.Date || _disabledDateTimesStore.DisabledDate(dt);
+    }
+
+    private async Task ChangeDisabled(T selectedBE) {
+        var reservations = await ReservationsService.GetUpcomingReservationsByEntityAsync(selectedBE);
+        _disabledDateTimesStore = DisabledDateTimesStore.FromNodaRanges(reservations.Select(r => (r.Start.InZone(Loc.TimeZone).LocalDateTime, r.End.InZone(Loc.TimeZone).LocalDateTime)));
+    }
+
+    private async Task CreateReservationAsync(ReservationMixin reservationMixin) {
+        if (authTask == null) {
+            MessageService.Error("User not logged in");
+            return;
+        }
+        var authState = await authTask;
+        await MessageService.GenericOnDBError(async () => {
+            await ReservationsService.CreateReservationAsync(reservationMixin.Range.Item1, reservationMixin.Range.Item2, authState.User, reservationMixin.BE!);
+            MessageService.Success("Reservation created");
+            _reservationMixin = new();
+        });
+    }
+
+}
+
+
+
+
+
+
+
+
+

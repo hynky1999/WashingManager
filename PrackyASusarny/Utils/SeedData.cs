@@ -1,8 +1,10 @@
 using System.Security.Claims;
+using AntDesign;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NodaTime.Extensions;
 using PrackyASusarny.Auth.Models;
+using PrackyASusarny.Auth.Utils;
 using PrackyASusarny.Data;
 using PrackyASusarny.Data.Models;
 
@@ -13,78 +15,80 @@ namespace PrackyASusarny.Utils;
 
 public class SeedData
 {
-    public static async Task Initialize(IServiceProvider serviceProvider,
-        string testUserPw)
+    public static async Task Initialize(
+        IDbContextFactory<ApplicationDbContext> dbContextFactory,
+        UserManager<ApplicationUser> userManager, RoleManager<Role> roleManager,
+        ApplicationUser? admin, string adminPass, ApplicationUser? manager,
+        string managerPass, bool initData = true)
     {
-        // For sample purposes seed both with the same password.
-        // Password is set with the following:
-        // dotnet user-secrets set SeedUserPW <pw>
-        // The admin user can do anything
-
-        var adminId = await EnsureUser(serviceProvider, testUserPw,
-            "kydlicek.hynek@gmail.com");
-        await EnsureRole(serviceProvider, IdentityRoles.Administrator, new[]
+        // Roles setting
+        await EnsureRole(roleManager, IdentityRoles.Administrator, new[]
         {
-            new Claim("ManageUsers", true.ToString()),
-            new Claim("ManageModels", true.ToString()),
-            new Claim("ManageBorrows", true.ToString())
+            new Claim(Claims.ManageBorrows, true.ToString()),
+            new Claim(Claims.ManageModels, true.ToString()),
+            new Claim(Claims.ManageUsers, true.ToString())
         });
-        await AddToRole(serviceProvider, adminId, IdentityRoles.Administrator);
-
-
-        // allowed user can create and edit contacts that they create
-        var managerId = await EnsureUser(serviceProvider, testUserPw,
-            "manager@contoso.com");
-        await EnsureRole(serviceProvider, IdentityRoles.Receptionist, new[]
+        await EnsureRole(roleManager, IdentityRoles.Receptionist, new[]
         {
-            new Claim("ManageBorrows", true.ToString())
+            new Claim(Claims.ManageBorrows, true.ToString()),
         });
-        await AddToRole(serviceProvider, managerId, IdentityRoles.Receptionist);
-        var factory = serviceProvider
-            .GetRequiredService<IDbContextFactory<ApplicationDbContext>>();
-        SeedDb(factory);
-    }
 
 
-    private static async Task<string> EnsureUser(
-        IServiceProvider serviceProvider,
-        string testUserPw, string userName)
-    {
-        var userManager = serviceProvider.GetService<UserManager<User>>();
-
-        var user = await userManager!.FindByNameAsync(userName);
-        if (user == null)
+        if (admin != null)
         {
-            user = new User
-            {
-                UserName = userName,
-                EmailConfirmed = true
-            };
-            await userManager.CreateAsync(user, testUserPw);
+            var user = await EnsureUser(userManager, admin, adminPass);
+            await AddToRole(userManager, user.Id,
+                IdentityRoles.Administrator);
         }
 
-        if (user == null)
-            throw new Exception("The password is probably not strong enough!");
+        if (manager != null)
+        {
+            var user = await EnsureUser(userManager, manager, managerPass
+            );
+            await AddToRole(userManager, user.Id,
+                IdentityRoles.Receptionist);
+        }
 
-        return user.Id;
+        if (initData && admin != null && manager != null)
+        {
+            SeedDb(dbContextFactory, new ApplicationUser[] {admin, manager});
+        }
     }
 
-    private static async Task AddToRole(IServiceProvider serviceProvider,
-        string userId, string role)
+
+    private static async Task<ApplicationUser> EnsureUser(
+        UserManager<ApplicationUser> userManager,
+        ApplicationUser user, string password)
     {
-        var userManager = serviceProvider.GetService<UserManager<User>>();
-        var user = await userManager!.FindByIdAsync(userId);
-        if (user == null)
+        var dupUser = await userManager.FindByNameAsync(user.UserName);
+        if (dupUser != null)
+        {
+            return dupUser;
+        }
+
+        IdentityResult result =
+            await userManager.CreateWithClaimAsync(user, password);
+
+
+        if (!result.Succeeded)
             throw new Exception("The password is probably not strong enough!");
+        return user;
+    }
+
+    private static async Task AddToRole(
+        UserManager<ApplicationUser> userManager,
+        int userId, string role)
+    {
+        var user = await userManager!.FindByIdAsync(userId.ToString());
+        if (user == null)
+            throw new Exception("User not found");
 
         await userManager.AddToRoleAsync(user, role);
     }
 
-    private static async Task EnsureRole(IServiceProvider serviceProvider,
+    private static async Task EnsureRole(RoleManager<Role> roleManager,
         string role, IEnumerable<Claim> claims)
     {
-        var roleManager = serviceProvider.GetService<RoleManager<Role>>();
-
         if (roleManager == null) throw new Exception("roleManager null");
 
         var newRole = new Role(role);
@@ -96,7 +100,8 @@ public class SeedData
         }
     }
 
-    private static void SeedDb(IDbContextFactory<ApplicationDbContext> factory)
+    private static void SeedDb(IDbContextFactory<ApplicationDbContext> factory,
+        ApplicationUser[] users)
     {
         using var context = factory.CreateDbContext();
         if (context.WashingMachines.Any()) return;
@@ -115,12 +120,28 @@ public class SeedData
             .Select(_ => CreateRandomBorrow(persons, wm))
             .Where(x => x is not null).ToArray()!;
 
+        List<Reservation> reservations = new();
+        Enumerable.Range(0, 30).ForEach(_ =>
+        {
+            var r = CreateRandomReservation(users, wm);
+            // If not overlap with previous reservations
+            if (reservations.Where(resOld =>
+                    resOld.BorrowableEntityID == r.BorrowableEntityID &&
+                    (resOld.Start < r.End && resOld.End > r.Start)).Count() ==
+                0)
+            {
+                reservations.Add(r);
+            }
+        });
+
+        context.AttachRange(users);
         context.AddRange(wmUsage);
         context.AddRange(manuals);
         context.AddRange(locs);
-        context.AddRange(wm);
+        //context.AddRange(wm);
         context.AddRange(persons);
-        context.AddRange(borrows);
+        //context.AddRange(borrows);
+        //context.AddRange(reservations);
         context.SaveChanges();
     }
 
@@ -159,7 +180,6 @@ public class SeedData
         return new Manual
         {
             FileName = "/manuals/" + rnd + ".pdf",
-            Name = "Manual " + rnd
         };
     }
 
@@ -219,6 +239,22 @@ public class SeedData
             BorrowableEntity = chosenWm,
             startDate = start,
             endDate = end
+        };
+    }
+
+    private static Reservation CreateRandomReservation(ApplicationUser[] users,
+        WashingMachine[] wm)
+    {
+        var rnd = new Random();
+        var secsWeek = 60 * 60 * 24 * 7;
+        var start = DateTime.UtcNow.AddSeconds(rnd.Next(1, secsWeek));
+        var end = start.AddSeconds(rnd.Next(1, secsWeek));
+        return new Reservation
+        {
+            User = users[rnd.Next(users.Length)],
+            Start = start.ToInstant(),
+            BorrowableEntity = wm[rnd.Next(wm.Length)],
+            End = end.ToInstant(),
         };
     }
 }

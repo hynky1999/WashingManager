@@ -3,9 +3,9 @@
 @inject IUsageChartingService<T> Charts
 @inject ILocalizationService Loc
 @if (_statData.Length == 0) {
-    <Empty />
+    <Empty/>
 } else {
-    <AntDesign.Charts.Column @ref=_chart Data="_statData" Config="_config"/>
+    <AntDesign.Charts.Column Config="_config" Data="_statData" @ref=_chart/>
 }
 <LocalDateRangePicker @bind-Value="_dateRange"/>
 <Button OnClick="() => InitializeData(_dateRange)">Chart</Button>
@@ -22,7 +22,7 @@
 
     private object[] _statData = {};
     private ColumnConfig _config = new();
-    private (LocalDate?, LocalDate?)? _dateRange;
+    private (LocalDate, LocalDate) _dateRange;
     private Column? _chart;
 
     protected override void OnInitialized() {
