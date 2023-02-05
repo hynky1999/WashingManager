@@ -12,14 +12,12 @@
                  TItem="Borrow">
 
 
-    <LocDNColumn @bind-Field="@context.startDate" DefaultSortOrder="SortDirection.Ascending"
-                 Sortable
-                 Title="Start Time">
+    <LocDNColumn @bind-Field="@context.Start" DefaultSortOrder="SortDirection.Ascending"
+                 Sortable>
     </LocDNColumn>
-    <LocDNColumn @bind-Field="@context.endDate" DefaultSortOrder="SortDirection.Descending"
+    <LocDNColumn @bind-Field="@context.End" DefaultSortOrder="SortDirection.Descending"
                  Filters="@_endDateFilters"
-                 OnFilter=@_endDateOnFilter
-                 Title="End Time">
+                 OnFilter=@_endDateOnFilter>
     </LocDNColumn>
     <AntDesign.Column DataIndex="BorrowPerson.Name" Filterable
                       TData="string" Title="@Loc["Name"]"/>
@@ -48,7 +46,7 @@
         @context.BorrowableEntity.Location?.DoorNum
     </AntDesign.Column>
     <ActionColumn>
-        @if (context.endDate == null) {
+        @if (context.End == null) {
             <Space>
                 <Button Color="Color.Blue3"
                         OnClick="() => OpenRemoveModal(context)"

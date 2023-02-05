@@ -1,0 +1,462 @@
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms,
+            Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms,
+            Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="Washing Machine" xml:space="preserve">
+        <value>Pračka</value>
+    </data>
+    <data name="Drying Room" xml:space="preserve">
+        <value>Sušárna</value>
+    </data>
+    <data name="Create Reservation" xml:space="preserve">
+        <value>Vytvořit Rezervaci</value>
+    </data>
+    <data name="Availability" xml:space="preserve">
+        <value>Dostupnost</value>
+    </data>
+    <data name="Status" xml:space="preserve">
+        <value>Status</value>
+    </data>
+    <data name="Room" xml:space="preserve">
+        <value>Pokoj</value>
+    </data>
+    <data name="Manual" xml:space="preserve">
+        <value>Manuál</value>
+    </data>
+    <data name="Floor" xml:space="preserve">
+        <value>Patro</value>
+    </data>
+    <data name="Door" xml:space="preserve">
+        <value>Dveře</value>
+    </data>
+    <data name="Building" xml:space="preserve">
+        <value>Budova</value>
+    </data>
+    <data name="Manufacturer" xml:space="preserve">
+        <value>Výrobce</value>
+    </data>
+    <data name="Available Entities" xml:space="preserve">
+        <value>Dostupné Entity</value>
+    </data>
+    <data name="at" xml:space="preserve">
+        <value>v</value>
+    </data>
+    <data name="Borrows" xml:space="preserve">
+        <value>Půjčky</value>
+    </data>
+    <data name="Daily borrows" xml:space="preserve">
+        <value>Denní výpůjčky</value>
+    </data>
+    <data name="Date" xml:space="preserve">
+        <value>Datum</value>
+    </data>
+    <data name="Hourly borrows" xml:space="preserve">
+        <value>Hodinové výpůjčky</value>
+    </data>
+    <data name="Hourly usage" xml:space="preserve">
+        <value>Hodinové využití</value>
+    </data>
+    <data name="Weekly usage" xml:space="preserve">
+        <value>Týdenní využítí</value>
+    </data>
+    <data name="Friday" xml:space="preserve">
+        <value>Pátek</value>
+    </data>
+    <data name="Monday" xml:space="preserve">
+        <value>Pondělí</value>
+    </data>
+    <data name="Saturday" xml:space="preserve">
+        <value>Sobota</value>
+    </data>
+    <data name="Sunday" xml:space="preserve">
+        <value>Neděle</value>
+    </data>
+    <data name="Thursday" xml:space="preserve">
+        <value>Čtvrtek</value>
+    </data>
+    <data name="Tuesday" xml:space="preserve">
+        <value>Úterý</value>
+    </data>
+    <data name="Wednesday" xml:space="preserve">
+        <value>Středa</value>
+    </data>
+    <data name="Hour" xml:space="preserve">
+        <value>Hodina</value>
+    </data>
+    <data name="Usage" xml:space="preserve">
+        <value>Využití</value>
+    </data>
+    <data name="Average borrows" xml:space="preserve">
+        <value>Průměrné výpůjčky</value>
+    </data>
+    <data name="Average hourly usage" xml:space="preserve">
+        <value>Průměrné hodinové využití</value>
+    </data>
+    <data name="for" xml:space="preserve">
+        <value>pro</value>
+    </data>
+    <data name="Charts" xml:space="preserve">
+        <value>Grafy</value>
+    </data>
+    <data name="Average weekly usage" xml:space="preserve">
+        <value>Průměrné týdenní využití</value>
+    </data>
+    <data name="Day of Week" xml:space="preserve">
+        <value>Den v týdnu</value>
+    </data>
+    <data name="Chart" xml:space="preserve">
+        <value>Vykresli</value>
+    </data>
+    <data name="Actions" xml:space="preserve">
+        <value>Akce</value>
+    </data>
+    <data name="My Account" xml:space="preserve">
+        <value>Můj Účet</value>
+    </data>
+    <data name="Admin Panel" xml:space="preserve">
+        <value>Správcovský Panel</value>
+    </data>
+    <data name="Add money" xml:space="preserve">
+        <value>Přidat peníze</value>
+    </data>
+    <data name="Balance" xml:space="preserve">
+        <value>Prostředky</value>
+    </data>
+    <data name="My Balance" xml:space="preserve">
+        <value>Moje prostředky</value>
+    </data>
+    <data name="My Reservations" xml:space="preserve">
+        <value>Moje Rezervace</value>
+    </data>
+    <data name="Borrowable Entity" xml:space="preserve">
+        <value>Typ Rezervace</value>
+    </data>
+    <data name="End Time" xml:space="preserve">
+        <value>Čas Konce</value>
+    </data>
+    <data name="Old Reservations" xml:space="preserve">
+        <value>Staré Rezervace</value>
+    </data>
+    <data name="Start Time" xml:space="preserve">
+        <value>Čas začátku</value>
+    </data>
+    <data name="Manage Borrows" xml:space="preserve">
+        <value>Správa Výpůjček</value>
+    </data>
+    <data name="Manage Reservations" xml:space="preserve">
+        <value>Správa Rezervací</value>
+    </data>
+    <data name="New Reservations" xml:space="preserve">
+        <value>Nové Rezervace</value>
+    </data>
+    <data name="Submit" xml:space="preserve">
+        <value>Potvrdit</value>
+    </data>
+    <data name="Name" xml:space="preserve">
+        <value>Jméno</value>
+    </data>
+    <data name="Manually Select" xml:space="preserve">
+        <value>Vybrat manuálně</value>
+    </data>
+    <data name="Hours" xml:space="preserve">
+        <value>Hodiny</value>
+    </data>
+    <data name="Entity" xml:space="preserve">
+        <value>Entita</value>
+    </data>
+    <data name="Days" xml:space="preserve">
+        <value>Dny</value>
+    </data>
+    <data name="Date Ranges" xml:space="preserve">
+        <value>Časové rozpětí</value>
+    </data>
+    <data name="Create" xml:space="preserve">
+        <value>Vytvořit</value>
+    </data>
+    <data name="Suggest Reservation" xml:space="preserve">
+        <value>Navrhnout Rezervaci</value>
+    </data>
+    <data name="Surname" xml:space="preserve">
+        <value>Příjmení</value>
+    </data>
+    <data name="Minutes" xml:space="preserve">
+        <value>Minuty</value>
+    </data>
+    <data name="Manage Models" xml:space="preserve">
+        <value>Správa Modelů</value>
+    </data>
+    <data name="Language" xml:space="preserve">
+        <value>Jazyk</value>
+    </data>
+    <data name="Amount" xml:space="preserve">
+        <value>Množství</value>
+    </data>
+    <data name="Currency" xml:space="preserve">
+        <value>Měna</value>
+    </data>
+    <data name="Create New" xml:space="preserve">
+        <value>Vytvořit</value>
+    </data>
+    <data name="Location" xml:space="preserve">
+        <value>Lokace</value>
+    </data>
+    <data name="Borrow" xml:space="preserve">
+        <value>Výpůjčka</value>
+    </data>
+    <data name="Borrow ID" xml:space="preserve">
+        <value>ID Výpůjčky</value>
+    </data>
+    <data name="Borrowable Entity ID" xml:space="preserve">
+        <value>ID Vypůjčitelné Entity</value>
+    </data>
+    <data name="Reservation" xml:space="preserve">
+        <value>Rezervace</value>
+    </data>
+    <data name="Reservation ID" xml:space="preserve">
+        <value>ID Rezervace</value>
+    </data>
+    <data name="User" xml:space="preserve">
+        <value>Uživatel</value>
+    </data>
+    <data name="User ID" xml:space="preserve">
+        <value>ID Uživatele</value>
+    </data>
+    <data name="File Name" xml:space="preserve">
+        <value>Název souboru</value>
+    </data>
+    <data name="Free" xml:space="preserve">
+        <value>Volné</value>
+    </data>
+    <data name="Broken" xml:space="preserve">
+        <value>Rozbité</value>
+    </data>
+    <data name="Borrow Person ID" xml:space="preserve">
+        <value>ID Půjčujícího</value>
+    </data>
+    <data name="Borrow Person" xml:space="preserve">
+        <value>Půjčující</value>
+    </data>
+    <data name="Location ID" xml:space="preserve">
+        <value>ID Lokace</value>
+    </data>
+    <data name="Manual ID" xml:space="preserve">
+        <value>ID Manuálu</value>
+    </data>
+    <data name="Taken" xml:space="preserve">
+        <value>Zabrané</value>
+    </data>
+    <data name="xmin" xml:space="preserve">
+        <value>Číslo posledního použití</value>
+    </data>
+    <data name="List" xml:space="preserve">
+        <value>Výpis</value>
+    </data>
+    <data name="Model not found" xml:space="preserve">
+        <value>Model nenalezen</value>
+    </data>
+    <data name="Models" xml:space="preserve">
+        <value>Modely</value>
+    </data>
+    <data name="Select model to edit" xml:space="preserve">
+        <value>Vyber model k editaci</value>
+    </data>
+    <data name="Unknown Action" xml:space="preserve">
+        <value>Neznámá akce</value>
+    </data>
+    <data name="Delete" xml:space="preserve">
+        <value>Vymazat</value>
+    </data>
+    <data name="Repair" xml:space="preserve">
+        <value>Opravit</value>
+    </data>
+    <data name="Update" xml:space="preserve">
+        <value>Aktualizovat</value>
+    </data>
+    <data name="by" xml:space="preserve">
+        <value>od</value>
+    </data>
+    <data name="User Settings" xml:space="preserve">
+        <value>Uživatelské nastavení</value>
+    </data>
+    <data name="Username" xml:space="preserve">
+        <value>Uživatelské jméno</value>
+    </data>
+    <data name="Your account contains personal data that you have given us. This page allows you to download or delete that data."
+          xml:space="preserve">
+        <value>Váš účet obsahuje osobní údaje, které jste nám poskytli. Tato stránka vám umožňuje stáhnout nebo smazat tato data.</value>
+    </data>
+    <data name="Deleting this data will permanently remove your account, and this cannot be recovered."
+          xml:space="preserve">
+        <value>Smazáním těchto dat trvale odstraníte váš účet a nelze jej obnovit.</value>
+    </data>
+    <data name="Download" xml:space="preserve">
+        <value>Stáhnout</value>
+    </data>
+    <data name="Email" xml:space="preserve">
+        <value>Email</value>
+    </data>
+    <data name="Hello" xml:space="preserve">
+        <value>Ahoj</value>
+    </data>
+    <data name="Login" xml:space="preserve">
+        <value>Přihlásit se</value>
+    </data>
+    <data name="Logout" xml:space="preserve">
+        <value>Odhlásit se</value>
+    </data>
+    <data name="Manage Email" xml:space="preserve">
+        <value>Správa Emailu</value>
+    </data>
+    <data name="Manage your account" xml:space="preserve">
+        <value>Správa účtu</value>
+    </data>
+    <data name="Change Password" xml:space="preserve">
+        <value>Změna Hesla</value>
+    </data>
+    <data name="Current Password" xml:space="preserve">
+        <value>Momentální heslo</value>
+    </data>
+    <data name="New Email" xml:space="preserve">
+        <value>Nový email</value>
+    </data>
+    <data name="New Password" xml:space="preserve">
+        <value>Nové heslo</value>
+    </data>
+    <data name="Password" xml:space="preserve">
+        <value>Heslo</value>
+    </data>
+    <data name="Personal Data" xml:space="preserve">
+        <value>Osobní data</value>
+    </data>
+    <data name="Profile" xml:space="preserve">
+        <value>Profil</value>
+    </data>
+    <data name="Create New Account" xml:space="preserve">
+        <value>Vytvořit Nový Účet</value>
+    </data>
+    <data name="Update Password" xml:space="preserve">
+        <value>Aktuailzovat Heslo</value>
+    </data>
+    <data name="Create Account" xml:space="preserve">
+        <value>Vytvořit Účet</value>
+    </data>
+    <data name="Change Email" xml:space="preserve">
+        <value>Změnit Email</value>
+    </data>
+    <data name="Confirm New Password" xml:space="preserve">
+        <value>Potvrzení Nového Hesla</value>
+    </data>
+    <data name="Confirm Password" xml:space="preserve">
+        <value>Potvrzení Hesla</value>
+    </data>
+    <data name="Delete Data And Close My Account" xml:space="preserve">
+        <value>Vymazat Data A Vymazat Účet</value>
+    </data>
+    <data name="Use a local account to log in" xml:space="preserve">
+        <value>Použijte lokální účet pro přihlášení</value>
+    </data>
+    <data name="Remember me" xml:space="preserve">
+        <value>Automatické přihlášení</value>
+    </data>
+    <data name="Log In" xml:space="preserve">
+        <value>Přihlásit se</value>
+    </data>
+    <data name="Welcome to the Washing Machine/Drying Room Management website!"
+          xml:space="preserve">
+        <value>Vítejte na stránkách pro správu Praček a Sušáren!</value>
+    </data>
+    <data name="WM/DR Manager" xml:space="preserve">
+        <value>Správa Praček A Sušáren</value>
+    </data>
+    <data name="Reservation canceled" xml:space="preserve">
+        <value>Rezervace zrušena</value>
+    </data>
+    <data name="Reservation created" xml:space="preserve">
+        <value>Rezervace vytvořena</value>
+    </data>
+    <data name="Borrow created" xml:space="preserve">
+        <value>Výpůjčka vytvořena</value>
+    </data>
+    <data name="Borrow ended" xml:space="preserve">
+        <value>Výpůjčka ukončena</value>
+    </data>
+    <data name="DefaultBe is null" xml:space="preserve">
+        <value>Default Be je prázdné</value>
+    </data>
+    <data name="Do you want to make this entity" xml:space="preserve">
+        <value>Chceš udělat tuto entitu</value>
+    </data>
+    <data name="Fail" xml:space="preserve">
+        <value>Chyba</value>
+    </data>
+    <data name="hour and at maximum" xml:space="preserve">
+        <value>hodin a maximálně</value>
+    </data>
+    <data name="No borrow selected" xml:space="preserve">
+        <value>Žádná výpůjčka nevybrána</value>
+    </data>
+    <data name="No item selected" xml:space="preserve">
+        <value>Žádná věc nevybrána</value>
+    </data>
+    <data name="Success" xml:space="preserve">
+        <value>Úspěch</value>
+    </data>
+    <data name="Added money" xml:space="preserve">
+        <value>Peníze byly přidány</value>
+    </data>
+    <data name="Created record" xml:space="preserve">
+        <value>Záznam byl vytvořen</value>
+    </data>
+    <data name="User not logged in" xml:space="preserve">
+        <value>Uživatel nepřihlášen</value>
+    </data>
+    <data name="Unable to update record" xml:space="preserve">
+        <value>Nelze aktualizovat záznam</value>
+    </data>
+    <data name="Unable to create record" xml:space="preserve">
+        <value>Nelze vytvořit záznam</value>
+    </data>
+    <data name="The item has been marked as" xml:space="preserve">
+        <value>Item byl nastaven jako</value>
+    </data>
+    <data name="The duration must be at least" xml:space="preserve">
+        <value>Délka musí být alespoň</value>
+    </data>
+    <data name="Deleted item" xml:space="preserve">
+        <value>Věc vymazána</value>
+    </data>
+    <data name="Created reservation" xml:space="preserve">
+        <value>Rezervace vytvořena</value>
+    </data>
+    <data name="Failed" xml:space="preserve">
+        <value>Selhalo</value>
+    </data>
+    <data name="Reservation too long" xml:space="preserve">
+        <value>Rezervace je příliš dlouhá</value>
+    </data>
+    <data name="Reservation too short" xml:space="preserve">
+        <value>Rezervace je příliš kratká</value>
+    </data>
+    <data name="Start must be before end" xml:space="preserve">
+        <value>Začátek musí být před koncem</value>
+    </data>
+    <data name="Reservation too soon" xml:space="preserve">
+        <value>Rezervace je příliš brzy</value>
+    </data>
+    <data name=" Reservation intersects with another" xml:space="preserve">
+        <value>Reservace se překrývá s jinou</value>
+    </data>
+</root>

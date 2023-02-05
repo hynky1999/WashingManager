@@ -2,13 +2,15 @@ using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Localization;
 using Moq;
 using NodaTime;
 using PrackyASusarny.Auth.Utils;
 using PrackyASusarny.Data;
 using PrackyASusarny.Data.Constants;
 using PrackyASusarny.Data.EFCoreServices;
+using PrackyASusarny.Data.LocServices;
 using PrackyASusarny.Data.Models;
 using PrackyASusarny.Data.ServiceInterfaces;
 using PrackyASusarny.Middlewares;
@@ -54,9 +56,13 @@ public class ReservationManagerTests : IClassFixture<_TEST_DB_RESMAN>,
     {
         CurrencyService = new CurrencyService();
         _clock = new Utils.CustomizableClock();
-        Loc = new LocalizationService(_clock, CurrencyService);
+        var configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.Development.json")
+            .Build();
+        Loc = new LocalizationService(_clock, CurrencyService,
+            Mock.Of<IStringLocalizer<LocalizationService>>(), configuration);
         IContextHookMiddleware middleware = new ContextHookMiddleware();
-        IUsageService usageService = new UsageService(Loc);
+        IUsageService usageService = new UsageService(Loc, new UsageContants());
         ICurrencyService currencyService = new CurrencyService();
         BPService = new BorrowPersonService(factory);
         ReservationConstant = new ResConstTest();
@@ -64,9 +70,8 @@ public class ReservationManagerTests : IClassFixture<_TEST_DB_RESMAN>,
         IUserService userService =
             new UserService(factory, Rates, currencyService);
         IReservationConstant reservationConstant = new ResConstTest();
-        var crudLogger = Mock.Of<ILogger<CrudService<WashingMachine>>>();
         WMService =
-            new CrudService<WashingMachine>(factory, crudLogger, middleware);
+            new CrudService<WashingMachine>(factory, middleware);
         BorrowService =
             new BorrowService(factory, BPService, Loc, usageService, Rates);
         ReservationService = new ReservationService(factory,
@@ -172,7 +177,7 @@ public class ReservationManagerTests : IClassFixture<_TEST_DB_RESMAN>,
         _clock.SetTime(end - Duration.FromSeconds(1));
         await Task.Delay(1000);
         _clock.SetTime(end);
-        await Task.Delay(5000);
+        await Task.Delay(7000);
 
         using var ctx = Factory.CreateDbContext();
         var user = await ctx.Users.FindAsync(userID);
@@ -216,8 +221,8 @@ public class ReservationManagerTests : IClassFixture<_TEST_DB_RESMAN>,
         {
             BorrowableEntity = wm,
             BorrowPerson = bp!,
-            startDate = start,
-            endDate = end,
+            Start = start,
+            End = end,
             ReservationID = res!.ReservationID
         };
         await BorrowService.AddBorrowAsync(borrow);
@@ -270,8 +275,8 @@ public class ReservationManagerTests : IClassFixture<_TEST_DB_RESMAN>,
         {
             BorrowableEntity = wm,
             BorrowPerson = bp!,
-            startDate = start,
-            endDate = null,
+            Start = start,
+            End = null,
             ReservationID = res1!.ReservationID
         };
 

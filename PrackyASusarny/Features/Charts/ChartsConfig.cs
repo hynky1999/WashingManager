@@ -15,7 +15,7 @@ public static class ChartsConfig
     {
         return new[]
         {
-            ("Daily Borrows",
+            ("Daily borrows",
                 typeof(DailyBorrows<>).MakeGenericType(entityType),
                 new Dictionary<string, object>
                 {
@@ -23,7 +23,7 @@ public static class ChartsConfig
                     {"ToDate", loc.NowInTimeZone.Date}
                 }
             ),
-            ("Hourly Borrows",
+            ("Hourly borrows",
                 typeof(HourlyBorrows<>).MakeGenericType(entityType),
                 new Dictionary<string, object>
                 {
@@ -32,10 +32,10 @@ public static class ChartsConfig
             ),
             ("Weekly usage", typeof(WeeklyUsage<>).MakeGenericType(entityType),
                 new Dictionary<string, object>()),
-            ("Avg Hourly Usage",
+            ("Average hourly usage",
                 typeof(AvgHourlyUsage<>).MakeGenericType(entityType),
                 new Dictionary<string, object>()),
-            ("Hourly Usage", typeof(HourlyUsage<>).MakeGenericType(entityType),
+            ("Hourly usage", typeof(HourlyUsage<>).MakeGenericType(entityType),
                 new Dictionary<string, object> {{"Day", DayOfWeek.Monday}})
         };
     }

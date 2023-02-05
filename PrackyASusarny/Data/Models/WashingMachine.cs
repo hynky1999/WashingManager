@@ -27,8 +27,7 @@ public sealed class WashingMachine : BorrowableEntity, IDBModel
     [DisplayName("Manufacturer")] public string? Manufacturer { get; set; }
 
     public new string HumanReadableLoc(ILocalizationService loc) =>
-        loc["WM", "by", Manufacturer, "at", Location?.HumanReadableLoc(loc)] ??
-        "";
+        $"{loc["WM"]}: {BorrowableEntityID} {loc["by"]} {loc[Manufacturer]} {loc["at"]} {Location?.HumanReadableLoc(loc)}";
 
     public override bool Equals(object? obj)
     {

@@ -1,29 +1,29 @@
 using AntDesign.Charts;
-using Humanizer;
 using PrackyASusarny.Data.ServiceInterfaces;
 
 namespace PrackyASusarny.Features.Charts;
 
 public static class ChartsUtils
 {
-
     public static string GetChartDescription(string chartUsage, string entity,
         (LocalDate? startDate, LocalDate? endDate) dateSpan,
         ILocalizationService loc)
     {
-        var dateSpanStrs = new[] {loc[dateSpan.startDate], loc[dateSpan.endDate]};
-        var dateStr = String.Join("-", dateSpanStrs);
-        string? at = null;
+        var dateSpanStrs = new[]
+            {loc[dateSpan.startDate], loc[dateSpan.endDate]};
+        var dateStr = String.Join(dateSpanStrs.All(d => d != null) ? "-" : "",
+            dateSpanStrs);
         if (dateStr != "")
         {
-            at = loc["at"];
+            dateStr = $" {loc["at"]} {dateStr}";
         }
 
-        return $"{loc[chartUsage]} {at} {dateStr} {loc["for"]} {loc[entity]}";
+        return $"{loc[chartUsage]}{dateStr} {loc["for"]} {loc[entity]}";
     }
 
     public static ColumnConfig CreateColumnConfig(string title,
-        string description, string xfield, string yfield, ILocalizationService loc)
+        string description, string xfield, string yfield,
+        ILocalizationService loc)
     {
         return new ColumnConfig
         {
@@ -55,11 +55,11 @@ public static class ChartsUtils
             {
                 x = new
                 {
-                    Alias = loc[xfield.Pascalize()]
+                    Alias = loc[xfield]
                 },
                 y = new
                 {
-                    Alias = loc[yfield.Pascalize()]
+                    Alias = loc[yfield]
                 }
             }
         };

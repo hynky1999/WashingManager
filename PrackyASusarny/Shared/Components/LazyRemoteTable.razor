@@ -1,5 +1,6 @@
-@inject MessageService MessageService
+@inject IMessageService MessageService
 @inject ILogger<LazyRemoteTable<TItem>> Logger
+@inject ILocalizationService Loc
 @using PrackyASusarny.Utils
 @using AntDesign.TableModels
 @typeparam TItem
@@ -63,7 +64,7 @@
     // Reset to first page
             queryModel = new QueryModel<TItem>(1, PageSize, queryModel.SortModel, queryModel.FilterModel);
             if (OnQueryCount != null) {
-                _total = await MessageService.GenericOnDBError(async () => await OnQueryCount(queryModel));
+                _total = await MessageService.GenericOnDBError(Loc, async () => await OnQueryCount(queryModel));
             }
         }
 
@@ -71,7 +72,7 @@
     // On page one the update will not be called because the page index is the same after reset
         if (_pageIndex == 1 || _lastPageIndex != queryModel.PageIndex) {
             if (OnQuery != null) {
-                _data = await MessageService.GenericOnDBError(async () => _data = await OnQuery(queryModel)) ?? Array.Empty<TItem>();
+                _data = await MessageService.GenericOnDBError(Loc, async () => _data = await OnQuery(queryModel)) ?? Array.Empty<TItem>();
             }
         }
         _pageIndex = queryModel.PageIndex;

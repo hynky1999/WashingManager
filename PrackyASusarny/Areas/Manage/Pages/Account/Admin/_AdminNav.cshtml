@@ -1,0 +1,9 @@
+@using PrackyASusarny.Data.ServiceInterfaces
+@using PrackyASusarny.Areas.Manage.Pages.Account.Admin
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@inject ILocalizationService Loc
+<ul class="flex-column nav nav-pills">
+    <li class="nav-item">
+        <a asp-page="/Account/Admin/Register" class="nav-link @AdminNavPages.RegisterNavClass(ViewContext)" id="profile">@Loc["Create New Account"]</a>
+    </li>
+</ul>

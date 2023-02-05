@@ -17,7 +17,7 @@
     // For some reason RangePicker doesn't support binding.
     private DateTime[] _dateTimeValue {
         get {
-            return new DateTime[] {
+            return new[] {
                 NodaUtils.ToDateTime(CurrentValue.Item1),
                 NodaUtils.ToDateTime(CurrentValue.Item2)
             };

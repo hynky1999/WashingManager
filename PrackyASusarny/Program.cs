@@ -6,6 +6,7 @@ using PrackyASusarny.Auth.Utils;
 using PrackyASusarny.Data;
 using PrackyASusarny.Data.Constants;
 using PrackyASusarny.Data.EFCoreServices;
+using PrackyASusarny.Data.LocServices;
 using PrackyASusarny.Data.Models;
 using PrackyASusarny.Data.ServiceInterfaces;
 using PrackyASusarny.Middlewares;
@@ -128,6 +129,21 @@ builder.Services.AddAuthorization(options =>
 // Localization
 builder.Services.AddLocalization(options =>
     options.ResourcesPath = "Resources");
+
+RequestLocalizationOptions LocalizationOpts()
+{
+    var supportedCultures = builder.Configuration.GetSection("Cultures")
+        .GetChildren()
+        .ToDictionary(x => x.Key, x => x.Value)
+        .Values.ToArray();
+
+    var localizationOptions = new RequestLocalizationOptions()
+        .AddSupportedCultures(supportedCultures)
+        .AddSupportedUICultures(supportedCultures);
+
+    return localizationOptions;
+}
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -145,6 +161,7 @@ else
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
+app.UseRequestLocalization(LocalizationOpts());
 
 app.UseRouting();
 app.UseAuthentication();
@@ -161,7 +178,6 @@ using (var scope = app.Services.CreateScope())
         .GetRequiredService<IDbContextFactory<ApplicationDbContext>>();
     var context = factory.CreateDbContext();
     await context.Database.EnsureCreatedAsync();
-    var pass = builder.Configuration.GetValue<string>("SeedPW");
     var resManager = services.GetService<IReservationManager>();
     var middleware = services.GetService<IContextHookMiddleware>();
     var beService = services.GetService<IBorrowableEntityService>();

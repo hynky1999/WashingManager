@@ -101,31 +101,7 @@ public sealed class GenericInput<TModel>
         }
     }
 
-    public string DisplayName
-    {
-        get
-        {
-            var displayAttribute =
-                _propertyInfo.GetCustomAttribute<DisplayAttribute>();
-            if (displayAttribute != null)
-            {
-                var displayName = displayAttribute.GetName();
-                if (!string.IsNullOrEmpty(displayName))
-                    return displayName;
-            }
-
-            var displayNameAttribute =
-                _propertyInfo.GetCustomAttribute<DisplayNameAttribute>();
-            if (displayNameAttribute != null)
-            {
-                var displayName = displayNameAttribute.DisplayName;
-                if (!string.IsNullOrEmpty(displayName))
-                    return displayName;
-            }
-
-            return _propertyInfo.Name;
-        }
-    }
+    public string DisplayName => _propertyInfo.DisplayName();
 
 
     private static (Type ComponentType,
@@ -160,9 +136,9 @@ public sealed class GenericInput<TModel>
             char[] allowedChars = uppers.Concat(lowers).ToArray();
             return (
                 typeof(CharInput<>).MakeGenericType(propertyInfo.PropertyType),
-                new Dictionary<string, object>()
+                new List<KeyValuePair<string, object>>()
                 {
-                    {"AllowedChars", allowedChars}
+                    new("AllowedChars", allowedChars)
                 });
         }
 
@@ -200,7 +176,10 @@ public sealed class GenericInput<TModel>
             not null)
             return (
                 typeof(ModelSelect<>).MakeGenericType(propertyInfo
-                    .PropertyType), null);
+                    .PropertyType), new List<KeyValuePair<string, object>>()
+                {
+                    new("CrudInitialize", true)
+                });
 
 
         throw new NotSupportedException(

@@ -102,7 +102,8 @@ public class ReservationService : IReservationsService
         await db.Reservations.AddAsync(reservation);
         await db.SaveChangeAsyncRethrow();
         // Fire and forget
-        _contextHookMiddleware.OnSave(EntityState.Added, reservation);
+        _contextHookMiddleware.OnSave(EntityState.Added, reservation)
+            .FireAndForget();
         return reservation;
     }
 
@@ -111,23 +112,20 @@ public class ReservationService : IReservationsService
     {
         await using var db = await _dbFactory.CreateDbContextAsync();
         BorrowableEntity? be = reservation.BorrowableEntity;
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         if (be == null)
         {
             var entity = await db.Set<BorrowableEntity>()
                 .FirstOrDefaultAsync(beTMP =>
                     beTMP.BorrowableEntityID == reservation.BorrowableEntityID);
 
-            if (entity == null)
-            {
-                throw new ArgumentException("BorrowableEntity not found");
-            }
-
-            be = entity;
+            be = entity ??
+                 throw new ArgumentException("BorrowableEntity not found");
         }
 
         Borrow borrow = new()
         {
-            startDate = _localizationService.Now,
+            Start = _localizationService.Now,
             BorrowableEntity = be,
             Reservation = reservation,
             BorrowPerson = new BorrowPerson()
@@ -150,8 +148,8 @@ public class ReservationService : IReservationsService
         using var db = await _dbFactory.CreateDbContextAsync();
         db.Reservations.Remove(reservation);
         await db.SaveChangeAsyncRethrow();
-        // Fire and forget
-        _contextHookMiddleware.OnSave(EntityState.Deleted, reservation);
+        _contextHookMiddleware.OnSave(EntityState.Deleted, reservation)
+            .FireAndForget();
     }
 
     public async Task<Reservation[]> GetReservationsAsync(ClaimsPrincipal user,
@@ -216,13 +214,40 @@ public class ReservationService : IReservationsService
         where T : BorrowableEntity
     {
         using var db = await _dbFactory.CreateDbContextAsync();
+        var possibleBes = await db.Set<T>()
+            .Where(be => be.Status != Status.Broken).ToArrayAsync();
 
-        var possibleRes = await InBetweenSuggestReservations<T>(length, limit);
+        var minStart = _localizationService.Now;
+        var minStartWithOffset = minStart +
+                                 _reservationConstant.MinDurBeforeReservation;
 
-        // We ends could be sooner than possible
-        var ends = await AfterAllSuggestReservations<T>(limit);
-        possibleRes = possibleRes.Concat(ends).ToArray();
+        // Give some time to borrow
+        minStartWithOffset +=
+            _reservationConstant.SuggestReservationDurForBorrow;
 
+        var atMinStart =
+            await MinStartSuggestReservations(minStartWithOffset, possibleBes,
+                length,
+                limit);
+
+        // Since the atMinStart will always be the soonest we don't have to search that many anymore.
+        possibleBes = possibleBes.Except(atMinStart.Select(t => t.Entity))
+            .ToArray();
+        limit = Math.Max(limit - possibleBes.Length, 0);
+
+        var inBetween = await InBetweenSuggestReservations(minStartWithOffset,
+            possibleBes, length, limit);
+
+        // Ends could be sooner than possible so don't update limit, only possible bes
+        // As the time for be inbetween will be always sooner than at the end
+        possibleBes = possibleBes.Except(inBetween.Select(t => t.Entity))
+            .ToArray();
+        var ends =
+            await AfterAllSuggestReservations(minStartWithOffset, possibleBes,
+                limit);
+        var possibleRes = atMinStart.Concat(inBetween.Concat(ends).ToArray());
+
+        // Group by BE ID and take the one that starts the soonest
         var result = possibleRes.GroupBy(
                 r => r.Entity.BorrowableEntityID)
             .Select(g => new {Start = g.Min(x => x.Start), g.First().Entity})
@@ -258,44 +283,83 @@ public class ReservationService : IReservationsService
         ApplicationDbContext db, ClaimsPrincipal user)
     {
         var id = Claims.GetUserId(user);
-        return db.Reservations
+        return db.Reservations.Include(r => r.User)
             .Include(r => r.BorrowableEntity).ThenInclude(be => be.Location)
             .Where(r => r.UserID == id);
     }
 
-    private async Task<PossibleResStart<T>[]> InBetweenSuggestReservations<T>(
-        Duration length, int limit)
+    private async Task<PossibleResStart<T>[]> MinStartSuggestReservations<T>(
+        Instant minStart, T[] possibleBes, Duration duration, int limit)
         where T : BorrowableEntity
     {
-        using var db = await _dbFactory.CreateDbContextAsync();
-        var minStart = _localizationService.Now;
-        var minStartWithOffset = minStart +
-                                 _reservationConstant.MinDurBeforeReservation;
-
-        // Give some time to borrow
-        minStartWithOffset +=
-            _reservationConstant.SuggestReservationDurForBorrow;
-        var futureReservations = db.Reservations.Where(r => r.End >= minStart);
-
-
-        // Gets reservations that end after now for every wm
-        // If there isn't one such a reservation than fill reservation that starts and ends now
-        // Only applies to non broken BE
-        var reservations =
-            from wm in db.Set<T>()
-            where wm.Status != Status.Broken
-            join r in futureReservations on wm.BorrowableEntityID equals r
+        await using var db = await _dbFactory.CreateDbContextAsync();
+        // Get all reservations that end after minStart and take their start if be doesn't have any reservation that ends after minStart then add there dummy with start = minStart + duration
+        var bes = from be in db.Set<T>()
+            where possibleBes.Contains(be)
+            select be;
+        var besWithMinStart = from wm in bes
+            join r in (from res in db.Reservations
+                where res.End > minStart
+                select res) on wm.BorrowableEntityID equals r
                 .BorrowableEntityID into g
             from subset in g.DefaultIfEmpty()
             select new
             {
-                wm, End = subset == null ? minStart : subset.End,
-                Start = subset == null ? minStart : subset.Start
+                wm, start = subset == null ? minStart + duration : subset.Start
+            };
+
+
+        // Group by be and take the first res start
+        var besGrouped = from be in besWithMinStart
+            group be by be.wm.BorrowableEntityID
+            into g
+            select new
+            {
+                Entity = g.Key,
+                Start = g.Min(x => x.start)
+            };
+
+        var resEnd = minStart + duration;
+        var possible = from be in besGrouped
+            where be.Start >= resEnd
+            select be.Entity;
+
+        var possibleWithBe = from be in db.Set<T>()
+            join p in possible on be.BorrowableEntityID equals p
+            select be;
+
+        var withLocalition = possibleWithBe.Include(be => be.Location);
+
+        var possibleRes = await withLocalition.Take(limit).ToArrayAsync();
+
+
+        return possibleRes.Select(be => new PossibleResStart<T>(minStart, be))
+            .ToArray();
+    }
+
+    private async Task<PossibleResStart<T>[]> InBetweenSuggestReservations<T>(
+        Instant minStart, T[] searchEntities, Duration length, int limit)
+        where T : BorrowableEntity
+    {
+        using var db = await _dbFactory.CreateDbContextAsync();
+        var futureReservations = db.Reservations.Where(r => r.End > minStart);
+
+
+        // Gets reservations that end after now for every wm
+        // Only applies to non broken BE
+        var reservations =
+            from wm in db.Set<T>()
+            where searchEntities.Contains(wm)
+            join r in futureReservations on wm.BorrowableEntityID equals r
+                .BorrowableEntityID into g
+            from subset in g
+            select new
+            {
+                wm, subset.End, subset.Start
             };
 
 
         // Join every reservations with ones that start after it end for same wm
-
         var crossReservations = from res1 in reservations
             from res2 in reservations
             where res1.wm == res2.wm && res1.End <= res2.Start
@@ -315,13 +379,12 @@ public class ReservationService : IReservationsService
                 nextResTime = g.Min(r => r.res2.Start)
             };
 
-        // Make sure there is enought time to next reservation
+        // Make sure there is enough time to next reservation
         var availableStarts = from resP in adjacentReservation
-            where resP.nextResTime - resP.End >= length &&
-                  resP.nextResTime - minStartWithOffset >= length
+            where resP.nextResTime - resP.End >= length
             select new {resP.wmID, resP.End, resP.nextResTime};
 
-        // Gets the time per BE that sufficies the length requirment
+        // Gets the time per BE that suffices the length requirement
         var onlyFirstByEntityAvailable = from aS in availableStarts
             group aS by aS.wmID
             into g
@@ -337,40 +400,30 @@ public class ReservationService : IReservationsService
 
 
         var inbetween = await withWMInfo.Take(limit).ToArrayAsync();
-        var inbetweenWithMinalStarts = inbetween.Select(r =>
-        {
-            var start = r.End >= minStartWithOffset
-                ? r.End
-                : minStartWithOffset;
-            return new PossibleResStart<T>(start,
-                r.wm);
-        }).ToArray();
+        var inbetweenPosStarts = inbetween.Select(r => new PossibleResStart<T>(
+            r.End,
+            r.wm)).ToArray();
 
-        return inbetweenWithMinalStarts;
+        return inbetweenPosStarts;
     }
 
     private async Task<PossibleResStart<T>[]>
-        AfterAllSuggestReservations<T>(int limit) where T : BorrowableEntity
+        AfterAllSuggestReservations<T>(Instant minStart, T[] possibleBes,
+            int limit) where T : BorrowableEntity
     {
         // No need for length here
         using var db = await _dbFactory.CreateDbContextAsync();
-        var minStart = _localizationService.Now;
-        var minStartWithOffset = minStart +
-                                 _reservationConstant.MinDurBeforeReservation;
-        // Only choose reservations that has something planned as otherwise it was already suggested
 
-        minStartWithOffset +=
-            _reservationConstant.SuggestReservationDurForBorrow;
+        // Only choose reservations that has something planned as otherwise it was already suggested
         var futureReservations = db.Reservations.Where(r => r.End >= minStart);
 
-        // Same as inbetween, must be here in case of only one reservatoin which is also end
-
+        // Same as inbetween, must be here in case of only one reservation which is also end
         var reservations =
             from wm in db.Set<T>()
-            where wm.Status != Status.Broken
+            where possibleBes.Contains(wm)
             join r in futureReservations on wm.BorrowableEntityID equals r
                 .BorrowableEntityID into g
-            from subset in g.DefaultIfEmpty()
+            from subset in g
             select new
             {
                 wm, End = subset == null ? minStart : subset.End,
@@ -394,16 +447,12 @@ public class ReservationService : IReservationsService
 
         var endsWithMinalStarts = ends.Select(r =>
         {
-            var start = r.End >= minStartWithOffset
-                ? r.End
-                : minStartWithOffset;
-            return new PossibleResStart<T>(start,
+            return new PossibleResStart<T>(r.End,
                 r.wm);
         }).ToArray();
 
         return endsWithMinalStarts;
     }
-
 
     private record PossibleResStart<T>(Instant Start, T Entity);
 }

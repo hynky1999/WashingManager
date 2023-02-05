@@ -5,6 +5,9 @@ using PrackyASusarny.Data.ModelInterfaces;
 using PrackyASusarny.Data.ServiceInterfaces;
 using PrackyASusarny.Data.Utils;
 
+// ReSharper disable PropertyCanBeMadeInitOnly.Global
+#pragma warning disable CS8618
+
 namespace PrackyASusarny.Data.Models;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
@@ -18,7 +21,7 @@ public class Reservation : ICloneable, IDBModel
     public int ReservationID { get; set; }
 
 
-    [DisplayName("Borrowable Entitity Id")]
+    [DisplayName("Borrowable Entity ID")]
     [UIVisibility(UIVisibilityEnum.Disabled)]
     public int BorrowableEntityID { get; set; }
 
@@ -50,7 +53,5 @@ public class Reservation : ICloneable, IDBModel
     }
 
     public string HumanReadableLoc(ILocalizationService loc) =>
-        loc["Reservation",
-            $"ID: {ReservationID}, {BorrowableEntity.HumanReadableLoc(loc)} by {UserID}"] ??
-        "";
+        $"{loc["Reservation"]}: {ReservationID} {loc["for"]} {BorrowableEntity.HumanReadableLoc(loc)} {loc["by"]} {UserID}";
 }

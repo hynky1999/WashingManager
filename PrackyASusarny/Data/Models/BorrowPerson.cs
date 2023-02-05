@@ -29,6 +29,6 @@ public class BorrowPerson : IDBModel, ICloneable
         return MemberwiseClone();
     }
 
-    public string HumanReadableLoc(ILocalizationService loc) => loc["Borrow P.",
-        $"ID: {BorrowPersonID}, {Name} {Surname}"] ?? "";
+    public string HumanReadableLoc(ILocalizationService loc) =>
+        $"{loc["Borrow P."]}: {BorrowPersonID}, {Name} {Surname}";
 }

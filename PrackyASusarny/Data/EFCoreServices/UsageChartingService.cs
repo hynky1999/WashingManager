@@ -32,11 +32,11 @@ public class UsageChartingService<T> : IUsageChartingService<T>
         var dbset = context.Set<Borrow>();
         // We cannot just check on equality of day because of timezones
         var query = dbset.Where(borrow =>
-            borrow.startDate >= startInstant && borrow.startDate < endInstant);
+            borrow.Start >= startInstant && borrow.Start < endInstant);
         query = query.Where(borrow => borrow.BorrowableEntity is T);
         var grouped = query.GroupBy(borrow => new
             {
-                hour = borrow.startDate
+                hour = borrow.Start
                     .InZone(DateTimeZoneProviders.Tzdb[tz.Id]).LocalDateTime
                     .Hour
             })
@@ -67,11 +67,11 @@ public class UsageChartingService<T> : IUsageChartingService<T>
         var startInstant = start.AtStartOfDayInZone(tz).ToInstant();
         var endInstant = end.PlusDays(1).AtStartOfDayInZone(tz).ToInstant();
         var query = context.Borrows.Where(borrow =>
-            borrow.startDate >= startInstant && borrow.startDate <= endInstant);
+            borrow.Start >= startInstant && borrow.Start <= endInstant);
         query = query.Where(borrow => borrow.BorrowableEntity is T);
         var grouped = query.GroupBy(borrow => new
             {
-                date = borrow.startDate
+                date = borrow.Start
                     .InZone(DateTimeZoneProviders.Tzdb[tz.Id]).LocalDateTime
                     .Date
             })

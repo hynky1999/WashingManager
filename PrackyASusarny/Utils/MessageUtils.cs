@@ -1,38 +1,41 @@
 using AntDesign;
+using PrackyASusarny.Data.ServiceInterfaces;
 using PrackyASusarny.Errors.Folder;
 
 namespace PrackyASusarny.Utils;
 
 public static class IMessageServiceExtensions
 {
-    public async static Task<T?> GenericOnDBError<T>(this IMessageService msg,
-        Func<Task<T>> action, bool showArgException = true)
+    public static async Task<T?> GenericOnDBError<T>(this IMessageService msg,
+        ILocalizationService loc, Func<Task<T>> action,
+        bool showArgException = true)
     {
         try
         {
             return await action();
         }
-        catch (DbException ex)
+        catch (DbException)
         {
-            msg.Error("Failed");
+            msg.Error(loc["Failed"]).FireAndForget();
         }
         catch (ArgumentException ex)
         {
             if (showArgException)
-                msg.Error(ex.Message);
+                msg.Error(loc[ex.Message]).FireAndForget();
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            msg.Error("Something went wrong");
+            msg.Error(loc["Something went wrong"]).FireAndForget();
         }
 
         return default;
     }
 
-    public async static Task GenericOnDBError(this IMessageService msg,
+    public static async Task GenericOnDBError(this IMessageService msg,
+        ILocalizationService loc,
         Func<Task> action, bool showArgException = true)
     {
-        await msg.GenericOnDBError<bool>(async () =>
+        await msg.GenericOnDBError(loc, async () =>
         {
             await action();
             return true;

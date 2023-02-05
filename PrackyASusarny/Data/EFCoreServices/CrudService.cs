@@ -15,10 +15,8 @@ public class CrudService<T> : ICrudService<T> where T : class
     private readonly IEntityType _entityType;
     private readonly Func<T, object> _idGetter;
     private readonly Expression<Func<T, object>> _idGetterExpr;
-    private readonly ILogger<CrudService<T>> _logger;
 
     public CrudService(IDbContextFactory<ApplicationDbContext> dbFactory,
-        ILogger<CrudService<T>> logger,
         IContextHookMiddleware contextHookMiddleware,
         Expression<Func<T, object>> idGetter)
     {
@@ -29,13 +27,11 @@ public class CrudService<T> : ICrudService<T> where T : class
         _entityType =
             dbFactory.CreateDbContext().Model.FindEntityType(typeof(T)) ??
             throw new InvalidOperationException("Entity type not found");
-        _logger = logger;
     }
 
     public CrudService(IDbContextFactory<ApplicationDbContext> dbFactory,
-        ILogger<CrudService<T>> logger,
         IContextHookMiddleware middleware) : this(
-        dbFactory, logger, middleware, GetKeyGetter(dbFactory))
+        dbFactory, middleware, GetKeyGetter(dbFactory))
     {
     }
 
@@ -76,7 +72,8 @@ public class CrudService<T> : ICrudService<T> where T : class
         dbContext.Entry(entity).State = EntityState.Added;
         await dbContext.SaveChangeAsyncRethrow();
         // Fire and forget
-        _contextHookMiddleware.OnSave(EntityState.Added, entity);
+        _contextHookMiddleware.OnSave(EntityState.Added, entity)
+            .FireAndForget();
         return entity;
     }
 
@@ -88,7 +85,8 @@ public class CrudService<T> : ICrudService<T> where T : class
         dbContext.Entry(entity).State = EntityState.Modified;
         await dbContext.SaveChangeAsyncRethrow();
         // Fire and forget
-        _contextHookMiddleware.OnSave(EntityState.Modified, entity);
+        _contextHookMiddleware.OnSave(EntityState.Modified, entity)
+            .FireAndForget();
         return entity;
     }
 
@@ -100,7 +98,8 @@ public class CrudService<T> : ICrudService<T> where T : class
         dbSet.Remove(entity);
         await dbContext.SaveChangeAsyncRethrow();
         // Fire and forget
-        _contextHookMiddleware.OnSave(EntityState.Deleted, entity);
+        _contextHookMiddleware.OnSave(EntityState.Deleted, entity)
+            .FireAndForget();
     }
 
     public object GetId(T entity)

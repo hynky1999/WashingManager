@@ -3,7 +3,7 @@
 @typeparam T where T : BorrowableEntity
 @inject IBorrowService BorrowService
 @inject ICrudService<T> CrudService
-@inject MessageService Message
+@inject IMessageService MessageService
 @inject ILocalizationService Loc
 
 
@@ -72,14 +72,14 @@
     private async Task EndBorrow() {
         _loading = true;
         if (_borrow is null) {
-            Message.Error("No borrow selected");
+            MessageService.Error(Loc["No borrow selected"]).FireAndForget();
             return;
         }
 
-        await Message.GenericOnDBError(async () => {
+        await MessageService.GenericOnDBError(Loc, async () => {
             await BorrowService.EndBorrowAsync(_borrow);
             await OnSuccess.InvokeAsync(_borrow);
-            Message.Success(Loc["Borrow ended"]);
+            MessageService.Success(Loc["Borrow ended"]).FireAndForget();
             CloseModal();
         });
         _loading = false;

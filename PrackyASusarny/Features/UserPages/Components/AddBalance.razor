@@ -1,12 +1,11 @@
 @using PrackyASusarny.Utils
 @using PrackyASusarny.Data.Constants
 @using PrackyASusarny.Auth.Utils
-@inject MessageService MessageService
 @inject IUserService UserService
 @inject ILocalizationService Loc
-@inject IMessageService Message
+@inject IMessageService MessageService
 
-<ModalForm MessageSuccess="@_messageSuccess"
+<ModalForm MessageSuccess="@Loc[_messageSuccess]"
            Model="@moneyToAdd"
            OnSubmit="OnSubmit"
            OnFinish="OnAddMoney"
@@ -39,18 +38,18 @@
         Currency = Currency.CZK
     };
 
-    private string _messageSuccess = "Succesfully added money";
+    private string _messageSuccess = "Added money";
     private ModalForm<Money, Money> _modal = new();
 
     private async Task<Money?> OnSubmit(Money toAdd) {
         if (authTask == null) {
-            MessageService.Error("User not logged in");
+            MessageService.Error(Loc["User not logged in"]).FireAndForget();
             return toAdd;
         }
         var authState = await authTask;
         var user = authState.User;
         var id = Claims.GetUserId(user);
-        return await MessageService.GenericOnDBError(async () => await UserService.ModifyUserCashAsync(id, moneyToAdd));
+        return await MessageService.GenericOnDBError(Loc, async () => await UserService.ModifyUserCashAsync(id, moneyToAdd));
     }
 
 }

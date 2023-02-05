@@ -39,7 +39,6 @@ public abstract class BorrowableEntity : IDBModel, ICloneable
 
     public string HumanReadableLoc(ILocalizationService loc)
     {
-        return loc["Borrowable Entity",
-            $"Borrowable Entity ID: {BorrowableEntityID}"] ?? "";
+        return $"{loc["Borrowable Entity"]}: {BorrowableEntityID}";
     }
 }

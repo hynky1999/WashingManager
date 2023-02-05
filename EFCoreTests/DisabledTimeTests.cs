@@ -13,7 +13,7 @@ public class DisabledTimeTests
         var start = new LocalDateTime(2021, 1, 1, 5, 4, 0);
         var end = new LocalDateTime(2021, 1, 1, 9, 5, 0);
         var disbaled = DisabledTimesStore.FromNoda(start, end);
-        var expectedHours = new int[] {6, 7, 8}.ToHashSet();
+        var expectedHours = new[] {6, 7, 8}.ToHashSet();
         var expectedMinutesStart = Enumerable.Range(4, 60 - 4).ToHashSet();
         var expectedMinutesEnd = Enumerable.Range(0, 5).ToHashSet();
         Assert.Equal(expectedHours, disbaled.DisabledHours);

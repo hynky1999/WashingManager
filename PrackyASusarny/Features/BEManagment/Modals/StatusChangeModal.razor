@@ -2,7 +2,7 @@
 @typeparam T where T : BorrowableEntity
 @inject ModalService ModalService
 @inject IBorrowableEntityService BorrowableEntityService
-@inject MessageService MessageService
+@inject IMessageService MessageService
 @inject ILocalizationService Loc
 
 @code {
@@ -17,13 +17,13 @@
 
     private async Task OnOkClick(ModalClosingEventArgs e) {
         if (DefaultBe == null) {
-            MessageService.Error("No item selected");
+            MessageService.Error(Loc["No item selected"]).FireAndForget();
             return;
         }
-        await MessageService.GenericOnDBError(async () => {
+        await MessageService.GenericOnDBError(Loc, async () => {
             await BorrowableEntityService.ChangeStatus(DefaultBe, status);
             await OnFinish.InvokeAsync(DefaultBe);
-            MessageService.Success($"The item has been marked as {status.ToString()}.");
+            MessageService.Success($"{Loc["The item has been marked as"]} {Loc[status]}.").FireAndForget();
         });
     }
 
@@ -33,8 +33,7 @@
         this.status = statusIn;
 
         ModalService.Confirm(new ConfirmOptions {
-            Title = Loc[$"Do you want to make this entity {status.ToString()}?"],
-            Icon = icon,
+            Title = $"{Loc["Do you want to make this entity"]} {Loc[status]}?", Icon = icon,
             OnOk = OnOkClick
         });
     }

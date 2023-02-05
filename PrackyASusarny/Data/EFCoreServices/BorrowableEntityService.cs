@@ -1,25 +1,21 @@
 using Microsoft.EntityFrameworkCore;
 using PrackyASusarny.Data.Models;
 using PrackyASusarny.Data.ServiceInterfaces;
-using PrackyASusarny.Middlewares;
 using PrackyASusarny.Utils;
 
 namespace PrackyASusarny.Data.EFCoreServices;
 
 public class BorrowableEntityService : IBorrowableEntityService
 {
-    private readonly IContextHookMiddleware _contextHookMiddleware;
     private readonly IDbContextFactory<ApplicationDbContext> _dbFactory;
     private readonly IReservationsService _reservationsService;
 
     public BorrowableEntityService(
         IDbContextFactory<ApplicationDbContext> dbFactory,
-        IReservationsService reservationsService,
-        IContextHookMiddleware contextHookMiddleware)
+        IReservationsService reservationsService)
     {
         _reservationsService = reservationsService;
         _dbFactory = dbFactory;
-        _contextHookMiddleware = contextHookMiddleware;
     }
 
     public async Task ChangeStatus(BorrowableEntity be, Status status)

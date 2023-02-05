@@ -1,11 +1,11 @@
 ﻿@inherits LayoutComponentBase
 
 
-<Layout Class="bg-light p-2 vh-100">
-    <Sider Style="overflow: auto;height: 100vh;position: fixed;left: 0;" Theme="SiderTheme.Light">
+<Layout>
+    <Sider Class="border-2 border-end" Style="overflow: auto;min-height: 100vh;position: fixed; left: 0" Theme="SiderTheme.Light">
         <NavMenu/>
     </Sider>
-    <Content Class="bg-body px-4" Style="margin-left: 180px">
+    <Content Class="bg-body min-vh-100 p-4" Style="margin-left: 200px">
         @Body
     </Content>
 </Layout>

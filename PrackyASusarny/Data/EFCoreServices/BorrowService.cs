@@ -36,8 +36,8 @@ public class BorrowService : IBorrowService
     public async Task<Money> GetPriceAsync(Borrow borrow)
     {
         using var db = await _dbFactory.CreateDbContextAsync();
-        var end = borrow.endDate ?? _localizationService.Now;
-        var duration = end - borrow.startDate;
+        var end = borrow.End ?? _localizationService.Now;
+        var duration = end - borrow.Start;
         var forLength =
             duration.TotalMinutes / 30.0 * _rates.WMpricePerHalfHour;
         var total = forLength + _rates.FlatBorrowPrice;
@@ -57,7 +57,7 @@ public class BorrowService : IBorrowService
             await EndBorrowStatisticsAsync(borrow, dbContext);
 
         contextWithStat.Borrows.Attach(borrow);
-        borrow.endDate = _localizationService.Now;
+        borrow.End = _localizationService.Now;
         borrow.BorrowableEntity.Status = Status.Free;
         await contextWithStat.SaveChangeAsyncRethrow();
     }
@@ -69,7 +69,7 @@ public class BorrowService : IBorrowService
             throw new ArgumentException("Must be free");
 
         borrow.BorrowableEntity.Status = Status.Taken;
-        borrow.startDate = _localizationService.Now;
+        borrow.Start = _localizationService.Now;
 
         if (borrow.BorrowPerson.BorrowPersonID == 0)
         {

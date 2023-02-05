@@ -3,25 +3,35 @@
 @namespace PrackyASusarny.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
+@* ReSharper disable Html.PathError *@
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <base href="~/"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="_content/AntDesign/css/ant-design-blazor.css" rel="stylesheet"/>
     <link href="css/site.css" rel="stylesheet"/>
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
     <component render-mode="Server" type="typeof(HeadOutlet)"/>
 </head>
 
-<body class="bg-body p-4">
-<nav class="bg-primary fixed-top mt-3 mx-3 navbar navbar-light px-2 rounded-4" style="z-index: 999">
-    <a class="navbar-brand text-black" href="#">Kolej 17. Listopadu</a>
-    <ul class="navbar-nav">
-        <partial name="/Pages/_LoginPartial.cshtml"/>
-    </ul>
+<body class="bg-body-tertiary">
+<nav class="navbar-expand-lg bg-primary fixed-top navbar navbar-light px-4 py-2" style="z-index: 999">
+    <div class="container-fluid">
+        <a class="navbar-brand text-info opacity-75 fw-bolder " href="#">Kolej 17. Listopadu</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav ms-auto">
+                <partial name="/Pages/_LoginPartial.cshtml"/>
+            </ul>
+        </div>
+    </div>
 </nav>
-<main style="padding-top: 100px">
+<main style="margin-top: 57px" class="bg-body min-vh-100">
     @RenderBody()
 
 
@@ -36,7 +46,16 @@
         <a class="dismiss">🗙</a>
     </div>
 </main>
+<footer class="bg-body-secondary p-2 justify-content-end" style="z-index: 1100; position: relative; bottom: 0">
+    <partial name="/Pages/_SelectLanguage.cshtml"/>
+</footer>
 <script src="_framework/blazor.server.js"></script>
-@await RenderSectionAsync("Scripts", false)
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+@section Scripts {
+    @await RenderSectionAsync("Scripts", false)
+}
+
 </body>
 </html>
+@* ReSharper restore Html.PathError *@

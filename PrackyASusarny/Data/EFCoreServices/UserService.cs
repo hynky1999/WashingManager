@@ -53,7 +53,7 @@ public class UserService : IUserService
             dbMoney =
                 await _currencyService.ConvertToAsync(money, _rates.DBCurrency);
         }
-        catch (ArgumentException e)
+        catch (ArgumentException)
         {
             throw new ArgumentException("Invalid currency");
         }
