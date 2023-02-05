@@ -1,13 +1,14 @@
 @inherits AntInputComponentBase<Duration>
+@inject ILocalizationService Loc
 
 <Form Model=@this>
-    <FormItem Label="Days">
+    <FormItem Label=@Loc["Days"]>
         <AntDesign.InputNumber @bind-Value="Days" Min="@(0)" TValue="int"/>
     </FormItem>
-    <FormItem Label="Hours">
+    <FormItem Label=@Loc["Hours"]>
         <AntDesign.InputNumber @bind-Value="Hour" Min="@(0)" TValue="int"/>
     </FormItem>
-    <FormItem Label="Minutes" Rules=@positive>
+    <FormItem Label=@Loc["Minutes"] Rules=@positive>
         <AntDesign.InputNumber @bind-Value="Minute" Min="@(0)" TValue="int"/>
     </FormItem>
 </Form>

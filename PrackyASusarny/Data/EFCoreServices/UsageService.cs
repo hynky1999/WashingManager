@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PrackyASusarny.Data.Constants;
 using PrackyASusarny.Data.Models;
 using PrackyASusarny.Data.ServiceInterfaces;
 
@@ -7,19 +8,22 @@ namespace PrackyASusarny.Data.EFCoreServices;
 public class UsageService : IUsageService
 {
     private readonly ILocalizationService _localizationService;
+    private readonly IUsageConstants _usageConstants;
 
-    public UsageService(ILocalizationService localizationService)
+    public UsageService(ILocalizationService localizationService,
+        IUsageConstants usageConstants)
     {
         _localizationService = localizationService;
+        _usageConstants = usageConstants;
     }
 
     public async Task<ApplicationDbContext> UpdateUsageStatisticsAsync<T>(
         Borrow borrow, ApplicationDbContext dbContext)
         where T : BorrowableEntity
     {
-        var tz = BorrowableEntityUsage.TimeZone();
+        var tz = _usageConstants.UsageTimeZone;
         var endDateInCet = _localizationService.Now.InZone(tz);
-        var startDateInCet = borrow.startDate.InZone(tz);
+        var startDateInCet = borrow.Start.InZone(tz);
         var duration =
             Period.DaysBetween(startDateInCet.Date, endDateInCet.Date);
 

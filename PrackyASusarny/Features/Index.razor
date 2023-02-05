@@ -1,7 +1,5 @@
 ﻿@page "/"
+@inject ILocalizationService Loc
 
-<PageTitle>Index</PageTitle>
-
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
+<PageHeader Title=@Loc["WM/DR Manager"]/>
+<Text>@Loc["Welcome to the Washing Machine/Drying Room Management website!"]</Text>

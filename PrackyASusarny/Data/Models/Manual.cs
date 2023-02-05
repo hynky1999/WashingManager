@@ -28,7 +28,7 @@ public class Manual : ICloneable, IDBModel
     }
 
     public string HumanReadableLoc(ILocalizationService loc) =>
-        loc["Manual", $"{ManualID}, {FileName}"] ?? "";
+        $"{loc["Manual"]}: {loc[ManualID]}, {loc[FileName]}";
 
     public override bool Equals(object? obj)
     {

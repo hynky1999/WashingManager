@@ -3,21 +3,23 @@
 @inject ILocalizationService Loc
 @inherits GenericEntityBase<T>
 @if (_statData.Length == 0) {
-    <Empty Description=@("No Data Found")/>
+    <Empty/>
 } else {
-    <AntDesign.Charts.Column Data="@_statData" Config="@_config"/>
+    <AntDesign.Charts.Column Config="@_config" Data="@_statData"/>
 }
 
 @code {
 
-        private const string Usage = "Average Daily usage";
+        private const string Usage = "Average weekly usage";
     private object[] _statData = {};
     private ColumnConfig _config = new();
 
     protected override async Task OnInitializedAsync() {
         var description = ChartsUtils.GetChartDescription(Usage, EntityName, (null, null), Loc);
         _config = ChartsUtils.CreateColumnConfig(Usage, description, "Day of Week", "Usage", Loc);
-        _statData = (await Charts.GetWeekUsageAsync()).Select(usage => new {x = usage.dayOfWeek.ToString(), y = Loc.Round(usage.value)}).ToArray();
+    // ReSharper disable once CoVariantArrayConversion
+    // It will be only read
+        _statData = (await Charts.GetWeekUsageAsync()).Select(usage => new {x = Loc[usage.dayOfWeek.ToString()], y = Loc.Round(usage.value)}).ToArray();
         await base.OnParametersSetAsync();
         base.OnInitialized();
     }

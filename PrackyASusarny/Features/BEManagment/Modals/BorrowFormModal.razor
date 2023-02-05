@@ -2,12 +2,12 @@
 @using PrackyASusarny.Utils
 @using PrackyASusarny.Features.BEManagment.Desc
 @typeparam T where T : BorrowableEntity
-@inject MessageService Message
+@inject IMessageService MessageService
 @inject ILogger<BorrowFormModal<T>> Logger
 @inject ILocalizationService Loc
 
 
-<ModalForm MessageSuccess="@_messageSuccess"
+<ModalForm MessageSuccess="@Loc[_messageSuccess]"
            Model="_tmpBorrowPerson"
            OnFinish="OnFinish"
            OnSubmit="OnSubmit"
@@ -41,18 +41,19 @@
     public EventCallback<Borrow> OnFinish { get; set; }
 
     private BorrowPerson _tmpBorrowPerson = new();
-    private string _messageSuccess = "Borrow created successfully";
+    private string _messageSuccess = "Borrow created";
     private ModalForm<BorrowPerson, Borrow> _modal = new();
 
     private async Task<Borrow?> OnSubmit(BorrowPerson borrowPerson) {
         if (DefaultBe is null) {
-            Message.Error("DefaultBe is null");
+            MessageService.Error(Loc["DefaultBe is null"]).FireAndForget();
+            return null;
         }
         var borrow = new Borrow {
             BorrowPerson = _tmpBorrowPerson,
             BorrowableEntity = DefaultBe
         };
-        return await Message.GenericOnDBError(async () => {
+        return await MessageService.GenericOnDBError(Loc, async () => {
             await BorrowService.AddBorrowAsync(borrow);
             return borrow;
         });

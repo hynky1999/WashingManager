@@ -18,7 +18,9 @@
     <LocDNColumn @bind-Field="@context.BorrowableEntity"/>
     <LocDNColumn @bind-Field="@context.Start" Sortable DefaultSortOrder=@SortDirection.Ascending/>
     <LocDNColumn @bind-Field="@context.End" OnFilter="OnEndFilter" Filters="_endFilters"/>
-    <LocDNColumn @bind-Field="@context.User"/>
+    <LocDNColumn @bind-Field="@context.User">
+        @context.User
+    </LocDNColumn>
     <ActionColumn>
         @if (context.Start <= Loc.Now && context.End > Loc.Now && context.BorrowableEntity.Status == Status.Free) {
             <Button
@@ -36,10 +38,10 @@
     private LazyRemoteTable<Reservation> _table = new();
 
     private async void MakeBorrowFromReservation(Reservation reservation) {
-        await MessageService.GenericOnDBError(async () => {
+        await MessageService.GenericOnDBError(Loc, async () => {
             await ReservationService.MakeBorrowFromReservationAsync(reservation);
             _table.ChangeLocally(reservations => reservations.Where(res => res.ReservationID != reservation.ReservationID).ToArray());
-            MessageService.Success("Borrow created");
+            MessageService.Success(Loc["Borrow created"]).FireAndForget();
         });
     }
 

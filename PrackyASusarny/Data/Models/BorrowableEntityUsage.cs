@@ -38,10 +38,6 @@ public abstract class BorrowableEntityUsage
     public long Hour22Total { get; set; }
     public long Hour23Total { get; set; }
 
-    public static DateTimeZone TimeZone()
-    {
-        return DateTimeZoneProviders.Tzdb["Europe/Prague"];
-    }
 
     public PropertyInfo hourToProperty(int hour)
     {
@@ -58,16 +54,10 @@ public abstract class BorrowableEntityUsage
     {
         return (long) hourToProperty(hour).GetValue(this)!;
     }
-
-    public override bool Equals(object? obj)
-    {
-        var other = obj as BorrowableEntityUsage;
-        if (other == null) return false;
-        return DayId == other.DayId && Enumerable.Range(0, 24)
-            .All(i => GetHour(i) == other.GetHour(i));
-    }
 }
 
+// ReSharper disable once UnusedTypeParameter
+// We need parameter be able to use drying room and wm ones
 public class BorrowableEntityUsage<T> : BorrowableEntityUsage
     where T : BorrowableEntity
 {

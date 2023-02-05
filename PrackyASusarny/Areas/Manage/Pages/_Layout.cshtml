@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using PrackyASusarny.Data.ServiceInterfaces
+@using PrackyASusarny.Auth.Utils
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IAuthorizationService AuthorizationService
+@inject ILocalizationService Loc
+@{
+    Layout = "/Pages/_CoreLayout.cshtml";
+}
+
+<div class="mt-4 p-4">
+    <h1>@Loc["Manage your account"]</h1>
+    <hr/>
+    <div>
+        <div class="row">
+            <div class="col-md-3">
+                <h4>@Loc["User Settings"]</h4>
+                <partial name="Account/Manage/_ManageNav"/>
+                @if ((await AuthorizationService.AuthorizeAsync(User, Policies.UserManagement)).Succeeded) {
+                    <hr/>
+                    <h4>@Loc["Admin Panel"]</h4>
+                    <partial name="Account/Admin/_AdminNav"/>
+                }
+            </div>
+            <div class="col-md-9">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>
+
+@await RenderSectionAsync("Scripts", required: false)

@@ -1,6 +1,6 @@
 @inject IReservationsService ReservationsService
 @inject ILocalizationService Loc
-@inject MessageService MessageService
+@inject IMessageService MessageService
 @inject IBorrowableEntityService BorrowableEntityService
 @using PrackyASusarny.Utils
 @using System.ComponentModel.DataAnnotations
@@ -10,7 +10,7 @@
       Model="_reservationMixin" OnFinish="() => CreateReservationAsync(_reservationMixin)">
     <FormItem WrapperColSpan="12" Label="@Loc["Entity"]">
         <ModelSelect TItem="T" @bind-Value="@context.BE" OnChange=@ChangeDisabled
-                     DataSource="_nonBrokenEntities">
+                     DataSource="_nonBrokenEntities" CrudInitialize="@false">
         </ModelSelect>
     </FormItem>
 
@@ -33,8 +33,9 @@
 
     private class ReservationMixin {
         [Required]
+        public T? BE { get; set; }
+
     // We are using Annotation to make the form validation work
-        public T? BE { get; set; } = null;
 
         public (LocalDateTime, LocalDateTime) Range { get; set; }
     }
@@ -47,7 +48,7 @@
         return _disabledDateTimesStore.AsDatePickerDisabledTime(dt);
     }
 
-    private T[]? _nonBrokenEntities = null;
+    private T[]? _nonBrokenEntities;
 
     protected async override Task OnInitializedAsync() {
         var entities = await BorrowableEntityService.GetAllBorrowableEntitites<T>();
@@ -66,13 +67,13 @@
 
     private async Task CreateReservationAsync(ReservationMixin reservationMixin) {
         if (authTask == null) {
-            MessageService.Error("User not logged in");
+            MessageService.Error(Loc["User not logged in"]).FireAndForget();
             return;
         }
         var authState = await authTask;
-        await MessageService.GenericOnDBError(async () => {
+        await MessageService.GenericOnDBError(Loc, async () => {
             await ReservationsService.CreateReservationAsync(reservationMixin.Range.Item1, reservationMixin.Range.Item2, authState.User, reservationMixin.BE!);
-            MessageService.Success("Reservation created");
+            MessageService.Success(Loc["Reservation created"]).FireAndForget();
             _reservationMixin = new();
         });
     }

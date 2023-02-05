@@ -90,7 +90,7 @@ public class ReservationManager : IReservationManager, IDisposable
                 new Money()
                 {
                     Amount = -_rates.WMNoBorrowPenalty, Currency = Currency.CZK
-                }), 10, 5000);
+                }));
     }
 
     // Refetch in order to get new xmin
@@ -160,7 +160,7 @@ public class ReservationManager : IReservationManager, IDisposable
         var oldBorrowQuery = from r in db.Reservations
             join b in db.Borrows on r.ReservationID equals b.ReservationID
             where r.BorrowableEntityID == id &&
-                  r.End <= _localizationService.Now && b.endDate == null
+                  r.End <= _localizationService.Now && b.End == null
             orderby r.End ascending
             select r;
 
@@ -189,13 +189,14 @@ public class ReservationManager : IReservationManager, IDisposable
         }
 
         // Not returned in Reservation time
-        else if (borrow.endDate == null)
+        else if (borrow.End == null)
         {
             // Will also update the queue
             await ResolveOverBorrowAsync(reservation);
         }
 
-        //_contextHookMiddleware.OnSave(EntityState.Modified, reservation);
+        _contextHookMiddleware.OnSave(EntityState.Modified, reservation)
+            .FireAndForget();
     }
 }
 

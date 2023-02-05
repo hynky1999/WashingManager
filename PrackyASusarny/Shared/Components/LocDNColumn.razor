@@ -1,13 +1,13 @@
 @inject ILocalizationService Loc
-@using System.Reflection
-@using System.ComponentModel
+@using PrackyASusarny.Utils
 @using System.Linq.Expressions
+@using System.Reflection
 @typeparam T
-<AntDesign.Column DefaultSortOrder="DefaultSortOrder" Field="Field" FieldChanged="FieldChanged" FieldExpression="FieldExpression" Filterable Filters=Filters OnFilter=@OnFilter Sortable=@Sortable Title=@(Title ?? Loc[_label])>
+<AntDesign.Column DefaultSortOrder="DefaultSortOrder" Field="Field" FieldChanged="FieldChanged" FieldExpression="FieldExpression" Filterable Filters=Filters OnFilter=@OnFilter Sortable=@Sortable SorterMultiple="SorterMultiple" TData="T" Title=@(Title ?? Loc[_label])>
     @if (ChildContent != null) {
         @ChildContent
     } else {
-        <p>@_localizedField</p>
+        @_localizedField
     }
 
 </AntDesign.Column>
@@ -34,6 +34,9 @@
     public bool Sortable { get; set; }
 
     [Parameter]
+    public int SorterMultiple { get; set; }
+
+    [Parameter]
     public SortDirection? DefaultSortOrder { get; set; }
 
     [Parameter]
@@ -48,12 +51,12 @@
     [Parameter]
     public bool Filterable { get; set; }
 
-    private string _label = typeof(T).Name;
+    private string _label = typeof(T).DisplayName();
 
     protected override void OnParametersSet() {
         var member = FieldExpression?.Body as MemberExpression;
         if (member?.Member is PropertyInfo propertyInfo) {
-            _label = propertyInfo.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? _label;
+            _label = propertyInfo.DisplayName();
         }
         if (ChildContent == null) {
             try {

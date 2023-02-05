@@ -51,7 +51,7 @@ public class SeedData
 
         if (initData && admin != null && manager != null)
         {
-            SeedDb(dbContextFactory, new ApplicationUser[] {admin, manager});
+            SeedDb(dbContextFactory, new[] {admin, manager});
         }
     }
 
@@ -79,7 +79,7 @@ public class SeedData
         UserManager<ApplicationUser> userManager,
         int userId, string role)
     {
-        var user = await userManager!.FindByIdAsync(userId.ToString());
+        var user = await userManager.FindByIdAsync(userId.ToString());
         if (user == null)
             throw new Exception("User not found");
 
@@ -116,9 +116,6 @@ public class SeedData
 
         var persons = Enumerable.Range(0, 10)
             .Select(_ => CreateRandomBorrowPerson()).ToArray();
-        Borrow[] borrows = Enumerable.Range(0, 30)
-            .Select(_ => CreateRandomBorrow(persons, wm))
-            .Where(x => x is not null).ToArray()!;
 
         List<Reservation> reservations = new();
         Enumerable.Range(0, 30).ForEach(_ =>
@@ -216,29 +213,6 @@ public class SeedData
             Building = avbBuildings[rnd.Next(2)],
             RoomNum = rnd.Next(maxRoom),
             DoorNum = rnd.Next(maxDoorNum)
-        };
-    }
-
-    private static Borrow? CreateRandomBorrow(BorrowPerson[] persons,
-        WashingMachine[] wm)
-    {
-        var rnd = new Random();
-        var availableWms = wm.Where(x => x.Status == Status.Free).ToArray();
-        if (availableWms.Length == 0) return null;
-
-        var start = DateTime.UtcNow.AddDays(-rnd.Next(1, 100)).ToInstant();
-        Instant? end = rnd.Next(0, 2) == 0
-            ? DateTime.UtcNow.AddDays(rnd.Next(2, 100)).ToInstant()
-            : null;
-        var chosenWm = availableWms[rnd.Next(availableWms.Length)];
-        if (end != null) chosenWm.Status = Status.Taken;
-
-        return new Borrow
-        {
-            BorrowPerson = persons[rnd.Next(persons.Length)],
-            BorrowableEntity = chosenWm,
-            startDate = start,
-            endDate = end
         };
     }
 

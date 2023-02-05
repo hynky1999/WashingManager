@@ -1,8 +1,9 @@
 @typeparam TMod where TMod : class, new()
+@using PrackyASusarny.Utils
 @using System.ComponentModel.DataAnnotations
 @typeparam TResult where TResult : class
 @inject ILogger<ModalForm<TMod, TResult>> Logger
-@inject MessageService Message
+@inject MessageService MessageService
 @inject ILocalizationService Loc
 
 <Modal Footer="@null" OnCancel="CloseModal" Visible="@_visible">
@@ -35,7 +36,7 @@
     public TMod Model { get; set; } = new();
 
     [Parameter]
-    public string MessageSuccess { get; set; } = "Sucess";
+    public string MessageSuccess { get; set; } = "Success";
 
     [Parameter]
     public string MessageFail { get; set; } = "Fail";
@@ -55,18 +56,21 @@
 
 
     private async Task OnFinishForm(TMod model) {
-        TResult? submitedModel = null;
+        TResult? submittedModel = null;
         if (OnSubmit != null) {
-            submitedModel = await OnSubmit(model);
+            submittedModel = await OnSubmit(model);
         }
     // Just check for null, we don't check for default value as it could be valid
-        if (submitedModel != null) {
-            await OnFinish.InvokeAsync(submitedModel);
-            Message.Success(
-                MessageSuccess
-                );
+        if (submittedModel != null) {
+            await OnFinish.InvokeAsync(submittedModel);
+            MessageService.Success(
+                Loc[MessageSuccess]
+                ).FireAndForget();
         } else {
-            await OnFinishFailed.InvokeAsync(submitedModel);
+            MessageService.Success(
+                Loc[MessageFail]
+                ).FireAndForget();
+            await OnFinishFailed.InvokeAsync(submittedModel);
         }
         _loading = false;
         CloseModal();

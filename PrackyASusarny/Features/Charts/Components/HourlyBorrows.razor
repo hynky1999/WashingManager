@@ -3,12 +3,12 @@
 @inherits GenericEntityBase<T>
 @inject ILocalizationService Loc
 @if (_statData.Length == 0) {
-    <Empty />
+    <Empty/>
 } else {
-    <AntDesign.Charts.Column @ref="_chart" Data="@_statData" Config="@_config"/>
+    <AntDesign.Charts.Column Config="@_config" Data="@_statData" @ref="_chart"/>
 }
 <LocalDatePickerNullable @bind-Value="Date"></LocalDatePickerNullable>
-<Button OnClick="() => InitializeData(Date)">Chart</Button>
+<Button OnClick="() => InitializeData(Date)">@Loc["Chart"]</Button>
 
 @code {
 
@@ -33,6 +33,7 @@
 
     private async Task InitializeData(LocalDate? val) {
         if (val is not null) {
+    // ReSharper disable once CoVariantArrayConversion
             _statData = (await Charts.GetBorrowsByHourAsync(val.Value)).Select(usage => new {x = usage.hour.ToString(), y = usage.value}).ToArray();
             if (_chart != null) {
     // Idk doesn't react to statHasCHanged

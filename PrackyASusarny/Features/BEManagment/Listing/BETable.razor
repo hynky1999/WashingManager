@@ -11,27 +11,24 @@
        Responsive TItem="T"
        Total="_total">
 
-    <AntDesign.Column @bind-Field="@context.Status" Filters="_statusFilter"
-                      Sortable
-                      SorterMultiple="1"
-                      TData="Status" Title=@Loc["Status"]/>
+    <LocDNColumn @bind-Field="@context.Status" Filters="_statusFilter" Sortable
+                 SorterMultiple="1"
+                 T="Status"/>
+    @{
+        var wm = context as WashingMachine;
+    }
 
-    @if (typeof(T) == typeof(WashingMachine)) {
-        <AntDesign.Column DataIndex="Manufacturer"
-                          TData="string"
-                          Title=@Loc["Washing Machine Type"]/>
-        <AntDesign.Column DataIndex="Manual"
-                          TData="Manual"
-                          Title=@Loc["Manual"]>
-            @{
-                var manual = (context as WashingMachine)?.Manual;
-            }
-            @if (manual != null) {
-                <a href="@manual.FileName">Manual</a>
+    @if (wm != null) {
+        <LocDNColumn @bind-Field="@wm.Manufacturer"
+                     T="string"/>
+        <LocDNColumn @bind-Field="@wm.Manual"
+                     T="Manual">
+            @if (wm.Manual != null) {
+                <a href="@wm.Manual.FileName">Manual</a>
             } else {
                 @Loc["None"]
             }
-        </AntDesign.Column>
+        </LocDNColumn>
     }
     <AntDesign.Column DataIndex="Location.Building"
                       Filters="_buildingFilters"
@@ -46,7 +43,7 @@
                       Sortable
                       SorterMultiple="3" TData="int?"
                       Title=@Loc["Floor"]>
-        @context.Location?.Floor
+        @Loc[context.Location?.Floor]
     </AntDesign.Column>
     <AntDesign.Column DataIndex="Location.RoomNum"
                       Filters="_roomFilters"
@@ -54,12 +51,12 @@
                       SorterMultiple="4"
                       TData="int?"
                       Title=@Loc["Room"]>
-        @context.Location?.RoomNum
+        @Loc[context.Location?.RoomNum]
     </AntDesign.Column>
     <AntDesign.Column
         DataIndex="Location.DoorNum"
         TData="int?" Title=@Loc["Door"]>
-        @context.Location?.DoorNum
+        @Loc[context.Location?.DoorNum]
     </AntDesign.Column>
     <AuthorizeView Policy="@Policies.BorrowManagement">
         <ChildContent Context="_">
@@ -117,11 +114,7 @@
     private TableFilter<int?>[] _roomFilters = new TableFilter<int?>[0];
 
 
-    private readonly TableFilter<Status>[] _statusFilter = Enum.GetNames<Status>().Select(
-        e => {
-            var en = Enum.Parse<Status>(e);
-            return new TableFilter<Status> {Text = e, Value = en, Selected = en == Status.Free};
-        }).ToArray();
+    private TableFilter<Status>[] _statusFilter = Array.Empty<TableFilter<Status>>();
 
 
     private T? _defaultBe;
@@ -130,21 +123,22 @@
     private Status _repairStatus = Status.Broken;
 
     protected override Task OnInitializedAsync() {
+        _statusFilter = Enum.GetNames<Status>().Select(
+            e => {
+                var en = Enum.Parse<Status>(e);
+                return new TableFilter<Status> {Text = Loc[e], Value = en, Selected = en == Status.Free};
+            }).ToArray();
+
         _buildingFilters = LocationService.GetBuildingOptions().Select(
-            x => new TableFilter<char?> {Text = x.ToString(), Value = x}).ToArray();
+            x => new TableFilter<char?> {Text = Loc[x.ToString()], Value = x}).ToArray();
 
         _roomFilters = LocationService.GetRoomOptions().Select(
-            x => new TableFilter<int?> {Text = x.ToString(), Value = x}).ToArray();
+            x => new TableFilter<int?> {Text = Loc[x.ToString()], Value = x}).ToArray();
 
         _floorFilters = LocationService.GetFloorOptions().Select(
-            x => new TableFilter<int?> {Text = x.ToString(), Value = x}).ToArray();
+            x => new TableFilter<int?> {Text = Loc[x.ToString()], Value = x}).ToArray();
 
         return base.OnInitializedAsync();
-    }
-
-    private void OpenCreateModal(T be) {
-        _defaultBe = be;
-        _modalBorrow.OpenModal();
     }
 
     private void OpenStatusModal(T be, Status s) {

@@ -1,18 +1,11 @@
+@using PrackyASusarny.Utils
 @inject ILocalizationService Loc
 
 <Menu Mode="MenuMode.Horizontal">
-    @foreach (var option in _menuOptions) {
-        <MenuItem Key="@option" Title=@Loc[option] RouterLink="@($"/AdminMenu/{option}/List")">
-            <Icon Type="edit" Theme="outline"></Icon>
+    @foreach (var option in AdminConfig.AllowedTypes) {
+        <MenuItem Key="@option.Name" RouterLink="@($"/AdminMenu/{option.Name}/List")" Title=@Loc[option.DisplayName()]>
+            <Icon Theme="outline" Type="edit"></Icon>
             @option
         </MenuItem>
     }
 </Menu>
-
-@code {
-
-    private string[] _menuOptions = AdminConfig.AllowedTypes.Select(
-        t => t.Name
-        ).ToArray();
-
-}

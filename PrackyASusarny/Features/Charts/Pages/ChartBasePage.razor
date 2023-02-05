@@ -8,7 +8,7 @@
     }
     <Tabs>
         @foreach (var chart in charts) {
-            <TabPane Tab="@chart.name">
+            <TabPane Tab="@Loc[chart.name]">
                 <DynamicComponent Parameters="@chart.args" Type="@chart.type"/>
             </TabPane>
         }

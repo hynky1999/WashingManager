@@ -1,10 +1,10 @@
 @using PrackyASusarny.Utils
 @using PrackyASusarny.Data.Constants
-@inject MessageService MessageService
+@inject IMessageService MessageService
 @inject IUserService UserService
 @inject ILocalizationService Loc
 
-<Text>@($"Balance: {balance}")</Text>
+<Text>@($"{Loc["Balance"]}: {balance}")</Text>
 
 @code {
 
@@ -24,12 +24,12 @@
 
     private async Task UpdateBalance() {
         if (authTask == null) {
-            MessageService.Error("User not logged in");
+            MessageService.Error(Loc["User not logged in"]).FireAndForget();
             return;
         }
         var authState = await authTask;
         var user = authState.User;
-        var maybeBalance = await MessageService.GenericOnDBError(async () => await UserService.GetUserCashAsync(user));
+        var maybeBalance = await MessageService.GenericOnDBError(Loc, async () => await UserService.GetUserCashAsync(user));
         if (maybeBalance is null) {
             return;
         }

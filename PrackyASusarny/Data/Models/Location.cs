@@ -18,17 +18,11 @@ public sealed class Location : ICloneable, IDBModel
     [DisplayName("Location ID")]
     public int LocationID { get; set; }
 
-    [DisplayName("Floor Number")]
-    [Required]
-    public int Floor { get; set; }
+    [DisplayName("Floor")] [Required] public int Floor { get; set; }
 
-    [DisplayName("Room Number")]
-    [Required]
-    public int RoomNum { get; set; }
+    [DisplayName("Room")] [Required] public int RoomNum { get; set; }
 
-    [DisplayName("Door Number")]
-    [Required]
-    public int DoorNum { get; set; }
+    [DisplayName("Door")] [Required] public int DoorNum { get; set; }
 
     [DisplayName("Building")] [Required] public char Building { get; set; }
 
@@ -38,8 +32,7 @@ public sealed class Location : ICloneable, IDBModel
     }
 
     public string HumanReadableLoc(ILocalizationService loc) =>
-        loc["Location",
-            $"ID: {LocationID}, {Building} {Floor}/{RoomNum}-{DoorNum}"] ?? "";
+        $"{loc["Location"]}: {LocationID}, {Building} {Floor}/{RoomNum}-{DoorNum}";
 
     public override bool Equals(object? obj)
     {

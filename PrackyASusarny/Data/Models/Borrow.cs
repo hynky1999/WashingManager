@@ -4,6 +4,9 @@ using PrackyASusarny.Data.ModelInterfaces;
 using PrackyASusarny.Data.ServiceInterfaces;
 using PrackyASusarny.Data.Utils;
 
+// ReSharper disable PropertyCanBeMadeInitOnly.Global
+#pragma warning disable CS8618
+
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 // ReSharper disable InconsistentNaming
 // ReSharper disable NonReadonlyMemberInGetHashCode
@@ -44,11 +47,9 @@ public class Borrow : IDBModel, ICloneable
     [Required]
     public BorrowPerson BorrowPerson { get; set; }
 
-    [DisplayName("Start Date")]
-    [Required]
-    public Instant startDate { get; set; }
+    [DisplayName("Start Time")] [Required] public Instant Start { get; set; }
 
-    [DisplayName("End Date")] public Instant? endDate { get; set; }
+    [DisplayName("End Time")] public Instant? End { get; set; }
 
     [UIVisibility(UIVisibilityEnum.Hidden)]
     public uint xmin { get; set; }
@@ -62,7 +63,5 @@ public class Borrow : IDBModel, ICloneable
     }
 
     public string HumanReadableLoc(ILocalizationService loc) =>
-        loc["Borrow",
-            $"ID: {BorrowID}, {BorrowableEntity.HumanReadableLoc(loc)} by {BorrowPerson.HumanReadableLoc(loc)}"] ??
-        "";
+        $"{loc["Borrow"]}: {BorrowID} {loc["for"]} {BorrowableEntity.HumanReadableLoc(loc)} {loc["by"]} {BorrowPerson.HumanReadableLoc(loc)}";
 }

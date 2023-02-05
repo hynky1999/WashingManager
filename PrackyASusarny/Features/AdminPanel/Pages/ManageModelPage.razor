@@ -19,7 +19,7 @@
         <DynamicComponent Parameters="@(new Dictionary<string, object>() {{"Action", _action}, {"Id", Id ?? 0}})"
                           Type="@(typeof(CrudForm<>).MakeGenericType(context))"/>
     } else {
-        <Title Level="2">@Loc["Unknow Action"]</Title>
+        <Title Level="2">@Loc["Unknown Action"]</Title>
     }
 </ModelLoader>
 

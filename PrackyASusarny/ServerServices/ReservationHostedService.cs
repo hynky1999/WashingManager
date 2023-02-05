@@ -24,7 +24,7 @@ public class ReservationHostedService : BackgroundService
 
         foreach (var be in bes)
         {
-            _reservationsManager.Create(be.BorrowableEntityID);
+            await _reservationsManager.Create(be.BorrowableEntityID);
         }
     }
 }

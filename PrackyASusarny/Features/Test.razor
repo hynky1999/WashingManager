@@ -1,5 +1,4 @@
 @page "/test"
-@inject ILogger<Test> Logger
 
 <LocalDateRangePicker @bind-Value="_dateRange"/>
 <LocalDateTimeRange @bind-Value="_dateRange2"/>
@@ -16,8 +15,8 @@
 @code{
     private (LocalDate, LocalDate) _dateRange;
     private (LocalDateTime, LocalDateTime) _dateRange2;
-    private LocalDate? val = null;
-    private Reservation? _reservation = null;
+    private LocalDate? val;
+    private Reservation? _reservation;
     private Instant _instant;
     private char? xd = 'a';
 

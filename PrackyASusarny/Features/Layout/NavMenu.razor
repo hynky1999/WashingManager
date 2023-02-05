@@ -1,11 +1,12 @@
-﻿@using PrackyASusarny.Features.BEManagment
+﻿@using PrackyASusarny.Utils
+@using PrackyASusarny.Features.BEManagment
 @using PrackyASusarny.Auth.Utils
 @inject ILocalizationService Loc
 <Menu Mode="MenuMode.Inline">
     @foreach (var be in ManagementConfig.AllowedEntities) {
-        <SubMenu Key=@($"sub{be.Name}") Title="@(be.Name)">
+        <SubMenu Key=@($"sub{be.DisplayName()}") Title="@Loc[be.DisplayName()]">
             <MenuItem Key=@($"{be.Name}avail") RouterLink=@($"/{be.Name}/Availability")>@Loc["Availability"]</MenuItem>
-            <MenuItem Key=@($"{be.Name}graph") RouterLink=@($"/{be.Name}/Charts")>@Loc["Graphs"]</MenuItem>
+            <MenuItem Key=@($"{be.Name}graph") RouterLink=@($"/{be.Name}/Charts")>@Loc["Charts"]</MenuItem>
 
             <MenuItem Key=@($"{be.Name}createRes") RouterLink="@($"/{be.Name}/CreateReservation")">@Loc["Create Reservation"]</MenuItem>
 
@@ -18,7 +19,7 @@
     }
 
     <AuthorizeView>
-        <SubMenu Key="sub2" Title="My account">
+        <SubMenu Key="sub2" Title="@Loc["My Account"]">
             <MenuItem Key="MyRes" RouterLink="/Account/Reservations">@Loc["My Reservations"]</MenuItem>
 
             <MenuItem Key="MyBalance" RouterLink="/Account/Balance">@Loc["My Balance"]</MenuItem>
@@ -27,7 +28,7 @@
 
 
     <AuthorizeView Policy="@Policies.ModelManagement">
-        <SubMenu Key="sub3" Title="Admin Panel">
+        <SubMenu Key="sub3" Title=@Loc["Admin Panel"]>
             <MenuItem Key="ManageModels" RouterLink="/AdminMenu/ManageModels">@Loc["Manage Models"]</MenuItem>
         </SubMenu>
     </AuthorizeView>

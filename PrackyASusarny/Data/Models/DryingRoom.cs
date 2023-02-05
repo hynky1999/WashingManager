@@ -8,7 +8,5 @@ namespace PrackyASusarny.Data.Models;
 public class DryingRoom : BorrowableEntity, IDBModel
 {
     public new string HumanReadableLoc(ILocalizationService loc) =>
-        loc["DR",
-            $"DR ID: {BorrowableEntityID} at {Location?.HumanReadableLoc(loc)}"] ??
-        "";
+        $"{loc["DR"]}: {BorrowableEntityID} {loc["at"]} {Location?.HumanReadableLoc(loc)}";
 }

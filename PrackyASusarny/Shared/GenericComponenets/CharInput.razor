@@ -1,7 +1,8 @@
 @typeparam TItem
 @using PrackyASusarny.Utils
 @inherits AntDesign.AntInputComponentBase<TItem>
-<Select AllowClear="@true" @bind-Value="CurrentValue" DataSource="allChars" TItem="TItem" TItemValue="TItem"/>
+<Select AllowClear="@true" @bind-Value="CurrentValue" DataSource="allChars" TItem="TItem" TItemValue="TItem">
+</Select>
 
 
 @code {
@@ -15,9 +16,9 @@
 
     protected override void OnInitialized() {
         if (!ALLOWED_TYPES.Contains(typeof(TItem))) {
-            throw new InvalidOperationException($"The type {typeof(TItem).Name} is not supported by this component.");
+            throw new InvalidOperationException($"The type {typeof(TItem).DisplayName()} is not supported by this component.");
         }
-        allChars = AllowedChars.Select(c => GenericUtils.ChangeType<TItem>(c)).ToArray();
+        allChars = AllowedChars.Select(c => GenericUtils.ChangeType<TItem>(c)).ToArray()!;
     }
 
 }

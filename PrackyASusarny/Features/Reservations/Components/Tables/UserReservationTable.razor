@@ -59,10 +59,10 @@
 
 
     private async void CancelReservation(Reservation reservation) {
-        await MessageService.GenericOnDBError(async () => {
+        await MessageService.GenericOnDBError(Loc, async () => {
             await ReservationService.CancelReservationAsync(reservation);
             _table.ChangeLocally(data => data.Where(r => r.ReservationID != reservation.ReservationID).ToArray());
-            MessageService.Success("Reservation canceled");
+            MessageService.Success(Loc["Reservation canceled"]).FireAndForget();
         });
     }
 

@@ -1,3 +1,4 @@
+using System.Globalization;
 using PrackyASusarny.Data.Constants;
 using PrackyASusarny.Data.ModelInterfaces;
 
@@ -8,6 +9,9 @@ public interface ILocalizationService
     DateTimeZone TimeZone { get; }
     Instant Now { get; }
     ZonedDateTime NowInTimeZone { get; }
+
+    public CultureInfo[] AvailableCultures { get; }
+    public CultureInfo CurrentCulture { get; }
 
     // Exists solely for typeparam classes
     public string? this[object? key] { get; }
@@ -21,7 +25,7 @@ public interface ILocalizationService
     public string? this[IDBModel? model] { get; }
     public string? this[Money? money] { get; }
 
-    public string? this[params string?[] keys] { get; }
+    public string? this[Enum e] { get; }
 
     public double? Round(double? d);
 }

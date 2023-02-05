@@ -19,6 +19,7 @@ public interface IUsageChartingService
     public Task<(IsoDayOfWeek dayOfWeek, double value)[]> GetWeekUsageAsync();
 }
 
+// ReSharper disable once UnusedTypeParameter
 public interface IUsageChartingService<T> : IUsageChartingService
     where T : BorrowableEntity
 {
