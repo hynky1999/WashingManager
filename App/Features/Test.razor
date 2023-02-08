@@ -1,0 +1,24 @@
+@page "/test"
+@using App.Data.Models
+
+<LocalDateRangePicker @bind-Value="_dateRange"/>
+<LocalDateTimeRange @bind-Value="_dateRange2"/>
+<LocalDatePickerNullable @bind-Value="val"></LocalDatePickerNullable>
+<ModelSelect TItem="Reservation" @bind-Value="_reservation"/>
+<InstantPicker TItem="Instant" @bind-Value="_instant"></InstantPicker>
+<CharInput @bind-Value="xd" AllowedChars=@(new[] {'A', 'B'})/>
+
+@_dateRange
+@_dateRange2
+@val
+
+
+@code{
+    private (LocalDate, LocalDate) _dateRange;
+    private (LocalDateTime, LocalDateTime) _dateRange2;
+    private LocalDate? val;
+    private Reservation? _reservation;
+    private Instant _instant;
+    private char? xd = 'a';
+
+}

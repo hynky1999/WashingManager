@@ -1,0 +1,33 @@
+@using App.Data.Models
+@typeparam T where T : App.Data.Models.BorrowableEntity
+@inject ILocalizationService Loc
+@if (BEntity is not null) {
+    <Card Bordered="true" Title=@Loc["Object info"]>
+        <Body>
+        <Descriptions Column="column">
+            <DescriptionsItem Title=@Loc["Location"]>
+                @BEntity.Location
+            </DescriptionsItem>
+            @if (typeof(T) == typeof(WashingMachine)) {
+                <WmDescription Wm="@(BEntity as WashingMachine)"/>
+            }
+        </Descriptions>
+        </Body>
+    </Card>
+}
+
+@code {
+
+    [Parameter]
+    public T? BEntity { get; set; }
+
+    private Dictionary<string, int> column = new Dictionary<string, int> {
+        {"xxl", 1},
+        {"xl", 1},
+        {"lg", 1},
+        {"md", 1},
+        {"sm", 1},
+        {"xs", 1}
+    };
+
+}

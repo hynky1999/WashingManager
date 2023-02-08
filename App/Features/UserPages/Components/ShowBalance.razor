@@ -1,0 +1,39 @@
+@using App.Data.Constants
+@inject IMessageService MessageService
+@inject IUserService UserService
+@inject ILocalizationService Loc
+
+<Text>@($"{Loc["Balance"]}: {balance}")</Text>
+
+@code {
+
+    [CascadingParameter]
+    public Task<AuthenticationState>? authTask { get; set; }
+
+    private Money balance = new() {Amount = 0, Currency = Currency.CZK};
+
+    protected override async Task OnParametersSetAsync() {
+        await UpdateBalance();
+        await base.OnParametersSetAsync();
+    }
+
+    public async Task Refresh() {
+        await OnParametersSetAsync();
+    }
+
+    private async Task UpdateBalance() {
+        if (authTask == null) {
+            MessageService.Error(Loc["User not logged in"]).FireAndForget();
+            return;
+        }
+        var authState = await authTask;
+        var user = authState.User;
+        var maybeBalance = await MessageService.GenericOnDBError(Loc, async () => await UserService.GetUserCashAsync(user));
+        if (maybeBalance is null) {
+            return;
+        }
+        balance = maybeBalance;
+        StateHasChanged();
+    }
+
+}

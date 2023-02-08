@@ -1,0 +1,23 @@
+@typeparam TItem
+@inherits AntDesign.AntInputComponentBase<TItem>
+<Select AllowClear="@true" @bind-Value="CurrentValue" DataSource="allChars" TItem="TItem" TItemValue="TItem">
+</Select>
+
+
+@code {
+
+    [Parameter]
+    public char[] AllowedChars { get; set; } = new char[0];
+
+
+    private TItem[] allChars = new TItem[0];
+    private Type[] ALLOWED_TYPES = new Type[] {typeof(char), typeof(char?)};
+
+    protected override void OnInitialized() {
+        if (!ALLOWED_TYPES.Contains(typeof(TItem))) {
+            throw new InvalidOperationException($"The type {typeof(TItem).DisplayName()} is not supported by this component.");
+        }
+        allChars = AllowedChars.Select(c => GenericUtils.ChangeType<TItem>(c)).ToArray()!;
+    }
+
+}

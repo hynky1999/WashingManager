@@ -1,0 +1,64 @@
+@typeparam T where T : App.Data.Models.BorrowableEntity
+@inherits GenericEntityBase<T>
+@inject IUsageChartingService<T> Charts
+@inject ILocalizationService Loc
+@if (_statData.Length == 0) {
+    <Empty/>
+} else {
+    <AntDesign.Charts.Column Config="@_config" Data="@_statData" @ref="_chart"/>
+}
+<Space>
+    <SpaceItem>
+        <Select @bind-Value="Day" DataSource="_availableDays" LabelName="@nameof(IsoDayWeekSelect.Name)" TItem="IsoDayWeekSelect" TItemValue="IsoDayOfWeek" ValueName="@nameof(IsoDayWeekSelect.Value)"></Select>
+    </SpaceItem>
+    <SpaceItem>
+        <Button OnClick="() => InitializeData(Day)">@Loc["Chart"]</Button>
+    </SpaceItem>
+</Space>
+
+@code {
+
+        private const string Usage = "Hourly usage";
+
+    struct IsoDayWeekSelect {
+        public string Name { get; set; }
+        public IsoDayOfWeek Value { get; set; }
+    }
+
+
+    [Parameter]
+    public IsoDayOfWeek Day { get; set; }
+
+    private object[] _statData = {};
+    private ColumnConfig _config = new();
+    private Column? _chart;
+
+    private IsoDayWeekSelect[] _availableDays = Array.Empty<IsoDayWeekSelect>();
+
+    protected override void OnInitialized() {
+        _config = ChartsUtils.CreateColumnConfig(Usage, "", "Hour", "Usage", Loc);
+        _availableDays = Enum.GetNames<IsoDayOfWeek>().Where(name =>
+            Enum.Parse<IsoDayOfWeek>(name) != IsoDayOfWeek.None).Select(
+                val => new IsoDayWeekSelect {Name = Loc[val] ?? "-", Value = Enum.Parse<IsoDayOfWeek>(val)}
+            ).ToArray();
+        base.OnInitialized();
+    }
+
+    protected override async Task OnParametersSetAsync() {
+        await InitializeData(Day);
+        await base.OnParametersSetAsync();
+    }
+
+    private async Task InitializeData(IsoDayOfWeek day) {
+    // ReSharper disable once CoVariantArrayConversion
+    // It will be only read
+        _statData = (await Charts.GetHourlyUsageAsync(day)).Select(usage => new {x = usage.hour.ToString(), y = Loc.Round(usage.value)}).ToArray();
+        if (_chart != null) {
+    // Idk doesn't react to statHasCHanged
+            var description = $"{Loc[Usage]} {Loc[Day.ToString()]} {Loc["for"]} {Loc[EntityName]}";
+            _config.Description.Text = description;
+            await _chart.UpdateChart(csData: _statData, csConfig: _config);
+        }
+    }
+
+}

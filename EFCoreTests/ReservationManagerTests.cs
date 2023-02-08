@@ -1,21 +1,22 @@
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using App.Auth.Utils;
+using App.Data;
+using App.Data.Constants;
+using App.Data.EFCoreServices;
+using App.Data.LocServices;
+using App.Data.Models;
+using App.Data.ServiceInterfaces;
+using App.Data.Utils;
+using App.Middlewares;
+using App.ServerServices;
+using App.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
 using Moq;
 using NodaTime;
-using PrackyASusarny.Auth.Utils;
-using PrackyASusarny.Data;
-using PrackyASusarny.Data.Constants;
-using PrackyASusarny.Data.EFCoreServices;
-using PrackyASusarny.Data.LocServices;
-using PrackyASusarny.Data.Models;
-using PrackyASusarny.Data.ServiceInterfaces;
-using PrackyASusarny.Middlewares;
-using PrackyASusarny.ServerServices;
-using PrackyASusarny.Utils;
 using Xunit;
 
 namespace EFCoreTests;
@@ -33,10 +34,10 @@ public class ResConstTest : IReservationConstant
 
 public class RatesTest : IRates
 {
-    public int WMpricePerHalfHour => 10;
+    public int PricePerHalfHour => 10;
     public int FlatBorrowPrice => 100;
-    public int WMpricePerOverRes => 20;
-    public int WMNoBorrowPenalty => 30;
+    public int PricePerOverRes => 20;
+    public int NoBorrowPenalty => 30;
     public Currency DBCurrency => Currency.CZK;
 }
 
@@ -182,7 +183,7 @@ public class ReservationManagerTests : IClassFixture<_TEST_DB_RESMAN>,
         using var ctx = Factory.CreateDbContext();
         var user = await ctx.Users.FindAsync(userID);
         // Penalty applied for not picking up
-        Assert.Equal(-Rates.WMNoBorrowPenalty, user!.Cash);
+        Assert.Equal(-Rates.NoBorrowPenalty, user!.Cash);
     }
 
     [Fact]
@@ -290,7 +291,7 @@ public class ReservationManagerTests : IClassFixture<_TEST_DB_RESMAN>,
         using var ctx = await Factory.CreateDbContextAsync();
         // User penalty for overborrowing
         var user = await ctx.Users.FindAsync(userID);
-        Assert.Equal(-Rates.WMpricePerOverRes, user!.Cash);
+        Assert.Equal(-Rates.PricePerOverRes, user!.Cash);
 
 
         // Res1 end Rescheduled

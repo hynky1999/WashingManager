@@ -1,0 +1,16 @@
+@page "/{BEntity}/Availability"
+@using App.Features.BEManagment.Listing
+@inject ILocalizationService Loc
+
+
+<PageHeader Title="@Loc["Available Entities"]"/>
+<ModelLoader AllowedTypes="@ManagementConfig.AllowedEntities" Model="@BEntity">
+    <DynamicComponent Type="@(typeof(BETable<>).MakeGenericType(context))"/>
+</ModelLoader>
+
+@code {
+
+    [Parameter]
+    public string? BEntity { get; set; }
+
+}

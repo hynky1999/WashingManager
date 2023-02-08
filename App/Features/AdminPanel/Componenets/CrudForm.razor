@@ -1,0 +1,62 @@
+@inject IMessageService MessageService
+@inject ICrudService<T> CrudService
+@inject ILocalizationService Loc
+@typeparam T where T : new() 
+
+@if (_model is not null) {
+    <GenericForm @bind-Model="@_model" Loading="@_loading" Localize="@true" OnFinish="@OnFinish">
+    </GenericForm>
+} else {
+    <Title Level="2">@Loc["Model not found"]</Title>
+}
+
+@code {
+
+    [Parameter]
+    public CrudAction Action { get; set; }
+
+    [Parameter]
+    public int? Id { get; set; }
+
+
+    private T _model = new();
+    private bool _loading = true;
+
+    protected override async Task OnParametersSetAsync() {
+        _loading = true;
+        if (Action == CrudAction.Create) {
+            _model = new T();
+        } else if (Action == CrudAction.Update && Id is not null) {
+            var maybeModel = await CrudService.GetByIdAsync(Id.Value, true);
+            if (maybeModel != null) {
+                _model = maybeModel;
+            }
+        }
+        _loading = false;
+        await base.OnParametersSetAsync();
+    }
+
+    private async Task OnFinish() {
+        _loading = true;
+        if (Action == CrudAction.Create) {
+            try {
+                await CrudService.CreateAsync(_model);
+                MessageService.Success(Loc["Created record"]).FireAndForget();
+                _model = new T();
+            }
+            catch (DbException) {
+                MessageService.Error(Loc["Unable to create record"]).FireAndForget();
+            }
+        } else if (Action == CrudAction.Update && Id is not null) {
+            try {
+                await CrudService.UpdateAsync(_model);
+                MessageService.Success(Loc["Updated record"]).FireAndForget();
+            }
+            catch (DbException) {
+                MessageService.Error(Loc["Unable to update record"]).FireAndForget();
+            }
+        }
+        _loading = false;
+    }
+
+}

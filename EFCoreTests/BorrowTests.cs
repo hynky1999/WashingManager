@@ -1,17 +1,18 @@
 using System;
 using System.Threading.Tasks;
+using App.Data;
+using App.Data.Constants;
+using App.Data.EFCoreServices;
+using App.Data.LocServices;
+using App.Data.Models;
+using App.Data.ServiceInterfaces;
+using App.Data.Utils;
+using App.Middlewares;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
 using Moq;
 using NodaTime;
-using PrackyASusarny.Data;
-using PrackyASusarny.Data.Constants;
-using PrackyASusarny.Data.EFCoreServices;
-using PrackyASusarny.Data.LocServices;
-using PrackyASusarny.Data.Models;
-using PrackyASusarny.Data.ServiceInterfaces;
-using PrackyASusarny.Middlewares;
 using Xunit;
 
 namespace EFCoreTests;
@@ -120,16 +121,16 @@ public class BorrowTests : IClassFixture<_TEST_DB_BORR>, IDisposable
             End = end
         });
         var price = await BorrowService.GetPriceAsync(borrow!);
-        var expected = Rates.FlatBorrowPrice + Rates.WMpricePerHalfHour * 2;
+        var expected = Rates.FlatBorrowPrice + Rates.PricePerHalfHour * 2;
         Assert.Equal(expected, price.Amount);
     }
 
     private class myRates : IRates
     {
-        public int WMpricePerHalfHour => 1;
+        public int PricePerHalfHour => 1;
         public int FlatBorrowPrice => 10;
-        public int WMpricePerOverRes => 15;
-        public int WMNoBorrowPenalty => 20;
+        public int PricePerOverRes => 15;
+        public int NoBorrowPenalty => 20;
         public Currency DBCurrency => Currency.CZK;
     }
 }

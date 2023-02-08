@@ -1,0 +1,78 @@
+@inject ILocalizationService Loc
+@using System.Linq.Expressions
+@using System.Reflection
+@typeparam T
+<AntDesign.Column DefaultSortOrder="DefaultSortOrder" Field="Field" FieldChanged="FieldChanged" FieldExpression="FieldExpression" Filterable Filters=Filters OnFilter=@OnFilter Sortable=@Sortable SorterMultiple="SorterMultiple" TData="T" Title=@(Title ?? Loc[_label])>
+    @if (ChildContent != null) {
+        @ChildContent
+    } else {
+        @_localizedField
+    }
+
+</AntDesign.Column>
+
+@code {
+    // Doesn't support DataIndex as would be non trivial to implement
+
+    [Parameter]
+    public T? Field { get; set; }
+
+    [Parameter]
+    public EventCallback<T> FieldChanged { get; set; }
+
+    [Parameter]
+    public Expression<Func<T>>? FieldExpression { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Parameter]
+    public bool Sortable { get; set; }
+
+    [Parameter]
+    public int SorterMultiple { get; set; }
+
+    [Parameter]
+    public SortDirection? DefaultSortOrder { get; set; }
+
+    [Parameter]
+    public Expression<Func<T, T, bool>>? OnFilter { get; set; }
+
+    [Parameter]
+    public TableFilter<T>[]? Filters { get; set; }
+
+    [Parameter]
+    public bool ShowIfNotLocalizable { get; set; } = true;
+
+    [Parameter]
+    public bool Filterable { get; set; }
+
+    private string _label = typeof(T).DisplayName();
+
+    protected override void OnParametersSet() {
+        var member = FieldExpression?.Body as MemberExpression;
+        if (member?.Member is PropertyInfo propertyInfo) {
+            _label = propertyInfo.DisplayName();
+        }
+        if (ChildContent == null) {
+            try {
+                _localizedField = Loc[Field];
+            }
+            catch (NotImplementedException) {
+                if (ShowIfNotLocalizable) {
+                    _localizedField = Field?.ToString();
+                } else {
+    // Rethrow
+                    throw new NotImplementedException();
+                }
+            }
+        }
+
+        base.OnParametersSet();
+    }
+
+    private string? _localizedField;
+}

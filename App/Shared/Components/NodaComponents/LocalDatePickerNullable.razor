@@ -1,0 +1,14 @@
+@inherits AntDesign.AntInputComponentBase<LocalDate?>
+<DatePicker @bind-Value="DateTimeValue" Disabled="Disabled"></DatePicker>
+
+@code {
+
+    private DateTime? DateTimeValue {
+        get => NodaUtils.ToDateTime(CurrentValue);
+        set => CurrentValue = NodaUtils.ToLocalDate(value);
+    }
+
+    [Parameter]
+    public bool Disabled { get; set; }
+
+}

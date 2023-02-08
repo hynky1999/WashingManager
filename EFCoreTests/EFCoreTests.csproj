@@ -24,7 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\PrackyASusarny\PrackyASusarny.csproj"/>
+        <ProjectReference Include="..\App\App.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -1,7 +1,8 @@
 using System.Collections.Generic;
-using PrackyASusarny.Auth.Models;
-using PrackyASusarny.Data;
-using PrackyASusarny.Data.Models;
+using App.Auth.Models;
+using App.Data;
+using App.Data.Models;
+using App.Data.Utils;
 
 namespace EFCoreTests;
 

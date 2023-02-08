@@ -1,0 +1,86 @@
+@typeparam TMod where TMod : class, new()
+@using System.ComponentModel.DataAnnotations
+@typeparam TResult where TResult : class
+@inject ILogger<ModalForm<TMod, TResult>> Logger
+@inject MessageService MessageService
+@inject ILocalizationService Loc
+
+<Modal Footer="@null" OnCancel="CloseModal" Visible="@_visible">
+    @if (Title != null) {
+        <Title Level="2">@Title</Title>
+    }
+    @Header
+    <Divider/>
+    <Form Class="p-4"
+          Loading="_loading" Model="@Model"
+          OnFinish="@(async (_) => await OnFinishForm(Model))">
+        @FormContent
+        <Button Block="true" HtmlType="submit" Type="@ButtonType.Primary">@Loc["Submit"]</Button>
+    </Form>
+</Modal>
+
+@code {
+
+    [Parameter]
+    public RenderFragment? FormContent { get; set; }
+
+    [Parameter]
+    public RenderFragment? Header { get; set; }
+
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Required]
+    [Parameter]
+    public TMod Model { get; set; } = new();
+
+    [Parameter]
+    public string MessageSuccess { get; set; } = "Success";
+
+    [Parameter]
+    public string MessageFail { get; set; } = "Fail";
+
+    [Parameter]
+    [Required, EditorRequired]
+    public Func<TMod, Task<TResult?>>? OnSubmit { get; set; }
+
+    [Parameter]
+    public EventCallback<TResult> OnFinish { get; set; }
+
+    [Parameter]
+    public EventCallback<TResult> OnFinishFailed { get; set; }
+
+    private bool _visible = false;
+    private bool _loading = false;
+
+
+    private async Task OnFinishForm(TMod model) {
+        TResult? submittedModel = null;
+        if (OnSubmit != null) {
+            submittedModel = await OnSubmit(model);
+        }
+    // Just check for null, we don't check for default value as it could be valid
+        if (submittedModel != null) {
+            await OnFinish.InvokeAsync(submittedModel);
+            MessageService.Success(
+                Loc[MessageSuccess]
+                ).FireAndForget();
+        } else {
+            MessageService.Success(
+                Loc[MessageFail]
+                ).FireAndForget();
+            await OnFinishFailed.InvokeAsync(submittedModel);
+        }
+        _loading = false;
+        CloseModal();
+    }
+
+    public void OpenModal() {
+        _visible = true;
+    }
+
+    public void CloseModal() {
+        _visible = false;
+    }
+
+}

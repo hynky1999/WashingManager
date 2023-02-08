@@ -1,0 +1,37 @@
+﻿@page
+@using App.Data.ServiceInterfaces
+@model App.Areas.Manage.Pages.Account.Admin.RegisterModel
+@inject ILocalizationService Loc
+@{
+    ViewData["Title"] = "Create New Account";
+}
+
+<partial for="StatusMessage" name="_StatusMessage"/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-route-returnUrl="@Url.Page("/", new {area = ""})" class="d-flex flex-column gap-2" id="registerForm" method="post">
+            <h2>@Loc[ViewData["Title"]]</h2>
+            <hr/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input aria-required="true" asp-for="Input.Email" autocomplete="email" class="form-control"/>
+                <label asp-for="Input.Email">
+                    @Loc["Email"]
+                </label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input aria-required="true" asp-for="Input.UserName" autocomplete="username" class="form-control"/>
+                <label asp-for="Input.UserName">
+                    @Loc["Username"]
+                </label>
+                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+            </div>
+            <button class="btn btn-lg btn-primary my-2 w-100" id="registerSubmit" type="submit">@Loc["Create Account"]</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"/>
+}
