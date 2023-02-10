@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Data Access </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Data Access ">
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="data-access">Data Access</h2>
+
+<p>For Data Access we use Entity Framework Core connected to PostgreSQL with <a href="https://www.npgsql.org/index.html">NPsql</a>.
+We wanted to create monolitic app as the app itself is not really complex and creating API Server for DB access needs more work.
+Thus EF Core was chosen since it allows relatively safe access to resources and supports LINQ queries.
+This also forced us to use Blazor Server as Blazor WebAssembly can't use EF Core as it is client-side only.</p>
+<p>However there is one big problem with EF Core. It's has no support for concurrency. This is no problem for MPA where all dependency injection are scoped to the request. Thus each request we get a new instance of the DBContext and thus no concurrency issues.</p>
+<p>However Blazor Server has 3 different scopes:</p>
+<ul>
+<li>Singleton</li>
+<li>Scoped</li>
+<li>Transient</li>
+</ul>
+<p>Singleton is created once throught the whole app lifetime and the same instance is injected to all the components.
+Scoped is created once per SignalR circuit and the same instance is injected to all the components.
+Transient creates a new instance of the object every time it is injected.</p>
+<p>While the first two are obvious no go for concurrency, the last one might seem plausible. However it is important that making sure that there will be no concurrency issues is the responsibility of the developer of component and is relatively easy to mess up. Such an example can be found by having two buttons that both access DBcontext in one component. If both buttons are clicked at the same time, the Dbcontext will be accessed by two different threads and thus concurrency issues might occur.</p>
+<p>We thus decided to go with different approach. For any data access we use a service that has a Factory method that creates a new instance of the DBContext.
+Then whenever we need to access a data we create a context in that method, get data and then dispose the context. Such a pattern resembles the Repository pattern.</p>
+<p>Such a services can also have a method that takes a DBContext as a parameter. This was needed because we wanted to do a separation of concerns while we also needed to handle multiple updates of db in one transaction. Thus rule of thumb:</p>
+<ul>
+<li>If data access method takes a DBContext it will just update the DbContext and will not save it or dispose it.</li>
+<li>If it doesn't take a DBContext it will create a new one, update it and then save it and dispose it.</li>
+</ul>
+<p>Since all our data access services implement certain interface, it should be easy to switch to API access in future.</p>
+<p>The interfaces can be found at <a class="xref" href="../../api/App.Data.ServiceInterfaces.html">App.Data.ServiceInterfaces</a>.</p>
+<p>The EF Core implementation for these services can be found at <a class="xref" href="../../api/App.Data.EFCoreServices.html">App.Data.EFCoreServices</a>.</p>
+<h2 id="models">Models</h2>
+<p>The models are stored in App/Data/Models.
+All models implement IDBModel interface which is used for the description of model instance.</p>
+<p>The DB architecture is as follows:
+<img src="/images/db.png" alt="DB Architecture"></p>
+<h2 id="errors">Errors</h2>
+<p>All Data Access method should throw these exceptions:</p>
+<ul>
+<li>DBException or its descendants -&gt; General DB Exception</li>
+<li>ArgumentException -&gt; Invalid arguments</li>
+</ul>
+<p>We catch any erros that are EF Core related and rethrow them as particular DBException. This is to allow for possible change of Data Access method.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/hynky1999/WashingManager/blob/main/docfx_project/articles/prog_guide/data_access.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

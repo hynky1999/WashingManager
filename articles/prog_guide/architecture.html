@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Web server Framework </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Web server Framework ">
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="web-server-framework">Web server Framework</h2>
+
+<p>The project is based upon .NET 6.0 and C# 10.0.</p>
+<p>The project uses all 3 Frameworks currently supported by ASP.NET Core.</p>
+<ul>
+<li>Blazor Server</li>
+<li>MVC</li>
+<li>Razor Pages</li>
+</ul>
+<p>At the start the plan was to only use Blazor Server, however due to it's architecture the MVC/Razor Pages had to be added.</p>
+<p>To see the reasons refer to:</p>
+<ul>
+<li><a href="auth.html">Razor Pages</a></li>
+<li><a href="loc.html">MVC</a></li>
+</ul>
+<h2 id="blazor-server">Blazor Server</h2>
+<p>Blazor Server is SPA-like framework and unlike MPA (MVC/Razor Pages) it doesn't exchange any HTTP requests after initial page load.
+However it is also not fully fledged SPA. The state of the app is stored on the server and the updates are communicated to the client via SignalR.
+This possesses a problem when we have high IO operations app as there needs to be a lot of communication between the server and the client.
+Since the state is stored on the server, it is also way more resource intensive than Blazor WebAssembly counterpart.</p>
+<p>However unlike the WebAssembly conterpart it allows to use direct DB communication without making api endpoints for DB.</p>
+<h2 id="frontend">Frontend</h2>
+<p>For UI we used predefined components from <a href="https://antblazor.com/en-US/">AntDesign</a>.
+We used this as it is a very good looking UI and it is also very easy to use.</p>
+<p>It also provides support for charting and tables which we used for displaying data.</p>
+<p>All the pages and components can be found at App.Features.
+The pages and divided into their respective features:</p>
+<ul>
+<li><a class="xref" href="../../api/App.Features.Charts.Pages.html">App.Features.Charts.Pages</a> -&gt; All pages which shows how many borrows were made etc...</li>
+<li><a class="xref" href="../../api/App.Features.AdminPanel.Pages.html">App.Features.AdminPanel.Pages</a> -&gt; Serves for managing DB models. We have created a UI which is able to handle models without creating separate pages for each model.</li>
+<li><a class="xref" href="../../api/App.Features.BEManagment.Pages.html">App.Features.BEManagment.Pages</a> -&gt; Serves for managing borrows and end borrows and showing availability of Borrowable Entities.</li>
+<li><a class="xref" href="../../api/App.Features.Reservations.Pages.html">App.Features.Reservations.Pages</a> -&gt; Serves for managing reservations.</li>
+<li><a class="xref" href="../../api/App.Features.UserPages.Pages.html">App.Features.UserPages.Pages</a> -&gt; Serves for showing user data (Currently only cash).</li>
+<li><a class="xref" href="../../api/App.Features.Layout.html">App.Features.Layout</a> -&gt; Contains the layout of Blazor side of app.</li>
+</ul>
+<p>Every single feature has components and pages folder which contains the components and pages respectively.</p>
+<p>Other components that are used in multiple places are stored in App.Shared.</p>
+<p>For non Blazor components we use bootstrap 5.3.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/hynky1999/WashingManager/blob/main/docfx_project/articles/prog_guide/architecture.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
