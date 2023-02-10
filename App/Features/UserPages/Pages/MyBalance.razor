@@ -1,0 +1,24 @@
+@inject ILocalizationService Loc
+@attribute [Authorize]
+@page "/Account/Balance"
+@using App.Features.UserPages.Components
+@using Microsoft.AspNetCore.Authorization
+
+
+<PageHeader Title="@Loc["My Balance"]"/>
+<Row Gutter="10">
+    <Col Class="bg-body" Xs="24">
+        <Space Size="@("middle")" Wrap>
+            <SpaceItem>
+                <ShowBalance @ref="showBalance"/>
+            </SpaceItem>
+            <SpaceItem>
+                <AddBalance OnAddMoney="@(async () => await showBalance.Refresh())"/>
+            </SpaceItem>
+        </Space>
+    </Col>
+</Row>
+
+@code {
+    ShowBalance showBalance { get; set; } = new();
+}

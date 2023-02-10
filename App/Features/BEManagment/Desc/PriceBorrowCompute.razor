@@ -1,0 +1,51 @@
+@using App.Data.Constants
+@inject IBorrowService BorrowService
+@inject ILogger<PriceBorrowCompute> Logger
+@inject ILocalizationService Loc
+
+@if (_price is not null) {
+    <GridRow Align="middle" Class="px-4" Justify="space-between">
+        <GridCol>
+            @($"{Loc["Current price"]}: {Loc[_price]}")
+        </GridCol>
+        <GridCol>
+            <Button OnClick="UpdatePrice">@Loc["Refresh"]</Button>
+        </GridCol>
+    </GridRow>
+}
+
+@code {
+
+    [Parameter]
+    public Borrow? Borrow { get; set; }
+
+    [Parameter]
+    public EventCallback<Money?> OnBorrowEnd { get; set; }
+
+    private Money? _price;
+
+    protected override async Task OnParametersSetAsync() {
+        await UpdatePrice();
+        await base.OnParametersSetAsync();
+    }
+
+    private async Task UpdatePrice() {
+        if (Borrow is null) {
+            _price = null;
+            return;
+        }
+        try {
+            _price = await BorrowService.GetPriceAsync(Borrow);
+        }
+        catch (DbException ex) {
+            Logger.LogError(ex, "Error while getting price for borrow");
+        }
+    }
+
+
+
+
+
+
+
+}

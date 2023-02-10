@@ -1,0 +1,108 @@
+@inject ILocalizationService Loc
+@inject IReservationsService ReservationsService
+@inject IMessageService MessageService
+@inject IReservationConstant ReservationConstant
+@using App.Data.Constants
+@using System.ComponentModel
+@typeparam T where T : App.Data.Models.BorrowableEntity
+
+
+<Form Loading="_sugLoading"
+      Model="_duration"
+      OnFinish=@((_) => GetSuggestions(_duration.Duration))
+      ValidateMode="@FormValidateMode.Rules">
+    <FormItem Rules=@durationRules>
+        <DurationPicker @bind-Value="@context.Duration"/>
+    </FormItem>
+    <FormItem>
+        <FormItem WrapperColOffset="8" WrapperColSpan="8">
+            <Button HtmlType="submit" Type="@ButtonType.Primary">
+                @Loc["Suggest Reservation"]
+            </Button>
+        </FormItem>
+    </FormItem>
+</Form>
+
+<Table DataSource="_suggestions" TItem="Suggestion">
+    <LocDNColumn @bind-Field="@context.Start"></LocDNColumn>
+    <LocDNColumn @bind-Field="@context.End"></LocDNColumn>
+    <LocDNColumn @bind-Field="@context.Entity">@(context.Entity.Location?.AsLocationString()) </LocDNColumn>
+
+    <ActionColumn>
+        <Button OnClick="@(() => ReservationCreate(context))"> @Loc["Create"] </Button>
+    </ActionColumn>
+</Table>
+
+
+@code {
+
+    [CascadingParameter]
+    Task<AuthenticationState>? authTask { get; set; }
+
+
+    private class DurationModel {
+        public Duration Duration { get; set; }
+    }
+
+    class Suggestion {
+        [DisplayName("Start Time")]
+        public Instant Start { get; set; }
+
+        [DisplayName("End Time")]
+        public Instant End { get; set; }
+
+        public T Entity { get; set; } = null!;
+    }
+
+
+    Suggestion[] _suggestions = Array.Empty<Suggestion>();
+
+    private DurationModel _duration = new();
+
+    private bool _sugLoading;
+
+
+    private async Task ReservationCreate(Suggestion s) {
+        if (authTask == null) return;
+        var auth = await authTask;
+        await MessageService.GenericOnDBError(Loc, async () => {
+            await ReservationsService.CreateReservationAsync(s.Start, s.End, auth.User, s.Entity);
+            MessageService.Success(Loc["Created reservation"]).FireAndForget();
+            _suggestions = Array.Empty<Suggestion>();
+            _duration = new();
+        });
+    }
+
+    private async Task GetSuggestions(Duration duration) {
+        _sugLoading = true;
+        await MessageService.GenericOnDBError(Loc, async () => {
+            var sug = await ReservationsService.SuggestReservation<T>(duration, 5);
+            _suggestions = sug.Select(x => new Suggestion() {
+                Start = x.start,
+                End = x.end,
+                Entity = x.be
+            }).ToArray();
+        });
+        _sugLoading = false;
+    }
+
+
+    FormValidationRule[] durationRules = Array.Empty<FormValidationRule>();
+
+    protected override void OnInitialized() {
+        durationRules = new[] {
+            new FormValidationRule {
+                Transform = value => (int) ((Duration) value).TotalHours,
+                Min = (int) ReservationConstant.MinReservationDur.TotalHours,
+                Max = (int) ReservationConstant.MaxReservationDur.TotalHours, Type = FormFieldType.Number,
+                Message = $"{Loc["The duration must be at least"]} {(int) ReservationConstant.MinReservationDur.TotalHours} {Loc["hour and at maximum"]} {(int) ReservationConstant.MaxReservationDur.TotalHours} {Loc["hour"]}",
+            }
+        };
+    }
+
+
+
+
+
+
+}

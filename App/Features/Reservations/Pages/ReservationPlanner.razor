@@ -1,0 +1,27 @@
+@page "/{BEntity}/CreateReservation"
+@using Microsoft.AspNetCore.Authorization
+@using App.Features.BEManagment
+@using App.Features.Reservations.Components
+@attribute [Authorize]
+@inject ILocalizationService Loc
+
+<PageHeader Title="@Loc["Create Reservation"]"/>
+<ModelLoader AllowedTypes="@ManagementConfig.AllowedEntities" Model="@BEntity">
+    <Row Gutter="12">
+        <Col Lg="12" Xs="24">
+            <Title Level="4">@Loc["Manually Select"]</Title>
+            <DynamicComponent Type="@(typeof(CreateReservation<>).MakeGenericType(context))"></DynamicComponent>
+        </Col>
+        <Col Lg="12" Xs="24">
+            <Title Level="4">@Loc["Suggest Reservation"]</Title>
+            <DynamicComponent Type="@(typeof(SuggestReservation<>).MakeGenericType(context))"/>
+        </Col>
+    </Row>
+</ModelLoader>
+
+@code{
+
+    [Parameter]
+    public string? BEntity { get; set; }
+
+}

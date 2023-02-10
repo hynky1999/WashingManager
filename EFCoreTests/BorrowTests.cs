@@ -1,17 +1,14 @@
 using System;
 using System.Threading.Tasks;
+using App.Data;
+using App.Data.Constants;
+using App.Data.EFCoreServices;
+using App.Data.Models;
+using App.Data.ServiceInterfaces;
+using App.Data.Utils;
+using App.Middlewares;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Localization;
-using Moq;
 using NodaTime;
-using PrackyASusarny.Data;
-using PrackyASusarny.Data.Constants;
-using PrackyASusarny.Data.EFCoreServices;
-using PrackyASusarny.Data.LocServices;
-using PrackyASusarny.Data.Models;
-using PrackyASusarny.Data.ServiceInterfaces;
-using PrackyASusarny.Middlewares;
 using Xunit;
 
 namespace EFCoreTests;
@@ -27,31 +24,24 @@ public class BorrowTests : IClassFixture<_TEST_DB_BORR>, IDisposable
 {
     public BorrowTests(_TEST_DB_BORR factory)
     {
-        var config = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.Development.json")
-            .Build();
-        CurrencyService = new CurrencyService();
         var middleware = new ContextHookMiddleware();
-        Loc = new LocalizationService(new Utils.Clock14082022(),
-            CurrencyService, Mock.Of<IStringLocalizer<LocalizationService>>(),
-            config);
-        Rates = new myRates();
+        Clock = new Utils.CustomizableClock();
+        Rates = new Utils.TestRates();
 
         // No need to add hooks as we won't need them
-        IUsageService usageService = new UsageService(Loc, new UsageContants());
+        IUserService userService = new UserService(factory, Rates ,new CurrencyService());
+        IUsageService usageService = new UsageService(Clock, new UsageContants());
         IBorrowPersonService bpService = new BorrowPersonService(factory);
         WmService =
             new CrudService<WashingMachine>(factory, middleware);
         BorrowService = new BorrowService(factory, bpService,
-            Loc, usageService, Rates);
+            usageService, Rates, Clock, userService);
         Factory = factory;
         BPService = new BorrowPersonService(factory);
     }
 
-    private CurrencyService CurrencyService { get; }
-
     private IDbContextFactory<ApplicationDbContext> Factory { get; }
-    private ILocalizationService Loc { get; }
+    private Utils.CustomizableClock Clock { get; }
     private IRates Rates { get; }
     private IBorrowService BorrowService { get; }
     private IBorrowPersonService BPService { get; }
@@ -65,6 +55,11 @@ public class BorrowTests : IClassFixture<_TEST_DB_BORR>, IDisposable
         context.RemoveRange(wms);
         var res = context.Reservations;
         context.RemoveRange(res);
+        var users = context.Users;
+        foreach (var user in users)
+        {
+            user.Cash = 0;
+        }
         context.SaveChanges();
     }
 
@@ -81,7 +76,7 @@ public class BorrowTests : IClassFixture<_TEST_DB_BORR>, IDisposable
             Manufacturer = "Test",
         };
         var entity = await WmService.CreateAsync(wm);
-        var startTime = Loc.Now;
+        var startTime = Clock.GetCurrentInstant();
 
         // Check if raises ArgumentException
         await Assert.ThrowsAsync<ArgumentException>(async () =>
@@ -95,7 +90,88 @@ public class BorrowTests : IClassFixture<_TEST_DB_BORR>, IDisposable
             });
         });
     }
+    
+    [Fact]
+    public async Task BorrowOfFreeMachineNoUserCash()
+    {
+        var bp = new BorrowPerson()
+        {
+            UserID = 1,
+            Name = "Test",
+            Surname = "Test",
+        };
+        var wm = new WashingMachine()
+        {
+            BorrowableEntityID = 10,
+            LocationID = 1,
+            ManualID = 1,
+            Status = Status.Free,
+            Manufacturer = "Test",
+        };
+        var entity = await WmService.CreateAsync(wm);
+        var startTime = Clock.GetCurrentInstant();
 
+        // Check if raises ArgumentException
+        var borrowEnd = Clock.GetCurrentInstant() + Duration.FromMinutes(30);
+        var borrow = await BorrowService.AddBorrowAsync(new Borrow()
+        {
+            BorrowPerson = bp,
+            BorrowableEntity = entity,
+            Start = startTime,
+            End = null
+        });
+        Clock.SetTime(borrowEnd);
+        await BorrowService.EndBorrowAsync(borrow, false);
+
+        await using var context = await Factory.CreateDbContextAsync();
+        var wmFromDb = await context.WashingMachines
+            .FirstOrDefaultAsync(x => x.BorrowableEntityID == wm.BorrowableEntityID);
+        
+        Assert.Equal(Status.Free, wmFromDb!.Status);
+        var user = await context.Users.FirstOrDefaultAsync(x => x.Id == bp.UserID);
+        Assert.Equal(0, user!.Cash);
+    }
+
+    [Fact]
+    public async Task BorrowOfFreeMachineUserCash()
+    {
+        var bp = new BorrowPerson()
+        {
+            UserID = 1,
+            Name = "Test",
+            Surname = "Test",
+        };
+        var wm = new WashingMachine()
+        {
+            BorrowableEntityID = 10,
+            LocationID = 1,
+            ManualID = 1,
+            Status = Status.Free,
+            Manufacturer = "Test",
+        };
+        var entity = await WmService.CreateAsync(wm);
+        var startTime = Clock.GetCurrentInstant();
+
+        // Check if raises ArgumentException
+        var borrowEnd = Clock.GetCurrentInstant() + Duration.FromMinutes(30);
+        var borrow = await BorrowService.AddBorrowAsync(new Borrow()
+        {
+            BorrowPerson = bp,
+            BorrowableEntity = entity,
+            Start = startTime,
+            End = null
+        });
+        Clock.SetTime(borrowEnd);
+        await BorrowService.EndBorrowAsync(borrow, true);
+
+        await using var context = await Factory.CreateDbContextAsync();
+        var wmFromDb = await context.WashingMachines
+            .FirstOrDefaultAsync(x => x.BorrowableEntityID == wm.BorrowableEntityID);
+        
+        Assert.Equal(Status.Free, wmFromDb!.Status);
+        var user = await context.Users.FirstOrDefaultAsync(x => x.Id == bp.UserID);
+        Assert.Equal(-(Rates.FlatBorrowPrice + Rates.PricePerHalfHour), user!.Cash);
+    }
 
     [Fact]
     public async Task Price()
@@ -110,7 +186,7 @@ public class BorrowTests : IClassFixture<_TEST_DB_BORR>, IDisposable
             Manufacturer = "Test",
         };
         var entity = await WmService.CreateAsync(wm);
-        var startTime = Loc.Now;
+        var startTime = Clock.GetCurrentInstant();
         var end = startTime + Duration.FromHours(1);
         var borrow = await BorrowService.AddBorrowAsync(new Borrow()
         {
@@ -119,17 +195,8 @@ public class BorrowTests : IClassFixture<_TEST_DB_BORR>, IDisposable
             Start = startTime,
             End = end
         });
-        var price = await BorrowService.GetPriceAsync(borrow!);
-        var expected = Rates.FlatBorrowPrice + Rates.WMpricePerHalfHour * 2;
+        var price = await BorrowService.GetPriceAsync(borrow);
+        var expected = Rates.FlatBorrowPrice + Rates.PricePerHalfHour * 2;
         Assert.Equal(expected, price.Amount);
-    }
-
-    private class myRates : IRates
-    {
-        public int WMpricePerHalfHour => 1;
-        public int FlatBorrowPrice => 10;
-        public int WMpricePerOverRes => 15;
-        public int WMNoBorrowPenalty => 20;
-        public Currency DBCurrency => Currency.CZK;
     }
 }

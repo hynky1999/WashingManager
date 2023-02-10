@@ -1,0 +1,10 @@
+@inject ILocalizationService Loc
+
+<Menu Mode="MenuMode.Horizontal">
+    @foreach (var option in AdminConfig.AllowedTypes) {
+        <MenuItem Key="@option.Name" RouterLink="@($"/AdminMenu/{option.Name}/List")" Title=@Loc[option.DisplayName()]>
+            <Icon Theme="outline" Type="edit"></Icon>
+            @option
+        </MenuItem>
+    }
+</Menu>

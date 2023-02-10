@@ -1,0 +1,14 @@
+@using App.Data.Models
+@inject ILocalizationService Loc
+@if (Wm != null) {
+    <DescriptionsItem Title=@Loc["Manufacturer"]>
+        @Wm.Manufacturer
+    </DescriptionsItem>
+}
+
+@code{
+
+    [Parameter]
+    public WashingMachine? Wm { get; set; }
+
+}

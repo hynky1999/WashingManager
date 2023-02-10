@@ -1,0 +1,166 @@
+@inject ILocationService LocationService
+@inject ICrudService<T> CrudService
+@inject ILocalizationService Loc
+@using App.Data.Utils
+@using App.Features.BEManagment.Modals
+@using AntDesign.TableModels
+@typeparam T where T : App.Data.Models.BorrowableEntity
+
+<Table @bind-PageIndex="_pageIndex" DataSource="_data" Loading="_loading" OnChange="@HandleTableChange"
+       PageSize="_pageSize" RemoteDataSource
+       Responsive TItem="T"
+       Total="_total">
+
+    <LocDNColumn @bind-Field="@context.Status" Filters="_statusFilter" Sortable
+                 SorterMultiple="1"
+                 T="Status"/>
+    @{
+        var wm = context as WashingMachine;
+    }
+
+    @if (wm != null) {
+        <LocDNColumn @bind-Field="@wm.Manufacturer"
+                     T="string"/>
+        <LocDNColumn @bind-Field="@wm.Manual"
+                     T="Manual">
+            @if (wm.Manual != null) {
+                <a href="@wm.Manual.FileName">Manual</a>
+            } else {
+                @Loc["None"]
+            }
+        </LocDNColumn>
+    }
+    <AntDesign.Column DataIndex="Location.Building"
+                      Filters="_buildingFilters"
+                      Sortable
+                      SorterMultiple="2"
+                      TData="char?"
+                      Title=@Loc["Building"]>
+        @context.Location?.Building
+    </AntDesign.Column>
+    <AntDesign.Column DataIndex="Location.Floor"
+                      Filters="_floorFilters"
+                      Sortable
+                      SorterMultiple="3" TData="int?"
+                      Title=@Loc["Floor"]>
+        @Loc[context.Location?.Floor]
+    </AntDesign.Column>
+    <AntDesign.Column DataIndex="Location.RoomNum"
+                      Filters="_roomFilters"
+                      Sortable
+                      SorterMultiple="4"
+                      TData="int?"
+                      Title=@Loc["Room"]>
+        @Loc[context.Location?.RoomNum]
+    </AntDesign.Column>
+    <AntDesign.Column
+        DataIndex="Location.DoorNum"
+        TData="int?" Title=@Loc["Door"]>
+        @Loc[context.Location?.DoorNum]
+    </AntDesign.Column>
+    <AuthorizeView Policy="@Policies.BorrowManagement">
+        <ChildContent Context="_">
+            <ActionColumn Title=@Loc["Actions"]>
+                <Space Size=@("middle")>
+                    @*
+                    @if (context.Status == Status.Free) {
+                        <SpaceItem>
+                            <Button Color="Color.Blue3"
+                                    OnClick="@(() => OpenCreateModal(context))" Size="small"
+                                    Type="@ButtonType.Primary">
+                                @Loc["Borrow"]
+                            </Button>
+                        </SpaceItem>
+                    Not Available in current version
+                    *@
+                    @if (context.Status == Status.Free) {
+                        <SpaceItem>
+                            <Button Color="Color.Red3"
+                                    OnClick="@(() => OpenStatusModal(context, Status.Broken))"
+                                    Size=@AntSizeLDSType.Small
+                                    Type="@ButtonType.Primary">
+                                @Loc["Broken"]
+                            </Button>
+                        </SpaceItem>
+                    } else if (context.Status == Status.Broken) {
+                        <SpaceItem>
+                            <Button
+                                Color="Color.Green3"
+                                OnClick="@(() => OpenStatusModal(context, Status.Free))"
+                                Size=@AntSizeLDSType.Small
+                                Type="@ButtonType.Primary">
+                                @Loc["Repair"]
+                            </Button>
+                        </SpaceItem>
+                    }
+                </Space>
+            </ActionColumn>
+        </ChildContent>
+    </AuthorizeView>
+</Table>
+<BorrowFormModal DefaultBe="@_defaultBe" OnFinish="OnBorrowCreated" @ref="_modalBorrow" ShowWashingMachine="true" T="T"/>
+<StatusChangeModal DefaultBe="@_defaultBe" OnFinish="wm => wm.Status = _repairStatus" @ref="_modalStatus" T="T"/>
+
+@code{
+    bool _loading;
+    int _lastPageIndex = 1;
+    int _pageIndex = 1;
+    readonly int _pageSize = 5;
+    int _total;
+    T[] _data = Array.Empty<T>();
+
+    private TableFilter<int?>[] _floorFilters = new TableFilter<int?>[0];
+    private TableFilter<char?>[] _buildingFilters = new TableFilter<char?>[0];
+    private TableFilter<int?>[] _roomFilters = new TableFilter<int?>[0];
+
+
+    private TableFilter<Status>[] _statusFilter = Array.Empty<TableFilter<Status>>();
+
+
+    private T? _defaultBe;
+    private StatusChangeModal<T> _modalStatus = new();
+    private BorrowFormModal<T> _modalBorrow = new();
+    private Status _repairStatus = Status.Broken;
+
+    protected override Task OnInitializedAsync() {
+        _statusFilter = Enum.GetNames<Status>().Select(
+            e => {
+                var en = Enum.Parse<Status>(e);
+                return new TableFilter<Status> {Text = Loc[e], Value = en, Selected = en == Status.Free};
+            }).ToArray();
+
+        _buildingFilters = LocationService.GetBuildingOptions().Select(
+            x => new TableFilter<char?> {Text = Loc[x.ToString()], Value = x}).ToArray();
+
+        _roomFilters = LocationService.GetRoomOptions().Select(
+            x => new TableFilter<int?> {Text = Loc[x.ToString()], Value = x}).ToArray();
+
+        _floorFilters = LocationService.GetFloorOptions().Select(
+            x => new TableFilter<int?> {Text = Loc[x.ToString()], Value = x}).ToArray();
+
+        return base.OnInitializedAsync();
+    }
+
+    private void OpenStatusModal(T be, Status s) {
+        _defaultBe = be;
+        _repairStatus = s;
+        _modalStatus.OpenModal(_repairStatus);
+    }
+
+    async Task HandleTableChange(QueryModel<T> queryModel) {
+        _loading = true;
+        if (_lastPageIndex == queryModel.PageIndex) {
+            queryModel = new QueryModel<T>(1, _pageSize, queryModel.SortModel, queryModel.FilterModel);
+            _total = await CrudService.GetCountAsync(queryModel);
+        }
+        _data = (await CrudService.GetAllAsync(queryModel, true)).ToArray();
+        _pageIndex = queryModel.PageIndex;
+        _lastPageIndex = queryModel.PageIndex;
+        _loading = false;
+    }
+
+    void OnBorrowCreated(Borrow borrow) {
+        borrow.BorrowableEntity.Status = Status.Taken;
+    }
+
+}

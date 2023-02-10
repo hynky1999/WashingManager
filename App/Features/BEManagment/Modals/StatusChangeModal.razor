@@ -1,0 +1,41 @@
+@using App.Data.Utils
+@typeparam T where T : App.Data.Models.BorrowableEntity
+@inject ModalService ModalService
+@inject IBorrowableEntityService BorrowableEntityService
+@inject IMessageService MessageService
+@inject ILocalizationService Loc
+
+@code {
+
+    [Parameter]
+    public EventCallback<T> OnFinish { get; set; }
+
+    private Status status { get; set; }
+
+    [Parameter]
+    public T? DefaultBe { get; set; }
+
+    private async Task OnOkClick(ModalClosingEventArgs e) {
+        if (DefaultBe == null) {
+            MessageService.Error(Loc["No item selected"]).FireAndForget();
+            return;
+        }
+        await MessageService.GenericOnDBError(Loc, async () => {
+            await BorrowableEntityService.ChangeStatus(DefaultBe, status);
+            await OnFinish.InvokeAsync(DefaultBe);
+            MessageService.Success($"{Loc["The item has been marked as"]} {Loc[status]}.").FireAndForget();
+        });
+    }
+
+    public void OpenModal(Status statusIn) {
+        RenderFragment icon = @<Icon Theme="outline" Type="exclamation-circle"></Icon>;
+        // We take status as parameter rather than binding as when this method is called, the status is not yet set
+        this.status = statusIn;
+
+        ModalService.Confirm(new ConfirmOptions {
+            Title = $"{Loc["Do you want to make this entity"]} {Loc[status]}?", Icon = icon,
+            OnOk = OnOkClick
+        });
+    }
+
+}

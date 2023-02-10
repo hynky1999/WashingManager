@@ -1,7 +1,8 @@
 using System.Collections.Generic;
-using PrackyASusarny.Auth.Models;
-using PrackyASusarny.Data;
-using PrackyASusarny.Data.Models;
+using App.Auth.Models;
+using App.Data;
+using App.Data.Models;
+using App.Data.Utils;
 
 namespace EFCoreTests;
 
@@ -17,7 +18,7 @@ public class DBFullFactory : DbFactory
         var wms = CreateWashingMachines();
         var bps = CreateBorrowPersons();
         //var borrows = CreateBorrows(wms);
-        var users = new List<ApplicationUser> {new ApplicationUser("admin")};
+        var users = new List<ApplicationUser> {new("admin")};
         // Ok for just testing
         context.AddRange(bps);
         context.AddRange(wms);

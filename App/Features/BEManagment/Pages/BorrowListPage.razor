@@ -1,0 +1,18 @@
+@page "/{BEntity}/Borrows"
+@using Microsoft.AspNetCore.Authorization
+@using App.Features.BEManagment.Listing
+@inject ILocalizationService Loc
+
+@attribute [Authorize(Policy = Policies.BorrowManagement)]
+
+<PageHeader Title="@Loc["Borrows"]"/>
+<ModelLoader AllowedTypes="@ManagementConfig.AllowedEntities" Model="@BEntity">
+    <DynamicComponent Type="@(typeof(BorrowsTable<>).MakeGenericType(context))"/>
+</ModelLoader>
+
+@code {
+
+    [Parameter]
+    public string? BEntity { get; set; }
+
+}

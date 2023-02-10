@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root"
+                xmlns="">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms,
+            Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms,
+            Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="Availability" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Create Reservation" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Washing Machine" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Drying Room" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Status" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Building" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Floor" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Room" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Door" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Manual" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Manufacturer" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Available Entities" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Daily borrows" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Hourly borrows" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Weekly usage" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Hourly usage" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="at" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Date" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Borrows" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Monday" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Tuesday" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Wednesday" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Thursday" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Friday" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Sunday" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Saturday" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Hour" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Usage" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Average borrows" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Average hourly usage" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="for" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Charts" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Average weekly usage" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Day of Week" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Chart" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Actions" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="My Account" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Admin Panel" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="My Balance" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Add money" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Balance" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="My Reservations" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Borrowable Entity" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Start Time" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="End Time" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Old Reservations" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="New Reservations" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Manage Borrows" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Manage Reservations" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Name" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Surname" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Manually Select" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Entity" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Date Ranges" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Days" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Hours" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Suggest Reservation" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Create" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Submit" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Minutes" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Manage Models" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Language" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Amount" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Currency" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Create New" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Borrow" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Borrow ID" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Borrowable Entity ID" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Reservation ID" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Reservation" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Location" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="User" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="User ID" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="File Name" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Location ID" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="xmin" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Borrow Person" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Borrow Person ID" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Manual ID" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Taken" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Broken" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Free" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Select model to edit" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Models" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Unknown Action" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="List" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Model not found" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Delete" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Update" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Repair" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="by" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Hello" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Login" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Logout" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Manage your account" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Profile" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Username" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="User Settings" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Password" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Personal Data" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Manage Email" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Email" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="New Email" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Change Password" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Current Password" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="New Password" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Download" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Deleting this data will permanently remove your account, and this cannot be recovered."
+          xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Your account contains personal data that you have given us. This page allows you to download or delete that data."
+          xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Create New Account" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Change Email" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Create Account" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Update Password" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Confirm New Password" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Confirm Password" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Delete Data And Close My Account" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Use a local account to log in" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Remember me" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Log In" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Welcome to the Washing Machine/Drying Room Management website!"
+          xml:space="preserve">
+        <value/>
+    </data>
+    <data name="WM/DR Manager" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Do you want to make this entity" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="The item has been marked as" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="No item selected" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="DefaultBe is null" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="No borrow selected" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Borrow ended" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Added money" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="User not logged in" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Success" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Fail" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Reservation created" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Created reservation" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="The duration must be at least" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="hour and at maximum" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Borrow created" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Reservation canceled" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Created record" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Unable to create record" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Unable to update record" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Deleted item" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Failed" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Reservation too long" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Reservation too short" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Start must be before end" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Reservation too soon" xml:space="preserve">
+        <value/>
+    </data>
+    <data name=" Reservation intersects with another" xml:space="preserve">
+        <value/>
+    </data>
+    <data name="Pay by user balance" xml:space="preserve">
+        <value />
+    </data>
+    <data name="Pay by cash" xml:space="preserve">
+        <value />
+    </data>
+    <data name="End Borrow" xml:space="preserve">
+        <value />
+    </data>
+    <data name="Object info" xml:space="preserve">
+        <value />
+    </data>
+    <data name="Borrow Description" xml:space="preserve">
+        <value />
+    </data>
+    <data name="Current price" xml:space="preserve">
+        <value />
+    </data>
+    <data name="Person" xml:space="preserve">
+        <value />
+    </data>
+</root>

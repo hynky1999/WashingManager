@@ -1,0 +1,7 @@
+@page "/AdminMenu/ManageModels"
+@using Microsoft.AspNetCore.Authorization
+@using App.Features.AdminPanel.Componenets
+@inject ILocalizationService Loc
+@attribute [Authorize(Policy = Policies.ModelManagement)]
+<PageHeader SubTitle=@Loc["Select model to edit"] Title=@Loc["Models"]/>
+<AdminMenuNavBar/>

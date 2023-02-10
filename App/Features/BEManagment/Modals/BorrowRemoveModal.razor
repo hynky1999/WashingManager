@@ -1,0 +1,100 @@
+@using App.Features.BEManagment.Desc
+
+@typeparam T where T : BorrowableEntity
+@inject IBorrowService BorrowService
+@inject ICrudService<T> CrudService
+@inject IMessageService MessageService
+@inject ILocalizationService Loc
+
+
+<Modal Footer="@null" OnCancel="@CloseModal" Visible="@_visibility">
+    <Title Level="2">@Loc["End Borrow"]</Title>
+    <Divider/>
+    @if (_borrowableEntity != null && ShowBorrowableEntity) {
+        <BEDescription BEntity="_borrowableEntity" T="T"/>
+    }
+    @if (_borrow is not null) {
+        <BorrowDescription Borrow="@_borrow"/>
+        <Divider/>
+        <PriceBorrowCompute Borrow="@_borrow"/>
+        <Divider/>
+    } else {
+        <Spin/>
+    }
+    <Space>
+        <SpaceItem>
+            <Button Block="true" HtmlType="submit"
+                    Loading="_loading" OnClick="@(() => EndBorrow(false))"
+                    Type="@ButtonType.Primary">
+                @Loc["Pay by cash"]
+            </Button>
+        </SpaceItem>
+        <SpaceItem>
+            <Button Block="true" HtmlType="submit"
+                    Loading="_loading" OnClick="@(() => EndBorrow(true))"
+                    Type="@ButtonType.Primary">
+                @Loc["Pay by user balance"]
+            </Button>
+        </SpaceItem>
+    </Space>
+</Modal>
+
+
+@code {
+
+    [Parameter]
+    public Borrow? DefaultBorrow { get; set; }
+
+    [Parameter]
+    public bool ShowBorrowableEntity { get; set; } = true;
+
+    [Parameter]
+    public EventCallback<Borrow> OnSuccess { get; set; }
+
+    private Borrow? _borrow;
+    private T? _borrowableEntity;
+    private bool _visibility = false;
+    private bool _loading = false;
+
+
+    public void OpenModal() {
+        _loading = false;
+        _visibility = true;
+    }
+
+    protected override async Task OnParametersSetAsync() {
+        _loading = true;
+        _borrow = DefaultBorrow;
+        _borrowableEntity = _borrow?.BorrowableEntity as T;
+        if (_borrow is not null) {
+            if (ShowBorrowableEntity && _borrowableEntity == null) {
+                _borrowableEntity = await CrudService.GetByIdAsync(_borrow.BorrowableEntityID);
+            }
+        }
+        _loading = false;
+        await base.OnParametersSetAsync();
+    }
+
+    private void CloseModal() {
+        _loading = false;
+        _visibility = false;
+    }
+
+    private async Task EndBorrow(bool payByUserBalance) {
+        _loading = true;
+        if (_borrow is null) {
+            MessageService.Error(Loc["No borrow selected"]).FireAndForget();
+            return;
+        }
+
+        await MessageService.GenericOnDBError(Loc, async () => {
+            await BorrowService.EndBorrowAsync(_borrow, payByUserBalance);
+            await OnSuccess.InvokeAsync(_borrow);
+            MessageService.Success(Loc["Borrow ended"]).FireAndForget();
+            CloseModal();
+        });
+        _loading = false;
+    }
+
+
+}

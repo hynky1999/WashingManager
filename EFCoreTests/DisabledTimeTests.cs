@@ -1,6 +1,6 @@
 using System.Linq;
+using App.Shared.Components.NodaComponents;
 using NodaTime;
-using PrackyASusarny.Shared.Components.NodaComponents;
 using Xunit;
 
 namespace EFCoreTests;

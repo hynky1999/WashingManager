@@ -1,0 +1,32 @@
+@using App.Data.Utils
+@inject ILocalizationService Loc
+
+@if (_listType != null && ChildContent != null) {
+    @ChildContent(_listType)
+} else {
+    <Title Level="2">@($"{Loc[Model ?? "Uknown"]} {Loc["is not supported"]}")</Title>
+}
+
+@code{
+
+    [Parameter, EditorRequired]
+    public string? Model { get; set; }
+
+    [Parameter]
+    public Type[] AllowedTypes { get; set; } = Array.Empty<Type>();
+
+    [Parameter]
+    public RenderFragment<Type>? ChildContent { get; set; }
+
+
+    private Type? _listType;
+
+    protected override void OnParametersSet() {
+        if (ModelUtils.ModelNameToType.TryGetValue(Model ?? "", out var tmplistType) && AllowedTypes.Contains(tmplistType)) {
+            _listType = tmplistType;
+        } else {
+            _listType = null;
+        }
+    }
+
+}

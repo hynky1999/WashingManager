@@ -1,0 +1,19 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /app
+
+# Restore
+WORKDIR /src
+COPY ["PrackyASusarny.sln", "."]
+COPY ["EFCoreTests/EFCoreTests.csproj", "./EFCoreTests/EFCoreTests.csproj"]
+COPY ["App/App.csproj", "./App/App.csproj"]
+RUN dotnet restore 
+
+
+# Build
+COPY ["EFCoreTests", "EFCoreTests"]
+COPY ["App", "App"]
+RUN dotnet build -c Debug
+
+# Tests
+FROM build AS test
+CMD dotnet test -c Debug --no-build --no-restore
