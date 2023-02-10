@@ -18,7 +18,7 @@ public class DBFullFactory : DbFactory
         var wms = CreateWashingMachines();
         var bps = CreateBorrowPersons();
         //var borrows = CreateBorrows(wms);
-        var users = new List<ApplicationUser> {new ApplicationUser("admin")};
+        var users = new List<ApplicationUser> {new("admin")};
         // Ok for just testing
         context.AddRange(bps);
         context.AddRange(wms);

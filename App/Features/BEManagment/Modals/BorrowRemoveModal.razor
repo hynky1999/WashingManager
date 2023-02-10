@@ -1,5 +1,6 @@
-@using App.Data.Models
-@typeparam T where T : App.Data.Models.BorrowableEntity
+@using App.Features.BEManagment.Desc
+
+@typeparam T where T : BorrowableEntity
 @inject IBorrowService BorrowService
 @inject ICrudService<T> CrudService
 @inject IMessageService MessageService
@@ -20,11 +21,22 @@
     } else {
         <Spin/>
     }
-    <Button Block="true" HtmlType="submit"
-            Loading="_loading" OnClick="EndBorrow"
-            Type="@ButtonType.Primary">
-        @Loc["End"]
-    </Button>
+    <Space>
+        <SpaceItem>
+            <Button Block="true" HtmlType="submit"
+                    Loading="_loading" OnClick="@(() => EndBorrow(false))"
+                    Type="@ButtonType.Primary">
+                @Loc["Pay by cash"]
+            </Button>
+        </SpaceItem>
+        <SpaceItem>
+            <Button Block="true" HtmlType="submit"
+                    Loading="_loading" OnClick="@(() => EndBorrow(true))"
+                    Type="@ButtonType.Primary">
+                @Loc["Pay by user balance"]
+            </Button>
+        </SpaceItem>
+    </Space>
 </Modal>
 
 
@@ -68,7 +80,7 @@
         _visibility = false;
     }
 
-    private async Task EndBorrow() {
+    private async Task EndBorrow(bool payByUserBalance) {
         _loading = true;
         if (_borrow is null) {
             MessageService.Error(Loc["No borrow selected"]).FireAndForget();
@@ -76,7 +88,7 @@
         }
 
         await MessageService.GenericOnDBError(Loc, async () => {
-            await BorrowService.EndBorrowAsync(_borrow);
+            await BorrowService.EndBorrowAsync(_borrow, payByUserBalance);
             await OnSuccess.InvokeAsync(_borrow);
             MessageService.Success(Loc["Borrow ended"]).FireAndForget();
             CloseModal();

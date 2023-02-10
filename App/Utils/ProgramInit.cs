@@ -203,15 +203,11 @@ public static class ProgramInit
         var wm = Enumerable.Range(0, 20)
             .Select(_ => CreateRandomWashingMachines(locs, manuals)).ToArray();
 
-        var persons = Enumerable.Range(0, 10)
-            .Select(_ => CreateRandomBorrowPerson()).ToArray();
-
         context.AttachRange(users);
         context.AddRange(wmUsage);
         context.AddRange(manuals);
         context.AddRange(locs);
         context.AddRange(wm);
-        context.AddRange(persons);
         context.SaveChanges();
     }
 
@@ -223,23 +219,6 @@ public static class ProgramInit
             {
                 DayId = d
             });
-    }
-
-    private static string RandomString(int length)
-    {
-        var rnd = new Random();
-        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        return new string(Enumerable.Repeat(chars, length)
-            .Select(s => s[rnd.Next(s.Length)]).ToArray());
-    }
-
-    private static BorrowPerson CreateRandomBorrowPerson()
-    {
-        return new BorrowPerson
-        {
-            Name = RandomString(10),
-            Surname = RandomString(10)
-        };
     }
 
     private static Manual CreateRandomManual()

@@ -12,31 +12,29 @@ public class UsageChartingService<T> : IUsageChartingService<T>
     where T : BorrowableEntity
 {
     private readonly IDbContextFactory<ApplicationDbContext> _dbFactory;
-    private readonly ILocalizationService _localizationService;
     private readonly IUsageConstants _usageConstants;
+    private readonly IClock _clock;
 
     /// <summary>
     /// Constructor.
     /// </summary>
     /// <param name="dbFactory"></param>
     /// <param name="usageConstants"></param>
-    /// <param name="localizationService"></param>
+    /// <param name="clock"></param>
     public UsageChartingService(
         IDbContextFactory<ApplicationDbContext> dbFactory,
-        IUsageConstants usageConstants,
-        ILocalizationService localizationService)
+        IUsageConstants usageConstants, IClock clock)
     {
         _dbFactory = dbFactory;
-        _localizationService = localizationService;
         _usageConstants = usageConstants;
+        _clock = clock;
     }
 
     /// <inheritdoc />
     public async Task<(LocalTime hour, int value)[]> GetBorrowsByHourAsync(
-        LocalDate date)
+        LocalDate date, DateTimeZone tz)
     {
-        var tz = _localizationService.TimeZone;
-        var startInstant = date.AtStartOfDayInZone(tz).ToInstant();
+        var startInstant = date. AtStartOfDayInZone(tz).ToInstant();
         var endInstant = date.PlusDays(1).AtStartOfDayInZone(tz).ToInstant();
         var context = await _dbFactory.CreateDbContextAsync();
         var dbset = context.Set<Borrow>();
@@ -67,14 +65,15 @@ public class UsageChartingService<T> : IUsageChartingService<T>
 
     /// <inheritdoc />
     public async Task<(LocalDate time, int value)[]> GetBorrowsByDayAsync(
-        LocalDate start, LocalDate end)
+        LocalDate start, LocalDate end, DateTimeZone tz)
     {
+        
+        
         if (end < start)
             throw new ArgumentException("End date is earlier than start date");
 
         var context = await _dbFactory.CreateDbContextAsync();
         // Don't just take date because of timezones
-        var tz = _localizationService.TimeZone;
         var startInstant = start.AtStartOfDayInZone(tz).ToInstant();
         var endInstant = end.PlusDays(1).AtStartOfDayInZone(tz).ToInstant();
         var query = context.Borrows.Where(borrow =>
@@ -104,8 +103,13 @@ public class UsageChartingService<T> : IUsageChartingService<T>
 
     /// <inheritdoc />
     public async Task<(IsoDayOfWeek dayOfWeek, double value)[]>
-        GetWeekUsageAsync()
+        GetWeekUsageAsync(DateTimeZone tz)
     {
+        // TODO Support non-native
+        if (tz != _usageConstants.UsageTimeZone)
+            throw new ArgumentException("Non native tz currently unsupported");
+            
+            
         var context = await _dbFactory.CreateDbContextAsync();
         var query = context.Set<BorrowableEntityUsage<T>>();
         var summed = query.Select(usage => new
@@ -137,9 +141,8 @@ public class UsageChartingService<T> : IUsageChartingService<T>
         });
         var sqlDict = await summed.ToDictionaryAsync(usage => usage.DayId,
             usage => usage.totalUsage);
-        var mondaysSinceStart = Period.DaysBetween(
-            _usageConstants.CalculatedSince.Date,
-            _localizationService.NowInTimeZone.Date) / 7.0;
+        var mondaysSinceStart = (_clock.GetCurrentInstant()
+                                    .InZone(_usageConstants.UsageTimeZone) - _usageConstants.CalculatedSince).TotalDays / 7.0;
 
         var resultArray = Enum.GetValues<IsoDayOfWeek>()
             .Where(val => val != IsoDayOfWeek.None).Select(day =>
@@ -153,8 +156,13 @@ public class UsageChartingService<T> : IUsageChartingService<T>
 
     /// <inheritdoc />
     public async Task<(LocalTime hour, double value)[]> GetHourlyUsageAsync(
-        IsoDayOfWeek dayOfWeek)
+        IsoDayOfWeek dayOfWeek, DateTimeZone tz)
     {
+        // TODO: Support non native timezones
+        if (tz != _usageConstants.UsageTimeZone)
+        {
+            throw new ArgumentException("Non native currently timezone not supported");
+        }
         var context = await _dbFactory.CreateDbContextAsync();
         var dbset = context.Set<BorrowableEntityUsage<T>>();
         var query = dbset.Where(entity => entity.DayId == dayOfWeek);
@@ -163,17 +171,21 @@ public class UsageChartingService<T> : IUsageChartingService<T>
             return Enumerable.Range(0, 24)
                 .Select(hour => (new LocalTime(hour, 0), 0.0)).ToArray();
         //Qualified aproximation :)
-        var mondaysSinceStart = Period.DaysBetween(
-            _usageConstants.CalculatedSince.Date,
-            _localizationService.NowInTimeZone.Date) / 7.0;
+        var mondaysSinceStart = (_clock.GetCurrentInstant()
+                                    .InZone(_usageConstants.UsageTimeZone) - _usageConstants.CalculatedSince).TotalDays / 7.0;
         return Enumerable.Range(0, 24)
             .Select(hour => (new LocalTime(hour, 0),
                 sqlResult.GetHour(hour) / mondaysSinceStart)).ToArray();
     }
 
     /// <inheritdoc />
-    public async Task<(LocalTime hour, double value)[]> GetAvgHourlyUsageAsync()
+    public async Task<(LocalTime hour, double value)[]> GetAvgHourlyUsageAsync(DateTimeZone tz)
     {
+        // TODO: Support non native timezones
+        if (tz != _usageConstants.UsageTimeZone)
+        {
+            throw new ArgumentException("Non native currently timezone not supported");
+        }
         var context = await _dbFactory.CreateDbContextAsync();
         var dbset = context.Set<BorrowableEntityUsage<T>>();
         //Now idea how to make it nicer as Enumerable doesn't work in ef core query
@@ -213,9 +225,8 @@ public class UsageChartingService<T> : IUsageChartingService<T>
             return Enumerable.Range(0, 24)
                 .Select(hour => (new LocalTime(hour, 0), 0.0)).ToArray();
 
-        var mondaysSinceStart = Period.DaysBetween(
-            _usageConstants.CalculatedSince.Date,
-            _localizationService.NowInTimeZone.Date) / 7.0;
+        var mondaysSinceStart = (_clock.GetCurrentInstant()
+                                    .InZone(_usageConstants.UsageTimeZone) - _usageConstants.CalculatedSince).TotalDays / 7.0;
         return sqlResult.sum.Select((sum, hour) =>
             (new LocalTime(hour, 0), sum / mondaysSinceStart)).ToArray();
     }

@@ -20,7 +20,8 @@ public interface IBorrowService
     /// Ends the borrow and updates the usage statistics
     /// </summary>
     /// <param name="borrow"></param>
-    Task EndBorrowAsync(Borrow borrow);
+    /// <param name="deduceUserCash"></param>
+    Task EndBorrowAsync(Borrow borrow, bool deduceUserCash);
 
     /// <summary>
     /// Creates a new borrow
@@ -28,7 +29,7 @@ public interface IBorrowService
     /// <param name="borrow"></param>
     /// <returns></returns>
     /// <exception cref="ArgumentException">throws if BE is not free</exception>
-    Task<Borrow?> AddBorrowAsync(Borrow borrow);
+    Task<Borrow> AddBorrowAsync(Borrow borrow);
 
     /// <summary>
     /// Returns all borrows for a type of borrowable entity

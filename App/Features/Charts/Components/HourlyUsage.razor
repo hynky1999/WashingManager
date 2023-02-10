@@ -52,7 +52,7 @@
     private async Task InitializeData(IsoDayOfWeek day) {
     // ReSharper disable once CoVariantArrayConversion
     // It will be only read
-        _statData = (await Charts.GetHourlyUsageAsync(day)).Select(usage => new {x = usage.hour.ToString(), y = Loc.Round(usage.value)}).ToArray();
+        _statData = (await Charts.GetHourlyUsageAsync(day, Loc.TimeZone)).Select(usage => new {x = usage.hour.ToString(), y = Loc.Round(usage.value)}).ToArray();
         if (_chart != null) {
     // Idk doesn't react to statHasCHanged
             var description = $"{Loc[Usage]} {Loc[Day.ToString()]} {Loc["for"]} {Loc[EntityName]}";

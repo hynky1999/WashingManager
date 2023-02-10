@@ -5,11 +5,7 @@ using System.Threading.Tasks;
 using App.Data;
 using App.Data.Constants;
 using App.Data.EFCoreServices;
-using App.Data.LocServices;
 using App.Data.Models;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Localization;
-using Moq;
 using NodaTime;
 using Xunit;
 
@@ -96,19 +92,12 @@ public class ChartingTests : IClassFixture<_TEST_DB_USAGE>
 
     public ChartingTests(_TEST_DB_USAGE factory)
     {
-        CurrencyService currencyService = new CurrencyService();
-        var configuration = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json")
-            .Build();
-        UsageConstants = new TestUsageConstants();
-        var localization =
-            new LocalizationService(new Utils.Clock14082022(), currencyService,
-                Mock.Of<IStringLocalizer<LocalizationService>>(),
-                configuration);
+        UsageConstants = new Utils.TestUsageConstants();
+        var _clock = new Utils.Clock14082022();
         UsageService =
             new UsageChartingService<WashingMachine>(factory,
-                UsageConstants, localization);
-        UsageUpdateService = new UsageService(localization, UsageConstants);
+                UsageConstants, _clock);
+        UsageUpdateService = new UsageService(_clock, UsageConstants);
         Factory = factory;
         using var context = Factory.CreateDbContext();
         context.SaveChanges();
@@ -116,7 +105,6 @@ public class ChartingTests : IClassFixture<_TEST_DB_USAGE>
     }
 
     private IUsageConstants UsageConstants { get; }
-
 
     private UsageChartingService<WashingMachine> UsageService { get; }
     private DBFullFactory Factory { get; }
@@ -142,7 +130,7 @@ public class ChartingTests : IClassFixture<_TEST_DB_USAGE>
     {
         var result =
             await UsageService.GetBorrowsByDayAsync(new LocalDate(2020, 1, 1),
-                new LocalDate(2020, 1, 4));
+                new LocalDate(2020, 1, 4), UsageConstants.UsageTimeZone);
         var expected = new[]
         {
             (new LocalDate(2020, 1, 1), 1),
@@ -157,7 +145,7 @@ public class ChartingTests : IClassFixture<_TEST_DB_USAGE>
     public async Task BorrowsByHourTest()
     {
         var date = new LocalDate(2020, 1, 2);
-        var result = await UsageService.GetBorrowsByHourAsync(date);
+        var result = await UsageService.GetBorrowsByHourAsync(date, UsageConstants.UsageTimeZone);
         var expected = Enumerable.Range(0, 24)
             .Select(hour => (new LocalTime(hour, 0), 0)).ToArray();
         expected[1].Item2 = 1;
@@ -168,7 +156,7 @@ public class ChartingTests : IClassFixture<_TEST_DB_USAGE>
     [Fact]
     public async Task WeekUsageDayTest()
     {
-        var result = await UsageService.GetWeekUsageAsync();
+        var result = await UsageService.GetWeekUsageAsync(UsageConstants.UsageTimeZone);
         var expected = new[]
         {
             (IsoDayOfWeek.Monday, 0),
@@ -186,7 +174,7 @@ public class ChartingTests : IClassFixture<_TEST_DB_USAGE>
     public async Task HourlyUsageTest()
     {
         var result =
-            await UsageService.GetHourlyUsageAsync(IsoDayOfWeek.Saturday);
+            await UsageService.GetHourlyUsageAsync(IsoDayOfWeek.Saturday, UsageConstants.UsageTimeZone);
         var expected = Enumerable.Range(0, 24)
             .Select(x => (new LocalTime(x, 0), 0.0)).ToArray();
         expected[0].Item2 = 100 / _mondaysSinceStart;
@@ -198,7 +186,7 @@ public class ChartingTests : IClassFixture<_TEST_DB_USAGE>
     [Fact]
     public async Task AvgUsageTest()
     {
-        var result = await UsageService.GetAvgHourlyUsageAsync();
+        var result = await UsageService.GetAvgHourlyUsageAsync(UsageConstants.UsageTimeZone);
         var expected = Enumerable.Range(0, 24)
             .Select(x => (new LocalTime(x, 0), 0.0)).ToArray();
         expected[0].Item2 = 100 / _mondaysSinceStart;
@@ -213,11 +201,12 @@ public class ChartingTests : IClassFixture<_TEST_DB_USAGE>
     {
         var borrow = new Borrow();
         borrow.Start =
-            new LocalDateTime(2022, 8, 13, 23, 0).InUtc().ToInstant();
+            new LocalDateTime(2022, 8, 14, 0, 0).InZoneLeniently(UsageConstants.UsageTimeZone).ToInstant();
         var expected = new BorrowableEntityUsage<WashingMachine>
         {
             DayId = IsoDayOfWeek.Sunday
         };
+        expected.SetHour(0, 1);
         expected.SetHour(1, 1);
         using var context = Factory.CreateDbContext();
         var resultCtx =
@@ -232,7 +221,7 @@ public class ChartingTests : IClassFixture<_TEST_DB_USAGE>
     {
         var borrow = new Borrow();
         borrow.Start =
-            new LocalDateTime(2022, 8, 7, 5, 0).InUtc().ToInstant();
+            new LocalDateTime(2022, 8, 7, 5, 0).InZoneLeniently(UsageConstants.UsageTimeZone).ToInstant();
         using var context = Factory.CreateDbContext();
         var preValues = context.WashingMachineUsage.ToList();
         // Everything 1 except 3-7 for sunday == 0
@@ -249,8 +238,9 @@ public class ChartingTests : IClassFixture<_TEST_DB_USAGE>
                 );
                 return ret;
             }).ToList();
-        // We start at 7 and end at 2 but we should take the 7 too
-        Enumerable.Range(2, 5).ToList().ForEach(hour =>
+        // We start at 5 and end at 2
+        // Thus reduce 2-4 to 0
+        Enumerable.Range(2, 3).ToList().ForEach(hour =>
         {
             var oldVal = expected[(int) IsoDayOfWeek.Sunday].GetHour(hour);
             expected[(int) IsoDayOfWeek.Sunday].SetHour(hour, oldVal - 1);
@@ -267,13 +257,4 @@ public class ChartingTests : IClassFixture<_TEST_DB_USAGE>
         // Don't save
     }
 
-    private class TestUsageConstants : IUsageConstants
-    {
-        public ZonedDateTime CalculatedSince =>
-            new(new LocalDateTime(2022, 8, 8, 0, 0), DateTimeZone.Utc,
-                Offset.Zero);
-
-        public DateTimeZone UsageTimeZone =>
-            DateTimeZoneProviders.Tzdb["Europe/Prague"];
-    }
 }

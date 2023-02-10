@@ -1,6 +1,6 @@
+@using App.Features.BEManagment.Desc
 @inject IBorrowService BorrowService
-@using App.Data.Models
-@typeparam T where T : App.Data.Models.BorrowableEntity
+@typeparam T where T : BorrowableEntity
 @inject IMessageService MessageService
 @inject ILogger<BorrowFormModal<T>> Logger
 @inject ILocalizationService Loc

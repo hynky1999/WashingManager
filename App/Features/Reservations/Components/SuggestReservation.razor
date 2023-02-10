@@ -46,10 +46,10 @@
 
     class Suggestion {
         [DisplayName("Start Time")]
-        public LocalDateTime Start { get; set; }
+        public Instant Start { get; set; }
 
         [DisplayName("End Time")]
-        public LocalDateTime End { get; set; }
+        public Instant End { get; set; }
 
         public T Entity { get; set; } = null!;
     }

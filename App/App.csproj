@@ -6,7 +6,6 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>aspnet-PrackyASusarny-FE741C6D-24C9-4218-BE22-3BF3B3825A1D</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-
         <LangVersion>preview</LangVersion>
 
         <RootNamespace>App</RootNamespace>

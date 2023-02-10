@@ -1,10 +1,9 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using App.Auth.Models;
 using App.Data.ModelInterfaces;
 using App.Data.ServiceInterfaces;
 using App.Data.Utils;
-
-#pragma warning disable CS1591
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 // ReSharper disable InconsistentNaming
@@ -23,11 +22,20 @@ public class BorrowPerson : IDBModel, ICloneable
     [DisplayName("Borrow Person ID")]
     public int BorrowPersonID { get; set; }
 
-    [DisplayName("Name")] [Required] public string Name { get; set; } = null!;
+    [DisplayName("Name")]
+    [Required]
+    public string Name { get; set; } = "";
 
     [DisplayName("Surname")]
     [Required]
-    public string Surname { get; set; } = null!;
+    public string Surname { get; set; } = "";
+
+    [DisplayName("User ID")]
+    [UIVisibility(UIVisibilityEnum.Disabled)]
+    public int? UserID { get; set; }
+
+    [DisplayName("User")]
+    public ApplicationUser? User { get; set; }
 
     public object Clone()
     {

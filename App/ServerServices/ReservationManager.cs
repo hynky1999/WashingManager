@@ -14,8 +14,8 @@ public class ReservationManager : IReservationManager, IDisposable
     private readonly IBorrowService _borrowService;
     private readonly IContextHookMiddleware _contextHookMiddleware;
     private readonly IDbContextFactory<ApplicationDbContext> _dbFactory;
-    private readonly ILocalizationService _localizationService;
     private readonly IRates _rates;
+    private readonly IClock _clock;
     private readonly IReservationConstant _reservationConstants;
     private readonly ITimedQueueManager<Reservation> _timedQueueManager;
     private readonly IUserService _userService;
@@ -24,19 +24,18 @@ public class ReservationManager : IReservationManager, IDisposable
     /// Constructor
     /// </summary>
     /// <param name="userService"></param>
-    /// <param name="localizationService"></param>
     /// <param name="borrowService"></param>
     /// <param name="reservationConstant"></param>
     /// <param name="rates"></param>
     /// <param name="middleware"></param>
     /// <param name="factory"></param>
+    /// <param name="clock"></param>
     public ReservationManager(IUserService userService,
-        ILocalizationService localizationService, IBorrowService borrowService,
+        IBorrowService borrowService,
         IReservationConstant reservationConstant,
         IRates rates, IContextHookMiddleware middleware,
-        IDbContextFactory<ApplicationDbContext> factory)
+        IDbContextFactory<ApplicationDbContext> factory, IClock clock)
     {
-        _localizationService = localizationService;
         _timedQueueManager = new TimedQueueManager<Reservation>(QueueFactory);
         _userService = userService;
         _borrowService = borrowService;
@@ -44,6 +43,7 @@ public class ReservationManager : IReservationManager, IDisposable
         _reservationConstants = reservationConstant;
         _contextHookMiddleware = middleware;
         _dbFactory = factory;
+        _clock = clock;
     }
 
     /// <inheritdoc />
@@ -96,7 +96,7 @@ public class ReservationManager : IReservationManager, IDisposable
     {
         return new DBTimedQueue<Reservation>(
             () => GetMostRecentReservationAsync(id),
-            (res) => res.End - _localizationService.Now);
+            (res) => res.End - _clock.GetCurrentInstant());
     }
 
     private async Task ResolveNoBorrowAsync(Reservation res)
@@ -120,7 +120,7 @@ public class ReservationManager : IReservationManager, IDisposable
         // Postpone all starting after reservation
 
         var oldEnd = res.End;
-        var newEnd = _localizationService.Now +
+        var newEnd = _clock.GetCurrentInstant() +
                      _reservationConstants.ReservationPostponeDur;
 
 
@@ -176,7 +176,7 @@ public class ReservationManager : IReservationManager, IDisposable
         var oldBorrowQuery = from r in db.Reservations
             join b in db.Borrows on r.ReservationID equals b.ReservationID
             where r.BorrowableEntityID == id &&
-                  r.End <= _localizationService.Now && b.End == null
+                  r.End <= _clock.GetCurrentInstant() && b.End == null
             orderby r.End ascending
             select r;
 
@@ -189,7 +189,7 @@ public class ReservationManager : IReservationManager, IDisposable
 
         // If no old reservation with borrow query the one that ends first.
         var reservationQuery = from r in db.Reservations
-            where r.BorrowableEntityID == id && r.End > _localizationService.Now
+            where r.BorrowableEntityID == id && r.End > _clock.GetCurrentInstant()
             orderby r.End
             select r;
         var futureReservation = await reservationQuery.FirstOrDefaultAsync();
@@ -211,8 +211,7 @@ public class ReservationManager : IReservationManager, IDisposable
             await ResolveOverBorrowAsync(reservation);
         }
 
-        _contextHookMiddleware.OnSave(EntityState.Modified, reservation)
-            .FireAndForget();
+        _contextHookMiddleware.OnSave(EntityState.Modified, reservation).FireAndForget();
     }
 }
 

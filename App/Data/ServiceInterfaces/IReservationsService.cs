@@ -10,17 +10,15 @@ namespace App.Data.ServiceInterfaces;
 public interface IReservationsService
 {
     /// <summary>
-    /// Create a new reservation for the given user based on LocalDateTime
-    /// We don't use an instant as the use will be selecting a date and time without
-    /// and timezone information. Thus the instant will be decided based on user's timezone.
+    /// Create a new reservation for the given user based on Instant
     /// </summary>
     /// <param name="start"></param>
     /// <param name="end"></param>
     /// <param name="user"></param>
     /// <param name="entity"></param>
     /// <returns>Reservation if created successfully</returns>
-    Task<Reservation?> CreateReservationAsync(LocalDateTime start,
-        LocalDateTime end,
+    Task<Reservation?> CreateReservationAsync(Instant start,
+        Instant end,
         ClaimsPrincipal user, BorrowableEntity entity);
 
     /// <summary>
@@ -88,7 +86,7 @@ public interface IReservationsService
     /// <param name="limit">how much suggestions to show</param>
     /// <typeparam name="T">Type of BE to get suggestions for</typeparam>
     /// <returns>Suggested reservations</returns>
-    Task<(LocalDateTime start, LocalDateTime end, T be)[]>
+    Task<(Instant start, Instant end, T be)[]>
         SuggestReservation<T>(Duration length, int limit = 3)
         where T : BorrowableEntity;
 }

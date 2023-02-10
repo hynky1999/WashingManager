@@ -14,6 +14,7 @@ public interface IBorrowPersonService
     /// <param name="surname"></param>
     /// <returns>id of BP</returns>
     public Task<int> GetIdByNameAndSurnameAsync(string name, string surname);
+    
 
     /// <summary>
     /// Returns Borrow person based on it's id

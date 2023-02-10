@@ -5,15 +5,11 @@ using App.Auth.Models;
 using App.Data;
 using App.Data.Constants;
 using App.Data.EFCoreServices;
-using App.Data.LocServices;
 using App.Data.Models;
 using App.Data.ServiceInterfaces;
 using App.Data.Utils;
 using App.Middlewares;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Localization;
-using Moq;
 using NodaTime;
 using Xunit;
 
@@ -30,32 +26,28 @@ public class ReservationTests : IClassFixture<_TEST_DB_RESS>, IDisposable
 {
     public ReservationTests(_TEST_DB_RESS factory)
     {
-        var config = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.Development.json")
-            .Build();
-        var curService = new CurrencyService();
-        Loc = new LocalizationService(new Utils.Clock14082022(), curService,
-            Mock.Of<IStringLocalizer<LocalizationService>>(), config);
+        Clock = new Utils.Clock14082022();
         ReservationConstant = new ReservationConstant();
         Rates = new Rates();
 
 
         // No need to add hooks as we won't need them
         IContextHookMiddleware middleware = new ContextHookMiddleware();
-        IUsageService usageService = new UsageService(Loc, new UsageContants());
+        IUsageService usageService = new UsageService(Clock, new UsageContants());
         IBorrowPersonService bpService = new BorrowPersonService(factory);
+        IUserService userService = new UserService(factory, Rates, new CurrencyService());
         IBorrowService BorrowService =
-            new BorrowService(factory, bpService, Loc, usageService, Rates);
+            new BorrowService(factory, bpService, usageService, Rates, Clock, userService);
         ReservationsService = new ReservationService(factory, BorrowService,
-            Loc, ReservationConstant, middleware);
+            ReservationConstant, middleware, Clock);
         Factory = factory;
     }
 
 
     private IDbContextFactory<ApplicationDbContext> Factory { get; }
     private IReservationsService ReservationsService { get; }
-    private ILocalizationService Loc { get; }
     private IRates Rates { get; }
+    private IClock Clock { get; }
     private IReservationConstant ReservationConstant { get; }
 
 
@@ -82,8 +74,8 @@ public class ReservationTests : IClassFixture<_TEST_DB_RESS>, IDisposable
             new()
             {
                 User = user,
-                Start = Loc.Now + Duration.FromHours(3),
-                End = Loc.Now + Duration.FromHours(5),
+                Start = Clock.GetCurrentInstant()+ Duration.FromHours(3),
+                End = Clock.GetCurrentInstant()+ Duration.FromHours(5),
                 BorrowableEntity = wms[0],
             }
         };
@@ -98,13 +90,11 @@ public class ReservationTests : IClassFixture<_TEST_DB_RESS>, IDisposable
                 .SuggestReservation<WashingMachine>(dur, 5);
         // Should be pickup up by minStart
         Assert.Single(suggestions);
-        var start = Loc.Now + ReservationConstant.MinDurBeforeReservation +
+        var start = Clock.GetCurrentInstant()+ ReservationConstant.MinDurBeforeReservation +
                     ReservationConstant.SuggestReservationDurForBorrow;
-        var startLoc = start.InZone(Loc.TimeZone).LocalDateTime;
-        Assert.Equal(startLoc, suggestions[0].start);
+        Assert.Equal(start, suggestions[0].start);
         var end = start + dur;
-        var endLoc = end.InZone(Loc.TimeZone).LocalDateTime;
-        Assert.Equal(suggestions[0].end, endLoc);
+        Assert.Equal(end, suggestions[0].end);
     }
 
     [Fact]
@@ -127,14 +117,12 @@ public class ReservationTests : IClassFixture<_TEST_DB_RESS>, IDisposable
                 .SuggestReservation<WashingMachine>(dur, 5);
         // Should be pickup up by minStart
         Assert.Equal(2, suggestions.Length);
-        var start = Loc.Now + ReservationConstant.MinDurBeforeReservation +
+        var start =Clock.GetCurrentInstant() + ReservationConstant.MinDurBeforeReservation +
                     ReservationConstant.SuggestReservationDurForBorrow;
-        var startLoc = start.InZone(Loc.TimeZone).LocalDateTime;
-        Assert.Equal(startLoc, suggestions[0].start);
-        Assert.Equal(startLoc, suggestions[1].start);
+        Assert.Equal(start, suggestions[0].start);
+        Assert.Equal(start, suggestions[1].start);
         var end = start + dur;
-        var endLoc = end.InZone(Loc.TimeZone).LocalDateTime;
-        Assert.Equal(suggestions[0].end, endLoc);
+        Assert.Equal(end, suggestions[0].end);
     }
 
     [Fact]
@@ -151,31 +139,31 @@ public class ReservationTests : IClassFixture<_TEST_DB_RESS>, IDisposable
             new()
             {
                 User = user,
-                Start = Loc.Now,
-                End = Loc.Now + Duration.FromHours(3),
+                Start = Clock.GetCurrentInstant(),
+                End = Clock.GetCurrentInstant() + Duration.FromHours(3),
                 BorrowableEntity = wms[0],
             },
 
             new()
             {
                 User = user,
-                Start = Loc.Now + Duration.FromHours(3),
-                End = Loc.Now + Duration.FromHours(5),
+                Start = Clock.GetCurrentInstant() + Duration.FromHours(3),
+                End = Clock.GetCurrentInstant() + Duration.FromHours(5),
                 BorrowableEntity = wms[0],
             },
 
             new()
             {
                 User = user,
-                Start = Loc.Now + Duration.FromHours(6),
-                End = Loc.Now + Duration.FromHours(7),
+                Start = Clock.GetCurrentInstant() + Duration.FromHours(6),
+                End = Clock.GetCurrentInstant() + Duration.FromHours(7),
                 BorrowableEntity = wms[0],
             },
             new()
             {
                 User = user,
-                Start = Loc.Now + Duration.FromHours(9),
-                End = Loc.Now + Duration.FromHours(10),
+                Start = Clock.GetCurrentInstant() + Duration.FromHours(9),
+                End = Clock.GetCurrentInstant() + Duration.FromHours(10),
                 BorrowableEntity = wms[0],
             },
         };
@@ -190,18 +178,16 @@ public class ReservationTests : IClassFixture<_TEST_DB_RESS>, IDisposable
                 .SuggestReservation<WashingMachine>(dur, 5);
 
         Assert.Single(suggestions);
-        var start = (Loc.Now + Duration.FromHours(7)).InZone(Loc.TimeZone)
-            .LocalDateTime;
-        var end = (Loc.Now + Duration.FromHours(9)).InZone(Loc.TimeZone)
-            .LocalDateTime;
+        var start = Clock.GetCurrentInstant() + Duration.FromHours(7);
+        var end = Clock.GetCurrentInstant() + Duration.FromHours(9);
         Assert.Equal(suggestions[0].start, start);
         Assert.Equal(suggestions[0].end, end);
 
         await context.AddAsync(new Reservation()
         {
             User = user,
-            Start = Loc.Now + Duration.FromHours(7),
-            End = Loc.Now + Duration.FromHours(9),
+            Start = Clock.GetCurrentInstant() + Duration.FromHours(7),
+            End = Clock.GetCurrentInstant() + Duration.FromHours(9),
             BorrowableEntity = wms[0],
         });
         await context.SaveChangesAsync();
@@ -212,10 +198,8 @@ public class ReservationTests : IClassFixture<_TEST_DB_RESS>, IDisposable
                 .SuggestReservation<WashingMachine>(dur, 5);
 
         Assert.Single(suggestions);
-        start = (Loc.Now + Duration.FromHours(10)).InZone(Loc.TimeZone)
-            .LocalDateTime;
-        end = (Loc.Now + Duration.FromHours(12)).InZone(Loc.TimeZone)
-            .LocalDateTime;
+        start = Clock.GetCurrentInstant() + Duration.FromHours(10);
+        end = Clock.GetCurrentInstant() + Duration.FromHours(12);
         Assert.Equal(suggestions[0].start, start);
         Assert.Equal(suggestions[0].end, end);
     }

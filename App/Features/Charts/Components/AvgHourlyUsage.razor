@@ -19,7 +19,7 @@
         _config = ChartsUtils.CreateColumnConfig(Usage, description, "Hour", "Average borrows", Loc);
     // ReSharper disable once CoVariantArrayConversion
     // It will be only read
-        _statData = (await Charts.GetAvgHourlyUsageAsync()).Select(usage => new {x = usage.hour.ToString(), y = Loc.Round(usage.value)}).ToArray();
+        _statData = (await Charts.GetAvgHourlyUsageAsync(Loc.TimeZone)).Select(usage => new {x = usage.hour.ToString(), y = Loc.Round(usage.value)}).ToArray();
         await base.OnInitializedAsync();
     }
 

@@ -118,6 +118,6 @@ public record Money
     /// <returns>Negated money</returns>
     public static Money operator -(Money a)
     {
-        return new Money {Amount = a.Amount, Currency = a.Currency};
+        return a with {Amount = -a.Amount};
     }
 }

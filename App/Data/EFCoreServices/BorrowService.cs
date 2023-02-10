@@ -16,30 +16,34 @@ namespace App.Data.EFCoreServices;
 public class BorrowService : IBorrowService
 {
     private readonly IBorrowPersonService _borrowPersonService;
+    private readonly IUserService _userService;
     private readonly IDbContextFactory<ApplicationDbContext> _dbFactory;
-    private readonly ILocalizationService _localizationService;
     private readonly IRates _rates;
     private readonly IUsageService _usageService;
     private readonly MethodInfo _usageUpdateStatisticsMethod;
+    private readonly IClock _clock;
 
     /// <summary>
     /// Constructor.
     /// </summary>
     /// <param name="dbFactory"></param>
     /// <param name="borrowPersonService"></param>
-    /// <param name="localizationService"></param>
     /// <param name="usageService"></param>
     /// <param name="rates"></param>
+    /// <param name="clock"></param>
+    /// <param name="userService"></param>
     public BorrowService(IDbContextFactory<ApplicationDbContext> dbFactory,
         IBorrowPersonService borrowPersonService,
-        ILocalizationService localizationService, IUsageService usageService,
-        IRates rates)
+        IUsageService usageService,
+        IRates rates,
+        IClock clock, IUserService userService)
     {
         _dbFactory = dbFactory;
         _borrowPersonService = borrowPersonService;
-        _localizationService = localizationService;
         _usageService = usageService;
         _rates = rates;
+        _clock = clock;
+        _userService = userService;
         // We need to decide in runtime which Usage to add to.
         _usageUpdateStatisticsMethod = typeof(UsageService).GetMethods()
             .FirstOrDefault(m =>
@@ -53,7 +57,7 @@ public class BorrowService : IBorrowService
     public async Task<Money> GetPriceAsync(Borrow borrow)
     {
         await using var db = await _dbFactory.CreateDbContextAsync();
-        var end = borrow.End ?? _localizationService.Now;
+        var end = borrow.End ?? _clock.GetCurrentInstant();
         var duration = end - borrow.Start;
         var forLength =
             duration.TotalMinutes / 30.0 * _rates.PricePerHalfHour;
@@ -67,7 +71,7 @@ public class BorrowService : IBorrowService
     }
 
     /// <inheritdoc />
-    public async Task EndBorrowAsync(Borrow borrow)
+    public async Task EndBorrowAsync(Borrow borrow, bool deduceUserCash)
     {
         await using var dbContext = await _dbFactory.CreateDbContextAsync();
 
@@ -75,28 +79,37 @@ public class BorrowService : IBorrowService
             await EndBorrowStatisticsAsync(borrow, dbContext);
 
         contextWithStat.Borrows.Attach(borrow);
-        borrow.End = _localizationService.Now;
+        borrow.End = _clock.GetCurrentInstant();
         borrow.BorrowableEntity.Status = Status.Free;
+        if (deduceUserCash)
+        {
+            var id = borrow.BorrowPerson.UserID;
+            if (id == null)
+                throw new ArgumentException("User must have UserID");
+
+            await _userService.ModifyUserCashAsync(contextWithStat, id.Value,
+                -await GetPriceAsync(borrow));
+        }
+
         await contextWithStat.SaveChangeAsyncRethrow();
     }
 
     /// <inheritdoc />
-    public async Task<Borrow?> AddBorrowAsync(Borrow borrow)
+    public async Task<Borrow> AddBorrowAsync(Borrow borrow)
     {
         await using var dbContext = await _dbFactory.CreateDbContextAsync();
         if (borrow.BorrowableEntity.Status != Status.Free)
             throw new ArgumentException("Must be free");
 
         borrow.BorrowableEntity.Status = Status.Taken;
-        borrow.Start = _localizationService.Now;
+        borrow.Start = _clock.GetCurrentInstant();
 
         if (borrow.BorrowPerson.BorrowPersonID == 0)
         {
             // Will create if returns 0 with traversal
-            var id = await _borrowPersonService.GetIdByNameAndSurnameAsync(
+            borrow.BorrowPerson.BorrowPersonID = await _borrowPersonService.GetIdByNameAndSurnameAsync(
                 borrow.BorrowPerson.Name,
                 borrow.BorrowPerson.Surname);
-            borrow.BorrowPerson.BorrowPersonID = id;
         }
 
         // Register to context
@@ -129,7 +142,10 @@ public class BorrowService : IBorrowService
         await using var ctx = await _dbFactory.CreateDbContextAsync();
         var borrowQuery = from b in ctx.Borrows
             where b.ReservationID == res.ReservationID
+            orderby b.Start descending
             select b;
+        
+        
         return await borrowQuery.FirstOrDefaultAsync();
     }
 

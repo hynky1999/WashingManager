@@ -30,6 +30,7 @@ public class BorrowPersonService : IBorrowPersonService
             .Where(p => p.Name == name && p.Surname == surname)
             .Select(p => p.BorrowPersonID);
         var personId = await pQuery.FirstOrDefaultAsync();
+        
         return personId;
     }
 

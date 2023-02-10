@@ -4,7 +4,6 @@
 @using App.Data.Utils
 @using App.Features.BEManagment.Modals
 @using AntDesign.TableModels
-@using App.Data.Models
 @typeparam T where T : App.Data.Models.BorrowableEntity
 
 <Table @bind-PageIndex="_pageIndex" DataSource="_data" Loading="_loading" OnChange="@HandleTableChange"

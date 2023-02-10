@@ -23,13 +23,15 @@ public sealed class Location : ICloneable, IDBModel
     [DisplayName("Location ID")]
     public int LocationID { get; set; }
 
-    [DisplayName("Floor")] [Required] public int Floor { get; set; }
+    [DisplayName("Floor")][Required] public int Floor { get; set; }
 
-    [DisplayName("Room")] [Required] public int RoomNum { get; set; }
+    [DisplayName("Room")][Required] public int RoomNum { get; set; }
 
-    [DisplayName("Door")] [Required] public int DoorNum { get; set; }
+    [DisplayName("Door")][Required] public int DoorNum { get; set; }
 
-    [DisplayName("Building")] [Required] public char Building { get; set; }
+    [DisplayName("Building")]
+    [Required]
+    public char Building { get; set; }
 
     public object Clone()
     {

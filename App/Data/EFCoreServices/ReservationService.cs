@@ -19,8 +19,7 @@ public class ReservationService : IReservationsService
     private readonly IBorrowService _borrowService;
     private readonly IContextHookMiddleware _contextHookMiddleware;
     private readonly IDbContextFactory<ApplicationDbContext> _dbFactory;
-
-    private readonly ILocalizationService _localizationService;
+    private readonly IClock _clock;
     private readonly IReservationConstant _reservationConstant;
 
     /// <summary>
@@ -28,25 +27,25 @@ public class ReservationService : IReservationsService
     /// </summary>
     /// <param name="dbFactory"></param>
     /// <param name="borrowService"></param>
-    /// <param name="localizationService"></param>
     /// <param name="reservationConstant"></param>
     /// <param name="contextHookMiddleware"></param>
+    /// <param name="clock"></param>
     public ReservationService(
         IDbContextFactory<ApplicationDbContext> dbFactory,
-        IBorrowService borrowService, ILocalizationService localizationService,
+        IBorrowService borrowService,
         IReservationConstant reservationConstant,
-        IContextHookMiddleware contextHookMiddleware)
+        IContextHookMiddleware contextHookMiddleware, IClock clock)
     {
         _dbFactory = dbFactory;
-        _localizationService = localizationService;
         _borrowService = borrowService;
         _reservationConstant = reservationConstant;
         _contextHookMiddleware = contextHookMiddleware;
+        _clock = clock;
     }
 
     /// <inheritdoc />
-    public async Task<Reservation?> CreateReservationAsync(LocalDateTime start,
-        LocalDateTime end,
+    public async Task<Reservation?> CreateReservationAsync(Instant start,
+        Instant end,
         ClaimsPrincipal userPrincipal, BorrowableEntity entity)
     {
         if (start >= end)
@@ -54,8 +53,7 @@ public class ReservationService : IReservationsService
             throw new ArgumentException("Start must be before end");
         }
 
-        var dur = Duration.FromNanoseconds(Period
-            .Between(start, end, PeriodUnits.Nanoseconds).Nanoseconds);
+        var dur = end - start;
         if (dur >
             _reservationConstant.MaxReservationDur)
         {
@@ -70,12 +68,8 @@ public class ReservationService : IReservationsService
 
         var id = Claims.GetUserId(userPrincipal);
         await using var db = await _dbFactory.CreateDbContextAsync();
-        var startInst = start.InZoneLeniently(_localizationService.TimeZone)
-            .ToInstant();
-        var endInst = end.InZoneLeniently(_localizationService.TimeZone)
-            .ToInstant();
 
-        if (startInst < _localizationService.Now +
+        if (start < _clock.GetCurrentInstant() +
             _reservationConstant.MinDurBeforeReservation)
         {
             throw new ArgumentException("Reservation too soon");
@@ -94,7 +88,7 @@ public class ReservationService : IReservationsService
 
         var intersection = db.Reservations.FirstOrDefault(r =>
             r.BorrowableEntityID == entity.BorrowableEntityID &&
-            r.Start < endInst && r.End > startInst);
+            r.Start < end && r.End > start);
 
         if (intersection != null)
         {
@@ -104,8 +98,8 @@ public class ReservationService : IReservationsService
 
         var reservation = new Reservation
         {
-            Start = startInst,
-            End = endInst,
+            Start = start,
+            End = end,
             BorrowableEntity = entity,
             UserID = id
         };
@@ -136,16 +130,20 @@ public class ReservationService : IReservationsService
             be = entity ??
                  throw new ArgumentException("BorrowableEntity not found");
         }
+        var name = reservation.User.UserName ?? "Unknown";
+        var surname = reservation.User.UserName ?? "Unknown";
 
         Borrow borrow = new()
         {
-            Start = _localizationService.Now,
+            Start = _clock.GetCurrentInstant(),
             BorrowableEntity = be,
             Reservation = reservation,
             BorrowPerson = new BorrowPerson()
             {
-                Name = reservation.User.Name,
-                Surname = reservation.User.Surname,
+                BorrowPersonID = 0,
+                Name = name,
+                Surname = surname,
+                UserID = reservation.UserID
             }
         };
         return await _borrowService.AddBorrowAsync(borrow);
@@ -154,7 +152,7 @@ public class ReservationService : IReservationsService
     /// <inheritdoc />
     public async Task CancelReservationAsync(Reservation reservation)
     {
-        if (reservation.Start < _localizationService.Now +
+        if (reservation.Start < _clock.GetCurrentInstant() +
             _reservationConstant.MinReservationCancelDur)
         {
             throw new ArgumentException("Reservation too soon");
@@ -221,7 +219,7 @@ public class ReservationService : IReservationsService
     {
         await using var db = await _dbFactory.CreateDbContextAsync();
         var reservation =
-            db.Reservations.Where(r => r.Start > _localizationService.Now);
+            db.Reservations.Where(r => r.Start > _clock.GetCurrentInstant());
         var reservationEntity =
             reservation.Where(r => r.BorrowableEntity == entity);
 
@@ -230,7 +228,7 @@ public class ReservationService : IReservationsService
     }
 
     /// <inheritdoc />
-    public async Task<(LocalDateTime start, LocalDateTime end, T be)[]>
+    public async Task<(Instant start, Instant end, T be)[]>
         SuggestReservation<T>(Duration length, int limit = 3)
         where T : BorrowableEntity
     {
@@ -238,14 +236,11 @@ public class ReservationService : IReservationsService
         var possibleBes = await db.Set<T>()
             .Where(be => be.Status != Status.Broken).ToArrayAsync();
 
-        var minStart = _localizationService.Now;
+        var minStart = _clock.GetCurrentInstant() + _reservationConstant.MinDurBeforeReservation;
         var minStartWithOffset = minStart +
-                                 _reservationConstant.MinDurBeforeReservation;
+                                 _reservationConstant.SuggestReservationDurForBorrow;
 
-        // Give some time to borrow
-        minStartWithOffset +=
-            _reservationConstant.SuggestReservationDurForBorrow;
-
+        // Use offset as it could be just right now
         var atMinStart =
             await MinStartSuggestReservations(minStartWithOffset, possibleBes,
                 length,
@@ -256,7 +251,8 @@ public class ReservationService : IReservationsService
             .ToArray();
         limit = Math.Max(limit - possibleBes.Length, 0);
 
-        var inBetween = await InBetweenSuggestReservations(minStartWithOffset,
+        // InBetween -> There will be some time to create a reservation in between use minStart
+        var inBetween = await InBetweenSuggestReservations(minStart,
             possibleBes, length, limit);
 
         // Ends could be sooner than possible so don't update limit, only possible bes
@@ -264,7 +260,7 @@ public class ReservationService : IReservationsService
         possibleBes = possibleBes.Except(inBetween.Select(t => t.Entity))
             .ToArray();
         var ends =
-            await AfterAllSuggestReservations(minStartWithOffset, possibleBes,
+            await AfterAllSuggestReservations(minStart, possibleBes,
                 limit);
         var possibleRes = atMinStart.Concat(inBetween.Concat(ends).ToArray());
 
@@ -278,10 +274,8 @@ public class ReservationService : IReservationsService
         var projected = result.Select(r =>
         {
             var end = r.Start + length;
-            var endLoc = end.InZone(_localizationService.TimeZone)
-                .LocalDateTime;
-            var startLoc = r.Start.InZone(_localizationService.TimeZone)
-                .LocalDateTime;
+            var endLoc = end;
+            var startLoc = r.Start;
 
             return (startLoc, endLoc, r.Entity);
         }).ToArray();
@@ -293,7 +287,7 @@ public class ReservationService : IReservationsService
     private async Task<int> GetUserUpcomingReservationsCount(int id)
     {
         await using var db = await _dbFactory.CreateDbContextAsync();
-        var now = _localizationService.Now;
+        var now = _clock.GetCurrentInstant();
         var userReservations = await db.Reservations
             .Where(r => r.UserID == id && r.End > now).CountAsync();
         return userReservations;

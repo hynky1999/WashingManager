@@ -467,4 +467,25 @@
     <data name=" Reservation intersects with another" xml:space="preserve">
         <value/>
     </data>
+    <data name="Pay by user balance" xml:space="preserve">
+        <value />
+    </data>
+    <data name="Pay by cash" xml:space="preserve">
+        <value />
+    </data>
+    <data name="End Borrow" xml:space="preserve">
+        <value />
+    </data>
+    <data name="Object info" xml:space="preserve">
+        <value />
+    </data>
+    <data name="Borrow Description" xml:space="preserve">
+        <value />
+    </data>
+    <data name="Current price" xml:space="preserve">
+        <value />
+    </data>
+    <data name="Person" xml:space="preserve">
+        <value />
+    </data>
 </root>

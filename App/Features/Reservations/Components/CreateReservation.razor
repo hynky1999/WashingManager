@@ -9,7 +9,7 @@
 <Form WrapperColSpan="16"
       Model="_reservationMixin" OnFinish="() => CreateReservationAsync(_reservationMixin)">
     <FormItem WrapperColSpan="12" Label="@Loc["Entity"]">
-        <ModelSelect TItem="T" @bind-Value="@context.BE" OnChange=@ChangeDisabled
+        <ModelSelect TItem="T" @bind-Value="@context.BE" OnChange=@ChangeDisabled AllowClear="@false"
                      DataSource="_nonBrokenEntities" CrudInitialize="@false">
         </ModelSelect>
     </FormItem>
@@ -63,6 +63,8 @@
     private async Task ChangeDisabled(T selectedBE) {
         var reservations = await ReservationsService.GetUpcomingReservationsByEntityAsync(selectedBE);
         _disabledDateTimesStore = DisabledDateTimesStore.FromNodaRanges(reservations.Select(r => (r.Start.InZone(Loc.TimeZone).LocalDateTime, r.End.InZone(Loc.TimeZone).LocalDateTime)));
+        
+        
     }
 
     private async Task CreateReservationAsync(ReservationMixin reservationMixin) {
@@ -72,7 +74,7 @@
         }
         var authState = await authTask;
         await MessageService.GenericOnDBError(Loc, async () => {
-            await ReservationsService.CreateReservationAsync(reservationMixin.Range.Item1, reservationMixin.Range.Item2, authState.User, reservationMixin.BE!);
+            await ReservationsService.CreateReservationAsync(reservationMixin.Range.Item1.InZoneLeniently(Loc.TimeZone).ToInstant(), reservationMixin.Range.Item2.InZoneLeniently(Loc.TimeZone).ToInstant(), authState.User, reservationMixin.BE!);
             MessageService.Success(Loc["Reservation created"]).FireAndForget();
             _reservationMixin = new();
         });

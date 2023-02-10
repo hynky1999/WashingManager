@@ -5,7 +5,6 @@ using App.Auth.Utils;
 using App.Data;
 using App.Data.Constants;
 using App.Data.EFCoreServices;
-using App.Data.LocServices;
 using App.Data.Models;
 using App.Data.ServiceInterfaces;
 using App.Data.Utils;
@@ -13,33 +12,12 @@ using App.Middlewares;
 using App.ServerServices;
 using App.Utils;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Localization;
 using Moq;
 using NodaTime;
 using Xunit;
 
 namespace EFCoreTests;
 
-public class ResConstTest : IReservationConstant
-{
-    public Duration MaxReservationDur => Duration.FromHours(10);
-    public Duration MinReservationDur => Duration.FromMinutes(0);
-    public Duration MinDurBeforeReservation => Duration.FromMinutes(0);
-    public Duration MinReservationCancelDur => Duration.FromMinutes(0);
-    public Duration ReservationPostponeDur => Duration.FromMinutes(30);
-    public Duration SuggestReservationDurForBorrow => Duration.FromMinutes(30);
-    public int MaxReservationsAtTime => 5;
-}
-
-public class RatesTest : IRates
-{
-    public int PricePerHalfHour => 10;
-    public int FlatBorrowPrice => 100;
-    public int PricePerOverRes => 20;
-    public int NoBorrowPenalty => 30;
-    public Currency DBCurrency => Currency.CZK;
-}
 
 public class _TEST_DB_RESMAN : DBFullFactory
 {
@@ -51,47 +29,39 @@ public class _TEST_DB_RESMAN : DBFullFactory
 public class ReservationManagerTests : IClassFixture<_TEST_DB_RESMAN>,
     IDisposable
 {
+    
+    
     private Utils.CustomizableClock _clock;
-
     public ReservationManagerTests(_TEST_DB_RESMAN factory)
     {
-        CurrencyService = new CurrencyService();
         _clock = new Utils.CustomizableClock();
-        var configuration = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.Development.json")
-            .Build();
-        Loc = new LocalizationService(_clock, CurrencyService,
-            Mock.Of<IStringLocalizer<LocalizationService>>(), configuration);
+        ReservationConstant = new Utils.TestReservationConstant();
         IContextHookMiddleware middleware = new ContextHookMiddleware();
-        IUsageService usageService = new UsageService(Loc, new UsageContants());
+        IUsageService usageService = new UsageService( _clock ,new UsageContants());
         ICurrencyService currencyService = new CurrencyService();
         BPService = new BorrowPersonService(factory);
-        ReservationConstant = new ResConstTest();
-        Rates = new RatesTest();
+        Rates = new Utils.TestRates();
         IUserService userService =
             new UserService(factory, Rates, currencyService);
-        IReservationConstant reservationConstant = new ResConstTest();
         WMService =
             new CrudService<WashingMachine>(factory, middleware);
         BorrowService =
-            new BorrowService(factory, BPService, Loc, usageService, Rates);
+            new BorrowService(factory, BPService, usageService, Rates, _clock, userService);
         ReservationService = new ReservationService(factory,
-            BorrowService, Loc, reservationConstant, middleware);
+            BorrowService, ReservationConstant, middleware, _clock);
 
 
-        ReservationManager = new ReservationManager(userService, Loc,
-            BorrowService, reservationConstant, Rates, middleware, factory);
+        ReservationManager = new ReservationManager(userService,
+            BorrowService, ReservationConstant, Rates, middleware, factory, _clock);
 
 
         ProgramInit.InitializeHooks(middleware, ReservationManager);
         Factory = factory;
     }
 
-    private CurrencyService CurrencyService { get; }
     private IDbContextFactory<ApplicationDbContext> Factory { get; }
     private IReservationsService ReservationService { get; }
     private IReservationManager ReservationManager { get; }
-    private ILocalizationService Loc { get; }
     private IRates Rates { get; }
     private IReservationConstant ReservationConstant { get; }
     private ICrudService<WashingMachine> WMService { get; }
@@ -171,8 +141,8 @@ public class ReservationManagerTests : IClassFixture<_TEST_DB_RESMAN>,
         var start = clockTime + Duration.FromSeconds(1);
         var end = start + Duration.FromSeconds(5);
         await ReservationService.CreateReservationAsync(
-            start.InZone(Loc.TimeZone).LocalDateTime,
-            end.InZone(Loc.TimeZone).LocalDateTime, userPrincipal, wm);
+            start,
+            end, userPrincipal, wm);
 
         // Since we modify time manually it can happen that manager is notified after the clock is set this ensure that it is not the case
         _clock.SetTime(end - Duration.FromSeconds(1));
@@ -210,8 +180,8 @@ public class ReservationManagerTests : IClassFixture<_TEST_DB_RESMAN>,
         var start = clockTime + Duration.FromSeconds(1);
         var end = start + Duration.FromSeconds(5);
         var res = await ReservationService.CreateReservationAsync(
-            start.InZone(Loc.TimeZone).LocalDateTime,
-            end.InZone(Loc.TimeZone).LocalDateTime, userPrincipal, wm);
+            start,
+            end, userPrincipal, wm);
 
         // Since we modify time manually it can happen that manager is notified after the clock is set this ensure that it is not the case
         _clock.SetTime(end - Duration.FromSeconds(1));
@@ -263,13 +233,13 @@ public class ReservationManagerTests : IClassFixture<_TEST_DB_RESMAN>,
         var end2 = start2 + Duration.FromSeconds(5);
 
         var res2 = await ReservationService.CreateReservationAsync(
-            start2.InZone(Loc.TimeZone).LocalDateTime,
-            end2.InZone(Loc.TimeZone).LocalDateTime, userPrincipal, wm);
+            start2,
+            end2, userPrincipal, wm);
 
         // Should override the timer of res2
         var res1 = await ReservationService.CreateReservationAsync(
-            start.InZone(Loc.TimeZone).LocalDateTime,
-            end.InZone(Loc.TimeZone).LocalDateTime, userPrincipal, wm);
+            start,
+            end, userPrincipal, wm);
 
         var bp = await BPService.GetByIdAsync(1);
         var borrow = new Borrow()
@@ -282,11 +252,11 @@ public class ReservationManagerTests : IClassFixture<_TEST_DB_RESMAN>,
         };
 
         // Since we modify time manually it can happen that manager is notified after the clock is set this ensure that it is not the case
-        _clock.SetTime(end - Duration.FromSeconds(2));
+        _clock.SetTime(_clock.GetCurrentInstant() + Duration.FromSeconds(2));
         await Task.Delay(2000);
-        _clock.SetTime(end);
         await BorrowService.AddBorrowAsync(borrow);
-        await Task.Delay(8000);
+        _clock.SetTime(end);
+        await Task.Delay(6000);
 
         using var ctx = await Factory.CreateDbContextAsync();
         // User penalty for overborrowing

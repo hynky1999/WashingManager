@@ -34,7 +34,7 @@
     private async Task InitializeData(LocalDate? val) {
         if (val is not null) {
     // ReSharper disable once CoVariantArrayConversion
-            _statData = (await Charts.GetBorrowsByHourAsync(val.Value)).Select(usage => new {x = usage.hour.ToString(), y = usage.value}).ToArray();
+            _statData = (await Charts.GetBorrowsByHourAsync(val.Value, Loc.TimeZone)).Select(usage => new {x = usage.hour.ToString(), y = usage.value}).ToArray();
             if (_chart != null) {
     // Idk doesn't react to statHasCHanged
                 var description = ChartsUtils.GetChartDescription(Usage, EntityName, (Date, null), Loc);

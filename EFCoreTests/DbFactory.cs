@@ -43,9 +43,15 @@ public abstract class DbFactory : IDbContextFactory<ApplicationDbContext>,
 
     public ApplicationDbContext CreateDbContext()
     {
-        var configuration = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json")
-            .Build();
+        var _configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json");
+        
+        var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+        if (env != null)
+        {
+            _configuration.AddJsonFile($"appsettings.{env}.json", true);
+        }
+        var configuration = _configuration.AddEnvironmentVariables().Build();
         var pass = configuration.GetConnectionString("PostgresPassword");
         var user = configuration.GetConnectionString("PostgresUsername");
         var host = configuration.GetConnectionString("PostgresHost");

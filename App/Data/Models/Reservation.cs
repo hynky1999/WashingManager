@@ -5,16 +5,12 @@ using App.Data.ModelInterfaces;
 using App.Data.ServiceInterfaces;
 using App.Data.Utils;
 
-#pragma warning disable CS1591
-
 // ReSharper disable PropertyCanBeMadeInitOnly.Global
-#pragma warning disable CS8618
 
 namespace App.Data.Models;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 // ReSharper disable InconsistentNaming
-// ReSharper disable NonReadonlyMemberInGetHashCode
 /// <summary>
 /// Model representing a reservation of Borrowable Entity
 /// </summary>
@@ -31,21 +27,23 @@ public class Reservation : ICloneable, IDBModel
     public int BorrowableEntityID { get; set; }
 
     [DisplayName("Borrowable Entity")]
-    [Required]
-    public BorrowableEntity BorrowableEntity { get; set; }
+    public BorrowableEntity BorrowableEntity { get; set; } = null!;
 
 
+    //Claim
     [DisplayName("User ID")]
     [UIVisibility(UIVisibilityEnum.Disabled)]
-    //Claim
     public int UserID { get; set; }
 
 
-    [DisplayName("User")] [Required] public ApplicationUser User { get; set; }
+    [DisplayName("User")] 
+    public ApplicationUser User { get; set; } = null!;
 
-    [DisplayName("Start Time")] [Required] public Instant Start { get; set; }
+    [DisplayName("Start Time")]
+    public Instant Start { get; set; }
 
-    [DisplayName("End Time")] [Required] public Instant End { get; set; }
+    [DisplayName("End Time")]
+    public Instant End { get; set; }
 
     public uint xmin { get; set; }
 

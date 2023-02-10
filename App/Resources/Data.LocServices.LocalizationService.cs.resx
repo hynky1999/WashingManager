@@ -459,4 +459,25 @@
     <data name=" Reservation intersects with another" xml:space="preserve">
         <value>Reservace se překrývá s jinou</value>
     </data>
+    <data name="Pay by cash" xml:space="preserve">
+        <value>Zaplatit hotově</value>
+    </data>
+    <data name="Pay by user balance" xml:space="preserve">
+        <value>Zaplatit zůstatkem</value>
+    </data>
+    <data name="Borrow Description" xml:space="preserve">
+        <value>Popis půjčky</value>
+    </data>
+    <data name="Current price" xml:space="preserve">
+        <value>Cena</value>
+    </data>
+    <data name="End Borrow" xml:space="preserve">
+        <value>Ukončit výpůjčku</value>
+    </data>
+    <data name="Object info" xml:space="preserve">
+        <value>Info o objektu</value>
+    </data>
+    <data name="Person" xml:space="preserve">
+        <value>Osoba</value>
+    </data>
 </root>

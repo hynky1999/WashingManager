@@ -19,7 +19,7 @@
         _config = ChartsUtils.CreateColumnConfig(Usage, description, "Day of Week", "Usage", Loc);
     // ReSharper disable once CoVariantArrayConversion
     // It will be only read
-        _statData = (await Charts.GetWeekUsageAsync()).Select(usage => new {x = Loc[usage.dayOfWeek.ToString()], y = Loc.Round(usage.value)}).ToArray();
+        _statData = (await Charts.GetWeekUsageAsync(Loc.TimeZone)).Select(usage => new {x = Loc[usage.dayOfWeek.ToString()], y = Loc.Round(usage.value)}).ToArray();
         await base.OnParametersSetAsync();
         base.OnInitialized();
     }

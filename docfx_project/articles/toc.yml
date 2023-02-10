@@ -1,0 +1,54 @@
+items:
+- name: Home
+  href: intro.md
+
+- name: User Guide
+  items:
+  - name: How to run
+    href: user_guide/how_to_run.md
+
+  - name: Users
+    href: user_guide/users.md
+
+  - name: User Management
+    href: user_guide/user_management.md
+
+  - name: Borrows
+    href: user_guide/borrows.md
+
+  - name: Reservations
+    href: user_guide/reservations.md
+  
+  - name: Localizations
+    href: user_guide/localization.md
+
+- name: Programming Guide
+  items:
+  - name: Architecture
+    href: prog_guide/architecture.md
+
+  - name: Data Access
+    href: prog_guide/data_access.md
+
+  - name: Authorization and Authentication
+    href: prog_guide/auth.md
+
+  - name: Localization
+    href: prog_guide/loc.md
+
+  - name: Middlwares
+    href: prog_guide/middleware.md
+
+  - name: Testing
+    href: prog_guide/testing.md
+
+  - name: Usage implementation
+    href: prog_guide/avg_usage.md
+
+  - name: Documentation
+    href: prog_guide/docs.md
+
+  - name: Miscellaneous
+    href: prog_guide/misc.md
+
+

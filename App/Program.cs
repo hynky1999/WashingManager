@@ -21,17 +21,15 @@ var connectionString =
     $"Host={builder.Configuration.GetConnectionString("PostgresHost")};Database={builder.Configuration.GetConnectionString("PostgresDatabase")};Username={builder.Configuration.GetConnectionString("PostgresUsername")};Password={builder.Configuration.GetConnectionString("PostgresPassword")}";
 
 
-builder.Configuration.GetConnectionString("PostgresConn");
-
 void ContextOpts(DbContextOptionsBuilder options) =>
     options.UseNpgsql(connectionString, o => o.UseNodaTime());
 
 builder.Services.AddSingleton<IContextHookMiddleware, ContextHookMiddleware>();
 
 builder.Services.AddDbContextFactory<ApplicationDbContext>(
-    (Action<DbContextOptionsBuilder>) ContextOpts);
+    (Action<DbContextOptionsBuilder>)ContextOpts);
 builder.Services.AddDbContext<ApplicationDbContext>(
-    (Action<DbContextOptionsBuilder>) ContextOpts);
+    (Action<DbContextOptionsBuilder>)ContextOpts);
 builder.Services.AddIdentity<ApplicationUser, Role>(options =>
     {
         options.SignIn.RequireConfirmedAccount = false;
@@ -50,7 +48,7 @@ builder.Services.AddIdentity<ApplicationUser, Role>(options =>
 builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
 {
     options.Conventions.AuthorizeAreaFolder("Manage", "/Account/Manage");
-    options.Conventions.AuthorizeAreaFolder("SignIn", "/Login",
+    options.Conventions.AuthorizeAreaFolder("Manage", "/Account/Admin",
         "UserManagement");
 });
 builder.Services.AddServerSideBlazor();
@@ -62,8 +60,6 @@ builder.Services.AddSingleton<IReservationConstant, ReservationConstant>();
 
 builder.Services.AddSingleton<IUsageConstants, UsageContants>();
 
-// Loc
-builder.Services.AddSingleton<ILocalizationService, LocalizationService>();
 
 
 // ICrud Services
@@ -126,6 +122,8 @@ builder.Services.AddAuthorization(options =>
 });
 
 // Localization
+builder.Services.AddScoped<ILocalizationService, LocalizationService>();
+
 builder.Services.AddLocalization(options =>
     options.ResourcesPath = "Resources");
 

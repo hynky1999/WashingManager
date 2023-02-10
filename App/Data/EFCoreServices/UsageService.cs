@@ -10,18 +10,18 @@ namespace App.Data.EFCoreServices;
 /// </summary>
 public class UsageService : IUsageService
 {
-    private readonly ILocalizationService _localizationService;
     private readonly IUsageConstants _usageConstants;
+    private readonly IClock _clock;
 
     /// <summary>
     /// Constructor
     /// </summary>
-    /// <param name="localizationService"></param>
+    /// <param name="clock"></param>
     /// <param name="usageConstants"></param>
-    public UsageService(ILocalizationService localizationService,
+    public UsageService(IClock clock,
         IUsageConstants usageConstants)
     {
-        _localizationService = localizationService;
+        _clock = clock;
         _usageConstants = usageConstants;
     }
 
@@ -31,7 +31,7 @@ public class UsageService : IUsageService
         where T : BorrowableEntity
     {
         var tz = _usageConstants.UsageTimeZone;
-        var endDateInCet = _localizationService.Now.InZone(tz);
+        var endDateInCet = _clock.GetCurrentInstant().InZone(tz);
         var startDateInCet = borrow.Start.InZone(tz);
         var duration =
             Period.DaysBetween(startDateInCet.Date, endDateInCet.Date);
@@ -56,16 +56,19 @@ public class UsageService : IUsageService
         long baseDays = duration / 7;
         foreach (var day in foundDays)
         {
+            // 0 or 1
             long remainder = Enumerable.Range(0, (duration + 1) % 7)
                 .Count(x =>
                     startDateInCet.Date.PlusDays(x).DayOfWeek == day.DayId);
             for (var i = 0; i < 24; i++)
             {
                 long minus = 0;
+                // if hour before start minus += 1
                 if (i < startDateInCet.Hour &&
                     startDateInCet.DayOfWeek == day.DayId) minus += 1;
 
-                if (i >= endDateInCet.Hour &&
+                // if hour after end minus += 1
+                if (new LocalTime(i, 0) >= endDateInCet.LocalDateTime.TimeOfDay &&
                     endDateInCet.DayOfWeek == day.DayId) minus += 1;
 
                 day.SetHour(i, day.GetHour(i) + baseDays + remainder - minus);

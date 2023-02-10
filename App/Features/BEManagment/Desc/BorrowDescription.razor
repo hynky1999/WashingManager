@@ -1,10 +1,9 @@
-@using App.Data.Models
 @inject ILocalizationService Loc
 @if (Borrow is not null) {
     <Card Title=@Loc["Borrow Description"]>
         <Body>
         <Descriptions Column="column">
-            <DescriptionsItem Title=@Loc["Start time"]>
+            <DescriptionsItem Title=@Loc["Start Time"]>
                 @Loc[Borrow.Start]
             </DescriptionsItem>
             <DescriptionsItem Title=@Loc["Person"]>

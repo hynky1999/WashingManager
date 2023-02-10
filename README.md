@@ -21,24 +21,18 @@ Roles:
 
 ### Reservations
 Each student can reserve a washing machine for a specific time period.
-During this period the student have to come to the commissionaire to pick up the washing machine. If he doesn't do that he will receive a timeout penalty and won't be allowed to make reservation next N days.
+During this period the student have to come to the commissionaire to pick up the washing machine. If he doesn't do that he will receive a  penalty.
 
-If student fails to return a washing machine in time period he will receive a monetary penalty and any student who has reserved the machine after the student will be notified and his period will be changed accordingly.
+If student fails to return a washing machine in time period he will receive a monetary penalty and any student who has reserved the machine after the student will have period changed accordingly.
 
-Students can cancel their reservation. However they have to do it at least N hours before the start of the reservation. The students affected by failed retrieval will be able to cancel the reservation when notified about it(no N hours).
+Students can cancel their reservation. However they have to do it at least N hours before the start of the reservation.
 
 ### Reservation suggestions
 - Users will be able to create manual reservation from calendar.
-- Calendar can be filtered by machines and their groups(building A/B, floor number range)
-
-Or they can use the system to suggest reservation.
+- Users can use the system to suggest reservation.
 
 ### Reservation info
 - Each student can see his ongoing reservations and cancel them in this section. The past reservations will be also displayed here with amount paid.
-
-### Borrow without reservation
-Commissionaire can lend a washing machine to student without reservation.
-However there obviously must not be reservation for the machine at the same time. The commissionaire will have to input the student info manually(Name Surname) to the system.
 
 ### Statistics
 Various statistics will be gathered and displayed to all users.
@@ -55,7 +49,7 @@ Various statistics will be gathered and displayed to all users.
 
 
 ## Technical details
-The system will be developed in C# 10.0 in Blazor server ?framework? using dotnet core 6.0.
+The system will be developed in C# 10.0 in Blazor server framework using dotnet core 6.0.
 
 ### Why Blazor server and not the wasm version ?
 #### Advantages:
@@ -74,5 +68,3 @@ The system will be developed in C# 10.0 in Blazor server ?framework? using dotne
 ### *Advanced* c# concepts used:
 - Linq for DB queries
 - Async/Await
-
-![Alt DB Architecture](./Svgs/PrackyDBForV1.svg)
