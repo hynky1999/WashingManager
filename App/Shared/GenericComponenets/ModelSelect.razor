@@ -5,8 +5,8 @@
 @using App.Data.ModelInterfaces
 @inherits AntInputComponentBase<TItem>
 
-@* ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract *@
 @* Please keep the nullable access there as the e can be null since AllowClear can be true *@
+@* ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract *@
 <Select
     AllowClear="@AllowClear"
     @bind-Value="@CurrentValue"

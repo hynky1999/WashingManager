@@ -13,7 +13,7 @@
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
       <DocumentationFile>bin\Debug\net6.0\PrackyASusarny.xml</DocumentationFile>
-        <NoWarn>1701;1702;1591</NoWarn>
+        <NoWarn>1701;1702;</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
