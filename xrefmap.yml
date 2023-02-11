@@ -7410,6 +7410,25 @@ references:
   commentId: T:App.Middlewares.ContextHookMiddleware
   fullName: App.Middlewares.ContextHookMiddleware
   nameWithType: ContextHookMiddleware
+- uid: App.Middlewares.ContextHookMiddleware.#ctor
+  name: ContextHookMiddleware()
+  href: api/App.Middlewares.ContextHookMiddleware.html#App_Middlewares_ContextHookMiddleware__ctor
+  commentId: M:App.Middlewares.ContextHookMiddleware.#ctor
+  name.vb: New()
+  fullName: App.Middlewares.ContextHookMiddleware.ContextHookMiddleware()
+  fullName.vb: App.Middlewares.ContextHookMiddleware.New()
+  nameWithType: ContextHookMiddleware.ContextHookMiddleware()
+  nameWithType.vb: ContextHookMiddleware.New()
+- uid: App.Middlewares.ContextHookMiddleware.#ctor*
+  name: ContextHookMiddleware
+  href: api/App.Middlewares.ContextHookMiddleware.html#App_Middlewares_ContextHookMiddleware__ctor_
+  commentId: Overload:App.Middlewares.ContextHookMiddleware.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: App.Middlewares.ContextHookMiddleware.ContextHookMiddleware
+  fullName.vb: App.Middlewares.ContextHookMiddleware.New
+  nameWithType: ContextHookMiddleware.ContextHookMiddleware
+  nameWithType.vb: ContextHookMiddleware.New
 - uid: App.Middlewares.ContextHookMiddleware.AddContextHook*
   name: AddContextHook
   href: api/App.Middlewares.ContextHookMiddleware.html#App_Middlewares_ContextHookMiddleware_AddContextHook_
