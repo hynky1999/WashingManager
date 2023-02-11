@@ -20,7 +20,7 @@ jobs:
         dotnet-version: 6.x
     - name: Docfx Setup
       run: dotnet tool update -g docfx
-    - run: docfx docfx_project/docfx.json
+    - run: docfx docfx_project/docfx.json -o ./_site
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
