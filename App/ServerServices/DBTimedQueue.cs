@@ -1,6 +1,11 @@
 namespace App.ServerServices;
 
-/// <inheritdoc />
+/// <summary>
+/// Implementation of ITimedQueue.
+/// It uses Timer to invoke OnEvent event.
+/// Holds no queue of events, only keeps the next event.
+/// </summary>
+/// <typeparam name="TItem"></typeparam>
 public class DBTimedQueue<TItem> : ITimedQueue<TItem>
 {
     private readonly Func<TItem, Duration> _getDuration;
@@ -59,7 +64,10 @@ public class DBTimedQueue<TItem> : ITimedQueue<TItem>
         _timer = newTimer;
     }
 
-    /// <inheritdoc />
+    
+    /// <summary>
+    /// Disposes the timer and removes all event handlers.
+    /// </summary>
     public void Dispose()
     {
         _timer?.Dispose();

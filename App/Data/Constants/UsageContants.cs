@@ -1,6 +1,9 @@
 namespace App.Data.Constants;
 
-/// <inheritdoc />
+
+/// <summary>
+/// Implementation of usage constants for the application
+/// </summary>
 public class UsageContants : IUsageConstants
 {
     /// <inheritdoc />

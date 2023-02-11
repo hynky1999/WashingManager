@@ -4,6 +4,7 @@ using App.Auth.Models;
 using App.Data.ModelInterfaces;
 using App.Data.ServiceInterfaces;
 using App.Data.Utils;
+#pragma warning disable CS1591
 
 // ReSharper disable PropertyCanBeMadeInitOnly.Global
 

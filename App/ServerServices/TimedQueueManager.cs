@@ -2,7 +2,10 @@ using System.Collections.Concurrent;
 
 namespace App.ServerServices;
 
-/// <inheritdoc />
+/// <summary>
+/// Manages multiple ITimedQueue instances with ConcurrentDictionary
+/// </summary>
+/// <typeparam name="TItem"></typeparam>
 public class TimedQueueManager<TItem> : ITimedQueueManager<TItem>
 {
     private readonly Func<int, ITimedQueue<TItem>> _factory;
@@ -43,7 +46,9 @@ public class TimedQueueManager<TItem> : ITimedQueueManager<TItem>
     /// <inheritdoc />
     public int Count => _items.Count;
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Disposes all queues
+    /// </summary>
     public void Dispose()
     {
         foreach (var queue in _items.Values)
@@ -51,37 +56,4 @@ public class TimedQueueManager<TItem> : ITimedQueueManager<TItem>
             queue.Dispose();
         }
     }
-}
-
-/// <summary>
-/// A class which manages multiple ITimedQueue instances
-/// It enables to create, get and remove queues
-/// </summary>
-/// <typeparam name="TItem"></typeparam>
-public interface ITimedQueueManager<TItem> : IDisposable
-{
-    /// <summary>
-    /// Returns number of queues
-    /// </summary>
-    public int Count { get; }
-
-    /// <summary>
-    /// Creates a new queue
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
-    public ITimedQueue<TItem> CreateQueue(int id);
-
-    /// <summary>
-    /// Returns a queue with given id
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
-    public ITimedQueue<TItem>? GetQueue(int id);
-
-    /// <summary>
-    /// Removes a queue with given id
-    /// </summary>
-    /// <param name="id"></param>
-    public void RemoveQueue(int id);
 }

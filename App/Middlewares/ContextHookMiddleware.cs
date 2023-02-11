@@ -2,12 +2,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace App.Middlewares;
 
-/// <inheritdoc />
+/// <summary>
+/// Implementation of IContextHookMiddleware
+/// </summary>
 public class ContextHookMiddleware : IContextHookMiddleware
 {
     private readonly Dictionary<Type, EventHandler<object>?[]> _eventHandlers =
         new();
 
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    public ContextHookMiddleware()
+    {
+    }
 
     /// <inheritdoc />
     public Task OnSave(EntityState state, object entity)

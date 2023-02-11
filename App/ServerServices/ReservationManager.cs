@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace App.ServerServices;
 
-/// <inheritdoc cref="IReservationManager" />
+/// Implementation of IReservationManager />
 public class ReservationManager : IReservationManager, IDisposable
 {
     private readonly IBorrowService _borrowService;
@@ -46,7 +46,9 @@ public class ReservationManager : IReservationManager, IDisposable
         _clock = clock;
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Disposes all queues
+    /// </summary>
     public void Dispose()
     {
         _timedQueueManager.Dispose();
