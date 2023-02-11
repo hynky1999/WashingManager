@@ -30,4 +30,4 @@ Each policy requires a user to have certain claim. The claims are:
 - ManageBorrows -> BorrowManagement
 - UserID -> ID of the user in DB where we store other data
 
-Authorization related things can be found at <xref:PrackyASusarny.Auth.Utils>.
+Authorization related things can be found at <xref:App.Auth.Utils>.
