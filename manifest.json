@@ -1,0 +1,2681 @@
+{
+  "homepages": [],
+  "source_base_path": "/home/runner/work/WashingManager/WashingManager/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Admin.AdminNavPages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Admin.AdminNavPages.html",
+          "hash": "cHdmPoZ1hhKs5EctKNLuyXI5ZBepOgiF6pCF/UibPWs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Admin.RegisterModel.InputModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Admin.RegisterModel.InputModel.html",
+          "hash": "8I6uqEb5xDJtZSfGA2nej06LAs8r8KaZVcWOFafDCH0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Admin.RegisterModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Admin.RegisterModel.html",
+          "hash": "aSWVUf9C2IQz+6YMqbndRGwdWSo/pGNpMTxOT2BkWXs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Admin._AdminNav.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Admin._AdminNav.html",
+          "hash": "4aFhyNkFd3s1ODvfgdwb39g7UZus2vZagK4wChe6PzQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Admin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Admin.html",
+          "hash": "5A1rIuYdBIJ1j7BjmTNGwDwA69ARpk8zJYGIyXUraD8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Manage.ChangePasswordModel.InputModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Manage.ChangePasswordModel.InputModel.html",
+          "hash": "JV3RfNXGf0Vs48be+YncOVfTY2wjodDzl7E/dEGLvOo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Manage.ChangePasswordModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Manage.ChangePasswordModel.html",
+          "hash": "d3jmD/YrXdnJpq5y2tJ76MBDHoKXoUCs0yOTakdS1wQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Manage.DeletePersonalDataModel.InputModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Manage.DeletePersonalDataModel.InputModel.html",
+          "hash": "uRBdHHDw7ETfzy089EwazpcsP+HDePetlRjTDD6k9DM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Manage.DeletePersonalDataModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Manage.DeletePersonalDataModel.html",
+          "hash": "da6luXhAn8q6mJWrnpHZU+IKct54sFN/Zykx85uojfA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Manage.DownloadPersonalDataModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Manage.DownloadPersonalDataModel.html",
+          "hash": "vG0G529+Kc+tR38rW1+9tUvnYXBz1Em2eiot5vG6bjs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Manage.EmailModel.InputModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Manage.EmailModel.InputModel.html",
+          "hash": "V7kxiyxA9cdm4/5Wd/ZOBysuKD7tSmcAD8fTicAoVgI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Manage.EmailModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Manage.EmailModel.html",
+          "hash": "ghDzAECkxhF7aQa2udy3RR2/1M/wNfJY5e1t8ENW5CQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Manage.IndexModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Manage.IndexModel.html",
+          "hash": "Yg7bCZkyhMmI06GFM5DGFoCWgVj9Eii7OV1umMszjM4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Manage.ManageNavPages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Manage.ManageNavPages.html",
+          "hash": "DFPM8s1+FbvRqobLUw99W9i+cCOtwZiswyFJ69Fvd1k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Manage.PersonalDataModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Manage.PersonalDataModel.html",
+          "hash": "5JesYhLrzT+7RILfj2xQrUw/KTU//arHH52hVDp6ubc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.Manage.Pages.Account.Manage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.Manage.Pages.Account.Manage.html",
+          "hash": "KKK8u8cNbS++ZlnHqjNHXz4FiDMDlWLP5c+4Ci1nzC0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.SignIn.Pages.Login.LoginModel.InputModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.SignIn.Pages.Login.LoginModel.InputModel.html",
+          "hash": "Rli6Z+3pwef/+I0w2pdnflc2SutyN+B341MgiyPiAvc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.SignIn.Pages.Login.LoginModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.SignIn.Pages.Login.LoginModel.html",
+          "hash": "J9AtGrJubTX2ZRAKnVpJu96MBtvrPuVIqrLlWLn8xPY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.SignIn.Pages.Login.LogoutModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.SignIn.Pages.Login.LogoutModel.html",
+          "hash": "FAoP1p5/ZWhogs4gLFCngK7kOMEXf6vxPxcg9+t8zbo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Areas.SignIn.Pages.Login.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Areas.SignIn.Pages.Login.html",
+          "hash": "+hIoj+VFEmIMAZLx8vOvQpg3u2Htgm+6P8UHCKQ/ZTg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Auth.Models.ApplicationUser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Auth.Models.ApplicationUser.html",
+          "hash": "WPnOuaXjD+MJIn8SQ6eKWaT5R51ClwMkRf4G61BBAlw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Auth.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Auth.Models.html",
+          "hash": "RC1zxJqQcQ5rCV+54CBkt5fIskte87XISZAH8kabWd4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Auth.Utils.Claims.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Auth.Utils.Claims.html",
+          "hash": "f5eqTnor3S+8y19ubIAjgU8UurfVhUAPfKBC13c9Roc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Auth.Utils.IdentityRoles.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Auth.Utils.IdentityRoles.html",
+          "hash": "FX3QTLksFwFNr19XnTuGeXPJSWtSIrM1bANsa2XwrVU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Auth.Utils.Policies.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Auth.Utils.Policies.html",
+          "hash": "JMre0GYq0+CbBPG0gtaU+cD0PISwO+rvsMKZ/iJnFBg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Auth.Utils.Role.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Auth.Utils.Role.html",
+          "hash": "bSY+OETiNyeQM/cggl1Wtc9feDrKe/ehlTOXD9kCl6U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Auth.Utils.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Auth.Utils.Utils.html",
+          "hash": "rIBDK8eUlgfUtJcEgeigUVgwGzQN3fJzed1TACHFjZE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Auth.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Auth.Utils.html",
+          "hash": "cquz6gqAfLmVGPdS8PtAg9Uq+hbNcQjUEP+7S1cuhLo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Controllers.CultureController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Controllers.CultureController.html",
+          "hash": "x1Z3kmolgHVGXorwjg+ImhyxU+N65z8BmGnB2cFfUj8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Controllers.html",
+          "hash": "FHvyugVePXLtumSP9thAcz3EXsu5RDsjfx4z9TszV3g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ApplicationDbContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ApplicationDbContext.html",
+          "hash": "Yu1bg7gy4h0AuJlJvxyWrKkb4nfQvVV+U05IHz30haw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Constants.Currency.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Constants.Currency.html",
+          "hash": "hxlDzGbWpMvLm51kdcN17EwV71CyTeqILsJiv3ObeNc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Constants.IRates.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Constants.IRates.html",
+          "hash": "QyZcEAgGLeY0AvKU6fPZktEPrXZu3zPyFqPoUfNRnjo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Constants.IReservationConstant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Constants.IReservationConstant.html",
+          "hash": "Gtp+MyUvKpmZjFqN8RFNLYCb+kSkO4dtC3xC0SNqChg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Constants.IUsageConstants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Constants.IUsageConstants.html",
+          "hash": "MW9LlB+Aaqf+T0oxqQN2eCAR4yGpyOQJtKSlMs7a500="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Constants.Money.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Constants.Money.html",
+          "hash": "h0vonsvfAen28cWn8Wcehe9o4y+gT37w/0a0eElBiaE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Constants.Rates.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Constants.Rates.html",
+          "hash": "+zP/G2AJ6fbdv4UtcF/m4YXK+MrgMxgedpsdahlwHNQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Constants.ReservationConstant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Constants.ReservationConstant.html",
+          "hash": "kQZuQjsKYEAAdGoMXYe7cOgu4ADwgeMigQ5mStjx56k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Constants.UsageContants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Constants.UsageContants.html",
+          "hash": "UE7WLFkI6C/u8EbEGny9+/Ze0VeWdfPxFjfq0eyVSoo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Constants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Constants.html",
+          "hash": "BQxejdOiZpg7+i5lmOLc8xvgjuBa8y4+DI7my0K4zoU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.EFCoreServices.BorrowPersonService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.EFCoreServices.BorrowPersonService.html",
+          "hash": "M9KhYSjdJDJI6Sy+bvs/CUcZ1RuG611zeffvwZJ0EHU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.EFCoreServices.BorrowService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.EFCoreServices.BorrowService.html",
+          "hash": "D2wVPKdyCRusHhS3jDv0ZpeCqg1fz2QLU3ioYsjwiPw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.EFCoreServices.BorrowableEntityService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.EFCoreServices.BorrowableEntityService.html",
+          "hash": "o3erX4ZJgf2+ex9pRoMVAD2dMKpHC6sccVuUPDXv+Po="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.EFCoreServices.CrudService-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.EFCoreServices.CrudService-1.html",
+          "hash": "D+ovhazPQnjE+x5KVRYjYU1tx/WVNFgcNwAQVWeGarI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.EFCoreServices.CurrencyService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.EFCoreServices.CurrencyService.html",
+          "hash": "lQ+B76ydictCH3byUrzEd+VYj819WRMIfQiPl34ZKug="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.EFCoreServices.LocationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.EFCoreServices.LocationService.html",
+          "hash": "D5EI2Xaofuof/qb3ko/HUfC5691sP01EBnDRQAOZkkQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.EFCoreServices.ReservationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.EFCoreServices.ReservationService.html",
+          "hash": "aZV1AUJi0Krj0iVOOBYSnqj8GAUDHgzg/3K0U7aiGpc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.EFCoreServices.UsageChartingService-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.EFCoreServices.UsageChartingService-1.html",
+          "hash": "1NUg3FGV04rMQ2H6Kxe3NGQhkrc+rHw3a3sqTlVv8QU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.EFCoreServices.UsageService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.EFCoreServices.UsageService.html",
+          "hash": "LP7IFbitNfW5TiLBw2FD4cQ4fJOnYyUKi3R83/1umJk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.EFCoreServices.UserService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.EFCoreServices.UserService.html",
+          "hash": "rRoTbODibwI63rPECy2pXPPO53HOXONwkeCDqxVKdhY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.EFCoreServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.EFCoreServices.html",
+          "hash": "DVG3deddo4bU9deFOajzvA6b6FVoawsXiWUwaoEnaEE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.LocServices.LocalizationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.LocServices.LocalizationService.html",
+          "hash": "pjw1w6qkWCMQcpTNkdlhiWEhyw2r5qksfAkR41Wcbb0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.LocServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.LocServices.html",
+          "hash": "MFb7xDktSYeqzfMBN1i3Cfd9hfWCx25J54gumvZLQnQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ModelInterfaces.IDBModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ModelInterfaces.IDBModel.html",
+          "hash": "Y2+g/SvKZ9364TYxEAXuNt2NwrHacjd8d1pvK8TFw1g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ModelInterfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ModelInterfaces.html",
+          "hash": "tvKdebdniCicUUt7Zw0tn+4thZwH4WWCyer5L5MzYd0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Models.Borrow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Models.Borrow.html",
+          "hash": "qeQjjM2uNVDEns0ugxV5ivGpYNs55Hvpp6MBQCGs+7k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Models.BorrowPerson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Models.BorrowPerson.html",
+          "hash": "2kRUHe5A8ob69HdJhObcWQ2nEFyr/jTBexZt6ly6GiE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Models.BorrowableEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Models.BorrowableEntity.html",
+          "hash": "ni3670yxfJswUG/6Bt+0Chmb1SjahUILBMrtxD74RAw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Models.BorrowableEntityUsage-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Models.BorrowableEntityUsage-1.html",
+          "hash": "7ljWNhsQ5oK4GnefS4OiFguUtDPwt6SRLYwk0acNKX4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Models.BorrowableEntityUsage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Models.BorrowableEntityUsage.html",
+          "hash": "9wq34VatKTNAgI6Hm+lCa+32ke9qK/w3ywtBYegIYHs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Models.DryingRoom.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Models.DryingRoom.html",
+          "hash": "kxm4XY0kLghVyxZl1wwQfYpqyCJ/0nlIaWGLvi9pfCU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Models.Location.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Models.Location.html",
+          "hash": "FrHlUuEsBsQ3WJq9tu9lPW05ww1gm8iAm3T1ckTdeuM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Models.Manual.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Models.Manual.html",
+          "hash": "kzt4PyDvifonQcGdXgaKA0KzuXcAAT46OxX34MP8tO0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Models.Reservation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Models.Reservation.html",
+          "hash": "yj/Sij4Oqn07Zq7HeSQRqZggwsWbHXbtMFUCM5Z9id8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Models.WashingMachine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Models.WashingMachine.html",
+          "hash": "ZQRkYKd2I5m1i11ijSAzfxAkDQFzVK71HYKiLAuya5g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Models.html",
+          "hash": "Z5gzgbXiosUW9rk9SvhoF57u99jrlLCNyzEuPTaqHOM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ServiceInterfaces.IBorrowPersonService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ServiceInterfaces.IBorrowPersonService.html",
+          "hash": "FBDPCzLjlPcQ35Edj/86gaZmtTDFZ7aQYGL/KxKnhV8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ServiceInterfaces.IBorrowService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ServiceInterfaces.IBorrowService.html",
+          "hash": "Lt9c2aGFWjWni80raXqfscdFKm/5bA58wmqIRsVgCFA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ServiceInterfaces.IBorrowableEntityService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ServiceInterfaces.IBorrowableEntityService.html",
+          "hash": "TYIm6hXGujGkvNTJotPYWSjYsSAtYUR+vfDn2CvAsl0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ServiceInterfaces.ICrudService-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ServiceInterfaces.ICrudService-1.html",
+          "hash": "7xE+IfAjlg0sNMnL0fmwXljBtRXyeshm4habq8ArlBA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ServiceInterfaces.ICurrencyService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ServiceInterfaces.ICurrencyService.html",
+          "hash": "9V1kB+odZX7ZFTa1Kc16MZrkERNLg/IvRZYRvsvmiBE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ServiceInterfaces.ILocalizationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ServiceInterfaces.ILocalizationService.html",
+          "hash": "RlfhMLVDTT7rlpbSPH0YDOnZ80i51uQVP5Zv1iEC/gs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ServiceInterfaces.ILocationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ServiceInterfaces.ILocationService.html",
+          "hash": "GbxP93Ybf5e1ikiIijlZgF5PegoNdTUWRejzL83rpms="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ServiceInterfaces.IReservationsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ServiceInterfaces.IReservationsService.html",
+          "hash": "Zj7+9i4V3qhlhzeB6MXiFb8UHRI0kLXADplFgX8RvkU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ServiceInterfaces.IUsageChartingService-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ServiceInterfaces.IUsageChartingService-1.html",
+          "hash": "ZjUD9AJf1fYD0U0VVfAQIwKpIqrvdVGWfdAqle4OUx4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ServiceInterfaces.IUsageChartingService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ServiceInterfaces.IUsageChartingService.html",
+          "hash": "QEQcs0iunZdlGHJdxj5iiYcrtABzy6fvOtckO8Ot3tc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ServiceInterfaces.IUsageService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ServiceInterfaces.IUsageService.html",
+          "hash": "FMhHmFIuttu7uU8fiQ2mjRDkf2imZnyLjCRC4ddulTE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ServiceInterfaces.IUserService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ServiceInterfaces.IUserService.html",
+          "hash": "6e8koJTF7on/xq/AfwLnVI4VKbWnNxjXWBwG357AB4c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.ServiceInterfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.ServiceInterfaces.html",
+          "hash": "1EN23bUfh/MYpCvHGLgXb3uDD6QkcaE/DjpEyJHGPi8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Utils.ModelUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Utils.ModelUtils.html",
+          "hash": "/342G4/5kR3Ud18fS/WK+M/dQRAxEcF6VA+c5fNjRAk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Utils.SortOption-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Utils.SortOption-2.html",
+          "hash": "8j2JpQls8Ck3I3Qe1JM1rFSymvsQWT9vDTDzzrJpmgw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Utils.Status.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Utils.Status.html",
+          "hash": "tNf2198LQUQsN+Dal/uuJVE1gRai69A0zhsLHljgn7w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Utils.UIVisibility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Utils.UIVisibility.html",
+          "hash": "kWF+ofz2aS7IjZDrrzbXRq7OYeYJ/+UZoI5oJXKH0g4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Utils.UIVisibilityEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Utils.UIVisibilityEnum.html",
+          "hash": "PuGKon030lhiBF/727tBKlETdokmo+mM8if50s2BzYU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.Utils.html",
+          "hash": "0kC6817YDyx6lcPgIClohwrHApP7XBXnO9DFPcWtLFI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Data.html",
+          "hash": "mWme9fnP/ZsG3mRCNjHLBuE9x7n8MANKR0EhxgYZSuE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Errors.DbConcurrencyException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Errors.DbConcurrencyException.html",
+          "hash": "jbkr48D90aDT+x0vYqQtW3kIp085raUasWYzkUVyS38="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Errors.DbException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Errors.DbException.html",
+          "hash": "D8voIp5f5GM7Iwl1XzmSEYRo7ljaoab5ljBKqaNxFvc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Errors.DbInsertException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Errors.DbInsertException.html",
+          "hash": "yIW2MmFBumuX8+mhm4L8YdcludCMm1kuazrlQf0i9Qw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Errors.DbUpdateException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Errors.DbUpdateException.html",
+          "hash": "GGX2XhGuid9hGo+8oB7OVNyx4llEnRzswyqcy9Ywjls="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Errors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Errors.html",
+          "hash": "K39/4cO67jageiam6HNmXi5KARe/rAKK/o0Up8p9xHo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.AdminPanel.AdminConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.AdminPanel.AdminConfig.html",
+          "hash": "qejRpGnQwv2UzkRD9zp2+sEt3C0rpKw2z3BFlmQB2GQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.AdminPanel.Componenets.AdminMenuNavBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.AdminPanel.Componenets.AdminMenuNavBar.html",
+          "hash": "6SFpCr/7cVDM9DAWtUd/hDqecuHpsyxjjU5Ckm5MaZg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.AdminPanel.Componenets.CrudForm-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.AdminPanel.Componenets.CrudForm-1.html",
+          "hash": "ukVEUiHUGF0Vo4jCqkuRYvWyurzFNkkGgJ1u3cBdqRc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.AdminPanel.Componenets.CrudTable-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.AdminPanel.Componenets.CrudTable-1.html",
+          "hash": "aMl/N+9cKESS9gH5k1KS9ZvJ6ENktVuZ7cwNFBlvHDA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.AdminPanel.Componenets.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.AdminPanel.Componenets.html",
+          "hash": "RBGPhzCo9M+XEJsojZ3PnAXvimEhKEkM8aIbtfdcHoo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.AdminPanel.CrudAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.AdminPanel.CrudAction.html",
+          "hash": "w59ZvPNUZRCq3rG5tQKuD4VxZCFmdLkDOwyLqhWCxgw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.AdminPanel.Pages.AdminMenuPage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.AdminPanel.Pages.AdminMenuPage.html",
+          "hash": "VjmlIgOofevpH7aYJrLSGJjtyGaTheqZ6wq4qK/bzs8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.AdminPanel.Pages.ManageModelPage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.AdminPanel.Pages.ManageModelPage.html",
+          "hash": "C43Pgr6kQULYO4AgG7AmE2+dshRTd0EBukBehB0+Itw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.AdminPanel.Pages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.AdminPanel.Pages.html",
+          "hash": "f2SGeMnrLSDx8+88sK8IDt/svO0/MF3xSvg+ryL4p2Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.AdminPanel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.AdminPanel.html",
+          "hash": "6VcLXHaS7KdbUKJxMa+O4poLVDMiNLrsXYvzKuAXdGI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.Desc.BEDescription-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.Desc.BEDescription-1.html",
+          "hash": "dc+xzJblVqt6XknkIfty95SLjyIhfE85rHiSg9WIe7U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.Desc.BorrowDescription.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.Desc.BorrowDescription.html",
+          "hash": "agu9MEpz3ek2zWG+myIvLmOYHP+2vTsJVWa7nGPvS5M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.Desc.PriceBorrowCompute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.Desc.PriceBorrowCompute.html",
+          "hash": "imT+hZW+mKIiKy6ADaprDUOmUczCqOW/6oIAICV8NeQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.Desc.WmDescription.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.Desc.WmDescription.html",
+          "hash": "9Y8U14nYnDSYd47ho2AMwjj87nSdgGgdvYvvF4sJvEE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.Desc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.Desc.html",
+          "hash": "ygzLssnisG3tHwK2Dqz5zLmEz3MyAs84h1ycp+GWda0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.Listing.BETable-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.Listing.BETable-1.html",
+          "hash": "sAoPL1YC2Bz1wO6OoYzbTO8X2QsfFlNWor8egUhs75M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.Listing.BorrowsTable-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.Listing.BorrowsTable-1.html",
+          "hash": "HS6U80ttihYhabxY8WgmZ9UAQ9p4aXLh47GpJkRV0nM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.Listing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.Listing.html",
+          "hash": "gCkpucmG4gasBgV+pBzE89z/v/1Kevg/ElLnRVSmYC4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.ManagementConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.ManagementConfig.html",
+          "hash": "nyu2ZIClPAPY6Jmdfjx7WPkR/VgAXUm4ZxC5c1fdWKg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.Modals.BorrowFormModal-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.Modals.BorrowFormModal-1.html",
+          "hash": "PPatVgDPzncs326j8zSIkFFAu2/cS5mVq/fadpue7tI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.Modals.BorrowRemoveModal-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.Modals.BorrowRemoveModal-1.html",
+          "hash": "owdt/DsD+Q1fEDuohH/f7JI++ZkxCmxf41CK+//KTzY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.Modals.StatusChangeModal-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.Modals.StatusChangeModal-1.html",
+          "hash": "q0lDT5PtPrnGhgos06Vzq9kfkhEWACOFbnDVeBeSOXI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.Modals.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.Modals.html",
+          "hash": "TDUp0ze1rm2Mc4HhgoJIW3gngn0DYmO/4QH8s0tJ1g0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.Pages.AvailabilityListPage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.Pages.AvailabilityListPage.html",
+          "hash": "tuicdSsXmS/gopGDuECzcXhgRjQMwfERw6vr5dNcR3Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.Pages.BorrowListPage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.Pages.BorrowListPage.html",
+          "hash": "3DWC5zZYolHnKOSVZxn6KOvM7go/u24+hn12zmxiYUU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.Pages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.Pages.html",
+          "hash": "Npqa+C+d6mcle35eaEtSQp3RVInmrIyVz0YsyuAdz5k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.BEManagment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.BEManagment.html",
+          "hash": "7fUQWs8vwN+hHDnnhKTT7s0kTb2G1vgfXCfFUny3mEQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Charts.ChartsConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Charts.ChartsConfig.html",
+          "hash": "D9KQQhVmp5QnF8+OFCXUvAXrO9XzjedTLy5xKK3TZic="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Charts.ChartsUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Charts.ChartsUtils.html",
+          "hash": "7Dc/xFPUV7s4x99h9UvrHcX8tl9PPff8Akk5VGfvVgw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Charts.Components.AvgHourlyUsage-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Charts.Components.AvgHourlyUsage-1.html",
+          "hash": "sXN/9ocr31VCxlwLP0coZOtUDjwZQWYTJnrESUKOA3Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Charts.Components.DailyBorrows-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Charts.Components.DailyBorrows-1.html",
+          "hash": "eeljlB4o7eNKapqkuoY/qjPnN5g6NsEMT9sV5NeSxrE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Charts.Components.HourlyBorrows-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Charts.Components.HourlyBorrows-1.html",
+          "hash": "joHEmhtGLosMVYedOsI3B52h9aJ95bS7Anf/s06xGd4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Charts.Components.HourlyUsage-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Charts.Components.HourlyUsage-1.html",
+          "hash": "JzRG+WuZzoncXQx/8SzTL5s5j+kgIu3oRrCqlQJfDQ0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Charts.Components.WeeklyUsage-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Charts.Components.WeeklyUsage-1.html",
+          "hash": "rDl7zOyS3eZ8uepNAoT37U4uL6eFRPI315fI/baYWOY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Charts.Components.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Charts.Components.html",
+          "hash": "lOPZ0UuOz1W7GzCRKbJGtHN9r1vF+aREjxZeWW0WF48="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Charts.Pages.ChartBasePage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Charts.Pages.ChartBasePage.html",
+          "hash": "tQ0qzJFVcC1pN/o6DZpEONN8mZN5/zgLWFeoldS4UJE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Charts.Pages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Charts.Pages.html",
+          "hash": "eH9IM+vsh/5MEs8Q049QXOQ2Z8pc/s0cV6Y7s+R+0FQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Charts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Charts.html",
+          "hash": "WIwQdDjpXbavtHcvNFu7yzTli3l8RywFQRxZwQ4GBGo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Index.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Index.html",
+          "hash": "Dgvj7wUdwGWzr7vQ20twMuu1a90r15XNSEp9ZSA46Uk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Layout.MainLayout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Layout.MainLayout.html",
+          "hash": "JVvmV+dwOFOZ5RPZi0JEedDykHTDTA+yeH22hoj/CNI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Layout.NavMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Layout.NavMenu.html",
+          "hash": "yKBKcJ1gMtXpdt3oDFRitCwIF/dZ4xUnGELkC2mla5M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Layout.NotAuthorizedView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Layout.NotAuthorizedView.html",
+          "hash": "FpRhKvx56RSp38rWhrPY/PPbXJbQ21pWzm7PiruOTjk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Layout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Layout.html",
+          "hash": "FUDL+wepOJngyRUtD8Hy8ETVXf4Ldgpen9tXVsw3NnQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Reservations.Components.CreateReservation-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Reservations.Components.CreateReservation-1.html",
+          "hash": "us4V5VwWtjWg/hPpyz0k9kprfzCSvZNZPz70Pf8hBW0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Reservations.Components.SuggestReservation-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Reservations.Components.SuggestReservation-1.html",
+          "hash": "XrGU4kLu1s3Q3RyVK+XwYoZcPrS+WKD+QkuX7/fEgrg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Reservations.Components.Tables.AvailableReservationTable-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Reservations.Components.Tables.AvailableReservationTable-1.html",
+          "hash": "b8pKZu9woOJCpagLK0cRKqFkkK3uoAQhsc+gJ99AwHs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus.html",
+          "hash": "Wcmi6H65OrMBiXr3hJpTKXMfyIlJSK7sCqlavK31hu0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Reservations.Components.Tables.UserReservationTable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Reservations.Components.Tables.UserReservationTable.html",
+          "hash": "jqv0CqdcST8fwV20Jvmb1sM3IpCSPfceG0lhO8SzmkA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Reservations.Components.Tables.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Reservations.Components.Tables.html",
+          "hash": "zqFRKt1g578OP/Csf6D5kaEvjez9ROxqO2OIii/2YHg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Reservations.Components.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Reservations.Components.html",
+          "hash": "T1jOkF+pUxfQdzggxvIjBRBkKjxM6KYzWbqwtI9QQik="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Reservations.Pages.ManageReservations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Reservations.Pages.ManageReservations.html",
+          "hash": "Hcx47KUPcysjBcBsPi8wKf5E6U8NVRBd6mx3zekXDkA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Reservations.Pages.MyReservations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Reservations.Pages.MyReservations.html",
+          "hash": "AXDnJnei+JPingBEznjlTugCZ4BihyUwu7mLnUwSCr0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Reservations.Pages.ReservationPlanner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Reservations.Pages.ReservationPlanner.html",
+          "hash": "a02Z6n2WOtLs+SOMaHyNF95z+nARQHMsO66pSP3+1Uk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Reservations.Pages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Reservations.Pages.html",
+          "hash": "K5rqPPUtADEvjEliIV2B5BT6lAn/2mQr0g3zeKUD/Lo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.Test.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.Test.html",
+          "hash": "jAz29S1yH9P+uhv/RsdAoX1o72MStKDwrIH/wQ5G/kU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.UserPages.Components.AddBalance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.UserPages.Components.AddBalance.html",
+          "hash": "yf7pldk3JoHrGmOxqRcnkFYp+9ziAJ6eSHTM5bVRnLk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.UserPages.Components.ShowBalance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.UserPages.Components.ShowBalance.html",
+          "hash": "K3r0QiY07sTy9SAtpoc9aa1k2RvmbxwPL95Mpu4+W8k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.UserPages.Components.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.UserPages.Components.html",
+          "hash": "HK/tzyXKurCuTV6/8E8OV1pWZBVVcNbsBFEGOxX+B9s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.UserPages.Pages.MyBalance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.UserPages.Pages.MyBalance.html",
+          "hash": "87iXuH58v+spoRgHtQdK9+A7Tzp4ZljT+MbVNZIWK6c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.UserPages.Pages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.UserPages.Pages.html",
+          "hash": "IYVDhwA6Sg24kGD1d3qiiT1u8YvCclUZmdG24/NY8pE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Features.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Features.html",
+          "hash": "szYrgk5WbLfYQ319rVjjZu+yw0asHDsFq3qd9ECK4zI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Middlewares.ContextHookMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Middlewares.ContextHookMiddleware.html",
+          "hash": "LEIb+gI0nugd9pytCzeoboyVH+m9EJ6NmfwVTgaPqvg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Middlewares.IContextHookMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Middlewares.IContextHookMiddleware.html",
+          "hash": "doUNbpbZT1KEiRT5IioLiZU2q4FrUmOldSGd9uFB5x8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Middlewares.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Middlewares.html",
+          "hash": "icGofn5ez3w9JD1ZUCoy6z5fzxnVKifjczb1ML/g3xQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Pages.BlazorApp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Pages.BlazorApp.html",
+          "hash": "hxtmgO3Tt8ygK+J6Y2ZDdjtCj79qffTv7QMFcleF7aI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Pages.ErrorModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Pages.ErrorModel.html",
+          "hash": "2ZESVfX6zHu5+hzTa6iNyX9OePp5fBSoo64WmvmqYJM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Pages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Pages.html",
+          "hash": "4iN64Blh8R8UBFr2c3jEvVW3S5IedhCZZO8In0x10IU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.ServerServices.DBTimedQueue-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.ServerServices.DBTimedQueue-1.html",
+          "hash": "1+GakHXI2Zp1zoMyj6GLfIkOS6p5z8M4rVeLeHnT8ko="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.ServerServices.IReservationManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.ServerServices.IReservationManager.html",
+          "hash": "OiAA6BDchR2Wt1Yv44BmpCl3hXM9txWy0hqDYVhl21c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.ServerServices.ITimedQueue-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.ServerServices.ITimedQueue-1.html",
+          "hash": "lwQ6br1Yi0MZdQjRTh/I4KpCPwD8LUi4+YkpUiHwAH0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.ServerServices.ITimedQueueManager-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.ServerServices.ITimedQueueManager-1.html",
+          "hash": "B2Y8K0WAHUxUgbbn2tiVAxF7+NgzRXsWBMse8Kxo/Zw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.ServerServices.ReservationManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.ServerServices.ReservationManager.html",
+          "hash": "QsY6IK5QDPtLIsua/bwYkqSKLQ1kv6C0dhPCeZS2ino="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.ServerServices.TimedQueueManager-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.ServerServices.TimedQueueManager-1.html",
+          "hash": "7318RHzOkyl28EBqM9x18btj1FWr4azm0x3nCgQbAJE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.ServerServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.ServerServices.html",
+          "hash": "5Alb9pap0wA3KW5XHw99+TyMp7+rzedTspTlNNI6TFI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.Components.LazyRemoteTable-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.Components.LazyRemoteTable-1.html",
+          "hash": "h6h9RSV+bP7T+U4wM19ZImmU4+PYlJ8ISQ/XK1H+zLw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.Components.LocDNColumn-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.Components.LocDNColumn-1.html",
+          "hash": "6MRKduWlNwwDjTy8e3Iojn7QDAXnxDymUoeGOpxEPY4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.Components.ModalForm-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.Components.ModalForm-2.html",
+          "hash": "my9VKNYM++uueFtxtTgOBwE+Acae/qheWRh+YxNSF2A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.Components.NodaComponents.DisabledDateTimesStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.Components.NodaComponents.DisabledDateTimesStore.html",
+          "hash": "3wG0zRCpGPmLnd45fBQ09D/rYZjt8HUU+Rt59W98HiI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.Components.NodaComponents.DisabledTimesStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.Components.NodaComponents.DisabledTimesStore.html",
+          "hash": "1pqGSbEnqmArQT/dNkidHuJNTxIxBJnw7SNvcu0kMjQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.Components.NodaComponents.DurationPicker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.Components.NodaComponents.DurationPicker.html",
+          "hash": "8j7mwoCIuqKoIbORynW7esX1yZOSQIJ7yQyJgumJpLE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.Components.NodaComponents.InstantPicker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.Components.NodaComponents.InstantPicker.html",
+          "hash": "78wI6LG3YkUqafApvkNRTFmic8EGtOufTT/7Gqtpsx4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.Components.NodaComponents.InstantPickerNullable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.Components.NodaComponents.InstantPickerNullable.html",
+          "hash": "KXJenQFtOXIYL4tND1qEwlfAQ14MG2Uy4M4Gq4NnY+w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.Components.NodaComponents.LocalDatePickerNullable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.Components.NodaComponents.LocalDatePickerNullable.html",
+          "hash": "xrlOW5jxQ5wwfpjy9PNl4KsSNvuHEPpLcOcYXZSJNOQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.Components.NodaComponents.LocalDateRangePicker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.Components.NodaComponents.LocalDateRangePicker.html",
+          "hash": "lx3xqL3M7OPKUrkJ1b+f6N9pVyysjFAFnPdJLtsSfh4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.Components.NodaComponents.LocalDateTimeRange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.Components.NodaComponents.LocalDateTimeRange.html",
+          "hash": "T5W/AaPNSfDYTTbcW2jYshO+5HsAeGoABIhQKi1qcyc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.Components.NodaComponents.NodaUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.Components.NodaComponents.NodaUtils.html",
+          "hash": "dvDT3o8/rNA28Ikh4T/qYwz71iXFUJwF5c9FoeBwOnE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.Components.NodaComponents.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.Components.NodaComponents.html",
+          "hash": "36PNrd3AZnbvyPY0lrX8CE/iFQclXKIRbkSL40ehy7s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.Components.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.Components.html",
+          "hash": "mNavJZnyFEBrPQceaXGjNsPvt4wAj8ABOLzkGmTXYo0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.GenericComponenets.CharInput-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.GenericComponenets.CharInput-1.html",
+          "hash": "wiiYytrqhaXqojOlqcrfzYeT23DoDderO90fOpJNO4w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.GenericComponenets.GenericEntityBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.GenericComponenets.GenericEntityBase-1.html",
+          "hash": "EJW0mJm2HfwKOJqgr0eFCbzc5rFbP7L9tYu9WuE+2gg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.GenericComponenets.GenericForm.GenericForm-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.GenericComponenets.GenericForm.GenericForm-1.html",
+          "hash": "44U/Ai61/DxHW5xcweXRATJvB9jD+0V508uQceCoPlg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.GenericComponenets.GenericForm.GenericInput-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.GenericComponenets.GenericForm.GenericInput-1.html",
+          "hash": "yl5rqF0A+qT11jtLM/bWXxnyweD9IJZpXRAQV2oYaRk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.GenericComponenets.GenericForm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.GenericComponenets.GenericForm.html",
+          "hash": "D/SVDCbKUs2/0PlC91yY5HASjkrqd333tE+SDEsmaE0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.GenericComponenets.ModelLoader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.GenericComponenets.ModelLoader.html",
+          "hash": "6z9fxwKz/J3RdFyJGNMh7KCZqjpEZyQK8I9Z84OHaNs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.GenericComponenets.ModelSelect-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.GenericComponenets.ModelSelect-1.html",
+          "hash": "YeU00be38vowShSUS793C8zv0+ofTFipvqNV9a5brFI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Shared.GenericComponenets.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Shared.GenericComponenets.html",
+          "hash": "OQaH34kT66Yt8LA7r65wkAaFzmMzNs0Y3XQV7DRIGVQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Utils.EFExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Utils.EFExtensions.html",
+          "hash": "36Z+zR1EvuT/vMBHOLQXti7UmnOPb9DvhKa2qojDFTU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Utils.GenericUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Utils.GenericUtils.html",
+          "hash": "lDlAVolTNekutivZn/MIYQQawV1GJjbP0dWT0Dn/A6g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Utils.IMessageServiceExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Utils.IMessageServiceExtensions.html",
+          "hash": "C2Bq+ujCw+LUK4YzJCoMIDXj8Q+EuzW6kFXdC4ZMC+8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Utils.ProgramInit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Utils.ProgramInit.html",
+          "hash": "3u2xptgjVAWBaDKB8/wtHRBKfurjm5QTN/B3BvQICEk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Utils.ReflectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Utils.ReflectionExtensions.html",
+          "hash": "y9a+xtAIc6egxW5Ww7COtX5TpFlk4EvTUXhTz5Cc+rk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Utils.html",
+          "hash": "T2nALTMno6OKwveELazIIvQrtXvILmEYQnGqf0dqhOY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App._Imports.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App._Imports.html",
+          "hash": "B74l0yEqMn1I61Z0pVQTG2ia2SVDxfXWWQZBvEges0U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.html",
+          "hash": "lvIVxNOuIDD/LoE6q7tJBDEdjcPbPnG14ADnSPz5G/Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "nwDYWQo3BkArWBlk3SB571fZ7RnU30GGHEp+iXHWGPE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "2hYc78ZUw//SpR7pU02Yg8zIHil8H7I1QYywMg143UU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "DX0EZXyAnk7DJhMw4I+U1FplCAFj+iTSfJzVhRDgroU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/prog_guide/architecture.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/prog_guide/architecture.html",
+          "hash": "wlzT2WM3raaEbpXJcZDu9dYiHFH9qs1dM3Ut+237wnk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/prog_guide/auth.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/prog_guide/auth.html",
+          "hash": "I0NKMgU9CP0VCMDpDTn0L2zKgiYY5hssK2B1ubv/3FY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/prog_guide/avg_usage.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/prog_guide/avg_usage.html",
+          "hash": "k68ASaqx0g9u4kBh6ZBFxNwPjlPWIiUeT8z39zwJsr0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/prog_guide/data_access.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/prog_guide/data_access.html",
+          "hash": "8UpIOkh4WczkhaxE622eQN9xC1uSpUW/4CsNVbQyktw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/prog_guide/docs.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/prog_guide/docs.html",
+          "hash": "BQTkHmb+8/BZEW0U4Psl2j1mOP1h/FHfhG/bjZ3NLm4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/prog_guide/loc.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/prog_guide/loc.html",
+          "hash": "lf7QP8pgOTz8WImlFW9Mkjv+lH75nVEHUipFBhE6nGY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/prog_guide/middleware.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/prog_guide/middleware.html",
+          "hash": "Udqsgcx/O7aCuwE+miF0U+IEk4UsG/zW51w99ARzXCo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/prog_guide/misc.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/prog_guide/misc.html",
+          "hash": "4eiX2DrZBeJo/9vUo2fugvJZ0ICBAhLQAtafZzNU27Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/prog_guide/testing.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/prog_guide/testing.html",
+          "hash": "YpPTMXVwozZGHyI2uQ1Nn0sDTh5zNh5jDeLQEKHfSLU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "JfFtsL5R1NSfVUL9B4sxGoU5X0CgvQWYPFQmR0lStmc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/user_guide/admin.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/user_guide/admin.html",
+          "hash": "8tqcOcr2syDKGakjXYN0YXiKbmQT75cLtK5DajSBvFk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/user_guide/borrows.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/user_guide/borrows.html",
+          "hash": "pB/DD/SFJSGlVZg968rMLFOghdOsgGgKIxnACHPsSlU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/user_guide/how_to_run.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/user_guide/how_to_run.html",
+          "hash": "oVsOl0fYQWSd1kFvvIuEM2iwWepRxPOrQVSsaALMs0I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/user_guide/localization.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/user_guide/localization.html",
+          "hash": "UAYdKdMtVcCG8X6YqRcRzXt2CIAuZjDz8jYf39UD1xs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/user_guide/reservations.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/user_guide/reservations.html",
+          "hash": "ZxbyEJcmUJty3QLkZBgrKao4qu2tnsMnLGZnBWfvjSg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/user_guide/user_management.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/user_guide/user_management.html",
+          "hash": "OI+kFFZDl1NxJze5JiHgkXT8uXFbX1rXl/6HyjDr5nU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/user_guide/users.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/user_guide/users.html",
+          "hash": "LR01hvy74LE/Dce+bXkYhYfk3ijpv3eYCAR0n/cL0YM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/db.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/db.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "vTp/JBOZIYgiDYWeJ/MbTULle5gZX59bwyIXMtELYQg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "aVe9U1RxWP3P5E5X/x2rL8jCuFlqix3bHKxtkjZ3zxg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 19,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 195,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

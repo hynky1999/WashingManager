@@ -1,0 +1,576 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class BorrowService
+ </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class BorrowService
+ ">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="App.Data.EFCoreServices.BorrowService">
+
+
+  <h1 id="App_Data_EFCoreServices_BorrowService" data-uid="App.Data.EFCoreServices.BorrowService" class="text-break">Class BorrowService
+</h1>
+  <div class="markdown level0 summary"><p>EF Core Implementation of <a class="xref" href="App.Data.ServiceInterfaces.IBorrowService.html">IBorrowService</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">BorrowService</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="App.Data.ServiceInterfaces.IBorrowService.html">IBorrowService</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">object.Equals(object)</span>
+    </div>
+    <div>
+      <span class="xref">object.Equals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">object.ReferenceEquals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="App.html">App</a>.<a class="xref" href="App.Data.html">Data</a>.<a class="xref" href="App.Data.EFCoreServices.html">EFCoreServices</a></h6>
+  <h6><strong>Assembly</strong>: App.dll</h6>
+  <h5 id="App_Data_EFCoreServices_BorrowService_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class BorrowService : IBorrowService</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/hynky1999/WashingManager/new/main/apiSpec/new?filename=App_Data_EFCoreServices_BorrowService__ctor_IDbContextFactory_App_Data_ApplicationDbContext__App_Data_ServiceInterfaces_IBorrowPersonService_App_Data_ServiceInterfaces_IUsageService_App_Data_Constants_IRates_IClock_App_Data_ServiceInterfaces_IUserService_.md&amp;value=---%0Auid%3A%20App.Data.EFCoreServices.BorrowService.%23ctor(IDbContextFactory%7BApp.Data.ApplicationDbContext%7D%2CApp.Data.ServiceInterfaces.IBorrowPersonService%2CApp.Data.ServiceInterfaces.IUsageService%2CApp.Data.Constants.IRates%2CIClock%2CApp.Data.ServiceInterfaces.IUserService)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/hynky1999/WashingManager/blob/main/App/Data/EFCoreServices/BorrowService.cs/#L35">View Source</a>
+  </span>
+  <a id="App_Data_EFCoreServices_BorrowService__ctor_" data-uid="App.Data.EFCoreServices.BorrowService.#ctor*"></a>
+  <h4 id="App_Data_EFCoreServices_BorrowService__ctor_IDbContextFactory_App_Data_ApplicationDbContext__App_Data_ServiceInterfaces_IBorrowPersonService_App_Data_ServiceInterfaces_IUsageService_App_Data_Constants_IRates_IClock_App_Data_ServiceInterfaces_IUserService_" data-uid="App.Data.EFCoreServices.BorrowService.#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Data.ServiceInterfaces.IBorrowPersonService,App.Data.ServiceInterfaces.IUsageService,App.Data.Constants.IRates,IClock,App.Data.ServiceInterfaces.IUserService)">BorrowService(IDbContextFactory&lt;ApplicationDbContext&gt;, IBorrowPersonService, IUsageService, IRates, IClock, IUserService)</h4>
+  <div class="markdown level1 summary"><p>Constructor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BorrowService(IDbContextFactory&lt;ApplicationDbContext&gt; dbFactory, IBorrowPersonService borrowPersonService, IUsageService usageService, IRates rates, IClock clock, IUserService userService)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IDbContextFactory&lt;&gt;</span>&lt;<a class="xref" href="App.Data.ApplicationDbContext.html">ApplicationDbContext</a>&gt;</td>
+        <td><span class="parametername">dbFactory</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="App.Data.ServiceInterfaces.IBorrowPersonService.html">IBorrowPersonService</a></td>
+        <td><span class="parametername">borrowPersonService</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="App.Data.ServiceInterfaces.IUsageService.html">IUsageService</a></td>
+        <td><span class="parametername">usageService</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="App.Data.Constants.IRates.html">IRates</a></td>
+        <td><span class="parametername">rates</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IClock</span></td>
+        <td><span class="parametername">clock</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="App.Data.ServiceInterfaces.IUserService.html">IUserService</a></td>
+        <td><span class="parametername">userService</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/hynky1999/WashingManager/new/main/apiSpec/new?filename=App_Data_EFCoreServices_BorrowService_AddBorrowAsync_App_Data_Models_Borrow_.md&amp;value=---%0Auid%3A%20App.Data.EFCoreServices.BorrowService.AddBorrowAsync(App.Data.Models.Borrow)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/hynky1999/WashingManager/blob/main/App/Data/EFCoreServices/BorrowService.cs/#L98">View Source</a>
+  </span>
+  <a id="App_Data_EFCoreServices_BorrowService_AddBorrowAsync_" data-uid="App.Data.EFCoreServices.BorrowService.AddBorrowAsync*"></a>
+  <h4 id="App_Data_EFCoreServices_BorrowService_AddBorrowAsync_App_Data_Models_Borrow_" data-uid="App.Data.EFCoreServices.BorrowService.AddBorrowAsync(App.Data.Models.Borrow)">AddBorrowAsync(Borrow)</h4>
+  <div class="markdown level1 summary"><p>Creates a new borrow</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Borrow&gt; AddBorrowAsync(Borrow borrow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="App.Data.Models.Borrow.html">Borrow</a></td>
+        <td><span class="parametername">borrow</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<a class="xref" href="App.Data.Models.Borrow.html">Borrow</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>throws if BE is not free</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/hynky1999/WashingManager/new/main/apiSpec/new?filename=App_Data_EFCoreServices_BorrowService_CountBorrowsByBEAsync__1_QueryModel_App_Data_Models_Borrow__.md&amp;value=---%0Auid%3A%20App.Data.EFCoreServices.BorrowService.CountBorrowsByBEAsync%60%601(QueryModel%7BApp.Data.Models.Borrow%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/hynky1999/WashingManager/blob/main/App/Data/EFCoreServices/BorrowService.cs/#L132">View Source</a>
+  </span>
+  <a id="App_Data_EFCoreServices_BorrowService_CountBorrowsByBEAsync_" data-uid="App.Data.EFCoreServices.BorrowService.CountBorrowsByBEAsync*"></a>
+  <h4 id="App_Data_EFCoreServices_BorrowService_CountBorrowsByBEAsync__1_QueryModel_App_Data_Models_Borrow__" data-uid="App.Data.EFCoreServices.BorrowService.CountBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})">CountBorrowsByBEAsync&lt;T&gt;(QueryModel&lt;Borrow&gt;)</h4>
+  <div class="markdown level1 summary"><p><a class="xref" href="App.Data.ServiceInterfaces.IBorrowService.html#App_Data_ServiceInterfaces_IBorrowService_GetBorrowsByBEAsync__1_QueryModel_App_Data_Models_Borrow__">GetBorrowsByBEAsync&lt;T&gt;(QueryModel&lt;Borrow&gt;)</a> but only count</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; CountBorrowsByBEAsync&lt;T&gt;(QueryModel&lt;Borrow&gt; qM) where T : BorrowableEntity</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QueryModel&lt;&gt;</span>&lt;<a class="xref" href="App.Data.Models.Borrow.html">Borrow</a>&gt;</td>
+        <td><span class="parametername">qM</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<span class="xref">int</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/hynky1999/WashingManager/new/main/apiSpec/new?filename=App_Data_EFCoreServices_BorrowService_EndBorrowAsync_App_Data_Models_Borrow_System_Boolean_.md&amp;value=---%0Auid%3A%20App.Data.EFCoreServices.BorrowService.EndBorrowAsync(App.Data.Models.Borrow%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/hynky1999/WashingManager/blob/main/App/Data/EFCoreServices/BorrowService.cs/#L74">View Source</a>
+  </span>
+  <a id="App_Data_EFCoreServices_BorrowService_EndBorrowAsync_" data-uid="App.Data.EFCoreServices.BorrowService.EndBorrowAsync*"></a>
+  <h4 id="App_Data_EFCoreServices_BorrowService_EndBorrowAsync_App_Data_Models_Borrow_System_Boolean_" data-uid="App.Data.EFCoreServices.BorrowService.EndBorrowAsync(App.Data.Models.Borrow,System.Boolean)">EndBorrowAsync(Borrow, bool)</h4>
+  <div class="markdown level1 summary"><p>Ends the borrow and updates the usage statistics</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task EndBorrowAsync(Borrow borrow, bool deduceUserCash)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="App.Data.Models.Borrow.html">Borrow</a></td>
+        <td><span class="parametername">borrow</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">deduceUserCash</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/hynky1999/WashingManager/new/main/apiSpec/new?filename=App_Data_EFCoreServices_BorrowService_GetBorrowAsync_App_Data_Models_Reservation_.md&amp;value=---%0Auid%3A%20App.Data.EFCoreServices.BorrowService.GetBorrowAsync(App.Data.Models.Reservation)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/hynky1999/WashingManager/blob/main/App/Data/EFCoreServices/BorrowService.cs/#L140">View Source</a>
+  </span>
+  <a id="App_Data_EFCoreServices_BorrowService_GetBorrowAsync_" data-uid="App.Data.EFCoreServices.BorrowService.GetBorrowAsync*"></a>
+  <h4 id="App_Data_EFCoreServices_BorrowService_GetBorrowAsync_App_Data_Models_Reservation_" data-uid="App.Data.EFCoreServices.BorrowService.GetBorrowAsync(App.Data.Models.Reservation)">GetBorrowAsync(Reservation)</h4>
+  <div class="markdown level1 summary"><p>Gets borrow for a reservation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Borrow?&gt; GetBorrowAsync(Reservation res)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="App.Data.Models.Reservation.html">Reservation</a></td>
+        <td><span class="parametername">res</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<a class="xref" href="App.Data.Models.Borrow.html">Borrow</a>&gt;</td>
+        <td><p>If exists borrow for reservation otherwise null</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/hynky1999/WashingManager/new/main/apiSpec/new?filename=App_Data_EFCoreServices_BorrowService_GetBorrowsByBEAsync__1_QueryModel_App_Data_Models_Borrow__.md&amp;value=---%0Auid%3A%20App.Data.EFCoreServices.BorrowService.GetBorrowsByBEAsync%60%601(QueryModel%7BApp.Data.Models.Borrow%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/hynky1999/WashingManager/blob/main/App/Data/EFCoreServices/BorrowService.cs/#L124">View Source</a>
+  </span>
+  <a id="App_Data_EFCoreServices_BorrowService_GetBorrowsByBEAsync_" data-uid="App.Data.EFCoreServices.BorrowService.GetBorrowsByBEAsync*"></a>
+  <h4 id="App_Data_EFCoreServices_BorrowService_GetBorrowsByBEAsync__1_QueryModel_App_Data_Models_Borrow__" data-uid="App.Data.EFCoreServices.BorrowService.GetBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})">GetBorrowsByBEAsync&lt;T&gt;(QueryModel&lt;Borrow&gt;)</h4>
+  <div class="markdown level1 summary"><p>Returns all borrows for a type of borrowable entity</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Borrow[]&gt; GetBorrowsByBEAsync&lt;T&gt;(QueryModel&lt;Borrow&gt; qM) where T : BorrowableEntity</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QueryModel&lt;&gt;</span>&lt;<a class="xref" href="App.Data.Models.Borrow.html">Borrow</a>&gt;</td>
+        <td><span class="parametername">qM</span></td>
+        <td><p>QueryModel with constraints for query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<a class="xref" href="App.Data.Models.Borrow.html">Borrow</a>[]&gt;</td>
+        <td><p>All borrows for T</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type of BE to query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/hynky1999/WashingManager/new/main/apiSpec/new?filename=App_Data_EFCoreServices_BorrowService_GetPriceAsync_App_Data_Models_Borrow_.md&amp;value=---%0Auid%3A%20App.Data.EFCoreServices.BorrowService.GetPriceAsync(App.Data.Models.Borrow)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/hynky1999/WashingManager/blob/main/App/Data/EFCoreServices/BorrowService.cs/#L57">View Source</a>
+  </span>
+  <a id="App_Data_EFCoreServices_BorrowService_GetPriceAsync_" data-uid="App.Data.EFCoreServices.BorrowService.GetPriceAsync*"></a>
+  <h4 id="App_Data_EFCoreServices_BorrowService_GetPriceAsync_App_Data_Models_Borrow_" data-uid="App.Data.EFCoreServices.BorrowService.GetPriceAsync(App.Data.Models.Borrow)">GetPriceAsync(Borrow)</h4>
+  <div class="markdown level1 summary"><p>Computes the total price of the borrow</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Money&gt; GetPriceAsync(Borrow borrow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="App.Data.Models.Borrow.html">Borrow</a></td>
+        <td><span class="parametername">borrow</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<a class="xref" href="App.Data.Constants.Money.html">Money</a>&gt;</td>
+        <td><p>Price for a borrow</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="App.Data.ServiceInterfaces.IBorrowService.html">IBorrowService</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="App.Utils.ReflectionExtensions.html#App_Utils_ReflectionExtensions_GetPropertyExpression__1___0_System_Reflection_PropertyInfo_System_Type_">ReflectionExtensions.GetPropertyExpression&lt;T&gt;(T, PropertyInfo, Type?)</a>
+  </div>
+  <div>
+      <a class="xref" href="App.Utils.ReflectionExtensions.html#App_Utils_ReflectionExtensions_GetSetPropertyEventCallback__1___0_System_Object_System_Reflection_PropertyInfo_System_Type_">ReflectionExtensions.GetSetPropertyEventCallback&lt;T&gt;(T, object, PropertyInfo, Type?)</a>
+  </div>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/hynky1999/WashingManager/new/main/apiSpec/new?filename=App_Data_EFCoreServices_BorrowService.md&amp;value=---%0Auid%3A%20App.Data.EFCoreServices.BorrowService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/hynky1999/WashingManager/blob/main/App/Data/EFCoreServices/BorrowService.cs/#L16" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
