@@ -1,0 +1,94 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Areas.Manage.Pages.Account.Admin
+  commentId: N:App.Areas.Manage.Pages.Account.Admin
+  id: App.Areas.Manage.Pages.Account.Admin
+  children:
+  - App.Areas.Manage.Pages.Account.Admin._AdminNav
+  - App.Areas.Manage.Pages.Account.Admin.AdminNavPages
+  - App.Areas.Manage.Pages.Account.Admin.RegisterModel
+  - App.Areas.Manage.Pages.Account.Admin.RegisterModel.InputModel
+  langs:
+  - csharp
+  - vb
+  name: App.Areas.Manage.Pages.Account.Admin
+  nameWithType: App.Areas.Manage.Pages.Account.Admin
+  fullName: App.Areas.Manage.Pages.Account.Admin
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Areas.Manage.Pages.Account.Admin.AdminNavPages
+  commentId: T:App.Areas.Manage.Pages.Account.Admin.AdminNavPages
+  name: AdminNavPages
+  nameWithType: AdminNavPages
+  fullName: App.Areas.Manage.Pages.Account.Admin.AdminNavPages
+- uid: App.Areas.Manage.Pages.Account.Admin.RegisterModel
+  commentId: T:App.Areas.Manage.Pages.Account.Admin.RegisterModel
+  name: RegisterModel
+  nameWithType: RegisterModel
+  fullName: App.Areas.Manage.Pages.Account.Admin.RegisterModel
+- uid: App.Areas.Manage.Pages.Account.Admin.RegisterModel.InputModel
+  commentId: T:App.Areas.Manage.Pages.Account.Admin.RegisterModel.InputModel
+  parent: App.Areas.Manage.Pages.Account.Admin
+  name: RegisterModel.InputModel
+  nameWithType: RegisterModel.InputModel
+  fullName: App.Areas.Manage.Pages.Account.Admin.RegisterModel.InputModel
+  spec.csharp:
+  - uid: App.Areas.Manage.Pages.Account.Admin.RegisterModel
+    name: RegisterModel
+  - name: .
+  - uid: App.Areas.Manage.Pages.Account.Admin.RegisterModel.InputModel
+    name: InputModel
+  spec.vb:
+  - uid: App.Areas.Manage.Pages.Account.Admin.RegisterModel
+    name: RegisterModel
+  - name: .
+  - uid: App.Areas.Manage.Pages.Account.Admin.RegisterModel.InputModel
+    name: InputModel
+- uid: App.Areas.Manage.Pages.Account.Admin._AdminNav
+  commentId: T:App.Areas.Manage.Pages.Account.Admin._AdminNav
+  name: _AdminNav
+  nameWithType: _AdminNav
+  fullName: App.Areas.Manage.Pages.Account.Admin._AdminNav
+- uid: App.Areas.Manage.Pages.Account.Admin
+  commentId: N:App.Areas.Manage.Pages.Account.Admin
+  name: App.Areas.Manage.Pages.Account.Admin
+  nameWithType: App.Areas.Manage.Pages.Account.Admin
+  fullName: App.Areas.Manage.Pages.Account.Admin
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Areas
+    name: Areas
+  - name: .
+  - uid: App.Areas.Manage
+    name: Manage
+  - name: .
+  - uid: App.Areas.Manage.Pages
+    name: Pages
+  - name: .
+  - uid: App.Areas.Manage.Pages.Account
+    name: Account
+  - name: .
+  - uid: App.Areas.Manage.Pages.Account.Admin
+    name: Admin
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Areas
+    name: Areas
+  - name: .
+  - uid: App.Areas.Manage
+    name: Manage
+  - name: .
+  - uid: App.Areas.Manage.Pages
+    name: Pages
+  - name: .
+  - uid: App.Areas.Manage.Pages.Account
+    name: Account
+  - name: .
+  - uid: App.Areas.Manage.Pages.Account.Admin
+    name: Admin

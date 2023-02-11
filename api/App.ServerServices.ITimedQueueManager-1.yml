@@ -1,0 +1,604 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.ServerServices.ITimedQueueManager`1
+  commentId: T:App.ServerServices.ITimedQueueManager`1
+  id: ITimedQueueManager`1
+  parent: App.ServerServices
+  children:
+  - App.ServerServices.ITimedQueueManager`1.Count
+  - App.ServerServices.ITimedQueueManager`1.CreateQueue(System.Int32)
+  - App.ServerServices.ITimedQueueManager`1.GetQueue(System.Int32)
+  - App.ServerServices.ITimedQueueManager`1.RemoveQueue(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: ITimedQueueManager<TItem>
+  nameWithType: ITimedQueueManager<TItem>
+  fullName: App.ServerServices.ITimedQueueManager<TItem>
+  type: Interface
+  source:
+    remote:
+      path: App/ServerServices/TimedQueueManager.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ITimedQueueManager
+    path: ../App/ServerServices/TimedQueueManager.cs
+    startLine: 60
+  assemblies:
+  - App
+  namespace: App.ServerServices
+  summary: "\nA class which manages multiple ITimedQueue instances\nIt enables to create, get and remove queues\n"
+  example: []
+  syntax:
+    content: 'public interface ITimedQueueManager<TItem> : IDisposable'
+    typeParameters:
+    - id: TItem
+      description: ''
+    content.vb: Public Interface ITimedQueueManager(Of TItem) Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+  extensionMethods:
+  - App.ServerServices.ITimedQueueManager`1.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.ServerServices.ITimedQueueManager`1.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  nameWithType.vb: ITimedQueueManager(Of TItem)
+  fullName.vb: App.ServerServices.ITimedQueueManager(Of TItem)
+  name.vb: ITimedQueueManager(Of TItem)
+- uid: App.ServerServices.ITimedQueueManager`1.Count
+  commentId: P:App.ServerServices.ITimedQueueManager`1.Count
+  id: Count
+  parent: App.ServerServices.ITimedQueueManager`1
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: ITimedQueueManager<TItem>.Count
+  fullName: App.ServerServices.ITimedQueueManager<TItem>.Count
+  type: Property
+  source:
+    remote:
+      path: App/ServerServices/TimedQueueManager.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Count
+    path: ../App/ServerServices/TimedQueueManager.cs
+    startLine: 65
+  assemblies:
+  - App
+  namespace: App.ServerServices
+  summary: "\nReturns number of queues\n"
+  example: []
+  syntax:
+    content: int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property Count As Integer
+  overload: App.ServerServices.ITimedQueueManager`1.Count*
+  nameWithType.vb: ITimedQueueManager(Of TItem).Count
+  fullName.vb: App.ServerServices.ITimedQueueManager(Of TItem).Count
+- uid: App.ServerServices.ITimedQueueManager`1.CreateQueue(System.Int32)
+  commentId: M:App.ServerServices.ITimedQueueManager`1.CreateQueue(System.Int32)
+  id: CreateQueue(System.Int32)
+  parent: App.ServerServices.ITimedQueueManager`1
+  langs:
+  - csharp
+  - vb
+  name: CreateQueue(int)
+  nameWithType: ITimedQueueManager<TItem>.CreateQueue(int)
+  fullName: App.ServerServices.ITimedQueueManager<TItem>.CreateQueue(int)
+  type: Method
+  source:
+    remote:
+      path: App/ServerServices/TimedQueueManager.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: CreateQueue
+    path: ../App/ServerServices/TimedQueueManager.cs
+    startLine: 72
+  assemblies:
+  - App
+  namespace: App.ServerServices
+  summary: "\nCreates a new queue\n"
+  example: []
+  syntax:
+    content: ITimedQueue<TItem> CreateQueue(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+      description: ''
+    return:
+      type: App.ServerServices.ITimedQueue{{TItem}}
+      description: ''
+    content.vb: Function CreateQueue(id As Integer) As ITimedQueue(Of TItem)
+  overload: App.ServerServices.ITimedQueueManager`1.CreateQueue*
+  nameWithType.vb: ITimedQueueManager(Of TItem).CreateQueue(Integer)
+  fullName.vb: App.ServerServices.ITimedQueueManager(Of TItem).CreateQueue(Integer)
+  name.vb: CreateQueue(Integer)
+- uid: App.ServerServices.ITimedQueueManager`1.GetQueue(System.Int32)
+  commentId: M:App.ServerServices.ITimedQueueManager`1.GetQueue(System.Int32)
+  id: GetQueue(System.Int32)
+  parent: App.ServerServices.ITimedQueueManager`1
+  langs:
+  - csharp
+  - vb
+  name: GetQueue(int)
+  nameWithType: ITimedQueueManager<TItem>.GetQueue(int)
+  fullName: App.ServerServices.ITimedQueueManager<TItem>.GetQueue(int)
+  type: Method
+  source:
+    remote:
+      path: App/ServerServices/TimedQueueManager.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetQueue
+    path: ../App/ServerServices/TimedQueueManager.cs
+    startLine: 79
+  assemblies:
+  - App
+  namespace: App.ServerServices
+  summary: "\nReturns a queue with given id\n"
+  example: []
+  syntax:
+    content: ITimedQueue<TItem>? GetQueue(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+      description: ''
+    return:
+      type: App.ServerServices.ITimedQueue{{TItem}}
+      description: ''
+    content.vb: Function GetQueue(id As Integer) As ITimedQueue(Of TItem)
+  overload: App.ServerServices.ITimedQueueManager`1.GetQueue*
+  nameWithType.vb: ITimedQueueManager(Of TItem).GetQueue(Integer)
+  fullName.vb: App.ServerServices.ITimedQueueManager(Of TItem).GetQueue(Integer)
+  name.vb: GetQueue(Integer)
+- uid: App.ServerServices.ITimedQueueManager`1.RemoveQueue(System.Int32)
+  commentId: M:App.ServerServices.ITimedQueueManager`1.RemoveQueue(System.Int32)
+  id: RemoveQueue(System.Int32)
+  parent: App.ServerServices.ITimedQueueManager`1
+  langs:
+  - csharp
+  - vb
+  name: RemoveQueue(int)
+  nameWithType: ITimedQueueManager<TItem>.RemoveQueue(int)
+  fullName: App.ServerServices.ITimedQueueManager<TItem>.RemoveQueue(int)
+  type: Method
+  source:
+    remote:
+      path: App/ServerServices/TimedQueueManager.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: RemoveQueue
+    path: ../App/ServerServices/TimedQueueManager.cs
+    startLine: 85
+  assemblies:
+  - App
+  namespace: App.ServerServices
+  summary: "\nRemoves a queue with given id\n"
+  example: []
+  syntax:
+    content: void RemoveQueue(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+      description: ''
+    content.vb: Sub RemoveQueue(id As Integer)
+  overload: App.ServerServices.ITimedQueueManager`1.RemoveQueue*
+  nameWithType.vb: ITimedQueueManager(Of TItem).RemoveQueue(Integer)
+  fullName.vb: App.ServerServices.ITimedQueueManager(Of TItem).RemoveQueue(Integer)
+  name.vb: RemoveQueue(Integer)
+references:
+- uid: App.ServerServices
+  commentId: N:App.ServerServices
+  name: App.ServerServices
+  nameWithType: App.ServerServices
+  fullName: App.ServerServices
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.ServerServices
+    name: ServerServices
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.ServerServices
+    name: ServerServices
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.ServerServices.ITimedQueueManager`1.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<ITimedQueueManager<TItem>>(ITimedQueueManager<TItem>, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<ITimedQueueManager<TItem>>(ITimedQueueManager<TItem>, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.ServerServices.ITimedQueueManager<TItem>>(App.ServerServices.ITimedQueueManager<TItem>, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of ITimedQueueManager(Of TItem))(ITimedQueueManager(Of TItem), PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.ServerServices.ITimedQueueManager(Of TItem))(App.ServerServices.ITimedQueueManager(Of TItem), System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of ITimedQueueManager(Of TItem))(ITimedQueueManager(Of TItem), PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.ServerServices.ITimedQueueManager{`0},System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.ServerServices.ITimedQueueManager`1
+    name: ITimedQueueManager
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: App.ServerServices.ITimedQueueManager`1
+    name: ITimedQueueManager
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.ServerServices.ITimedQueueManager{`0},System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.ServerServices.ITimedQueueManager`1
+    name: ITimedQueueManager
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: )
+  - name: (
+  - uid: App.ServerServices.ITimedQueueManager`1
+    name: ITimedQueueManager
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.ServerServices.ITimedQueueManager`1.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<ITimedQueueManager<TItem>>(ITimedQueueManager<TItem>, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<ITimedQueueManager<TItem>>(ITimedQueueManager<TItem>, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.ServerServices.ITimedQueueManager<TItem>>(App.ServerServices.ITimedQueueManager<TItem>, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of ITimedQueueManager(Of TItem))(ITimedQueueManager(Of TItem), Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.ServerServices.ITimedQueueManager(Of TItem))(App.ServerServices.ITimedQueueManager(Of TItem), Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of ITimedQueueManager(Of TItem))(ITimedQueueManager(Of TItem), Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.ServerServices.ITimedQueueManager{`0},System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.ServerServices.ITimedQueueManager`1
+    name: ITimedQueueManager
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: App.ServerServices.ITimedQueueManager`1
+    name: ITimedQueueManager
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.ServerServices.ITimedQueueManager{`0},System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.ServerServices.ITimedQueueManager`1
+    name: ITimedQueueManager
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: )
+  - name: (
+  - uid: App.ServerServices.ITimedQueueManager`1
+    name: ITimedQueueManager
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.ServerServices.ITimedQueueManager`1.Count*
+  commentId: Overload:App.ServerServices.ITimedQueueManager`1.Count
+  name: Count
+  nameWithType: ITimedQueueManager<TItem>.Count
+  fullName: App.ServerServices.ITimedQueueManager<TItem>.Count
+  nameWithType.vb: ITimedQueueManager(Of TItem).Count
+  fullName.vb: App.ServerServices.ITimedQueueManager(Of TItem).Count
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: App.ServerServices.ITimedQueueManager`1.CreateQueue*
+  commentId: Overload:App.ServerServices.ITimedQueueManager`1.CreateQueue
+  name: CreateQueue
+  nameWithType: ITimedQueueManager<TItem>.CreateQueue
+  fullName: App.ServerServices.ITimedQueueManager<TItem>.CreateQueue
+  nameWithType.vb: ITimedQueueManager(Of TItem).CreateQueue
+  fullName.vb: App.ServerServices.ITimedQueueManager(Of TItem).CreateQueue
+- uid: App.ServerServices.ITimedQueue{{TItem}}
+  commentId: T:App.ServerServices.ITimedQueue{`0}
+  parent: App.ServerServices
+  definition: App.ServerServices.ITimedQueue`1
+  name: ITimedQueue<TItem>
+  nameWithType: ITimedQueue<TItem>
+  fullName: App.ServerServices.ITimedQueue<TItem>
+  nameWithType.vb: ITimedQueue(Of TItem)
+  fullName.vb: App.ServerServices.ITimedQueue(Of TItem)
+  name.vb: ITimedQueue(Of TItem)
+  spec.csharp:
+  - uid: App.ServerServices.ITimedQueue`1
+    name: ITimedQueue
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: App.ServerServices.ITimedQueue`1
+    name: ITimedQueue
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: App.ServerServices.ITimedQueue`1
+  commentId: T:App.ServerServices.ITimedQueue`1
+  name: ITimedQueue<TItem>
+  nameWithType: ITimedQueue<TItem>
+  fullName: App.ServerServices.ITimedQueue<TItem>
+  nameWithType.vb: ITimedQueue(Of TItem)
+  fullName.vb: App.ServerServices.ITimedQueue(Of TItem)
+  name.vb: ITimedQueue(Of TItem)
+  spec.csharp:
+  - uid: App.ServerServices.ITimedQueue`1
+    name: ITimedQueue
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: App.ServerServices.ITimedQueue`1
+    name: ITimedQueue
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: App.ServerServices.ITimedQueueManager`1.GetQueue*
+  commentId: Overload:App.ServerServices.ITimedQueueManager`1.GetQueue
+  name: GetQueue
+  nameWithType: ITimedQueueManager<TItem>.GetQueue
+  fullName: App.ServerServices.ITimedQueueManager<TItem>.GetQueue
+  nameWithType.vb: ITimedQueueManager(Of TItem).GetQueue
+  fullName.vb: App.ServerServices.ITimedQueueManager(Of TItem).GetQueue
+- uid: App.ServerServices.ITimedQueueManager`1.RemoveQueue*
+  commentId: Overload:App.ServerServices.ITimedQueueManager`1.RemoveQueue
+  name: RemoveQueue
+  nameWithType: ITimedQueueManager<TItem>.RemoveQueue
+  fullName: App.ServerServices.ITimedQueueManager<TItem>.RemoveQueue
+  nameWithType.vb: ITimedQueueManager(Of TItem).RemoveQueue
+  fullName.vb: App.ServerServices.ITimedQueueManager(Of TItem).RemoveQueue

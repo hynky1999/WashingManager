@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Features.UserPages.Components
+  commentId: N:App.Features.UserPages.Components
+  id: App.Features.UserPages.Components
+  children:
+  - App.Features.UserPages.Components.AddBalance
+  - App.Features.UserPages.Components.ShowBalance
+  langs:
+  - csharp
+  - vb
+  name: App.Features.UserPages.Components
+  nameWithType: App.Features.UserPages.Components
+  fullName: App.Features.UserPages.Components
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Features.UserPages.Components.ShowBalance
+  commentId: T:App.Features.UserPages.Components.ShowBalance
+  name: ShowBalance
+  nameWithType: ShowBalance
+  fullName: App.Features.UserPages.Components.ShowBalance
+- uid: App.Features.UserPages.Components.AddBalance
+  commentId: T:App.Features.UserPages.Components.AddBalance
+  name: AddBalance
+  nameWithType: AddBalance
+  fullName: App.Features.UserPages.Components.AddBalance

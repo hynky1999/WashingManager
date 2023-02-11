@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Controllers
+  commentId: N:App.Controllers
+  id: App.Controllers
+  children:
+  - App.Controllers.CultureController
+  langs:
+  - csharp
+  - vb
+  name: App.Controllers
+  nameWithType: App.Controllers
+  fullName: App.Controllers
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Controllers.CultureController
+  commentId: T:App.Controllers.CultureController
+  name: CultureController
+  nameWithType: CultureController
+  fullName: App.Controllers.CultureController

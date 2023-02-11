@@ -1,0 +1,155 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.ServiceInterfaces
+  commentId: N:App.Data.ServiceInterfaces
+  id: App.Data.ServiceInterfaces
+  children:
+  - App.Data.ServiceInterfaces.IBorrowableEntityService
+  - App.Data.ServiceInterfaces.IBorrowPersonService
+  - App.Data.ServiceInterfaces.IBorrowService
+  - App.Data.ServiceInterfaces.ICrudService`1
+  - App.Data.ServiceInterfaces.ICurrencyService
+  - App.Data.ServiceInterfaces.ILocalizationService
+  - App.Data.ServiceInterfaces.ILocationService
+  - App.Data.ServiceInterfaces.IReservationsService
+  - App.Data.ServiceInterfaces.IUsageChartingService
+  - App.Data.ServiceInterfaces.IUsageChartingService`1
+  - App.Data.ServiceInterfaces.IUsageService
+  - App.Data.ServiceInterfaces.IUserService
+  langs:
+  - csharp
+  - vb
+  name: App.Data.ServiceInterfaces
+  nameWithType: App.Data.ServiceInterfaces
+  fullName: App.Data.ServiceInterfaces
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Data.ServiceInterfaces.IBorrowableEntityService
+  commentId: T:App.Data.ServiceInterfaces.IBorrowableEntityService
+  parent: App.Data.ServiceInterfaces
+  name: IBorrowableEntityService
+  nameWithType: IBorrowableEntityService
+  fullName: App.Data.ServiceInterfaces.IBorrowableEntityService
+- uid: App.Data.ServiceInterfaces.IBorrowPersonService
+  commentId: T:App.Data.ServiceInterfaces.IBorrowPersonService
+  parent: App.Data.ServiceInterfaces
+  name: IBorrowPersonService
+  nameWithType: IBorrowPersonService
+  fullName: App.Data.ServiceInterfaces.IBorrowPersonService
+- uid: App.Data.ServiceInterfaces.IBorrowService
+  commentId: T:App.Data.ServiceInterfaces.IBorrowService
+  parent: App.Data.ServiceInterfaces
+  name: IBorrowService
+  nameWithType: IBorrowService
+  fullName: App.Data.ServiceInterfaces.IBorrowService
+- uid: App.Data.ServiceInterfaces.ICrudService`1
+  commentId: T:App.Data.ServiceInterfaces.ICrudService`1
+  name: ICrudService<T>
+  nameWithType: ICrudService<T>
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>
+  nameWithType.vb: ICrudService(Of T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T)
+  name.vb: ICrudService(Of T)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1
+    name: ICrudService
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1
+    name: ICrudService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Data.ServiceInterfaces.ICurrencyService
+  commentId: T:App.Data.ServiceInterfaces.ICurrencyService
+  parent: App.Data.ServiceInterfaces
+  name: ICurrencyService
+  nameWithType: ICurrencyService
+  fullName: App.Data.ServiceInterfaces.ICurrencyService
+- uid: App.Data.ServiceInterfaces.ILocalizationService
+  commentId: T:App.Data.ServiceInterfaces.ILocalizationService
+  parent: App.Data.ServiceInterfaces
+  name: ILocalizationService
+  nameWithType: ILocalizationService
+  fullName: App.Data.ServiceInterfaces.ILocalizationService
+- uid: App.Data.ServiceInterfaces.ILocationService
+  commentId: T:App.Data.ServiceInterfaces.ILocationService
+  parent: App.Data.ServiceInterfaces
+  name: ILocationService
+  nameWithType: ILocationService
+  fullName: App.Data.ServiceInterfaces.ILocationService
+- uid: App.Data.ServiceInterfaces.IReservationsService
+  commentId: T:App.Data.ServiceInterfaces.IReservationsService
+  parent: App.Data.ServiceInterfaces
+  name: IReservationsService
+  nameWithType: IReservationsService
+  fullName: App.Data.ServiceInterfaces.IReservationsService
+- uid: App.Data.ServiceInterfaces.IUsageChartingService
+  commentId: T:App.Data.ServiceInterfaces.IUsageChartingService
+  parent: App.Data.ServiceInterfaces
+  name: IUsageChartingService
+  nameWithType: IUsageChartingService
+  fullName: App.Data.ServiceInterfaces.IUsageChartingService
+- uid: App.Data.ServiceInterfaces.IUsageChartingService`1
+  commentId: T:App.Data.ServiceInterfaces.IUsageChartingService`1
+  name: IUsageChartingService<T>
+  nameWithType: IUsageChartingService<T>
+  fullName: App.Data.ServiceInterfaces.IUsageChartingService<T>
+  nameWithType.vb: IUsageChartingService(Of T)
+  fullName.vb: App.Data.ServiceInterfaces.IUsageChartingService(Of T)
+  name.vb: IUsageChartingService(Of T)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IUsageChartingService`1
+    name: IUsageChartingService
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IUsageChartingService`1
+    name: IUsageChartingService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Data.ServiceInterfaces.IUsageService
+  commentId: T:App.Data.ServiceInterfaces.IUsageService
+  parent: App.Data.ServiceInterfaces
+  name: IUsageService
+  nameWithType: IUsageService
+  fullName: App.Data.ServiceInterfaces.IUsageService
+- uid: App.Data.ServiceInterfaces.IUserService
+  commentId: T:App.Data.ServiceInterfaces.IUserService
+  parent: App.Data.ServiceInterfaces
+  name: IUserService
+  nameWithType: IUserService
+  fullName: App.Data.ServiceInterfaces.IUserService
+- uid: App.Data.ServiceInterfaces
+  commentId: N:App.Data.ServiceInterfaces
+  name: App.Data.ServiceInterfaces
+  nameWithType: App.Data.ServiceInterfaces
+  fullName: App.Data.ServiceInterfaces
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces

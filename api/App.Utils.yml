@@ -1,0 +1,64 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Utils
+  commentId: N:App.Utils
+  id: App.Utils
+  children:
+  - App.Utils.EFExtensions
+  - App.Utils.GenericUtils
+  - App.Utils.IMessageServiceExtensions
+  - App.Utils.ProgramInit
+  - App.Utils.ReflectionExtensions
+  langs:
+  - csharp
+  - vb
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Utils.EFExtensions
+  commentId: T:App.Utils.EFExtensions
+  name: EFExtensions
+  nameWithType: EFExtensions
+  fullName: App.Utils.EFExtensions
+- uid: App.Utils.GenericUtils
+  commentId: T:App.Utils.GenericUtils
+  name: GenericUtils
+  nameWithType: GenericUtils
+  fullName: App.Utils.GenericUtils
+- uid: App.Utils.IMessageServiceExtensions
+  commentId: T:App.Utils.IMessageServiceExtensions
+  name: IMessageServiceExtensions
+  nameWithType: IMessageServiceExtensions
+  fullName: App.Utils.IMessageServiceExtensions
+- uid: App.Utils.ProgramInit
+  commentId: T:App.Utils.ProgramInit
+  name: ProgramInit
+  nameWithType: ProgramInit
+  fullName: App.Utils.ProgramInit
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils

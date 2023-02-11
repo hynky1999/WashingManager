@@ -1,0 +1,91 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Shared.GenericComponenets
+  commentId: N:App.Shared.GenericComponenets
+  id: App.Shared.GenericComponenets
+  children:
+  - App.Shared.GenericComponenets.CharInput`1
+  - App.Shared.GenericComponenets.GenericEntityBase`1
+  - App.Shared.GenericComponenets.ModelLoader
+  - App.Shared.GenericComponenets.ModelSelect`1
+  langs:
+  - csharp
+  - vb
+  name: App.Shared.GenericComponenets
+  nameWithType: App.Shared.GenericComponenets
+  fullName: App.Shared.GenericComponenets
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Shared.GenericComponenets.CharInput`1
+  commentId: T:App.Shared.GenericComponenets.CharInput`1
+  name: CharInput<TItem>
+  nameWithType: CharInput<TItem>
+  fullName: App.Shared.GenericComponenets.CharInput<TItem>
+  nameWithType.vb: CharInput(Of TItem)
+  fullName.vb: App.Shared.GenericComponenets.CharInput(Of TItem)
+  name.vb: CharInput(Of TItem)
+  spec.csharp:
+  - uid: App.Shared.GenericComponenets.CharInput`1
+    name: CharInput
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: App.Shared.GenericComponenets.CharInput`1
+    name: CharInput
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: App.Shared.GenericComponenets.ModelSelect`1
+  commentId: T:App.Shared.GenericComponenets.ModelSelect`1
+  name: ModelSelect<TItem>
+  nameWithType: ModelSelect<TItem>
+  fullName: App.Shared.GenericComponenets.ModelSelect<TItem>
+  nameWithType.vb: ModelSelect(Of TItem)
+  fullName.vb: App.Shared.GenericComponenets.ModelSelect(Of TItem)
+  name.vb: ModelSelect(Of TItem)
+  spec.csharp:
+  - uid: App.Shared.GenericComponenets.ModelSelect`1
+    name: ModelSelect
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: App.Shared.GenericComponenets.ModelSelect`1
+    name: ModelSelect
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: App.Shared.GenericComponenets.GenericEntityBase`1
+  commentId: T:App.Shared.GenericComponenets.GenericEntityBase`1
+  name: GenericEntityBase<T>
+  nameWithType: GenericEntityBase<T>
+  fullName: App.Shared.GenericComponenets.GenericEntityBase<T>
+  nameWithType.vb: GenericEntityBase(Of T)
+  fullName.vb: App.Shared.GenericComponenets.GenericEntityBase(Of T)
+  name.vb: GenericEntityBase(Of T)
+  spec.csharp:
+  - uid: App.Shared.GenericComponenets.GenericEntityBase`1
+    name: GenericEntityBase
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Shared.GenericComponenets.GenericEntityBase`1
+    name: GenericEntityBase
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Shared.GenericComponenets.ModelLoader
+  commentId: T:App.Shared.GenericComponenets.ModelLoader
+  name: ModelLoader
+  nameWithType: ModelLoader
+  fullName: App.Shared.GenericComponenets.ModelLoader

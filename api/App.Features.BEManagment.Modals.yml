@@ -1,0 +1,85 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Features.BEManagment.Modals
+  commentId: N:App.Features.BEManagment.Modals
+  id: App.Features.BEManagment.Modals
+  children:
+  - App.Features.BEManagment.Modals.BorrowFormModal`1
+  - App.Features.BEManagment.Modals.BorrowRemoveModal`1
+  - App.Features.BEManagment.Modals.StatusChangeModal`1
+  langs:
+  - csharp
+  - vb
+  name: App.Features.BEManagment.Modals
+  nameWithType: App.Features.BEManagment.Modals
+  fullName: App.Features.BEManagment.Modals
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+  commentId: T:App.Features.BEManagment.Modals.BorrowRemoveModal`1
+  name: BorrowRemoveModal<T>
+  nameWithType: BorrowRemoveModal<T>
+  fullName: App.Features.BEManagment.Modals.BorrowRemoveModal<T>
+  nameWithType.vb: BorrowRemoveModal(Of T)
+  fullName.vb: App.Features.BEManagment.Modals.BorrowRemoveModal(Of T)
+  name.vb: BorrowRemoveModal(Of T)
+  spec.csharp:
+  - uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+    name: BorrowRemoveModal
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+    name: BorrowRemoveModal
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Features.BEManagment.Modals.StatusChangeModal`1
+  commentId: T:App.Features.BEManagment.Modals.StatusChangeModal`1
+  name: StatusChangeModal<T>
+  nameWithType: StatusChangeModal<T>
+  fullName: App.Features.BEManagment.Modals.StatusChangeModal<T>
+  nameWithType.vb: StatusChangeModal(Of T)
+  fullName.vb: App.Features.BEManagment.Modals.StatusChangeModal(Of T)
+  name.vb: StatusChangeModal(Of T)
+  spec.csharp:
+  - uid: App.Features.BEManagment.Modals.StatusChangeModal`1
+    name: StatusChangeModal
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Features.BEManagment.Modals.StatusChangeModal`1
+    name: StatusChangeModal
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Features.BEManagment.Modals.BorrowFormModal`1
+  commentId: T:App.Features.BEManagment.Modals.BorrowFormModal`1
+  name: BorrowFormModal<T>
+  nameWithType: BorrowFormModal<T>
+  fullName: App.Features.BEManagment.Modals.BorrowFormModal<T>
+  nameWithType.vb: BorrowFormModal(Of T)
+  fullName.vb: App.Features.BEManagment.Modals.BorrowFormModal(Of T)
+  name.vb: BorrowFormModal(Of T)
+  spec.csharp:
+  - uid: App.Features.BEManagment.Modals.BorrowFormModal`1
+    name: BorrowFormModal
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Features.BEManagment.Modals.BorrowFormModal`1
+    name: BorrowFormModal
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

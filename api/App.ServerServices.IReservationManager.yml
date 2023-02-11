@@ -1,0 +1,582 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.ServerServices.IReservationManager
+  commentId: T:App.ServerServices.IReservationManager
+  id: IReservationManager
+  parent: App.ServerServices
+  children:
+  - App.ServerServices.IReservationManager.Count
+  - App.ServerServices.IReservationManager.Create(System.Int32)
+  - App.ServerServices.IReservationManager.OnChange(System.Int32)
+  - App.ServerServices.IReservationManager.Remove(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: IReservationManager
+  nameWithType: IReservationManager
+  fullName: App.ServerServices.IReservationManager
+  type: Interface
+  source:
+    remote:
+      path: App/ServerServices/ReservationManager.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: IReservationManager
+    path: ../App/ServerServices/ReservationManager.cs
+    startLine: 220
+  assemblies:
+  - App
+  namespace: App.ServerServices
+  summary: "\nInterface for reservation manager that manages reservation over borrow and no borrow\n"
+  example: []
+  syntax:
+    content: public interface IReservationManager
+    content.vb: Public Interface IReservationManager
+  extensionMethods:
+  - App.ServerServices.IReservationManager.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.ServerServices.IReservationManager.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.ServerServices.IReservationManager.Count
+  commentId: P:App.ServerServices.IReservationManager.Count
+  id: Count
+  parent: App.ServerServices.IReservationManager
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: IReservationManager.Count
+  fullName: App.ServerServices.IReservationManager.Count
+  type: Property
+  source:
+    remote:
+      path: App/ServerServices/ReservationManager.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Count
+    path: ../App/ServerServices/ReservationManager.cs
+    startLine: 225
+  assemblies:
+  - App
+  namespace: App.ServerServices
+  summary: "\nGets number of queues. Each queue represents one borrowable entity.\n"
+  example: []
+  syntax:
+    content: int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property Count As Integer
+  overload: App.ServerServices.IReservationManager.Count*
+- uid: App.ServerServices.IReservationManager.Create(System.Int32)
+  commentId: M:App.ServerServices.IReservationManager.Create(System.Int32)
+  id: Create(System.Int32)
+  parent: App.ServerServices.IReservationManager
+  langs:
+  - csharp
+  - vb
+  name: Create(int)
+  nameWithType: IReservationManager.Create(int)
+  fullName: App.ServerServices.IReservationManager.Create(int)
+  type: Method
+  source:
+    remote:
+      path: App/ServerServices/ReservationManager.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Create
+    path: ../App/ServerServices/ReservationManager.cs
+    startLine: 232
+  assemblies:
+  - App
+  namespace: App.ServerServices
+  summary: "\nCreates a new queue for given borrowable entity.\n"
+  example: []
+  syntax:
+    content: Task<ITimedQueue<Reservation>> Create(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+      description: id of entity
+    return:
+      type: System.Threading.Tasks.Task{App.ServerServices.ITimedQueue{App.Data.Models.Reservation}}
+      description: Reference to created queue
+    content.vb: Function Create(id As Integer) As Task(Of ITimedQueue(Of Reservation))
+  overload: App.ServerServices.IReservationManager.Create*
+  nameWithType.vb: IReservationManager.Create(Integer)
+  fullName.vb: App.ServerServices.IReservationManager.Create(Integer)
+  name.vb: Create(Integer)
+- uid: App.ServerServices.IReservationManager.Remove(System.Int32)
+  commentId: M:App.ServerServices.IReservationManager.Remove(System.Int32)
+  id: Remove(System.Int32)
+  parent: App.ServerServices.IReservationManager
+  langs:
+  - csharp
+  - vb
+  name: Remove(int)
+  nameWithType: IReservationManager.Remove(int)
+  fullName: App.ServerServices.IReservationManager.Remove(int)
+  type: Method
+  source:
+    remote:
+      path: App/ServerServices/ReservationManager.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Remove
+    path: ../App/ServerServices/ReservationManager.cs
+    startLine: 238
+  assemblies:
+  - App
+  namespace: App.ServerServices
+  summary: "\nRemoves queue for given borrowable entity.\n"
+  example: []
+  syntax:
+    content: void Remove(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+      description: id of entity
+    content.vb: Sub Remove(id As Integer)
+  overload: App.ServerServices.IReservationManager.Remove*
+  nameWithType.vb: IReservationManager.Remove(Integer)
+  fullName.vb: App.ServerServices.IReservationManager.Remove(Integer)
+  name.vb: Remove(Integer)
+- uid: App.ServerServices.IReservationManager.OnChange(System.Int32)
+  commentId: M:App.ServerServices.IReservationManager.OnChange(System.Int32)
+  id: OnChange(System.Int32)
+  parent: App.ServerServices.IReservationManager
+  langs:
+  - csharp
+  - vb
+  name: OnChange(int)
+  nameWithType: IReservationManager.OnChange(int)
+  fullName: App.ServerServices.IReservationManager.OnChange(int)
+  type: Method
+  source:
+    remote:
+      path: App/ServerServices/ReservationManager.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: OnChange
+    path: ../App/ServerServices/ReservationManager.cs
+    startLine: 245
+  assemblies:
+  - App
+  namespace: App.ServerServices
+  summary: "\nTriggers OnChange event for given queue.\n"
+  example: []
+  syntax:
+    content: Task OnChange(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+      description: id of entity
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Function OnChange(id As Integer) As Task
+  overload: App.ServerServices.IReservationManager.OnChange*
+  nameWithType.vb: IReservationManager.OnChange(Integer)
+  fullName.vb: App.ServerServices.IReservationManager.OnChange(Integer)
+  name.vb: OnChange(Integer)
+references:
+- uid: App.ServerServices
+  commentId: N:App.ServerServices
+  name: App.ServerServices
+  nameWithType: App.ServerServices
+  fullName: App.ServerServices
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.ServerServices
+    name: ServerServices
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.ServerServices
+    name: ServerServices
+- uid: App.ServerServices.IReservationManager.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<IReservationManager>(IReservationManager, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<IReservationManager>(IReservationManager, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.ServerServices.IReservationManager>(App.ServerServices.IReservationManager, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of IReservationManager)(IReservationManager, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.ServerServices.IReservationManager)(App.ServerServices.IReservationManager, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of IReservationManager)(IReservationManager, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.ServerServices.IReservationManager,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.ServerServices.IReservationManager
+    name: IReservationManager
+  - name: '>'
+  - name: (
+  - uid: App.ServerServices.IReservationManager
+    name: IReservationManager
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.ServerServices.IReservationManager,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.ServerServices.IReservationManager
+    name: IReservationManager
+  - name: )
+  - name: (
+  - uid: App.ServerServices.IReservationManager
+    name: IReservationManager
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.ServerServices.IReservationManager.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<IReservationManager>(IReservationManager, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<IReservationManager>(IReservationManager, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.ServerServices.IReservationManager>(App.ServerServices.IReservationManager, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of IReservationManager)(IReservationManager, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.ServerServices.IReservationManager)(App.ServerServices.IReservationManager, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of IReservationManager)(IReservationManager, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.ServerServices.IReservationManager,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.ServerServices.IReservationManager
+    name: IReservationManager
+  - name: '>'
+  - name: (
+  - uid: App.ServerServices.IReservationManager
+    name: IReservationManager
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.ServerServices.IReservationManager,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.ServerServices.IReservationManager
+    name: IReservationManager
+  - name: )
+  - name: (
+  - uid: App.ServerServices.IReservationManager
+    name: IReservationManager
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.ServerServices.IReservationManager.Count*
+  commentId: Overload:App.ServerServices.IReservationManager.Count
+  name: Count
+  nameWithType: IReservationManager.Count
+  fullName: App.ServerServices.IReservationManager.Count
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.ServerServices.IReservationManager.Create*
+  commentId: Overload:App.ServerServices.IReservationManager.Create
+  name: Create
+  nameWithType: IReservationManager.Create
+  fullName: App.ServerServices.IReservationManager.Create
+- uid: System.Threading.Tasks.Task{App.ServerServices.ITimedQueue{App.Data.Models.Reservation}}
+  commentId: T:System.Threading.Tasks.Task{App.ServerServices.ITimedQueue{App.Data.Models.Reservation}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<ITimedQueue<Reservation>>
+  nameWithType: Task<ITimedQueue<Reservation>>
+  fullName: System.Threading.Tasks.Task<App.ServerServices.ITimedQueue<App.Data.Models.Reservation>>
+  nameWithType.vb: Task(Of ITimedQueue(Of Reservation))
+  fullName.vb: System.Threading.Tasks.Task(Of App.ServerServices.ITimedQueue(Of App.Data.Models.Reservation))
+  name.vb: Task(Of ITimedQueue(Of Reservation))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: App.ServerServices.ITimedQueue`1
+    name: ITimedQueue
+  - name: <
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.ServerServices.ITimedQueue`1
+    name: ITimedQueue
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: )
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+- uid: App.ServerServices.IReservationManager.Remove*
+  commentId: Overload:App.ServerServices.IReservationManager.Remove
+  name: Remove
+  nameWithType: IReservationManager.Remove
+  fullName: App.ServerServices.IReservationManager.Remove
+- uid: App.ServerServices.IReservationManager.OnChange*
+  commentId: Overload:App.ServerServices.IReservationManager.OnChange
+  name: OnChange
+  nameWithType: IReservationManager.OnChange
+  fullName: App.ServerServices.IReservationManager.OnChange
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task

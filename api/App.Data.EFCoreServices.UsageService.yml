@@ -1,0 +1,858 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.EFCoreServices.UsageService
+  commentId: T:App.Data.EFCoreServices.UsageService
+  id: UsageService
+  parent: App.Data.EFCoreServices
+  children:
+  - App.Data.EFCoreServices.UsageService.#ctor(IClock,App.Data.Constants.IUsageConstants)
+  - App.Data.EFCoreServices.UsageService.UpdateUsageStatisticsAsync``1(App.Data.Models.Borrow,App.Data.ApplicationDbContext)
+  langs:
+  - csharp
+  - vb
+  name: UsageService
+  nameWithType: UsageService
+  fullName: App.Data.EFCoreServices.UsageService
+  type: Class
+  source:
+    remote:
+      path: App/Data/EFCoreServices/UsageService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: UsageService
+    path: ../App/Data/EFCoreServices/UsageService.cs
+    startLine: 10
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nEF Core implementation of <xref href=\"App.Data.ServiceInterfaces.IUsageService\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: 'public class UsageService : IUsageService'
+    content.vb: Public Class UsageService Implements IUsageService
+  inheritance:
+  - System.Object
+  implements:
+  - App.Data.ServiceInterfaces.IUsageService
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - App.Data.EFCoreServices.UsageService.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Data.EFCoreServices.UsageService.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.Data.EFCoreServices.UsageService.#ctor(IClock,App.Data.Constants.IUsageConstants)
+  commentId: M:App.Data.EFCoreServices.UsageService.#ctor(IClock,App.Data.Constants.IUsageConstants)
+  id: '#ctor(IClock,App.Data.Constants.IUsageConstants)'
+  parent: App.Data.EFCoreServices.UsageService
+  langs:
+  - csharp
+  - vb
+  name: UsageService(IClock, IUsageConstants)
+  nameWithType: UsageService.UsageService(IClock, IUsageConstants)
+  fullName: App.Data.EFCoreServices.UsageService.UsageService(IClock, App.Data.Constants.IUsageConstants)
+  type: Constructor
+  source:
+    remote:
+      path: App/Data/EFCoreServices/UsageService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: .ctor
+    path: ../App/Data/EFCoreServices/UsageService.cs
+    startLine: 20
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nConstructor\n"
+  example: []
+  syntax:
+    content: public UsageService(IClock clock, IUsageConstants usageConstants)
+    parameters:
+    - id: clock
+      type: IClock
+      description: ''
+    - id: usageConstants
+      type: App.Data.Constants.IUsageConstants
+      description: ''
+    content.vb: Public Sub New(clock As IClock, usageConstants As IUsageConstants)
+  overload: App.Data.EFCoreServices.UsageService.#ctor*
+  nameWithType.vb: UsageService.New(IClock, IUsageConstants)
+  fullName.vb: App.Data.EFCoreServices.UsageService.New(IClock, App.Data.Constants.IUsageConstants)
+  name.vb: New(IClock, IUsageConstants)
+- uid: App.Data.EFCoreServices.UsageService.UpdateUsageStatisticsAsync``1(App.Data.Models.Borrow,App.Data.ApplicationDbContext)
+  commentId: M:App.Data.EFCoreServices.UsageService.UpdateUsageStatisticsAsync``1(App.Data.Models.Borrow,App.Data.ApplicationDbContext)
+  id: UpdateUsageStatisticsAsync``1(App.Data.Models.Borrow,App.Data.ApplicationDbContext)
+  parent: App.Data.EFCoreServices.UsageService
+  langs:
+  - csharp
+  - vb
+  name: UpdateUsageStatisticsAsync<T>(Borrow, ApplicationDbContext)
+  nameWithType: UsageService.UpdateUsageStatisticsAsync<T>(Borrow, ApplicationDbContext)
+  fullName: App.Data.EFCoreServices.UsageService.UpdateUsageStatisticsAsync<T>(App.Data.Models.Borrow, App.Data.ApplicationDbContext)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/UsageService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: UpdateUsageStatisticsAsync
+    path: ../App/Data/EFCoreServices/UsageService.cs
+    startLine: 28
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nUpdate Usage data based on borrow time.\n! IT&apos;s is not saved and only updates context.\n"
+  example: []
+  syntax:
+    content: 'public Task<ApplicationDbContext> UpdateUsageStatisticsAsync<T>(Borrow borrow, ApplicationDbContext dbContext) where T : BorrowableEntity'
+    parameters:
+    - id: borrow
+      type: App.Data.Models.Borrow
+      description: ''
+    - id: dbContext
+      type: App.Data.ApplicationDbContext
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{App.Data.ApplicationDbContext}
+      description: ''
+    content.vb: Public Function UpdateUsageStatisticsAsync(Of T As BorrowableEntity)(borrow As Borrow, dbContext As ApplicationDbContext) As Task(Of ApplicationDbContext)
+  overload: App.Data.EFCoreServices.UsageService.UpdateUsageStatisticsAsync*
+  implements:
+  - App.Data.ServiceInterfaces.IUsageService.UpdateUsageStatisticsAsync``1(App.Data.Models.Borrow,App.Data.ApplicationDbContext)
+  nameWithType.vb: UsageService.UpdateUsageStatisticsAsync(Of T)(Borrow, ApplicationDbContext)
+  fullName.vb: App.Data.EFCoreServices.UsageService.UpdateUsageStatisticsAsync(Of T)(App.Data.Models.Borrow, App.Data.ApplicationDbContext)
+  name.vb: UpdateUsageStatisticsAsync(Of T)(Borrow, ApplicationDbContext)
+references:
+- uid: App.Data.ServiceInterfaces.IUsageService
+  commentId: T:App.Data.ServiceInterfaces.IUsageService
+  parent: App.Data.ServiceInterfaces
+  name: IUsageService
+  nameWithType: IUsageService
+  fullName: App.Data.ServiceInterfaces.IUsageService
+- uid: App.Data.EFCoreServices
+  commentId: N:App.Data.EFCoreServices
+  name: App.Data.EFCoreServices
+  nameWithType: App.Data.EFCoreServices
+  fullName: App.Data.EFCoreServices
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.EFCoreServices
+    name: EFCoreServices
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.EFCoreServices
+    name: EFCoreServices
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.Data.EFCoreServices.UsageService.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<UsageService>(UsageService, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<UsageService>(UsageService, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Data.EFCoreServices.UsageService>(App.Data.EFCoreServices.UsageService, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of UsageService)(UsageService, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Data.EFCoreServices.UsageService)(App.Data.EFCoreServices.UsageService, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of UsageService)(UsageService, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.EFCoreServices.UsageService,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Data.EFCoreServices.UsageService
+    name: UsageService
+  - name: '>'
+  - name: (
+  - uid: App.Data.EFCoreServices.UsageService
+    name: UsageService
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.EFCoreServices.UsageService,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.EFCoreServices.UsageService
+    name: UsageService
+  - name: )
+  - name: (
+  - uid: App.Data.EFCoreServices.UsageService
+    name: UsageService
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Data.EFCoreServices.UsageService.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<UsageService>(UsageService, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<UsageService>(UsageService, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Data.EFCoreServices.UsageService>(App.Data.EFCoreServices.UsageService, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of UsageService)(UsageService, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Data.EFCoreServices.UsageService)(App.Data.EFCoreServices.UsageService, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of UsageService)(UsageService, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.EFCoreServices.UsageService,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Data.EFCoreServices.UsageService
+    name: UsageService
+  - name: '>'
+  - name: (
+  - uid: App.Data.EFCoreServices.UsageService
+    name: UsageService
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.EFCoreServices.UsageService,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.EFCoreServices.UsageService
+    name: UsageService
+  - name: )
+  - name: (
+  - uid: App.Data.EFCoreServices.UsageService
+    name: UsageService
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Data.ServiceInterfaces
+  commentId: N:App.Data.ServiceInterfaces
+  name: App.Data.ServiceInterfaces
+  nameWithType: App.Data.ServiceInterfaces
+  fullName: App.Data.ServiceInterfaces
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Data.EFCoreServices.UsageService.#ctor*
+  commentId: Overload:App.Data.EFCoreServices.UsageService.#ctor
+  name: UsageService
+  nameWithType: UsageService.UsageService
+  fullName: App.Data.EFCoreServices.UsageService.UsageService
+  nameWithType.vb: UsageService.New
+  fullName.vb: App.Data.EFCoreServices.UsageService.New
+  name.vb: New
+- uid: IClock
+  isExternal: true
+  name: IClock
+  nameWithType: IClock
+  fullName: IClock
+- uid: App.Data.Constants.IUsageConstants
+  commentId: T:App.Data.Constants.IUsageConstants
+  parent: App.Data.Constants
+  name: IUsageConstants
+  nameWithType: IUsageConstants
+  fullName: App.Data.Constants.IUsageConstants
+- uid: App.Data.Constants
+  commentId: N:App.Data.Constants
+  name: App.Data.Constants
+  nameWithType: App.Data.Constants
+  fullName: App.Data.Constants
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Constants
+    name: Constants
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Constants
+    name: Constants
+- uid: App.Data.EFCoreServices.UsageService.UpdateUsageStatisticsAsync*
+  commentId: Overload:App.Data.EFCoreServices.UsageService.UpdateUsageStatisticsAsync
+  name: UpdateUsageStatisticsAsync
+  nameWithType: UsageService.UpdateUsageStatisticsAsync
+  fullName: App.Data.EFCoreServices.UsageService.UpdateUsageStatisticsAsync
+- uid: App.Data.ServiceInterfaces.IUsageService.UpdateUsageStatisticsAsync``1(App.Data.Models.Borrow,App.Data.ApplicationDbContext)
+  commentId: M:App.Data.ServiceInterfaces.IUsageService.UpdateUsageStatisticsAsync``1(App.Data.Models.Borrow,App.Data.ApplicationDbContext)
+  parent: App.Data.ServiceInterfaces.IUsageService
+  name: UpdateUsageStatisticsAsync<T>(Borrow, ApplicationDbContext)
+  nameWithType: IUsageService.UpdateUsageStatisticsAsync<T>(Borrow, ApplicationDbContext)
+  fullName: App.Data.ServiceInterfaces.IUsageService.UpdateUsageStatisticsAsync<T>(App.Data.Models.Borrow, App.Data.ApplicationDbContext)
+  nameWithType.vb: IUsageService.UpdateUsageStatisticsAsync(Of T)(Borrow, ApplicationDbContext)
+  fullName.vb: App.Data.ServiceInterfaces.IUsageService.UpdateUsageStatisticsAsync(Of T)(App.Data.Models.Borrow, App.Data.ApplicationDbContext)
+  name.vb: UpdateUsageStatisticsAsync(Of T)(Borrow, ApplicationDbContext)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IUsageService.UpdateUsageStatisticsAsync``1(App.Data.Models.Borrow,App.Data.ApplicationDbContext)
+    name: UpdateUsageStatisticsAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: ','
+  - name: " "
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IUsageService.UpdateUsageStatisticsAsync``1(App.Data.Models.Borrow,App.Data.ApplicationDbContext)
+    name: UpdateUsageStatisticsAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: ','
+  - name: " "
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: )
+- uid: App.Data.Models.Borrow
+  commentId: T:App.Data.Models.Borrow
+  parent: App.Data.Models
+  name: Borrow
+  nameWithType: Borrow
+  fullName: App.Data.Models.Borrow
+- uid: App.Data.ApplicationDbContext
+  commentId: T:App.Data.ApplicationDbContext
+  parent: App.Data
+  name: ApplicationDbContext
+  nameWithType: ApplicationDbContext
+  fullName: App.Data.ApplicationDbContext
+- uid: System.Threading.Tasks.Task{App.Data.ApplicationDbContext}
+  commentId: T:System.Threading.Tasks.Task{App.Data.ApplicationDbContext}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<ApplicationDbContext>
+  nameWithType: Task<ApplicationDbContext>
+  fullName: System.Threading.Tasks.Task<App.Data.ApplicationDbContext>
+  nameWithType.vb: Task(Of ApplicationDbContext)
+  fullName.vb: System.Threading.Tasks.Task(Of App.Data.ApplicationDbContext)
+  name.vb: Task(Of ApplicationDbContext)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: )
+- uid: App.Data.Models
+  commentId: N:App.Data.Models
+  name: App.Data.Models
+  nameWithType: App.Data.Models
+  fullName: App.Data.Models
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Models
+    name: Models
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Models
+    name: Models
+- uid: App.Data
+  commentId: N:App.Data
+  name: App.Data
+  nameWithType: App.Data
+  fullName: App.Data
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true

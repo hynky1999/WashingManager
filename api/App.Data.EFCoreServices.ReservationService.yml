@@ -1,0 +1,1875 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.EFCoreServices.ReservationService
+  commentId: T:App.Data.EFCoreServices.ReservationService
+  id: ReservationService
+  parent: App.Data.EFCoreServices
+  children:
+  - App.Data.EFCoreServices.ReservationService.#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Data.ServiceInterfaces.IBorrowService,App.Data.Constants.IReservationConstant,App.Middlewares.IContextHookMiddleware,IClock)
+  - App.Data.EFCoreServices.ReservationService.CancelReservationAsync(App.Data.Models.Reservation)
+  - App.Data.EFCoreServices.ReservationService.CreateReservationAsync(Instant,Instant,System.Security.Claims.ClaimsPrincipal,App.Data.Models.BorrowableEntity)
+  - App.Data.EFCoreServices.ReservationService.GetReservationsAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+  - App.Data.EFCoreServices.ReservationService.GetReservationsAsync``1(QueryModel{App.Data.Models.Reservation})
+  - App.Data.EFCoreServices.ReservationService.GetReservationsCountAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+  - App.Data.EFCoreServices.ReservationService.GetReservationsCountAsync``1(QueryModel{App.Data.Models.Reservation})
+  - App.Data.EFCoreServices.ReservationService.GetUpcomingReservationsByEntityAsync(App.Data.Models.BorrowableEntity)
+  - App.Data.EFCoreServices.ReservationService.MakeBorrowFromReservationAsync(App.Data.Models.Reservation)
+  - App.Data.EFCoreServices.ReservationService.SuggestReservation``1(Duration,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: ReservationService
+  nameWithType: ReservationService
+  fullName: App.Data.EFCoreServices.ReservationService
+  type: Class
+  source:
+    remote:
+      path: App/Data/EFCoreServices/ReservationService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ReservationService
+    path: ../App/Data/EFCoreServices/ReservationService.cs
+    startLine: 16
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nEF Core implementation of <xref href=\"App.Data.ServiceInterfaces.IReservationsService\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: 'public class ReservationService : IReservationsService'
+    content.vb: Public Class ReservationService Implements IReservationsService
+  inheritance:
+  - System.Object
+  implements:
+  - App.Data.ServiceInterfaces.IReservationsService
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - App.Data.EFCoreServices.ReservationService.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Data.EFCoreServices.ReservationService.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.Data.EFCoreServices.ReservationService.#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Data.ServiceInterfaces.IBorrowService,App.Data.Constants.IReservationConstant,App.Middlewares.IContextHookMiddleware,IClock)
+  commentId: M:App.Data.EFCoreServices.ReservationService.#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Data.ServiceInterfaces.IBorrowService,App.Data.Constants.IReservationConstant,App.Middlewares.IContextHookMiddleware,IClock)
+  id: '#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Data.ServiceInterfaces.IBorrowService,App.Data.Constants.IReservationConstant,App.Middlewares.IContextHookMiddleware,IClock)'
+  parent: App.Data.EFCoreServices.ReservationService
+  langs:
+  - csharp
+  - vb
+  name: ReservationService(IDbContextFactory<ApplicationDbContext>, IBorrowService, IReservationConstant, IContextHookMiddleware, IClock)
+  nameWithType: ReservationService.ReservationService(IDbContextFactory<ApplicationDbContext>, IBorrowService, IReservationConstant, IContextHookMiddleware, IClock)
+  fullName: App.Data.EFCoreServices.ReservationService.ReservationService(IDbContextFactory<App.Data.ApplicationDbContext>, App.Data.ServiceInterfaces.IBorrowService, App.Data.Constants.IReservationConstant, App.Middlewares.IContextHookMiddleware, IClock)
+  type: Constructor
+  source:
+    remote:
+      path: App/Data/EFCoreServices/ReservationService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: .ctor
+    path: ../App/Data/EFCoreServices/ReservationService.cs
+    startLine: 32
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nConstructor.\n"
+  example: []
+  syntax:
+    content: public ReservationService(IDbContextFactory<ApplicationDbContext> dbFactory, IBorrowService borrowService, IReservationConstant reservationConstant, IContextHookMiddleware contextHookMiddleware, IClock clock)
+    parameters:
+    - id: dbFactory
+      type: IDbContextFactory{App.Data.ApplicationDbContext}
+      description: ''
+    - id: borrowService
+      type: App.Data.ServiceInterfaces.IBorrowService
+      description: ''
+    - id: reservationConstant
+      type: App.Data.Constants.IReservationConstant
+      description: ''
+    - id: contextHookMiddleware
+      type: App.Middlewares.IContextHookMiddleware
+      description: ''
+    - id: clock
+      type: IClock
+      description: ''
+    content.vb: Public Sub New(dbFactory As IDbContextFactory(Of ApplicationDbContext), borrowService As IBorrowService, reservationConstant As IReservationConstant, contextHookMiddleware As IContextHookMiddleware, clock As IClock)
+  overload: App.Data.EFCoreServices.ReservationService.#ctor*
+  nameWithType.vb: ReservationService.New(IDbContextFactory(Of ApplicationDbContext), IBorrowService, IReservationConstant, IContextHookMiddleware, IClock)
+  fullName.vb: App.Data.EFCoreServices.ReservationService.New(IDbContextFactory(Of App.Data.ApplicationDbContext), App.Data.ServiceInterfaces.IBorrowService, App.Data.Constants.IReservationConstant, App.Middlewares.IContextHookMiddleware, IClock)
+  name.vb: New(IDbContextFactory(Of ApplicationDbContext), IBorrowService, IReservationConstant, IContextHookMiddleware, IClock)
+- uid: App.Data.EFCoreServices.ReservationService.CreateReservationAsync(Instant,Instant,System.Security.Claims.ClaimsPrincipal,App.Data.Models.BorrowableEntity)
+  commentId: M:App.Data.EFCoreServices.ReservationService.CreateReservationAsync(Instant,Instant,System.Security.Claims.ClaimsPrincipal,App.Data.Models.BorrowableEntity)
+  id: CreateReservationAsync(Instant,Instant,System.Security.Claims.ClaimsPrincipal,App.Data.Models.BorrowableEntity)
+  parent: App.Data.EFCoreServices.ReservationService
+  langs:
+  - csharp
+  - vb
+  name: CreateReservationAsync(Instant, Instant, ClaimsPrincipal, BorrowableEntity)
+  nameWithType: ReservationService.CreateReservationAsync(Instant, Instant, ClaimsPrincipal, BorrowableEntity)
+  fullName: App.Data.EFCoreServices.ReservationService.CreateReservationAsync(Instant, Instant, System.Security.Claims.ClaimsPrincipal, App.Data.Models.BorrowableEntity)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/ReservationService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: CreateReservationAsync
+    path: ../App/Data/EFCoreServices/ReservationService.cs
+    startLine: 46
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nCreate a new reservation for the given user based on Instant\n"
+  example: []
+  syntax:
+    content: public Task<Reservation?> CreateReservationAsync(Instant start, Instant end, ClaimsPrincipal userPrincipal, BorrowableEntity entity)
+    parameters:
+    - id: start
+      type: Instant
+      description: ''
+    - id: end
+      type: Instant
+      description: ''
+    - id: userPrincipal
+      type: System.Security.Claims.ClaimsPrincipal
+    - id: entity
+      type: App.Data.Models.BorrowableEntity
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{App.Data.Models.Reservation}
+      description: Reservation if created successfully
+    content.vb: Public Function CreateReservationAsync(start As Instant, [end] As Instant, userPrincipal As ClaimsPrincipal, entity As BorrowableEntity) As Task(Of Reservation)
+  overload: App.Data.EFCoreServices.ReservationService.CreateReservationAsync*
+  implements:
+  - App.Data.ServiceInterfaces.IReservationsService.CreateReservationAsync(Instant,Instant,System.Security.Claims.ClaimsPrincipal,App.Data.Models.BorrowableEntity)
+- uid: App.Data.EFCoreServices.ReservationService.MakeBorrowFromReservationAsync(App.Data.Models.Reservation)
+  commentId: M:App.Data.EFCoreServices.ReservationService.MakeBorrowFromReservationAsync(App.Data.Models.Reservation)
+  id: MakeBorrowFromReservationAsync(App.Data.Models.Reservation)
+  parent: App.Data.EFCoreServices.ReservationService
+  langs:
+  - csharp
+  - vb
+  name: MakeBorrowFromReservationAsync(Reservation)
+  nameWithType: ReservationService.MakeBorrowFromReservationAsync(Reservation)
+  fullName: App.Data.EFCoreServices.ReservationService.MakeBorrowFromReservationAsync(App.Data.Models.Reservation)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/ReservationService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: MakeBorrowFromReservationAsync
+    path: ../App/Data/EFCoreServices/ReservationService.cs
+    startLine: 117
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nTakes a reservation and creates a borrow for that reservation if possible\n"
+  example: []
+  syntax:
+    content: public Task<Borrow?> MakeBorrowFromReservationAsync(Reservation reservation)
+    parameters:
+    - id: reservation
+      type: App.Data.Models.Reservation
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{App.Data.Models.Borrow}
+      description: Borrow if created
+    content.vb: Public Function MakeBorrowFromReservationAsync(reservation As Reservation) As Task(Of Borrow)
+  overload: App.Data.EFCoreServices.ReservationService.MakeBorrowFromReservationAsync*
+  implements:
+  - App.Data.ServiceInterfaces.IReservationsService.MakeBorrowFromReservationAsync(App.Data.Models.Reservation)
+- uid: App.Data.EFCoreServices.ReservationService.CancelReservationAsync(App.Data.Models.Reservation)
+  commentId: M:App.Data.EFCoreServices.ReservationService.CancelReservationAsync(App.Data.Models.Reservation)
+  id: CancelReservationAsync(App.Data.Models.Reservation)
+  parent: App.Data.EFCoreServices.ReservationService
+  langs:
+  - csharp
+  - vb
+  name: CancelReservationAsync(Reservation)
+  nameWithType: ReservationService.CancelReservationAsync(Reservation)
+  fullName: App.Data.EFCoreServices.ReservationService.CancelReservationAsync(App.Data.Models.Reservation)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/ReservationService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: CancelReservationAsync
+    path: ../App/Data/EFCoreServices/ReservationService.cs
+    startLine: 152
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nCancels reservation\n"
+  example: []
+  syntax:
+    content: public Task CancelReservationAsync(Reservation reservation)
+    parameters:
+    - id: reservation
+      type: App.Data.Models.Reservation
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Public Function CancelReservationAsync(reservation As Reservation) As Task
+  overload: App.Data.EFCoreServices.ReservationService.CancelReservationAsync*
+  implements:
+  - App.Data.ServiceInterfaces.IReservationsService.CancelReservationAsync(App.Data.Models.Reservation)
+- uid: App.Data.EFCoreServices.ReservationService.GetReservationsAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+  commentId: M:App.Data.EFCoreServices.ReservationService.GetReservationsAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+  id: GetReservationsAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+  parent: App.Data.EFCoreServices.ReservationService
+  langs:
+  - csharp
+  - vb
+  name: GetReservationsAsync(ClaimsPrincipal, QueryModel<Reservation>)
+  nameWithType: ReservationService.GetReservationsAsync(ClaimsPrincipal, QueryModel<Reservation>)
+  fullName: App.Data.EFCoreServices.ReservationService.GetReservationsAsync(System.Security.Claims.ClaimsPrincipal, QueryModel<App.Data.Models.Reservation>)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/ReservationService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetReservationsAsync
+    path: ../App/Data/EFCoreServices/ReservationService.cs
+    startLine: 168
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nGets all reservations for the given user\n"
+  example: []
+  syntax:
+    content: public Task<Reservation[]> GetReservationsAsync(ClaimsPrincipal user, QueryModel<Reservation> queryModel)
+    parameters:
+    - id: user
+      type: System.Security.Claims.ClaimsPrincipal
+      description: ''
+    - id: queryModel
+      type: QueryModel{App.Data.Models.Reservation}
+      description: constraints
+    return:
+      type: System.Threading.Tasks.Task{App.Data.Models.Reservation[]}
+      description: Reservations of user
+    content.vb: Public Function GetReservationsAsync(user As ClaimsPrincipal, queryModel As QueryModel(Of Reservation)) As Task(Of Reservation())
+  overload: App.Data.EFCoreServices.ReservationService.GetReservationsAsync*
+  implements:
+  - App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+  nameWithType.vb: ReservationService.GetReservationsAsync(ClaimsPrincipal, QueryModel(Of Reservation))
+  fullName.vb: App.Data.EFCoreServices.ReservationService.GetReservationsAsync(System.Security.Claims.ClaimsPrincipal, QueryModel(Of App.Data.Models.Reservation))
+  name.vb: GetReservationsAsync(ClaimsPrincipal, QueryModel(Of Reservation))
+- uid: App.Data.EFCoreServices.ReservationService.GetReservationsCountAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+  commentId: M:App.Data.EFCoreServices.ReservationService.GetReservationsCountAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+  id: GetReservationsCountAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+  parent: App.Data.EFCoreServices.ReservationService
+  langs:
+  - csharp
+  - vb
+  name: GetReservationsCountAsync(ClaimsPrincipal, QueryModel<Reservation>)
+  nameWithType: ReservationService.GetReservationsCountAsync(ClaimsPrincipal, QueryModel<Reservation>)
+  fullName: App.Data.EFCoreServices.ReservationService.GetReservationsCountAsync(System.Security.Claims.ClaimsPrincipal, QueryModel<App.Data.Models.Reservation>)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/ReservationService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetReservationsCountAsync
+    path: ../App/Data/EFCoreServices/ReservationService.cs
+    startLine: 178
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\n<xref href=\"App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync(System.Security.Claims.ClaimsPrincipal%2cQueryModel%7bApp.Data.Models.Reservation%7d)\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public Task<int> GetReservationsCountAsync(ClaimsPrincipal user, QueryModel<Reservation> queryModel)
+    parameters:
+    - id: user
+      type: System.Security.Claims.ClaimsPrincipal
+      description: ''
+    - id: queryModel
+      type: QueryModel{App.Data.Models.Reservation}
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+      description: ''
+    content.vb: Public Function GetReservationsCountAsync(user As ClaimsPrincipal, queryModel As QueryModel(Of Reservation)) As Task(Of Integer)
+  overload: App.Data.EFCoreServices.ReservationService.GetReservationsCountAsync*
+  implements:
+  - App.Data.ServiceInterfaces.IReservationsService.GetReservationsCountAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+  nameWithType.vb: ReservationService.GetReservationsCountAsync(ClaimsPrincipal, QueryModel(Of Reservation))
+  fullName.vb: App.Data.EFCoreServices.ReservationService.GetReservationsCountAsync(System.Security.Claims.ClaimsPrincipal, QueryModel(Of App.Data.Models.Reservation))
+  name.vb: GetReservationsCountAsync(ClaimsPrincipal, QueryModel(Of Reservation))
+- uid: App.Data.EFCoreServices.ReservationService.GetReservationsAsync``1(QueryModel{App.Data.Models.Reservation})
+  commentId: M:App.Data.EFCoreServices.ReservationService.GetReservationsAsync``1(QueryModel{App.Data.Models.Reservation})
+  id: GetReservationsAsync``1(QueryModel{App.Data.Models.Reservation})
+  parent: App.Data.EFCoreServices.ReservationService
+  langs:
+  - csharp
+  - vb
+  name: GetReservationsAsync<T>(QueryModel<Reservation>)
+  nameWithType: ReservationService.GetReservationsAsync<T>(QueryModel<Reservation>)
+  fullName: App.Data.EFCoreServices.ReservationService.GetReservationsAsync<T>(QueryModel<App.Data.Models.Reservation>)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/ReservationService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetReservationsAsync
+    path: ../App/Data/EFCoreServices/ReservationService.cs
+    startLine: 188
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nGets all reservations for the given entity\n"
+  example: []
+  syntax:
+    content: 'public Task<Reservation[]> GetReservationsAsync<T>(QueryModel<Reservation> queryModel) where T : BorrowableEntity'
+    parameters:
+    - id: queryModel
+      type: QueryModel{App.Data.Models.Reservation}
+      description: constrains
+    typeParameters:
+    - id: T
+      description: entity type to get reservations for
+    return:
+      type: System.Threading.Tasks.Task{App.Data.Models.Reservation[]}
+      description: ''
+    content.vb: Public Function GetReservationsAsync(Of T As BorrowableEntity)(queryModel As QueryModel(Of Reservation)) As Task(Of Reservation())
+  overload: App.Data.EFCoreServices.ReservationService.GetReservationsAsync*
+  implements:
+  - App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync``1(QueryModel{App.Data.Models.Reservation})
+  nameWithType.vb: ReservationService.GetReservationsAsync(Of T)(QueryModel(Of Reservation))
+  fullName.vb: App.Data.EFCoreServices.ReservationService.GetReservationsAsync(Of T)(QueryModel(Of App.Data.Models.Reservation))
+  name.vb: GetReservationsAsync(Of T)(QueryModel(Of Reservation))
+- uid: App.Data.EFCoreServices.ReservationService.GetReservationsCountAsync``1(QueryModel{App.Data.Models.Reservation})
+  commentId: M:App.Data.EFCoreServices.ReservationService.GetReservationsCountAsync``1(QueryModel{App.Data.Models.Reservation})
+  id: GetReservationsCountAsync``1(QueryModel{App.Data.Models.Reservation})
+  parent: App.Data.EFCoreServices.ReservationService
+  langs:
+  - csharp
+  - vb
+  name: GetReservationsCountAsync<T>(QueryModel<Reservation>)
+  nameWithType: ReservationService.GetReservationsCountAsync<T>(QueryModel<Reservation>)
+  fullName: App.Data.EFCoreServices.ReservationService.GetReservationsCountAsync<T>(QueryModel<App.Data.Models.Reservation>)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/ReservationService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetReservationsCountAsync
+    path: ../App/Data/EFCoreServices/ReservationService.cs
+    startLine: 205
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\n<xref href=\"App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync%60%601(QueryModel%7bApp.Data.Models.Reservation%7d)\" data-throw-if-not-resolved=\"false\"></xref> \n"
+  example: []
+  syntax:
+    content: 'public Task<int> GetReservationsCountAsync<T>(QueryModel<Reservation> queryModel) where T : BorrowableEntity'
+    parameters:
+    - id: queryModel
+      type: QueryModel{App.Data.Models.Reservation}
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+      description: ''
+    content.vb: Public Function GetReservationsCountAsync(Of T As BorrowableEntity)(queryModel As QueryModel(Of Reservation)) As Task(Of Integer)
+  overload: App.Data.EFCoreServices.ReservationService.GetReservationsCountAsync*
+  implements:
+  - App.Data.ServiceInterfaces.IReservationsService.GetReservationsCountAsync``1(QueryModel{App.Data.Models.Reservation})
+  nameWithType.vb: ReservationService.GetReservationsCountAsync(Of T)(QueryModel(Of Reservation))
+  fullName.vb: App.Data.EFCoreServices.ReservationService.GetReservationsCountAsync(Of T)(QueryModel(Of App.Data.Models.Reservation))
+  name.vb: GetReservationsCountAsync(Of T)(QueryModel(Of Reservation))
+- uid: App.Data.EFCoreServices.ReservationService.GetUpcomingReservationsByEntityAsync(App.Data.Models.BorrowableEntity)
+  commentId: M:App.Data.EFCoreServices.ReservationService.GetUpcomingReservationsByEntityAsync(App.Data.Models.BorrowableEntity)
+  id: GetUpcomingReservationsByEntityAsync(App.Data.Models.BorrowableEntity)
+  parent: App.Data.EFCoreServices.ReservationService
+  langs:
+  - csharp
+  - vb
+  name: GetUpcomingReservationsByEntityAsync(BorrowableEntity)
+  nameWithType: ReservationService.GetUpcomingReservationsByEntityAsync(BorrowableEntity)
+  fullName: App.Data.EFCoreServices.ReservationService.GetUpcomingReservationsByEntityAsync(App.Data.Models.BorrowableEntity)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/ReservationService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetUpcomingReservationsByEntityAsync
+    path: ../App/Data/EFCoreServices/ReservationService.cs
+    startLine: 216
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nGets all reservations for the given entity that start after current time\n"
+  example: []
+  syntax:
+    content: public Task<Reservation[]> GetUpcomingReservationsByEntityAsync(BorrowableEntity entity)
+    parameters:
+    - id: entity
+      type: App.Data.Models.BorrowableEntity
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{App.Data.Models.Reservation[]}
+      description: Reservations starting after current time
+    content.vb: Public Function GetUpcomingReservationsByEntityAsync(entity As BorrowableEntity) As Task(Of Reservation())
+  overload: App.Data.EFCoreServices.ReservationService.GetUpcomingReservationsByEntityAsync*
+  implements:
+  - App.Data.ServiceInterfaces.IReservationsService.GetUpcomingReservationsByEntityAsync(App.Data.Models.BorrowableEntity)
+- uid: App.Data.EFCoreServices.ReservationService.SuggestReservation``1(Duration,System.Int32)
+  commentId: M:App.Data.EFCoreServices.ReservationService.SuggestReservation``1(Duration,System.Int32)
+  id: SuggestReservation``1(Duration,System.Int32)
+  parent: App.Data.EFCoreServices.ReservationService
+  langs:
+  - csharp
+  - vb
+  name: SuggestReservation<T>(Duration, int)
+  nameWithType: ReservationService.SuggestReservation<T>(Duration, int)
+  fullName: App.Data.EFCoreServices.ReservationService.SuggestReservation<T>(Duration, int)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/ReservationService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: SuggestReservation
+    path: ../App/Data/EFCoreServices/ReservationService.cs
+    startLine: 230
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nSuggest a reservation times based on Duration length\n"
+  example: []
+  syntax:
+    content: 'public Task<(Instant start, Instant end, T be)[]> SuggestReservation<T>(Duration length, int limit = 3) where T : BorrowableEntity'
+    parameters:
+    - id: length
+      type: Duration
+      description: ''
+    - id: limit
+      type: System.Int32
+      description: how much suggestions to show
+    typeParameters:
+    - id: T
+      description: Type of BE to get suggestions for
+    return:
+      type: System.Threading.Tasks.Task{System.ValueTuple{Instant,Instant,{T}}[]}
+      description: Suggested reservations
+    content.vb: Public Function SuggestReservation(Of T As BorrowableEntity)(length As Duration, limit As Integer = 3) As Task(Of (start As Instant, [end] As Instant, be As T)())
+  overload: App.Data.EFCoreServices.ReservationService.SuggestReservation*
+  implements:
+  - App.Data.ServiceInterfaces.IReservationsService.SuggestReservation``1(Duration,System.Int32)
+  nameWithType.vb: ReservationService.SuggestReservation(Of T)(Duration, Integer)
+  fullName.vb: App.Data.EFCoreServices.ReservationService.SuggestReservation(Of T)(Duration, Integer)
+  name.vb: SuggestReservation(Of T)(Duration, Integer)
+references:
+- uid: App.Data.ServiceInterfaces.IReservationsService
+  commentId: T:App.Data.ServiceInterfaces.IReservationsService
+  parent: App.Data.ServiceInterfaces
+  name: IReservationsService
+  nameWithType: IReservationsService
+  fullName: App.Data.ServiceInterfaces.IReservationsService
+- uid: App.Data.EFCoreServices
+  commentId: N:App.Data.EFCoreServices
+  name: App.Data.EFCoreServices
+  nameWithType: App.Data.EFCoreServices
+  fullName: App.Data.EFCoreServices
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.EFCoreServices
+    name: EFCoreServices
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.EFCoreServices
+    name: EFCoreServices
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.Data.EFCoreServices.ReservationService.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<ReservationService>(ReservationService, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<ReservationService>(ReservationService, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Data.EFCoreServices.ReservationService>(App.Data.EFCoreServices.ReservationService, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of ReservationService)(ReservationService, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Data.EFCoreServices.ReservationService)(App.Data.EFCoreServices.ReservationService, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of ReservationService)(ReservationService, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.EFCoreServices.ReservationService,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Data.EFCoreServices.ReservationService
+    name: ReservationService
+  - name: '>'
+  - name: (
+  - uid: App.Data.EFCoreServices.ReservationService
+    name: ReservationService
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.EFCoreServices.ReservationService,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.EFCoreServices.ReservationService
+    name: ReservationService
+  - name: )
+  - name: (
+  - uid: App.Data.EFCoreServices.ReservationService
+    name: ReservationService
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Data.EFCoreServices.ReservationService.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<ReservationService>(ReservationService, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<ReservationService>(ReservationService, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Data.EFCoreServices.ReservationService>(App.Data.EFCoreServices.ReservationService, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of ReservationService)(ReservationService, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Data.EFCoreServices.ReservationService)(App.Data.EFCoreServices.ReservationService, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of ReservationService)(ReservationService, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.EFCoreServices.ReservationService,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Data.EFCoreServices.ReservationService
+    name: ReservationService
+  - name: '>'
+  - name: (
+  - uid: App.Data.EFCoreServices.ReservationService
+    name: ReservationService
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.EFCoreServices.ReservationService,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.EFCoreServices.ReservationService
+    name: ReservationService
+  - name: )
+  - name: (
+  - uid: App.Data.EFCoreServices.ReservationService
+    name: ReservationService
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Data.ServiceInterfaces
+  commentId: N:App.Data.ServiceInterfaces
+  name: App.Data.ServiceInterfaces
+  nameWithType: App.Data.ServiceInterfaces
+  fullName: App.Data.ServiceInterfaces
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Data.EFCoreServices.ReservationService.#ctor*
+  commentId: Overload:App.Data.EFCoreServices.ReservationService.#ctor
+  name: ReservationService
+  nameWithType: ReservationService.ReservationService
+  fullName: App.Data.EFCoreServices.ReservationService.ReservationService
+  nameWithType.vb: ReservationService.New
+  fullName.vb: App.Data.EFCoreServices.ReservationService.New
+  name.vb: New
+- uid: IDbContextFactory{App.Data.ApplicationDbContext}
+  commentId: '!:IDbContextFactory{App.Data.ApplicationDbContext}'
+  definition: IDbContextFactory`1
+  name: IDbContextFactory<ApplicationDbContext>
+  nameWithType: IDbContextFactory<ApplicationDbContext>
+  fullName: IDbContextFactory<App.Data.ApplicationDbContext>
+  nameWithType.vb: IDbContextFactory(Of ApplicationDbContext)
+  fullName.vb: IDbContextFactory(Of App.Data.ApplicationDbContext)
+  name.vb: IDbContextFactory(Of ApplicationDbContext)
+  spec.csharp:
+  - uid: IDbContextFactory`1
+    name: IDbContextFactory
+    isExternal: true
+  - name: <
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: '>'
+  spec.vb:
+  - uid: IDbContextFactory`1
+    name: IDbContextFactory
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: )
+- uid: App.Data.ServiceInterfaces.IBorrowService
+  commentId: T:App.Data.ServiceInterfaces.IBorrowService
+  parent: App.Data.ServiceInterfaces
+  name: IBorrowService
+  nameWithType: IBorrowService
+  fullName: App.Data.ServiceInterfaces.IBorrowService
+- uid: App.Data.Constants.IReservationConstant
+  commentId: T:App.Data.Constants.IReservationConstant
+  parent: App.Data.Constants
+  name: IReservationConstant
+  nameWithType: IReservationConstant
+  fullName: App.Data.Constants.IReservationConstant
+- uid: App.Middlewares.IContextHookMiddleware
+  commentId: T:App.Middlewares.IContextHookMiddleware
+  parent: App.Middlewares
+  name: IContextHookMiddleware
+  nameWithType: IContextHookMiddleware
+  fullName: App.Middlewares.IContextHookMiddleware
+- uid: IClock
+  isExternal: true
+  name: IClock
+  nameWithType: IClock
+  fullName: IClock
+- uid: IDbContextFactory`1
+  isExternal: true
+  name: IDbContextFactory<>
+  nameWithType: IDbContextFactory<>
+  fullName: IDbContextFactory<>
+  nameWithType.vb: IDbContextFactory(Of )
+  fullName.vb: IDbContextFactory(Of )
+  name.vb: IDbContextFactory(Of )
+  spec.csharp:
+  - uid: IDbContextFactory`1
+    name: IDbContextFactory
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: IDbContextFactory`1
+    name: IDbContextFactory
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: App.Data.Constants
+  commentId: N:App.Data.Constants
+  name: App.Data.Constants
+  nameWithType: App.Data.Constants
+  fullName: App.Data.Constants
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Constants
+    name: Constants
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Constants
+    name: Constants
+- uid: App.Middlewares
+  commentId: N:App.Middlewares
+  name: App.Middlewares
+  nameWithType: App.Middlewares
+  fullName: App.Middlewares
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Middlewares
+    name: Middlewares
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Middlewares
+    name: Middlewares
+- uid: App.Data.EFCoreServices.ReservationService.CreateReservationAsync*
+  commentId: Overload:App.Data.EFCoreServices.ReservationService.CreateReservationAsync
+  name: CreateReservationAsync
+  nameWithType: ReservationService.CreateReservationAsync
+  fullName: App.Data.EFCoreServices.ReservationService.CreateReservationAsync
+- uid: App.Data.ServiceInterfaces.IReservationsService.CreateReservationAsync(Instant,Instant,System.Security.Claims.ClaimsPrincipal,App.Data.Models.BorrowableEntity)
+  commentId: M:App.Data.ServiceInterfaces.IReservationsService.CreateReservationAsync(Instant,Instant,System.Security.Claims.ClaimsPrincipal,App.Data.Models.BorrowableEntity)
+  parent: App.Data.ServiceInterfaces.IReservationsService
+  isExternal: true
+  name: CreateReservationAsync(Instant, Instant, ClaimsPrincipal, BorrowableEntity)
+  nameWithType: IReservationsService.CreateReservationAsync(Instant, Instant, ClaimsPrincipal, BorrowableEntity)
+  fullName: App.Data.ServiceInterfaces.IReservationsService.CreateReservationAsync(Instant, Instant, System.Security.Claims.ClaimsPrincipal, App.Data.Models.BorrowableEntity)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.CreateReservationAsync(Instant,Instant,System.Security.Claims.ClaimsPrincipal,App.Data.Models.BorrowableEntity)
+    name: CreateReservationAsync
+  - name: (
+  - uid: Instant
+    name: Instant
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Instant
+    name: Instant
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Security.Claims.ClaimsPrincipal
+    name: ClaimsPrincipal
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: App.Data.Models.BorrowableEntity
+    name: BorrowableEntity
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.CreateReservationAsync(Instant,Instant,System.Security.Claims.ClaimsPrincipal,App.Data.Models.BorrowableEntity)
+    name: CreateReservationAsync
+  - name: (
+  - uid: Instant
+    name: Instant
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Instant
+    name: Instant
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Security.Claims.ClaimsPrincipal
+    name: ClaimsPrincipal
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: App.Data.Models.BorrowableEntity
+    name: BorrowableEntity
+  - name: )
+- uid: Instant
+  isExternal: true
+  name: Instant
+  nameWithType: Instant
+  fullName: Instant
+- uid: System.Security.Claims.ClaimsPrincipal
+  commentId: T:System.Security.Claims.ClaimsPrincipal
+  parent: System.Security.Claims
+  isExternal: true
+  name: ClaimsPrincipal
+  nameWithType: ClaimsPrincipal
+  fullName: System.Security.Claims.ClaimsPrincipal
+- uid: App.Data.Models.BorrowableEntity
+  commentId: T:App.Data.Models.BorrowableEntity
+  parent: App.Data.Models
+  name: BorrowableEntity
+  nameWithType: BorrowableEntity
+  fullName: App.Data.Models.BorrowableEntity
+- uid: System.Threading.Tasks.Task{App.Data.Models.Reservation}
+  commentId: T:System.Threading.Tasks.Task{App.Data.Models.Reservation}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Reservation>
+  nameWithType: Task<Reservation>
+  fullName: System.Threading.Tasks.Task<App.Data.Models.Reservation>
+  nameWithType.vb: Task(Of Reservation)
+  fullName.vb: System.Threading.Tasks.Task(Of App.Data.Models.Reservation)
+  name.vb: Task(Of Reservation)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: )
+- uid: System.Security.Claims
+  commentId: N:System.Security.Claims
+  isExternal: true
+  name: System.Security.Claims
+  nameWithType: System.Security.Claims
+  fullName: System.Security.Claims
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Security
+    name: Security
+    isExternal: true
+  - name: .
+  - uid: System.Security.Claims
+    name: Claims
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Security
+    name: Security
+    isExternal: true
+  - name: .
+  - uid: System.Security.Claims
+    name: Claims
+    isExternal: true
+- uid: App.Data.Models
+  commentId: N:App.Data.Models
+  name: App.Data.Models
+  nameWithType: App.Data.Models
+  fullName: App.Data.Models
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Models
+    name: Models
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Models
+    name: Models
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+- uid: App.Data.EFCoreServices.ReservationService.MakeBorrowFromReservationAsync*
+  commentId: Overload:App.Data.EFCoreServices.ReservationService.MakeBorrowFromReservationAsync
+  name: MakeBorrowFromReservationAsync
+  nameWithType: ReservationService.MakeBorrowFromReservationAsync
+  fullName: App.Data.EFCoreServices.ReservationService.MakeBorrowFromReservationAsync
+- uid: App.Data.ServiceInterfaces.IReservationsService.MakeBorrowFromReservationAsync(App.Data.Models.Reservation)
+  commentId: M:App.Data.ServiceInterfaces.IReservationsService.MakeBorrowFromReservationAsync(App.Data.Models.Reservation)
+  parent: App.Data.ServiceInterfaces.IReservationsService
+  name: MakeBorrowFromReservationAsync(Reservation)
+  nameWithType: IReservationsService.MakeBorrowFromReservationAsync(Reservation)
+  fullName: App.Data.ServiceInterfaces.IReservationsService.MakeBorrowFromReservationAsync(App.Data.Models.Reservation)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.MakeBorrowFromReservationAsync(App.Data.Models.Reservation)
+    name: MakeBorrowFromReservationAsync
+  - name: (
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.MakeBorrowFromReservationAsync(App.Data.Models.Reservation)
+    name: MakeBorrowFromReservationAsync
+  - name: (
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: )
+- uid: App.Data.Models.Reservation
+  commentId: T:App.Data.Models.Reservation
+  parent: App.Data.Models
+  name: Reservation
+  nameWithType: Reservation
+  fullName: App.Data.Models.Reservation
+- uid: System.Threading.Tasks.Task{App.Data.Models.Borrow}
+  commentId: T:System.Threading.Tasks.Task{App.Data.Models.Borrow}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Borrow>
+  nameWithType: Task<Borrow>
+  fullName: System.Threading.Tasks.Task<App.Data.Models.Borrow>
+  nameWithType.vb: Task(Of Borrow)
+  fullName.vb: System.Threading.Tasks.Task(Of App.Data.Models.Borrow)
+  name.vb: Task(Of Borrow)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: )
+- uid: App.Data.EFCoreServices.ReservationService.CancelReservationAsync*
+  commentId: Overload:App.Data.EFCoreServices.ReservationService.CancelReservationAsync
+  name: CancelReservationAsync
+  nameWithType: ReservationService.CancelReservationAsync
+  fullName: App.Data.EFCoreServices.ReservationService.CancelReservationAsync
+- uid: App.Data.ServiceInterfaces.IReservationsService.CancelReservationAsync(App.Data.Models.Reservation)
+  commentId: M:App.Data.ServiceInterfaces.IReservationsService.CancelReservationAsync(App.Data.Models.Reservation)
+  parent: App.Data.ServiceInterfaces.IReservationsService
+  name: CancelReservationAsync(Reservation)
+  nameWithType: IReservationsService.CancelReservationAsync(Reservation)
+  fullName: App.Data.ServiceInterfaces.IReservationsService.CancelReservationAsync(App.Data.Models.Reservation)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.CancelReservationAsync(App.Data.Models.Reservation)
+    name: CancelReservationAsync
+  - name: (
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.CancelReservationAsync(App.Data.Models.Reservation)
+    name: CancelReservationAsync
+  - name: (
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: )
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: App.Data.EFCoreServices.ReservationService.GetReservationsAsync*
+  commentId: Overload:App.Data.EFCoreServices.ReservationService.GetReservationsAsync
+  name: GetReservationsAsync
+  nameWithType: ReservationService.GetReservationsAsync
+  fullName: App.Data.EFCoreServices.ReservationService.GetReservationsAsync
+- uid: App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+  commentId: M:App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+  parent: App.Data.ServiceInterfaces.IReservationsService
+  isExternal: true
+  name: GetReservationsAsync(ClaimsPrincipal, QueryModel<Reservation>)
+  nameWithType: IReservationsService.GetReservationsAsync(ClaimsPrincipal, QueryModel<Reservation>)
+  fullName: App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync(System.Security.Claims.ClaimsPrincipal, QueryModel<App.Data.Models.Reservation>)
+  nameWithType.vb: IReservationsService.GetReservationsAsync(ClaimsPrincipal, QueryModel(Of Reservation))
+  fullName.vb: App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync(System.Security.Claims.ClaimsPrincipal, QueryModel(Of App.Data.Models.Reservation))
+  name.vb: GetReservationsAsync(ClaimsPrincipal, QueryModel(Of Reservation))
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+    name: GetReservationsAsync
+  - name: (
+  - uid: System.Security.Claims.ClaimsPrincipal
+    name: ClaimsPrincipal
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+    name: GetReservationsAsync
+  - name: (
+  - uid: System.Security.Claims.ClaimsPrincipal
+    name: ClaimsPrincipal
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: )
+  - name: )
+- uid: QueryModel{App.Data.Models.Reservation}
+  commentId: '!:QueryModel{App.Data.Models.Reservation}'
+  definition: QueryModel`1
+  name: QueryModel<Reservation>
+  nameWithType: QueryModel<Reservation>
+  fullName: QueryModel<App.Data.Models.Reservation>
+  nameWithType.vb: QueryModel(Of Reservation)
+  fullName.vb: QueryModel(Of App.Data.Models.Reservation)
+  name.vb: QueryModel(Of Reservation)
+  spec.csharp:
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: '>'
+  spec.vb:
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: )
+- uid: System.Threading.Tasks.Task{App.Data.Models.Reservation[]}
+  commentId: T:System.Threading.Tasks.Task{App.Data.Models.Reservation[]}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Reservation[]>
+  nameWithType: Task<Reservation[]>
+  fullName: System.Threading.Tasks.Task<App.Data.Models.Reservation[]>
+  nameWithType.vb: Task(Of Reservation())
+  fullName.vb: System.Threading.Tasks.Task(Of App.Data.Models.Reservation())
+  name.vb: Task(Of Reservation())
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: (
+  - name: )
+  - name: )
+- uid: QueryModel`1
+  isExternal: true
+  name: QueryModel<>
+  nameWithType: QueryModel<>
+  fullName: QueryModel<>
+  nameWithType.vb: QueryModel(Of )
+  fullName.vb: QueryModel(Of )
+  name.vb: QueryModel(Of )
+  spec.csharp:
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: App.Data.EFCoreServices.ReservationService.GetReservationsCountAsync*
+  commentId: Overload:App.Data.EFCoreServices.ReservationService.GetReservationsCountAsync
+  name: GetReservationsCountAsync
+  nameWithType: ReservationService.GetReservationsCountAsync
+  fullName: App.Data.EFCoreServices.ReservationService.GetReservationsCountAsync
+- uid: App.Data.ServiceInterfaces.IReservationsService.GetReservationsCountAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+  commentId: M:App.Data.ServiceInterfaces.IReservationsService.GetReservationsCountAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+  parent: App.Data.ServiceInterfaces.IReservationsService
+  isExternal: true
+  name: GetReservationsCountAsync(ClaimsPrincipal, QueryModel<Reservation>)
+  nameWithType: IReservationsService.GetReservationsCountAsync(ClaimsPrincipal, QueryModel<Reservation>)
+  fullName: App.Data.ServiceInterfaces.IReservationsService.GetReservationsCountAsync(System.Security.Claims.ClaimsPrincipal, QueryModel<App.Data.Models.Reservation>)
+  nameWithType.vb: IReservationsService.GetReservationsCountAsync(ClaimsPrincipal, QueryModel(Of Reservation))
+  fullName.vb: App.Data.ServiceInterfaces.IReservationsService.GetReservationsCountAsync(System.Security.Claims.ClaimsPrincipal, QueryModel(Of App.Data.Models.Reservation))
+  name.vb: GetReservationsCountAsync(ClaimsPrincipal, QueryModel(Of Reservation))
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.GetReservationsCountAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+    name: GetReservationsCountAsync
+  - name: (
+  - uid: System.Security.Claims.ClaimsPrincipal
+    name: ClaimsPrincipal
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.GetReservationsCountAsync(System.Security.Claims.ClaimsPrincipal,QueryModel{App.Data.Models.Reservation})
+    name: GetReservationsCountAsync
+  - name: (
+  - uid: System.Security.Claims.ClaimsPrincipal
+    name: ClaimsPrincipal
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: )
+  - name: )
+- uid: System.Threading.Tasks.Task{System.Int32}
+  commentId: T:System.Threading.Tasks.Task{System.Int32}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<int>
+  nameWithType: Task<int>
+  fullName: System.Threading.Tasks.Task<int>
+  nameWithType.vb: Task(Of Integer)
+  fullName.vb: System.Threading.Tasks.Task(Of Integer)
+  name.vb: Task(Of Integer)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync``1(QueryModel{App.Data.Models.Reservation})
+  commentId: M:App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync``1(QueryModel{App.Data.Models.Reservation})
+  parent: App.Data.ServiceInterfaces.IReservationsService
+  isExternal: true
+  name: GetReservationsAsync<T>(QueryModel<Reservation>)
+  nameWithType: IReservationsService.GetReservationsAsync<T>(QueryModel<Reservation>)
+  fullName: App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync<T>(QueryModel<App.Data.Models.Reservation>)
+  nameWithType.vb: IReservationsService.GetReservationsAsync(Of T)(QueryModel(Of Reservation))
+  fullName.vb: App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync(Of T)(QueryModel(Of App.Data.Models.Reservation))
+  name.vb: GetReservationsAsync(Of T)(QueryModel(Of Reservation))
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync``1(QueryModel{App.Data.Models.Reservation})
+    name: GetReservationsAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.GetReservationsAsync``1(QueryModel{App.Data.Models.Reservation})
+    name: GetReservationsAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: )
+  - name: )
+- uid: App.Data.ServiceInterfaces.IReservationsService.GetReservationsCountAsync``1(QueryModel{App.Data.Models.Reservation})
+  commentId: M:App.Data.ServiceInterfaces.IReservationsService.GetReservationsCountAsync``1(QueryModel{App.Data.Models.Reservation})
+  parent: App.Data.ServiceInterfaces.IReservationsService
+  isExternal: true
+  name: GetReservationsCountAsync<T>(QueryModel<Reservation>)
+  nameWithType: IReservationsService.GetReservationsCountAsync<T>(QueryModel<Reservation>)
+  fullName: App.Data.ServiceInterfaces.IReservationsService.GetReservationsCountAsync<T>(QueryModel<App.Data.Models.Reservation>)
+  nameWithType.vb: IReservationsService.GetReservationsCountAsync(Of T)(QueryModel(Of Reservation))
+  fullName.vb: App.Data.ServiceInterfaces.IReservationsService.GetReservationsCountAsync(Of T)(QueryModel(Of App.Data.Models.Reservation))
+  name.vb: GetReservationsCountAsync(Of T)(QueryModel(Of Reservation))
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.GetReservationsCountAsync``1(QueryModel{App.Data.Models.Reservation})
+    name: GetReservationsCountAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.GetReservationsCountAsync``1(QueryModel{App.Data.Models.Reservation})
+    name: GetReservationsCountAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: )
+  - name: )
+- uid: App.Data.EFCoreServices.ReservationService.GetUpcomingReservationsByEntityAsync*
+  commentId: Overload:App.Data.EFCoreServices.ReservationService.GetUpcomingReservationsByEntityAsync
+  name: GetUpcomingReservationsByEntityAsync
+  nameWithType: ReservationService.GetUpcomingReservationsByEntityAsync
+  fullName: App.Data.EFCoreServices.ReservationService.GetUpcomingReservationsByEntityAsync
+- uid: App.Data.ServiceInterfaces.IReservationsService.GetUpcomingReservationsByEntityAsync(App.Data.Models.BorrowableEntity)
+  commentId: M:App.Data.ServiceInterfaces.IReservationsService.GetUpcomingReservationsByEntityAsync(App.Data.Models.BorrowableEntity)
+  parent: App.Data.ServiceInterfaces.IReservationsService
+  name: GetUpcomingReservationsByEntityAsync(BorrowableEntity)
+  nameWithType: IReservationsService.GetUpcomingReservationsByEntityAsync(BorrowableEntity)
+  fullName: App.Data.ServiceInterfaces.IReservationsService.GetUpcomingReservationsByEntityAsync(App.Data.Models.BorrowableEntity)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.GetUpcomingReservationsByEntityAsync(App.Data.Models.BorrowableEntity)
+    name: GetUpcomingReservationsByEntityAsync
+  - name: (
+  - uid: App.Data.Models.BorrowableEntity
+    name: BorrowableEntity
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.GetUpcomingReservationsByEntityAsync(App.Data.Models.BorrowableEntity)
+    name: GetUpcomingReservationsByEntityAsync
+  - name: (
+  - uid: App.Data.Models.BorrowableEntity
+    name: BorrowableEntity
+  - name: )
+- uid: App.Data.EFCoreServices.ReservationService.SuggestReservation*
+  commentId: Overload:App.Data.EFCoreServices.ReservationService.SuggestReservation
+  name: SuggestReservation
+  nameWithType: ReservationService.SuggestReservation
+  fullName: App.Data.EFCoreServices.ReservationService.SuggestReservation
+- uid: App.Data.ServiceInterfaces.IReservationsService.SuggestReservation``1(Duration,System.Int32)
+  commentId: M:App.Data.ServiceInterfaces.IReservationsService.SuggestReservation``1(Duration,System.Int32)
+  parent: App.Data.ServiceInterfaces.IReservationsService
+  isExternal: true
+  name: SuggestReservation<T>(Duration, int)
+  nameWithType: IReservationsService.SuggestReservation<T>(Duration, int)
+  fullName: App.Data.ServiceInterfaces.IReservationsService.SuggestReservation<T>(Duration, int)
+  nameWithType.vb: IReservationsService.SuggestReservation(Of T)(Duration, Integer)
+  fullName.vb: App.Data.ServiceInterfaces.IReservationsService.SuggestReservation(Of T)(Duration, Integer)
+  name.vb: SuggestReservation(Of T)(Duration, Integer)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.SuggestReservation``1(Duration,System.Int32)
+    name: SuggestReservation
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: Duration
+    name: Duration
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IReservationsService.SuggestReservation``1(Duration,System.Int32)
+    name: SuggestReservation
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: Duration
+    name: Duration
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: Duration
+  isExternal: true
+  name: Duration
+  nameWithType: Duration
+  fullName: Duration
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Threading.Tasks.Task{System.ValueTuple{Instant,Instant,{T}}[]}
+  commentId: T:System.Threading.Tasks.Task{System.ValueTuple{Instant,Instant,``0}[]}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<(Instant start, Instant end, T be)[]>
+  nameWithType: Task<(Instant start, Instant end, T be)[]>
+  fullName: System.Threading.Tasks.Task<(Instant start, Instant end, T be)[]>
+  nameWithType.vb: Task(Of (start As Instant, end As Instant, be As T)())
+  fullName.vb: System.Threading.Tasks.Task(Of (start As Instant, end As Instant, be As T)())
+  name.vb: Task(Of (start As Instant, end As Instant, be As T)())
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: (
+  - uid: Instant
+    name: Instant
+    isExternal: true
+  - name: " "
+  - uid: System.ValueTuple{Instant,Instant,``0}.start
+    name: start
+  - name: ','
+  - name: " "
+  - uid: Instant
+    name: Instant
+    isExternal: true
+  - name: " "
+  - uid: System.ValueTuple{Instant,Instant,``0}.end
+    name: end
+  - name: ','
+  - name: " "
+  - name: T
+  - name: " "
+  - uid: System.ValueTuple{Instant,Instant,``0}.be
+    name: be
+  - name: )
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: (
+  - uid: System.ValueTuple{Instant,Instant,``0}.start
+    name: start
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: Instant
+    name: Instant
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{Instant,Instant,``0}.end
+    name: end
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: Instant
+    name: Instant
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{Instant,Instant,``0}.be
+    name: be
+  - name: " "
+  - name: As
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+  - name: )

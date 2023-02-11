@@ -1,0 +1,399 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Features.AdminPanel.CrudAction
+  commentId: T:App.Features.AdminPanel.CrudAction
+  id: CrudAction
+  parent: App.Features.AdminPanel
+  children:
+  - App.Features.AdminPanel.CrudAction.Create
+  - App.Features.AdminPanel.CrudAction.List
+  - App.Features.AdminPanel.CrudAction.Update
+  langs:
+  - csharp
+  - vb
+  name: CrudAction
+  nameWithType: CrudAction
+  fullName: App.Features.AdminPanel.CrudAction
+  type: Enum
+  source:
+    remote:
+      path: App/Features/AdminPanel/CrudAction.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: CrudAction
+    path: ../App/Features/AdminPanel/CrudAction.cs
+    startLine: 5
+  assemblies:
+  - App
+  namespace: App.Features.AdminPanel
+  summary: "\nRepresents a CRU Action that can be executed on model.\n"
+  example: []
+  syntax:
+    content: public enum CrudAction
+    content.vb: Public Enum CrudAction
+  extensionMethods:
+  - App.Features.AdminPanel.CrudAction.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Features.AdminPanel.CrudAction.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.Features.AdminPanel.CrudAction.Create
+  commentId: F:App.Features.AdminPanel.CrudAction.Create
+  id: Create
+  parent: App.Features.AdminPanel.CrudAction
+  langs:
+  - csharp
+  - vb
+  name: Create
+  nameWithType: CrudAction.Create
+  fullName: App.Features.AdminPanel.CrudAction.Create
+  type: Field
+  source:
+    remote:
+      path: App/Features/AdminPanel/CrudAction.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Create
+    path: ../App/Features/AdminPanel/CrudAction.cs
+    startLine: 10
+  assemblies:
+  - App
+  namespace: App.Features.AdminPanel
+  summary: "\nCreate action\n"
+  example: []
+  syntax:
+    content: Create = 0
+    return:
+      type: App.Features.AdminPanel.CrudAction
+- uid: App.Features.AdminPanel.CrudAction.Update
+  commentId: F:App.Features.AdminPanel.CrudAction.Update
+  id: Update
+  parent: App.Features.AdminPanel.CrudAction
+  langs:
+  - csharp
+  - vb
+  name: Update
+  nameWithType: CrudAction.Update
+  fullName: App.Features.AdminPanel.CrudAction.Update
+  type: Field
+  source:
+    remote:
+      path: App/Features/AdminPanel/CrudAction.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Update
+    path: ../App/Features/AdminPanel/CrudAction.cs
+    startLine: 15
+  assemblies:
+  - App
+  namespace: App.Features.AdminPanel
+  summary: "\nUpdate action\n"
+  example: []
+  syntax:
+    content: Update = 1
+    return:
+      type: App.Features.AdminPanel.CrudAction
+- uid: App.Features.AdminPanel.CrudAction.List
+  commentId: F:App.Features.AdminPanel.CrudAction.List
+  id: List
+  parent: App.Features.AdminPanel.CrudAction
+  langs:
+  - csharp
+  - vb
+  name: List
+  nameWithType: CrudAction.List
+  fullName: App.Features.AdminPanel.CrudAction.List
+  type: Field
+  source:
+    remote:
+      path: App/Features/AdminPanel/CrudAction.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: List
+    path: ../App/Features/AdminPanel/CrudAction.cs
+    startLine: 20
+  assemblies:
+  - App
+  namespace: App.Features.AdminPanel
+  summary: "\nList action\n"
+  example: []
+  syntax:
+    content: List = 2
+    return:
+      type: App.Features.AdminPanel.CrudAction
+references:
+- uid: App.Features.AdminPanel
+  commentId: N:App.Features.AdminPanel
+  name: App.Features.AdminPanel
+  nameWithType: App.Features.AdminPanel
+  fullName: App.Features.AdminPanel
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Features
+    name: Features
+  - name: .
+  - uid: App.Features.AdminPanel
+    name: AdminPanel
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Features
+    name: Features
+  - name: .
+  - uid: App.Features.AdminPanel
+    name: AdminPanel
+- uid: App.Features.AdminPanel.CrudAction.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<CrudAction>(CrudAction, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<CrudAction>(CrudAction, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Features.AdminPanel.CrudAction>(App.Features.AdminPanel.CrudAction, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of CrudAction)(CrudAction, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Features.AdminPanel.CrudAction)(App.Features.AdminPanel.CrudAction, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of CrudAction)(CrudAction, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Features.AdminPanel.CrudAction,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Features.AdminPanel.CrudAction
+    name: CrudAction
+  - name: '>'
+  - name: (
+  - uid: App.Features.AdminPanel.CrudAction
+    name: CrudAction
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Features.AdminPanel.CrudAction,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Features.AdminPanel.CrudAction
+    name: CrudAction
+  - name: )
+  - name: (
+  - uid: App.Features.AdminPanel.CrudAction
+    name: CrudAction
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Features.AdminPanel.CrudAction.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<CrudAction>(CrudAction, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<CrudAction>(CrudAction, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Features.AdminPanel.CrudAction>(App.Features.AdminPanel.CrudAction, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of CrudAction)(CrudAction, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Features.AdminPanel.CrudAction)(App.Features.AdminPanel.CrudAction, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of CrudAction)(CrudAction, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Features.AdminPanel.CrudAction,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Features.AdminPanel.CrudAction
+    name: CrudAction
+  - name: '>'
+  - name: (
+  - uid: App.Features.AdminPanel.CrudAction
+    name: CrudAction
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Features.AdminPanel.CrudAction,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Features.AdminPanel.CrudAction
+    name: CrudAction
+  - name: )
+  - name: (
+  - uid: App.Features.AdminPanel.CrudAction
+    name: CrudAction
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Features.AdminPanel.CrudAction
+  commentId: T:App.Features.AdminPanel.CrudAction
+  parent: App.Features.AdminPanel
+  name: CrudAction
+  nameWithType: CrudAction
+  fullName: App.Features.AdminPanel.CrudAction

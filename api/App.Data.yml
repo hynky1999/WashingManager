@@ -1,0 +1,40 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data
+  commentId: N:App.Data
+  id: App.Data
+  children:
+  - App.Data.ApplicationDbContext
+  langs:
+  - csharp
+  - vb
+  name: App.Data
+  nameWithType: App.Data
+  fullName: App.Data
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Data.ApplicationDbContext
+  commentId: T:App.Data.ApplicationDbContext
+  parent: App.Data
+  name: ApplicationDbContext
+  nameWithType: ApplicationDbContext
+  fullName: App.Data.ApplicationDbContext
+- uid: App.Data
+  commentId: N:App.Data
+  name: App.Data
+  nameWithType: App.Data
+  fullName: App.Data
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data

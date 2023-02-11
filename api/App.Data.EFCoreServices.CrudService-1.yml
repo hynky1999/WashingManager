@@ -1,0 +1,1850 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.EFCoreServices.CrudService`1
+  commentId: T:App.Data.EFCoreServices.CrudService`1
+  id: CrudService`1
+  parent: App.Data.EFCoreServices
+  children:
+  - App.Data.EFCoreServices.CrudService`1.#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Middlewares.IContextHookMiddleware,System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  - App.Data.EFCoreServices.CrudService`1.#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Middlewares.IContextHookMiddleware)
+  - App.Data.EFCoreServices.CrudService`1.CreateAsync(`0)
+  - App.Data.EFCoreServices.CrudService`1.DeleteAsync(`0)
+  - App.Data.EFCoreServices.CrudService`1.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+  - App.Data.EFCoreServices.CrudService`1.GetByIdAsync(System.Object,System.Boolean)
+  - App.Data.EFCoreServices.CrudService`1.GetCountAsync(System.Nullable{QueryModel{`0}})
+  - App.Data.EFCoreServices.CrudService`1.GetId(`0)
+  - App.Data.EFCoreServices.CrudService`1.UpdateAsync(`0)
+  langs:
+  - csharp
+  - vb
+  name: CrudService<T>
+  nameWithType: CrudService<T>
+  fullName: App.Data.EFCoreServices.CrudService<T>
+  type: Class
+  source:
+    remote:
+      path: App/Data/EFCoreServices/CrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: CrudService
+    path: ../App/Data/EFCoreServices/CrudService.cs
+    startLine: 14
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nEF Core implementation of <xref href=\"App.Data.ServiceInterfaces.ICrudService%601\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: 'public class CrudService<T> : ICrudService<T> where T : class'
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Public Class CrudService(Of T As Class) Implements ICrudService(Of T)
+  inheritance:
+  - System.Object
+  implements:
+  - App.Data.ServiceInterfaces.ICrudService{{T}}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - App.Data.EFCoreServices.CrudService`1.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Data.EFCoreServices.CrudService`1.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  nameWithType.vb: CrudService(Of T)
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T)
+  name.vb: CrudService(Of T)
+- uid: App.Data.EFCoreServices.CrudService`1.#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Middlewares.IContextHookMiddleware,System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  commentId: M:App.Data.EFCoreServices.CrudService`1.#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Middlewares.IContextHookMiddleware,System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  id: '#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Middlewares.IContextHookMiddleware,System.Linq.Expressions.Expression{System.Func{`0,System.Object}})'
+  parent: App.Data.EFCoreServices.CrudService`1
+  langs:
+  - csharp
+  - vb
+  name: CrudService(IDbContextFactory<ApplicationDbContext>, IContextHookMiddleware, Expression<Func<T, object>>)
+  nameWithType: CrudService<T>.CrudService(IDbContextFactory<ApplicationDbContext>, IContextHookMiddleware, Expression<Func<T, object>>)
+  fullName: App.Data.EFCoreServices.CrudService<T>.CrudService(IDbContextFactory<App.Data.ApplicationDbContext>, App.Middlewares.IContextHookMiddleware, System.Linq.Expressions.Expression<System.Func<T, object>>)
+  type: Constructor
+  source:
+    remote:
+      path: App/Data/EFCoreServices/CrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: .ctor
+    path: ../App/Data/EFCoreServices/CrudService.cs
+    startLine: 29
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nConstructor.\n"
+  example: []
+  syntax:
+    content: public CrudService(IDbContextFactory<ApplicationDbContext> dbFactory, IContextHookMiddleware contextHookMiddleware, Expression<Func<T, object>> idGetter)
+    parameters:
+    - id: dbFactory
+      type: IDbContextFactory{App.Data.ApplicationDbContext}
+      description: ''
+    - id: contextHookMiddleware
+      type: App.Middlewares.IContextHookMiddleware
+      description: ''
+    - id: idGetter
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Object}}
+      description: ''
+    content.vb: Public Sub New(dbFactory As IDbContextFactory(Of ApplicationDbContext), contextHookMiddleware As IContextHookMiddleware, idGetter As Expression(Of Func(Of T, Object)))
+  overload: App.Data.EFCoreServices.CrudService`1.#ctor*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+  nameWithType.vb: CrudService(Of T).New(IDbContextFactory(Of ApplicationDbContext), IContextHookMiddleware, Expression(Of Func(Of T, Object)))
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).New(IDbContextFactory(Of App.Data.ApplicationDbContext), App.Middlewares.IContextHookMiddleware, System.Linq.Expressions.Expression(Of System.Func(Of T, Object)))
+  name.vb: New(IDbContextFactory(Of ApplicationDbContext), IContextHookMiddleware, Expression(Of Func(Of T, Object)))
+- uid: App.Data.EFCoreServices.CrudService`1.#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Middlewares.IContextHookMiddleware)
+  commentId: M:App.Data.EFCoreServices.CrudService`1.#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Middlewares.IContextHookMiddleware)
+  id: '#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Middlewares.IContextHookMiddleware)'
+  parent: App.Data.EFCoreServices.CrudService`1
+  langs:
+  - csharp
+  - vb
+  name: CrudService(IDbContextFactory<ApplicationDbContext>, IContextHookMiddleware)
+  nameWithType: CrudService<T>.CrudService(IDbContextFactory<ApplicationDbContext>, IContextHookMiddleware)
+  fullName: App.Data.EFCoreServices.CrudService<T>.CrudService(IDbContextFactory<App.Data.ApplicationDbContext>, App.Middlewares.IContextHookMiddleware)
+  type: Constructor
+  source:
+    remote:
+      path: App/Data/EFCoreServices/CrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: .ctor
+    path: ../App/Data/EFCoreServices/CrudService.cs
+    startLine: 43
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  example: []
+  syntax:
+    content: public CrudService(IDbContextFactory<ApplicationDbContext> dbFactory, IContextHookMiddleware middleware)
+    parameters:
+    - id: dbFactory
+      type: IDbContextFactory{App.Data.ApplicationDbContext}
+    - id: middleware
+      type: App.Middlewares.IContextHookMiddleware
+    content.vb: Public Sub New(dbFactory As IDbContextFactory(Of ApplicationDbContext), middleware As IContextHookMiddleware)
+  overload: App.Data.EFCoreServices.CrudService`1.#ctor*
+  nameWithType.vb: CrudService(Of T).New(IDbContextFactory(Of ApplicationDbContext), IContextHookMiddleware)
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).New(IDbContextFactory(Of App.Data.ApplicationDbContext), App.Middlewares.IContextHookMiddleware)
+  name.vb: New(IDbContextFactory(Of ApplicationDbContext), IContextHookMiddleware)
+- uid: App.Data.EFCoreServices.CrudService`1.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+  commentId: M:App.Data.EFCoreServices.CrudService`1.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+  id: GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+  parent: App.Data.EFCoreServices.CrudService`1
+  langs:
+  - csharp
+  - vb
+  name: GetAllAsync(QueryModel<T>?, bool)
+  nameWithType: CrudService<T>.GetAllAsync(QueryModel<T>?, bool)
+  fullName: App.Data.EFCoreServices.CrudService<T>.GetAllAsync(QueryModel<T>?, bool)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/CrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetAllAsync
+    path: ../App/Data/EFCoreServices/CrudService.cs
+    startLine: 51
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nGets all items of the type T based on queryModel filters.\n"
+  example: []
+  syntax:
+    content: public Task<T[]> GetAllAsync(QueryModel<T>? queryModel, bool eager = false)
+    parameters:
+    - id: queryModel
+      type: System.Nullable{QueryModel{{T}}}
+      description: ''
+    - id: eager
+      type: System.Boolean
+      description: Should all relates tables be fetched too ?
+    return:
+      type: System.Threading.Tasks.Task{{T}[]}
+      description: All items of type T
+    content.vb: Public Function GetAllAsync(queryModel As QueryModel(Of T)?, eager As Boolean = False) As Task(Of T())
+  overload: App.Data.EFCoreServices.CrudService`1.GetAllAsync*
+  implements:
+  - App.Data.ServiceInterfaces.ICrudService{{T}}.GetAllAsync(System.Nullable{QueryModel{{T}}},System.Boolean)
+  nameWithType.vb: CrudService(Of T).GetAllAsync(QueryModel(Of T)?, Boolean)
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).GetAllAsync(QueryModel(Of T)?, Boolean)
+  name.vb: GetAllAsync(QueryModel(Of T)?, Boolean)
+- uid: App.Data.EFCoreServices.CrudService`1.GetCountAsync(System.Nullable{QueryModel{`0}})
+  commentId: M:App.Data.EFCoreServices.CrudService`1.GetCountAsync(System.Nullable{QueryModel{`0}})
+  id: GetCountAsync(System.Nullable{QueryModel{`0}})
+  parent: App.Data.EFCoreServices.CrudService`1
+  langs:
+  - csharp
+  - vb
+  name: GetCountAsync(QueryModel<T>?)
+  nameWithType: CrudService<T>.GetCountAsync(QueryModel<T>?)
+  fullName: App.Data.EFCoreServices.CrudService<T>.GetCountAsync(QueryModel<T>?)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/CrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetCountAsync
+    path: ../App/Data/EFCoreServices/CrudService.cs
+    startLine: 63
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\n<xref href=\"App.Data.ServiceInterfaces.ICrudService%601.GetAllAsync(System.Nullable%7bQueryModel%7b%600%7d%7d%2cSystem.Boolean)\" data-throw-if-not-resolved=\"false\"></xref> but counts the items.\n"
+  example: []
+  syntax:
+    content: public Task<int> GetCountAsync(QueryModel<T>? queryModel)
+    parameters:
+    - id: queryModel
+      type: System.Nullable{QueryModel{{T}}}
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+      description: Count of all items
+    content.vb: Public Function GetCountAsync(queryModel As QueryModel(Of T)?) As Task(Of Integer)
+  overload: App.Data.EFCoreServices.CrudService`1.GetCountAsync*
+  implements:
+  - App.Data.ServiceInterfaces.ICrudService{{T}}.GetCountAsync(System.Nullable{QueryModel{{T}}})
+  nameWithType.vb: CrudService(Of T).GetCountAsync(QueryModel(Of T)?)
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).GetCountAsync(QueryModel(Of T)?)
+  name.vb: GetCountAsync(QueryModel(Of T)?)
+- uid: App.Data.EFCoreServices.CrudService`1.GetByIdAsync(System.Object,System.Boolean)
+  commentId: M:App.Data.EFCoreServices.CrudService`1.GetByIdAsync(System.Object,System.Boolean)
+  id: GetByIdAsync(System.Object,System.Boolean)
+  parent: App.Data.EFCoreServices.CrudService`1
+  langs:
+  - csharp
+  - vb
+  name: GetByIdAsync(object, bool)
+  nameWithType: CrudService<T>.GetByIdAsync(object, bool)
+  fullName: App.Data.EFCoreServices.CrudService<T>.GetByIdAsync(object, bool)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/CrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetByIdAsync
+    path: ../App/Data/EFCoreServices/CrudService.cs
+    startLine: 72
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nReturns the item with the given id.\n"
+  example: []
+  syntax:
+    content: public Task<T?> GetByIdAsync(object id, bool eager = false)
+    parameters:
+    - id: id
+      type: System.Object
+      description: ''
+    - id: eager
+      type: System.Boolean
+      description: Should all relates tables be fetched too ?
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+      description: Returns item if found otherwise null
+    content.vb: Public Function GetByIdAsync(id As Object, eager As Boolean = False) As Task(Of T)
+  overload: App.Data.EFCoreServices.CrudService`1.GetByIdAsync*
+  implements:
+  - App.Data.ServiceInterfaces.ICrudService{{T}}.GetByIdAsync(System.Object,System.Boolean)
+  nameWithType.vb: CrudService(Of T).GetByIdAsync(Object, Boolean)
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).GetByIdAsync(Object, Boolean)
+  name.vb: GetByIdAsync(Object, Boolean)
+- uid: App.Data.EFCoreServices.CrudService`1.CreateAsync(`0)
+  commentId: M:App.Data.EFCoreServices.CrudService`1.CreateAsync(`0)
+  id: CreateAsync(`0)
+  parent: App.Data.EFCoreServices.CrudService`1
+  langs:
+  - csharp
+  - vb
+  name: CreateAsync(T)
+  nameWithType: CrudService<T>.CreateAsync(T)
+  fullName: App.Data.EFCoreServices.CrudService<T>.CreateAsync(T)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/CrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: CreateAsync
+    path: ../App/Data/EFCoreServices/CrudService.cs
+    startLine: 82
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nCreate an item in the database.\n"
+  example: []
+  syntax:
+    content: public Task<T> CreateAsync(T entity)
+    parameters:
+    - id: entity
+      type: '{T}'
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+      description: Item created
+    content.vb: Public Function CreateAsync(entity As T) As Task(Of T)
+  overload: App.Data.EFCoreServices.CrudService`1.CreateAsync*
+  implements:
+  - App.Data.ServiceInterfaces.ICrudService{{T}}.CreateAsync({T})
+  nameWithType.vb: CrudService(Of T).CreateAsync(T)
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).CreateAsync(T)
+- uid: App.Data.EFCoreServices.CrudService`1.UpdateAsync(`0)
+  commentId: M:App.Data.EFCoreServices.CrudService`1.UpdateAsync(`0)
+  id: UpdateAsync(`0)
+  parent: App.Data.EFCoreServices.CrudService`1
+  langs:
+  - csharp
+  - vb
+  name: UpdateAsync(T)
+  nameWithType: CrudService<T>.UpdateAsync(T)
+  fullName: App.Data.EFCoreServices.CrudService<T>.UpdateAsync(T)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/CrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: UpdateAsync
+    path: ../App/Data/EFCoreServices/CrudService.cs
+    startLine: 96
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nUpdate an item in the database.\n"
+  example: []
+  syntax:
+    content: public Task<T> UpdateAsync(T entity)
+    parameters:
+    - id: entity
+      type: '{T}'
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+      description: Updated item
+    content.vb: Public Function UpdateAsync(entity As T) As Task(Of T)
+  overload: App.Data.EFCoreServices.CrudService`1.UpdateAsync*
+  implements:
+  - App.Data.ServiceInterfaces.ICrudService{{T}}.UpdateAsync({T})
+  nameWithType.vb: CrudService(Of T).UpdateAsync(T)
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).UpdateAsync(T)
+- uid: App.Data.EFCoreServices.CrudService`1.DeleteAsync(`0)
+  commentId: M:App.Data.EFCoreServices.CrudService`1.DeleteAsync(`0)
+  id: DeleteAsync(`0)
+  parent: App.Data.EFCoreServices.CrudService`1
+  langs:
+  - csharp
+  - vb
+  name: DeleteAsync(T)
+  nameWithType: CrudService<T>.DeleteAsync(T)
+  fullName: App.Data.EFCoreServices.CrudService<T>.DeleteAsync(T)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/CrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: DeleteAsync
+    path: ../App/Data/EFCoreServices/CrudService.cs
+    startLine: 110
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nDelete an item from the database.\n"
+  example: []
+  syntax:
+    content: public Task DeleteAsync(T entity)
+    parameters:
+    - id: entity
+      type: '{T}'
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Public Function DeleteAsync(entity As T) As Task
+  overload: App.Data.EFCoreServices.CrudService`1.DeleteAsync*
+  implements:
+  - App.Data.ServiceInterfaces.ICrudService{{T}}.DeleteAsync({T})
+  nameWithType.vb: CrudService(Of T).DeleteAsync(T)
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).DeleteAsync(T)
+- uid: App.Data.EFCoreServices.CrudService`1.GetId(`0)
+  commentId: M:App.Data.EFCoreServices.CrudService`1.GetId(`0)
+  id: GetId(`0)
+  parent: App.Data.EFCoreServices.CrudService`1
+  langs:
+  - csharp
+  - vb
+  name: GetId(T)
+  nameWithType: CrudService<T>.GetId(T)
+  fullName: App.Data.EFCoreServices.CrudService<T>.GetId(T)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/CrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetId
+    path: ../App/Data/EFCoreServices/CrudService.cs
+    startLine: 123
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nReturns a key/ID of the item.\n"
+  example: []
+  syntax:
+    content: public object GetId(T entity)
+    parameters:
+    - id: entity
+      type: '{T}'
+      description: ''
+    return:
+      type: System.Object
+      description: key/ID
+    content.vb: Public Function GetId(entity As T) As Object
+  overload: App.Data.EFCoreServices.CrudService`1.GetId*
+  implements:
+  - App.Data.ServiceInterfaces.ICrudService{{T}}.GetId({T})
+  nameWithType.vb: CrudService(Of T).GetId(T)
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).GetId(T)
+references:
+- uid: App.Data.ServiceInterfaces.ICrudService`1
+  commentId: T:App.Data.ServiceInterfaces.ICrudService`1
+  name: ICrudService<T>
+  nameWithType: ICrudService<T>
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>
+  nameWithType.vb: ICrudService(Of T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T)
+  name.vb: ICrudService(Of T)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1
+    name: ICrudService
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1
+    name: ICrudService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Data.EFCoreServices
+  commentId: N:App.Data.EFCoreServices
+  name: App.Data.EFCoreServices
+  nameWithType: App.Data.EFCoreServices
+  fullName: App.Data.EFCoreServices
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.EFCoreServices
+    name: EFCoreServices
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.EFCoreServices
+    name: EFCoreServices
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: App.Data.ServiceInterfaces.ICrudService{{T}}
+  commentId: T:App.Data.ServiceInterfaces.ICrudService{`0}
+  parent: App.Data.ServiceInterfaces
+  definition: App.Data.ServiceInterfaces.ICrudService`1
+  name: ICrudService<T>
+  nameWithType: ICrudService<T>
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>
+  nameWithType.vb: ICrudService(Of T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T)
+  name.vb: ICrudService(Of T)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1
+    name: ICrudService
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1
+    name: ICrudService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.Data.EFCoreServices.CrudService`1.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<CrudService<T>>(CrudService<T>, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<CrudService<T>>(CrudService<T>, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Data.EFCoreServices.CrudService<T>>(App.Data.EFCoreServices.CrudService<T>, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of CrudService(Of T))(CrudService(Of T), PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Data.EFCoreServices.CrudService(Of T))(App.Data.EFCoreServices.CrudService(Of T), System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of CrudService(Of T))(CrudService(Of T), PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.EFCoreServices.CrudService{`0},System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Data.EFCoreServices.CrudService`1
+    name: CrudService
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: App.Data.EFCoreServices.CrudService`1
+    name: CrudService
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.EFCoreServices.CrudService{`0},System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.EFCoreServices.CrudService`1
+    name: CrudService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: App.Data.EFCoreServices.CrudService`1
+    name: CrudService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Data.EFCoreServices.CrudService`1.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<CrudService<T>>(CrudService<T>, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<CrudService<T>>(CrudService<T>, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Data.EFCoreServices.CrudService<T>>(App.Data.EFCoreServices.CrudService<T>, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of CrudService(Of T))(CrudService(Of T), Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Data.EFCoreServices.CrudService(Of T))(App.Data.EFCoreServices.CrudService(Of T), Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of CrudService(Of T))(CrudService(Of T), Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.EFCoreServices.CrudService{`0},System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Data.EFCoreServices.CrudService`1
+    name: CrudService
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: App.Data.EFCoreServices.CrudService`1
+    name: CrudService
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.EFCoreServices.CrudService{`0},System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.EFCoreServices.CrudService`1
+    name: CrudService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: App.Data.EFCoreServices.CrudService`1
+    name: CrudService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.Data.ServiceInterfaces
+  commentId: N:App.Data.ServiceInterfaces
+  name: App.Data.ServiceInterfaces
+  nameWithType: App.Data.ServiceInterfaces
+  fullName: App.Data.ServiceInterfaces
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+- uid: App.Data.EFCoreServices.CrudService`1.#ctor*
+  commentId: Overload:App.Data.EFCoreServices.CrudService`1.#ctor
+  name: CrudService
+  nameWithType: CrudService<T>.CrudService
+  fullName: App.Data.EFCoreServices.CrudService<T>.CrudService
+  nameWithType.vb: CrudService(Of T).New
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).New
+  name.vb: New
+- uid: IDbContextFactory{App.Data.ApplicationDbContext}
+  commentId: '!:IDbContextFactory{App.Data.ApplicationDbContext}'
+  definition: IDbContextFactory`1
+  name: IDbContextFactory<ApplicationDbContext>
+  nameWithType: IDbContextFactory<ApplicationDbContext>
+  fullName: IDbContextFactory<App.Data.ApplicationDbContext>
+  nameWithType.vb: IDbContextFactory(Of ApplicationDbContext)
+  fullName.vb: IDbContextFactory(Of App.Data.ApplicationDbContext)
+  name.vb: IDbContextFactory(Of ApplicationDbContext)
+  spec.csharp:
+  - uid: IDbContextFactory`1
+    name: IDbContextFactory
+    isExternal: true
+  - name: <
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: '>'
+  spec.vb:
+  - uid: IDbContextFactory`1
+    name: IDbContextFactory
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: )
+- uid: App.Middlewares.IContextHookMiddleware
+  commentId: T:App.Middlewares.IContextHookMiddleware
+  parent: App.Middlewares
+  name: IContextHookMiddleware
+  nameWithType: IContextHookMiddleware
+  fullName: App.Middlewares.IContextHookMiddleware
+- uid: System.Linq.Expressions.Expression{System.Func{{T},System.Object}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{`0,System.Object}}
+  parent: System.Linq.Expressions
+  definition: System.Linq.Expressions.Expression`1
+  name: Expression<Func<T, object>>
+  nameWithType: Expression<Func<T, object>>
+  fullName: System.Linq.Expressions.Expression<System.Func<T, object>>
+  nameWithType.vb: Expression(Of Func(Of T, Object))
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of T, Object))
+  name.vb: Expression(Of Func(Of T, Object))
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+  - name: )
+- uid: IDbContextFactory`1
+  isExternal: true
+  name: IDbContextFactory<>
+  nameWithType: IDbContextFactory<>
+  fullName: IDbContextFactory<>
+  nameWithType.vb: IDbContextFactory(Of )
+  fullName.vb: IDbContextFactory(Of )
+  name.vb: IDbContextFactory(Of )
+  spec.csharp:
+  - uid: IDbContextFactory`1
+    name: IDbContextFactory
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: IDbContextFactory`1
+    name: IDbContextFactory
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: App.Middlewares
+  commentId: N:App.Middlewares
+  name: App.Middlewares
+  nameWithType: App.Middlewares
+  fullName: App.Middlewares
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Middlewares
+    name: Middlewares
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Middlewares
+    name: Middlewares
+- uid: System.Linq.Expressions.Expression`1
+  commentId: T:System.Linq.Expressions.Expression`1
+  isExternal: true
+  name: Expression<TDelegate>
+  nameWithType: Expression<TDelegate>
+  fullName: System.Linq.Expressions.Expression<TDelegate>
+  nameWithType.vb: Expression(Of TDelegate)
+  fullName.vb: System.Linq.Expressions.Expression(Of TDelegate)
+  name.vb: Expression(Of TDelegate)
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: <
+  - name: TDelegate
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: )
+- uid: System.Linq.Expressions
+  commentId: N:System.Linq.Expressions
+  isExternal: true
+  name: System.Linq.Expressions
+  nameWithType: System.Linq.Expressions
+  fullName: System.Linq.Expressions
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+- uid: App.Data.EFCoreServices.CrudService`1.GetAllAsync*
+  commentId: Overload:App.Data.EFCoreServices.CrudService`1.GetAllAsync
+  name: GetAllAsync
+  nameWithType: CrudService<T>.GetAllAsync
+  fullName: App.Data.EFCoreServices.CrudService<T>.GetAllAsync
+  nameWithType.vb: CrudService(Of T).GetAllAsync
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).GetAllAsync
+- uid: App.Data.ServiceInterfaces.ICrudService{{T}}.GetAllAsync(System.Nullable{QueryModel{{T}}},System.Boolean)
+  commentId: M:App.Data.ServiceInterfaces.ICrudService{`0}.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+  parent: App.Data.ServiceInterfaces.ICrudService{{T}}
+  definition: App.Data.ServiceInterfaces.ICrudService`1.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+  name: GetAllAsync(QueryModel<T>?, bool)
+  nameWithType: ICrudService<T>.GetAllAsync(QueryModel<T>?, bool)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetAllAsync(QueryModel<T>?, bool)
+  nameWithType.vb: ICrudService(Of T).GetAllAsync(QueryModel(Of T)?, Boolean)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetAllAsync(QueryModel(Of T)?, Boolean)
+  name.vb: GetAllAsync(QueryModel(Of T)?, Boolean)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService{`0}.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+    name: GetAllAsync
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService{`0}.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+    name: GetAllAsync
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: System.Nullable{QueryModel{{T}}}
+  commentId: T:System.Nullable{QueryModel{`0}}
+  parent: System
+  definition: System.Nullable`1
+  name: QueryModel<T>?
+  nameWithType: QueryModel<T>?
+  fullName: QueryModel<T>?
+  nameWithType.vb: QueryModel(Of T)?
+  fullName.vb: QueryModel(Of T)?
+  name.vb: QueryModel(Of T)?
+  spec.csharp:
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '?'
+  spec.vb:
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: '?'
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Threading.Tasks.Task{{T}[]}
+  commentId: T:System.Threading.Tasks.Task{``0[]}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<T[]>
+  nameWithType: Task<T[]>
+  fullName: System.Threading.Tasks.Task<T[]>
+  nameWithType.vb: Task(Of T())
+  fullName.vb: System.Threading.Tasks.Task(Of T())
+  name.vb: Task(Of T())
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: (
+  - name: )
+  - name: )
+- uid: App.Data.ServiceInterfaces.ICrudService`1.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+  commentId: M:App.Data.ServiceInterfaces.ICrudService`1.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+  isExternal: true
+  name: GetAllAsync(QueryModel<T>?, bool)
+  nameWithType: ICrudService<T>.GetAllAsync(QueryModel<T>?, bool)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetAllAsync(QueryModel<T>?, bool)
+  nameWithType.vb: ICrudService(Of T).GetAllAsync(QueryModel(Of T)?, Boolean)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetAllAsync(QueryModel(Of T)?, Boolean)
+  name.vb: GetAllAsync(QueryModel(Of T)?, Boolean)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+    name: GetAllAsync
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+    name: GetAllAsync
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+- uid: App.Data.EFCoreServices.CrudService`1.GetCountAsync*
+  commentId: Overload:App.Data.EFCoreServices.CrudService`1.GetCountAsync
+  name: GetCountAsync
+  nameWithType: CrudService<T>.GetCountAsync
+  fullName: App.Data.EFCoreServices.CrudService<T>.GetCountAsync
+  nameWithType.vb: CrudService(Of T).GetCountAsync
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).GetCountAsync
+- uid: App.Data.ServiceInterfaces.ICrudService{{T}}.GetCountAsync(System.Nullable{QueryModel{{T}}})
+  commentId: M:App.Data.ServiceInterfaces.ICrudService{`0}.GetCountAsync(System.Nullable{QueryModel{`0}})
+  parent: App.Data.ServiceInterfaces.ICrudService{{T}}
+  definition: App.Data.ServiceInterfaces.ICrudService`1.GetCountAsync(System.Nullable{QueryModel{`0}})
+  name: GetCountAsync(QueryModel<T>?)
+  nameWithType: ICrudService<T>.GetCountAsync(QueryModel<T>?)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetCountAsync(QueryModel<T>?)
+  nameWithType.vb: ICrudService(Of T).GetCountAsync(QueryModel(Of T)?)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetCountAsync(QueryModel(Of T)?)
+  name.vb: GetCountAsync(QueryModel(Of T)?)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService{`0}.GetCountAsync(System.Nullable{QueryModel{`0}})
+    name: GetCountAsync
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '?'
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService{`0}.GetCountAsync(System.Nullable{QueryModel{`0}})
+    name: GetCountAsync
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: '?'
+  - name: )
+- uid: System.Threading.Tasks.Task{System.Int32}
+  commentId: T:System.Threading.Tasks.Task{System.Int32}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<int>
+  nameWithType: Task<int>
+  fullName: System.Threading.Tasks.Task<int>
+  nameWithType.vb: Task(Of Integer)
+  fullName.vb: System.Threading.Tasks.Task(Of Integer)
+  name.vb: Task(Of Integer)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: App.Data.ServiceInterfaces.ICrudService`1.GetCountAsync(System.Nullable{QueryModel{`0}})
+  commentId: M:App.Data.ServiceInterfaces.ICrudService`1.GetCountAsync(System.Nullable{QueryModel{`0}})
+  isExternal: true
+  name: GetCountAsync(QueryModel<T>?)
+  nameWithType: ICrudService<T>.GetCountAsync(QueryModel<T>?)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetCountAsync(QueryModel<T>?)
+  nameWithType.vb: ICrudService(Of T).GetCountAsync(QueryModel(Of T)?)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetCountAsync(QueryModel(Of T)?)
+  name.vb: GetCountAsync(QueryModel(Of T)?)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.GetCountAsync(System.Nullable{QueryModel{`0}})
+    name: GetCountAsync
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '?'
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.GetCountAsync(System.Nullable{QueryModel{`0}})
+    name: GetCountAsync
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: '?'
+  - name: )
+- uid: App.Data.EFCoreServices.CrudService`1.GetByIdAsync*
+  commentId: Overload:App.Data.EFCoreServices.CrudService`1.GetByIdAsync
+  name: GetByIdAsync
+  nameWithType: CrudService<T>.GetByIdAsync
+  fullName: App.Data.EFCoreServices.CrudService<T>.GetByIdAsync
+  nameWithType.vb: CrudService(Of T).GetByIdAsync
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).GetByIdAsync
+- uid: App.Data.ServiceInterfaces.ICrudService{{T}}.GetByIdAsync(System.Object,System.Boolean)
+  commentId: M:App.Data.ServiceInterfaces.ICrudService{`0}.GetByIdAsync(System.Object,System.Boolean)
+  parent: App.Data.ServiceInterfaces.ICrudService{{T}}
+  definition: App.Data.ServiceInterfaces.ICrudService`1.GetByIdAsync(System.Object,System.Boolean)
+  name: GetByIdAsync(object, bool)
+  nameWithType: ICrudService<T>.GetByIdAsync(object, bool)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetByIdAsync(object, bool)
+  nameWithType.vb: ICrudService(Of T).GetByIdAsync(Object, Boolean)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetByIdAsync(Object, Boolean)
+  name.vb: GetByIdAsync(Object, Boolean)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService{`0}.GetByIdAsync(System.Object,System.Boolean)
+    name: GetByIdAsync
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService{`0}.GetByIdAsync(System.Object,System.Boolean)
+    name: GetByIdAsync
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: System.Threading.Tasks.Task{{T}}
+  commentId: T:System.Threading.Tasks.Task{`0}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<T>
+  nameWithType: Task<T>
+  fullName: System.Threading.Tasks.Task<T>
+  nameWithType.vb: Task(Of T)
+  fullName.vb: System.Threading.Tasks.Task(Of T)
+  name.vb: Task(Of T)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Data.ServiceInterfaces.ICrudService`1.GetByIdAsync(System.Object,System.Boolean)
+  commentId: M:App.Data.ServiceInterfaces.ICrudService`1.GetByIdAsync(System.Object,System.Boolean)
+  isExternal: true
+  name: GetByIdAsync(object, bool)
+  nameWithType: ICrudService<T>.GetByIdAsync(object, bool)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetByIdAsync(object, bool)
+  nameWithType.vb: ICrudService(Of T).GetByIdAsync(Object, Boolean)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetByIdAsync(Object, Boolean)
+  name.vb: GetByIdAsync(Object, Boolean)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.GetByIdAsync(System.Object,System.Boolean)
+    name: GetByIdAsync
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.GetByIdAsync(System.Object,System.Boolean)
+    name: GetByIdAsync
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: App.Data.EFCoreServices.CrudService`1.CreateAsync*
+  commentId: Overload:App.Data.EFCoreServices.CrudService`1.CreateAsync
+  name: CreateAsync
+  nameWithType: CrudService<T>.CreateAsync
+  fullName: App.Data.EFCoreServices.CrudService<T>.CreateAsync
+  nameWithType.vb: CrudService(Of T).CreateAsync
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).CreateAsync
+- uid: App.Data.ServiceInterfaces.ICrudService{{T}}.CreateAsync({T})
+  commentId: M:App.Data.ServiceInterfaces.ICrudService{`0}.CreateAsync(`0)
+  parent: App.Data.ServiceInterfaces.ICrudService{{T}}
+  definition: App.Data.ServiceInterfaces.ICrudService`1.CreateAsync(`0)
+  name: CreateAsync(T)
+  nameWithType: ICrudService<T>.CreateAsync(T)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.CreateAsync(T)
+  nameWithType.vb: ICrudService(Of T).CreateAsync(T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).CreateAsync(T)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService{`0}.CreateAsync(`0)
+    name: CreateAsync
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService{`0}.CreateAsync(`0)
+    name: CreateAsync
+  - name: (
+  - name: T
+  - name: )
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: App.Data.ServiceInterfaces.ICrudService`1.CreateAsync(`0)
+  commentId: M:App.Data.ServiceInterfaces.ICrudService`1.CreateAsync(`0)
+  name: CreateAsync(T)
+  nameWithType: ICrudService<T>.CreateAsync(T)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.CreateAsync(T)
+  nameWithType.vb: ICrudService(Of T).CreateAsync(T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).CreateAsync(T)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.CreateAsync(`0)
+    name: CreateAsync
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.CreateAsync(`0)
+    name: CreateAsync
+  - name: (
+  - name: T
+  - name: )
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: App.Data.EFCoreServices.CrudService`1.UpdateAsync*
+  commentId: Overload:App.Data.EFCoreServices.CrudService`1.UpdateAsync
+  name: UpdateAsync
+  nameWithType: CrudService<T>.UpdateAsync
+  fullName: App.Data.EFCoreServices.CrudService<T>.UpdateAsync
+  nameWithType.vb: CrudService(Of T).UpdateAsync
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).UpdateAsync
+- uid: App.Data.ServiceInterfaces.ICrudService{{T}}.UpdateAsync({T})
+  commentId: M:App.Data.ServiceInterfaces.ICrudService{`0}.UpdateAsync(`0)
+  parent: App.Data.ServiceInterfaces.ICrudService{{T}}
+  definition: App.Data.ServiceInterfaces.ICrudService`1.UpdateAsync(`0)
+  name: UpdateAsync(T)
+  nameWithType: ICrudService<T>.UpdateAsync(T)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.UpdateAsync(T)
+  nameWithType.vb: ICrudService(Of T).UpdateAsync(T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).UpdateAsync(T)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService{`0}.UpdateAsync(`0)
+    name: UpdateAsync
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService{`0}.UpdateAsync(`0)
+    name: UpdateAsync
+  - name: (
+  - name: T
+  - name: )
+- uid: App.Data.ServiceInterfaces.ICrudService`1.UpdateAsync(`0)
+  commentId: M:App.Data.ServiceInterfaces.ICrudService`1.UpdateAsync(`0)
+  name: UpdateAsync(T)
+  nameWithType: ICrudService<T>.UpdateAsync(T)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.UpdateAsync(T)
+  nameWithType.vb: ICrudService(Of T).UpdateAsync(T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).UpdateAsync(T)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.UpdateAsync(`0)
+    name: UpdateAsync
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.UpdateAsync(`0)
+    name: UpdateAsync
+  - name: (
+  - name: T
+  - name: )
+- uid: App.Data.EFCoreServices.CrudService`1.DeleteAsync*
+  commentId: Overload:App.Data.EFCoreServices.CrudService`1.DeleteAsync
+  name: DeleteAsync
+  nameWithType: CrudService<T>.DeleteAsync
+  fullName: App.Data.EFCoreServices.CrudService<T>.DeleteAsync
+  nameWithType.vb: CrudService(Of T).DeleteAsync
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).DeleteAsync
+- uid: App.Data.ServiceInterfaces.ICrudService{{T}}.DeleteAsync({T})
+  commentId: M:App.Data.ServiceInterfaces.ICrudService{`0}.DeleteAsync(`0)
+  parent: App.Data.ServiceInterfaces.ICrudService{{T}}
+  definition: App.Data.ServiceInterfaces.ICrudService`1.DeleteAsync(`0)
+  name: DeleteAsync(T)
+  nameWithType: ICrudService<T>.DeleteAsync(T)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.DeleteAsync(T)
+  nameWithType.vb: ICrudService(Of T).DeleteAsync(T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).DeleteAsync(T)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService{`0}.DeleteAsync(`0)
+    name: DeleteAsync
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService{`0}.DeleteAsync(`0)
+    name: DeleteAsync
+  - name: (
+  - name: T
+  - name: )
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: App.Data.ServiceInterfaces.ICrudService`1.DeleteAsync(`0)
+  commentId: M:App.Data.ServiceInterfaces.ICrudService`1.DeleteAsync(`0)
+  name: DeleteAsync(T)
+  nameWithType: ICrudService<T>.DeleteAsync(T)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.DeleteAsync(T)
+  nameWithType.vb: ICrudService(Of T).DeleteAsync(T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).DeleteAsync(T)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.DeleteAsync(`0)
+    name: DeleteAsync
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.DeleteAsync(`0)
+    name: DeleteAsync
+  - name: (
+  - name: T
+  - name: )
+- uid: App.Data.EFCoreServices.CrudService`1.GetId*
+  commentId: Overload:App.Data.EFCoreServices.CrudService`1.GetId
+  name: GetId
+  nameWithType: CrudService<T>.GetId
+  fullName: App.Data.EFCoreServices.CrudService<T>.GetId
+  nameWithType.vb: CrudService(Of T).GetId
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T).GetId
+- uid: App.Data.ServiceInterfaces.ICrudService{{T}}.GetId({T})
+  commentId: M:App.Data.ServiceInterfaces.ICrudService{`0}.GetId(`0)
+  parent: App.Data.ServiceInterfaces.ICrudService{{T}}
+  definition: App.Data.ServiceInterfaces.ICrudService`1.GetId(`0)
+  name: GetId(T)
+  nameWithType: ICrudService<T>.GetId(T)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetId(T)
+  nameWithType.vb: ICrudService(Of T).GetId(T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetId(T)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService{`0}.GetId(`0)
+    name: GetId
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService{`0}.GetId(`0)
+    name: GetId
+  - name: (
+  - name: T
+  - name: )
+- uid: App.Data.ServiceInterfaces.ICrudService`1.GetId(`0)
+  commentId: M:App.Data.ServiceInterfaces.ICrudService`1.GetId(`0)
+  name: GetId(T)
+  nameWithType: ICrudService<T>.GetId(T)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetId(T)
+  nameWithType.vb: ICrudService(Of T).GetId(T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetId(T)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.GetId(`0)
+    name: GetId
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.GetId(`0)
+    name: GetId
+  - name: (
+  - name: T
+  - name: )

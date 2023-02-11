@@ -1,0 +1,2003 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Shared.Components.LocDNColumn`1
+  commentId: T:App.Shared.Components.LocDNColumn`1
+  id: LocDNColumn`1
+  parent: App.Shared.Components
+  children:
+  - App.Shared.Components.LocDNColumn`1.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  - App.Shared.Components.LocDNColumn`1.ChildContent
+  - App.Shared.Components.LocDNColumn`1.DefaultSortOrder
+  - App.Shared.Components.LocDNColumn`1.Field
+  - App.Shared.Components.LocDNColumn`1.FieldChanged
+  - App.Shared.Components.LocDNColumn`1.FieldExpression
+  - App.Shared.Components.LocDNColumn`1.Filterable
+  - App.Shared.Components.LocDNColumn`1.Filters
+  - App.Shared.Components.LocDNColumn`1.OnFilter
+  - App.Shared.Components.LocDNColumn`1.OnParametersSet
+  - App.Shared.Components.LocDNColumn`1.ShowIfNotLocalizable
+  - App.Shared.Components.LocDNColumn`1.Sortable
+  - App.Shared.Components.LocDNColumn`1.SorterMultiple
+  - App.Shared.Components.LocDNColumn`1.Title
+  langs:
+  - csharp
+  - vb
+  name: LocDNColumn<T>
+  nameWithType: LocDNColumn<T>
+  fullName: App.Shared.Components.LocDNColumn<T>
+  type: Class
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: LocDNColumn
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+    startLine: 165
+  assemblies:
+  - App
+  namespace: App.Shared.Components
+  syntax:
+    content: 'public class LocDNColumn<T> : ComponentBase, IComponent, IHandleEvent, IHandleAfterRender'
+    typeParameters:
+    - id: T
+    content.vb: Public Class LocDNColumn(Of T) Inherits ComponentBase Implements IComponent, IHandleEvent, IHandleAfterRender
+  inheritance:
+  - System.Object
+  - Microsoft.AspNetCore.Components.ComponentBase
+  implements:
+  - Microsoft.AspNetCore.Components.IComponent
+  - Microsoft.AspNetCore.Components.IHandleEvent
+  - Microsoft.AspNetCore.Components.IHandleAfterRender
+  inheritedMembers:
+  - Microsoft.AspNetCore.Components.ComponentBase.OnInitialized
+  - Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync
+  - Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync
+  - Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged
+  - Microsoft.AspNetCore.Components.ComponentBase.ShouldRender
+  - Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)
+  - Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(System.Boolean)
+  - Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Action)
+  - Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Func{System.Threading.Tasks.Task})
+  - Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IComponent#Attach(Microsoft.AspNetCore.Components.RenderHandle)
+  - Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)
+  - Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleEvent#HandleEventAsync(Microsoft.AspNetCore.Components.EventCallbackWorkItem,System.Object)
+  - Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleAfterRender#OnAfterRenderAsync
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - App.Shared.Components.LocDNColumn`1.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Shared.Components.LocDNColumn`1.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  nameWithType.vb: LocDNColumn(Of T)
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T)
+  name.vb: LocDNColumn(Of T)
+- uid: App.Shared.Components.LocDNColumn`1.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  commentId: M:App.Shared.Components.LocDNColumn`1.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  id: BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  parent: App.Shared.Components.LocDNColumn`1
+  langs:
+  - csharp
+  - vb
+  name: BuildRenderTree(RenderTreeBuilder)
+  nameWithType: LocDNColumn<T>.BuildRenderTree(RenderTreeBuilder)
+  fullName: App.Shared.Components.LocDNColumn<T>.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  type: Method
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: BuildRenderTree
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+    startLine: 168
+  assemblies:
+  - App
+  namespace: App.Shared.Components
+  syntax:
+    content: protected override void BuildRenderTree(RenderTreeBuilder __builder)
+    parameters:
+    - id: __builder
+      type: Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+    content.vb: Protected Overrides Sub BuildRenderTree(__builder As RenderTreeBuilder)
+  overridden: Microsoft.AspNetCore.Components.ComponentBase.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  overload: App.Shared.Components.LocDNColumn`1.BuildRenderTree*
+  nameWithType.vb: LocDNColumn(Of T).BuildRenderTree(RenderTreeBuilder)
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+- uid: App.Shared.Components.LocDNColumn`1.Field
+  commentId: P:App.Shared.Components.LocDNColumn`1.Field
+  id: Field
+  parent: App.Shared.Components.LocDNColumn`1
+  langs:
+  - csharp
+  - vb
+  name: Field
+  nameWithType: LocDNColumn<T>.Field
+  fullName: App.Shared.Components.LocDNColumn<T>.Field
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Field
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+    startLine: 253
+  assemblies:
+  - App
+  namespace: App.Shared.Components
+  syntax:
+    content: >-
+      [Parameter]
+
+      public T? Field { get; set; }
+    parameters: []
+    return:
+      type: '{T}'
+    content.vb: >-
+      <Parameter>
+
+      Public Property Field As T
+  overload: App.Shared.Components.LocDNColumn`1.Field*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+  nameWithType.vb: LocDNColumn(Of T).Field
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).Field
+- uid: App.Shared.Components.LocDNColumn`1.FieldChanged
+  commentId: P:App.Shared.Components.LocDNColumn`1.FieldChanged
+  id: FieldChanged
+  parent: App.Shared.Components.LocDNColumn`1
+  langs:
+  - csharp
+  - vb
+  name: FieldChanged
+  nameWithType: LocDNColumn<T>.FieldChanged
+  fullName: App.Shared.Components.LocDNColumn<T>.FieldChanged
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: FieldChanged
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+    startLine: 256
+  assemblies:
+  - App
+  namespace: App.Shared.Components
+  syntax:
+    content: >-
+      [Parameter]
+
+      public EventCallback<T> FieldChanged { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.AspNetCore.Components.EventCallback{{T}}
+    content.vb: >-
+      <Parameter>
+
+      Public Property FieldChanged As EventCallback(Of T)
+  overload: App.Shared.Components.LocDNColumn`1.FieldChanged*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+  nameWithType.vb: LocDNColumn(Of T).FieldChanged
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).FieldChanged
+- uid: App.Shared.Components.LocDNColumn`1.FieldExpression
+  commentId: P:App.Shared.Components.LocDNColumn`1.FieldExpression
+  id: FieldExpression
+  parent: App.Shared.Components.LocDNColumn`1
+  langs:
+  - csharp
+  - vb
+  name: FieldExpression
+  nameWithType: LocDNColumn<T>.FieldExpression
+  fullName: App.Shared.Components.LocDNColumn<T>.FieldExpression
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: FieldExpression
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+    startLine: 259
+  assemblies:
+  - App
+  namespace: App.Shared.Components
+  syntax:
+    content: >-
+      [Parameter]
+
+      public Expression<Func<T>>? FieldExpression { get; set; }
+    parameters: []
+    return:
+      type: System.Linq.Expressions.Expression{System.Func{{T}}}
+    content.vb: >-
+      <Parameter>
+
+      Public Property FieldExpression As Expression(Of Func(Of T))
+  overload: App.Shared.Components.LocDNColumn`1.FieldExpression*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+  nameWithType.vb: LocDNColumn(Of T).FieldExpression
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).FieldExpression
+- uid: App.Shared.Components.LocDNColumn`1.ChildContent
+  commentId: P:App.Shared.Components.LocDNColumn`1.ChildContent
+  id: ChildContent
+  parent: App.Shared.Components.LocDNColumn`1
+  langs:
+  - csharp
+  - vb
+  name: ChildContent
+  nameWithType: LocDNColumn<T>.ChildContent
+  fullName: App.Shared.Components.LocDNColumn<T>.ChildContent
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ChildContent
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+    startLine: 262
+  assemblies:
+  - App
+  namespace: App.Shared.Components
+  syntax:
+    content: >-
+      [Parameter]
+
+      public RenderFragment? ChildContent { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.AspNetCore.Components.RenderFragment
+    content.vb: >-
+      <Parameter>
+
+      Public Property ChildContent As RenderFragment
+  overload: App.Shared.Components.LocDNColumn`1.ChildContent*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+  nameWithType.vb: LocDNColumn(Of T).ChildContent
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).ChildContent
+- uid: App.Shared.Components.LocDNColumn`1.Title
+  commentId: P:App.Shared.Components.LocDNColumn`1.Title
+  id: Title
+  parent: App.Shared.Components.LocDNColumn`1
+  langs:
+  - csharp
+  - vb
+  name: Title
+  nameWithType: LocDNColumn<T>.Title
+  fullName: App.Shared.Components.LocDNColumn<T>.Title
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Title
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+    startLine: 265
+  assemblies:
+  - App
+  namespace: App.Shared.Components
+  syntax:
+    content: >-
+      [Parameter]
+
+      public string? Title { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Parameter>
+
+      Public Property Title As String
+  overload: App.Shared.Components.LocDNColumn`1.Title*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+  nameWithType.vb: LocDNColumn(Of T).Title
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).Title
+- uid: App.Shared.Components.LocDNColumn`1.Sortable
+  commentId: P:App.Shared.Components.LocDNColumn`1.Sortable
+  id: Sortable
+  parent: App.Shared.Components.LocDNColumn`1
+  langs:
+  - csharp
+  - vb
+  name: Sortable
+  nameWithType: LocDNColumn<T>.Sortable
+  fullName: App.Shared.Components.LocDNColumn<T>.Sortable
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Sortable
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+    startLine: 268
+  assemblies:
+  - App
+  namespace: App.Shared.Components
+  syntax:
+    content: >-
+      [Parameter]
+
+      public bool Sortable { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <Parameter>
+
+      Public Property Sortable As Boolean
+  overload: App.Shared.Components.LocDNColumn`1.Sortable*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+  nameWithType.vb: LocDNColumn(Of T).Sortable
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).Sortable
+- uid: App.Shared.Components.LocDNColumn`1.SorterMultiple
+  commentId: P:App.Shared.Components.LocDNColumn`1.SorterMultiple
+  id: SorterMultiple
+  parent: App.Shared.Components.LocDNColumn`1
+  langs:
+  - csharp
+  - vb
+  name: SorterMultiple
+  nameWithType: LocDNColumn<T>.SorterMultiple
+  fullName: App.Shared.Components.LocDNColumn<T>.SorterMultiple
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: SorterMultiple
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+    startLine: 271
+  assemblies:
+  - App
+  namespace: App.Shared.Components
+  syntax:
+    content: >-
+      [Parameter]
+
+      public int SorterMultiple { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <Parameter>
+
+      Public Property SorterMultiple As Integer
+  overload: App.Shared.Components.LocDNColumn`1.SorterMultiple*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+  nameWithType.vb: LocDNColumn(Of T).SorterMultiple
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).SorterMultiple
+- uid: App.Shared.Components.LocDNColumn`1.DefaultSortOrder
+  commentId: P:App.Shared.Components.LocDNColumn`1.DefaultSortOrder
+  id: DefaultSortOrder
+  parent: App.Shared.Components.LocDNColumn`1
+  langs:
+  - csharp
+  - vb
+  name: DefaultSortOrder
+  nameWithType: LocDNColumn<T>.DefaultSortOrder
+  fullName: App.Shared.Components.LocDNColumn<T>.DefaultSortOrder
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: DefaultSortOrder
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+    startLine: 274
+  assemblies:
+  - App
+  namespace: App.Shared.Components
+  syntax:
+    content: >-
+      [Parameter]
+
+      public SortDirection? DefaultSortOrder { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{SortDirection}
+    content.vb: >-
+      <Parameter>
+
+      Public Property DefaultSortOrder As SortDirection?
+  overload: App.Shared.Components.LocDNColumn`1.DefaultSortOrder*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+  nameWithType.vb: LocDNColumn(Of T).DefaultSortOrder
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).DefaultSortOrder
+- uid: App.Shared.Components.LocDNColumn`1.OnFilter
+  commentId: P:App.Shared.Components.LocDNColumn`1.OnFilter
+  id: OnFilter
+  parent: App.Shared.Components.LocDNColumn`1
+  langs:
+  - csharp
+  - vb
+  name: OnFilter
+  nameWithType: LocDNColumn<T>.OnFilter
+  fullName: App.Shared.Components.LocDNColumn<T>.OnFilter
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: OnFilter
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+    startLine: 277
+  assemblies:
+  - App
+  namespace: App.Shared.Components
+  syntax:
+    content: >-
+      [Parameter]
+
+      public Expression<Func<T, T, bool>>? OnFilter { get; set; }
+    parameters: []
+    return:
+      type: System.Linq.Expressions.Expression{System.Func{{T},{T},System.Boolean}}
+    content.vb: >-
+      <Parameter>
+
+      Public Property OnFilter As Expression(Of Func(Of T, T, Boolean))
+  overload: App.Shared.Components.LocDNColumn`1.OnFilter*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+  nameWithType.vb: LocDNColumn(Of T).OnFilter
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).OnFilter
+- uid: App.Shared.Components.LocDNColumn`1.Filters
+  commentId: P:App.Shared.Components.LocDNColumn`1.Filters
+  id: Filters
+  parent: App.Shared.Components.LocDNColumn`1
+  langs:
+  - csharp
+  - vb
+  name: Filters
+  nameWithType: LocDNColumn<T>.Filters
+  fullName: App.Shared.Components.LocDNColumn<T>.Filters
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Filters
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+    startLine: 280
+  assemblies:
+  - App
+  namespace: App.Shared.Components
+  syntax:
+    content: >-
+      [Parameter]
+
+      public TableFilter<T>[]? Filters { get; set; }
+    parameters: []
+    return:
+      type: TableFilter{{T}}[]
+    content.vb: >-
+      <Parameter>
+
+      Public Property Filters As TableFilter(Of T)()
+  overload: App.Shared.Components.LocDNColumn`1.Filters*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+  nameWithType.vb: LocDNColumn(Of T).Filters
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).Filters
+- uid: App.Shared.Components.LocDNColumn`1.ShowIfNotLocalizable
+  commentId: P:App.Shared.Components.LocDNColumn`1.ShowIfNotLocalizable
+  id: ShowIfNotLocalizable
+  parent: App.Shared.Components.LocDNColumn`1
+  langs:
+  - csharp
+  - vb
+  name: ShowIfNotLocalizable
+  nameWithType: LocDNColumn<T>.ShowIfNotLocalizable
+  fullName: App.Shared.Components.LocDNColumn<T>.ShowIfNotLocalizable
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ShowIfNotLocalizable
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+    startLine: 283
+  assemblies:
+  - App
+  namespace: App.Shared.Components
+  syntax:
+    content: >-
+      [Parameter]
+
+      public bool ShowIfNotLocalizable { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <Parameter>
+
+      Public Property ShowIfNotLocalizable As Boolean
+  overload: App.Shared.Components.LocDNColumn`1.ShowIfNotLocalizable*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+  nameWithType.vb: LocDNColumn(Of T).ShowIfNotLocalizable
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).ShowIfNotLocalizable
+- uid: App.Shared.Components.LocDNColumn`1.Filterable
+  commentId: P:App.Shared.Components.LocDNColumn`1.Filterable
+  id: Filterable
+  parent: App.Shared.Components.LocDNColumn`1
+  langs:
+  - csharp
+  - vb
+  name: Filterable
+  nameWithType: LocDNColumn<T>.Filterable
+  fullName: App.Shared.Components.LocDNColumn<T>.Filterable
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Filterable
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+    startLine: 286
+  assemblies:
+  - App
+  namespace: App.Shared.Components
+  syntax:
+    content: >-
+      [Parameter]
+
+      public bool Filterable { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <Parameter>
+
+      Public Property Filterable As Boolean
+  overload: App.Shared.Components.LocDNColumn`1.Filterable*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+  nameWithType.vb: LocDNColumn(Of T).Filterable
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).Filterable
+- uid: App.Shared.Components.LocDNColumn`1.OnParametersSet
+  commentId: M:App.Shared.Components.LocDNColumn`1.OnParametersSet
+  id: OnParametersSet
+  parent: App.Shared.Components.LocDNColumn`1
+  langs:
+  - csharp
+  - vb
+  name: OnParametersSet()
+  nameWithType: LocDNColumn<T>.OnParametersSet()
+  fullName: App.Shared.Components.LocDNColumn<T>.OnParametersSet()
+  type: Method
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: OnParametersSet
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_LocDNColumn_razor.g.cs
+    startLine: 291
+  assemblies:
+  - App
+  namespace: App.Shared.Components
+  syntax:
+    content: protected override void OnParametersSet()
+    content.vb: Protected Overrides Sub OnParametersSet()
+  overridden: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet
+  overload: App.Shared.Components.LocDNColumn`1.OnParametersSet*
+  nameWithType.vb: LocDNColumn(Of T).OnParametersSet()
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).OnParametersSet()
+references:
+- uid: App.Shared.Components
+  commentId: N:App.Shared.Components
+  name: App.Shared.Components
+  nameWithType: App.Shared.Components
+  fullName: App.Shared.Components
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Shared
+    name: Shared
+  - name: .
+  - uid: App.Shared.Components
+    name: Components
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Shared
+    name: Shared
+  - name: .
+  - uid: App.Shared.Components
+    name: Components
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Microsoft.AspNetCore.Components.ComponentBase
+  commentId: T:Microsoft.AspNetCore.Components.ComponentBase
+  parent: Microsoft.AspNetCore.Components
+  isExternal: true
+  name: ComponentBase
+  nameWithType: ComponentBase
+  fullName: Microsoft.AspNetCore.Components.ComponentBase
+- uid: Microsoft.AspNetCore.Components.IComponent
+  commentId: T:Microsoft.AspNetCore.Components.IComponent
+  parent: Microsoft.AspNetCore.Components
+  isExternal: true
+  name: IComponent
+  nameWithType: IComponent
+  fullName: Microsoft.AspNetCore.Components.IComponent
+- uid: Microsoft.AspNetCore.Components.IHandleEvent
+  commentId: T:Microsoft.AspNetCore.Components.IHandleEvent
+  parent: Microsoft.AspNetCore.Components
+  isExternal: true
+  name: IHandleEvent
+  nameWithType: IHandleEvent
+  fullName: Microsoft.AspNetCore.Components.IHandleEvent
+- uid: Microsoft.AspNetCore.Components.IHandleAfterRender
+  commentId: T:Microsoft.AspNetCore.Components.IHandleAfterRender
+  parent: Microsoft.AspNetCore.Components
+  isExternal: true
+  name: IHandleAfterRender
+  nameWithType: IHandleAfterRender
+  fullName: Microsoft.AspNetCore.Components.IHandleAfterRender
+- uid: Microsoft.AspNetCore.Components.ComponentBase.OnInitialized
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: OnInitialized()
+  nameWithType: ComponentBase.OnInitialized()
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.OnInitialized()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnInitialized
+    name: OnInitialized
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnInitialized
+    name: OnInitialized
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: OnInitializedAsync()
+  nameWithType: ComponentBase.OnInitializedAsync()
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync
+    name: OnInitializedAsync
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync
+    name: OnInitializedAsync
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: OnParametersSetAsync()
+  nameWithType: ComponentBase.OnParametersSetAsync()
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync
+    name: OnParametersSetAsync
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync
+    name: OnParametersSetAsync
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: StateHasChanged()
+  nameWithType: ComponentBase.StateHasChanged()
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged
+    name: StateHasChanged
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged
+    name: StateHasChanged
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.ShouldRender
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: ShouldRender()
+  nameWithType: ComponentBase.ShouldRender()
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.ShouldRender()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.ShouldRender
+    name: ShouldRender
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.ShouldRender
+    name: ShouldRender
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: OnAfterRender(bool)
+  nameWithType: ComponentBase.OnAfterRender(bool)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(bool)
+  nameWithType.vb: ComponentBase.OnAfterRender(Boolean)
+  fullName.vb: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(Boolean)
+  name.vb: OnAfterRender(Boolean)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)
+    name: OnAfterRender
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)
+    name: OnAfterRender
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(System.Boolean)
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(System.Boolean)
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: OnAfterRenderAsync(bool)
+  nameWithType: ComponentBase.OnAfterRenderAsync(bool)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(bool)
+  nameWithType.vb: ComponentBase.OnAfterRenderAsync(Boolean)
+  fullName.vb: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(Boolean)
+  name.vb: OnAfterRenderAsync(Boolean)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(System.Boolean)
+    name: OnAfterRenderAsync
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(System.Boolean)
+    name: OnAfterRenderAsync
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Action)
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Action)
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: InvokeAsync(Action)
+  nameWithType: ComponentBase.InvokeAsync(Action)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Action)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Action)
+    name: InvokeAsync
+    isExternal: true
+  - name: (
+  - uid: System.Action
+    name: Action
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Action)
+    name: InvokeAsync
+    isExternal: true
+  - name: (
+  - uid: System.Action
+    name: Action
+    isExternal: true
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Func{System.Threading.Tasks.Task})
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Func{System.Threading.Tasks.Task})
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: InvokeAsync(Func<Task>)
+  nameWithType: ComponentBase.InvokeAsync(Func<Task>)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Func<System.Threading.Tasks.Task>)
+  nameWithType.vb: ComponentBase.InvokeAsync(Func(Of Task))
+  fullName.vb: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Func(Of System.Threading.Tasks.Task))
+  name.vb: InvokeAsync(Func(Of Task))
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Func{System.Threading.Tasks.Task})
+    name: InvokeAsync
+    isExternal: true
+  - name: (
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+  - name: <
+  - uid: System.Threading.Tasks.Task
+    name: Task
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Func{System.Threading.Tasks.Task})
+    name: InvokeAsync
+    isExternal: true
+  - name: (
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Threading.Tasks.Task
+    name: Task
+    isExternal: true
+  - name: )
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IComponent#Attach(Microsoft.AspNetCore.Components.RenderHandle)
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IComponent#Attach(Microsoft.AspNetCore.Components.RenderHandle)
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: IComponent.Attach(RenderHandle)
+  nameWithType: ComponentBase.IComponent.Attach(RenderHandle)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.Microsoft.AspNetCore.Components.IComponent.Attach(Microsoft.AspNetCore.Components.RenderHandle)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.IComponent
+    name: IComponent
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IComponent#Attach(Microsoft.AspNetCore.Components.RenderHandle)
+    name: Attach
+    isExternal: true
+  - name: (
+  - uid: Microsoft.AspNetCore.Components.RenderHandle
+    name: RenderHandle
+    isExternal: true
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: SetParametersAsync(ParameterView)
+  nameWithType: ComponentBase.SetParametersAsync(ParameterView)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)
+    name: SetParametersAsync
+    isExternal: true
+  - name: (
+  - uid: Microsoft.AspNetCore.Components.ParameterView
+    name: ParameterView
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)
+    name: SetParametersAsync
+    isExternal: true
+  - name: (
+  - uid: Microsoft.AspNetCore.Components.ParameterView
+    name: ParameterView
+    isExternal: true
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleEvent#HandleEventAsync(Microsoft.AspNetCore.Components.EventCallbackWorkItem,System.Object)
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleEvent#HandleEventAsync(Microsoft.AspNetCore.Components.EventCallbackWorkItem,System.Object)
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: IHandleEvent.HandleEventAsync(EventCallbackWorkItem, object)
+  nameWithType: ComponentBase.IHandleEvent.HandleEventAsync(EventCallbackWorkItem, object)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.Microsoft.AspNetCore.Components.IHandleEvent.HandleEventAsync(Microsoft.AspNetCore.Components.EventCallbackWorkItem, object)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.IHandleEvent
+    name: IHandleEvent
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleEvent#HandleEventAsync(Microsoft.AspNetCore.Components.EventCallbackWorkItem,System.Object)
+    name: HandleEventAsync
+    isExternal: true
+  - name: (
+  - uid: Microsoft.AspNetCore.Components.EventCallbackWorkItem
+    name: EventCallbackWorkItem
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleAfterRender#OnAfterRenderAsync
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleAfterRender#OnAfterRenderAsync
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: IHandleAfterRender.OnAfterRenderAsync()
+  nameWithType: ComponentBase.IHandleAfterRender.OnAfterRenderAsync()
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.Microsoft.AspNetCore.Components.IHandleAfterRender.OnAfterRenderAsync()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.IHandleAfterRender
+    name: IHandleAfterRender
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleAfterRender#OnAfterRenderAsync
+    name: OnAfterRenderAsync
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.Shared.Components.LocDNColumn`1.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<LocDNColumn<T>>(LocDNColumn<T>, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<LocDNColumn<T>>(LocDNColumn<T>, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Shared.Components.LocDNColumn<T>>(App.Shared.Components.LocDNColumn<T>, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of LocDNColumn(Of T))(LocDNColumn(Of T), PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Shared.Components.LocDNColumn(Of T))(App.Shared.Components.LocDNColumn(Of T), System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of LocDNColumn(Of T))(LocDNColumn(Of T), PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Shared.Components.LocDNColumn{`0},System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Shared.Components.LocDNColumn`1
+    name: LocDNColumn
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: App.Shared.Components.LocDNColumn`1
+    name: LocDNColumn
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Shared.Components.LocDNColumn{`0},System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Shared.Components.LocDNColumn`1
+    name: LocDNColumn
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: App.Shared.Components.LocDNColumn`1
+    name: LocDNColumn
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Shared.Components.LocDNColumn`1.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<LocDNColumn<T>>(LocDNColumn<T>, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<LocDNColumn<T>>(LocDNColumn<T>, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Shared.Components.LocDNColumn<T>>(App.Shared.Components.LocDNColumn<T>, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of LocDNColumn(Of T))(LocDNColumn(Of T), Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Shared.Components.LocDNColumn(Of T))(App.Shared.Components.LocDNColumn(Of T), Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of LocDNColumn(Of T))(LocDNColumn(Of T), Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Shared.Components.LocDNColumn{`0},System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Shared.Components.LocDNColumn`1
+    name: LocDNColumn
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: App.Shared.Components.LocDNColumn`1
+    name: LocDNColumn
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Shared.Components.LocDNColumn{`0},System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Shared.Components.LocDNColumn`1
+    name: LocDNColumn
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: App.Shared.Components.LocDNColumn`1
+    name: LocDNColumn
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.AspNetCore.Components
+  commentId: N:Microsoft.AspNetCore.Components
+  isExternal: true
+  name: Microsoft.AspNetCore.Components
+  nameWithType: Microsoft.AspNetCore.Components
+  fullName: Microsoft.AspNetCore.Components
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components
+    name: Components
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components
+    name: Components
+    isExternal: true
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: Microsoft.AspNetCore.Components.ComponentBase.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: BuildRenderTree(RenderTreeBuilder)
+  nameWithType: ComponentBase.BuildRenderTree(RenderTreeBuilder)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+    name: BuildRenderTree
+    isExternal: true
+  - name: (
+  - uid: Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+    name: RenderTreeBuilder
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+    name: BuildRenderTree
+    isExternal: true
+  - name: (
+  - uid: Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+    name: RenderTreeBuilder
+    isExternal: true
+  - name: )
+- uid: App.Shared.Components.LocDNColumn`1.BuildRenderTree*
+  commentId: Overload:App.Shared.Components.LocDNColumn`1.BuildRenderTree
+  name: BuildRenderTree
+  nameWithType: LocDNColumn<T>.BuildRenderTree
+  fullName: App.Shared.Components.LocDNColumn<T>.BuildRenderTree
+  nameWithType.vb: LocDNColumn(Of T).BuildRenderTree
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).BuildRenderTree
+- uid: Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+  commentId: T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+  parent: Microsoft.AspNetCore.Components.Rendering
+  isExternal: true
+  name: RenderTreeBuilder
+  nameWithType: RenderTreeBuilder
+  fullName: Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+- uid: Microsoft.AspNetCore.Components.Rendering
+  commentId: N:Microsoft.AspNetCore.Components.Rendering
+  isExternal: true
+  name: Microsoft.AspNetCore.Components.Rendering
+  nameWithType: Microsoft.AspNetCore.Components.Rendering
+  fullName: Microsoft.AspNetCore.Components.Rendering
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components
+    name: Components
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components.Rendering
+    name: Rendering
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components
+    name: Components
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components.Rendering
+    name: Rendering
+    isExternal: true
+- uid: App.Shared.Components.LocDNColumn`1.Field*
+  commentId: Overload:App.Shared.Components.LocDNColumn`1.Field
+  name: Field
+  nameWithType: LocDNColumn<T>.Field
+  fullName: App.Shared.Components.LocDNColumn<T>.Field
+  nameWithType.vb: LocDNColumn(Of T).Field
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).Field
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: App.Shared.Components.LocDNColumn`1.FieldChanged*
+  commentId: Overload:App.Shared.Components.LocDNColumn`1.FieldChanged
+  name: FieldChanged
+  nameWithType: LocDNColumn<T>.FieldChanged
+  fullName: App.Shared.Components.LocDNColumn<T>.FieldChanged
+  nameWithType.vb: LocDNColumn(Of T).FieldChanged
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).FieldChanged
+- uid: Microsoft.AspNetCore.Components.EventCallback{{T}}
+  commentId: T:Microsoft.AspNetCore.Components.EventCallback{`0}
+  parent: Microsoft.AspNetCore.Components
+  definition: Microsoft.AspNetCore.Components.EventCallback`1
+  name: EventCallback<T>
+  nameWithType: EventCallback<T>
+  fullName: Microsoft.AspNetCore.Components.EventCallback<T>
+  nameWithType.vb: EventCallback(Of T)
+  fullName.vb: Microsoft.AspNetCore.Components.EventCallback(Of T)
+  name.vb: EventCallback(Of T)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Microsoft.AspNetCore.Components.EventCallback`1
+  commentId: T:Microsoft.AspNetCore.Components.EventCallback`1
+  isExternal: true
+  name: EventCallback<TValue>
+  nameWithType: EventCallback<TValue>
+  fullName: Microsoft.AspNetCore.Components.EventCallback<TValue>
+  nameWithType.vb: EventCallback(Of TValue)
+  fullName.vb: Microsoft.AspNetCore.Components.EventCallback(Of TValue)
+  name.vb: EventCallback(Of TValue)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: <
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: App.Shared.Components.LocDNColumn`1.FieldExpression*
+  commentId: Overload:App.Shared.Components.LocDNColumn`1.FieldExpression
+  name: FieldExpression
+  nameWithType: LocDNColumn<T>.FieldExpression
+  fullName: App.Shared.Components.LocDNColumn<T>.FieldExpression
+  nameWithType.vb: LocDNColumn(Of T).FieldExpression
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).FieldExpression
+- uid: System.Linq.Expressions.Expression{System.Func{{T}}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{`0}}
+  parent: System.Linq.Expressions
+  definition: System.Linq.Expressions.Expression`1
+  name: Expression<Func<T>>
+  nameWithType: Expression<Func<T>>
+  fullName: System.Linq.Expressions.Expression<System.Func<T>>
+  nameWithType.vb: Expression(Of Func(Of T))
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of T))
+  name.vb: Expression(Of Func(Of T))
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: <
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: System.Linq.Expressions.Expression`1
+  commentId: T:System.Linq.Expressions.Expression`1
+  isExternal: true
+  name: Expression<TDelegate>
+  nameWithType: Expression<TDelegate>
+  fullName: System.Linq.Expressions.Expression<TDelegate>
+  nameWithType.vb: Expression(Of TDelegate)
+  fullName.vb: System.Linq.Expressions.Expression(Of TDelegate)
+  name.vb: Expression(Of TDelegate)
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: <
+  - name: TDelegate
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: )
+- uid: System.Linq.Expressions
+  commentId: N:System.Linq.Expressions
+  isExternal: true
+  name: System.Linq.Expressions
+  nameWithType: System.Linq.Expressions
+  fullName: System.Linq.Expressions
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+- uid: App.Shared.Components.LocDNColumn`1.ChildContent*
+  commentId: Overload:App.Shared.Components.LocDNColumn`1.ChildContent
+  name: ChildContent
+  nameWithType: LocDNColumn<T>.ChildContent
+  fullName: App.Shared.Components.LocDNColumn<T>.ChildContent
+  nameWithType.vb: LocDNColumn(Of T).ChildContent
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).ChildContent
+- uid: Microsoft.AspNetCore.Components.RenderFragment
+  commentId: T:Microsoft.AspNetCore.Components.RenderFragment
+  parent: Microsoft.AspNetCore.Components
+  isExternal: true
+  name: RenderFragment
+  nameWithType: RenderFragment
+  fullName: Microsoft.AspNetCore.Components.RenderFragment
+- uid: App.Shared.Components.LocDNColumn`1.Title*
+  commentId: Overload:App.Shared.Components.LocDNColumn`1.Title
+  name: Title
+  nameWithType: LocDNColumn<T>.Title
+  fullName: App.Shared.Components.LocDNColumn<T>.Title
+  nameWithType.vb: LocDNColumn(Of T).Title
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).Title
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: App.Shared.Components.LocDNColumn`1.Sortable*
+  commentId: Overload:App.Shared.Components.LocDNColumn`1.Sortable
+  name: Sortable
+  nameWithType: LocDNColumn<T>.Sortable
+  fullName: App.Shared.Components.LocDNColumn<T>.Sortable
+  nameWithType.vb: LocDNColumn(Of T).Sortable
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).Sortable
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: App.Shared.Components.LocDNColumn`1.SorterMultiple*
+  commentId: Overload:App.Shared.Components.LocDNColumn`1.SorterMultiple
+  name: SorterMultiple
+  nameWithType: LocDNColumn<T>.SorterMultiple
+  fullName: App.Shared.Components.LocDNColumn<T>.SorterMultiple
+  nameWithType.vb: LocDNColumn(Of T).SorterMultiple
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).SorterMultiple
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: App.Shared.Components.LocDNColumn`1.DefaultSortOrder*
+  commentId: Overload:App.Shared.Components.LocDNColumn`1.DefaultSortOrder
+  name: DefaultSortOrder
+  nameWithType: LocDNColumn<T>.DefaultSortOrder
+  fullName: App.Shared.Components.LocDNColumn<T>.DefaultSortOrder
+  nameWithType.vb: LocDNColumn(Of T).DefaultSortOrder
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).DefaultSortOrder
+- uid: System.Nullable{SortDirection}
+  commentId: T:System.Nullable{SortDirection}
+  parent: System
+  definition: System.Nullable`1
+  name: SortDirection?
+  nameWithType: SortDirection?
+  fullName: SortDirection?
+  spec.csharp:
+  - uid: SortDirection
+    name: SortDirection
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: SortDirection
+    name: SortDirection
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Shared.Components.LocDNColumn`1.OnFilter*
+  commentId: Overload:App.Shared.Components.LocDNColumn`1.OnFilter
+  name: OnFilter
+  nameWithType: LocDNColumn<T>.OnFilter
+  fullName: App.Shared.Components.LocDNColumn<T>.OnFilter
+  nameWithType.vb: LocDNColumn(Of T).OnFilter
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).OnFilter
+- uid: System.Linq.Expressions.Expression{System.Func{{T},{T},System.Boolean}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{`0,`0,System.Boolean}}
+  parent: System.Linq.Expressions
+  definition: System.Linq.Expressions.Expression`1
+  name: Expression<Func<T, T, bool>>
+  nameWithType: Expression<Func<T, T, bool>>
+  fullName: System.Linq.Expressions.Expression<System.Func<T, T, bool>>
+  nameWithType.vb: Expression(Of Func(Of T, T, Boolean))
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of T, T, Boolean))
+  name.vb: Expression(Of Func(Of T, T, Boolean))
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: <
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+  - name: )
+- uid: App.Shared.Components.LocDNColumn`1.Filters*
+  commentId: Overload:App.Shared.Components.LocDNColumn`1.Filters
+  name: Filters
+  nameWithType: LocDNColumn<T>.Filters
+  fullName: App.Shared.Components.LocDNColumn<T>.Filters
+  nameWithType.vb: LocDNColumn(Of T).Filters
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).Filters
+- uid: TableFilter{{T}}[]
+  isExternal: true
+  name: TableFilter<T>[]
+  nameWithType: TableFilter<T>[]
+  fullName: TableFilter<T>[]
+  nameWithType.vb: TableFilter(Of T)()
+  fullName.vb: TableFilter(Of T)()
+  name.vb: TableFilter(Of T)()
+  spec.csharp:
+  - uid: TableFilter`1
+    name: TableFilter
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: TableFilter`1
+    name: TableFilter
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: App.Shared.Components.LocDNColumn`1.ShowIfNotLocalizable*
+  commentId: Overload:App.Shared.Components.LocDNColumn`1.ShowIfNotLocalizable
+  name: ShowIfNotLocalizable
+  nameWithType: LocDNColumn<T>.ShowIfNotLocalizable
+  fullName: App.Shared.Components.LocDNColumn<T>.ShowIfNotLocalizable
+  nameWithType.vb: LocDNColumn(Of T).ShowIfNotLocalizable
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).ShowIfNotLocalizable
+- uid: App.Shared.Components.LocDNColumn`1.Filterable*
+  commentId: Overload:App.Shared.Components.LocDNColumn`1.Filterable
+  name: Filterable
+  nameWithType: LocDNColumn<T>.Filterable
+  fullName: App.Shared.Components.LocDNColumn<T>.Filterable
+  nameWithType.vb: LocDNColumn(Of T).Filterable
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).Filterable
+- uid: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: OnParametersSet()
+  nameWithType: ComponentBase.OnParametersSet()
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet
+    name: OnParametersSet
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet
+    name: OnParametersSet
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.Shared.Components.LocDNColumn`1.OnParametersSet*
+  commentId: Overload:App.Shared.Components.LocDNColumn`1.OnParametersSet
+  name: OnParametersSet
+  nameWithType: LocDNColumn<T>.OnParametersSet
+  fullName: App.Shared.Components.LocDNColumn<T>.OnParametersSet
+  nameWithType.vb: LocDNColumn(Of T).OnParametersSet
+  fullName.vb: App.Shared.Components.LocDNColumn(Of T).OnParametersSet

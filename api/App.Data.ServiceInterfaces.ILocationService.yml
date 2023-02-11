@@ -1,0 +1,457 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.ServiceInterfaces.ILocationService
+  commentId: T:App.Data.ServiceInterfaces.ILocationService
+  id: ILocationService
+  parent: App.Data.ServiceInterfaces
+  children:
+  - App.Data.ServiceInterfaces.ILocationService.GetBuildingOptions
+  - App.Data.ServiceInterfaces.ILocationService.GetFloorOptions
+  - App.Data.ServiceInterfaces.ILocationService.GetRoomOptions
+  langs:
+  - csharp
+  - vb
+  name: ILocationService
+  nameWithType: ILocationService
+  fullName: App.Data.ServiceInterfaces.ILocationService
+  type: Interface
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/ILocationService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ILocationService
+    path: ../App/Data/ServiceInterfaces/ILocationService.cs
+    startLine: 5
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nInterface for the service that provides data about Locations.\n"
+  example: []
+  syntax:
+    content: public interface ILocationService
+    content.vb: Public Interface ILocationService
+  extensionMethods:
+  - App.Data.ServiceInterfaces.ILocationService.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Data.ServiceInterfaces.ILocationService.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.Data.ServiceInterfaces.ILocationService.GetFloorOptions
+  commentId: M:App.Data.ServiceInterfaces.ILocationService.GetFloorOptions
+  id: GetFloorOptions
+  parent: App.Data.ServiceInterfaces.ILocationService
+  langs:
+  - csharp
+  - vb
+  name: GetFloorOptions()
+  nameWithType: ILocationService.GetFloorOptions()
+  fullName: App.Data.ServiceInterfaces.ILocationService.GetFloorOptions()
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/ILocationService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetFloorOptions
+    path: ../App/Data/ServiceInterfaces/ILocationService.cs
+    startLine: 11
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nReturns all available floors that can be queried.\n"
+  example: []
+  syntax:
+    content: int[] GetFloorOptions()
+    return:
+      type: System.Int32[]
+      description: Floors
+    content.vb: Function GetFloorOptions() As Integer()
+  overload: App.Data.ServiceInterfaces.ILocationService.GetFloorOptions*
+- uid: App.Data.ServiceInterfaces.ILocationService.GetBuildingOptions
+  commentId: M:App.Data.ServiceInterfaces.ILocationService.GetBuildingOptions
+  id: GetBuildingOptions
+  parent: App.Data.ServiceInterfaces.ILocationService
+  langs:
+  - csharp
+  - vb
+  name: GetBuildingOptions()
+  nameWithType: ILocationService.GetBuildingOptions()
+  fullName: App.Data.ServiceInterfaces.ILocationService.GetBuildingOptions()
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/ILocationService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetBuildingOptions
+    path: ../App/Data/ServiceInterfaces/ILocationService.cs
+    startLine: 17
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nReturns all available Buildings that can be queried.\n"
+  example: []
+  syntax:
+    content: char[] GetBuildingOptions()
+    return:
+      type: System.Char[]
+      description: Buildings
+    content.vb: Function GetBuildingOptions() As Char()
+  overload: App.Data.ServiceInterfaces.ILocationService.GetBuildingOptions*
+- uid: App.Data.ServiceInterfaces.ILocationService.GetRoomOptions
+  commentId: M:App.Data.ServiceInterfaces.ILocationService.GetRoomOptions
+  id: GetRoomOptions
+  parent: App.Data.ServiceInterfaces.ILocationService
+  langs:
+  - csharp
+  - vb
+  name: GetRoomOptions()
+  nameWithType: ILocationService.GetRoomOptions()
+  fullName: App.Data.ServiceInterfaces.ILocationService.GetRoomOptions()
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/ILocationService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetRoomOptions
+    path: ../App/Data/ServiceInterfaces/ILocationService.cs
+    startLine: 23
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nReturns all available Rooms that can be queried.\n"
+  example: []
+  syntax:
+    content: int[] GetRoomOptions()
+    return:
+      type: System.Int32[]
+      description: Rooms
+    content.vb: Function GetRoomOptions() As Integer()
+  overload: App.Data.ServiceInterfaces.ILocationService.GetRoomOptions*
+references:
+- uid: App.Data.ServiceInterfaces
+  commentId: N:App.Data.ServiceInterfaces
+  name: App.Data.ServiceInterfaces
+  nameWithType: App.Data.ServiceInterfaces
+  fullName: App.Data.ServiceInterfaces
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+- uid: App.Data.ServiceInterfaces.ILocationService.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<ILocationService>(ILocationService, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<ILocationService>(ILocationService, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Data.ServiceInterfaces.ILocationService>(App.Data.ServiceInterfaces.ILocationService, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of ILocationService)(ILocationService, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Data.ServiceInterfaces.ILocationService)(App.Data.ServiceInterfaces.ILocationService, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of ILocationService)(ILocationService, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.ServiceInterfaces.ILocationService,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Data.ServiceInterfaces.ILocationService
+    name: ILocationService
+  - name: '>'
+  - name: (
+  - uid: App.Data.ServiceInterfaces.ILocationService
+    name: ILocationService
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.ServiceInterfaces.ILocationService,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.ServiceInterfaces.ILocationService
+    name: ILocationService
+  - name: )
+  - name: (
+  - uid: App.Data.ServiceInterfaces.ILocationService
+    name: ILocationService
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Data.ServiceInterfaces.ILocationService.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<ILocationService>(ILocationService, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<ILocationService>(ILocationService, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Data.ServiceInterfaces.ILocationService>(App.Data.ServiceInterfaces.ILocationService, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of ILocationService)(ILocationService, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Data.ServiceInterfaces.ILocationService)(App.Data.ServiceInterfaces.ILocationService, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of ILocationService)(ILocationService, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.ServiceInterfaces.ILocationService,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Data.ServiceInterfaces.ILocationService
+    name: ILocationService
+  - name: '>'
+  - name: (
+  - uid: App.Data.ServiceInterfaces.ILocationService
+    name: ILocationService
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.ServiceInterfaces.ILocationService,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.ServiceInterfaces.ILocationService
+    name: ILocationService
+  - name: )
+  - name: (
+  - uid: App.Data.ServiceInterfaces.ILocationService
+    name: ILocationService
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Data.ServiceInterfaces.ILocationService.GetFloorOptions*
+  commentId: Overload:App.Data.ServiceInterfaces.ILocationService.GetFloorOptions
+  name: GetFloorOptions
+  nameWithType: ILocationService.GetFloorOptions
+  fullName: App.Data.ServiceInterfaces.ILocationService.GetFloorOptions
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.Data.ServiceInterfaces.ILocationService.GetBuildingOptions*
+  commentId: Overload:App.Data.ServiceInterfaces.ILocationService.GetBuildingOptions
+  name: GetBuildingOptions
+  nameWithType: ILocationService.GetBuildingOptions
+  fullName: App.Data.ServiceInterfaces.ILocationService.GetBuildingOptions
+- uid: System.Char[]
+  isExternal: true
+  name: char[]
+  nameWithType: char[]
+  fullName: char[]
+  nameWithType.vb: Char()
+  fullName.vb: Char()
+  name.vb: Char()
+  spec.csharp:
+  - uid: System.Char
+    name: char
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Char
+    name: Char
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.Data.ServiceInterfaces.ILocationService.GetRoomOptions*
+  commentId: Overload:App.Data.ServiceInterfaces.ILocationService.GetRoomOptions
+  name: GetRoomOptions
+  nameWithType: ILocationService.GetRoomOptions
+  fullName: App.Data.ServiceInterfaces.ILocationService.GetRoomOptions

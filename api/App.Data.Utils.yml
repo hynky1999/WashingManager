@@ -1,0 +1,95 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.Utils
+  commentId: N:App.Data.Utils
+  id: App.Data.Utils
+  children:
+  - App.Data.Utils.ModelUtils
+  - App.Data.Utils.SortOption`2
+  - App.Data.Utils.Status
+  - App.Data.Utils.UIVisibility
+  - App.Data.Utils.UIVisibilityEnum
+  langs:
+  - csharp
+  - vb
+  name: App.Data.Utils
+  nameWithType: App.Data.Utils
+  fullName: App.Data.Utils
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Data.Utils.ModelUtils
+  commentId: T:App.Data.Utils.ModelUtils
+  name: ModelUtils
+  nameWithType: ModelUtils
+  fullName: App.Data.Utils.ModelUtils
+- uid: App.Data.Utils.SortOption`2
+  commentId: T:App.Data.Utils.SortOption`2
+  name: SortOption<T, TKey>
+  nameWithType: SortOption<T, TKey>
+  fullName: App.Data.Utils.SortOption<T, TKey>
+  nameWithType.vb: SortOption(Of T, TKey)
+  fullName.vb: App.Data.Utils.SortOption(Of T, TKey)
+  name.vb: SortOption(Of T, TKey)
+  spec.csharp:
+  - uid: App.Data.Utils.SortOption`2
+    name: SortOption
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: App.Data.Utils.SortOption`2
+    name: SortOption
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: App.Data.Utils.Status
+  commentId: T:App.Data.Utils.Status
+  parent: App.Data.Utils
+  name: Status
+  nameWithType: Status
+  fullName: App.Data.Utils.Status
+- uid: App.Data.Utils.UIVisibility
+  commentId: T:App.Data.Utils.UIVisibility
+  parent: App.Data.Utils
+  name: UIVisibility
+  nameWithType: UIVisibility
+  fullName: App.Data.Utils.UIVisibility
+- uid: App.Data.Utils.UIVisibilityEnum
+  commentId: T:App.Data.Utils.UIVisibilityEnum
+  parent: App.Data.Utils
+  name: UIVisibilityEnum
+  nameWithType: UIVisibilityEnum
+  fullName: App.Data.Utils.UIVisibilityEnum
+- uid: App.Data.Utils
+  commentId: N:App.Data.Utils
+  name: App.Data.Utils
+  nameWithType: App.Data.Utils
+  fullName: App.Data.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Utils
+    name: Utils

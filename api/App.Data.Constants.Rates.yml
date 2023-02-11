@@ -1,0 +1,769 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.Constants.Rates
+  commentId: T:App.Data.Constants.Rates
+  id: Rates
+  parent: App.Data.Constants
+  children:
+  - App.Data.Constants.Rates.DBCurrency
+  - App.Data.Constants.Rates.FlatBorrowPrice
+  - App.Data.Constants.Rates.NoBorrowPenalty
+  - App.Data.Constants.Rates.PricePerHalfHour
+  - App.Data.Constants.Rates.PricePerOverRes
+  langs:
+  - csharp
+  - vb
+  name: Rates
+  nameWithType: Rates
+  fullName: App.Data.Constants.Rates
+  type: Class
+  source:
+    remote:
+      path: App/Data/Constants/Rates.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Rates
+    path: ../App/Data/Constants/Rates.cs
+    startLine: 36
+  assemblies:
+  - App
+  namespace: App.Data.Constants
+  summary: "\nImplementation of <xref href=\"App.Data.Constants.IRates\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: 'public class Rates : IRates'
+    content.vb: Public Class Rates Implements IRates
+  inheritance:
+  - System.Object
+  implements:
+  - App.Data.Constants.IRates
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - App.Data.Constants.Rates.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Data.Constants.Rates.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.Data.Constants.Rates.PricePerHalfHour
+  commentId: P:App.Data.Constants.Rates.PricePerHalfHour
+  id: PricePerHalfHour
+  parent: App.Data.Constants.Rates
+  langs:
+  - csharp
+  - vb
+  name: PricePerHalfHour
+  nameWithType: Rates.PricePerHalfHour
+  fullName: App.Data.Constants.Rates.PricePerHalfHour
+  type: Property
+  source:
+    remote:
+      path: App/Data/Constants/Rates.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: PricePerHalfHour
+    path: ../App/Data/Constants/Rates.cs
+    startLine: 41
+  assemblies:
+  - App
+  namespace: App.Data.Constants
+  summary: "\nSee <xref href=\"App.Data.Constants.IRates.PricePerHalfHour\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public int PricePerHalfHour { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property PricePerHalfHour As Integer
+  overload: App.Data.Constants.Rates.PricePerHalfHour*
+  implements:
+  - App.Data.Constants.IRates.PricePerHalfHour
+- uid: App.Data.Constants.Rates.FlatBorrowPrice
+  commentId: P:App.Data.Constants.Rates.FlatBorrowPrice
+  id: FlatBorrowPrice
+  parent: App.Data.Constants.Rates
+  langs:
+  - csharp
+  - vb
+  name: FlatBorrowPrice
+  nameWithType: Rates.FlatBorrowPrice
+  fullName: App.Data.Constants.Rates.FlatBorrowPrice
+  type: Property
+  source:
+    remote:
+      path: App/Data/Constants/Rates.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: FlatBorrowPrice
+    path: ../App/Data/Constants/Rates.cs
+    startLine: 46
+  assemblies:
+  - App
+  namespace: App.Data.Constants
+  summary: "\nSee <xref href=\"App.Data.Constants.IRates.FlatBorrowPrice\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public int FlatBorrowPrice { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property FlatBorrowPrice As Integer
+  overload: App.Data.Constants.Rates.FlatBorrowPrice*
+  implements:
+  - App.Data.Constants.IRates.FlatBorrowPrice
+- uid: App.Data.Constants.Rates.PricePerOverRes
+  commentId: P:App.Data.Constants.Rates.PricePerOverRes
+  id: PricePerOverRes
+  parent: App.Data.Constants.Rates
+  langs:
+  - csharp
+  - vb
+  name: PricePerOverRes
+  nameWithType: Rates.PricePerOverRes
+  fullName: App.Data.Constants.Rates.PricePerOverRes
+  type: Property
+  source:
+    remote:
+      path: App/Data/Constants/Rates.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: PricePerOverRes
+    path: ../App/Data/Constants/Rates.cs
+    startLine: 51
+  assemblies:
+  - App
+  namespace: App.Data.Constants
+  summary: "\nSee <xref href=\"App.Data.Constants.IRates.PricePerOverRes\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public int PricePerOverRes { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property PricePerOverRes As Integer
+  overload: App.Data.Constants.Rates.PricePerOverRes*
+  implements:
+  - App.Data.Constants.IRates.PricePerOverRes
+- uid: App.Data.Constants.Rates.NoBorrowPenalty
+  commentId: P:App.Data.Constants.Rates.NoBorrowPenalty
+  id: NoBorrowPenalty
+  parent: App.Data.Constants.Rates
+  langs:
+  - csharp
+  - vb
+  name: NoBorrowPenalty
+  nameWithType: Rates.NoBorrowPenalty
+  fullName: App.Data.Constants.Rates.NoBorrowPenalty
+  type: Property
+  source:
+    remote:
+      path: App/Data/Constants/Rates.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: NoBorrowPenalty
+    path: ../App/Data/Constants/Rates.cs
+    startLine: 56
+  assemblies:
+  - App
+  namespace: App.Data.Constants
+  summary: "\nSee <xref href=\"App.Data.Constants.IRates.NoBorrowPenalty\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public int NoBorrowPenalty { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property NoBorrowPenalty As Integer
+  overload: App.Data.Constants.Rates.NoBorrowPenalty*
+  implements:
+  - App.Data.Constants.IRates.NoBorrowPenalty
+- uid: App.Data.Constants.Rates.DBCurrency
+  commentId: P:App.Data.Constants.Rates.DBCurrency
+  id: DBCurrency
+  parent: App.Data.Constants.Rates
+  langs:
+  - csharp
+  - vb
+  name: DBCurrency
+  nameWithType: Rates.DBCurrency
+  fullName: App.Data.Constants.Rates.DBCurrency
+  type: Property
+  source:
+    remote:
+      path: App/Data/Constants/Rates.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: DBCurrency
+    path: ../App/Data/Constants/Rates.cs
+    startLine: 61
+  assemblies:
+  - App
+  namespace: App.Data.Constants
+  summary: "\nSee <xref href=\"App.Data.Constants.IRates.DBCurrency\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public Currency DBCurrency { get; }
+    parameters: []
+    return:
+      type: App.Data.Constants.Currency
+    content.vb: Public ReadOnly Property DBCurrency As Currency
+  overload: App.Data.Constants.Rates.DBCurrency*
+  implements:
+  - App.Data.Constants.IRates.DBCurrency
+references:
+- uid: App.Data.Constants.IRates
+  commentId: T:App.Data.Constants.IRates
+  parent: App.Data.Constants
+  name: IRates
+  nameWithType: IRates
+  fullName: App.Data.Constants.IRates
+- uid: App.Data.Constants
+  commentId: N:App.Data.Constants
+  name: App.Data.Constants
+  nameWithType: App.Data.Constants
+  fullName: App.Data.Constants
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Constants
+    name: Constants
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Constants
+    name: Constants
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.Data.Constants.Rates.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<Rates>(Rates, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<Rates>(Rates, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Data.Constants.Rates>(App.Data.Constants.Rates, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of Rates)(Rates, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Data.Constants.Rates)(App.Data.Constants.Rates, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of Rates)(Rates, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.Constants.Rates,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Data.Constants.Rates
+    name: Rates
+  - name: '>'
+  - name: (
+  - uid: App.Data.Constants.Rates
+    name: Rates
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.Constants.Rates,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Constants.Rates
+    name: Rates
+  - name: )
+  - name: (
+  - uid: App.Data.Constants.Rates
+    name: Rates
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Data.Constants.Rates.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<Rates>(Rates, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<Rates>(Rates, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Data.Constants.Rates>(App.Data.Constants.Rates, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of Rates)(Rates, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Data.Constants.Rates)(App.Data.Constants.Rates, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of Rates)(Rates, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.Constants.Rates,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Data.Constants.Rates
+    name: Rates
+  - name: '>'
+  - name: (
+  - uid: App.Data.Constants.Rates
+    name: Rates
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.Constants.Rates,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Constants.Rates
+    name: Rates
+  - name: )
+  - name: (
+  - uid: App.Data.Constants.Rates
+    name: Rates
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Data.Constants.IRates.PricePerHalfHour
+  commentId: P:App.Data.Constants.IRates.PricePerHalfHour
+  parent: App.Data.Constants.IRates
+  name: PricePerHalfHour
+  nameWithType: IRates.PricePerHalfHour
+  fullName: App.Data.Constants.IRates.PricePerHalfHour
+- uid: App.Data.Constants.Rates.PricePerHalfHour*
+  commentId: Overload:App.Data.Constants.Rates.PricePerHalfHour
+  name: PricePerHalfHour
+  nameWithType: Rates.PricePerHalfHour
+  fullName: App.Data.Constants.Rates.PricePerHalfHour
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: App.Data.Constants.IRates.FlatBorrowPrice
+  commentId: P:App.Data.Constants.IRates.FlatBorrowPrice
+  parent: App.Data.Constants.IRates
+  name: FlatBorrowPrice
+  nameWithType: IRates.FlatBorrowPrice
+  fullName: App.Data.Constants.IRates.FlatBorrowPrice
+- uid: App.Data.Constants.Rates.FlatBorrowPrice*
+  commentId: Overload:App.Data.Constants.Rates.FlatBorrowPrice
+  name: FlatBorrowPrice
+  nameWithType: Rates.FlatBorrowPrice
+  fullName: App.Data.Constants.Rates.FlatBorrowPrice
+- uid: App.Data.Constants.IRates.PricePerOverRes
+  commentId: P:App.Data.Constants.IRates.PricePerOverRes
+  parent: App.Data.Constants.IRates
+  name: PricePerOverRes
+  nameWithType: IRates.PricePerOverRes
+  fullName: App.Data.Constants.IRates.PricePerOverRes
+- uid: App.Data.Constants.Rates.PricePerOverRes*
+  commentId: Overload:App.Data.Constants.Rates.PricePerOverRes
+  name: PricePerOverRes
+  nameWithType: Rates.PricePerOverRes
+  fullName: App.Data.Constants.Rates.PricePerOverRes
+- uid: App.Data.Constants.IRates.NoBorrowPenalty
+  commentId: P:App.Data.Constants.IRates.NoBorrowPenalty
+  parent: App.Data.Constants.IRates
+  name: NoBorrowPenalty
+  nameWithType: IRates.NoBorrowPenalty
+  fullName: App.Data.Constants.IRates.NoBorrowPenalty
+- uid: App.Data.Constants.Rates.NoBorrowPenalty*
+  commentId: Overload:App.Data.Constants.Rates.NoBorrowPenalty
+  name: NoBorrowPenalty
+  nameWithType: Rates.NoBorrowPenalty
+  fullName: App.Data.Constants.Rates.NoBorrowPenalty
+- uid: App.Data.Constants.IRates.DBCurrency
+  commentId: P:App.Data.Constants.IRates.DBCurrency
+  parent: App.Data.Constants.IRates
+  name: DBCurrency
+  nameWithType: IRates.DBCurrency
+  fullName: App.Data.Constants.IRates.DBCurrency
+- uid: App.Data.Constants.Rates.DBCurrency*
+  commentId: Overload:App.Data.Constants.Rates.DBCurrency
+  name: DBCurrency
+  nameWithType: Rates.DBCurrency
+  fullName: App.Data.Constants.Rates.DBCurrency
+- uid: App.Data.Constants.Currency
+  commentId: T:App.Data.Constants.Currency
+  parent: App.Data.Constants
+  name: Currency
+  nameWithType: Currency
+  fullName: App.Data.Constants.Currency

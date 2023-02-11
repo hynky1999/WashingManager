@@ -1,0 +1,1110 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.ApplicationDbContext
+  commentId: T:App.Data.ApplicationDbContext
+  id: ApplicationDbContext
+  parent: App.Data
+  children:
+  - App.Data.ApplicationDbContext.#ctor
+  - App.Data.ApplicationDbContext.#ctor(DbContextOptions{App.Data.ApplicationDbContext})
+  - App.Data.ApplicationDbContext.BorrowPeople
+  - App.Data.ApplicationDbContext.Borrows
+  - App.Data.ApplicationDbContext.DryingRooms
+  - App.Data.ApplicationDbContext.DryingRoomUsage
+  - App.Data.ApplicationDbContext.Locations
+  - App.Data.ApplicationDbContext.Manuals
+  - App.Data.ApplicationDbContext.OnModelCreating(ModelBuilder)
+  - App.Data.ApplicationDbContext.Reservations
+  - App.Data.ApplicationDbContext.WashingMachines
+  - App.Data.ApplicationDbContext.WashingMachineUsage
+  langs:
+  - csharp
+  - vb
+  name: ApplicationDbContext
+  nameWithType: ApplicationDbContext
+  fullName: App.Data.ApplicationDbContext
+  type: Class
+  source:
+    remote:
+      path: App/Data/ApplicationDbContext.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ApplicationDbContext
+    path: ../App/Data/ApplicationDbContext.cs
+    startLine: 11
+  assemblies:
+  - App
+  namespace: App.Data
+  summary: "\nDatabase context for the application.\n"
+  example: []
+  syntax:
+    content: 'public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Role, int>'
+    content.vb: Public Class ApplicationDbContext Inherits IdentityDbContext(Of ApplicationUser, Role, Integer)
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - App.Data.ApplicationDbContext.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Data.ApplicationDbContext.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.Data.ApplicationDbContext.#ctor(DbContextOptions{App.Data.ApplicationDbContext})
+  commentId: M:App.Data.ApplicationDbContext.#ctor(DbContextOptions{App.Data.ApplicationDbContext})
+  id: '#ctor(DbContextOptions{App.Data.ApplicationDbContext})'
+  parent: App.Data.ApplicationDbContext
+  langs:
+  - csharp
+  - vb
+  name: ApplicationDbContext(DbContextOptions<ApplicationDbContext>)
+  nameWithType: ApplicationDbContext.ApplicationDbContext(DbContextOptions<ApplicationDbContext>)
+  fullName: App.Data.ApplicationDbContext.ApplicationDbContext(DbContextOptions<App.Data.ApplicationDbContext>)
+  type: Constructor
+  source:
+    remote:
+      path: App/Data/ApplicationDbContext.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: .ctor
+    path: ../App/Data/ApplicationDbContext.cs
+    startLine: 18
+  assemblies:
+  - App
+  namespace: App.Data
+  summary: "\nConstructor.\n"
+  example: []
+  syntax:
+    content: public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+    parameters:
+    - id: options
+      type: DbContextOptions{App.Data.ApplicationDbContext}
+      description: DB options
+    content.vb: Public Sub New(options As DbContextOptions(Of ApplicationDbContext))
+  overload: App.Data.ApplicationDbContext.#ctor*
+  nameWithType.vb: ApplicationDbContext.New(DbContextOptions(Of ApplicationDbContext))
+  fullName.vb: App.Data.ApplicationDbContext.New(DbContextOptions(Of App.Data.ApplicationDbContext))
+  name.vb: New(DbContextOptions(Of ApplicationDbContext))
+- uid: App.Data.ApplicationDbContext.#ctor
+  commentId: M:App.Data.ApplicationDbContext.#ctor
+  id: '#ctor'
+  parent: App.Data.ApplicationDbContext
+  langs:
+  - csharp
+  - vb
+  name: ApplicationDbContext()
+  nameWithType: ApplicationDbContext.ApplicationDbContext()
+  fullName: App.Data.ApplicationDbContext.ApplicationDbContext()
+  type: Constructor
+  source:
+    remote:
+      path: App/Data/ApplicationDbContext.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: .ctor
+    path: ../App/Data/ApplicationDbContext.cs
+    startLine: 26
+  assemblies:
+  - App
+  namespace: App.Data
+  summary: "\nConstructor.\n"
+  example: []
+  syntax:
+    content: public ApplicationDbContext()
+    content.vb: Public Sub New()
+  overload: App.Data.ApplicationDbContext.#ctor*
+  nameWithType.vb: ApplicationDbContext.New()
+  fullName.vb: App.Data.ApplicationDbContext.New()
+  name.vb: New()
+- uid: App.Data.ApplicationDbContext.Locations
+  commentId: P:App.Data.ApplicationDbContext.Locations
+  id: Locations
+  parent: App.Data.ApplicationDbContext
+  langs:
+  - csharp
+  - vb
+  name: Locations
+  nameWithType: ApplicationDbContext.Locations
+  fullName: App.Data.ApplicationDbContext.Locations
+  type: Property
+  source:
+    remote:
+      path: App/Data/ApplicationDbContext.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Locations
+    path: ../App/Data/ApplicationDbContext.cs
+    startLine: 33
+  assemblies:
+  - App
+  namespace: App.Data
+  summary: "\nLocations table\n"
+  example: []
+  syntax:
+    content: public DbSet<Location> Locations { get; }
+    parameters: []
+    return:
+      type: DbSet{App.Data.Models.Location}
+    content.vb: Public ReadOnly Property Locations As DbSet(Of Location)
+  overload: App.Data.ApplicationDbContext.Locations*
+- uid: App.Data.ApplicationDbContext.WashingMachines
+  commentId: P:App.Data.ApplicationDbContext.WashingMachines
+  id: WashingMachines
+  parent: App.Data.ApplicationDbContext
+  langs:
+  - csharp
+  - vb
+  name: WashingMachines
+  nameWithType: ApplicationDbContext.WashingMachines
+  fullName: App.Data.ApplicationDbContext.WashingMachines
+  type: Property
+  source:
+    remote:
+      path: App/Data/ApplicationDbContext.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: WashingMachines
+    path: ../App/Data/ApplicationDbContext.cs
+    startLine: 38
+  assemblies:
+  - App
+  namespace: App.Data
+  summary: "\nWashingMachines table\n"
+  example: []
+  syntax:
+    content: public DbSet<WashingMachine> WashingMachines { get; }
+    parameters: []
+    return:
+      type: DbSet{App.Data.Models.WashingMachine}
+    content.vb: Public ReadOnly Property WashingMachines As DbSet(Of WashingMachine)
+  overload: App.Data.ApplicationDbContext.WashingMachines*
+- uid: App.Data.ApplicationDbContext.DryingRooms
+  commentId: P:App.Data.ApplicationDbContext.DryingRooms
+  id: DryingRooms
+  parent: App.Data.ApplicationDbContext
+  langs:
+  - csharp
+  - vb
+  name: DryingRooms
+  nameWithType: ApplicationDbContext.DryingRooms
+  fullName: App.Data.ApplicationDbContext.DryingRooms
+  type: Property
+  source:
+    remote:
+      path: App/Data/ApplicationDbContext.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: DryingRooms
+    path: ../App/Data/ApplicationDbContext.cs
+    startLine: 43
+  assemblies:
+  - App
+  namespace: App.Data
+  summary: "\nDryingRooms table\n"
+  example: []
+  syntax:
+    content: public DbSet<DryingRoom> DryingRooms { get; }
+    parameters: []
+    return:
+      type: DbSet{App.Data.Models.DryingRoom}
+    content.vb: Public ReadOnly Property DryingRooms As DbSet(Of DryingRoom)
+  overload: App.Data.ApplicationDbContext.DryingRooms*
+- uid: App.Data.ApplicationDbContext.WashingMachineUsage
+  commentId: P:App.Data.ApplicationDbContext.WashingMachineUsage
+  id: WashingMachineUsage
+  parent: App.Data.ApplicationDbContext
+  langs:
+  - csharp
+  - vb
+  name: WashingMachineUsage
+  nameWithType: ApplicationDbContext.WashingMachineUsage
+  fullName: App.Data.ApplicationDbContext.WashingMachineUsage
+  type: Property
+  source:
+    remote:
+      path: App/Data/ApplicationDbContext.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: WashingMachineUsage
+    path: ../App/Data/ApplicationDbContext.cs
+    startLine: 48
+  assemblies:
+  - App
+  namespace: App.Data
+  summary: "\nWM Usage table\n"
+  example: []
+  syntax:
+    content: public DbSet<BorrowableEntityUsage<WashingMachine>> WashingMachineUsage { get; }
+    parameters: []
+    return:
+      type: DbSet{App.Data.Models.BorrowableEntityUsage{App.Data.Models.WashingMachine}}
+    content.vb: Public ReadOnly Property WashingMachineUsage As DbSet(Of BorrowableEntityUsage(Of WashingMachine))
+  overload: App.Data.ApplicationDbContext.WashingMachineUsage*
+- uid: App.Data.ApplicationDbContext.DryingRoomUsage
+  commentId: P:App.Data.ApplicationDbContext.DryingRoomUsage
+  id: DryingRoomUsage
+  parent: App.Data.ApplicationDbContext
+  langs:
+  - csharp
+  - vb
+  name: DryingRoomUsage
+  nameWithType: ApplicationDbContext.DryingRoomUsage
+  fullName: App.Data.ApplicationDbContext.DryingRoomUsage
+  type: Property
+  source:
+    remote:
+      path: App/Data/ApplicationDbContext.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: DryingRoomUsage
+    path: ../App/Data/ApplicationDbContext.cs
+    startLine: 54
+  assemblies:
+  - App
+  namespace: App.Data
+  summary: "\nDR Usage table\n"
+  example: []
+  syntax:
+    content: public DbSet<BorrowableEntityUsage<DryingRoom>> DryingRoomUsage { get; }
+    parameters: []
+    return:
+      type: DbSet{App.Data.Models.BorrowableEntityUsage{App.Data.Models.DryingRoom}}
+    content.vb: Public ReadOnly Property DryingRoomUsage As DbSet(Of BorrowableEntityUsage(Of DryingRoom))
+  overload: App.Data.ApplicationDbContext.DryingRoomUsage*
+- uid: App.Data.ApplicationDbContext.Reservations
+  commentId: P:App.Data.ApplicationDbContext.Reservations
+  id: Reservations
+  parent: App.Data.ApplicationDbContext
+  langs:
+  - csharp
+  - vb
+  name: Reservations
+  nameWithType: ApplicationDbContext.Reservations
+  fullName: App.Data.ApplicationDbContext.Reservations
+  type: Property
+  source:
+    remote:
+      path: App/Data/ApplicationDbContext.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Reservations
+    path: ../App/Data/ApplicationDbContext.cs
+    startLine: 60
+  assemblies:
+  - App
+  namespace: App.Data
+  summary: "\nReservations table\n"
+  example: []
+  syntax:
+    content: public DbSet<Reservation> Reservations { get; }
+    parameters: []
+    return:
+      type: DbSet{App.Data.Models.Reservation}
+    content.vb: Public ReadOnly Property Reservations As DbSet(Of Reservation)
+  overload: App.Data.ApplicationDbContext.Reservations*
+- uid: App.Data.ApplicationDbContext.Borrows
+  commentId: P:App.Data.ApplicationDbContext.Borrows
+  id: Borrows
+  parent: App.Data.ApplicationDbContext
+  langs:
+  - csharp
+  - vb
+  name: Borrows
+  nameWithType: ApplicationDbContext.Borrows
+  fullName: App.Data.ApplicationDbContext.Borrows
+  type: Property
+  source:
+    remote:
+      path: App/Data/ApplicationDbContext.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Borrows
+    path: ../App/Data/ApplicationDbContext.cs
+    startLine: 65
+  assemblies:
+  - App
+  namespace: App.Data
+  summary: "\nBorrows table\n"
+  example: []
+  syntax:
+    content: public virtual DbSet<Borrow> Borrows { get; }
+    parameters: []
+    return:
+      type: DbSet{App.Data.Models.Borrow}
+    content.vb: Public Overridable ReadOnly Property Borrows As DbSet(Of Borrow)
+  overload: App.Data.ApplicationDbContext.Borrows*
+- uid: App.Data.ApplicationDbContext.Manuals
+  commentId: P:App.Data.ApplicationDbContext.Manuals
+  id: Manuals
+  parent: App.Data.ApplicationDbContext
+  langs:
+  - csharp
+  - vb
+  name: Manuals
+  nameWithType: ApplicationDbContext.Manuals
+  fullName: App.Data.ApplicationDbContext.Manuals
+  type: Property
+  source:
+    remote:
+      path: App/Data/ApplicationDbContext.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Manuals
+    path: ../App/Data/ApplicationDbContext.cs
+    startLine: 70
+  assemblies:
+  - App
+  namespace: App.Data
+  summary: "\nManuals table\n"
+  example: []
+  syntax:
+    content: public DbSet<Manual> Manuals { get; }
+    parameters: []
+    return:
+      type: DbSet{App.Data.Models.Manual}
+    content.vb: Public ReadOnly Property Manuals As DbSet(Of Manual)
+  overload: App.Data.ApplicationDbContext.Manuals*
+- uid: App.Data.ApplicationDbContext.BorrowPeople
+  commentId: P:App.Data.ApplicationDbContext.BorrowPeople
+  id: BorrowPeople
+  parent: App.Data.ApplicationDbContext
+  langs:
+  - csharp
+  - vb
+  name: BorrowPeople
+  nameWithType: ApplicationDbContext.BorrowPeople
+  fullName: App.Data.ApplicationDbContext.BorrowPeople
+  type: Property
+  source:
+    remote:
+      path: App/Data/ApplicationDbContext.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: BorrowPeople
+    path: ../App/Data/ApplicationDbContext.cs
+    startLine: 75
+  assemblies:
+  - App
+  namespace: App.Data
+  summary: "\nBorrowPeople table\n"
+  example: []
+  syntax:
+    content: public DbSet<BorrowPerson> BorrowPeople { get; }
+    parameters: []
+    return:
+      type: DbSet{App.Data.Models.BorrowPerson}
+    content.vb: Public ReadOnly Property BorrowPeople As DbSet(Of BorrowPerson)
+  overload: App.Data.ApplicationDbContext.BorrowPeople*
+- uid: App.Data.ApplicationDbContext.OnModelCreating(ModelBuilder)
+  commentId: M:App.Data.ApplicationDbContext.OnModelCreating(ModelBuilder)
+  id: OnModelCreating(ModelBuilder)
+  parent: App.Data.ApplicationDbContext
+  langs:
+  - csharp
+  - vb
+  name: OnModelCreating(ModelBuilder)
+  nameWithType: ApplicationDbContext.OnModelCreating(ModelBuilder)
+  fullName: App.Data.ApplicationDbContext.OnModelCreating(ModelBuilder)
+  type: Method
+  source:
+    remote:
+      path: App/Data/ApplicationDbContext.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: OnModelCreating
+    path: ../App/Data/ApplicationDbContext.cs
+    startLine: 83
+  assemblies:
+  - App
+  namespace: App.Data
+  summary: "\nSets up the database.\nAdds ConcurrencyToken to Borrow, BorrowableEntity and Reservation.\nConcurrentToken is updated on every update of the entity, so concurrent updates will fail.\n"
+  example: []
+  syntax:
+    content: protected override void OnModelCreating(ModelBuilder modelBuilder)
+    parameters:
+    - id: modelBuilder
+      type: ModelBuilder
+      description: ''
+    content.vb: Protected Overrides Sub OnModelCreating(modelBuilder As ModelBuilder)
+  overload: App.Data.ApplicationDbContext.OnModelCreating*
+references:
+- uid: App.Data
+  commentId: N:App.Data
+  name: App.Data
+  nameWithType: App.Data
+  fullName: App.Data
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: App.Data.ApplicationDbContext.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<ApplicationDbContext>(ApplicationDbContext, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<ApplicationDbContext>(ApplicationDbContext, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Data.ApplicationDbContext>(App.Data.ApplicationDbContext, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of ApplicationDbContext)(ApplicationDbContext, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Data.ApplicationDbContext)(App.Data.ApplicationDbContext, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of ApplicationDbContext)(ApplicationDbContext, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.ApplicationDbContext,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: '>'
+  - name: (
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.ApplicationDbContext,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: )
+  - name: (
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Data.ApplicationDbContext.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<ApplicationDbContext>(ApplicationDbContext, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<ApplicationDbContext>(ApplicationDbContext, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Data.ApplicationDbContext>(App.Data.ApplicationDbContext, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of ApplicationDbContext)(ApplicationDbContext, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Data.ApplicationDbContext)(App.Data.ApplicationDbContext, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of ApplicationDbContext)(ApplicationDbContext, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.ApplicationDbContext,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: '>'
+  - name: (
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.ApplicationDbContext,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: )
+  - name: (
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Data.ApplicationDbContext.#ctor*
+  commentId: Overload:App.Data.ApplicationDbContext.#ctor
+  name: ApplicationDbContext
+  nameWithType: ApplicationDbContext.ApplicationDbContext
+  fullName: App.Data.ApplicationDbContext.ApplicationDbContext
+  nameWithType.vb: ApplicationDbContext.New
+  fullName.vb: App.Data.ApplicationDbContext.New
+  name.vb: New
+- uid: DbContextOptions{App.Data.ApplicationDbContext}
+  commentId: '!:DbContextOptions{App.Data.ApplicationDbContext}'
+  definition: DbContextOptions`1
+  name: DbContextOptions<ApplicationDbContext>
+  nameWithType: DbContextOptions<ApplicationDbContext>
+  fullName: DbContextOptions<App.Data.ApplicationDbContext>
+  nameWithType.vb: DbContextOptions(Of ApplicationDbContext)
+  fullName.vb: DbContextOptions(Of App.Data.ApplicationDbContext)
+  name.vb: DbContextOptions(Of ApplicationDbContext)
+  spec.csharp:
+  - uid: DbContextOptions`1
+    name: DbContextOptions
+    isExternal: true
+  - name: <
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: '>'
+  spec.vb:
+  - uid: DbContextOptions`1
+    name: DbContextOptions
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: )
+- uid: DbContextOptions`1
+  commentId: '!:DbContextOptions`1'
+  isExternal: true
+  name: DbContextOptions<>
+  nameWithType: DbContextOptions<>
+  fullName: DbContextOptions<>
+  nameWithType.vb: DbContextOptions(Of )
+  fullName.vb: DbContextOptions(Of )
+  name.vb: DbContextOptions(Of )
+  spec.csharp:
+  - uid: DbContextOptions`1
+    name: DbContextOptions
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: DbContextOptions`1
+    name: DbContextOptions
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: App.Data.ApplicationDbContext.Locations*
+  commentId: Overload:App.Data.ApplicationDbContext.Locations
+  name: Locations
+  nameWithType: ApplicationDbContext.Locations
+  fullName: App.Data.ApplicationDbContext.Locations
+- uid: DbSet{App.Data.Models.Location}
+  commentId: '!:DbSet{App.Data.Models.Location}'
+  definition: DbSet`1
+  name: DbSet<Location>
+  nameWithType: DbSet<Location>
+  fullName: DbSet<App.Data.Models.Location>
+  nameWithType.vb: DbSet(Of Location)
+  fullName.vb: DbSet(Of App.Data.Models.Location)
+  name.vb: DbSet(Of Location)
+  spec.csharp:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Location
+    name: Location
+  - name: '>'
+  spec.vb:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Location
+    name: Location
+  - name: )
+- uid: DbSet`1
+  isExternal: true
+  name: DbSet<>
+  nameWithType: DbSet<>
+  fullName: DbSet<>
+  nameWithType.vb: DbSet(Of )
+  fullName.vb: DbSet(Of )
+  name.vb: DbSet(Of )
+  spec.csharp:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: App.Data.ApplicationDbContext.WashingMachines*
+  commentId: Overload:App.Data.ApplicationDbContext.WashingMachines
+  name: WashingMachines
+  nameWithType: ApplicationDbContext.WashingMachines
+  fullName: App.Data.ApplicationDbContext.WashingMachines
+- uid: DbSet{App.Data.Models.WashingMachine}
+  commentId: '!:DbSet{App.Data.Models.WashingMachine}'
+  definition: DbSet`1
+  name: DbSet<WashingMachine>
+  nameWithType: DbSet<WashingMachine>
+  fullName: DbSet<App.Data.Models.WashingMachine>
+  nameWithType.vb: DbSet(Of WashingMachine)
+  fullName.vb: DbSet(Of App.Data.Models.WashingMachine)
+  name.vb: DbSet(Of WashingMachine)
+  spec.csharp:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.WashingMachine
+    name: WashingMachine
+  - name: '>'
+  spec.vb:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.WashingMachine
+    name: WashingMachine
+  - name: )
+- uid: App.Data.ApplicationDbContext.DryingRooms*
+  commentId: Overload:App.Data.ApplicationDbContext.DryingRooms
+  name: DryingRooms
+  nameWithType: ApplicationDbContext.DryingRooms
+  fullName: App.Data.ApplicationDbContext.DryingRooms
+- uid: DbSet{App.Data.Models.DryingRoom}
+  commentId: '!:DbSet{App.Data.Models.DryingRoom}'
+  definition: DbSet`1
+  name: DbSet<DryingRoom>
+  nameWithType: DbSet<DryingRoom>
+  fullName: DbSet<App.Data.Models.DryingRoom>
+  nameWithType.vb: DbSet(Of DryingRoom)
+  fullName.vb: DbSet(Of App.Data.Models.DryingRoom)
+  name.vb: DbSet(Of DryingRoom)
+  spec.csharp:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.DryingRoom
+    name: DryingRoom
+  - name: '>'
+  spec.vb:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.DryingRoom
+    name: DryingRoom
+  - name: )
+- uid: App.Data.ApplicationDbContext.WashingMachineUsage*
+  commentId: Overload:App.Data.ApplicationDbContext.WashingMachineUsage
+  name: WashingMachineUsage
+  nameWithType: ApplicationDbContext.WashingMachineUsage
+  fullName: App.Data.ApplicationDbContext.WashingMachineUsage
+- uid: DbSet{App.Data.Models.BorrowableEntityUsage{App.Data.Models.WashingMachine}}
+  commentId: '!:DbSet{App.Data.Models.BorrowableEntityUsage{App.Data.Models.WashingMachine}}'
+  definition: DbSet`1
+  name: DbSet<BorrowableEntityUsage<WashingMachine>>
+  nameWithType: DbSet<BorrowableEntityUsage<WashingMachine>>
+  fullName: DbSet<App.Data.Models.BorrowableEntityUsage<App.Data.Models.WashingMachine>>
+  nameWithType.vb: DbSet(Of BorrowableEntityUsage(Of WashingMachine))
+  fullName.vb: DbSet(Of App.Data.Models.BorrowableEntityUsage(Of App.Data.Models.WashingMachine))
+  name.vb: DbSet(Of BorrowableEntityUsage(Of WashingMachine))
+  spec.csharp:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.BorrowableEntityUsage`1
+    name: BorrowableEntityUsage
+  - name: <
+  - uid: App.Data.Models.WashingMachine
+    name: WashingMachine
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.BorrowableEntityUsage`1
+    name: BorrowableEntityUsage
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.WashingMachine
+    name: WashingMachine
+  - name: )
+  - name: )
+- uid: App.Data.ApplicationDbContext.DryingRoomUsage*
+  commentId: Overload:App.Data.ApplicationDbContext.DryingRoomUsage
+  name: DryingRoomUsage
+  nameWithType: ApplicationDbContext.DryingRoomUsage
+  fullName: App.Data.ApplicationDbContext.DryingRoomUsage
+- uid: DbSet{App.Data.Models.BorrowableEntityUsage{App.Data.Models.DryingRoom}}
+  commentId: '!:DbSet{App.Data.Models.BorrowableEntityUsage{App.Data.Models.DryingRoom}}'
+  definition: DbSet`1
+  name: DbSet<BorrowableEntityUsage<DryingRoom>>
+  nameWithType: DbSet<BorrowableEntityUsage<DryingRoom>>
+  fullName: DbSet<App.Data.Models.BorrowableEntityUsage<App.Data.Models.DryingRoom>>
+  nameWithType.vb: DbSet(Of BorrowableEntityUsage(Of DryingRoom))
+  fullName.vb: DbSet(Of App.Data.Models.BorrowableEntityUsage(Of App.Data.Models.DryingRoom))
+  name.vb: DbSet(Of BorrowableEntityUsage(Of DryingRoom))
+  spec.csharp:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.BorrowableEntityUsage`1
+    name: BorrowableEntityUsage
+  - name: <
+  - uid: App.Data.Models.DryingRoom
+    name: DryingRoom
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.BorrowableEntityUsage`1
+    name: BorrowableEntityUsage
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.DryingRoom
+    name: DryingRoom
+  - name: )
+  - name: )
+- uid: App.Data.ApplicationDbContext.Reservations*
+  commentId: Overload:App.Data.ApplicationDbContext.Reservations
+  name: Reservations
+  nameWithType: ApplicationDbContext.Reservations
+  fullName: App.Data.ApplicationDbContext.Reservations
+- uid: DbSet{App.Data.Models.Reservation}
+  commentId: '!:DbSet{App.Data.Models.Reservation}'
+  definition: DbSet`1
+  name: DbSet<Reservation>
+  nameWithType: DbSet<Reservation>
+  fullName: DbSet<App.Data.Models.Reservation>
+  nameWithType.vb: DbSet(Of Reservation)
+  fullName.vb: DbSet(Of App.Data.Models.Reservation)
+  name.vb: DbSet(Of Reservation)
+  spec.csharp:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: '>'
+  spec.vb:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: )
+- uid: App.Data.ApplicationDbContext.Borrows*
+  commentId: Overload:App.Data.ApplicationDbContext.Borrows
+  name: Borrows
+  nameWithType: ApplicationDbContext.Borrows
+  fullName: App.Data.ApplicationDbContext.Borrows
+- uid: DbSet{App.Data.Models.Borrow}
+  commentId: '!:DbSet{App.Data.Models.Borrow}'
+  definition: DbSet`1
+  name: DbSet<Borrow>
+  nameWithType: DbSet<Borrow>
+  fullName: DbSet<App.Data.Models.Borrow>
+  nameWithType.vb: DbSet(Of Borrow)
+  fullName.vb: DbSet(Of App.Data.Models.Borrow)
+  name.vb: DbSet(Of Borrow)
+  spec.csharp:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: '>'
+  spec.vb:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: )
+- uid: App.Data.ApplicationDbContext.Manuals*
+  commentId: Overload:App.Data.ApplicationDbContext.Manuals
+  name: Manuals
+  nameWithType: ApplicationDbContext.Manuals
+  fullName: App.Data.ApplicationDbContext.Manuals
+- uid: DbSet{App.Data.Models.Manual}
+  commentId: '!:DbSet{App.Data.Models.Manual}'
+  definition: DbSet`1
+  name: DbSet<Manual>
+  nameWithType: DbSet<Manual>
+  fullName: DbSet<App.Data.Models.Manual>
+  nameWithType.vb: DbSet(Of Manual)
+  fullName.vb: DbSet(Of App.Data.Models.Manual)
+  name.vb: DbSet(Of Manual)
+  spec.csharp:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Manual
+    name: Manual
+  - name: '>'
+  spec.vb:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Manual
+    name: Manual
+  - name: )
+- uid: App.Data.ApplicationDbContext.BorrowPeople*
+  commentId: Overload:App.Data.ApplicationDbContext.BorrowPeople
+  name: BorrowPeople
+  nameWithType: ApplicationDbContext.BorrowPeople
+  fullName: App.Data.ApplicationDbContext.BorrowPeople
+- uid: DbSet{App.Data.Models.BorrowPerson}
+  commentId: '!:DbSet{App.Data.Models.BorrowPerson}'
+  definition: DbSet`1
+  name: DbSet<BorrowPerson>
+  nameWithType: DbSet<BorrowPerson>
+  fullName: DbSet<App.Data.Models.BorrowPerson>
+  nameWithType.vb: DbSet(Of BorrowPerson)
+  fullName.vb: DbSet(Of App.Data.Models.BorrowPerson)
+  name.vb: DbSet(Of BorrowPerson)
+  spec.csharp:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.BorrowPerson
+    name: BorrowPerson
+  - name: '>'
+  spec.vb:
+  - uid: DbSet`1
+    name: DbSet
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.BorrowPerson
+    name: BorrowPerson
+  - name: )
+- uid: App.Data.ApplicationDbContext.OnModelCreating*
+  commentId: Overload:App.Data.ApplicationDbContext.OnModelCreating
+  name: OnModelCreating
+  nameWithType: ApplicationDbContext.OnModelCreating
+  fullName: App.Data.ApplicationDbContext.OnModelCreating
+- uid: ModelBuilder
+  commentId: '!:ModelBuilder'
+  isExternal: true
+  name: ModelBuilder
+  nameWithType: ModelBuilder
+  fullName: ModelBuilder

@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Features.Layout
+  commentId: N:App.Features.Layout
+  id: App.Features.Layout
+  children:
+  - App.Features.Layout.MainLayout
+  - App.Features.Layout.NavMenu
+  - App.Features.Layout.NotAuthorizedView
+  langs:
+  - csharp
+  - vb
+  name: App.Features.Layout
+  nameWithType: App.Features.Layout
+  fullName: App.Features.Layout
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Features.Layout.NavMenu
+  commentId: T:App.Features.Layout.NavMenu
+  name: NavMenu
+  nameWithType: NavMenu
+  fullName: App.Features.Layout.NavMenu
+- uid: App.Features.Layout.NotAuthorizedView
+  commentId: T:App.Features.Layout.NotAuthorizedView
+  name: NotAuthorizedView
+  nameWithType: NotAuthorizedView
+  fullName: App.Features.Layout.NotAuthorizedView
+- uid: App.Features.Layout.MainLayout
+  commentId: T:App.Features.Layout.MainLayout
+  name: MainLayout
+  nameWithType: MainLayout
+  fullName: App.Features.Layout.MainLayout

@@ -1,0 +1,388 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+  commentId: T:App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+  id: UserReservationTable.ReservationStatus
+  parent: App.Features.Reservations.Components.Tables
+  children:
+  - App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus.New
+  - App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus.Old
+  langs:
+  - csharp
+  - vb
+  name: UserReservationTable.ReservationStatus
+  nameWithType: UserReservationTable.ReservationStatus
+  fullName: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+  type: Enum
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_Reservations_Components_Tables_UserReservationTable_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ReservationStatus
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_Reservations_Components_Tables_UserReservationTable_razor.g.cs
+    startLine: 362
+  assemblies:
+  - App
+  namespace: App.Features.Reservations.Components.Tables
+  syntax:
+    content: public enum UserReservationTable.ReservationStatus
+    content.vb: Public Enum UserReservationTable.ReservationStatus
+  extensionMethods:
+  - App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus.New
+  commentId: F:App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus.New
+  id: New
+  parent: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+  langs:
+  - csharp
+  - vb
+  name: New
+  nameWithType: UserReservationTable.ReservationStatus.New
+  fullName: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus.New
+  type: Field
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_Reservations_Components_Tables_UserReservationTable_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: New
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_Reservations_Components_Tables_UserReservationTable_razor.g.cs
+    startLine: 363
+  assemblies:
+  - App
+  namespace: App.Features.Reservations.Components.Tables
+  syntax:
+    content: New = 0
+    return:
+      type: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+- uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus.Old
+  commentId: F:App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus.Old
+  id: Old
+  parent: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+  langs:
+  - csharp
+  - vb
+  name: Old
+  nameWithType: UserReservationTable.ReservationStatus.Old
+  fullName: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus.Old
+  type: Field
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_Reservations_Components_Tables_UserReservationTable_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Old
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_Reservations_Components_Tables_UserReservationTable_razor.g.cs
+    startLine: 364
+  assemblies:
+  - App
+  namespace: App.Features.Reservations.Components.Tables
+  syntax:
+    content: Old = 1
+    return:
+      type: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+references:
+- uid: App.Features.Reservations.Components.Tables
+  commentId: N:App.Features.Reservations.Components.Tables
+  name: App.Features.Reservations.Components.Tables
+  nameWithType: App.Features.Reservations.Components.Tables
+  fullName: App.Features.Reservations.Components.Tables
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Features
+    name: Features
+  - name: .
+  - uid: App.Features.Reservations
+    name: Reservations
+  - name: .
+  - uid: App.Features.Reservations.Components
+    name: Components
+  - name: .
+  - uid: App.Features.Reservations.Components.Tables
+    name: Tables
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Features
+    name: Features
+  - name: .
+  - uid: App.Features.Reservations
+    name: Reservations
+  - name: .
+  - uid: App.Features.Reservations.Components
+    name: Components
+  - name: .
+  - uid: App.Features.Reservations.Components.Tables
+    name: Tables
+- uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<ReservationStatus>(ReservationStatus, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<UserReservationTable.ReservationStatus>(UserReservationTable.ReservationStatus, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus>(App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of UserReservationTable.ReservationStatus)(UserReservationTable.ReservationStatus, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus)(App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of ReservationStatus)(ReservationStatus, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+    name: ReservationStatus
+  - name: '>'
+  - name: (
+  - uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+    name: ReservationStatus
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+    name: ReservationStatus
+  - name: )
+  - name: (
+  - uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+    name: ReservationStatus
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<ReservationStatus>(ReservationStatus, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<UserReservationTable.ReservationStatus>(UserReservationTable.ReservationStatus, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus>(App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of UserReservationTable.ReservationStatus)(UserReservationTable.ReservationStatus, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus)(App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of ReservationStatus)(ReservationStatus, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+    name: ReservationStatus
+  - name: '>'
+  - name: (
+  - uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+    name: ReservationStatus
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+    name: ReservationStatus
+  - name: )
+  - name: (
+  - uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+    name: ReservationStatus
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+  commentId: T:App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+  parent: App.Features.Reservations.Components.Tables
+  name: UserReservationTable.ReservationStatus
+  nameWithType: UserReservationTable.ReservationStatus
+  fullName: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+  spec.csharp:
+  - uid: App.Features.Reservations.Components.Tables.UserReservationTable
+    name: UserReservationTable
+  - name: .
+  - uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+    name: ReservationStatus
+  spec.vb:
+  - uid: App.Features.Reservations.Components.Tables.UserReservationTable
+    name: UserReservationTable
+  - name: .
+  - uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+    name: ReservationStatus

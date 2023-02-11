@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Authentication </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Authentication ">
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="authentication">Authentication</h2>
+
+<p>Authentication is done using ASP.NET Core Identity.
+Since we already use an EF Core we decided to use for Identity as well.
+This however is problematic as there is no native support for Blazor to use Identity as it depends on request-response model.</p>
+<p>We thus use Razor Pages to handle authentication and then use Blazor Server to handle the rest of the app.
+We used scaffolding to create the pages and then modified them to our needs.
+The source codes can be found at App.Areas.</p>
+<h2 id="authorization">Authorization</h2>
+<p>Authorization is done using ASP.NET Core Authorization.
+In Blazor Server the authorization of pages is done using the Authorize attribute. We use policies to define who can access what
+Authorization of specific parts of page is done using AuthenticationStateProvider. Such a provider will be injected to the component and the provides a ClaimsPrincipal that can be used to check if the user has the required claims.</p>
+<p>In Razor Pages the authorization is also done using the Folder policy access. In page authorization is done using IAuthorizationService.</p>
+<p>We wanted to use just claims but unfortunately Blazor Server doesn't support claims in the Authorize attribute. Thus we had to use policies.</p>
+<p>Overall there are 3 different policies:</p>
+<ul>
+<li>UserManagement -&gt; Can create new users</li>
+<li>ModelManagement -&gt; Can create new models (Direct DB access through UI)</li>
+<li>BorrowManagement -&gt; Can create new borrows and end borrows</li>
+</ul>
+<p>Each policy requires a user to have certain claim. The claims are:</p>
+<ul>
+<li>ManageUsers -&gt; UserManagement</li>
+<li>ManageModels -&gt; ModelManagement</li>
+<li>ManageBorrows -&gt; BorrowManagement</li>
+<li>UserID -&gt; ID of the user in DB where we store other data</li>
+</ul>
+<p>Authorization related things can be found at &lt;xref:PrackyASusarny.Auth.Utils&gt;.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/hynky1999/WashingManager/blob/main/docfx_project/articles/prog_guide/auth.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,370 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.Utils.UIVisibilityEnum
+  commentId: T:App.Data.Utils.UIVisibilityEnum
+  id: UIVisibilityEnum
+  parent: App.Data.Utils
+  children:
+  - App.Data.Utils.UIVisibilityEnum.Disabled
+  - App.Data.Utils.UIVisibilityEnum.Hidden
+  langs:
+  - csharp
+  - vb
+  name: UIVisibilityEnum
+  nameWithType: UIVisibilityEnum
+  fullName: App.Data.Utils.UIVisibilityEnum
+  type: Enum
+  source:
+    remote:
+      path: App/Data/Utils/UIAttributes.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: UIVisibilityEnum
+    path: ../App/Data/Utils/UIAttributes.cs
+    startLine: 28
+  assemblies:
+  - App
+  namespace: App.Data.Utils
+  summary: "\nType of visibility\n"
+  example: []
+  syntax:
+    content: public enum UIVisibilityEnum
+    content.vb: Public Enum UIVisibilityEnum
+  extensionMethods:
+  - App.Data.Utils.UIVisibilityEnum.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Data.Utils.UIVisibilityEnum.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.Data.Utils.UIVisibilityEnum.Hidden
+  commentId: F:App.Data.Utils.UIVisibilityEnum.Hidden
+  id: Hidden
+  parent: App.Data.Utils.UIVisibilityEnum
+  langs:
+  - csharp
+  - vb
+  name: Hidden
+  nameWithType: UIVisibilityEnum.Hidden
+  fullName: App.Data.Utils.UIVisibilityEnum.Hidden
+  type: Field
+  source:
+    remote:
+      path: App/Data/Utils/UIAttributes.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Hidden
+    path: ../App/Data/Utils/UIAttributes.cs
+    startLine: 33
+  assemblies:
+  - App
+  namespace: App.Data.Utils
+  summary: "\nNot visible\n"
+  example: []
+  syntax:
+    content: Hidden = 0
+    return:
+      type: App.Data.Utils.UIVisibilityEnum
+- uid: App.Data.Utils.UIVisibilityEnum.Disabled
+  commentId: F:App.Data.Utils.UIVisibilityEnum.Disabled
+  id: Disabled
+  parent: App.Data.Utils.UIVisibilityEnum
+  langs:
+  - csharp
+  - vb
+  name: Disabled
+  nameWithType: UIVisibilityEnum.Disabled
+  fullName: App.Data.Utils.UIVisibilityEnum.Disabled
+  type: Field
+  source:
+    remote:
+      path: App/Data/Utils/UIAttributes.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Disabled
+    path: ../App/Data/Utils/UIAttributes.cs
+    startLine: 38
+  assemblies:
+  - App
+  namespace: App.Data.Utils
+  summary: "\nDisabled look\n"
+  example: []
+  syntax:
+    content: Disabled = 1
+    return:
+      type: App.Data.Utils.UIVisibilityEnum
+references:
+- uid: App.Data.Utils
+  commentId: N:App.Data.Utils
+  name: App.Data.Utils
+  nameWithType: App.Data.Utils
+  fullName: App.Data.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Utils
+    name: Utils
+- uid: App.Data.Utils.UIVisibilityEnum.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<UIVisibilityEnum>(UIVisibilityEnum, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<UIVisibilityEnum>(UIVisibilityEnum, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Data.Utils.UIVisibilityEnum>(App.Data.Utils.UIVisibilityEnum, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of UIVisibilityEnum)(UIVisibilityEnum, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Data.Utils.UIVisibilityEnum)(App.Data.Utils.UIVisibilityEnum, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of UIVisibilityEnum)(UIVisibilityEnum, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.Utils.UIVisibilityEnum,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Data.Utils.UIVisibilityEnum
+    name: UIVisibilityEnum
+  - name: '>'
+  - name: (
+  - uid: App.Data.Utils.UIVisibilityEnum
+    name: UIVisibilityEnum
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.Utils.UIVisibilityEnum,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Utils.UIVisibilityEnum
+    name: UIVisibilityEnum
+  - name: )
+  - name: (
+  - uid: App.Data.Utils.UIVisibilityEnum
+    name: UIVisibilityEnum
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Data.Utils.UIVisibilityEnum.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<UIVisibilityEnum>(UIVisibilityEnum, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<UIVisibilityEnum>(UIVisibilityEnum, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Data.Utils.UIVisibilityEnum>(App.Data.Utils.UIVisibilityEnum, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of UIVisibilityEnum)(UIVisibilityEnum, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Data.Utils.UIVisibilityEnum)(App.Data.Utils.UIVisibilityEnum, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of UIVisibilityEnum)(UIVisibilityEnum, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.Utils.UIVisibilityEnum,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Data.Utils.UIVisibilityEnum
+    name: UIVisibilityEnum
+  - name: '>'
+  - name: (
+  - uid: App.Data.Utils.UIVisibilityEnum
+    name: UIVisibilityEnum
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.Utils.UIVisibilityEnum,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Utils.UIVisibilityEnum
+    name: UIVisibilityEnum
+  - name: )
+  - name: (
+  - uid: App.Data.Utils.UIVisibilityEnum
+    name: UIVisibilityEnum
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Data.Utils.UIVisibilityEnum
+  commentId: T:App.Data.Utils.UIVisibilityEnum
+  parent: App.Data.Utils
+  name: UIVisibilityEnum
+  nameWithType: UIVisibilityEnum
+  fullName: App.Data.Utils.UIVisibilityEnum

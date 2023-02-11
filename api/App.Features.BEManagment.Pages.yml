@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Features.BEManagment.Pages
+  commentId: N:App.Features.BEManagment.Pages
+  id: App.Features.BEManagment.Pages
+  children:
+  - App.Features.BEManagment.Pages.AvailabilityListPage
+  - App.Features.BEManagment.Pages.BorrowListPage
+  langs:
+  - csharp
+  - vb
+  name: App.Features.BEManagment.Pages
+  nameWithType: App.Features.BEManagment.Pages
+  fullName: App.Features.BEManagment.Pages
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Features.BEManagment.Pages.AvailabilityListPage
+  commentId: T:App.Features.BEManagment.Pages.AvailabilityListPage
+  name: AvailabilityListPage
+  nameWithType: AvailabilityListPage
+  fullName: App.Features.BEManagment.Pages.AvailabilityListPage
+- uid: App.Features.BEManagment.Pages.BorrowListPage
+  commentId: T:App.Features.BEManagment.Pages.BorrowListPage
+  name: BorrowListPage
+  nameWithType: BorrowListPage
+  fullName: App.Features.BEManagment.Pages.BorrowListPage

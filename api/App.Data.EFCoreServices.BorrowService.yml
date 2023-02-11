@@ -1,0 +1,1453 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.EFCoreServices.BorrowService
+  commentId: T:App.Data.EFCoreServices.BorrowService
+  id: BorrowService
+  parent: App.Data.EFCoreServices
+  children:
+  - App.Data.EFCoreServices.BorrowService.#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Data.ServiceInterfaces.IBorrowPersonService,App.Data.ServiceInterfaces.IUsageService,App.Data.Constants.IRates,IClock,App.Data.ServiceInterfaces.IUserService)
+  - App.Data.EFCoreServices.BorrowService.AddBorrowAsync(App.Data.Models.Borrow)
+  - App.Data.EFCoreServices.BorrowService.CountBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+  - App.Data.EFCoreServices.BorrowService.EndBorrowAsync(App.Data.Models.Borrow,System.Boolean)
+  - App.Data.EFCoreServices.BorrowService.GetBorrowAsync(App.Data.Models.Reservation)
+  - App.Data.EFCoreServices.BorrowService.GetBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+  - App.Data.EFCoreServices.BorrowService.GetPriceAsync(App.Data.Models.Borrow)
+  langs:
+  - csharp
+  - vb
+  name: BorrowService
+  nameWithType: BorrowService
+  fullName: App.Data.EFCoreServices.BorrowService
+  type: Class
+  source:
+    remote:
+      path: App/Data/EFCoreServices/BorrowService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: BorrowService
+    path: ../App/Data/EFCoreServices/BorrowService.cs
+    startLine: 15
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nEF Core Implementation of <xref href=\"App.Data.ServiceInterfaces.IBorrowService\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: 'public class BorrowService : IBorrowService'
+    content.vb: Public Class BorrowService Implements IBorrowService
+  inheritance:
+  - System.Object
+  implements:
+  - App.Data.ServiceInterfaces.IBorrowService
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - App.Data.EFCoreServices.BorrowService.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Data.EFCoreServices.BorrowService.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.Data.EFCoreServices.BorrowService.#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Data.ServiceInterfaces.IBorrowPersonService,App.Data.ServiceInterfaces.IUsageService,App.Data.Constants.IRates,IClock,App.Data.ServiceInterfaces.IUserService)
+  commentId: M:App.Data.EFCoreServices.BorrowService.#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Data.ServiceInterfaces.IBorrowPersonService,App.Data.ServiceInterfaces.IUsageService,App.Data.Constants.IRates,IClock,App.Data.ServiceInterfaces.IUserService)
+  id: '#ctor(IDbContextFactory{App.Data.ApplicationDbContext},App.Data.ServiceInterfaces.IBorrowPersonService,App.Data.ServiceInterfaces.IUsageService,App.Data.Constants.IRates,IClock,App.Data.ServiceInterfaces.IUserService)'
+  parent: App.Data.EFCoreServices.BorrowService
+  langs:
+  - csharp
+  - vb
+  name: BorrowService(IDbContextFactory<ApplicationDbContext>, IBorrowPersonService, IUsageService, IRates, IClock, IUserService)
+  nameWithType: BorrowService.BorrowService(IDbContextFactory<ApplicationDbContext>, IBorrowPersonService, IUsageService, IRates, IClock, IUserService)
+  fullName: App.Data.EFCoreServices.BorrowService.BorrowService(IDbContextFactory<App.Data.ApplicationDbContext>, App.Data.ServiceInterfaces.IBorrowPersonService, App.Data.ServiceInterfaces.IUsageService, App.Data.Constants.IRates, IClock, App.Data.ServiceInterfaces.IUserService)
+  type: Constructor
+  source:
+    remote:
+      path: App/Data/EFCoreServices/BorrowService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: .ctor
+    path: ../App/Data/EFCoreServices/BorrowService.cs
+    startLine: 34
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nConstructor.\n"
+  example: []
+  syntax:
+    content: public BorrowService(IDbContextFactory<ApplicationDbContext> dbFactory, IBorrowPersonService borrowPersonService, IUsageService usageService, IRates rates, IClock clock, IUserService userService)
+    parameters:
+    - id: dbFactory
+      type: IDbContextFactory{App.Data.ApplicationDbContext}
+      description: ''
+    - id: borrowPersonService
+      type: App.Data.ServiceInterfaces.IBorrowPersonService
+      description: ''
+    - id: usageService
+      type: App.Data.ServiceInterfaces.IUsageService
+      description: ''
+    - id: rates
+      type: App.Data.Constants.IRates
+      description: ''
+    - id: clock
+      type: IClock
+      description: ''
+    - id: userService
+      type: App.Data.ServiceInterfaces.IUserService
+      description: ''
+    content.vb: Public Sub New(dbFactory As IDbContextFactory(Of ApplicationDbContext), borrowPersonService As IBorrowPersonService, usageService As IUsageService, rates As IRates, clock As IClock, userService As IUserService)
+  overload: App.Data.EFCoreServices.BorrowService.#ctor*
+  nameWithType.vb: BorrowService.New(IDbContextFactory(Of ApplicationDbContext), IBorrowPersonService, IUsageService, IRates, IClock, IUserService)
+  fullName.vb: App.Data.EFCoreServices.BorrowService.New(IDbContextFactory(Of App.Data.ApplicationDbContext), App.Data.ServiceInterfaces.IBorrowPersonService, App.Data.ServiceInterfaces.IUsageService, App.Data.Constants.IRates, IClock, App.Data.ServiceInterfaces.IUserService)
+  name.vb: New(IDbContextFactory(Of ApplicationDbContext), IBorrowPersonService, IUsageService, IRates, IClock, IUserService)
+- uid: App.Data.EFCoreServices.BorrowService.GetPriceAsync(App.Data.Models.Borrow)
+  commentId: M:App.Data.EFCoreServices.BorrowService.GetPriceAsync(App.Data.Models.Borrow)
+  id: GetPriceAsync(App.Data.Models.Borrow)
+  parent: App.Data.EFCoreServices.BorrowService
+  langs:
+  - csharp
+  - vb
+  name: GetPriceAsync(Borrow)
+  nameWithType: BorrowService.GetPriceAsync(Borrow)
+  fullName: App.Data.EFCoreServices.BorrowService.GetPriceAsync(App.Data.Models.Borrow)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/BorrowService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetPriceAsync
+    path: ../App/Data/EFCoreServices/BorrowService.cs
+    startLine: 56
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nComputes the total price of the borrow\n"
+  example: []
+  syntax:
+    content: public Task<Money> GetPriceAsync(Borrow borrow)
+    parameters:
+    - id: borrow
+      type: App.Data.Models.Borrow
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{App.Data.Constants.Money}
+      description: Price for a borrow
+    content.vb: Public Function GetPriceAsync(borrow As Borrow) As Task(Of Money)
+  overload: App.Data.EFCoreServices.BorrowService.GetPriceAsync*
+  implements:
+  - App.Data.ServiceInterfaces.IBorrowService.GetPriceAsync(App.Data.Models.Borrow)
+- uid: App.Data.EFCoreServices.BorrowService.EndBorrowAsync(App.Data.Models.Borrow,System.Boolean)
+  commentId: M:App.Data.EFCoreServices.BorrowService.EndBorrowAsync(App.Data.Models.Borrow,System.Boolean)
+  id: EndBorrowAsync(App.Data.Models.Borrow,System.Boolean)
+  parent: App.Data.EFCoreServices.BorrowService
+  langs:
+  - csharp
+  - vb
+  name: EndBorrowAsync(Borrow, bool)
+  nameWithType: BorrowService.EndBorrowAsync(Borrow, bool)
+  fullName: App.Data.EFCoreServices.BorrowService.EndBorrowAsync(App.Data.Models.Borrow, bool)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/BorrowService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: EndBorrowAsync
+    path: ../App/Data/EFCoreServices/BorrowService.cs
+    startLine: 73
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nEnds the borrow and updates the usage statistics\n"
+  example: []
+  syntax:
+    content: public Task EndBorrowAsync(Borrow borrow, bool deduceUserCash)
+    parameters:
+    - id: borrow
+      type: App.Data.Models.Borrow
+      description: ''
+    - id: deduceUserCash
+      type: System.Boolean
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function EndBorrowAsync(borrow As Borrow, deduceUserCash As Boolean) As Task
+  overload: App.Data.EFCoreServices.BorrowService.EndBorrowAsync*
+  implements:
+  - App.Data.ServiceInterfaces.IBorrowService.EndBorrowAsync(App.Data.Models.Borrow,System.Boolean)
+  nameWithType.vb: BorrowService.EndBorrowAsync(Borrow, Boolean)
+  fullName.vb: App.Data.EFCoreServices.BorrowService.EndBorrowAsync(App.Data.Models.Borrow, Boolean)
+  name.vb: EndBorrowAsync(Borrow, Boolean)
+- uid: App.Data.EFCoreServices.BorrowService.AddBorrowAsync(App.Data.Models.Borrow)
+  commentId: M:App.Data.EFCoreServices.BorrowService.AddBorrowAsync(App.Data.Models.Borrow)
+  id: AddBorrowAsync(App.Data.Models.Borrow)
+  parent: App.Data.EFCoreServices.BorrowService
+  langs:
+  - csharp
+  - vb
+  name: AddBorrowAsync(Borrow)
+  nameWithType: BorrowService.AddBorrowAsync(Borrow)
+  fullName: App.Data.EFCoreServices.BorrowService.AddBorrowAsync(App.Data.Models.Borrow)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/BorrowService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: AddBorrowAsync
+    path: ../App/Data/EFCoreServices/BorrowService.cs
+    startLine: 97
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nCreates a new borrow\n"
+  example: []
+  syntax:
+    content: public Task<Borrow> AddBorrowAsync(Borrow borrow)
+    parameters:
+    - id: borrow
+      type: App.Data.Models.Borrow
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{App.Data.Models.Borrow}
+      description: ''
+    content.vb: Public Function AddBorrowAsync(borrow As Borrow) As Task(Of Borrow)
+  overload: App.Data.EFCoreServices.BorrowService.AddBorrowAsync*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: throws if BE is not free
+  implements:
+  - App.Data.ServiceInterfaces.IBorrowService.AddBorrowAsync(App.Data.Models.Borrow)
+- uid: App.Data.EFCoreServices.BorrowService.GetBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+  commentId: M:App.Data.EFCoreServices.BorrowService.GetBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+  id: GetBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+  parent: App.Data.EFCoreServices.BorrowService
+  langs:
+  - csharp
+  - vb
+  name: GetBorrowsByBEAsync<T>(QueryModel<Borrow>)
+  nameWithType: BorrowService.GetBorrowsByBEAsync<T>(QueryModel<Borrow>)
+  fullName: App.Data.EFCoreServices.BorrowService.GetBorrowsByBEAsync<T>(QueryModel<App.Data.Models.Borrow>)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/BorrowService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetBorrowsByBEAsync
+    path: ../App/Data/EFCoreServices/BorrowService.cs
+    startLine: 123
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nReturns all borrows for a type of borrowable entity\n"
+  example: []
+  syntax:
+    content: 'public Task<Borrow[]> GetBorrowsByBEAsync<T>(QueryModel<Borrow> qM) where T : BorrowableEntity'
+    parameters:
+    - id: qM
+      type: QueryModel{App.Data.Models.Borrow}
+      description: QueryModel with constraints for query
+    typeParameters:
+    - id: T
+      description: 'Type of BE to query '
+    return:
+      type: System.Threading.Tasks.Task{App.Data.Models.Borrow[]}
+      description: All borrows for T
+    content.vb: Public Function GetBorrowsByBEAsync(Of T As BorrowableEntity)(qM As QueryModel(Of Borrow)) As Task(Of Borrow())
+  overload: App.Data.EFCoreServices.BorrowService.GetBorrowsByBEAsync*
+  implements:
+  - App.Data.ServiceInterfaces.IBorrowService.GetBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+  nameWithType.vb: BorrowService.GetBorrowsByBEAsync(Of T)(QueryModel(Of Borrow))
+  fullName.vb: App.Data.EFCoreServices.BorrowService.GetBorrowsByBEAsync(Of T)(QueryModel(Of App.Data.Models.Borrow))
+  name.vb: GetBorrowsByBEAsync(Of T)(QueryModel(Of Borrow))
+- uid: App.Data.EFCoreServices.BorrowService.CountBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+  commentId: M:App.Data.EFCoreServices.BorrowService.CountBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+  id: CountBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+  parent: App.Data.EFCoreServices.BorrowService
+  langs:
+  - csharp
+  - vb
+  name: CountBorrowsByBEAsync<T>(QueryModel<Borrow>)
+  nameWithType: BorrowService.CountBorrowsByBEAsync<T>(QueryModel<Borrow>)
+  fullName: App.Data.EFCoreServices.BorrowService.CountBorrowsByBEAsync<T>(QueryModel<App.Data.Models.Borrow>)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/BorrowService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: CountBorrowsByBEAsync
+    path: ../App/Data/EFCoreServices/BorrowService.cs
+    startLine: 131
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\n<xref href=\"App.Data.ServiceInterfaces.IBorrowService.GetBorrowsByBEAsync%60%601(QueryModel%7bApp.Data.Models.Borrow%7d)\" data-throw-if-not-resolved=\"false\"></xref> but only count\n"
+  example: []
+  syntax:
+    content: 'public Task<int> CountBorrowsByBEAsync<T>(QueryModel<Borrow> qM) where T : BorrowableEntity'
+    parameters:
+    - id: qM
+      type: QueryModel{App.Data.Models.Borrow}
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+      description: ''
+    content.vb: Public Function CountBorrowsByBEAsync(Of T As BorrowableEntity)(qM As QueryModel(Of Borrow)) As Task(Of Integer)
+  overload: App.Data.EFCoreServices.BorrowService.CountBorrowsByBEAsync*
+  implements:
+  - App.Data.ServiceInterfaces.IBorrowService.CountBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+  nameWithType.vb: BorrowService.CountBorrowsByBEAsync(Of T)(QueryModel(Of Borrow))
+  fullName.vb: App.Data.EFCoreServices.BorrowService.CountBorrowsByBEAsync(Of T)(QueryModel(Of App.Data.Models.Borrow))
+  name.vb: CountBorrowsByBEAsync(Of T)(QueryModel(Of Borrow))
+- uid: App.Data.EFCoreServices.BorrowService.GetBorrowAsync(App.Data.Models.Reservation)
+  commentId: M:App.Data.EFCoreServices.BorrowService.GetBorrowAsync(App.Data.Models.Reservation)
+  id: GetBorrowAsync(App.Data.Models.Reservation)
+  parent: App.Data.EFCoreServices.BorrowService
+  langs:
+  - csharp
+  - vb
+  name: GetBorrowAsync(Reservation)
+  nameWithType: BorrowService.GetBorrowAsync(Reservation)
+  fullName: App.Data.EFCoreServices.BorrowService.GetBorrowAsync(App.Data.Models.Reservation)
+  type: Method
+  source:
+    remote:
+      path: App/Data/EFCoreServices/BorrowService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetBorrowAsync
+    path: ../App/Data/EFCoreServices/BorrowService.cs
+    startLine: 139
+  assemblies:
+  - App
+  namespace: App.Data.EFCoreServices
+  summary: "\nGets borrow for a reservation\n"
+  example: []
+  syntax:
+    content: public Task<Borrow?> GetBorrowAsync(Reservation res)
+    parameters:
+    - id: res
+      type: App.Data.Models.Reservation
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{App.Data.Models.Borrow}
+      description: If exists borrow for reservation otherwise null
+    content.vb: Public Function GetBorrowAsync(res As Reservation) As Task(Of Borrow)
+  overload: App.Data.EFCoreServices.BorrowService.GetBorrowAsync*
+  implements:
+  - App.Data.ServiceInterfaces.IBorrowService.GetBorrowAsync(App.Data.Models.Reservation)
+references:
+- uid: App.Data.ServiceInterfaces.IBorrowService
+  commentId: T:App.Data.ServiceInterfaces.IBorrowService
+  parent: App.Data.ServiceInterfaces
+  name: IBorrowService
+  nameWithType: IBorrowService
+  fullName: App.Data.ServiceInterfaces.IBorrowService
+- uid: App.Data.EFCoreServices
+  commentId: N:App.Data.EFCoreServices
+  name: App.Data.EFCoreServices
+  nameWithType: App.Data.EFCoreServices
+  fullName: App.Data.EFCoreServices
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.EFCoreServices
+    name: EFCoreServices
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.EFCoreServices
+    name: EFCoreServices
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.Data.EFCoreServices.BorrowService.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<BorrowService>(BorrowService, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<BorrowService>(BorrowService, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Data.EFCoreServices.BorrowService>(App.Data.EFCoreServices.BorrowService, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of BorrowService)(BorrowService, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Data.EFCoreServices.BorrowService)(App.Data.EFCoreServices.BorrowService, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of BorrowService)(BorrowService, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.EFCoreServices.BorrowService,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Data.EFCoreServices.BorrowService
+    name: BorrowService
+  - name: '>'
+  - name: (
+  - uid: App.Data.EFCoreServices.BorrowService
+    name: BorrowService
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.EFCoreServices.BorrowService,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.EFCoreServices.BorrowService
+    name: BorrowService
+  - name: )
+  - name: (
+  - uid: App.Data.EFCoreServices.BorrowService
+    name: BorrowService
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Data.EFCoreServices.BorrowService.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<BorrowService>(BorrowService, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<BorrowService>(BorrowService, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Data.EFCoreServices.BorrowService>(App.Data.EFCoreServices.BorrowService, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of BorrowService)(BorrowService, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Data.EFCoreServices.BorrowService)(App.Data.EFCoreServices.BorrowService, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of BorrowService)(BorrowService, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.EFCoreServices.BorrowService,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Data.EFCoreServices.BorrowService
+    name: BorrowService
+  - name: '>'
+  - name: (
+  - uid: App.Data.EFCoreServices.BorrowService
+    name: BorrowService
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.EFCoreServices.BorrowService,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.EFCoreServices.BorrowService
+    name: BorrowService
+  - name: )
+  - name: (
+  - uid: App.Data.EFCoreServices.BorrowService
+    name: BorrowService
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Data.ServiceInterfaces
+  commentId: N:App.Data.ServiceInterfaces
+  name: App.Data.ServiceInterfaces
+  nameWithType: App.Data.ServiceInterfaces
+  fullName: App.Data.ServiceInterfaces
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Data.EFCoreServices.BorrowService.#ctor*
+  commentId: Overload:App.Data.EFCoreServices.BorrowService.#ctor
+  name: BorrowService
+  nameWithType: BorrowService.BorrowService
+  fullName: App.Data.EFCoreServices.BorrowService.BorrowService
+  nameWithType.vb: BorrowService.New
+  fullName.vb: App.Data.EFCoreServices.BorrowService.New
+  name.vb: New
+- uid: IDbContextFactory{App.Data.ApplicationDbContext}
+  commentId: '!:IDbContextFactory{App.Data.ApplicationDbContext}'
+  definition: IDbContextFactory`1
+  name: IDbContextFactory<ApplicationDbContext>
+  nameWithType: IDbContextFactory<ApplicationDbContext>
+  fullName: IDbContextFactory<App.Data.ApplicationDbContext>
+  nameWithType.vb: IDbContextFactory(Of ApplicationDbContext)
+  fullName.vb: IDbContextFactory(Of App.Data.ApplicationDbContext)
+  name.vb: IDbContextFactory(Of ApplicationDbContext)
+  spec.csharp:
+  - uid: IDbContextFactory`1
+    name: IDbContextFactory
+    isExternal: true
+  - name: <
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: '>'
+  spec.vb:
+  - uid: IDbContextFactory`1
+    name: IDbContextFactory
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+  - name: )
+- uid: App.Data.ServiceInterfaces.IBorrowPersonService
+  commentId: T:App.Data.ServiceInterfaces.IBorrowPersonService
+  parent: App.Data.ServiceInterfaces
+  name: IBorrowPersonService
+  nameWithType: IBorrowPersonService
+  fullName: App.Data.ServiceInterfaces.IBorrowPersonService
+- uid: App.Data.ServiceInterfaces.IUsageService
+  commentId: T:App.Data.ServiceInterfaces.IUsageService
+  parent: App.Data.ServiceInterfaces
+  name: IUsageService
+  nameWithType: IUsageService
+  fullName: App.Data.ServiceInterfaces.IUsageService
+- uid: App.Data.Constants.IRates
+  commentId: T:App.Data.Constants.IRates
+  parent: App.Data.Constants
+  name: IRates
+  nameWithType: IRates
+  fullName: App.Data.Constants.IRates
+- uid: IClock
+  isExternal: true
+  name: IClock
+  nameWithType: IClock
+  fullName: IClock
+- uid: App.Data.ServiceInterfaces.IUserService
+  commentId: T:App.Data.ServiceInterfaces.IUserService
+  parent: App.Data.ServiceInterfaces
+  name: IUserService
+  nameWithType: IUserService
+  fullName: App.Data.ServiceInterfaces.IUserService
+- uid: IDbContextFactory`1
+  isExternal: true
+  name: IDbContextFactory<>
+  nameWithType: IDbContextFactory<>
+  fullName: IDbContextFactory<>
+  nameWithType.vb: IDbContextFactory(Of )
+  fullName.vb: IDbContextFactory(Of )
+  name.vb: IDbContextFactory(Of )
+  spec.csharp:
+  - uid: IDbContextFactory`1
+    name: IDbContextFactory
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: IDbContextFactory`1
+    name: IDbContextFactory
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: App.Data.Constants
+  commentId: N:App.Data.Constants
+  name: App.Data.Constants
+  nameWithType: App.Data.Constants
+  fullName: App.Data.Constants
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Constants
+    name: Constants
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Constants
+    name: Constants
+- uid: App.Data.EFCoreServices.BorrowService.GetPriceAsync*
+  commentId: Overload:App.Data.EFCoreServices.BorrowService.GetPriceAsync
+  name: GetPriceAsync
+  nameWithType: BorrowService.GetPriceAsync
+  fullName: App.Data.EFCoreServices.BorrowService.GetPriceAsync
+- uid: App.Data.ServiceInterfaces.IBorrowService.GetPriceAsync(App.Data.Models.Borrow)
+  commentId: M:App.Data.ServiceInterfaces.IBorrowService.GetPriceAsync(App.Data.Models.Borrow)
+  parent: App.Data.ServiceInterfaces.IBorrowService
+  name: GetPriceAsync(Borrow)
+  nameWithType: IBorrowService.GetPriceAsync(Borrow)
+  fullName: App.Data.ServiceInterfaces.IBorrowService.GetPriceAsync(App.Data.Models.Borrow)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IBorrowService.GetPriceAsync(App.Data.Models.Borrow)
+    name: GetPriceAsync
+  - name: (
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IBorrowService.GetPriceAsync(App.Data.Models.Borrow)
+    name: GetPriceAsync
+  - name: (
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: )
+- uid: App.Data.Models.Borrow
+  commentId: T:App.Data.Models.Borrow
+  parent: App.Data.Models
+  name: Borrow
+  nameWithType: Borrow
+  fullName: App.Data.Models.Borrow
+- uid: System.Threading.Tasks.Task{App.Data.Constants.Money}
+  commentId: T:System.Threading.Tasks.Task{App.Data.Constants.Money}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Money>
+  nameWithType: Task<Money>
+  fullName: System.Threading.Tasks.Task<App.Data.Constants.Money>
+  nameWithType.vb: Task(Of Money)
+  fullName.vb: System.Threading.Tasks.Task(Of App.Data.Constants.Money)
+  name.vb: Task(Of Money)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: App.Data.Constants.Money
+    name: Money
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Constants.Money
+    name: Money
+  - name: )
+- uid: App.Data.Models
+  commentId: N:App.Data.Models
+  name: App.Data.Models
+  nameWithType: App.Data.Models
+  fullName: App.Data.Models
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Models
+    name: Models
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Models
+    name: Models
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+- uid: App.Data.EFCoreServices.BorrowService.EndBorrowAsync*
+  commentId: Overload:App.Data.EFCoreServices.BorrowService.EndBorrowAsync
+  name: EndBorrowAsync
+  nameWithType: BorrowService.EndBorrowAsync
+  fullName: App.Data.EFCoreServices.BorrowService.EndBorrowAsync
+- uid: App.Data.ServiceInterfaces.IBorrowService.EndBorrowAsync(App.Data.Models.Borrow,System.Boolean)
+  commentId: M:App.Data.ServiceInterfaces.IBorrowService.EndBorrowAsync(App.Data.Models.Borrow,System.Boolean)
+  parent: App.Data.ServiceInterfaces.IBorrowService
+  isExternal: true
+  name: EndBorrowAsync(Borrow, bool)
+  nameWithType: IBorrowService.EndBorrowAsync(Borrow, bool)
+  fullName: App.Data.ServiceInterfaces.IBorrowService.EndBorrowAsync(App.Data.Models.Borrow, bool)
+  nameWithType.vb: IBorrowService.EndBorrowAsync(Borrow, Boolean)
+  fullName.vb: App.Data.ServiceInterfaces.IBorrowService.EndBorrowAsync(App.Data.Models.Borrow, Boolean)
+  name.vb: EndBorrowAsync(Borrow, Boolean)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IBorrowService.EndBorrowAsync(App.Data.Models.Borrow,System.Boolean)
+    name: EndBorrowAsync
+  - name: (
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IBorrowService.EndBorrowAsync(App.Data.Models.Borrow,System.Boolean)
+    name: EndBorrowAsync
+  - name: (
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: App.Data.EFCoreServices.BorrowService.AddBorrowAsync*
+  commentId: Overload:App.Data.EFCoreServices.BorrowService.AddBorrowAsync
+  name: AddBorrowAsync
+  nameWithType: BorrowService.AddBorrowAsync
+  fullName: App.Data.EFCoreServices.BorrowService.AddBorrowAsync
+- uid: App.Data.ServiceInterfaces.IBorrowService.AddBorrowAsync(App.Data.Models.Borrow)
+  commentId: M:App.Data.ServiceInterfaces.IBorrowService.AddBorrowAsync(App.Data.Models.Borrow)
+  parent: App.Data.ServiceInterfaces.IBorrowService
+  name: AddBorrowAsync(Borrow)
+  nameWithType: IBorrowService.AddBorrowAsync(Borrow)
+  fullName: App.Data.ServiceInterfaces.IBorrowService.AddBorrowAsync(App.Data.Models.Borrow)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IBorrowService.AddBorrowAsync(App.Data.Models.Borrow)
+    name: AddBorrowAsync
+  - name: (
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IBorrowService.AddBorrowAsync(App.Data.Models.Borrow)
+    name: AddBorrowAsync
+  - name: (
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: )
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+- uid: System.Threading.Tasks.Task{App.Data.Models.Borrow}
+  commentId: T:System.Threading.Tasks.Task{App.Data.Models.Borrow}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Borrow>
+  nameWithType: Task<Borrow>
+  fullName: System.Threading.Tasks.Task<App.Data.Models.Borrow>
+  nameWithType.vb: Task(Of Borrow)
+  fullName.vb: System.Threading.Tasks.Task(Of App.Data.Models.Borrow)
+  name.vb: Task(Of Borrow)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: )
+- uid: App.Data.EFCoreServices.BorrowService.GetBorrowsByBEAsync*
+  commentId: Overload:App.Data.EFCoreServices.BorrowService.GetBorrowsByBEAsync
+  name: GetBorrowsByBEAsync
+  nameWithType: BorrowService.GetBorrowsByBEAsync
+  fullName: App.Data.EFCoreServices.BorrowService.GetBorrowsByBEAsync
+- uid: App.Data.ServiceInterfaces.IBorrowService.GetBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+  commentId: M:App.Data.ServiceInterfaces.IBorrowService.GetBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+  parent: App.Data.ServiceInterfaces.IBorrowService
+  isExternal: true
+  name: GetBorrowsByBEAsync<T>(QueryModel<Borrow>)
+  nameWithType: IBorrowService.GetBorrowsByBEAsync<T>(QueryModel<Borrow>)
+  fullName: App.Data.ServiceInterfaces.IBorrowService.GetBorrowsByBEAsync<T>(QueryModel<App.Data.Models.Borrow>)
+  nameWithType.vb: IBorrowService.GetBorrowsByBEAsync(Of T)(QueryModel(Of Borrow))
+  fullName.vb: App.Data.ServiceInterfaces.IBorrowService.GetBorrowsByBEAsync(Of T)(QueryModel(Of App.Data.Models.Borrow))
+  name.vb: GetBorrowsByBEAsync(Of T)(QueryModel(Of Borrow))
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IBorrowService.GetBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+    name: GetBorrowsByBEAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IBorrowService.GetBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+    name: GetBorrowsByBEAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: )
+  - name: )
+- uid: QueryModel{App.Data.Models.Borrow}
+  commentId: '!:QueryModel{App.Data.Models.Borrow}'
+  definition: QueryModel`1
+  name: QueryModel<Borrow>
+  nameWithType: QueryModel<Borrow>
+  fullName: QueryModel<App.Data.Models.Borrow>
+  nameWithType.vb: QueryModel(Of Borrow)
+  fullName.vb: QueryModel(Of App.Data.Models.Borrow)
+  name.vb: QueryModel(Of Borrow)
+  spec.csharp:
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: '>'
+  spec.vb:
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: )
+- uid: System.Threading.Tasks.Task{App.Data.Models.Borrow[]}
+  commentId: T:System.Threading.Tasks.Task{App.Data.Models.Borrow[]}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Borrow[]>
+  nameWithType: Task<Borrow[]>
+  fullName: System.Threading.Tasks.Task<App.Data.Models.Borrow[]>
+  nameWithType.vb: Task(Of Borrow())
+  fullName.vb: System.Threading.Tasks.Task(Of App.Data.Models.Borrow())
+  name.vb: Task(Of Borrow())
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: (
+  - name: )
+  - name: )
+- uid: QueryModel`1
+  isExternal: true
+  name: QueryModel<>
+  nameWithType: QueryModel<>
+  fullName: QueryModel<>
+  nameWithType.vb: QueryModel(Of )
+  fullName.vb: QueryModel(Of )
+  name.vb: QueryModel(Of )
+  spec.csharp:
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: App.Data.EFCoreServices.BorrowService.CountBorrowsByBEAsync*
+  commentId: Overload:App.Data.EFCoreServices.BorrowService.CountBorrowsByBEAsync
+  name: CountBorrowsByBEAsync
+  nameWithType: BorrowService.CountBorrowsByBEAsync
+  fullName: App.Data.EFCoreServices.BorrowService.CountBorrowsByBEAsync
+- uid: App.Data.ServiceInterfaces.IBorrowService.CountBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+  commentId: M:App.Data.ServiceInterfaces.IBorrowService.CountBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+  parent: App.Data.ServiceInterfaces.IBorrowService
+  isExternal: true
+  name: CountBorrowsByBEAsync<T>(QueryModel<Borrow>)
+  nameWithType: IBorrowService.CountBorrowsByBEAsync<T>(QueryModel<Borrow>)
+  fullName: App.Data.ServiceInterfaces.IBorrowService.CountBorrowsByBEAsync<T>(QueryModel<App.Data.Models.Borrow>)
+  nameWithType.vb: IBorrowService.CountBorrowsByBEAsync(Of T)(QueryModel(Of Borrow))
+  fullName.vb: App.Data.ServiceInterfaces.IBorrowService.CountBorrowsByBEAsync(Of T)(QueryModel(Of App.Data.Models.Borrow))
+  name.vb: CountBorrowsByBEAsync(Of T)(QueryModel(Of Borrow))
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IBorrowService.CountBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+    name: CountBorrowsByBEAsync
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IBorrowService.CountBorrowsByBEAsync``1(QueryModel{App.Data.Models.Borrow})
+    name: CountBorrowsByBEAsync
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: )
+  - name: )
+- uid: System.Threading.Tasks.Task{System.Int32}
+  commentId: T:System.Threading.Tasks.Task{System.Int32}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<int>
+  nameWithType: Task<int>
+  fullName: System.Threading.Tasks.Task<int>
+  nameWithType.vb: Task(Of Integer)
+  fullName.vb: System.Threading.Tasks.Task(Of Integer)
+  name.vb: Task(Of Integer)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: App.Data.EFCoreServices.BorrowService.GetBorrowAsync*
+  commentId: Overload:App.Data.EFCoreServices.BorrowService.GetBorrowAsync
+  name: GetBorrowAsync
+  nameWithType: BorrowService.GetBorrowAsync
+  fullName: App.Data.EFCoreServices.BorrowService.GetBorrowAsync
+- uid: App.Data.ServiceInterfaces.IBorrowService.GetBorrowAsync(App.Data.Models.Reservation)
+  commentId: M:App.Data.ServiceInterfaces.IBorrowService.GetBorrowAsync(App.Data.Models.Reservation)
+  parent: App.Data.ServiceInterfaces.IBorrowService
+  name: GetBorrowAsync(Reservation)
+  nameWithType: IBorrowService.GetBorrowAsync(Reservation)
+  fullName: App.Data.ServiceInterfaces.IBorrowService.GetBorrowAsync(App.Data.Models.Reservation)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IBorrowService.GetBorrowAsync(App.Data.Models.Reservation)
+    name: GetBorrowAsync
+  - name: (
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IBorrowService.GetBorrowAsync(App.Data.Models.Reservation)
+    name: GetBorrowAsync
+  - name: (
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - name: )
+- uid: App.Data.Models.Reservation
+  commentId: T:App.Data.Models.Reservation
+  parent: App.Data.Models
+  name: Reservation
+  nameWithType: Reservation
+  fullName: App.Data.Models.Reservation

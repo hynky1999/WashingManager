@@ -1,0 +1,1292 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Auth.Models.ApplicationUser
+  commentId: T:App.Auth.Models.ApplicationUser
+  id: ApplicationUser
+  parent: App.Auth.Models
+  children:
+  - App.Auth.Models.ApplicationUser.#ctor
+  - App.Auth.Models.ApplicationUser.#ctor(System.String)
+  - App.Auth.Models.ApplicationUser.Cash
+  - App.Auth.Models.ApplicationUser.Clone
+  - App.Auth.Models.ApplicationUser.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  - App.Auth.Models.ApplicationUser.Name
+  - App.Auth.Models.ApplicationUser.Surname
+  langs:
+  - csharp
+  - vb
+  name: ApplicationUser
+  nameWithType: ApplicationUser
+  fullName: App.Auth.Models.ApplicationUser
+  type: Class
+  source:
+    remote:
+      path: App/Auth/Models/ApplicationUser.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ApplicationUser
+    path: ../App/Auth/Models/ApplicationUser.cs
+    startLine: 10
+  assemblies:
+  - App
+  namespace: App.Auth.Models
+  summary: "\nRepresents a user in the identity system.\n"
+  example: []
+  syntax:
+    content: 'public sealed class ApplicationUser : IdentityUser<int>, IDBModel'
+    content.vb: Public NotInheritable Class ApplicationUser Inherits IdentityUser(Of Integer) Implements IDBModel
+  inheritance:
+  - System.Object
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  implements:
+  - App.Data.ModelInterfaces.IDBModel
+  inheritedMembers:
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.ToString
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.Id
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.UserName
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.NormalizedUserName
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.Email
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.NormalizedEmail
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.EmailConfirmed
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.PasswordHash
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.SecurityStamp
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.ConcurrencyStamp
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.PhoneNumber
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.PhoneNumberConfirmed
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.TwoFactorEnabled
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.LockoutEnd
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.LockoutEnabled
+  - Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.AccessFailedCount
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - App.Auth.Models.ApplicationUser.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Auth.Models.ApplicationUser.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.Auth.Models.ApplicationUser.#ctor
+  commentId: M:App.Auth.Models.ApplicationUser.#ctor
+  id: '#ctor'
+  parent: App.Auth.Models.ApplicationUser
+  langs:
+  - csharp
+  - vb
+  name: ApplicationUser()
+  nameWithType: ApplicationUser.ApplicationUser()
+  fullName: App.Auth.Models.ApplicationUser.ApplicationUser()
+  type: Constructor
+  source:
+    remote:
+      path: App/Auth/Models/ApplicationUser.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: .ctor
+    path: ../App/Auth/Models/ApplicationUser.cs
+    startLine: 15
+  assemblies:
+  - App
+  namespace: App.Auth.Models
+  summary: "\nConstructor\n"
+  example: []
+  syntax:
+    content: public ApplicationUser()
+    content.vb: Public Sub New()
+  overload: App.Auth.Models.ApplicationUser.#ctor*
+  nameWithType.vb: ApplicationUser.New()
+  fullName.vb: App.Auth.Models.ApplicationUser.New()
+  name.vb: New()
+- uid: App.Auth.Models.ApplicationUser.#ctor(System.String)
+  commentId: M:App.Auth.Models.ApplicationUser.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: App.Auth.Models.ApplicationUser
+  langs:
+  - csharp
+  - vb
+  name: ApplicationUser(string)
+  nameWithType: ApplicationUser.ApplicationUser(string)
+  fullName: App.Auth.Models.ApplicationUser.ApplicationUser(string)
+  type: Constructor
+  source:
+    remote:
+      path: App/Auth/Models/ApplicationUser.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: .ctor
+    path: ../App/Auth/Models/ApplicationUser.cs
+    startLine: 23
+  assemblies:
+  - App
+  namespace: App.Auth.Models
+  summary: "\nConstructor with username\n"
+  example: []
+  syntax:
+    content: public ApplicationUser(string userName)
+    parameters:
+    - id: userName
+      type: System.String
+      description: ''
+    content.vb: Public Sub New(userName As String)
+  overload: App.Auth.Models.ApplicationUser.#ctor*
+  nameWithType.vb: ApplicationUser.New(String)
+  fullName.vb: App.Auth.Models.ApplicationUser.New(String)
+  name.vb: New(String)
+- uid: App.Auth.Models.ApplicationUser.Name
+  commentId: P:App.Auth.Models.ApplicationUser.Name
+  id: Name
+  parent: App.Auth.Models.ApplicationUser
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: ApplicationUser.Name
+  fullName: App.Auth.Models.ApplicationUser.Name
+  type: Property
+  source:
+    remote:
+      path: App/Auth/Models/ApplicationUser.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Name
+    path: ../App/Auth/Models/ApplicationUser.cs
+    startLine: 31
+  assemblies:
+  - App
+  namespace: App.Auth.Models
+  summary: "\nName of user\n"
+  example: []
+  syntax:
+    content: >-
+      [ProtectedPersonalData]
+
+      public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <ProtectedPersonalData>
+
+      Public Property Name As String
+  overload: App.Auth.Models.ApplicationUser.Name*
+  attributes:
+  - type: Microsoft.AspNetCore.Identity.ProtectedPersonalDataAttribute
+    ctor: Microsoft.AspNetCore.Identity.ProtectedPersonalDataAttribute.#ctor
+    arguments: []
+- uid: App.Auth.Models.ApplicationUser.Surname
+  commentId: P:App.Auth.Models.ApplicationUser.Surname
+  id: Surname
+  parent: App.Auth.Models.ApplicationUser
+  langs:
+  - csharp
+  - vb
+  name: Surname
+  nameWithType: ApplicationUser.Surname
+  fullName: App.Auth.Models.ApplicationUser.Surname
+  type: Property
+  source:
+    remote:
+      path: App/Auth/Models/ApplicationUser.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Surname
+    path: ../App/Auth/Models/ApplicationUser.cs
+    startLine: 37
+  assemblies:
+  - App
+  namespace: App.Auth.Models
+  summary: "\nSurname of user\n"
+  example: []
+  syntax:
+    content: >-
+      [ProtectedPersonalData]
+
+      public string Surname { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <ProtectedPersonalData>
+
+      Public Property Surname As String
+  overload: App.Auth.Models.ApplicationUser.Surname*
+  attributes:
+  - type: Microsoft.AspNetCore.Identity.ProtectedPersonalDataAttribute
+    ctor: Microsoft.AspNetCore.Identity.ProtectedPersonalDataAttribute.#ctor
+    arguments: []
+- uid: App.Auth.Models.ApplicationUser.Cash
+  commentId: P:App.Auth.Models.ApplicationUser.Cash
+  id: Cash
+  parent: App.Auth.Models.ApplicationUser
+  langs:
+  - csharp
+  - vb
+  name: Cash
+  nameWithType: ApplicationUser.Cash
+  fullName: App.Auth.Models.ApplicationUser.Cash
+  type: Property
+  source:
+    remote:
+      path: App/Auth/Models/ApplicationUser.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Cash
+    path: ../App/Auth/Models/ApplicationUser.cs
+    startLine: 43
+  assemblies:
+  - App
+  namespace: App.Auth.Models
+  summary: "\nCash of User\n"
+  example: []
+  syntax:
+    content: >-
+      [ProtectedPersonalData]
+
+      public double Cash { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: >-
+      <ProtectedPersonalData>
+
+      Public Property Cash As Double
+  overload: App.Auth.Models.ApplicationUser.Cash*
+  attributes:
+  - type: Microsoft.AspNetCore.Identity.ProtectedPersonalDataAttribute
+    ctor: Microsoft.AspNetCore.Identity.ProtectedPersonalDataAttribute.#ctor
+    arguments: []
+- uid: App.Auth.Models.ApplicationUser.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  commentId: M:App.Auth.Models.ApplicationUser.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  id: HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  parent: App.Auth.Models.ApplicationUser
+  langs:
+  - csharp
+  - vb
+  name: HumanReadableLoc(ILocalizationService)
+  nameWithType: ApplicationUser.HumanReadableLoc(ILocalizationService)
+  fullName: App.Auth.Models.ApplicationUser.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  type: Method
+  source:
+    remote:
+      path: App/Auth/Models/ApplicationUser.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: HumanReadableLoc
+    path: ../App/Auth/Models/ApplicationUser.cs
+    startLine: 48
+  assemblies:
+  - App
+  namespace: App.Auth.Models
+  summary: "\nReturns a description of the model.\n"
+  example: []
+  syntax:
+    content: public string HumanReadableLoc(ILocalizationService loc)
+    parameters:
+    - id: loc
+      type: App.Data.ServiceInterfaces.ILocalizationService
+      description: "\nThe localization service to use for localization.\n"
+    return:
+      type: System.String
+    content.vb: Public Function HumanReadableLoc(loc As ILocalizationService) As String
+  overload: App.Auth.Models.ApplicationUser.HumanReadableLoc*
+  implements:
+  - App.Data.ModelInterfaces.IDBModel.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+- uid: App.Auth.Models.ApplicationUser.Clone
+  commentId: M:App.Auth.Models.ApplicationUser.Clone
+  id: Clone
+  parent: App.Auth.Models.ApplicationUser
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: ApplicationUser.Clone()
+  fullName: App.Auth.Models.ApplicationUser.Clone()
+  type: Method
+  source:
+    remote:
+      path: App/Auth/Models/ApplicationUser.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Clone
+    path: ../App/Auth/Models/ApplicationUser.cs
+    startLine: 57
+  assemblies:
+  - App
+  namespace: App.Auth.Models
+  summary: "\nMemberwise clone\n"
+  example: []
+  syntax:
+    content: public object Clone()
+    return:
+      type: System.Object
+      description: ''
+    content.vb: Public Function Clone() As Object
+  overload: App.Auth.Models.ApplicationUser.Clone*
+references:
+- uid: App.Auth.Models
+  commentId: N:App.Auth.Models
+  name: App.Auth.Models
+  nameWithType: App.Auth.Models
+  fullName: App.Auth.Models
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Auth
+    name: Auth
+  - name: .
+  - uid: App.Auth.Models
+    name: Models
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Auth
+    name: Auth
+  - name: .
+  - uid: App.Auth.Models
+    name: Models
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  commentId: T:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  parent: Microsoft.AspNetCore.Identity
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1
+  name: IdentityUser<int>
+  nameWithType: IdentityUser<int>
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>
+  nameWithType.vb: IdentityUser(Of Integer)
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer)
+  name.vb: IdentityUser(Of Integer)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Identity.IdentityUser`1
+    name: IdentityUser
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Identity.IdentityUser`1
+    name: IdentityUser
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: App.Data.ModelInterfaces.IDBModel
+  commentId: T:App.Data.ModelInterfaces.IDBModel
+  parent: App.Data.ModelInterfaces
+  name: IDBModel
+  nameWithType: IDBModel
+  fullName: App.Data.ModelInterfaces.IDBModel
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.ToString
+  commentId: M:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.ToString
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.ToString
+  name: ToString()
+  nameWithType: IdentityUser<int>.ToString()
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.ToString()
+  nameWithType.vb: IdentityUser(Of Integer).ToString()
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).ToString()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.Id
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.Id
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.Id
+  name: Id
+  nameWithType: IdentityUser<int>.Id
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.Id
+  nameWithType.vb: IdentityUser(Of Integer).Id
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).Id
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.UserName
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.UserName
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.UserName
+  name: UserName
+  nameWithType: IdentityUser<int>.UserName
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.UserName
+  nameWithType.vb: IdentityUser(Of Integer).UserName
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).UserName
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.NormalizedUserName
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.NormalizedUserName
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.NormalizedUserName
+  name: NormalizedUserName
+  nameWithType: IdentityUser<int>.NormalizedUserName
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.NormalizedUserName
+  nameWithType.vb: IdentityUser(Of Integer).NormalizedUserName
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).NormalizedUserName
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.Email
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.Email
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.Email
+  name: Email
+  nameWithType: IdentityUser<int>.Email
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.Email
+  nameWithType.vb: IdentityUser(Of Integer).Email
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).Email
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.NormalizedEmail
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.NormalizedEmail
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.NormalizedEmail
+  name: NormalizedEmail
+  nameWithType: IdentityUser<int>.NormalizedEmail
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.NormalizedEmail
+  nameWithType.vb: IdentityUser(Of Integer).NormalizedEmail
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).NormalizedEmail
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.EmailConfirmed
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.EmailConfirmed
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.EmailConfirmed
+  name: EmailConfirmed
+  nameWithType: IdentityUser<int>.EmailConfirmed
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.EmailConfirmed
+  nameWithType.vb: IdentityUser(Of Integer).EmailConfirmed
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).EmailConfirmed
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.PasswordHash
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.PasswordHash
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.PasswordHash
+  name: PasswordHash
+  nameWithType: IdentityUser<int>.PasswordHash
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.PasswordHash
+  nameWithType.vb: IdentityUser(Of Integer).PasswordHash
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).PasswordHash
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.SecurityStamp
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.SecurityStamp
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.SecurityStamp
+  name: SecurityStamp
+  nameWithType: IdentityUser<int>.SecurityStamp
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.SecurityStamp
+  nameWithType.vb: IdentityUser(Of Integer).SecurityStamp
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).SecurityStamp
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.ConcurrencyStamp
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.ConcurrencyStamp
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.ConcurrencyStamp
+  name: ConcurrencyStamp
+  nameWithType: IdentityUser<int>.ConcurrencyStamp
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.ConcurrencyStamp
+  nameWithType.vb: IdentityUser(Of Integer).ConcurrencyStamp
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).ConcurrencyStamp
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.PhoneNumber
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.PhoneNumber
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.PhoneNumber
+  name: PhoneNumber
+  nameWithType: IdentityUser<int>.PhoneNumber
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.PhoneNumber
+  nameWithType.vb: IdentityUser(Of Integer).PhoneNumber
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).PhoneNumber
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.PhoneNumberConfirmed
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.PhoneNumberConfirmed
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.PhoneNumberConfirmed
+  name: PhoneNumberConfirmed
+  nameWithType: IdentityUser<int>.PhoneNumberConfirmed
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.PhoneNumberConfirmed
+  nameWithType.vb: IdentityUser(Of Integer).PhoneNumberConfirmed
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).PhoneNumberConfirmed
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.TwoFactorEnabled
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.TwoFactorEnabled
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.TwoFactorEnabled
+  name: TwoFactorEnabled
+  nameWithType: IdentityUser<int>.TwoFactorEnabled
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.TwoFactorEnabled
+  nameWithType.vb: IdentityUser(Of Integer).TwoFactorEnabled
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).TwoFactorEnabled
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.LockoutEnd
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.LockoutEnd
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.LockoutEnd
+  name: LockoutEnd
+  nameWithType: IdentityUser<int>.LockoutEnd
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.LockoutEnd
+  nameWithType.vb: IdentityUser(Of Integer).LockoutEnd
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).LockoutEnd
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.LockoutEnabled
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.LockoutEnabled
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.LockoutEnabled
+  name: LockoutEnabled
+  nameWithType: IdentityUser<int>.LockoutEnabled
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.LockoutEnabled
+  nameWithType.vb: IdentityUser(Of Integer).LockoutEnabled
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).LockoutEnabled
+- uid: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.AccessFailedCount
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}.AccessFailedCount
+  parent: Microsoft.AspNetCore.Identity.IdentityUser{System.Int32}
+  definition: Microsoft.AspNetCore.Identity.IdentityUser`1.AccessFailedCount
+  name: AccessFailedCount
+  nameWithType: IdentityUser<int>.AccessFailedCount
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<int>.AccessFailedCount
+  nameWithType.vb: IdentityUser(Of Integer).AccessFailedCount
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of Integer).AccessFailedCount
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: App.Auth.Models.ApplicationUser.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<ApplicationUser>(ApplicationUser, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<ApplicationUser>(ApplicationUser, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Auth.Models.ApplicationUser>(App.Auth.Models.ApplicationUser, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of ApplicationUser)(ApplicationUser, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Auth.Models.ApplicationUser)(App.Auth.Models.ApplicationUser, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of ApplicationUser)(ApplicationUser, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Auth.Models.ApplicationUser,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Auth.Models.ApplicationUser
+    name: ApplicationUser
+  - name: '>'
+  - name: (
+  - uid: App.Auth.Models.ApplicationUser
+    name: ApplicationUser
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Auth.Models.ApplicationUser,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Auth.Models.ApplicationUser
+    name: ApplicationUser
+  - name: )
+  - name: (
+  - uid: App.Auth.Models.ApplicationUser
+    name: ApplicationUser
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Auth.Models.ApplicationUser.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<ApplicationUser>(ApplicationUser, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<ApplicationUser>(ApplicationUser, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Auth.Models.ApplicationUser>(App.Auth.Models.ApplicationUser, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of ApplicationUser)(ApplicationUser, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Auth.Models.ApplicationUser)(App.Auth.Models.ApplicationUser, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of ApplicationUser)(ApplicationUser, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Auth.Models.ApplicationUser,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Auth.Models.ApplicationUser
+    name: ApplicationUser
+  - name: '>'
+  - name: (
+  - uid: App.Auth.Models.ApplicationUser
+    name: ApplicationUser
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Auth.Models.ApplicationUser,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Auth.Models.ApplicationUser
+    name: ApplicationUser
+  - name: )
+  - name: (
+  - uid: App.Auth.Models.ApplicationUser
+    name: ApplicationUser
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1
+  commentId: T:Microsoft.AspNetCore.Identity.IdentityUser`1
+  isExternal: true
+  name: IdentityUser<TKey>
+  nameWithType: IdentityUser<TKey>
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>
+  nameWithType.vb: IdentityUser(Of TKey)
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey)
+  name.vb: IdentityUser(Of TKey)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Identity.IdentityUser`1
+    name: IdentityUser
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Identity.IdentityUser`1
+    name: IdentityUser
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: Microsoft.AspNetCore.Identity
+  commentId: N:Microsoft.AspNetCore.Identity
+  isExternal: true
+  name: Microsoft.AspNetCore.Identity
+  nameWithType: Microsoft.AspNetCore.Identity
+  fullName: Microsoft.AspNetCore.Identity
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Identity
+    name: Identity
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Identity
+    name: Identity
+    isExternal: true
+- uid: App.Data.ModelInterfaces
+  commentId: N:App.Data.ModelInterfaces
+  name: App.Data.ModelInterfaces
+  nameWithType: App.Data.ModelInterfaces
+  fullName: App.Data.ModelInterfaces
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ModelInterfaces
+    name: ModelInterfaces
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ModelInterfaces
+    name: ModelInterfaces
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.ToString
+  commentId: M:Microsoft.AspNetCore.Identity.IdentityUser`1.ToString
+  isExternal: true
+  name: ToString()
+  nameWithType: IdentityUser<TKey>.ToString()
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.ToString()
+  nameWithType.vb: IdentityUser(Of TKey).ToString()
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).ToString()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Identity.IdentityUser`1.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Identity.IdentityUser`1.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.Id
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser`1.Id
+  isExternal: true
+  name: Id
+  nameWithType: IdentityUser<TKey>.Id
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.Id
+  nameWithType.vb: IdentityUser(Of TKey).Id
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).Id
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.UserName
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser`1.UserName
+  isExternal: true
+  name: UserName
+  nameWithType: IdentityUser<TKey>.UserName
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.UserName
+  nameWithType.vb: IdentityUser(Of TKey).UserName
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).UserName
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.NormalizedUserName
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser`1.NormalizedUserName
+  isExternal: true
+  name: NormalizedUserName
+  nameWithType: IdentityUser<TKey>.NormalizedUserName
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.NormalizedUserName
+  nameWithType.vb: IdentityUser(Of TKey).NormalizedUserName
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).NormalizedUserName
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.Email
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser`1.Email
+  isExternal: true
+  name: Email
+  nameWithType: IdentityUser<TKey>.Email
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.Email
+  nameWithType.vb: IdentityUser(Of TKey).Email
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).Email
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.NormalizedEmail
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser`1.NormalizedEmail
+  isExternal: true
+  name: NormalizedEmail
+  nameWithType: IdentityUser<TKey>.NormalizedEmail
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.NormalizedEmail
+  nameWithType.vb: IdentityUser(Of TKey).NormalizedEmail
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).NormalizedEmail
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.EmailConfirmed
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser`1.EmailConfirmed
+  isExternal: true
+  name: EmailConfirmed
+  nameWithType: IdentityUser<TKey>.EmailConfirmed
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.EmailConfirmed
+  nameWithType.vb: IdentityUser(Of TKey).EmailConfirmed
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).EmailConfirmed
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.PasswordHash
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser`1.PasswordHash
+  isExternal: true
+  name: PasswordHash
+  nameWithType: IdentityUser<TKey>.PasswordHash
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.PasswordHash
+  nameWithType.vb: IdentityUser(Of TKey).PasswordHash
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).PasswordHash
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.SecurityStamp
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser`1.SecurityStamp
+  isExternal: true
+  name: SecurityStamp
+  nameWithType: IdentityUser<TKey>.SecurityStamp
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.SecurityStamp
+  nameWithType.vb: IdentityUser(Of TKey).SecurityStamp
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).SecurityStamp
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.ConcurrencyStamp
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser`1.ConcurrencyStamp
+  isExternal: true
+  name: ConcurrencyStamp
+  nameWithType: IdentityUser<TKey>.ConcurrencyStamp
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.ConcurrencyStamp
+  nameWithType.vb: IdentityUser(Of TKey).ConcurrencyStamp
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).ConcurrencyStamp
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.PhoneNumber
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser`1.PhoneNumber
+  isExternal: true
+  name: PhoneNumber
+  nameWithType: IdentityUser<TKey>.PhoneNumber
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.PhoneNumber
+  nameWithType.vb: IdentityUser(Of TKey).PhoneNumber
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).PhoneNumber
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.PhoneNumberConfirmed
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser`1.PhoneNumberConfirmed
+  isExternal: true
+  name: PhoneNumberConfirmed
+  nameWithType: IdentityUser<TKey>.PhoneNumberConfirmed
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.PhoneNumberConfirmed
+  nameWithType.vb: IdentityUser(Of TKey).PhoneNumberConfirmed
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).PhoneNumberConfirmed
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.TwoFactorEnabled
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser`1.TwoFactorEnabled
+  isExternal: true
+  name: TwoFactorEnabled
+  nameWithType: IdentityUser<TKey>.TwoFactorEnabled
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.TwoFactorEnabled
+  nameWithType.vb: IdentityUser(Of TKey).TwoFactorEnabled
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).TwoFactorEnabled
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.LockoutEnd
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser`1.LockoutEnd
+  isExternal: true
+  name: LockoutEnd
+  nameWithType: IdentityUser<TKey>.LockoutEnd
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.LockoutEnd
+  nameWithType.vb: IdentityUser(Of TKey).LockoutEnd
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).LockoutEnd
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.LockoutEnabled
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser`1.LockoutEnabled
+  isExternal: true
+  name: LockoutEnabled
+  nameWithType: IdentityUser<TKey>.LockoutEnabled
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.LockoutEnabled
+  nameWithType.vb: IdentityUser(Of TKey).LockoutEnabled
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).LockoutEnabled
+- uid: Microsoft.AspNetCore.Identity.IdentityUser`1.AccessFailedCount
+  commentId: P:Microsoft.AspNetCore.Identity.IdentityUser`1.AccessFailedCount
+  isExternal: true
+  name: AccessFailedCount
+  nameWithType: IdentityUser<TKey>.AccessFailedCount
+  fullName: Microsoft.AspNetCore.Identity.IdentityUser<TKey>.AccessFailedCount
+  nameWithType.vb: IdentityUser(Of TKey).AccessFailedCount
+  fullName.vb: Microsoft.AspNetCore.Identity.IdentityUser(Of TKey).AccessFailedCount
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Auth.Models.ApplicationUser.#ctor*
+  commentId: Overload:App.Auth.Models.ApplicationUser.#ctor
+  name: ApplicationUser
+  nameWithType: ApplicationUser.ApplicationUser
+  fullName: App.Auth.Models.ApplicationUser.ApplicationUser
+  nameWithType.vb: ApplicationUser.New
+  fullName.vb: App.Auth.Models.ApplicationUser.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: App.Auth.Models.ApplicationUser.Name*
+  commentId: Overload:App.Auth.Models.ApplicationUser.Name
+  name: Name
+  nameWithType: ApplicationUser.Name
+  fullName: App.Auth.Models.ApplicationUser.Name
+- uid: App.Auth.Models.ApplicationUser.Surname*
+  commentId: Overload:App.Auth.Models.ApplicationUser.Surname
+  name: Surname
+  nameWithType: ApplicationUser.Surname
+  fullName: App.Auth.Models.ApplicationUser.Surname
+- uid: App.Auth.Models.ApplicationUser.Cash*
+  commentId: Overload:App.Auth.Models.ApplicationUser.Cash
+  name: Cash
+  nameWithType: ApplicationUser.Cash
+  fullName: App.Auth.Models.ApplicationUser.Cash
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: App.Auth.Models.ApplicationUser.HumanReadableLoc*
+  commentId: Overload:App.Auth.Models.ApplicationUser.HumanReadableLoc
+  name: HumanReadableLoc
+  nameWithType: ApplicationUser.HumanReadableLoc
+  fullName: App.Auth.Models.ApplicationUser.HumanReadableLoc
+- uid: App.Data.ModelInterfaces.IDBModel.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  commentId: M:App.Data.ModelInterfaces.IDBModel.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  parent: App.Data.ModelInterfaces.IDBModel
+  name: HumanReadableLoc(ILocalizationService)
+  nameWithType: IDBModel.HumanReadableLoc(ILocalizationService)
+  fullName: App.Data.ModelInterfaces.IDBModel.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  spec.csharp:
+  - uid: App.Data.ModelInterfaces.IDBModel.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+    name: HumanReadableLoc
+  - name: (
+  - uid: App.Data.ServiceInterfaces.ILocalizationService
+    name: ILocalizationService
+  - name: )
+  spec.vb:
+  - uid: App.Data.ModelInterfaces.IDBModel.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+    name: HumanReadableLoc
+  - name: (
+  - uid: App.Data.ServiceInterfaces.ILocalizationService
+    name: ILocalizationService
+  - name: )
+- uid: App.Data.ServiceInterfaces.ILocalizationService
+  commentId: T:App.Data.ServiceInterfaces.ILocalizationService
+  parent: App.Data.ServiceInterfaces
+  name: ILocalizationService
+  nameWithType: ILocalizationService
+  fullName: App.Data.ServiceInterfaces.ILocalizationService
+- uid: App.Data.ServiceInterfaces
+  commentId: N:App.Data.ServiceInterfaces
+  name: App.Data.ServiceInterfaces
+  nameWithType: App.Data.ServiceInterfaces
+  fullName: App.Data.ServiceInterfaces
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+- uid: App.Auth.Models.ApplicationUser.Clone*
+  commentId: Overload:App.Auth.Models.ApplicationUser.Clone
+  name: Clone
+  nameWithType: ApplicationUser.Clone
+  fullName: App.Auth.Models.ApplicationUser.Clone

@@ -1,0 +1,1043 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.Models.BorrowableEntity
+  commentId: T:App.Data.Models.BorrowableEntity
+  id: BorrowableEntity
+  parent: App.Data.Models
+  children:
+  - App.Data.Models.BorrowableEntity.BorrowableEntityID
+  - App.Data.Models.BorrowableEntity.Clone
+  - App.Data.Models.BorrowableEntity.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  - App.Data.Models.BorrowableEntity.Location
+  - App.Data.Models.BorrowableEntity.LocationID
+  - App.Data.Models.BorrowableEntity.Status
+  - App.Data.Models.BorrowableEntity.xmin
+  langs:
+  - csharp
+  - vb
+  name: BorrowableEntity
+  nameWithType: BorrowableEntity
+  fullName: App.Data.Models.BorrowableEntity
+  type: Class
+  source:
+    remote:
+      path: App/Data/Models/BorrowableEntity.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: BorrowableEntity
+    path: ../App/Data/Models/BorrowableEntity.cs
+    startLine: 17
+  assemblies:
+  - App
+  namespace: App.Data.Models
+  summary: "\nModel representing a entity that can be borrowed. It&apos;s not a real entity, but a base class for other entities.\n"
+  example: []
+  syntax:
+    content: 'public abstract class BorrowableEntity : IDBModel, ICloneable'
+    content.vb: Public MustInherit Class BorrowableEntity Implements IDBModel, ICloneable
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - App.Data.Models.DryingRoom
+  - App.Data.Models.WashingMachine
+  implements:
+  - App.Data.ModelInterfaces.IDBModel
+  - System.ICloneable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - App.Data.Models.BorrowableEntity.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Data.Models.BorrowableEntity.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.Data.Models.BorrowableEntity.BorrowableEntityID
+  commentId: P:App.Data.Models.BorrowableEntity.BorrowableEntityID
+  id: BorrowableEntityID
+  parent: App.Data.Models.BorrowableEntity
+  langs:
+  - csharp
+  - vb
+  name: BorrowableEntityID
+  nameWithType: BorrowableEntity.BorrowableEntityID
+  fullName: App.Data.Models.BorrowableEntity.BorrowableEntityID
+  type: Property
+  source:
+    remote:
+      path: App/Data/Models/BorrowableEntity.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: BorrowableEntityID
+    path: ../App/Data/Models/BorrowableEntity.cs
+    startLine: 19
+  assemblies:
+  - App
+  namespace: App.Data.Models
+  syntax:
+    content: >-
+      [UIVisibility(UIVisibilityEnum.Disabled)]
+
+      [Key]
+
+      public int BorrowableEntityID { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <UIVisibility(UIVisibilityEnum.Disabled)>
+
+      <Key>
+
+      Public Property BorrowableEntityID As Integer
+  overload: App.Data.Models.BorrowableEntity.BorrowableEntityID*
+  attributes:
+  - type: App.Data.Utils.UIVisibility
+    ctor: App.Data.Utils.UIVisibility.#ctor(App.Data.Utils.UIVisibilityEnum)
+    arguments:
+    - type: App.Data.Utils.UIVisibilityEnum
+      value: 1
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
+- uid: App.Data.Models.BorrowableEntity.Status
+  commentId: P:App.Data.Models.BorrowableEntity.Status
+  id: Status
+  parent: App.Data.Models.BorrowableEntity
+  langs:
+  - csharp
+  - vb
+  name: Status
+  nameWithType: BorrowableEntity.Status
+  fullName: App.Data.Models.BorrowableEntity.Status
+  type: Property
+  source:
+    remote:
+      path: App/Data/Models/BorrowableEntity.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Status
+    path: ../App/Data/Models/BorrowableEntity.cs
+    startLine: 24
+  assemblies:
+  - App
+  namespace: App.Data.Models
+  syntax:
+    content: >-
+      [Required]
+
+      public Status Status { get; set; }
+    parameters: []
+    return:
+      type: App.Data.Utils.Status
+    content.vb: >-
+      <Required>
+
+      Public Property Status As Status
+  overload: App.Data.Models.BorrowableEntity.Status*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: App.Data.Models.BorrowableEntity.LocationID
+  commentId: P:App.Data.Models.BorrowableEntity.LocationID
+  id: LocationID
+  parent: App.Data.Models.BorrowableEntity
+  langs:
+  - csharp
+  - vb
+  name: LocationID
+  nameWithType: BorrowableEntity.LocationID
+  fullName: App.Data.Models.BorrowableEntity.LocationID
+  type: Property
+  source:
+    remote:
+      path: App/Data/Models/BorrowableEntity.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: LocationID
+    path: ../App/Data/Models/BorrowableEntity.cs
+    startLine: 26
+  assemblies:
+  - App
+  namespace: App.Data.Models
+  syntax:
+    content: >-
+      [UIVisibility(UIVisibilityEnum.Disabled)]
+
+      public int? LocationID { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: >-
+      <UIVisibility(UIVisibilityEnum.Disabled)>
+
+      Public Property LocationID As Integer?
+  overload: App.Data.Models.BorrowableEntity.LocationID*
+  attributes:
+  - type: App.Data.Utils.UIVisibility
+    ctor: App.Data.Utils.UIVisibility.#ctor(App.Data.Utils.UIVisibilityEnum)
+    arguments:
+    - type: App.Data.Utils.UIVisibilityEnum
+      value: 1
+- uid: App.Data.Models.BorrowableEntity.Location
+  commentId: P:App.Data.Models.BorrowableEntity.Location
+  id: Location
+  parent: App.Data.Models.BorrowableEntity
+  langs:
+  - csharp
+  - vb
+  name: Location
+  nameWithType: BorrowableEntity.Location
+  fullName: App.Data.Models.BorrowableEntity.Location
+  type: Property
+  source:
+    remote:
+      path: App/Data/Models/BorrowableEntity.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Location
+    path: ../App/Data/Models/BorrowableEntity.cs
+    startLine: 30
+  assemblies:
+  - App
+  namespace: App.Data.Models
+  syntax:
+    content: public Location? Location { get; set; }
+    parameters: []
+    return:
+      type: App.Data.Models.Location
+    content.vb: Public Property Location As Location
+  overload: App.Data.Models.BorrowableEntity.Location*
+- uid: App.Data.Models.BorrowableEntity.xmin
+  commentId: P:App.Data.Models.BorrowableEntity.xmin
+  id: xmin
+  parent: App.Data.Models.BorrowableEntity
+  langs:
+  - csharp
+  - vb
+  name: xmin
+  nameWithType: BorrowableEntity.xmin
+  fullName: App.Data.Models.BorrowableEntity.xmin
+  type: Property
+  source:
+    remote:
+      path: App/Data/Models/BorrowableEntity.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: xmin
+    path: ../App/Data/Models/BorrowableEntity.cs
+    startLine: 33
+  assemblies:
+  - App
+  namespace: App.Data.Models
+  syntax:
+    content: >-
+      [UIVisibility(UIVisibilityEnum.Hidden)]
+
+      public uint xmin { get; set; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: >-
+      <UIVisibility(UIVisibilityEnum.Hidden)>
+
+      Public Property xmin As UInteger
+  overload: App.Data.Models.BorrowableEntity.xmin*
+  attributes:
+  - type: App.Data.Utils.UIVisibility
+    ctor: App.Data.Utils.UIVisibility.#ctor(App.Data.Utils.UIVisibilityEnum)
+    arguments:
+    - type: App.Data.Utils.UIVisibilityEnum
+      value: 0
+- uid: App.Data.Models.BorrowableEntity.Clone
+  commentId: M:App.Data.Models.BorrowableEntity.Clone
+  id: Clone
+  parent: App.Data.Models.BorrowableEntity
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: BorrowableEntity.Clone()
+  fullName: App.Data.Models.BorrowableEntity.Clone()
+  type: Method
+  source:
+    remote:
+      path: App/Data/Models/BorrowableEntity.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Clone
+    path: ../App/Data/Models/BorrowableEntity.cs
+    startLine: 37
+  assemblies:
+  - App
+  namespace: App.Data.Models
+  syntax:
+    content: public object Clone()
+    return:
+      type: System.Object
+    content.vb: Public Function Clone() As Object
+  overload: App.Data.Models.BorrowableEntity.Clone*
+  implements:
+  - System.ICloneable.Clone
+- uid: App.Data.Models.BorrowableEntity.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  commentId: M:App.Data.Models.BorrowableEntity.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  id: HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  parent: App.Data.Models.BorrowableEntity
+  langs:
+  - csharp
+  - vb
+  name: HumanReadableLoc(ILocalizationService)
+  nameWithType: BorrowableEntity.HumanReadableLoc(ILocalizationService)
+  fullName: App.Data.Models.BorrowableEntity.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  type: Method
+  source:
+    remote:
+      path: App/Data/Models/BorrowableEntity.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: HumanReadableLoc
+    path: ../App/Data/Models/BorrowableEntity.cs
+    startLine: 44
+  assemblies:
+  - App
+  namespace: App.Data.Models
+  syntax:
+    content: public string HumanReadableLoc(ILocalizationService loc)
+    parameters:
+    - id: loc
+      type: App.Data.ServiceInterfaces.ILocalizationService
+    return:
+      type: System.String
+    content.vb: Public Function HumanReadableLoc(loc As ILocalizationService) As String
+  overload: App.Data.Models.BorrowableEntity.HumanReadableLoc*
+  implements:
+  - App.Data.ModelInterfaces.IDBModel.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+references:
+- uid: App.Data.Models
+  commentId: N:App.Data.Models
+  name: App.Data.Models
+  nameWithType: App.Data.Models
+  fullName: App.Data.Models
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Models
+    name: Models
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Models
+    name: Models
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: App.Data.ModelInterfaces.IDBModel
+  commentId: T:App.Data.ModelInterfaces.IDBModel
+  parent: App.Data.ModelInterfaces
+  name: IDBModel
+  nameWithType: IDBModel
+  fullName: App.Data.ModelInterfaces.IDBModel
+- uid: System.ICloneable
+  commentId: T:System.ICloneable
+  parent: System
+  isExternal: true
+  name: ICloneable
+  nameWithType: ICloneable
+  fullName: System.ICloneable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.Data.Models.BorrowableEntity.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<BorrowableEntity>(BorrowableEntity, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<BorrowableEntity>(BorrowableEntity, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Data.Models.BorrowableEntity>(App.Data.Models.BorrowableEntity, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of BorrowableEntity)(BorrowableEntity, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Data.Models.BorrowableEntity)(App.Data.Models.BorrowableEntity, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of BorrowableEntity)(BorrowableEntity, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.Models.BorrowableEntity,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Data.Models.BorrowableEntity
+    name: BorrowableEntity
+  - name: '>'
+  - name: (
+  - uid: App.Data.Models.BorrowableEntity
+    name: BorrowableEntity
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.Models.BorrowableEntity,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.BorrowableEntity
+    name: BorrowableEntity
+  - name: )
+  - name: (
+  - uid: App.Data.Models.BorrowableEntity
+    name: BorrowableEntity
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Data.Models.BorrowableEntity.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<BorrowableEntity>(BorrowableEntity, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<BorrowableEntity>(BorrowableEntity, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Data.Models.BorrowableEntity>(App.Data.Models.BorrowableEntity, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of BorrowableEntity)(BorrowableEntity, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Data.Models.BorrowableEntity)(App.Data.Models.BorrowableEntity, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of BorrowableEntity)(BorrowableEntity, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.Models.BorrowableEntity,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Data.Models.BorrowableEntity
+    name: BorrowableEntity
+  - name: '>'
+  - name: (
+  - uid: App.Data.Models.BorrowableEntity
+    name: BorrowableEntity
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.Models.BorrowableEntity,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.BorrowableEntity
+    name: BorrowableEntity
+  - name: )
+  - name: (
+  - uid: App.Data.Models.BorrowableEntity
+    name: BorrowableEntity
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.Data.ModelInterfaces
+  commentId: N:App.Data.ModelInterfaces
+  name: App.Data.ModelInterfaces
+  nameWithType: App.Data.ModelInterfaces
+  fullName: App.Data.ModelInterfaces
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ModelInterfaces
+    name: ModelInterfaces
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ModelInterfaces
+    name: ModelInterfaces
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Data.Models.BorrowableEntity.BorrowableEntityID*
+  commentId: Overload:App.Data.Models.BorrowableEntity.BorrowableEntityID
+  name: BorrowableEntityID
+  nameWithType: BorrowableEntity.BorrowableEntityID
+  fullName: App.Data.Models.BorrowableEntity.BorrowableEntityID
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: App.Data.Models.BorrowableEntity.Status*
+  commentId: Overload:App.Data.Models.BorrowableEntity.Status
+  name: Status
+  nameWithType: BorrowableEntity.Status
+  fullName: App.Data.Models.BorrowableEntity.Status
+- uid: App.Data.Utils.Status
+  commentId: T:App.Data.Utils.Status
+  parent: App.Data.Utils
+  name: Status
+  nameWithType: Status
+  fullName: App.Data.Utils.Status
+- uid: App.Data.Utils
+  commentId: N:App.Data.Utils
+  name: App.Data.Utils
+  nameWithType: App.Data.Utils
+  fullName: App.Data.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Utils
+    name: Utils
+- uid: App.Data.Models.BorrowableEntity.LocationID*
+  commentId: Overload:App.Data.Models.BorrowableEntity.LocationID
+  name: LocationID
+  nameWithType: BorrowableEntity.LocationID
+  fullName: App.Data.Models.BorrowableEntity.LocationID
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Data.Models.BorrowableEntity.Location*
+  commentId: Overload:App.Data.Models.BorrowableEntity.Location
+  name: Location
+  nameWithType: BorrowableEntity.Location
+  fullName: App.Data.Models.BorrowableEntity.Location
+- uid: App.Data.Models.Location
+  commentId: T:App.Data.Models.Location
+  parent: App.Data.Models
+  name: Location
+  nameWithType: Location
+  fullName: App.Data.Models.Location
+- uid: App.Data.Models.BorrowableEntity.xmin*
+  commentId: Overload:App.Data.Models.BorrowableEntity.xmin
+  name: xmin
+  nameWithType: BorrowableEntity.xmin
+  fullName: App.Data.Models.BorrowableEntity.xmin
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: App.Data.Models.BorrowableEntity.Clone*
+  commentId: Overload:App.Data.Models.BorrowableEntity.Clone
+  name: Clone
+  nameWithType: BorrowableEntity.Clone
+  fullName: App.Data.Models.BorrowableEntity.Clone
+- uid: System.ICloneable.Clone
+  commentId: M:System.ICloneable.Clone
+  parent: System.ICloneable
+  isExternal: true
+  name: Clone()
+  nameWithType: ICloneable.Clone()
+  fullName: System.ICloneable.Clone()
+  spec.csharp:
+  - uid: System.ICloneable.Clone
+    name: Clone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ICloneable.Clone
+    name: Clone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.Data.Models.BorrowableEntity.HumanReadableLoc*
+  commentId: Overload:App.Data.Models.BorrowableEntity.HumanReadableLoc
+  name: HumanReadableLoc
+  nameWithType: BorrowableEntity.HumanReadableLoc
+  fullName: App.Data.Models.BorrowableEntity.HumanReadableLoc
+- uid: App.Data.ModelInterfaces.IDBModel.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  commentId: M:App.Data.ModelInterfaces.IDBModel.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  parent: App.Data.ModelInterfaces.IDBModel
+  name: HumanReadableLoc(ILocalizationService)
+  nameWithType: IDBModel.HumanReadableLoc(ILocalizationService)
+  fullName: App.Data.ModelInterfaces.IDBModel.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+  spec.csharp:
+  - uid: App.Data.ModelInterfaces.IDBModel.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+    name: HumanReadableLoc
+  - name: (
+  - uid: App.Data.ServiceInterfaces.ILocalizationService
+    name: ILocalizationService
+  - name: )
+  spec.vb:
+  - uid: App.Data.ModelInterfaces.IDBModel.HumanReadableLoc(App.Data.ServiceInterfaces.ILocalizationService)
+    name: HumanReadableLoc
+  - name: (
+  - uid: App.Data.ServiceInterfaces.ILocalizationService
+    name: ILocalizationService
+  - name: )
+- uid: App.Data.ServiceInterfaces.ILocalizationService
+  commentId: T:App.Data.ServiceInterfaces.ILocalizationService
+  parent: App.Data.ServiceInterfaces
+  name: ILocalizationService
+  nameWithType: ILocalizationService
+  fullName: App.Data.ServiceInterfaces.ILocalizationService
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: App.Data.ServiceInterfaces
+  commentId: N:App.Data.ServiceInterfaces
+  name: App.Data.ServiceInterfaces
+  nameWithType: App.Data.ServiceInterfaces
+  fullName: App.Data.ServiceInterfaces
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces

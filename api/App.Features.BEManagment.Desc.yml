@@ -1,0 +1,57 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Features.BEManagment.Desc
+  commentId: N:App.Features.BEManagment.Desc
+  id: App.Features.BEManagment.Desc
+  children:
+  - App.Features.BEManagment.Desc.BEDescription`1
+  - App.Features.BEManagment.Desc.BorrowDescription
+  - App.Features.BEManagment.Desc.PriceBorrowCompute
+  - App.Features.BEManagment.Desc.WmDescription
+  langs:
+  - csharp
+  - vb
+  name: App.Features.BEManagment.Desc
+  nameWithType: App.Features.BEManagment.Desc
+  fullName: App.Features.BEManagment.Desc
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Features.BEManagment.Desc.PriceBorrowCompute
+  commentId: T:App.Features.BEManagment.Desc.PriceBorrowCompute
+  name: PriceBorrowCompute
+  nameWithType: PriceBorrowCompute
+  fullName: App.Features.BEManagment.Desc.PriceBorrowCompute
+- uid: App.Features.BEManagment.Desc.WmDescription
+  commentId: T:App.Features.BEManagment.Desc.WmDescription
+  name: WmDescription
+  nameWithType: WmDescription
+  fullName: App.Features.BEManagment.Desc.WmDescription
+- uid: App.Features.BEManagment.Desc.BorrowDescription
+  commentId: T:App.Features.BEManagment.Desc.BorrowDescription
+  name: BorrowDescription
+  nameWithType: BorrowDescription
+  fullName: App.Features.BEManagment.Desc.BorrowDescription
+- uid: App.Features.BEManagment.Desc.BEDescription`1
+  commentId: T:App.Features.BEManagment.Desc.BEDescription`1
+  name: BEDescription<T>
+  nameWithType: BEDescription<T>
+  fullName: App.Features.BEManagment.Desc.BEDescription<T>
+  nameWithType.vb: BEDescription(Of T)
+  fullName.vb: App.Features.BEManagment.Desc.BEDescription(Of T)
+  name.vb: BEDescription(Of T)
+  spec.csharp:
+  - uid: App.Features.BEManagment.Desc.BEDescription`1
+    name: BEDescription
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Features.BEManagment.Desc.BEDescription`1
+    name: BEDescription
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

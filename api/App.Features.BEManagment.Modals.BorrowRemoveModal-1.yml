@@ -1,0 +1,1420 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+  commentId: T:App.Features.BEManagment.Modals.BorrowRemoveModal`1
+  id: BorrowRemoveModal`1
+  parent: App.Features.BEManagment.Modals
+  children:
+  - App.Features.BEManagment.Modals.BorrowRemoveModal`1.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  - App.Features.BEManagment.Modals.BorrowRemoveModal`1.DefaultBorrow
+  - App.Features.BEManagment.Modals.BorrowRemoveModal`1.OnParametersSetAsync
+  - App.Features.BEManagment.Modals.BorrowRemoveModal`1.OnSuccess
+  - App.Features.BEManagment.Modals.BorrowRemoveModal`1.OpenModal
+  - App.Features.BEManagment.Modals.BorrowRemoveModal`1.ShowBorrowableEntity
+  langs:
+  - csharp
+  - vb
+  name: BorrowRemoveModal<T>
+  nameWithType: BorrowRemoveModal<T>
+  fullName: App.Features.BEManagment.Modals.BorrowRemoveModal<T>
+  type: Class
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_BEManagment_Modals_BorrowRemoveModal_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: BorrowRemoveModal
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_BEManagment_Modals_BorrowRemoveModal_razor.g.cs
+    startLine: 158
+  assemblies:
+  - App
+  namespace: App.Features.BEManagment.Modals
+  syntax:
+    content: 'public class BorrowRemoveModal<T> : ComponentBase, IComponent, IHandleEvent, IHandleAfterRender where T : BorrowableEntity'
+    typeParameters:
+    - id: T
+    content.vb: Public Class BorrowRemoveModal(Of T As BorrowableEntity) Inherits ComponentBase Implements IComponent, IHandleEvent, IHandleAfterRender
+  inheritance:
+  - System.Object
+  - Microsoft.AspNetCore.Components.ComponentBase
+  implements:
+  - Microsoft.AspNetCore.Components.IComponent
+  - Microsoft.AspNetCore.Components.IHandleEvent
+  - Microsoft.AspNetCore.Components.IHandleAfterRender
+  inheritedMembers:
+  - Microsoft.AspNetCore.Components.ComponentBase.OnInitialized
+  - Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync
+  - Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet
+  - Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged
+  - Microsoft.AspNetCore.Components.ComponentBase.ShouldRender
+  - Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)
+  - Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(System.Boolean)
+  - Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Action)
+  - Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Func{System.Threading.Tasks.Task})
+  - Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IComponent#Attach(Microsoft.AspNetCore.Components.RenderHandle)
+  - Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)
+  - Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleEvent#HandleEventAsync(Microsoft.AspNetCore.Components.EventCallbackWorkItem,System.Object)
+  - Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleAfterRender#OnAfterRenderAsync
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - App.Features.BEManagment.Modals.BorrowRemoveModal`1.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Features.BEManagment.Modals.BorrowRemoveModal`1.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  nameWithType.vb: BorrowRemoveModal(Of T)
+  fullName.vb: App.Features.BEManagment.Modals.BorrowRemoveModal(Of T)
+  name.vb: BorrowRemoveModal(Of T)
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  commentId: M:App.Features.BEManagment.Modals.BorrowRemoveModal`1.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  id: BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  parent: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+  langs:
+  - csharp
+  - vb
+  name: BuildRenderTree(RenderTreeBuilder)
+  nameWithType: BorrowRemoveModal<T>.BuildRenderTree(RenderTreeBuilder)
+  fullName: App.Features.BEManagment.Modals.BorrowRemoveModal<T>.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  type: Method
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_BEManagment_Modals_BorrowRemoveModal_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: BuildRenderTree
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_BEManagment_Modals_BorrowRemoveModal_razor.g.cs
+    startLine: 162
+  assemblies:
+  - App
+  namespace: App.Features.BEManagment.Modals
+  syntax:
+    content: protected override void BuildRenderTree(RenderTreeBuilder __builder)
+    parameters:
+    - id: __builder
+      type: Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+    content.vb: Protected Overrides Sub BuildRenderTree(__builder As RenderTreeBuilder)
+  overridden: Microsoft.AspNetCore.Components.ComponentBase.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  overload: App.Features.BEManagment.Modals.BorrowRemoveModal`1.BuildRenderTree*
+  nameWithType.vb: BorrowRemoveModal(Of T).BuildRenderTree(RenderTreeBuilder)
+  fullName.vb: App.Features.BEManagment.Modals.BorrowRemoveModal(Of T).BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1.DefaultBorrow
+  commentId: P:App.Features.BEManagment.Modals.BorrowRemoveModal`1.DefaultBorrow
+  id: DefaultBorrow
+  parent: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+  langs:
+  - csharp
+  - vb
+  name: DefaultBorrow
+  nameWithType: BorrowRemoveModal<T>.DefaultBorrow
+  fullName: App.Features.BEManagment.Modals.BorrowRemoveModal<T>.DefaultBorrow
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_BEManagment_Modals_BorrowRemoveModal_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: DefaultBorrow
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_BEManagment_Modals_BorrowRemoveModal_razor.g.cs
+    startLine: 356
+  assemblies:
+  - App
+  namespace: App.Features.BEManagment.Modals
+  syntax:
+    content: >-
+      [Parameter]
+
+      public Borrow? DefaultBorrow { get; set; }
+    parameters: []
+    return:
+      type: App.Data.Models.Borrow
+    content.vb: >-
+      <Parameter>
+
+      Public Property DefaultBorrow As Borrow
+  overload: App.Features.BEManagment.Modals.BorrowRemoveModal`1.DefaultBorrow*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+  nameWithType.vb: BorrowRemoveModal(Of T).DefaultBorrow
+  fullName.vb: App.Features.BEManagment.Modals.BorrowRemoveModal(Of T).DefaultBorrow
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1.ShowBorrowableEntity
+  commentId: P:App.Features.BEManagment.Modals.BorrowRemoveModal`1.ShowBorrowableEntity
+  id: ShowBorrowableEntity
+  parent: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+  langs:
+  - csharp
+  - vb
+  name: ShowBorrowableEntity
+  nameWithType: BorrowRemoveModal<T>.ShowBorrowableEntity
+  fullName: App.Features.BEManagment.Modals.BorrowRemoveModal<T>.ShowBorrowableEntity
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_BEManagment_Modals_BorrowRemoveModal_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ShowBorrowableEntity
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_BEManagment_Modals_BorrowRemoveModal_razor.g.cs
+    startLine: 359
+  assemblies:
+  - App
+  namespace: App.Features.BEManagment.Modals
+  syntax:
+    content: >-
+      [Parameter]
+
+      public bool ShowBorrowableEntity { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <Parameter>
+
+      Public Property ShowBorrowableEntity As Boolean
+  overload: App.Features.BEManagment.Modals.BorrowRemoveModal`1.ShowBorrowableEntity*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+  nameWithType.vb: BorrowRemoveModal(Of T).ShowBorrowableEntity
+  fullName.vb: App.Features.BEManagment.Modals.BorrowRemoveModal(Of T).ShowBorrowableEntity
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1.OnSuccess
+  commentId: P:App.Features.BEManagment.Modals.BorrowRemoveModal`1.OnSuccess
+  id: OnSuccess
+  parent: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+  langs:
+  - csharp
+  - vb
+  name: OnSuccess
+  nameWithType: BorrowRemoveModal<T>.OnSuccess
+  fullName: App.Features.BEManagment.Modals.BorrowRemoveModal<T>.OnSuccess
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_BEManagment_Modals_BorrowRemoveModal_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: OnSuccess
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_BEManagment_Modals_BorrowRemoveModal_razor.g.cs
+    startLine: 362
+  assemblies:
+  - App
+  namespace: App.Features.BEManagment.Modals
+  syntax:
+    content: >-
+      [Parameter]
+
+      public EventCallback<Borrow> OnSuccess { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.AspNetCore.Components.EventCallback{App.Data.Models.Borrow}
+    content.vb: >-
+      <Parameter>
+
+      Public Property OnSuccess As EventCallback(Of Borrow)
+  overload: App.Features.BEManagment.Modals.BorrowRemoveModal`1.OnSuccess*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+  nameWithType.vb: BorrowRemoveModal(Of T).OnSuccess
+  fullName.vb: App.Features.BEManagment.Modals.BorrowRemoveModal(Of T).OnSuccess
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1.OpenModal
+  commentId: M:App.Features.BEManagment.Modals.BorrowRemoveModal`1.OpenModal
+  id: OpenModal
+  parent: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+  langs:
+  - csharp
+  - vb
+  name: OpenModal()
+  nameWithType: BorrowRemoveModal<T>.OpenModal()
+  fullName: App.Features.BEManagment.Modals.BorrowRemoveModal<T>.OpenModal()
+  type: Method
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_BEManagment_Modals_BorrowRemoveModal_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: OpenModal
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_BEManagment_Modals_BorrowRemoveModal_razor.g.cs
+    startLine: 371
+  assemblies:
+  - App
+  namespace: App.Features.BEManagment.Modals
+  syntax:
+    content: public void OpenModal()
+    content.vb: Public Sub OpenModal()
+  overload: App.Features.BEManagment.Modals.BorrowRemoveModal`1.OpenModal*
+  nameWithType.vb: BorrowRemoveModal(Of T).OpenModal()
+  fullName.vb: App.Features.BEManagment.Modals.BorrowRemoveModal(Of T).OpenModal()
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1.OnParametersSetAsync
+  commentId: M:App.Features.BEManagment.Modals.BorrowRemoveModal`1.OnParametersSetAsync
+  id: OnParametersSetAsync
+  parent: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+  langs:
+  - csharp
+  - vb
+  name: OnParametersSetAsync()
+  nameWithType: BorrowRemoveModal<T>.OnParametersSetAsync()
+  fullName: App.Features.BEManagment.Modals.BorrowRemoveModal<T>.OnParametersSetAsync()
+  type: Method
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_BEManagment_Modals_BorrowRemoveModal_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: OnParametersSetAsync
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Features_BEManagment_Modals_BorrowRemoveModal_razor.g.cs
+    startLine: 376
+  assemblies:
+  - App
+  namespace: App.Features.BEManagment.Modals
+  syntax:
+    content: protected override Task OnParametersSetAsync()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Protected Overrides Function OnParametersSetAsync() As Task
+  overridden: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync
+  overload: App.Features.BEManagment.Modals.BorrowRemoveModal`1.OnParametersSetAsync*
+  nameWithType.vb: BorrowRemoveModal(Of T).OnParametersSetAsync()
+  fullName.vb: App.Features.BEManagment.Modals.BorrowRemoveModal(Of T).OnParametersSetAsync()
+references:
+- uid: App.Features.BEManagment.Modals
+  commentId: N:App.Features.BEManagment.Modals
+  name: App.Features.BEManagment.Modals
+  nameWithType: App.Features.BEManagment.Modals
+  fullName: App.Features.BEManagment.Modals
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Features
+    name: Features
+  - name: .
+  - uid: App.Features.BEManagment
+    name: BEManagment
+  - name: .
+  - uid: App.Features.BEManagment.Modals
+    name: Modals
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Features
+    name: Features
+  - name: .
+  - uid: App.Features.BEManagment
+    name: BEManagment
+  - name: .
+  - uid: App.Features.BEManagment.Modals
+    name: Modals
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Microsoft.AspNetCore.Components.ComponentBase
+  commentId: T:Microsoft.AspNetCore.Components.ComponentBase
+  parent: Microsoft.AspNetCore.Components
+  isExternal: true
+  name: ComponentBase
+  nameWithType: ComponentBase
+  fullName: Microsoft.AspNetCore.Components.ComponentBase
+- uid: Microsoft.AspNetCore.Components.IComponent
+  commentId: T:Microsoft.AspNetCore.Components.IComponent
+  parent: Microsoft.AspNetCore.Components
+  isExternal: true
+  name: IComponent
+  nameWithType: IComponent
+  fullName: Microsoft.AspNetCore.Components.IComponent
+- uid: Microsoft.AspNetCore.Components.IHandleEvent
+  commentId: T:Microsoft.AspNetCore.Components.IHandleEvent
+  parent: Microsoft.AspNetCore.Components
+  isExternal: true
+  name: IHandleEvent
+  nameWithType: IHandleEvent
+  fullName: Microsoft.AspNetCore.Components.IHandleEvent
+- uid: Microsoft.AspNetCore.Components.IHandleAfterRender
+  commentId: T:Microsoft.AspNetCore.Components.IHandleAfterRender
+  parent: Microsoft.AspNetCore.Components
+  isExternal: true
+  name: IHandleAfterRender
+  nameWithType: IHandleAfterRender
+  fullName: Microsoft.AspNetCore.Components.IHandleAfterRender
+- uid: Microsoft.AspNetCore.Components.ComponentBase.OnInitialized
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: OnInitialized()
+  nameWithType: ComponentBase.OnInitialized()
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.OnInitialized()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnInitialized
+    name: OnInitialized
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnInitialized
+    name: OnInitialized
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: OnInitializedAsync()
+  nameWithType: ComponentBase.OnInitializedAsync()
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync
+    name: OnInitializedAsync
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync
+    name: OnInitializedAsync
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: OnParametersSet()
+  nameWithType: ComponentBase.OnParametersSet()
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet
+    name: OnParametersSet
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet
+    name: OnParametersSet
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: StateHasChanged()
+  nameWithType: ComponentBase.StateHasChanged()
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged
+    name: StateHasChanged
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged
+    name: StateHasChanged
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.ShouldRender
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: ShouldRender()
+  nameWithType: ComponentBase.ShouldRender()
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.ShouldRender()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.ShouldRender
+    name: ShouldRender
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.ShouldRender
+    name: ShouldRender
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: OnAfterRender(bool)
+  nameWithType: ComponentBase.OnAfterRender(bool)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(bool)
+  nameWithType.vb: ComponentBase.OnAfterRender(Boolean)
+  fullName.vb: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(Boolean)
+  name.vb: OnAfterRender(Boolean)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)
+    name: OnAfterRender
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)
+    name: OnAfterRender
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(System.Boolean)
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(System.Boolean)
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: OnAfterRenderAsync(bool)
+  nameWithType: ComponentBase.OnAfterRenderAsync(bool)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(bool)
+  nameWithType.vb: ComponentBase.OnAfterRenderAsync(Boolean)
+  fullName.vb: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(Boolean)
+  name.vb: OnAfterRenderAsync(Boolean)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(System.Boolean)
+    name: OnAfterRenderAsync
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(System.Boolean)
+    name: OnAfterRenderAsync
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Action)
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Action)
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: InvokeAsync(Action)
+  nameWithType: ComponentBase.InvokeAsync(Action)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Action)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Action)
+    name: InvokeAsync
+    isExternal: true
+  - name: (
+  - uid: System.Action
+    name: Action
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Action)
+    name: InvokeAsync
+    isExternal: true
+  - name: (
+  - uid: System.Action
+    name: Action
+    isExternal: true
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Func{System.Threading.Tasks.Task})
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Func{System.Threading.Tasks.Task})
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: InvokeAsync(Func<Task>)
+  nameWithType: ComponentBase.InvokeAsync(Func<Task>)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Func<System.Threading.Tasks.Task>)
+  nameWithType.vb: ComponentBase.InvokeAsync(Func(Of Task))
+  fullName.vb: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Func(Of System.Threading.Tasks.Task))
+  name.vb: InvokeAsync(Func(Of Task))
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Func{System.Threading.Tasks.Task})
+    name: InvokeAsync
+    isExternal: true
+  - name: (
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+  - name: <
+  - uid: System.Threading.Tasks.Task
+    name: Task
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync(System.Func{System.Threading.Tasks.Task})
+    name: InvokeAsync
+    isExternal: true
+  - name: (
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Threading.Tasks.Task
+    name: Task
+    isExternal: true
+  - name: )
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IComponent#Attach(Microsoft.AspNetCore.Components.RenderHandle)
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IComponent#Attach(Microsoft.AspNetCore.Components.RenderHandle)
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: IComponent.Attach(RenderHandle)
+  nameWithType: ComponentBase.IComponent.Attach(RenderHandle)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.Microsoft.AspNetCore.Components.IComponent.Attach(Microsoft.AspNetCore.Components.RenderHandle)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.IComponent
+    name: IComponent
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IComponent#Attach(Microsoft.AspNetCore.Components.RenderHandle)
+    name: Attach
+    isExternal: true
+  - name: (
+  - uid: Microsoft.AspNetCore.Components.RenderHandle
+    name: RenderHandle
+    isExternal: true
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: SetParametersAsync(ParameterView)
+  nameWithType: ComponentBase.SetParametersAsync(ParameterView)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)
+    name: SetParametersAsync
+    isExternal: true
+  - name: (
+  - uid: Microsoft.AspNetCore.Components.ParameterView
+    name: ParameterView
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)
+    name: SetParametersAsync
+    isExternal: true
+  - name: (
+  - uid: Microsoft.AspNetCore.Components.ParameterView
+    name: ParameterView
+    isExternal: true
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleEvent#HandleEventAsync(Microsoft.AspNetCore.Components.EventCallbackWorkItem,System.Object)
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleEvent#HandleEventAsync(Microsoft.AspNetCore.Components.EventCallbackWorkItem,System.Object)
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: IHandleEvent.HandleEventAsync(EventCallbackWorkItem, object)
+  nameWithType: ComponentBase.IHandleEvent.HandleEventAsync(EventCallbackWorkItem, object)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.Microsoft.AspNetCore.Components.IHandleEvent.HandleEventAsync(Microsoft.AspNetCore.Components.EventCallbackWorkItem, object)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.IHandleEvent
+    name: IHandleEvent
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleEvent#HandleEventAsync(Microsoft.AspNetCore.Components.EventCallbackWorkItem,System.Object)
+    name: HandleEventAsync
+    isExternal: true
+  - name: (
+  - uid: Microsoft.AspNetCore.Components.EventCallbackWorkItem
+    name: EventCallbackWorkItem
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+- uid: Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleAfterRender#OnAfterRenderAsync
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleAfterRender#OnAfterRenderAsync
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: IHandleAfterRender.OnAfterRenderAsync()
+  nameWithType: ComponentBase.IHandleAfterRender.OnAfterRenderAsync()
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.Microsoft.AspNetCore.Components.IHandleAfterRender.OnAfterRenderAsync()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.IHandleAfterRender
+    name: IHandleAfterRender
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.Microsoft#AspNetCore#Components#IHandleAfterRender#OnAfterRenderAsync
+    name: OnAfterRenderAsync
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<BorrowRemoveModal<T>>(BorrowRemoveModal<T>, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<BorrowRemoveModal<T>>(BorrowRemoveModal<T>, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Features.BEManagment.Modals.BorrowRemoveModal<T>>(App.Features.BEManagment.Modals.BorrowRemoveModal<T>, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of BorrowRemoveModal(Of T))(BorrowRemoveModal(Of T), PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Features.BEManagment.Modals.BorrowRemoveModal(Of T))(App.Features.BEManagment.Modals.BorrowRemoveModal(Of T), System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of BorrowRemoveModal(Of T))(BorrowRemoveModal(Of T), PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Features.BEManagment.Modals.BorrowRemoveModal{`0},System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+    name: BorrowRemoveModal
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+    name: BorrowRemoveModal
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Features.BEManagment.Modals.BorrowRemoveModal{`0},System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+    name: BorrowRemoveModal
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+    name: BorrowRemoveModal
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<BorrowRemoveModal<T>>(BorrowRemoveModal<T>, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<BorrowRemoveModal<T>>(BorrowRemoveModal<T>, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Features.BEManagment.Modals.BorrowRemoveModal<T>>(App.Features.BEManagment.Modals.BorrowRemoveModal<T>, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of BorrowRemoveModal(Of T))(BorrowRemoveModal(Of T), Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Features.BEManagment.Modals.BorrowRemoveModal(Of T))(App.Features.BEManagment.Modals.BorrowRemoveModal(Of T), Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of BorrowRemoveModal(Of T))(BorrowRemoveModal(Of T), Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Features.BEManagment.Modals.BorrowRemoveModal{`0},System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+    name: BorrowRemoveModal
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+    name: BorrowRemoveModal
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Features.BEManagment.Modals.BorrowRemoveModal{`0},System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+    name: BorrowRemoveModal
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+    name: BorrowRemoveModal
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.AspNetCore.Components
+  commentId: N:Microsoft.AspNetCore.Components
+  isExternal: true
+  name: Microsoft.AspNetCore.Components
+  nameWithType: Microsoft.AspNetCore.Components
+  fullName: Microsoft.AspNetCore.Components
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components
+    name: Components
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components
+    name: Components
+    isExternal: true
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: Microsoft.AspNetCore.Components.ComponentBase.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: BuildRenderTree(RenderTreeBuilder)
+  nameWithType: ComponentBase.BuildRenderTree(RenderTreeBuilder)
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+    name: BuildRenderTree
+    isExternal: true
+  - name: (
+  - uid: Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+    name: RenderTreeBuilder
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+    name: BuildRenderTree
+    isExternal: true
+  - name: (
+  - uid: Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+    name: RenderTreeBuilder
+    isExternal: true
+  - name: )
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1.BuildRenderTree*
+  commentId: Overload:App.Features.BEManagment.Modals.BorrowRemoveModal`1.BuildRenderTree
+  name: BuildRenderTree
+  nameWithType: BorrowRemoveModal<T>.BuildRenderTree
+  fullName: App.Features.BEManagment.Modals.BorrowRemoveModal<T>.BuildRenderTree
+  nameWithType.vb: BorrowRemoveModal(Of T).BuildRenderTree
+  fullName.vb: App.Features.BEManagment.Modals.BorrowRemoveModal(Of T).BuildRenderTree
+- uid: Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+  commentId: T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+  parent: Microsoft.AspNetCore.Components.Rendering
+  isExternal: true
+  name: RenderTreeBuilder
+  nameWithType: RenderTreeBuilder
+  fullName: Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+- uid: Microsoft.AspNetCore.Components.Rendering
+  commentId: N:Microsoft.AspNetCore.Components.Rendering
+  isExternal: true
+  name: Microsoft.AspNetCore.Components.Rendering
+  nameWithType: Microsoft.AspNetCore.Components.Rendering
+  fullName: Microsoft.AspNetCore.Components.Rendering
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components
+    name: Components
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components.Rendering
+    name: Rendering
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components
+    name: Components
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components.Rendering
+    name: Rendering
+    isExternal: true
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1.DefaultBorrow*
+  commentId: Overload:App.Features.BEManagment.Modals.BorrowRemoveModal`1.DefaultBorrow
+  name: DefaultBorrow
+  nameWithType: BorrowRemoveModal<T>.DefaultBorrow
+  fullName: App.Features.BEManagment.Modals.BorrowRemoveModal<T>.DefaultBorrow
+  nameWithType.vb: BorrowRemoveModal(Of T).DefaultBorrow
+  fullName.vb: App.Features.BEManagment.Modals.BorrowRemoveModal(Of T).DefaultBorrow
+- uid: App.Data.Models.Borrow
+  commentId: T:App.Data.Models.Borrow
+  parent: App.Data.Models
+  name: Borrow
+  nameWithType: Borrow
+  fullName: App.Data.Models.Borrow
+- uid: App.Data.Models
+  commentId: N:App.Data.Models
+  name: App.Data.Models
+  nameWithType: App.Data.Models
+  fullName: App.Data.Models
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Models
+    name: Models
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Models
+    name: Models
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1.ShowBorrowableEntity*
+  commentId: Overload:App.Features.BEManagment.Modals.BorrowRemoveModal`1.ShowBorrowableEntity
+  name: ShowBorrowableEntity
+  nameWithType: BorrowRemoveModal<T>.ShowBorrowableEntity
+  fullName: App.Features.BEManagment.Modals.BorrowRemoveModal<T>.ShowBorrowableEntity
+  nameWithType.vb: BorrowRemoveModal(Of T).ShowBorrowableEntity
+  fullName.vb: App.Features.BEManagment.Modals.BorrowRemoveModal(Of T).ShowBorrowableEntity
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1.OnSuccess*
+  commentId: Overload:App.Features.BEManagment.Modals.BorrowRemoveModal`1.OnSuccess
+  name: OnSuccess
+  nameWithType: BorrowRemoveModal<T>.OnSuccess
+  fullName: App.Features.BEManagment.Modals.BorrowRemoveModal<T>.OnSuccess
+  nameWithType.vb: BorrowRemoveModal(Of T).OnSuccess
+  fullName.vb: App.Features.BEManagment.Modals.BorrowRemoveModal(Of T).OnSuccess
+- uid: Microsoft.AspNetCore.Components.EventCallback{App.Data.Models.Borrow}
+  commentId: T:Microsoft.AspNetCore.Components.EventCallback{App.Data.Models.Borrow}
+  parent: Microsoft.AspNetCore.Components
+  definition: Microsoft.AspNetCore.Components.EventCallback`1
+  name: EventCallback<Borrow>
+  nameWithType: EventCallback<Borrow>
+  fullName: Microsoft.AspNetCore.Components.EventCallback<App.Data.Models.Borrow>
+  nameWithType.vb: EventCallback(Of Borrow)
+  fullName.vb: Microsoft.AspNetCore.Components.EventCallback(Of App.Data.Models.Borrow)
+  name.vb: EventCallback(Of Borrow)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: <
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - name: )
+- uid: Microsoft.AspNetCore.Components.EventCallback`1
+  commentId: T:Microsoft.AspNetCore.Components.EventCallback`1
+  isExternal: true
+  name: EventCallback<TValue>
+  nameWithType: EventCallback<TValue>
+  fullName: Microsoft.AspNetCore.Components.EventCallback<TValue>
+  nameWithType.vb: EventCallback(Of TValue)
+  fullName.vb: Microsoft.AspNetCore.Components.EventCallback(Of TValue)
+  name.vb: EventCallback(Of TValue)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: <
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.EventCallback`1
+    name: EventCallback
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1.OpenModal*
+  commentId: Overload:App.Features.BEManagment.Modals.BorrowRemoveModal`1.OpenModal
+  name: OpenModal
+  nameWithType: BorrowRemoveModal<T>.OpenModal
+  fullName: App.Features.BEManagment.Modals.BorrowRemoveModal<T>.OpenModal
+  nameWithType.vb: BorrowRemoveModal(Of T).OpenModal
+  fullName.vb: App.Features.BEManagment.Modals.BorrowRemoveModal(Of T).OpenModal
+- uid: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync
+  commentId: M:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync
+  parent: Microsoft.AspNetCore.Components.ComponentBase
+  isExternal: true
+  name: OnParametersSetAsync()
+  nameWithType: ComponentBase.OnParametersSetAsync()
+  fullName: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync()
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync
+    name: OnParametersSetAsync
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync
+    name: OnParametersSetAsync
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1.OnParametersSetAsync*
+  commentId: Overload:App.Features.BEManagment.Modals.BorrowRemoveModal`1.OnParametersSetAsync
+  name: OnParametersSetAsync
+  nameWithType: BorrowRemoveModal<T>.OnParametersSetAsync
+  fullName: App.Features.BEManagment.Modals.BorrowRemoveModal<T>.OnParametersSetAsync
+  nameWithType.vb: BorrowRemoveModal(Of T).OnParametersSetAsync
+  fullName.vb: App.Features.BEManagment.Modals.BorrowRemoveModal(Of T).OnParametersSetAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true

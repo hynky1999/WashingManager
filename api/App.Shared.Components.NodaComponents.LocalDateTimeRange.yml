@@ -1,0 +1,884 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange
+  commentId: T:App.Shared.Components.NodaComponents.LocalDateTimeRange
+  id: LocalDateTimeRange
+  parent: App.Shared.Components.NodaComponents
+  children:
+  - App.Shared.Components.NodaComponents.LocalDateTimeRange.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  - App.Shared.Components.NodaComponents.LocalDateTimeRange.DefaultValue
+  - App.Shared.Components.NodaComponents.LocalDateTimeRange.Disabled
+  - App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledDates
+  - App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledTime
+  - App.Shared.Components.NodaComponents.LocalDateTimeRange.OnInitialized
+  - App.Shared.Components.NodaComponents.LocalDateTimeRange.OnParametersSet
+  - App.Shared.Components.NodaComponents.LocalDateTimeRange.TimeFormat
+  langs:
+  - csharp
+  - vb
+  name: LocalDateTimeRange
+  nameWithType: LocalDateTimeRange
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange
+  type: Class
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: LocalDateTimeRange
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+    startLine: 151
+  assemblies:
+  - App
+  namespace: App.Shared.Components.NodaComponents
+  syntax:
+    content: 'public class LocalDateTimeRange : AntDesign.AntInputComponentBase<(LocalDateTime, LocalDateTime)>'
+    content.vb: Public Class LocalDateTimeRange Inherits AntDesign.AntInputComponentBase(Of (LocalDateTime, LocalDateTime))
+  inheritance:
+  - System.Object
+  extensionMethods:
+  - App.Shared.Components.NodaComponents.LocalDateTimeRange.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Shared.Components.NodaComponents.LocalDateTimeRange.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  commentId: M:App.Shared.Components.NodaComponents.LocalDateTimeRange.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  id: BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  parent: App.Shared.Components.NodaComponents.LocalDateTimeRange
+  langs:
+  - csharp
+  - vb
+  name: BuildRenderTree(RenderTreeBuilder)
+  nameWithType: LocalDateTimeRange.BuildRenderTree(RenderTreeBuilder)
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)
+  type: Method
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: BuildRenderTree
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+    startLine: 154
+  assemblies:
+  - App
+  namespace: App.Shared.Components.NodaComponents
+  syntax:
+    content: protected override void BuildRenderTree(RenderTreeBuilder __builder)
+    parameters:
+    - id: __builder
+      type: Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+    content.vb: Protected Overrides Sub BuildRenderTree(__builder As RenderTreeBuilder)
+  overload: App.Shared.Components.NodaComponents.LocalDateTimeRange.BuildRenderTree*
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledTime
+  commentId: P:App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledTime
+  id: DisabledTime
+  parent: App.Shared.Components.NodaComponents.LocalDateTimeRange
+  langs:
+  - csharp
+  - vb
+  name: DisabledTime
+  nameWithType: LocalDateTimeRange.DisabledTime
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledTime
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: DisabledTime
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+    startLine: 206
+  assemblies:
+  - App
+  namespace: App.Shared.Components.NodaComponents
+  syntax:
+    content: >-
+      [Parameter]
+
+      public Func<LocalDateTime, DatePickerDisabledTime>? DisabledTime { get; set; }
+    parameters: []
+    return:
+      type: System.Func{LocalDateTime,DatePickerDisabledTime}
+    content.vb: >-
+      <Parameter>
+
+      Public Property DisabledTime As Func(Of LocalDateTime, DatePickerDisabledTime)
+  overload: App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledTime*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledDates
+  commentId: P:App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledDates
+  id: DisabledDates
+  parent: App.Shared.Components.NodaComponents.LocalDateTimeRange
+  langs:
+  - csharp
+  - vb
+  name: DisabledDates
+  nameWithType: LocalDateTimeRange.DisabledDates
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledDates
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: DisabledDates
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+    startLine: 209
+  assemblies:
+  - App
+  namespace: App.Shared.Components.NodaComponents
+  syntax:
+    content: >-
+      [Parameter]
+
+      public Func<LocalDate, bool>? DisabledDates { get; set; }
+    parameters: []
+    return:
+      type: System.Func{LocalDate,System.Boolean}
+    content.vb: >-
+      <Parameter>
+
+      Public Property DisabledDates As Func(Of LocalDate, Boolean)
+  overload: App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledDates*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.Disabled
+  commentId: P:App.Shared.Components.NodaComponents.LocalDateTimeRange.Disabled
+  id: Disabled
+  parent: App.Shared.Components.NodaComponents.LocalDateTimeRange
+  langs:
+  - csharp
+  - vb
+  name: Disabled
+  nameWithType: LocalDateTimeRange.Disabled
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.Disabled
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Disabled
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+    startLine: 212
+  assemblies:
+  - App
+  namespace: App.Shared.Components.NodaComponents
+  syntax:
+    content: >-
+      [Parameter]
+
+      public bool Disabled { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <Parameter>
+
+      Public Property Disabled As Boolean
+  overload: App.Shared.Components.NodaComponents.LocalDateTimeRange.Disabled*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.TimeFormat
+  commentId: P:App.Shared.Components.NodaComponents.LocalDateTimeRange.TimeFormat
+  id: TimeFormat
+  parent: App.Shared.Components.NodaComponents.LocalDateTimeRange
+  langs:
+  - csharp
+  - vb
+  name: TimeFormat
+  nameWithType: LocalDateTimeRange.TimeFormat
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.TimeFormat
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: TimeFormat
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+    startLine: 215
+  assemblies:
+  - App
+  namespace: App.Shared.Components.NodaComponents
+  syntax:
+    content: >-
+      [Parameter]
+
+      public string? TimeFormat { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Parameter>
+
+      Public Property TimeFormat As String
+  overload: App.Shared.Components.NodaComponents.LocalDateTimeRange.TimeFormat*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.DefaultValue
+  commentId: P:App.Shared.Components.NodaComponents.LocalDateTimeRange.DefaultValue
+  id: DefaultValue
+  parent: App.Shared.Components.NodaComponents.LocalDateTimeRange
+  langs:
+  - csharp
+  - vb
+  name: DefaultValue
+  nameWithType: LocalDateTimeRange.DefaultValue
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.DefaultValue
+  type: Property
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: DefaultValue
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+    startLine: 218
+  assemblies:
+  - App
+  namespace: App.Shared.Components.NodaComponents
+  syntax:
+    content: >-
+      [Parameter]
+
+      public (LocalDateTime, LocalDateTime)? DefaultValue { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.ValueTuple{LocalDateTime,LocalDateTime}}
+    content.vb: >-
+      <Parameter>
+
+      Public Property DefaultValue As (LocalDateTime, LocalDateTime)?
+  overload: App.Shared.Components.NodaComponents.LocalDateTimeRange.DefaultValue*
+  attributes:
+  - type: Microsoft.AspNetCore.Components.ParameterAttribute
+    ctor: Microsoft.AspNetCore.Components.ParameterAttribute.#ctor
+    arguments: []
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.OnInitialized
+  commentId: M:App.Shared.Components.NodaComponents.LocalDateTimeRange.OnInitialized
+  id: OnInitialized
+  parent: App.Shared.Components.NodaComponents.LocalDateTimeRange
+  langs:
+  - csharp
+  - vb
+  name: OnInitialized()
+  nameWithType: LocalDateTimeRange.OnInitialized()
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.OnInitialized()
+  type: Method
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: OnInitialized
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+    startLine: 227
+  assemblies:
+  - App
+  namespace: App.Shared.Components.NodaComponents
+  syntax:
+    content: protected override void OnInitialized()
+    content.vb: Protected Overrides Sub OnInitialized()
+  overload: App.Shared.Components.NodaComponents.LocalDateTimeRange.OnInitialized*
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.OnParametersSet
+  commentId: M:App.Shared.Components.NodaComponents.LocalDateTimeRange.OnParametersSet
+  id: OnParametersSet
+  parent: App.Shared.Components.NodaComponents.LocalDateTimeRange
+  langs:
+  - csharp
+  - vb
+  name: OnParametersSet()
+  nameWithType: LocalDateTimeRange.OnParametersSet()
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.OnParametersSet()
+  type: Method
+  source:
+    remote:
+      path: docfx_project/Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: OnParametersSet
+    path: ../Microsoft.NET.Sdk.Razor.SourceGenerators/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Shared_Components_NodaComponents_LocalDateTimeRange_razor.g.cs
+    startLine: 264
+  assemblies:
+  - App
+  namespace: App.Shared.Components.NodaComponents
+  syntax:
+    content: protected override void OnParametersSet()
+    content.vb: Protected Overrides Sub OnParametersSet()
+  overload: App.Shared.Components.NodaComponents.LocalDateTimeRange.OnParametersSet*
+references:
+- uid: App.Shared.Components.NodaComponents
+  commentId: N:App.Shared.Components.NodaComponents
+  name: App.Shared.Components.NodaComponents
+  nameWithType: App.Shared.Components.NodaComponents
+  fullName: App.Shared.Components.NodaComponents
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Shared
+    name: Shared
+  - name: .
+  - uid: App.Shared.Components
+    name: Components
+  - name: .
+  - uid: App.Shared.Components.NodaComponents
+    name: NodaComponents
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Shared
+    name: Shared
+  - name: .
+  - uid: App.Shared.Components
+    name: Components
+  - name: .
+  - uid: App.Shared.Components.NodaComponents
+    name: NodaComponents
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<LocalDateTimeRange>(LocalDateTimeRange, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<LocalDateTimeRange>(LocalDateTimeRange, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Shared.Components.NodaComponents.LocalDateTimeRange>(App.Shared.Components.NodaComponents.LocalDateTimeRange, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of LocalDateTimeRange)(LocalDateTimeRange, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Shared.Components.NodaComponents.LocalDateTimeRange)(App.Shared.Components.NodaComponents.LocalDateTimeRange, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of LocalDateTimeRange)(LocalDateTimeRange, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Shared.Components.NodaComponents.LocalDateTimeRange,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Shared.Components.NodaComponents.LocalDateTimeRange
+    name: LocalDateTimeRange
+  - name: '>'
+  - name: (
+  - uid: App.Shared.Components.NodaComponents.LocalDateTimeRange
+    name: LocalDateTimeRange
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Shared.Components.NodaComponents.LocalDateTimeRange,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Shared.Components.NodaComponents.LocalDateTimeRange
+    name: LocalDateTimeRange
+  - name: )
+  - name: (
+  - uid: App.Shared.Components.NodaComponents.LocalDateTimeRange
+    name: LocalDateTimeRange
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<LocalDateTimeRange>(LocalDateTimeRange, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<LocalDateTimeRange>(LocalDateTimeRange, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Shared.Components.NodaComponents.LocalDateTimeRange>(App.Shared.Components.NodaComponents.LocalDateTimeRange, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of LocalDateTimeRange)(LocalDateTimeRange, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Shared.Components.NodaComponents.LocalDateTimeRange)(App.Shared.Components.NodaComponents.LocalDateTimeRange, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of LocalDateTimeRange)(LocalDateTimeRange, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Shared.Components.NodaComponents.LocalDateTimeRange,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Shared.Components.NodaComponents.LocalDateTimeRange
+    name: LocalDateTimeRange
+  - name: '>'
+  - name: (
+  - uid: App.Shared.Components.NodaComponents.LocalDateTimeRange
+    name: LocalDateTimeRange
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Shared.Components.NodaComponents.LocalDateTimeRange,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Shared.Components.NodaComponents.LocalDateTimeRange
+    name: LocalDateTimeRange
+  - name: )
+  - name: (
+  - uid: App.Shared.Components.NodaComponents.LocalDateTimeRange
+    name: LocalDateTimeRange
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.BuildRenderTree*
+  commentId: Overload:App.Shared.Components.NodaComponents.LocalDateTimeRange.BuildRenderTree
+  name: BuildRenderTree
+  nameWithType: LocalDateTimeRange.BuildRenderTree
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.BuildRenderTree
+- uid: Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+  commentId: T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+  parent: Microsoft.AspNetCore.Components.Rendering
+  isExternal: true
+  name: RenderTreeBuilder
+  nameWithType: RenderTreeBuilder
+  fullName: Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder
+- uid: Microsoft.AspNetCore.Components.Rendering
+  commentId: N:Microsoft.AspNetCore.Components.Rendering
+  isExternal: true
+  name: Microsoft.AspNetCore.Components.Rendering
+  nameWithType: Microsoft.AspNetCore.Components.Rendering
+  fullName: Microsoft.AspNetCore.Components.Rendering
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components
+    name: Components
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components.Rendering
+    name: Rendering
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components
+    name: Components
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components.Rendering
+    name: Rendering
+    isExternal: true
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledTime*
+  commentId: Overload:App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledTime
+  name: DisabledTime
+  nameWithType: LocalDateTimeRange.DisabledTime
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledTime
+- uid: System.Func{LocalDateTime,DatePickerDisabledTime}
+  commentId: T:System.Func{LocalDateTime,DatePickerDisabledTime}
+  parent: System
+  definition: System.Func`2
+  name: Func<LocalDateTime, DatePickerDisabledTime>
+  nameWithType: Func<LocalDateTime, DatePickerDisabledTime>
+  fullName: System.Func<LocalDateTime, DatePickerDisabledTime>
+  nameWithType.vb: Func(Of LocalDateTime, DatePickerDisabledTime)
+  fullName.vb: System.Func(Of LocalDateTime, DatePickerDisabledTime)
+  name.vb: Func(Of LocalDateTime, DatePickerDisabledTime)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - uid: LocalDateTime
+    name: LocalDateTime
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: DatePickerDisabledTime
+    name: DatePickerDisabledTime
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: LocalDateTime
+    name: LocalDateTime
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: DatePickerDisabledTime
+    name: DatePickerDisabledTime
+    isExternal: true
+  - name: )
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledDates*
+  commentId: Overload:App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledDates
+  name: DisabledDates
+  nameWithType: LocalDateTimeRange.DisabledDates
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.DisabledDates
+- uid: System.Func{LocalDate,System.Boolean}
+  commentId: T:System.Func{LocalDate,System.Boolean}
+  parent: System
+  definition: System.Func`2
+  name: Func<LocalDate, bool>
+  nameWithType: Func<LocalDate, bool>
+  fullName: System.Func<LocalDate, bool>
+  nameWithType.vb: Func(Of LocalDate, Boolean)
+  fullName.vb: System.Func(Of LocalDate, Boolean)
+  name.vb: Func(Of LocalDate, Boolean)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - uid: LocalDate
+    name: LocalDate
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: LocalDate
+    name: LocalDate
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.Disabled*
+  commentId: Overload:App.Shared.Components.NodaComponents.LocalDateTimeRange.Disabled
+  name: Disabled
+  nameWithType: LocalDateTimeRange.Disabled
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.Disabled
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.TimeFormat*
+  commentId: Overload:App.Shared.Components.NodaComponents.LocalDateTimeRange.TimeFormat
+  name: TimeFormat
+  nameWithType: LocalDateTimeRange.TimeFormat
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.TimeFormat
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.DefaultValue*
+  commentId: Overload:App.Shared.Components.NodaComponents.LocalDateTimeRange.DefaultValue
+  name: DefaultValue
+  nameWithType: LocalDateTimeRange.DefaultValue
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.DefaultValue
+- uid: System.Nullable{System.ValueTuple{LocalDateTime,LocalDateTime}}
+  commentId: T:System.Nullable{System.ValueTuple{LocalDateTime,LocalDateTime}}
+  parent: System
+  definition: System.Nullable`1
+  name: (LocalDateTime, LocalDateTime)?
+  nameWithType: (LocalDateTime, LocalDateTime)?
+  fullName: (LocalDateTime, LocalDateTime)?
+  spec.csharp:
+  - name: (
+  - uid: LocalDateTime
+    name: LocalDateTime
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: LocalDateTime
+    name: LocalDateTime
+    isExternal: true
+  - name: )
+  - name: '?'
+  spec.vb:
+  - name: (
+  - uid: LocalDateTime
+    name: LocalDateTime
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: LocalDateTime
+    name: LocalDateTime
+    isExternal: true
+  - name: )
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.OnInitialized*
+  commentId: Overload:App.Shared.Components.NodaComponents.LocalDateTimeRange.OnInitialized
+  name: OnInitialized
+  nameWithType: LocalDateTimeRange.OnInitialized
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.OnInitialized
+- uid: App.Shared.Components.NodaComponents.LocalDateTimeRange.OnParametersSet*
+  commentId: Overload:App.Shared.Components.NodaComponents.LocalDateTimeRange.OnParametersSet
+  name: OnParametersSet
+  nameWithType: LocalDateTimeRange.OnParametersSet
+  fullName: App.Shared.Components.NodaComponents.LocalDateTimeRange.OnParametersSet

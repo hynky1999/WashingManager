@@ -1,0 +1,92 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.Constants
+  commentId: N:App.Data.Constants
+  id: App.Data.Constants
+  children:
+  - App.Data.Constants.Currency
+  - App.Data.Constants.IRates
+  - App.Data.Constants.IReservationConstant
+  - App.Data.Constants.IUsageConstants
+  - App.Data.Constants.Money
+  - App.Data.Constants.Rates
+  - App.Data.Constants.ReservationConstant
+  - App.Data.Constants.UsageContants
+  langs:
+  - csharp
+  - vb
+  name: App.Data.Constants
+  nameWithType: App.Data.Constants
+  fullName: App.Data.Constants
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Data.Constants.IRates
+  commentId: T:App.Data.Constants.IRates
+  parent: App.Data.Constants
+  name: IRates
+  nameWithType: IRates
+  fullName: App.Data.Constants.IRates
+- uid: App.Data.Constants.Rates
+  commentId: T:App.Data.Constants.Rates
+  name: Rates
+  nameWithType: Rates
+  fullName: App.Data.Constants.Rates
+- uid: App.Data.Constants.Currency
+  commentId: T:App.Data.Constants.Currency
+  parent: App.Data.Constants
+  name: Currency
+  nameWithType: Currency
+  fullName: App.Data.Constants.Currency
+- uid: App.Data.Constants.Money
+  commentId: T:App.Data.Constants.Money
+  parent: App.Data.Constants
+  name: Money
+  nameWithType: Money
+  fullName: App.Data.Constants.Money
+- uid: App.Data.Constants.IReservationConstant
+  commentId: T:App.Data.Constants.IReservationConstant
+  parent: App.Data.Constants
+  name: IReservationConstant
+  nameWithType: IReservationConstant
+  fullName: App.Data.Constants.IReservationConstant
+- uid: App.Data.Constants.ReservationConstant
+  commentId: T:App.Data.Constants.ReservationConstant
+  name: ReservationConstant
+  nameWithType: ReservationConstant
+  fullName: App.Data.Constants.ReservationConstant
+- uid: App.Data.Constants.UsageContants
+  commentId: T:App.Data.Constants.UsageContants
+  name: UsageContants
+  nameWithType: UsageContants
+  fullName: App.Data.Constants.UsageContants
+- uid: App.Data.Constants.IUsageConstants
+  commentId: T:App.Data.Constants.IUsageConstants
+  parent: App.Data.Constants
+  name: IUsageConstants
+  nameWithType: IUsageConstants
+  fullName: App.Data.Constants.IUsageConstants
+- uid: App.Data.Constants
+  commentId: N:App.Data.Constants
+  name: App.Data.Constants
+  nameWithType: App.Data.Constants
+  fullName: App.Data.Constants
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Constants
+    name: Constants
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Constants
+    name: Constants

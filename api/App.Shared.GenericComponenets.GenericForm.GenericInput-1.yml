@@ -1,0 +1,923 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+  commentId: T:App.Shared.GenericComponenets.GenericForm.GenericInput`1
+  id: GenericInput`1
+  parent: App.Shared.GenericComponenets.GenericForm
+  children:
+  - App.Shared.GenericComponenets.GenericForm.GenericInput`1.#ctor(`0,System.Reflection.PropertyInfo,System.IServiceProvider)
+  - App.Shared.GenericComponenets.GenericForm.GenericInput`1.Description
+  - App.Shared.GenericComponenets.GenericForm.GenericInput`1.DisplayName
+  - App.Shared.GenericComponenets.GenericForm.GenericInput`1.FieldFragment
+  - App.Shared.GenericComponenets.GenericForm.GenericInput`1.Value
+  - App.Shared.GenericComponenets.GenericForm.GenericInput`1.ValueChanged
+  langs:
+  - csharp
+  - vb
+  name: GenericInput<TModel>
+  nameWithType: GenericInput<TModel>
+  fullName: App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>
+  type: Class
+  source:
+    remote:
+      path: App/Shared/GenericComponenets/GenericForm/GenericInput.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GenericInput
+    path: ../App/Shared/GenericComponenets/GenericForm/GenericInput.cs
+    startLine: 21
+  assemblies:
+  - App
+  namespace: App.Shared.GenericComponenets.GenericForm
+  summary: "\nClass which represents a generic field in a form for a property of a given type.\nIt allows to create a generic field with a label and description\nThe component is chosen based on the type of the field\nfor more <xref href=\"App.Shared.GenericComponenets.GenericForm.GenericInput%601.GetFieldType(System.Reflection.PropertyInfo%2cSystem.IServiceProvider)\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public sealed class GenericInput<TModel>
+    typeParameters:
+    - id: TModel
+      description: Model for which the form is created
+    content.vb: Public NotInheritable Class GenericInput(Of TModel)
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - App.Shared.GenericComponenets.GenericForm.GenericInput`1.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Shared.GenericComponenets.GenericForm.GenericInput`1.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  nameWithType.vb: GenericInput(Of TModel)
+  fullName.vb: App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel)
+  name.vb: GenericInput(Of TModel)
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1.#ctor(`0,System.Reflection.PropertyInfo,System.IServiceProvider)
+  commentId: M:App.Shared.GenericComponenets.GenericForm.GenericInput`1.#ctor(`0,System.Reflection.PropertyInfo,System.IServiceProvider)
+  id: '#ctor(`0,System.Reflection.PropertyInfo,System.IServiceProvider)'
+  parent: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+  langs:
+  - csharp
+  - vb
+  name: GenericInput(TModel, PropertyInfo, IServiceProvider)
+  nameWithType: GenericInput<TModel>.GenericInput(TModel, PropertyInfo, IServiceProvider)
+  fullName: App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>.GenericInput(TModel, System.Reflection.PropertyInfo, System.IServiceProvider)
+  type: Constructor
+  source:
+    remote:
+      path: App/Shared/GenericComponenets/GenericForm/GenericInput.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: .ctor
+    path: ../App/Shared/GenericComponenets/GenericForm/GenericInput.cs
+    startLine: 37
+  assemblies:
+  - App
+  namespace: App.Shared.GenericComponenets.GenericForm
+  summary: "\n"
+  example: []
+  syntax:
+    content: public GenericInput(TModel owner, PropertyInfo propertyInfo, IServiceProvider serviceProvider)
+    parameters:
+    - id: owner
+      type: '{TModel}'
+      description: ''
+    - id: propertyInfo
+      type: System.Reflection.PropertyInfo
+      description: ''
+    - id: serviceProvider
+      type: System.IServiceProvider
+      description: ''
+    content.vb: Public Sub New(owner As TModel, propertyInfo As PropertyInfo, serviceProvider As IServiceProvider)
+  overload: App.Shared.GenericComponenets.GenericForm.GenericInput`1.#ctor*
+  nameWithType.vb: GenericInput(Of TModel).New(TModel, PropertyInfo, IServiceProvider)
+  fullName.vb: App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel).New(TModel, System.Reflection.PropertyInfo, System.IServiceProvider)
+  name.vb: New(TModel, PropertyInfo, IServiceProvider)
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1.ValueChanged
+  commentId: P:App.Shared.GenericComponenets.GenericForm.GenericInput`1.ValueChanged
+  id: ValueChanged
+  parent: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+  langs:
+  - csharp
+  - vb
+  name: ValueChanged
+  nameWithType: GenericInput<TModel>.ValueChanged
+  fullName: App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>.ValueChanged
+  type: Property
+  source:
+    remote:
+      path: App/Shared/GenericComponenets/GenericForm/GenericInput.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ValueChanged
+    path: ../App/Shared/GenericComponenets/GenericForm/GenericInput.cs
+    startLine: 48
+  assemblies:
+  - App
+  namespace: App.Shared.GenericComponenets.GenericForm
+  summary: "\nNotifies the form that the value of the field has changed\n"
+  example: []
+  syntax:
+    content: public EventHandler? ValueChanged { get; set; }
+    parameters: []
+    return:
+      type: System.EventHandler
+    content.vb: Public Property ValueChanged As EventHandler
+  overload: App.Shared.GenericComponenets.GenericForm.GenericInput`1.ValueChanged*
+  nameWithType.vb: GenericInput(Of TModel).ValueChanged
+  fullName.vb: App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel).ValueChanged
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1.Value
+  commentId: P:App.Shared.GenericComponenets.GenericForm.GenericInput`1.Value
+  id: Value
+  parent: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: GenericInput<TModel>.Value
+  fullName: App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>.Value
+  type: Property
+  source:
+    remote:
+      path: App/Shared/GenericComponenets/GenericForm/GenericInput.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Value
+    path: ../App/Shared/GenericComponenets/GenericForm/GenericInput.cs
+    startLine: 53
+  assemblies:
+  - App
+  namespace: App.Shared.GenericComponenets.GenericForm
+  summary: "\nValue of the field\n"
+  example: []
+  syntax:
+    content: public object? Value { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property Value As Object
+  overload: App.Shared.GenericComponenets.GenericForm.GenericInput`1.Value*
+  nameWithType.vb: GenericInput(Of TModel).Value
+  fullName.vb: App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel).Value
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1.FieldFragment
+  commentId: P:App.Shared.GenericComponenets.GenericForm.GenericInput`1.FieldFragment
+  id: FieldFragment
+  parent: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+  langs:
+  - csharp
+  - vb
+  name: FieldFragment
+  nameWithType: GenericInput<TModel>.FieldFragment
+  fullName: App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>.FieldFragment
+  type: Property
+  source:
+    remote:
+      path: App/Shared/GenericComponenets/GenericForm/GenericInput.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: FieldFragment
+    path: ../App/Shared/GenericComponenets/GenericForm/GenericInput.cs
+    startLine: 66
+  assemblies:
+  - App
+  namespace: App.Shared.GenericComponenets.GenericForm
+  summary: "\nFragment that can be used to render the field\n"
+  example: []
+  syntax:
+    content: public RenderFragment FieldFragment { get; }
+    parameters: []
+    return:
+      type: Microsoft.AspNetCore.Components.RenderFragment
+    content.vb: Public ReadOnly Property FieldFragment As RenderFragment
+  overload: App.Shared.GenericComponenets.GenericForm.GenericInput`1.FieldFragment*
+  nameWithType.vb: GenericInput(Of TModel).FieldFragment
+  fullName.vb: App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel).FieldFragment
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1.Description
+  commentId: P:App.Shared.GenericComponenets.GenericForm.GenericInput`1.Description
+  id: Description
+  parent: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: GenericInput<TModel>.Description
+  fullName: App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>.Description
+  type: Property
+  source:
+    remote:
+      path: App/Shared/GenericComponenets/GenericForm/GenericInput.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Description
+    path: ../App/Shared/GenericComponenets/GenericForm/GenericInput.cs
+    startLine: 102
+  assemblies:
+  - App
+  namespace: App.Shared.GenericComponenets.GenericForm
+  summary: "\nDescription of the field based on Attributes\n"
+  example: []
+  syntax:
+    content: public string? Description { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Description As String
+  overload: App.Shared.GenericComponenets.GenericForm.GenericInput`1.Description*
+  nameWithType.vb: GenericInput(Of TModel).Description
+  fullName.vb: App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel).Description
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1.DisplayName
+  commentId: P:App.Shared.GenericComponenets.GenericForm.GenericInput`1.DisplayName
+  id: DisplayName
+  parent: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+  langs:
+  - csharp
+  - vb
+  name: DisplayName
+  nameWithType: GenericInput<TModel>.DisplayName
+  fullName: App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>.DisplayName
+  type: Property
+  source:
+    remote:
+      path: App/Shared/GenericComponenets/GenericForm/GenericInput.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: DisplayName
+    path: ../App/Shared/GenericComponenets/GenericForm/GenericInput.cs
+    startLine: 131
+  assemblies:
+  - App
+  namespace: App.Shared.GenericComponenets.GenericForm
+  summary: "\nLabel of the field based on Attributes\n"
+  example: []
+  syntax:
+    content: public string DisplayName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property DisplayName As String
+  overload: App.Shared.GenericComponenets.GenericForm.GenericInput`1.DisplayName*
+  nameWithType.vb: GenericInput(Of TModel).DisplayName
+  fullName.vb: App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel).DisplayName
+references:
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1.GetFieldType(System.Reflection.PropertyInfo,System.IServiceProvider)
+  commentId: M:App.Shared.GenericComponenets.GenericForm.GenericInput`1.GetFieldType(System.Reflection.PropertyInfo,System.IServiceProvider)
+  isExternal: true
+- uid: App.Shared.GenericComponenets.GenericForm
+  commentId: N:App.Shared.GenericComponenets.GenericForm
+  name: App.Shared.GenericComponenets.GenericForm
+  nameWithType: App.Shared.GenericComponenets.GenericForm
+  fullName: App.Shared.GenericComponenets.GenericForm
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Shared
+    name: Shared
+  - name: .
+  - uid: App.Shared.GenericComponenets
+    name: GenericComponenets
+  - name: .
+  - uid: App.Shared.GenericComponenets.GenericForm
+    name: GenericForm
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Shared
+    name: Shared
+  - name: .
+  - uid: App.Shared.GenericComponenets
+    name: GenericComponenets
+  - name: .
+  - uid: App.Shared.GenericComponenets.GenericForm
+    name: GenericForm
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<GenericInput<TModel>>(GenericInput<TModel>, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<GenericInput<TModel>>(GenericInput<TModel>, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>>(App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of GenericInput(Of TModel))(GenericInput(Of TModel), PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel))(App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel), System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of GenericInput(Of TModel))(GenericInput(Of TModel), PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Shared.GenericComponenets.GenericForm.GenericInput{`0},System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+    name: GenericInput
+  - name: <
+  - name: TModel
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+    name: GenericInput
+  - name: <
+  - name: TModel
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Shared.GenericComponenets.GenericForm.GenericInput{`0},System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+    name: GenericInput
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TModel
+  - name: )
+  - name: )
+  - name: (
+  - uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+    name: GenericInput
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TModel
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<GenericInput<TModel>>(GenericInput<TModel>, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<GenericInput<TModel>>(GenericInput<TModel>, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>>(App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of GenericInput(Of TModel))(GenericInput(Of TModel), Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel))(App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel), Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of GenericInput(Of TModel))(GenericInput(Of TModel), Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Shared.GenericComponenets.GenericForm.GenericInput{`0},System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+    name: GenericInput
+  - name: <
+  - name: TModel
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+    name: GenericInput
+  - name: <
+  - name: TModel
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Shared.GenericComponenets.GenericForm.GenericInput{`0},System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+    name: GenericInput
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TModel
+  - name: )
+  - name: )
+  - name: (
+  - uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+    name: GenericInput
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TModel
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1.#ctor*
+  commentId: Overload:App.Shared.GenericComponenets.GenericForm.GenericInput`1.#ctor
+  name: GenericInput
+  nameWithType: GenericInput<TModel>.GenericInput
+  fullName: App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>.GenericInput
+  nameWithType.vb: GenericInput(Of TModel).New
+  fullName.vb: App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel).New
+  name.vb: New
+- uid: '{TModel}'
+  commentId: '!:TModel'
+  definition: TModel
+  name: TModel
+  nameWithType: TModel
+  fullName: TModel
+- uid: System.Reflection.PropertyInfo
+  commentId: T:System.Reflection.PropertyInfo
+  parent: System.Reflection
+  isExternal: true
+  name: PropertyInfo
+  nameWithType: PropertyInfo
+  fullName: System.Reflection.PropertyInfo
+- uid: System.IServiceProvider
+  commentId: T:System.IServiceProvider
+  parent: System
+  isExternal: true
+  name: IServiceProvider
+  nameWithType: IServiceProvider
+  fullName: System.IServiceProvider
+- uid: TModel
+  commentId: '!:TModel'
+  name: TModel
+  nameWithType: TModel
+  fullName: TModel
+- uid: System.Reflection
+  commentId: N:System.Reflection
+  isExternal: true
+  name: System.Reflection
+  nameWithType: System.Reflection
+  fullName: System.Reflection
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1.ValueChanged*
+  commentId: Overload:App.Shared.GenericComponenets.GenericForm.GenericInput`1.ValueChanged
+  name: ValueChanged
+  nameWithType: GenericInput<TModel>.ValueChanged
+  fullName: App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>.ValueChanged
+  nameWithType.vb: GenericInput(Of TModel).ValueChanged
+  fullName.vb: App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel).ValueChanged
+- uid: System.EventHandler
+  commentId: T:System.EventHandler
+  parent: System
+  isExternal: true
+  name: EventHandler
+  nameWithType: EventHandler
+  fullName: System.EventHandler
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1.Value*
+  commentId: Overload:App.Shared.GenericComponenets.GenericForm.GenericInput`1.Value
+  name: Value
+  nameWithType: GenericInput<TModel>.Value
+  fullName: App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>.Value
+  nameWithType.vb: GenericInput(Of TModel).Value
+  fullName.vb: App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel).Value
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1.FieldFragment*
+  commentId: Overload:App.Shared.GenericComponenets.GenericForm.GenericInput`1.FieldFragment
+  name: FieldFragment
+  nameWithType: GenericInput<TModel>.FieldFragment
+  fullName: App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>.FieldFragment
+  nameWithType.vb: GenericInput(Of TModel).FieldFragment
+  fullName.vb: App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel).FieldFragment
+- uid: Microsoft.AspNetCore.Components.RenderFragment
+  commentId: T:Microsoft.AspNetCore.Components.RenderFragment
+  parent: Microsoft.AspNetCore.Components
+  isExternal: true
+  name: RenderFragment
+  nameWithType: RenderFragment
+  fullName: Microsoft.AspNetCore.Components.RenderFragment
+- uid: Microsoft.AspNetCore.Components
+  commentId: N:Microsoft.AspNetCore.Components
+  isExternal: true
+  name: Microsoft.AspNetCore.Components
+  nameWithType: Microsoft.AspNetCore.Components
+  fullName: Microsoft.AspNetCore.Components
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components
+    name: Components
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Components
+    name: Components
+    isExternal: true
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1.Description*
+  commentId: Overload:App.Shared.GenericComponenets.GenericForm.GenericInput`1.Description
+  name: Description
+  nameWithType: GenericInput<TModel>.Description
+  fullName: App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>.Description
+  nameWithType.vb: GenericInput(Of TModel).Description
+  fullName.vb: App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel).Description
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1.DisplayName*
+  commentId: Overload:App.Shared.GenericComponenets.GenericForm.GenericInput`1.DisplayName
+  name: DisplayName
+  nameWithType: GenericInput<TModel>.DisplayName
+  fullName: App.Shared.GenericComponenets.GenericForm.GenericInput<TModel>.DisplayName
+  nameWithType.vb: GenericInput(Of TModel).DisplayName
+  fullName.vb: App.Shared.GenericComponenets.GenericForm.GenericInput(Of TModel).DisplayName

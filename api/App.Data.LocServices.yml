@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.LocServices
+  commentId: N:App.Data.LocServices
+  id: App.Data.LocServices
+  children:
+  - App.Data.LocServices.LocalizationService
+  langs:
+  - csharp
+  - vb
+  name: App.Data.LocServices
+  nameWithType: App.Data.LocServices
+  fullName: App.Data.LocServices
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Data.LocServices.LocalizationService
+  commentId: T:App.Data.LocServices.LocalizationService
+  name: LocalizationService
+  nameWithType: LocalizationService
+  fullName: App.Data.LocServices.LocalizationService

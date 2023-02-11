@@ -1,0 +1,698 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel
+  commentId: T:App.Areas.SignIn.Pages.Login.LoginModel.InputModel
+  id: LoginModel.InputModel
+  parent: App.Areas.SignIn.Pages.Login
+  children:
+  - App.Areas.SignIn.Pages.Login.LoginModel.InputModel.Password
+  - App.Areas.SignIn.Pages.Login.LoginModel.InputModel.RememberMe
+  - App.Areas.SignIn.Pages.Login.LoginModel.InputModel.UserName
+  langs:
+  - csharp
+  - vb
+  name: LoginModel.InputModel
+  nameWithType: LoginModel.InputModel
+  fullName: App.Areas.SignIn.Pages.Login.LoginModel.InputModel
+  type: Class
+  source:
+    remote:
+      path: App/Areas/SignIn/Pages/Login/Login.cshtml.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: InputModel
+    path: ../App/Areas/SignIn/Pages/Login/Login.cshtml.cs
+    startLine: 66
+  assemblies:
+  - App
+  namespace: App.Areas.SignIn.Pages.Login
+  syntax:
+    content: public class LoginModel.InputModel
+    content.vb: Public Class LoginModel.InputModel
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - App.Areas.SignIn.Pages.Login.LoginModel.InputModel.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Areas.SignIn.Pages.Login.LoginModel.InputModel.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.UserName
+  commentId: P:App.Areas.SignIn.Pages.Login.LoginModel.InputModel.UserName
+  id: UserName
+  parent: App.Areas.SignIn.Pages.Login.LoginModel.InputModel
+  langs:
+  - csharp
+  - vb
+  name: UserName
+  nameWithType: LoginModel.InputModel.UserName
+  fullName: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.UserName
+  type: Property
+  source:
+    remote:
+      path: App/Areas/SignIn/Pages/Login/Login.cshtml.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: UserName
+    path: ../App/Areas/SignIn/Pages/Login/Login.cshtml.cs
+    startLine: 68
+  assemblies:
+  - App
+  namespace: App.Areas.SignIn.Pages.Login
+  syntax:
+    content: >-
+      [Required]
+
+      public string UserName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Required>
+
+      Public Property UserName As String
+  overload: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.UserName*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.Password
+  commentId: P:App.Areas.SignIn.Pages.Login.LoginModel.InputModel.Password
+  id: Password
+  parent: App.Areas.SignIn.Pages.Login.LoginModel.InputModel
+  langs:
+  - csharp
+  - vb
+  name: Password
+  nameWithType: LoginModel.InputModel.Password
+  fullName: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.Password
+  type: Property
+  source:
+    remote:
+      path: App/Areas/SignIn/Pages/Login/Login.cshtml.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Password
+    path: ../App/Areas/SignIn/Pages/Login/Login.cshtml.cs
+    startLine: 70
+  assemblies:
+  - App
+  namespace: App.Areas.SignIn.Pages.Login
+  syntax:
+    content: >-
+      [Required]
+
+      [DataType(DataType.Password)]
+
+      public string Password { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Required>
+
+      <DataType(DataType.Password)>
+
+      Public Property Password As String
+  overload: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.Password*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.DataTypeAttribute
+    ctor: System.ComponentModel.DataAnnotations.DataTypeAttribute.#ctor(System.ComponentModel.DataAnnotations.DataType)
+    arguments:
+    - type: System.ComponentModel.DataAnnotations.DataType
+      value: 11
+- uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.RememberMe
+  commentId: P:App.Areas.SignIn.Pages.Login.LoginModel.InputModel.RememberMe
+  id: RememberMe
+  parent: App.Areas.SignIn.Pages.Login.LoginModel.InputModel
+  langs:
+  - csharp
+  - vb
+  name: RememberMe
+  nameWithType: LoginModel.InputModel.RememberMe
+  fullName: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.RememberMe
+  type: Property
+  source:
+    remote:
+      path: App/Areas/SignIn/Pages/Login/Login.cshtml.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: RememberMe
+    path: ../App/Areas/SignIn/Pages/Login/Login.cshtml.cs
+    startLine: 74
+  assemblies:
+  - App
+  namespace: App.Areas.SignIn.Pages.Login
+  syntax:
+    content: >-
+      [Display(Name = "Remember me?")]
+
+      public bool RememberMe { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <Display(Name:="Remember me?")>
+
+      Public Property RememberMe As Boolean
+  overload: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.RememberMe*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Remember me?
+references:
+- uid: App.Areas.SignIn.Pages.Login
+  commentId: N:App.Areas.SignIn.Pages.Login
+  name: App.Areas.SignIn.Pages.Login
+  nameWithType: App.Areas.SignIn.Pages.Login
+  fullName: App.Areas.SignIn.Pages.Login
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Areas
+    name: Areas
+  - name: .
+  - uid: App.Areas.SignIn
+    name: SignIn
+  - name: .
+  - uid: App.Areas.SignIn.Pages
+    name: Pages
+  - name: .
+  - uid: App.Areas.SignIn.Pages.Login
+    name: Login
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Areas
+    name: Areas
+  - name: .
+  - uid: App.Areas.SignIn
+    name: SignIn
+  - name: .
+  - uid: App.Areas.SignIn.Pages
+    name: Pages
+  - name: .
+  - uid: App.Areas.SignIn.Pages.Login
+    name: Login
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<InputModel>(InputModel, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<LoginModel.InputModel>(LoginModel.InputModel, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Areas.SignIn.Pages.Login.LoginModel.InputModel>(App.Areas.SignIn.Pages.Login.LoginModel.InputModel, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of LoginModel.InputModel)(LoginModel.InputModel, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Areas.SignIn.Pages.Login.LoginModel.InputModel)(App.Areas.SignIn.Pages.Login.LoginModel.InputModel, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of InputModel)(InputModel, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Areas.SignIn.Pages.Login.LoginModel.InputModel,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel
+    name: InputModel
+  - name: '>'
+  - name: (
+  - uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel
+    name: InputModel
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Areas.SignIn.Pages.Login.LoginModel.InputModel,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel
+    name: InputModel
+  - name: )
+  - name: (
+  - uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel
+    name: InputModel
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<InputModel>(InputModel, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<LoginModel.InputModel>(LoginModel.InputModel, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Areas.SignIn.Pages.Login.LoginModel.InputModel>(App.Areas.SignIn.Pages.Login.LoginModel.InputModel, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of LoginModel.InputModel)(LoginModel.InputModel, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Areas.SignIn.Pages.Login.LoginModel.InputModel)(App.Areas.SignIn.Pages.Login.LoginModel.InputModel, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of InputModel)(InputModel, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Areas.SignIn.Pages.Login.LoginModel.InputModel,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel
+    name: InputModel
+  - name: '>'
+  - name: (
+  - uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel
+    name: InputModel
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Areas.SignIn.Pages.Login.LoginModel.InputModel,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel
+    name: InputModel
+  - name: )
+  - name: (
+  - uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel
+    name: InputModel
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.UserName*
+  commentId: Overload:App.Areas.SignIn.Pages.Login.LoginModel.InputModel.UserName
+  name: UserName
+  nameWithType: LoginModel.InputModel.UserName
+  fullName: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.UserName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.Password*
+  commentId: Overload:App.Areas.SignIn.Pages.Login.LoginModel.InputModel.Password
+  name: Password
+  nameWithType: LoginModel.InputModel.Password
+  fullName: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.Password
+- uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.RememberMe*
+  commentId: Overload:App.Areas.SignIn.Pages.Login.LoginModel.InputModel.RememberMe
+  name: RememberMe
+  nameWithType: LoginModel.InputModel.RememberMe
+  fullName: App.Areas.SignIn.Pages.Login.LoginModel.InputModel.RememberMe
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

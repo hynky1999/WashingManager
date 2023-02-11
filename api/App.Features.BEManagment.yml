@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Features.BEManagment
+  commentId: N:App.Features.BEManagment
+  id: App.Features.BEManagment
+  children:
+  - App.Features.BEManagment.ManagementConfig
+  langs:
+  - csharp
+  - vb
+  name: App.Features.BEManagment
+  nameWithType: App.Features.BEManagment
+  fullName: App.Features.BEManagment
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Features.BEManagment.ManagementConfig
+  commentId: T:App.Features.BEManagment.ManagementConfig
+  name: ManagementConfig
+  nameWithType: ManagementConfig
+  fullName: App.Features.BEManagment.ManagementConfig

@@ -1,0 +1,521 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Auth.Utils.Claims
+  commentId: T:App.Auth.Utils.Claims
+  id: Claims
+  parent: App.Auth.Utils
+  children:
+  - App.Auth.Utils.Claims.GetUserId(System.Security.Claims.ClaimsPrincipal)
+  - App.Auth.Utils.Claims.ManageBorrows
+  - App.Auth.Utils.Claims.ManageModels
+  - App.Auth.Utils.Claims.ManageUsers
+  - App.Auth.Utils.Claims.UserID
+  langs:
+  - csharp
+  - vb
+  name: Claims
+  nameWithType: Claims
+  fullName: App.Auth.Utils.Claims
+  type: Class
+  source:
+    remote:
+      path: App/Auth/Utils/Claims.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Claims
+    path: ../App/Auth/Utils/Claims.cs
+    startLine: 8
+  assemblies:
+  - App
+  namespace: App.Auth.Utils
+  summary: "\nHelper class for working with claims\nIt defines them and provides methods for working with them\n"
+  example: []
+  syntax:
+    content: public static class Claims
+    content.vb: Public Module Claims
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: App.Auth.Utils.Claims.UserID
+  commentId: P:App.Auth.Utils.Claims.UserID
+  id: UserID
+  parent: App.Auth.Utils.Claims
+  langs:
+  - csharp
+  - vb
+  name: UserID
+  nameWithType: Claims.UserID
+  fullName: App.Auth.Utils.Claims.UserID
+  type: Property
+  source:
+    remote:
+      path: App/Auth/Utils/Claims.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: UserID
+    path: ../App/Auth/Utils/Claims.cs
+    startLine: 13
+  assemblies:
+  - App
+  namespace: App.Auth.Utils
+  summary: "\nEvery user must have this claim as it points to the DB where we store the user data\n"
+  example: []
+  syntax:
+    content: public static string UserID { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property UserID As String
+  overload: App.Auth.Utils.Claims.UserID*
+- uid: App.Auth.Utils.Claims.ManageUsers
+  commentId: P:App.Auth.Utils.Claims.ManageUsers
+  id: ManageUsers
+  parent: App.Auth.Utils.Claims
+  langs:
+  - csharp
+  - vb
+  name: ManageUsers
+  nameWithType: Claims.ManageUsers
+  fullName: App.Auth.Utils.Claims.ManageUsers
+  type: Property
+  source:
+    remote:
+      path: App/Auth/Utils/Claims.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ManageUsers
+    path: ../App/Auth/Utils/Claims.cs
+    startLine: 18
+  assemblies:
+  - App
+  namespace: App.Auth.Utils
+  summary: "\nClaim which allows to create new users\n"
+  example: []
+  syntax:
+    content: public static string ManageUsers { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property ManageUsers As String
+  overload: App.Auth.Utils.Claims.ManageUsers*
+- uid: App.Auth.Utils.Claims.ManageBorrows
+  commentId: P:App.Auth.Utils.Claims.ManageBorrows
+  id: ManageBorrows
+  parent: App.Auth.Utils.Claims
+  langs:
+  - csharp
+  - vb
+  name: ManageBorrows
+  nameWithType: Claims.ManageBorrows
+  fullName: App.Auth.Utils.Claims.ManageBorrows
+  type: Property
+  source:
+    remote:
+      path: App/Auth/Utils/Claims.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ManageBorrows
+    path: ../App/Auth/Utils/Claims.cs
+    startLine: 23
+  assemblies:
+  - App
+  namespace: App.Auth.Utils
+  summary: "\nClaims which allows to manage borrows\n"
+  example: []
+  syntax:
+    content: public static string ManageBorrows { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property ManageBorrows As String
+  overload: App.Auth.Utils.Claims.ManageBorrows*
+- uid: App.Auth.Utils.Claims.ManageModels
+  commentId: P:App.Auth.Utils.Claims.ManageModels
+  id: ManageModels
+  parent: App.Auth.Utils.Claims
+  langs:
+  - csharp
+  - vb
+  name: ManageModels
+  nameWithType: Claims.ManageModels
+  fullName: App.Auth.Utils.Claims.ManageModels
+  type: Property
+  source:
+    remote:
+      path: App/Auth/Utils/Claims.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ManageModels
+    path: ../App/Auth/Utils/Claims.cs
+    startLine: 28
+  assemblies:
+  - App
+  namespace: App.Auth.Utils
+  summary: "\nClaim which allows to change the DB and modify it&apos;s current state\n"
+  example: []
+  syntax:
+    content: public static string ManageModels { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property ManageModels As String
+  overload: App.Auth.Utils.Claims.ManageModels*
+- uid: App.Auth.Utils.Claims.GetUserId(System.Security.Claims.ClaimsPrincipal)
+  commentId: M:App.Auth.Utils.Claims.GetUserId(System.Security.Claims.ClaimsPrincipal)
+  id: GetUserId(System.Security.Claims.ClaimsPrincipal)
+  parent: App.Auth.Utils.Claims
+  langs:
+  - csharp
+  - vb
+  name: GetUserId(ClaimsPrincipal)
+  nameWithType: Claims.GetUserId(ClaimsPrincipal)
+  fullName: App.Auth.Utils.Claims.GetUserId(System.Security.Claims.ClaimsPrincipal)
+  type: Method
+  source:
+    remote:
+      path: App/Auth/Utils/Claims.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetUserId
+    path: ../App/Auth/Utils/Claims.cs
+    startLine: 37
+  assemblies:
+  - App
+  namespace: App.Auth.Utils
+  summary: "\nHelper method for getting id out of ClaimPrincipal\n"
+  example: []
+  syntax:
+    content: public static int GetUserId(ClaimsPrincipal user)
+    parameters:
+    - id: user
+      type: System.Security.Claims.ClaimsPrincipal
+      description: ClaimPrincial representing user
+    return:
+      type: System.Int32
+      description: ID of user data in DB
+    content.vb: Public Shared Function GetUserId(user As ClaimsPrincipal) As Integer
+  overload: App.Auth.Utils.Claims.GetUserId*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Throws if user not logged in
+references:
+- uid: App.Auth.Utils
+  commentId: N:App.Auth.Utils
+  name: App.Auth.Utils
+  nameWithType: App.Auth.Utils
+  fullName: App.Auth.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Auth
+    name: Auth
+  - name: .
+  - uid: App.Auth.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Auth
+    name: Auth
+  - name: .
+  - uid: App.Auth.Utils
+    name: Utils
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.Auth.Utils.Claims.UserID*
+  commentId: Overload:App.Auth.Utils.Claims.UserID
+  name: UserID
+  nameWithType: Claims.UserID
+  fullName: App.Auth.Utils.Claims.UserID
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: App.Auth.Utils.Claims.ManageUsers*
+  commentId: Overload:App.Auth.Utils.Claims.ManageUsers
+  name: ManageUsers
+  nameWithType: Claims.ManageUsers
+  fullName: App.Auth.Utils.Claims.ManageUsers
+- uid: App.Auth.Utils.Claims.ManageBorrows*
+  commentId: Overload:App.Auth.Utils.Claims.ManageBorrows
+  name: ManageBorrows
+  nameWithType: Claims.ManageBorrows
+  fullName: App.Auth.Utils.Claims.ManageBorrows
+- uid: App.Auth.Utils.Claims.ManageModels*
+  commentId: Overload:App.Auth.Utils.Claims.ManageModels
+  name: ManageModels
+  nameWithType: Claims.ManageModels
+  fullName: App.Auth.Utils.Claims.ManageModels
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+- uid: App.Auth.Utils.Claims.GetUserId*
+  commentId: Overload:App.Auth.Utils.Claims.GetUserId
+  name: GetUserId
+  nameWithType: Claims.GetUserId
+  fullName: App.Auth.Utils.Claims.GetUserId
+- uid: System.Security.Claims.ClaimsPrincipal
+  commentId: T:System.Security.Claims.ClaimsPrincipal
+  parent: System.Security.Claims
+  isExternal: true
+  name: ClaimsPrincipal
+  nameWithType: ClaimsPrincipal
+  fullName: System.Security.Claims.ClaimsPrincipal
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Security.Claims
+  commentId: N:System.Security.Claims
+  isExternal: true
+  name: System.Security.Claims
+  nameWithType: System.Security.Claims
+  fullName: System.Security.Claims
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Security
+    name: Security
+    isExternal: true
+  - name: .
+  - uid: System.Security.Claims
+    name: Claims
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Security
+    name: Security
+    isExternal: true
+  - name: .
+  - uid: System.Security.Claims
+    name: Claims
+    isExternal: true

@@ -1,0 +1,781 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.ServiceInterfaces.IUserService
+  commentId: T:App.Data.ServiceInterfaces.IUserService
+  id: IUserService
+  parent: App.Data.ServiceInterfaces
+  children:
+  - App.Data.ServiceInterfaces.IUserService.GetNameAndSurname(System.Security.Claims.ClaimsPrincipal)
+  - App.Data.ServiceInterfaces.IUserService.GetUserCashAsync(System.Security.Claims.ClaimsPrincipal)
+  - App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(App.Data.ApplicationDbContext,System.Int32,App.Data.Constants.Money)
+  - App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(System.Int32,App.Data.Constants.Money)
+  langs:
+  - csharp
+  - vb
+  name: IUserService
+  nameWithType: IUserService
+  fullName: App.Data.ServiceInterfaces.IUserService
+  type: Interface
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/IUserService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: IUserService
+    path: ../App/Data/ServiceInterfaces/IUserService.cs
+    startLine: 10
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nInterface fo service which manages the user model\nIt takes a Principal which should have a Claim with the user id\nand then queries the database for the user with that id\n"
+  example: []
+  syntax:
+    content: public interface IUserService
+    content.vb: Public Interface IUserService
+  extensionMethods:
+  - App.Data.ServiceInterfaces.IUserService.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Data.ServiceInterfaces.IUserService.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.Data.ServiceInterfaces.IUserService.GetNameAndSurname(System.Security.Claims.ClaimsPrincipal)
+  commentId: M:App.Data.ServiceInterfaces.IUserService.GetNameAndSurname(System.Security.Claims.ClaimsPrincipal)
+  id: GetNameAndSurname(System.Security.Claims.ClaimsPrincipal)
+  parent: App.Data.ServiceInterfaces.IUserService
+  langs:
+  - csharp
+  - vb
+  name: GetNameAndSurname(ClaimsPrincipal)
+  nameWithType: IUserService.GetNameAndSurname(ClaimsPrincipal)
+  fullName: App.Data.ServiceInterfaces.IUserService.GetNameAndSurname(System.Security.Claims.ClaimsPrincipal)
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/IUserService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetNameAndSurname
+    path: ../App/Data/ServiceInterfaces/IUserService.cs
+    startLine: 17
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nGets name and surname of the user\n"
+  example: []
+  syntax:
+    content: Task<(string name, string surname)?> GetNameAndSurname(ClaimsPrincipal user)
+    parameters:
+    - id: user
+      type: System.Security.Claims.ClaimsPrincipal
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Nullable{System.ValueTuple{System.String,System.String}}}
+      description: Name and surname if user found
+    content.vb: Function GetNameAndSurname(user As ClaimsPrincipal) As Task(Of (name As String, surname As String)?)
+  overload: App.Data.ServiceInterfaces.IUserService.GetNameAndSurname*
+- uid: App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(System.Int32,App.Data.Constants.Money)
+  commentId: M:App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(System.Int32,App.Data.Constants.Money)
+  id: ModifyUserCashAsync(System.Int32,App.Data.Constants.Money)
+  parent: App.Data.ServiceInterfaces.IUserService
+  langs:
+  - csharp
+  - vb
+  name: ModifyUserCashAsync(int, Money)
+  nameWithType: IUserService.ModifyUserCashAsync(int, Money)
+  fullName: App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(int, App.Data.Constants.Money)
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/IUserService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ModifyUserCashAsync
+    path: ../App/Data/ServiceInterfaces/IUserService.cs
+    startLine: 27
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nChanges a cash of user\n"
+  example: []
+  syntax:
+    content: Task<Money> ModifyUserCashAsync(int id, Money money)
+    parameters:
+    - id: id
+      type: System.Int32
+      description: ''
+    - id: money
+      type: App.Data.Constants.Money
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{App.Data.Constants.Money}
+      description: Changed cash
+    content.vb: Function ModifyUserCashAsync(id As Integer, money As Money) As Task(Of Money)
+  overload: App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: throws if user is not found
+  nameWithType.vb: IUserService.ModifyUserCashAsync(Integer, Money)
+  fullName.vb: App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(Integer, App.Data.Constants.Money)
+  name.vb: ModifyUserCashAsync(Integer, Money)
+- uid: App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(App.Data.ApplicationDbContext,System.Int32,App.Data.Constants.Money)
+  commentId: M:App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(App.Data.ApplicationDbContext,System.Int32,App.Data.Constants.Money)
+  id: ModifyUserCashAsync(App.Data.ApplicationDbContext,System.Int32,App.Data.Constants.Money)
+  parent: App.Data.ServiceInterfaces.IUserService
+  langs:
+  - csharp
+  - vb
+  name: ModifyUserCashAsync(ApplicationDbContext, int, Money)
+  nameWithType: IUserService.ModifyUserCashAsync(ApplicationDbContext, int, Money)
+  fullName: App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(App.Data.ApplicationDbContext, int, App.Data.Constants.Money)
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/IUserService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ModifyUserCashAsync
+    path: ../App/Data/ServiceInterfaces/IUserService.cs
+    startLine: 38
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\n<xref href=\"App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(System.Int32%2cApp.Data.Constants.Money)\" data-throw-if-not-resolved=\"false\"></xref>\nUnlike the other method, this just updates provided context\nGood for transactions\n"
+  example: []
+  syntax:
+    content: Task<Money> ModifyUserCashAsync(ApplicationDbContext db, int id, Money money)
+    parameters:
+    - id: db
+      type: App.Data.ApplicationDbContext
+      description: ''
+    - id: id
+      type: System.Int32
+      description: ''
+    - id: money
+      type: App.Data.Constants.Money
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{App.Data.Constants.Money}
+      description: ''
+    content.vb: Function ModifyUserCashAsync(db As ApplicationDbContext, id As Integer, money As Money) As Task(Of Money)
+  overload: App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync*
+  nameWithType.vb: IUserService.ModifyUserCashAsync(ApplicationDbContext, Integer, Money)
+  fullName.vb: App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(App.Data.ApplicationDbContext, Integer, App.Data.Constants.Money)
+  name.vb: ModifyUserCashAsync(ApplicationDbContext, Integer, Money)
+- uid: App.Data.ServiceInterfaces.IUserService.GetUserCashAsync(System.Security.Claims.ClaimsPrincipal)
+  commentId: M:App.Data.ServiceInterfaces.IUserService.GetUserCashAsync(System.Security.Claims.ClaimsPrincipal)
+  id: GetUserCashAsync(System.Security.Claims.ClaimsPrincipal)
+  parent: App.Data.ServiceInterfaces.IUserService
+  langs:
+  - csharp
+  - vb
+  name: GetUserCashAsync(ClaimsPrincipal)
+  nameWithType: IUserService.GetUserCashAsync(ClaimsPrincipal)
+  fullName: App.Data.ServiceInterfaces.IUserService.GetUserCashAsync(System.Security.Claims.ClaimsPrincipal)
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/IUserService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetUserCashAsync
+    path: ../App/Data/ServiceInterfaces/IUserService.cs
+    startLine: 47
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nReturns the user&apos;s cash\n"
+  example: []
+  syntax:
+    content: Task<Money> GetUserCashAsync(ClaimsPrincipal user)
+    parameters:
+    - id: user
+      type: System.Security.Claims.ClaimsPrincipal
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{App.Data.Constants.Money}
+      description: ''
+    content.vb: Function GetUserCashAsync(user As ClaimsPrincipal) As Task(Of Money)
+  overload: App.Data.ServiceInterfaces.IUserService.GetUserCashAsync*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: If user doesn&apos;t exist
+references:
+- uid: App.Data.ServiceInterfaces
+  commentId: N:App.Data.ServiceInterfaces
+  name: App.Data.ServiceInterfaces
+  nameWithType: App.Data.ServiceInterfaces
+  fullName: App.Data.ServiceInterfaces
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+- uid: App.Data.ServiceInterfaces.IUserService.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<IUserService>(IUserService, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<IUserService>(IUserService, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Data.ServiceInterfaces.IUserService>(App.Data.ServiceInterfaces.IUserService, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of IUserService)(IUserService, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Data.ServiceInterfaces.IUserService)(App.Data.ServiceInterfaces.IUserService, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of IUserService)(IUserService, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.ServiceInterfaces.IUserService,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Data.ServiceInterfaces.IUserService
+    name: IUserService
+  - name: '>'
+  - name: (
+  - uid: App.Data.ServiceInterfaces.IUserService
+    name: IUserService
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.ServiceInterfaces.IUserService,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.ServiceInterfaces.IUserService
+    name: IUserService
+  - name: )
+  - name: (
+  - uid: App.Data.ServiceInterfaces.IUserService
+    name: IUserService
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Data.ServiceInterfaces.IUserService.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<IUserService>(IUserService, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<IUserService>(IUserService, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Data.ServiceInterfaces.IUserService>(App.Data.ServiceInterfaces.IUserService, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of IUserService)(IUserService, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Data.ServiceInterfaces.IUserService)(App.Data.ServiceInterfaces.IUserService, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of IUserService)(IUserService, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.ServiceInterfaces.IUserService,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Data.ServiceInterfaces.IUserService
+    name: IUserService
+  - name: '>'
+  - name: (
+  - uid: App.Data.ServiceInterfaces.IUserService
+    name: IUserService
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.ServiceInterfaces.IUserService,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.ServiceInterfaces.IUserService
+    name: IUserService
+  - name: )
+  - name: (
+  - uid: App.Data.ServiceInterfaces.IUserService
+    name: IUserService
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Data.ServiceInterfaces.IUserService.GetNameAndSurname*
+  commentId: Overload:App.Data.ServiceInterfaces.IUserService.GetNameAndSurname
+  name: GetNameAndSurname
+  nameWithType: IUserService.GetNameAndSurname
+  fullName: App.Data.ServiceInterfaces.IUserService.GetNameAndSurname
+- uid: System.Security.Claims.ClaimsPrincipal
+  commentId: T:System.Security.Claims.ClaimsPrincipal
+  parent: System.Security.Claims
+  isExternal: true
+  name: ClaimsPrincipal
+  nameWithType: ClaimsPrincipal
+  fullName: System.Security.Claims.ClaimsPrincipal
+- uid: System.Threading.Tasks.Task{System.Nullable{System.ValueTuple{System.String,System.String}}}
+  commentId: T:System.Threading.Tasks.Task{System.Nullable{System.ValueTuple{System.String,System.String}}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<(string name, string surname)?>
+  nameWithType: Task<(string name, string surname)?>
+  fullName: System.Threading.Tasks.Task<(string name, string surname)?>
+  nameWithType.vb: Task(Of (name As String, surname As String)?)
+  fullName.vb: System.Threading.Tasks.Task(Of (name As String, surname As String)?)
+  name.vb: Task(Of (name As String, surname As String)?)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.String}.name
+    name: name
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.String}.surname
+    name: surname
+  - name: )
+  - name: '?'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: (
+  - uid: System.ValueTuple{System.String,System.String}.name
+    name: name
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.String}.surname
+    name: surname
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+  - name: '?'
+  - name: )
+- uid: System.Security.Claims
+  commentId: N:System.Security.Claims
+  isExternal: true
+  name: System.Security.Claims
+  nameWithType: System.Security.Claims
+  fullName: System.Security.Claims
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Security
+    name: Security
+    isExternal: true
+  - name: .
+  - uid: System.Security.Claims
+    name: Claims
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Security
+    name: Security
+    isExternal: true
+  - name: .
+  - uid: System.Security.Claims
+    name: Claims
+    isExternal: true
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+- uid: App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync*
+  commentId: Overload:App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync
+  name: ModifyUserCashAsync
+  nameWithType: IUserService.ModifyUserCashAsync
+  fullName: App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: App.Data.Constants.Money
+  commentId: T:App.Data.Constants.Money
+  parent: App.Data.Constants
+  name: Money
+  nameWithType: Money
+  fullName: App.Data.Constants.Money
+- uid: System.Threading.Tasks.Task{App.Data.Constants.Money}
+  commentId: T:System.Threading.Tasks.Task{App.Data.Constants.Money}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Money>
+  nameWithType: Task<Money>
+  fullName: System.Threading.Tasks.Task<App.Data.Constants.Money>
+  nameWithType.vb: Task(Of Money)
+  fullName.vb: System.Threading.Tasks.Task(Of App.Data.Constants.Money)
+  name.vb: Task(Of Money)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: App.Data.Constants.Money
+    name: Money
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.Constants.Money
+    name: Money
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.Data.Constants
+  commentId: N:App.Data.Constants
+  name: App.Data.Constants
+  nameWithType: App.Data.Constants
+  fullName: App.Data.Constants
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Constants
+    name: Constants
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Constants
+    name: Constants
+- uid: App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(System.Int32,App.Data.Constants.Money)
+  commentId: M:App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(System.Int32,App.Data.Constants.Money)
+  parent: App.Data.ServiceInterfaces.IUserService
+  isExternal: true
+  name: ModifyUserCashAsync(int, Money)
+  nameWithType: IUserService.ModifyUserCashAsync(int, Money)
+  fullName: App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(int, App.Data.Constants.Money)
+  nameWithType.vb: IUserService.ModifyUserCashAsync(Integer, Money)
+  fullName.vb: App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(Integer, App.Data.Constants.Money)
+  name.vb: ModifyUserCashAsync(Integer, Money)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(System.Int32,App.Data.Constants.Money)
+    name: ModifyUserCashAsync
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: App.Data.Constants.Money
+    name: Money
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.IUserService.ModifyUserCashAsync(System.Int32,App.Data.Constants.Money)
+    name: ModifyUserCashAsync
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: App.Data.Constants.Money
+    name: Money
+  - name: )
+- uid: App.Data.ApplicationDbContext
+  commentId: T:App.Data.ApplicationDbContext
+  parent: App.Data
+  name: ApplicationDbContext
+  nameWithType: ApplicationDbContext
+  fullName: App.Data.ApplicationDbContext
+- uid: App.Data.ServiceInterfaces.IUserService
+  commentId: T:App.Data.ServiceInterfaces.IUserService
+  parent: App.Data.ServiceInterfaces
+  name: IUserService
+  nameWithType: IUserService
+  fullName: App.Data.ServiceInterfaces.IUserService
+- uid: App.Data
+  commentId: N:App.Data
+  name: App.Data
+  nameWithType: App.Data
+  fullName: App.Data
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+- uid: App.Data.ServiceInterfaces.IUserService.GetUserCashAsync*
+  commentId: Overload:App.Data.ServiceInterfaces.IUserService.GetUserCashAsync
+  name: GetUserCashAsync
+  nameWithType: IUserService.GetUserCashAsync
+  fullName: App.Data.ServiceInterfaces.IUserService.GetUserCashAsync

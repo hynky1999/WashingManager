@@ -1,0 +1,46 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Auth.Models
+  commentId: N:App.Auth.Models
+  id: App.Auth.Models
+  children:
+  - App.Auth.Models.ApplicationUser
+  langs:
+  - csharp
+  - vb
+  name: App.Auth.Models
+  nameWithType: App.Auth.Models
+  fullName: App.Auth.Models
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Auth.Models.ApplicationUser
+  commentId: T:App.Auth.Models.ApplicationUser
+  parent: App.Auth.Models
+  name: ApplicationUser
+  nameWithType: ApplicationUser
+  fullName: App.Auth.Models.ApplicationUser
+- uid: App.Auth.Models
+  commentId: N:App.Auth.Models
+  name: App.Auth.Models
+  nameWithType: App.Auth.Models
+  fullName: App.Auth.Models
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Auth
+    name: Auth
+  - name: .
+  - uid: App.Auth.Models
+    name: Models
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Auth
+    name: Auth
+  - name: .
+  - uid: App.Auth.Models
+    name: Models

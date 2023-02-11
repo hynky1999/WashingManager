@@ -1,0 +1,138 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.ServerServices
+  commentId: N:App.ServerServices
+  id: App.ServerServices
+  children:
+  - App.ServerServices.DBTimedQueue`1
+  - App.ServerServices.IReservationManager
+  - App.ServerServices.ITimedQueue`1
+  - App.ServerServices.ITimedQueueManager`1
+  - App.ServerServices.ReservationManager
+  - App.ServerServices.TimedQueueManager`1
+  langs:
+  - csharp
+  - vb
+  name: App.ServerServices
+  nameWithType: App.ServerServices
+  fullName: App.ServerServices
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.ServerServices.ReservationManager
+  commentId: T:App.ServerServices.ReservationManager
+  name: ReservationManager
+  nameWithType: ReservationManager
+  fullName: App.ServerServices.ReservationManager
+- uid: App.ServerServices.IReservationManager
+  commentId: T:App.ServerServices.IReservationManager
+  parent: App.ServerServices
+  name: IReservationManager
+  nameWithType: IReservationManager
+  fullName: App.ServerServices.IReservationManager
+- uid: App.ServerServices.ITimedQueue`1
+  commentId: T:App.ServerServices.ITimedQueue`1
+  name: ITimedQueue<TItem>
+  nameWithType: ITimedQueue<TItem>
+  fullName: App.ServerServices.ITimedQueue<TItem>
+  nameWithType.vb: ITimedQueue(Of TItem)
+  fullName.vb: App.ServerServices.ITimedQueue(Of TItem)
+  name.vb: ITimedQueue(Of TItem)
+  spec.csharp:
+  - uid: App.ServerServices.ITimedQueue`1
+    name: ITimedQueue
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: App.ServerServices.ITimedQueue`1
+    name: ITimedQueue
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: App.ServerServices.DBTimedQueue`1
+  commentId: T:App.ServerServices.DBTimedQueue`1
+  name: DBTimedQueue<TItem>
+  nameWithType: DBTimedQueue<TItem>
+  fullName: App.ServerServices.DBTimedQueue<TItem>
+  nameWithType.vb: DBTimedQueue(Of TItem)
+  fullName.vb: App.ServerServices.DBTimedQueue(Of TItem)
+  name.vb: DBTimedQueue(Of TItem)
+  spec.csharp:
+  - uid: App.ServerServices.DBTimedQueue`1
+    name: DBTimedQueue
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: App.ServerServices.DBTimedQueue`1
+    name: DBTimedQueue
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: App.ServerServices.TimedQueueManager`1
+  commentId: T:App.ServerServices.TimedQueueManager`1
+  name: TimedQueueManager<TItem>
+  nameWithType: TimedQueueManager<TItem>
+  fullName: App.ServerServices.TimedQueueManager<TItem>
+  nameWithType.vb: TimedQueueManager(Of TItem)
+  fullName.vb: App.ServerServices.TimedQueueManager(Of TItem)
+  name.vb: TimedQueueManager(Of TItem)
+  spec.csharp:
+  - uid: App.ServerServices.TimedQueueManager`1
+    name: TimedQueueManager
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: App.ServerServices.TimedQueueManager`1
+    name: TimedQueueManager
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: App.ServerServices.ITimedQueueManager`1
+  commentId: T:App.ServerServices.ITimedQueueManager`1
+  name: ITimedQueueManager<TItem>
+  nameWithType: ITimedQueueManager<TItem>
+  fullName: App.ServerServices.ITimedQueueManager<TItem>
+  nameWithType.vb: ITimedQueueManager(Of TItem)
+  fullName.vb: App.ServerServices.ITimedQueueManager(Of TItem)
+  name.vb: ITimedQueueManager(Of TItem)
+  spec.csharp:
+  - uid: App.ServerServices.ITimedQueueManager`1
+    name: ITimedQueueManager
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: App.ServerServices.ITimedQueueManager`1
+    name: ITimedQueueManager
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: App.ServerServices
+  commentId: N:App.ServerServices
+  name: App.ServerServices
+  nameWithType: App.ServerServices
+  fullName: App.ServerServices
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.ServerServices
+    name: ServerServices
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.ServerServices
+    name: ServerServices

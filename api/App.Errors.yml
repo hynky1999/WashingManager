@@ -1,0 +1,58 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Errors
+  commentId: N:App.Errors
+  id: App.Errors
+  children:
+  - App.Errors.DbConcurrencyException
+  - App.Errors.DbException
+  - App.Errors.DbInsertException
+  - App.Errors.DbUpdateException
+  langs:
+  - csharp
+  - vb
+  name: App.Errors
+  nameWithType: App.Errors
+  fullName: App.Errors
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Errors.DbException
+  commentId: T:App.Errors.DbException
+  parent: App.Errors
+  name: DbException
+  nameWithType: DbException
+  fullName: App.Errors.DbException
+- uid: App.Errors.DbInsertException
+  commentId: T:App.Errors.DbInsertException
+  name: DbInsertException
+  nameWithType: DbInsertException
+  fullName: App.Errors.DbInsertException
+- uid: App.Errors.DbConcurrencyException
+  commentId: T:App.Errors.DbConcurrencyException
+  name: DbConcurrencyException
+  nameWithType: DbConcurrencyException
+  fullName: App.Errors.DbConcurrencyException
+- uid: App.Errors.DbUpdateException
+  commentId: T:App.Errors.DbUpdateException
+  name: DbUpdateException
+  nameWithType: DbUpdateException
+  fullName: App.Errors.DbUpdateException
+- uid: App.Errors
+  commentId: N:App.Errors
+  name: App.Errors
+  nameWithType: App.Errors
+  fullName: App.Errors
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Errors
+    name: Errors
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Errors
+    name: Errors

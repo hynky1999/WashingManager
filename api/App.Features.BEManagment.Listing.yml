@@ -1,0 +1,62 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Features.BEManagment.Listing
+  commentId: N:App.Features.BEManagment.Listing
+  id: App.Features.BEManagment.Listing
+  children:
+  - App.Features.BEManagment.Listing.BETable`1
+  - App.Features.BEManagment.Listing.BorrowsTable`1
+  langs:
+  - csharp
+  - vb
+  name: App.Features.BEManagment.Listing
+  nameWithType: App.Features.BEManagment.Listing
+  fullName: App.Features.BEManagment.Listing
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Features.BEManagment.Listing.BorrowsTable`1
+  commentId: T:App.Features.BEManagment.Listing.BorrowsTable`1
+  name: BorrowsTable<T>
+  nameWithType: BorrowsTable<T>
+  fullName: App.Features.BEManagment.Listing.BorrowsTable<T>
+  nameWithType.vb: BorrowsTable(Of T)
+  fullName.vb: App.Features.BEManagment.Listing.BorrowsTable(Of T)
+  name.vb: BorrowsTable(Of T)
+  spec.csharp:
+  - uid: App.Features.BEManagment.Listing.BorrowsTable`1
+    name: BorrowsTable
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Features.BEManagment.Listing.BorrowsTable`1
+    name: BorrowsTable
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Features.BEManagment.Listing.BETable`1
+  commentId: T:App.Features.BEManagment.Listing.BETable`1
+  name: BETable<T>
+  nameWithType: BETable<T>
+  fullName: App.Features.BEManagment.Listing.BETable<T>
+  nameWithType.vb: BETable(Of T)
+  fullName.vb: App.Features.BEManagment.Listing.BETable(Of T)
+  name.vb: BETable(Of T)
+  spec.csharp:
+  - uid: App.Features.BEManagment.Listing.BETable`1
+    name: BETable
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Features.BEManagment.Listing.BETable`1
+    name: BETable
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

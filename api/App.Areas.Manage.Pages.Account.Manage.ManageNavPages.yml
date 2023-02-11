@@ -1,0 +1,813 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  commentId: T:App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  id: ManageNavPages
+  parent: App.Areas.Manage.Pages.Account.Manage
+  children:
+  - App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePassword
+  - App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePasswordNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  - App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalData
+  - App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalDataNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  - App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalData
+  - App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalDataNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  - App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Email
+  - App.Areas.Manage.Pages.Account.Manage.ManageNavPages.EmailNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  - App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Index
+  - App.Areas.Manage.Pages.Account.Manage.ManageNavPages.IndexNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  - App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PageNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext,System.String)
+  - App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalData
+  - App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalDataNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  langs:
+  - csharp
+  - vb
+  name: ManageNavPages
+  nameWithType: ManageNavPages
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  type: Class
+  source:
+    remote:
+      path: App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ManageNavPages
+    path: ../App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+    startLine: 11
+  assemblies:
+  - App
+  namespace: App.Areas.Manage.Pages.Account.Manage
+  syntax:
+    content: public static class ManageNavPages
+    content.vb: Public Module ManageNavPages
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Index
+  commentId: P:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Index
+  id: Index
+  parent: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  langs:
+  - csharp
+  - vb
+  name: Index
+  nameWithType: ManageNavPages.Index
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Index
+  type: Property
+  source:
+    remote:
+      path: App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Index
+    path: ../App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+    startLine: 13
+  assemblies:
+  - App
+  namespace: App.Areas.Manage.Pages.Account.Manage
+  syntax:
+    content: public static string Index { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property Index As String
+  overload: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Index*
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Email
+  commentId: P:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Email
+  id: Email
+  parent: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  langs:
+  - csharp
+  - vb
+  name: Email
+  nameWithType: ManageNavPages.Email
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Email
+  type: Property
+  source:
+    remote:
+      path: App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Email
+    path: ../App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+    startLine: 14
+  assemblies:
+  - App
+  namespace: App.Areas.Manage.Pages.Account.Manage
+  syntax:
+    content: public static string Email { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property Email As String
+  overload: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Email*
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePassword
+  commentId: P:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePassword
+  id: ChangePassword
+  parent: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  langs:
+  - csharp
+  - vb
+  name: ChangePassword
+  nameWithType: ManageNavPages.ChangePassword
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePassword
+  type: Property
+  source:
+    remote:
+      path: App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ChangePassword
+    path: ../App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+    startLine: 15
+  assemblies:
+  - App
+  namespace: App.Areas.Manage.Pages.Account.Manage
+  syntax:
+    content: public static string ChangePassword { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property ChangePassword As String
+  overload: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePassword*
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalData
+  commentId: P:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalData
+  id: DownloadPersonalData
+  parent: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  langs:
+  - csharp
+  - vb
+  name: DownloadPersonalData
+  nameWithType: ManageNavPages.DownloadPersonalData
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalData
+  type: Property
+  source:
+    remote:
+      path: App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: DownloadPersonalData
+    path: ../App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+    startLine: 16
+  assemblies:
+  - App
+  namespace: App.Areas.Manage.Pages.Account.Manage
+  syntax:
+    content: public static string DownloadPersonalData { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property DownloadPersonalData As String
+  overload: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalData*
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalData
+  commentId: P:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalData
+  id: DeletePersonalData
+  parent: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  langs:
+  - csharp
+  - vb
+  name: DeletePersonalData
+  nameWithType: ManageNavPages.DeletePersonalData
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalData
+  type: Property
+  source:
+    remote:
+      path: App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: DeletePersonalData
+    path: ../App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+    startLine: 17
+  assemblies:
+  - App
+  namespace: App.Areas.Manage.Pages.Account.Manage
+  syntax:
+    content: public static string DeletePersonalData { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property DeletePersonalData As String
+  overload: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalData*
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalData
+  commentId: P:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalData
+  id: PersonalData
+  parent: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  langs:
+  - csharp
+  - vb
+  name: PersonalData
+  nameWithType: ManageNavPages.PersonalData
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalData
+  type: Property
+  source:
+    remote:
+      path: App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: PersonalData
+    path: ../App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+    startLine: 18
+  assemblies:
+  - App
+  namespace: App.Areas.Manage.Pages.Account.Manage
+  syntax:
+    content: public static string PersonalData { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property PersonalData As String
+  overload: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalData*
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.IndexNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  commentId: M:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.IndexNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  id: IndexNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  parent: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  langs:
+  - csharp
+  - vb
+  name: IndexNavClass(ViewContext)
+  nameWithType: ManageNavPages.IndexNavClass(ViewContext)
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.IndexNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  type: Method
+  source:
+    remote:
+      path: App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: IndexNavClass
+    path: ../App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+    startLine: 20
+  assemblies:
+  - App
+  namespace: App.Areas.Manage.Pages.Account.Manage
+  syntax:
+    content: public static string IndexNavClass(ViewContext viewContext)
+    parameters:
+    - id: viewContext
+      type: Microsoft.AspNetCore.Mvc.Rendering.ViewContext
+    return:
+      type: System.String
+    content.vb: Public Shared Function IndexNavClass(viewContext As ViewContext) As String
+  overload: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.IndexNavClass*
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.EmailNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  commentId: M:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.EmailNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  id: EmailNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  parent: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  langs:
+  - csharp
+  - vb
+  name: EmailNavClass(ViewContext)
+  nameWithType: ManageNavPages.EmailNavClass(ViewContext)
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.EmailNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  type: Method
+  source:
+    remote:
+      path: App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: EmailNavClass
+    path: ../App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+    startLine: 25
+  assemblies:
+  - App
+  namespace: App.Areas.Manage.Pages.Account.Manage
+  syntax:
+    content: public static string EmailNavClass(ViewContext viewContext)
+    parameters:
+    - id: viewContext
+      type: Microsoft.AspNetCore.Mvc.Rendering.ViewContext
+    return:
+      type: System.String
+    content.vb: Public Shared Function EmailNavClass(viewContext As ViewContext) As String
+  overload: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.EmailNavClass*
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePasswordNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  commentId: M:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePasswordNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  id: ChangePasswordNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  parent: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  langs:
+  - csharp
+  - vb
+  name: ChangePasswordNavClass(ViewContext)
+  nameWithType: ManageNavPages.ChangePasswordNavClass(ViewContext)
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePasswordNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  type: Method
+  source:
+    remote:
+      path: App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ChangePasswordNavClass
+    path: ../App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+    startLine: 30
+  assemblies:
+  - App
+  namespace: App.Areas.Manage.Pages.Account.Manage
+  syntax:
+    content: public static string ChangePasswordNavClass(ViewContext viewContext)
+    parameters:
+    - id: viewContext
+      type: Microsoft.AspNetCore.Mvc.Rendering.ViewContext
+    return:
+      type: System.String
+    content.vb: Public Shared Function ChangePasswordNavClass(viewContext As ViewContext) As String
+  overload: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePasswordNavClass*
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalDataNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  commentId: M:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalDataNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  id: DownloadPersonalDataNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  parent: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  langs:
+  - csharp
+  - vb
+  name: DownloadPersonalDataNavClass(ViewContext)
+  nameWithType: ManageNavPages.DownloadPersonalDataNavClass(ViewContext)
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalDataNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  type: Method
+  source:
+    remote:
+      path: App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: DownloadPersonalDataNavClass
+    path: ../App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+    startLine: 35
+  assemblies:
+  - App
+  namespace: App.Areas.Manage.Pages.Account.Manage
+  syntax:
+    content: public static string DownloadPersonalDataNavClass(ViewContext viewContext)
+    parameters:
+    - id: viewContext
+      type: Microsoft.AspNetCore.Mvc.Rendering.ViewContext
+    return:
+      type: System.String
+    content.vb: Public Shared Function DownloadPersonalDataNavClass(viewContext As ViewContext) As String
+  overload: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalDataNavClass*
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalDataNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  commentId: M:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalDataNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  id: DeletePersonalDataNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  parent: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  langs:
+  - csharp
+  - vb
+  name: DeletePersonalDataNavClass(ViewContext)
+  nameWithType: ManageNavPages.DeletePersonalDataNavClass(ViewContext)
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalDataNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  type: Method
+  source:
+    remote:
+      path: App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: DeletePersonalDataNavClass
+    path: ../App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+    startLine: 40
+  assemblies:
+  - App
+  namespace: App.Areas.Manage.Pages.Account.Manage
+  syntax:
+    content: public static string DeletePersonalDataNavClass(ViewContext viewContext)
+    parameters:
+    - id: viewContext
+      type: Microsoft.AspNetCore.Mvc.Rendering.ViewContext
+    return:
+      type: System.String
+    content.vb: Public Shared Function DeletePersonalDataNavClass(viewContext As ViewContext) As String
+  overload: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalDataNavClass*
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalDataNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  commentId: M:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalDataNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  id: PersonalDataNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  parent: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  langs:
+  - csharp
+  - vb
+  name: PersonalDataNavClass(ViewContext)
+  nameWithType: ManageNavPages.PersonalDataNavClass(ViewContext)
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalDataNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+  type: Method
+  source:
+    remote:
+      path: App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: PersonalDataNavClass
+    path: ../App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+    startLine: 45
+  assemblies:
+  - App
+  namespace: App.Areas.Manage.Pages.Account.Manage
+  syntax:
+    content: public static string PersonalDataNavClass(ViewContext viewContext)
+    parameters:
+    - id: viewContext
+      type: Microsoft.AspNetCore.Mvc.Rendering.ViewContext
+    return:
+      type: System.String
+    content.vb: Public Shared Function PersonalDataNavClass(viewContext As ViewContext) As String
+  overload: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalDataNavClass*
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PageNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext,System.String)
+  commentId: M:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PageNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext,System.String)
+  id: PageNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext,System.String)
+  parent: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+  langs:
+  - csharp
+  - vb
+  name: PageNavClass(ViewContext, string)
+  nameWithType: ManageNavPages.PageNavClass(ViewContext, string)
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PageNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext, string)
+  type: Method
+  source:
+    remote:
+      path: App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: PageNavClass
+    path: ../App/Areas/Manage/Pages/Account/Manage/ManageNavPages.cs
+    startLine: 50
+  assemblies:
+  - App
+  namespace: App.Areas.Manage.Pages.Account.Manage
+  syntax:
+    content: public static string PageNavClass(ViewContext viewContext, string page)
+    parameters:
+    - id: viewContext
+      type: Microsoft.AspNetCore.Mvc.Rendering.ViewContext
+    - id: page
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Shared Function PageNavClass(viewContext As ViewContext, page As String) As String
+  overload: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PageNavClass*
+  nameWithType.vb: ManageNavPages.PageNavClass(ViewContext, String)
+  fullName.vb: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PageNavClass(Microsoft.AspNetCore.Mvc.Rendering.ViewContext, String)
+  name.vb: PageNavClass(ViewContext, String)
+references:
+- uid: App.Areas.Manage.Pages.Account.Manage
+  commentId: N:App.Areas.Manage.Pages.Account.Manage
+  name: App.Areas.Manage.Pages.Account.Manage
+  nameWithType: App.Areas.Manage.Pages.Account.Manage
+  fullName: App.Areas.Manage.Pages.Account.Manage
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Areas
+    name: Areas
+  - name: .
+  - uid: App.Areas.Manage
+    name: Manage
+  - name: .
+  - uid: App.Areas.Manage.Pages
+    name: Pages
+  - name: .
+  - uid: App.Areas.Manage.Pages.Account
+    name: Account
+  - name: .
+  - uid: App.Areas.Manage.Pages.Account.Manage
+    name: Manage
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Areas
+    name: Areas
+  - name: .
+  - uid: App.Areas.Manage
+    name: Manage
+  - name: .
+  - uid: App.Areas.Manage.Pages
+    name: Pages
+  - name: .
+  - uid: App.Areas.Manage.Pages.Account
+    name: Account
+  - name: .
+  - uid: App.Areas.Manage.Pages.Account.Manage
+    name: Manage
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Index*
+  commentId: Overload:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Index
+  name: Index
+  nameWithType: ManageNavPages.Index
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Index
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Email*
+  commentId: Overload:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Email
+  name: Email
+  nameWithType: ManageNavPages.Email
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.Email
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePassword*
+  commentId: Overload:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePassword
+  name: ChangePassword
+  nameWithType: ManageNavPages.ChangePassword
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePassword
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalData*
+  commentId: Overload:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalData
+  name: DownloadPersonalData
+  nameWithType: ManageNavPages.DownloadPersonalData
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalData
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalData*
+  commentId: Overload:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalData
+  name: DeletePersonalData
+  nameWithType: ManageNavPages.DeletePersonalData
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalData
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalData*
+  commentId: Overload:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalData
+  name: PersonalData
+  nameWithType: ManageNavPages.PersonalData
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalData
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.IndexNavClass*
+  commentId: Overload:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.IndexNavClass
+  name: IndexNavClass
+  nameWithType: ManageNavPages.IndexNavClass
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.IndexNavClass
+- uid: Microsoft.AspNetCore.Mvc.Rendering.ViewContext
+  commentId: T:Microsoft.AspNetCore.Mvc.Rendering.ViewContext
+  parent: Microsoft.AspNetCore.Mvc.Rendering
+  isExternal: true
+  name: ViewContext
+  nameWithType: ViewContext
+  fullName: Microsoft.AspNetCore.Mvc.Rendering.ViewContext
+- uid: Microsoft.AspNetCore.Mvc.Rendering
+  commentId: N:Microsoft.AspNetCore.Mvc.Rendering
+  isExternal: true
+  name: Microsoft.AspNetCore.Mvc.Rendering
+  nameWithType: Microsoft.AspNetCore.Mvc.Rendering
+  fullName: Microsoft.AspNetCore.Mvc.Rendering
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Mvc
+    name: Mvc
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Mvc.Rendering
+    name: Rendering
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Mvc
+    name: Mvc
+    isExternal: true
+  - name: .
+  - uid: Microsoft.AspNetCore.Mvc.Rendering
+    name: Rendering
+    isExternal: true
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.EmailNavClass*
+  commentId: Overload:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.EmailNavClass
+  name: EmailNavClass
+  nameWithType: ManageNavPages.EmailNavClass
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.EmailNavClass
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePasswordNavClass*
+  commentId: Overload:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePasswordNavClass
+  name: ChangePasswordNavClass
+  nameWithType: ManageNavPages.ChangePasswordNavClass
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.ChangePasswordNavClass
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalDataNavClass*
+  commentId: Overload:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalDataNavClass
+  name: DownloadPersonalDataNavClass
+  nameWithType: ManageNavPages.DownloadPersonalDataNavClass
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DownloadPersonalDataNavClass
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalDataNavClass*
+  commentId: Overload:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalDataNavClass
+  name: DeletePersonalDataNavClass
+  nameWithType: ManageNavPages.DeletePersonalDataNavClass
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.DeletePersonalDataNavClass
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalDataNavClass*
+  commentId: Overload:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalDataNavClass
+  name: PersonalDataNavClass
+  nameWithType: ManageNavPages.PersonalDataNavClass
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PersonalDataNavClass
+- uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PageNavClass*
+  commentId: Overload:App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PageNavClass
+  name: PageNavClass
+  nameWithType: ManageNavPages.PageNavClass
+  fullName: App.Areas.Manage.Pages.Account.Manage.ManageNavPages.PageNavClass

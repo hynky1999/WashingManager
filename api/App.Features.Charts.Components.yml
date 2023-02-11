@@ -1,0 +1,131 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Features.Charts.Components
+  commentId: N:App.Features.Charts.Components
+  id: App.Features.Charts.Components
+  children:
+  - App.Features.Charts.Components.AvgHourlyUsage`1
+  - App.Features.Charts.Components.DailyBorrows`1
+  - App.Features.Charts.Components.HourlyBorrows`1
+  - App.Features.Charts.Components.HourlyUsage`1
+  - App.Features.Charts.Components.WeeklyUsage`1
+  langs:
+  - csharp
+  - vb
+  name: App.Features.Charts.Components
+  nameWithType: App.Features.Charts.Components
+  fullName: App.Features.Charts.Components
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Features.Charts.Components.AvgHourlyUsage`1
+  commentId: T:App.Features.Charts.Components.AvgHourlyUsage`1
+  name: AvgHourlyUsage<T>
+  nameWithType: AvgHourlyUsage<T>
+  fullName: App.Features.Charts.Components.AvgHourlyUsage<T>
+  nameWithType.vb: AvgHourlyUsage(Of T)
+  fullName.vb: App.Features.Charts.Components.AvgHourlyUsage(Of T)
+  name.vb: AvgHourlyUsage(Of T)
+  spec.csharp:
+  - uid: App.Features.Charts.Components.AvgHourlyUsage`1
+    name: AvgHourlyUsage
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Features.Charts.Components.AvgHourlyUsage`1
+    name: AvgHourlyUsage
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Features.Charts.Components.HourlyUsage`1
+  commentId: T:App.Features.Charts.Components.HourlyUsage`1
+  name: HourlyUsage<T>
+  nameWithType: HourlyUsage<T>
+  fullName: App.Features.Charts.Components.HourlyUsage<T>
+  nameWithType.vb: HourlyUsage(Of T)
+  fullName.vb: App.Features.Charts.Components.HourlyUsage(Of T)
+  name.vb: HourlyUsage(Of T)
+  spec.csharp:
+  - uid: App.Features.Charts.Components.HourlyUsage`1
+    name: HourlyUsage
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Features.Charts.Components.HourlyUsage`1
+    name: HourlyUsage
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Features.Charts.Components.DailyBorrows`1
+  commentId: T:App.Features.Charts.Components.DailyBorrows`1
+  name: DailyBorrows<T>
+  nameWithType: DailyBorrows<T>
+  fullName: App.Features.Charts.Components.DailyBorrows<T>
+  nameWithType.vb: DailyBorrows(Of T)
+  fullName.vb: App.Features.Charts.Components.DailyBorrows(Of T)
+  name.vb: DailyBorrows(Of T)
+  spec.csharp:
+  - uid: App.Features.Charts.Components.DailyBorrows`1
+    name: DailyBorrows
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Features.Charts.Components.DailyBorrows`1
+    name: DailyBorrows
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Features.Charts.Components.WeeklyUsage`1
+  commentId: T:App.Features.Charts.Components.WeeklyUsage`1
+  name: WeeklyUsage<T>
+  nameWithType: WeeklyUsage<T>
+  fullName: App.Features.Charts.Components.WeeklyUsage<T>
+  nameWithType.vb: WeeklyUsage(Of T)
+  fullName.vb: App.Features.Charts.Components.WeeklyUsage(Of T)
+  name.vb: WeeklyUsage(Of T)
+  spec.csharp:
+  - uid: App.Features.Charts.Components.WeeklyUsage`1
+    name: WeeklyUsage
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Features.Charts.Components.WeeklyUsage`1
+    name: WeeklyUsage
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Features.Charts.Components.HourlyBorrows`1
+  commentId: T:App.Features.Charts.Components.HourlyBorrows`1
+  name: HourlyBorrows<T>
+  nameWithType: HourlyBorrows<T>
+  fullName: App.Features.Charts.Components.HourlyBorrows<T>
+  nameWithType.vb: HourlyBorrows(Of T)
+  fullName.vb: App.Features.Charts.Components.HourlyBorrows(Of T)
+  name.vb: HourlyBorrows(Of T)
+  spec.csharp:
+  - uid: App.Features.Charts.Components.HourlyBorrows`1
+    name: HourlyBorrows
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Features.Charts.Components.HourlyBorrows`1
+    name: HourlyBorrows
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

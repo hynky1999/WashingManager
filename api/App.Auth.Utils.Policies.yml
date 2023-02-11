@@ -1,0 +1,377 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Auth.Utils.Policies
+  commentId: T:App.Auth.Utils.Policies
+  id: Policies
+  parent: App.Auth.Utils
+  children:
+  - App.Auth.Utils.Policies.BorrowManagement
+  - App.Auth.Utils.Policies.ModelManagement
+  - App.Auth.Utils.Policies.UserManagement
+  langs:
+  - csharp
+  - vb
+  name: Policies
+  nameWithType: Policies
+  fullName: App.Auth.Utils.Policies
+  type: Class
+  source:
+    remote:
+      path: App/Auth/Utils/Policies.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: Policies
+    path: ../App/Auth/Utils/Policies.cs
+    startLine: 6
+  assemblies:
+  - App
+  namespace: App.Auth.Utils
+  summary: "\nHelper class for defining policies\nWe use roles for authorization of pages\n"
+  example: []
+  syntax:
+    content: public static class Policies
+    content.vb: Public Module Policies
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: App.Auth.Utils.Policies.UserManagement
+  commentId: F:App.Auth.Utils.Policies.UserManagement
+  id: UserManagement
+  parent: App.Auth.Utils.Policies
+  langs:
+  - csharp
+  - vb
+  name: UserManagement
+  nameWithType: Policies.UserManagement
+  fullName: App.Auth.Utils.Policies.UserManagement
+  type: Field
+  source:
+    remote:
+      path: App/Auth/Utils/Policies.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: UserManagement
+    path: ../App/Auth/Utils/Policies.cs
+    startLine: 11
+  assemblies:
+  - App
+  namespace: App.Auth.Utils
+  summary: "\nPolicy for <xref href=\"App.Auth.Utils.Claims.ManageUsers\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public const string UserManagement = "UserManagement"
+    return:
+      type: System.String
+    content.vb: Public Const UserManagement As String = "UserManagement"
+- uid: App.Auth.Utils.Policies.ModelManagement
+  commentId: F:App.Auth.Utils.Policies.ModelManagement
+  id: ModelManagement
+  parent: App.Auth.Utils.Policies
+  langs:
+  - csharp
+  - vb
+  name: ModelManagement
+  nameWithType: Policies.ModelManagement
+  fullName: App.Auth.Utils.Policies.ModelManagement
+  type: Field
+  source:
+    remote:
+      path: App/Auth/Utils/Policies.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ModelManagement
+    path: ../App/Auth/Utils/Policies.cs
+    startLine: 16
+  assemblies:
+  - App
+  namespace: App.Auth.Utils
+  summary: "\nPolicy for <xref href=\"App.Auth.Utils.Claims.ManageModels\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public const string ModelManagement = "ModelManagement"
+    return:
+      type: System.String
+    content.vb: Public Const ModelManagement As String = "ModelManagement"
+- uid: App.Auth.Utils.Policies.BorrowManagement
+  commentId: F:App.Auth.Utils.Policies.BorrowManagement
+  id: BorrowManagement
+  parent: App.Auth.Utils.Policies
+  langs:
+  - csharp
+  - vb
+  name: BorrowManagement
+  nameWithType: Policies.BorrowManagement
+  fullName: App.Auth.Utils.Policies.BorrowManagement
+  type: Field
+  source:
+    remote:
+      path: App/Auth/Utils/Policies.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: BorrowManagement
+    path: ../App/Auth/Utils/Policies.cs
+    startLine: 21
+  assemblies:
+  - App
+  namespace: App.Auth.Utils
+  summary: "\nPolicy for <xref href=\"App.Auth.Utils.Claims.ManageBorrows\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public const string BorrowManagement = "BorrowManagement"
+    return:
+      type: System.String
+    content.vb: Public Const BorrowManagement As String = "BorrowManagement"
+references:
+- uid: App.Auth.Utils
+  commentId: N:App.Auth.Utils
+  name: App.Auth.Utils
+  nameWithType: App.Auth.Utils
+  fullName: App.Auth.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Auth
+    name: Auth
+  - name: .
+  - uid: App.Auth.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Auth
+    name: Auth
+  - name: .
+  - uid: App.Auth.Utils
+    name: Utils
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: App.Auth.Utils.Claims.ManageUsers
+  commentId: P:App.Auth.Utils.Claims.ManageUsers
+  isExternal: true
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: App.Auth.Utils.Claims.ManageModels
+  commentId: P:App.Auth.Utils.Claims.ManageModels
+  isExternal: true
+- uid: App.Auth.Utils.Claims.ManageBorrows
+  commentId: P:App.Auth.Utils.Claims.ManageBorrows
+  isExternal: true

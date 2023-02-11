@@ -1,0 +1,110 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.EFCoreServices
+  commentId: N:App.Data.EFCoreServices
+  id: App.Data.EFCoreServices
+  children:
+  - App.Data.EFCoreServices.BorrowableEntityService
+  - App.Data.EFCoreServices.BorrowPersonService
+  - App.Data.EFCoreServices.BorrowService
+  - App.Data.EFCoreServices.CrudService`1
+  - App.Data.EFCoreServices.CurrencyService
+  - App.Data.EFCoreServices.LocationService
+  - App.Data.EFCoreServices.ReservationService
+  - App.Data.EFCoreServices.UsageChartingService`1
+  - App.Data.EFCoreServices.UsageService
+  - App.Data.EFCoreServices.UserService
+  langs:
+  - csharp
+  - vb
+  name: App.Data.EFCoreServices
+  nameWithType: App.Data.EFCoreServices
+  fullName: App.Data.EFCoreServices
+  type: Namespace
+  assemblies:
+  - App
+references:
+- uid: App.Data.EFCoreServices.BorrowableEntityService
+  commentId: T:App.Data.EFCoreServices.BorrowableEntityService
+  name: BorrowableEntityService
+  nameWithType: BorrowableEntityService
+  fullName: App.Data.EFCoreServices.BorrowableEntityService
+- uid: App.Data.EFCoreServices.BorrowPersonService
+  commentId: T:App.Data.EFCoreServices.BorrowPersonService
+  name: BorrowPersonService
+  nameWithType: BorrowPersonService
+  fullName: App.Data.EFCoreServices.BorrowPersonService
+- uid: App.Data.EFCoreServices.BorrowService
+  commentId: T:App.Data.EFCoreServices.BorrowService
+  name: BorrowService
+  nameWithType: BorrowService
+  fullName: App.Data.EFCoreServices.BorrowService
+- uid: App.Data.EFCoreServices.CrudService`1
+  commentId: T:App.Data.EFCoreServices.CrudService`1
+  name: CrudService<T>
+  nameWithType: CrudService<T>
+  fullName: App.Data.EFCoreServices.CrudService<T>
+  nameWithType.vb: CrudService(Of T)
+  fullName.vb: App.Data.EFCoreServices.CrudService(Of T)
+  name.vb: CrudService(Of T)
+  spec.csharp:
+  - uid: App.Data.EFCoreServices.CrudService`1
+    name: CrudService
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Data.EFCoreServices.CrudService`1
+    name: CrudService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Data.EFCoreServices.CurrencyService
+  commentId: T:App.Data.EFCoreServices.CurrencyService
+  name: CurrencyService
+  nameWithType: CurrencyService
+  fullName: App.Data.EFCoreServices.CurrencyService
+- uid: App.Data.EFCoreServices.LocationService
+  commentId: T:App.Data.EFCoreServices.LocationService
+  name: LocationService
+  nameWithType: LocationService
+  fullName: App.Data.EFCoreServices.LocationService
+- uid: App.Data.EFCoreServices.ReservationService
+  commentId: T:App.Data.EFCoreServices.ReservationService
+  name: ReservationService
+  nameWithType: ReservationService
+  fullName: App.Data.EFCoreServices.ReservationService
+- uid: App.Data.EFCoreServices.UsageChartingService`1
+  commentId: T:App.Data.EFCoreServices.UsageChartingService`1
+  name: UsageChartingService<T>
+  nameWithType: UsageChartingService<T>
+  fullName: App.Data.EFCoreServices.UsageChartingService<T>
+  nameWithType.vb: UsageChartingService(Of T)
+  fullName.vb: App.Data.EFCoreServices.UsageChartingService(Of T)
+  name.vb: UsageChartingService(Of T)
+  spec.csharp:
+  - uid: App.Data.EFCoreServices.UsageChartingService`1
+    name: UsageChartingService
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: App.Data.EFCoreServices.UsageChartingService`1
+    name: UsageChartingService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Data.EFCoreServices.UsageService
+  commentId: T:App.Data.EFCoreServices.UsageService
+  name: UsageService
+  nameWithType: UsageService
+  fullName: App.Data.EFCoreServices.UsageService
+- uid: App.Data.EFCoreServices.UserService
+  commentId: T:App.Data.EFCoreServices.UserService
+  name: UserService
+  nameWithType: UserService
+  fullName: App.Data.EFCoreServices.UserService

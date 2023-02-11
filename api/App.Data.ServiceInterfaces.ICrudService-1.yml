@@ -1,0 +1,950 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.ServiceInterfaces.ICrudService`1
+  commentId: T:App.Data.ServiceInterfaces.ICrudService`1
+  id: ICrudService`1
+  parent: App.Data.ServiceInterfaces
+  children:
+  - App.Data.ServiceInterfaces.ICrudService`1.CreateAsync(`0)
+  - App.Data.ServiceInterfaces.ICrudService`1.DeleteAsync(`0)
+  - App.Data.ServiceInterfaces.ICrudService`1.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+  - App.Data.ServiceInterfaces.ICrudService`1.GetByIdAsync(System.Object,System.Boolean)
+  - App.Data.ServiceInterfaces.ICrudService`1.GetCountAsync(System.Nullable{QueryModel{`0}})
+  - App.Data.ServiceInterfaces.ICrudService`1.GetId(`0)
+  - App.Data.ServiceInterfaces.ICrudService`1.UpdateAsync(`0)
+  langs:
+  - csharp
+  - vb
+  name: ICrudService<T>
+  nameWithType: ICrudService<T>
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>
+  type: Interface
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/ICrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ICrudService
+    path: ../App/Data/ServiceInterfaces/ICrudService.cs
+    startLine: 11
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nInterface for the service that provides generic access to the database.\nIt provides methods for CRUD operations.\nIt always does not checks or validates the data.\nIt doesn&apos;t do any authorization of the current user.\n"
+  example: []
+  syntax:
+    content: public interface ICrudService<T>
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Public Interface ICrudService(Of T)
+  extensionMethods:
+  - App.Data.ServiceInterfaces.ICrudService`1.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Data.ServiceInterfaces.ICrudService`1.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  nameWithType.vb: ICrudService(Of T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T)
+  name.vb: ICrudService(Of T)
+- uid: App.Data.ServiceInterfaces.ICrudService`1.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+  commentId: M:App.Data.ServiceInterfaces.ICrudService`1.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+  id: GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+  parent: App.Data.ServiceInterfaces.ICrudService`1
+  langs:
+  - csharp
+  - vb
+  name: GetAllAsync(QueryModel<T>?, bool)
+  nameWithType: ICrudService<T>.GetAllAsync(QueryModel<T>?, bool)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetAllAsync(QueryModel<T>?, bool)
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/ICrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetAllAsync
+    path: ../App/Data/ServiceInterfaces/ICrudService.cs
+    startLine: 19
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nGets all items of the type T based on queryModel filters.\n"
+  example: []
+  syntax:
+    content: Task<T[]> GetAllAsync(QueryModel<T>? queryModel = null, bool eager = false)
+    parameters:
+    - id: queryModel
+      type: System.Nullable{QueryModel{{T}}}
+      description: ''
+    - id: eager
+      type: System.Boolean
+      description: Should all relates tables be fetched too ?
+    return:
+      type: System.Threading.Tasks.Task{{T}[]}
+      description: All items of type T
+    content.vb: Function GetAllAsync(queryModel As QueryModel(Of T)? = Nothing, eager As Boolean = False) As Task(Of T())
+  overload: App.Data.ServiceInterfaces.ICrudService`1.GetAllAsync*
+  nameWithType.vb: ICrudService(Of T).GetAllAsync(QueryModel(Of T)?, Boolean)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetAllAsync(QueryModel(Of T)?, Boolean)
+  name.vb: GetAllAsync(QueryModel(Of T)?, Boolean)
+- uid: App.Data.ServiceInterfaces.ICrudService`1.GetCountAsync(System.Nullable{QueryModel{`0}})
+  commentId: M:App.Data.ServiceInterfaces.ICrudService`1.GetCountAsync(System.Nullable{QueryModel{`0}})
+  id: GetCountAsync(System.Nullable{QueryModel{`0}})
+  parent: App.Data.ServiceInterfaces.ICrudService`1
+  langs:
+  - csharp
+  - vb
+  name: GetCountAsync(QueryModel<T>?)
+  nameWithType: ICrudService<T>.GetCountAsync(QueryModel<T>?)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetCountAsync(QueryModel<T>?)
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/ICrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetCountAsync
+    path: ../App/Data/ServiceInterfaces/ICrudService.cs
+    startLine: 27
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\n<xref href=\"App.Data.ServiceInterfaces.ICrudService%601.GetAllAsync(System.Nullable%7bQueryModel%7b%600%7d%7d%2cSystem.Boolean)\" data-throw-if-not-resolved=\"false\"></xref> but counts the items.\n"
+  example: []
+  syntax:
+    content: Task<int> GetCountAsync(QueryModel<T>? queryModel)
+    parameters:
+    - id: queryModel
+      type: System.Nullable{QueryModel{{T}}}
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+      description: Count of all items
+    content.vb: Function GetCountAsync(queryModel As QueryModel(Of T)?) As Task(Of Integer)
+  overload: App.Data.ServiceInterfaces.ICrudService`1.GetCountAsync*
+  nameWithType.vb: ICrudService(Of T).GetCountAsync(QueryModel(Of T)?)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetCountAsync(QueryModel(Of T)?)
+  name.vb: GetCountAsync(QueryModel(Of T)?)
+- uid: App.Data.ServiceInterfaces.ICrudService`1.GetByIdAsync(System.Object,System.Boolean)
+  commentId: M:App.Data.ServiceInterfaces.ICrudService`1.GetByIdAsync(System.Object,System.Boolean)
+  id: GetByIdAsync(System.Object,System.Boolean)
+  parent: App.Data.ServiceInterfaces.ICrudService`1
+  langs:
+  - csharp
+  - vb
+  name: GetByIdAsync(object, bool)
+  nameWithType: ICrudService<T>.GetByIdAsync(object, bool)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetByIdAsync(object, bool)
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/ICrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetByIdAsync
+    path: ../App/Data/ServiceInterfaces/ICrudService.cs
+    startLine: 35
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nReturns the item with the given id.\n"
+  example: []
+  syntax:
+    content: Task<T?> GetByIdAsync(object id, bool eager = false)
+    parameters:
+    - id: id
+      type: System.Object
+      description: ''
+    - id: eager
+      type: System.Boolean
+      description: Should all relates tables be fetched too ?
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+      description: Returns item if found otherwise null
+    content.vb: Function GetByIdAsync(id As Object, eager As Boolean = False) As Task(Of T)
+  overload: App.Data.ServiceInterfaces.ICrudService`1.GetByIdAsync*
+  nameWithType.vb: ICrudService(Of T).GetByIdAsync(Object, Boolean)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetByIdAsync(Object, Boolean)
+  name.vb: GetByIdAsync(Object, Boolean)
+- uid: App.Data.ServiceInterfaces.ICrudService`1.CreateAsync(`0)
+  commentId: M:App.Data.ServiceInterfaces.ICrudService`1.CreateAsync(`0)
+  id: CreateAsync(`0)
+  parent: App.Data.ServiceInterfaces.ICrudService`1
+  langs:
+  - csharp
+  - vb
+  name: CreateAsync(T)
+  nameWithType: ICrudService<T>.CreateAsync(T)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.CreateAsync(T)
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/ICrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: CreateAsync
+    path: ../App/Data/ServiceInterfaces/ICrudService.cs
+    startLine: 42
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nCreate an item in the database.\n"
+  example: []
+  syntax:
+    content: Task<T> CreateAsync(T entity)
+    parameters:
+    - id: entity
+      type: '{T}'
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+      description: Item created
+    content.vb: Function CreateAsync(entity As T) As Task(Of T)
+  overload: App.Data.ServiceInterfaces.ICrudService`1.CreateAsync*
+  nameWithType.vb: ICrudService(Of T).CreateAsync(T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).CreateAsync(T)
+- uid: App.Data.ServiceInterfaces.ICrudService`1.UpdateAsync(`0)
+  commentId: M:App.Data.ServiceInterfaces.ICrudService`1.UpdateAsync(`0)
+  id: UpdateAsync(`0)
+  parent: App.Data.ServiceInterfaces.ICrudService`1
+  langs:
+  - csharp
+  - vb
+  name: UpdateAsync(T)
+  nameWithType: ICrudService<T>.UpdateAsync(T)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.UpdateAsync(T)
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/ICrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: UpdateAsync
+    path: ../App/Data/ServiceInterfaces/ICrudService.cs
+    startLine: 49
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nUpdate an item in the database.\n"
+  example: []
+  syntax:
+    content: Task<T> UpdateAsync(T entity)
+    parameters:
+    - id: entity
+      type: '{T}'
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+      description: Updated item
+    content.vb: Function UpdateAsync(entity As T) As Task(Of T)
+  overload: App.Data.ServiceInterfaces.ICrudService`1.UpdateAsync*
+  nameWithType.vb: ICrudService(Of T).UpdateAsync(T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).UpdateAsync(T)
+- uid: App.Data.ServiceInterfaces.ICrudService`1.DeleteAsync(`0)
+  commentId: M:App.Data.ServiceInterfaces.ICrudService`1.DeleteAsync(`0)
+  id: DeleteAsync(`0)
+  parent: App.Data.ServiceInterfaces.ICrudService`1
+  langs:
+  - csharp
+  - vb
+  name: DeleteAsync(T)
+  nameWithType: ICrudService<T>.DeleteAsync(T)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.DeleteAsync(T)
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/ICrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: DeleteAsync
+    path: ../App/Data/ServiceInterfaces/ICrudService.cs
+    startLine: 56
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nDelete an item from the database.\n"
+  example: []
+  syntax:
+    content: Task DeleteAsync(T entity)
+    parameters:
+    - id: entity
+      type: '{T}'
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Function DeleteAsync(entity As T) As Task
+  overload: App.Data.ServiceInterfaces.ICrudService`1.DeleteAsync*
+  nameWithType.vb: ICrudService(Of T).DeleteAsync(T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).DeleteAsync(T)
+- uid: App.Data.ServiceInterfaces.ICrudService`1.GetId(`0)
+  commentId: M:App.Data.ServiceInterfaces.ICrudService`1.GetId(`0)
+  id: GetId(`0)
+  parent: App.Data.ServiceInterfaces.ICrudService`1
+  langs:
+  - csharp
+  - vb
+  name: GetId(T)
+  nameWithType: ICrudService<T>.GetId(T)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetId(T)
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/ICrudService.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetId
+    path: ../App/Data/ServiceInterfaces/ICrudService.cs
+    startLine: 63
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nReturns a key/ID of the item.\n"
+  example: []
+  syntax:
+    content: object GetId(T entity)
+    parameters:
+    - id: entity
+      type: '{T}'
+      description: ''
+    return:
+      type: System.Object
+      description: key/ID
+    content.vb: Function GetId(entity As T) As Object
+  overload: App.Data.ServiceInterfaces.ICrudService`1.GetId*
+  nameWithType.vb: ICrudService(Of T).GetId(T)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetId(T)
+references:
+- uid: App.Data.ServiceInterfaces
+  commentId: N:App.Data.ServiceInterfaces
+  name: App.Data.ServiceInterfaces
+  nameWithType: App.Data.ServiceInterfaces
+  fullName: App.Data.ServiceInterfaces
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+- uid: App.Data.ServiceInterfaces.ICrudService`1.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<ICrudService<T>>(ICrudService<T>, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<ICrudService<T>>(ICrudService<T>, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Data.ServiceInterfaces.ICrudService<T>>(App.Data.ServiceInterfaces.ICrudService<T>, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of ICrudService(Of T))(ICrudService(Of T), PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Data.ServiceInterfaces.ICrudService(Of T))(App.Data.ServiceInterfaces.ICrudService(Of T), System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of ICrudService(Of T))(ICrudService(Of T), PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.ServiceInterfaces.ICrudService{`0},System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Data.ServiceInterfaces.ICrudService`1
+    name: ICrudService
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: App.Data.ServiceInterfaces.ICrudService`1
+    name: ICrudService
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.ServiceInterfaces.ICrudService{`0},System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.ServiceInterfaces.ICrudService`1
+    name: ICrudService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: App.Data.ServiceInterfaces.ICrudService`1
+    name: ICrudService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Data.ServiceInterfaces.ICrudService`1.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<ICrudService<T>>(ICrudService<T>, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<ICrudService<T>>(ICrudService<T>, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Data.ServiceInterfaces.ICrudService<T>>(App.Data.ServiceInterfaces.ICrudService<T>, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of ICrudService(Of T))(ICrudService(Of T), Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Data.ServiceInterfaces.ICrudService(Of T))(App.Data.ServiceInterfaces.ICrudService(Of T), Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of ICrudService(Of T))(ICrudService(Of T), Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.ServiceInterfaces.ICrudService{`0},System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Data.ServiceInterfaces.ICrudService`1
+    name: ICrudService
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: App.Data.ServiceInterfaces.ICrudService`1
+    name: ICrudService
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.ServiceInterfaces.ICrudService{`0},System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.ServiceInterfaces.ICrudService`1
+    name: ICrudService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: (
+  - uid: App.Data.ServiceInterfaces.ICrudService`1
+    name: ICrudService
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Data.ServiceInterfaces.ICrudService`1.GetAllAsync*
+  commentId: Overload:App.Data.ServiceInterfaces.ICrudService`1.GetAllAsync
+  name: GetAllAsync
+  nameWithType: ICrudService<T>.GetAllAsync
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetAllAsync
+  nameWithType.vb: ICrudService(Of T).GetAllAsync
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetAllAsync
+- uid: System.Nullable{QueryModel{{T}}}
+  commentId: T:System.Nullable{QueryModel{`0}}
+  parent: System
+  definition: System.Nullable`1
+  name: QueryModel<T>?
+  nameWithType: QueryModel<T>?
+  fullName: QueryModel<T>?
+  nameWithType.vb: QueryModel(Of T)?
+  fullName.vb: QueryModel(Of T)?
+  name.vb: QueryModel(Of T)?
+  spec.csharp:
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '?'
+  spec.vb:
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: '?'
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Threading.Tasks.Task{{T}[]}
+  commentId: T:System.Threading.Tasks.Task{``0[]}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<T[]>
+  nameWithType: Task<T[]>
+  fullName: System.Threading.Tasks.Task<T[]>
+  nameWithType.vb: Task(Of T())
+  fullName.vb: System.Threading.Tasks.Task(Of T())
+  name.vb: Task(Of T())
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+- uid: App.Data.ServiceInterfaces.ICrudService`1.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+  commentId: M:App.Data.ServiceInterfaces.ICrudService`1.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+  isExternal: true
+  name: GetAllAsync(QueryModel<T>?, bool)
+  nameWithType: ICrudService<T>.GetAllAsync(QueryModel<T>?, bool)
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetAllAsync(QueryModel<T>?, bool)
+  nameWithType.vb: ICrudService(Of T).GetAllAsync(QueryModel(Of T)?, Boolean)
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetAllAsync(QueryModel(Of T)?, Boolean)
+  name.vb: GetAllAsync(QueryModel(Of T)?, Boolean)
+  spec.csharp:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+    name: GetAllAsync
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Data.ServiceInterfaces.ICrudService`1.GetAllAsync(System.Nullable{QueryModel{`0}},System.Boolean)
+    name: GetAllAsync
+  - name: (
+  - uid: QueryModel`1
+    name: QueryModel
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: App.Data.ServiceInterfaces.ICrudService`1.GetCountAsync*
+  commentId: Overload:App.Data.ServiceInterfaces.ICrudService`1.GetCountAsync
+  name: GetCountAsync
+  nameWithType: ICrudService<T>.GetCountAsync
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetCountAsync
+  nameWithType.vb: ICrudService(Of T).GetCountAsync
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetCountAsync
+- uid: System.Threading.Tasks.Task{System.Int32}
+  commentId: T:System.Threading.Tasks.Task{System.Int32}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<int>
+  nameWithType: Task<int>
+  fullName: System.Threading.Tasks.Task<int>
+  nameWithType.vb: Task(Of Integer)
+  fullName.vb: System.Threading.Tasks.Task(Of Integer)
+  name.vb: Task(Of Integer)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: App.Data.ServiceInterfaces.ICrudService`1.GetByIdAsync*
+  commentId: Overload:App.Data.ServiceInterfaces.ICrudService`1.GetByIdAsync
+  name: GetByIdAsync
+  nameWithType: ICrudService<T>.GetByIdAsync
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetByIdAsync
+  nameWithType.vb: ICrudService(Of T).GetByIdAsync
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetByIdAsync
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Threading.Tasks.Task{{T}}
+  commentId: T:System.Threading.Tasks.Task{`0}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<T>
+  nameWithType: Task<T>
+  fullName: System.Threading.Tasks.Task<T>
+  nameWithType.vb: Task(Of T)
+  fullName.vb: System.Threading.Tasks.Task(Of T)
+  name.vb: Task(Of T)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: App.Data.ServiceInterfaces.ICrudService`1.CreateAsync*
+  commentId: Overload:App.Data.ServiceInterfaces.ICrudService`1.CreateAsync
+  name: CreateAsync
+  nameWithType: ICrudService<T>.CreateAsync
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.CreateAsync
+  nameWithType.vb: ICrudService(Of T).CreateAsync
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).CreateAsync
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: App.Data.ServiceInterfaces.ICrudService`1.UpdateAsync*
+  commentId: Overload:App.Data.ServiceInterfaces.ICrudService`1.UpdateAsync
+  name: UpdateAsync
+  nameWithType: ICrudService<T>.UpdateAsync
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.UpdateAsync
+  nameWithType.vb: ICrudService(Of T).UpdateAsync
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).UpdateAsync
+- uid: App.Data.ServiceInterfaces.ICrudService`1.DeleteAsync*
+  commentId: Overload:App.Data.ServiceInterfaces.ICrudService`1.DeleteAsync
+  name: DeleteAsync
+  nameWithType: ICrudService<T>.DeleteAsync
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.DeleteAsync
+  nameWithType.vb: ICrudService(Of T).DeleteAsync
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).DeleteAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: App.Data.ServiceInterfaces.ICrudService`1.GetId*
+  commentId: Overload:App.Data.ServiceInterfaces.ICrudService`1.GetId
+  name: GetId
+  nameWithType: ICrudService<T>.GetId
+  fullName: App.Data.ServiceInterfaces.ICrudService<T>.GetId
+  nameWithType.vb: ICrudService(Of T).GetId
+  fullName.vb: App.Data.ServiceInterfaces.ICrudService(Of T).GetId

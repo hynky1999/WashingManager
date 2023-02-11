@@ -1,0 +1,543 @@
+### YamlMime:ManagedReference
+items:
+- uid: App.Data.ServiceInterfaces.IBorrowableEntityService
+  commentId: T:App.Data.ServiceInterfaces.IBorrowableEntityService
+  id: IBorrowableEntityService
+  parent: App.Data.ServiceInterfaces
+  children:
+  - App.Data.ServiceInterfaces.IBorrowableEntityService.ChangeStatus(App.Data.Models.BorrowableEntity,App.Data.Utils.Status)
+  - App.Data.ServiceInterfaces.IBorrowableEntityService.GetAllBorrowableEntitites``1
+  langs:
+  - csharp
+  - vb
+  name: IBorrowableEntityService
+  nameWithType: IBorrowableEntityService
+  fullName: App.Data.ServiceInterfaces.IBorrowableEntityService
+  type: Interface
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/IBorrowableEntity.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: IBorrowableEntityService
+    path: ../App/Data/ServiceInterfaces/IBorrowableEntity.cs
+    startLine: 8
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nService for managing BorrowableEntity model and it&apos;s descendants\n"
+  example: []
+  syntax:
+    content: public interface IBorrowableEntityService
+    content.vb: Public Interface IBorrowableEntityService
+  extensionMethods:
+  - App.Data.ServiceInterfaces.IBorrowableEntityService.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  - App.Data.ServiceInterfaces.IBorrowableEntityService.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+- uid: App.Data.ServiceInterfaces.IBorrowableEntityService.ChangeStatus(App.Data.Models.BorrowableEntity,App.Data.Utils.Status)
+  commentId: M:App.Data.ServiceInterfaces.IBorrowableEntityService.ChangeStatus(App.Data.Models.BorrowableEntity,App.Data.Utils.Status)
+  id: ChangeStatus(App.Data.Models.BorrowableEntity,App.Data.Utils.Status)
+  parent: App.Data.ServiceInterfaces.IBorrowableEntityService
+  langs:
+  - csharp
+  - vb
+  name: ChangeStatus(BorrowableEntity, Status)
+  nameWithType: IBorrowableEntityService.ChangeStatus(BorrowableEntity, Status)
+  fullName: App.Data.ServiceInterfaces.IBorrowableEntityService.ChangeStatus(App.Data.Models.BorrowableEntity, App.Data.Utils.Status)
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/IBorrowableEntity.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: ChangeStatus
+    path: ../App/Data/ServiceInterfaces/IBorrowableEntity.cs
+    startLine: 16
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nChange Status property of BE\n"
+  example: []
+  syntax:
+    content: Task ChangeStatus(BorrowableEntity be, Status status)
+    parameters:
+    - id: be
+      type: App.Data.Models.BorrowableEntity
+      description: Borrowable Entitiy
+    - id: status
+      type: App.Data.Utils.Status
+      description: Status
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Function ChangeStatus(be As BorrowableEntity, status As Status) As Task
+  overload: App.Data.ServiceInterfaces.IBorrowableEntityService.ChangeStatus*
+- uid: App.Data.ServiceInterfaces.IBorrowableEntityService.GetAllBorrowableEntitites``1
+  commentId: M:App.Data.ServiceInterfaces.IBorrowableEntityService.GetAllBorrowableEntitites``1
+  id: GetAllBorrowableEntitites``1
+  parent: App.Data.ServiceInterfaces.IBorrowableEntityService
+  langs:
+  - csharp
+  - vb
+  name: GetAllBorrowableEntitites<T>()
+  nameWithType: IBorrowableEntityService.GetAllBorrowableEntitites<T>()
+  fullName: App.Data.ServiceInterfaces.IBorrowableEntityService.GetAllBorrowableEntitites<T>()
+  type: Method
+  source:
+    remote:
+      path: App/Data/ServiceInterfaces/IBorrowableEntity.cs
+      branch: main
+      repo: https://github.com/hynky1999/WashingManager
+    id: GetAllBorrowableEntitites
+    path: ../App/Data/ServiceInterfaces/IBorrowableEntity.cs
+    startLine: 23
+  assemblies:
+  - App
+  namespace: App.Data.ServiceInterfaces
+  summary: "\nReturns all BEs of certain type\n"
+  example: []
+  syntax:
+    content: 'Task<T[]> GetAllBorrowableEntitites<T>() where T : BorrowableEntity'
+    typeParameters:
+    - id: T
+      description: Type or Borrowable entity
+    return:
+      type: System.Threading.Tasks.Task{{T}[]}
+      description: ''
+    content.vb: Function GetAllBorrowableEntitites(Of T As BorrowableEntity)() As Task(Of T())
+  overload: App.Data.ServiceInterfaces.IBorrowableEntityService.GetAllBorrowableEntitites*
+  nameWithType.vb: IBorrowableEntityService.GetAllBorrowableEntitites(Of T)()
+  fullName.vb: App.Data.ServiceInterfaces.IBorrowableEntityService.GetAllBorrowableEntitites(Of T)()
+  name.vb: GetAllBorrowableEntitites(Of T)()
+references:
+- uid: App.Data.ServiceInterfaces
+  commentId: N:App.Data.ServiceInterfaces
+  name: App.Data.ServiceInterfaces
+  nameWithType: App.Data.ServiceInterfaces
+  fullName: App.Data.ServiceInterfaces
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.ServiceInterfaces
+    name: ServiceInterfaces
+- uid: App.Data.ServiceInterfaces.IBorrowableEntityService.App.Utils.ReflectionExtensions.GetPropertyExpression``1(System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  name: GetPropertyExpression<IBorrowableEntityService>(IBorrowableEntityService, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<IBorrowableEntityService>(IBorrowableEntityService, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<App.Data.ServiceInterfaces.IBorrowableEntityService>(App.Data.ServiceInterfaces.IBorrowableEntityService, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of IBorrowableEntityService)(IBorrowableEntityService, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of App.Data.ServiceInterfaces.IBorrowableEntityService)(App.Data.ServiceInterfaces.IBorrowableEntityService, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of IBorrowableEntityService)(IBorrowableEntityService, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.ServiceInterfaces.IBorrowableEntityService,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - uid: App.Data.ServiceInterfaces.IBorrowableEntityService
+    name: IBorrowableEntityService
+  - name: '>'
+  - name: (
+  - uid: App.Data.ServiceInterfaces.IBorrowableEntityService
+    name: IBorrowableEntityService
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(App.Data.ServiceInterfaces.IBorrowableEntityService,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.ServiceInterfaces.IBorrowableEntityService
+    name: IBorrowableEntityService
+  - name: )
+  - name: (
+  - uid: App.Data.ServiceInterfaces.IBorrowableEntityService
+    name: IBorrowableEntityService
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Data.ServiceInterfaces.IBorrowableEntityService.App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  parent: App.Utils.ReflectionExtensions
+  definition: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  name: GetSetPropertyEventCallback<IBorrowableEntityService>(IBorrowableEntityService, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<IBorrowableEntityService>(IBorrowableEntityService, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<App.Data.ServiceInterfaces.IBorrowableEntityService>(App.Data.ServiceInterfaces.IBorrowableEntityService, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of IBorrowableEntityService)(IBorrowableEntityService, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of App.Data.ServiceInterfaces.IBorrowableEntityService)(App.Data.ServiceInterfaces.IBorrowableEntityService, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of IBorrowableEntityService)(IBorrowableEntityService, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.ServiceInterfaces.IBorrowableEntityService,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - uid: App.Data.ServiceInterfaces.IBorrowableEntityService
+    name: IBorrowableEntityService
+  - name: '>'
+  - name: (
+  - uid: App.Data.ServiceInterfaces.IBorrowableEntityService
+    name: IBorrowableEntityService
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(App.Data.ServiceInterfaces.IBorrowableEntityService,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: App.Data.ServiceInterfaces.IBorrowableEntityService
+    name: IBorrowableEntityService
+  - name: )
+  - name: (
+  - uid: App.Data.ServiceInterfaces.IBorrowableEntityService
+    name: IBorrowableEntityService
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetPropertyExpression<T>(T, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetPropertyExpression<T>(T, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetPropertyExpression<T>(T, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetPropertyExpression(Of T)(T, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetPropertyExpression(Of T)(T, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetPropertyExpression``1(``0,System.Reflection.PropertyInfo,System.Type)
+    name: GetPropertyExpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils.ReflectionExtensions
+  commentId: T:App.Utils.ReflectionExtensions
+  parent: App.Utils
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: App.Utils.ReflectionExtensions
+- uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  commentId: M:App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+  isExternal: true
+  name: GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  nameWithType: ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, PropertyInfo, Type)
+  fullName: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback<T>(T, object, System.Reflection.PropertyInfo, System.Type)
+  nameWithType.vb: ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  fullName.vb: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback(Of T)(T, Object, System.Reflection.PropertyInfo, System.Type)
+  name.vb: GetSetPropertyEventCallback(Of T)(T, Object, PropertyInfo, Type)
+  spec.csharp:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: App.Utils.ReflectionExtensions.GetSetPropertyEventCallback``1(``0,System.Object,System.Reflection.PropertyInfo,System.Type)
+    name: GetSetPropertyEventCallback
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: )
+- uid: App.Utils
+  commentId: N:App.Utils
+  name: App.Utils
+  nameWithType: App.Utils
+  fullName: App.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Utils
+    name: Utils
+- uid: App.Data.ServiceInterfaces.IBorrowableEntityService.ChangeStatus*
+  commentId: Overload:App.Data.ServiceInterfaces.IBorrowableEntityService.ChangeStatus
+  name: ChangeStatus
+  nameWithType: IBorrowableEntityService.ChangeStatus
+  fullName: App.Data.ServiceInterfaces.IBorrowableEntityService.ChangeStatus
+- uid: App.Data.Models.BorrowableEntity
+  commentId: T:App.Data.Models.BorrowableEntity
+  parent: App.Data.Models
+  name: BorrowableEntity
+  nameWithType: BorrowableEntity
+  fullName: App.Data.Models.BorrowableEntity
+- uid: App.Data.Utils.Status
+  commentId: T:App.Data.Utils.Status
+  parent: App.Data.Utils
+  name: Status
+  nameWithType: Status
+  fullName: App.Data.Utils.Status
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: App.Data.Models
+  commentId: N:App.Data.Models
+  name: App.Data.Models
+  nameWithType: App.Data.Models
+  fullName: App.Data.Models
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Models
+    name: Models
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Models
+    name: Models
+- uid: App.Data.Utils
+  commentId: N:App.Data.Utils
+  name: App.Data.Utils
+  nameWithType: App.Data.Utils
+  fullName: App.Data.Utils
+  spec.csharp:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Utils
+    name: Utils
+  spec.vb:
+  - uid: App
+    name: App
+  - name: .
+  - uid: App.Data
+    name: Data
+  - name: .
+  - uid: App.Data.Utils
+    name: Utils
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+- uid: App.Data.ServiceInterfaces.IBorrowableEntityService.GetAllBorrowableEntitites*
+  commentId: Overload:App.Data.ServiceInterfaces.IBorrowableEntityService.GetAllBorrowableEntitites
+  name: GetAllBorrowableEntitites
+  nameWithType: IBorrowableEntityService.GetAllBorrowableEntitites
+  fullName: App.Data.ServiceInterfaces.IBorrowableEntityService.GetAllBorrowableEntitites
+- uid: System.Threading.Tasks.Task{{T}[]}
+  commentId: T:System.Threading.Tasks.Task{``0[]}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<T[]>
+  nameWithType: Task<T[]>
+  fullName: System.Threading.Tasks.Task<T[]>
+  nameWithType.vb: Task(Of T())
+  fullName.vb: System.Threading.Tasks.Task(Of T())
+  name.vb: Task(Of T())
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )

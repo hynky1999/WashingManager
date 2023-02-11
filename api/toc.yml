@@ -1,0 +1,467 @@
+### YamlMime:TableOfContent
+- uid: App
+  name: App
+  items:
+  - uid: App._Imports
+    name: _Imports
+- uid: App.Areas.Manage.Pages.Account.Admin
+  name: App.Areas.Manage.Pages.Account.Admin
+  items:
+  - uid: App.Areas.Manage.Pages.Account.Admin._AdminNav
+    name: _AdminNav
+  - uid: App.Areas.Manage.Pages.Account.Admin.AdminNavPages
+    name: AdminNavPages
+  - uid: App.Areas.Manage.Pages.Account.Admin.RegisterModel
+    name: RegisterModel
+  - uid: App.Areas.Manage.Pages.Account.Admin.RegisterModel.InputModel
+    name: RegisterModel.InputModel
+- uid: App.Areas.Manage.Pages.Account.Manage
+  name: App.Areas.Manage.Pages.Account.Manage
+  items:
+  - uid: App.Areas.Manage.Pages.Account.Manage.ChangePasswordModel
+    name: ChangePasswordModel
+  - uid: App.Areas.Manage.Pages.Account.Manage.ChangePasswordModel.InputModel
+    name: ChangePasswordModel.InputModel
+  - uid: App.Areas.Manage.Pages.Account.Manage.DeletePersonalDataModel
+    name: DeletePersonalDataModel
+  - uid: App.Areas.Manage.Pages.Account.Manage.DeletePersonalDataModel.InputModel
+    name: DeletePersonalDataModel.InputModel
+  - uid: App.Areas.Manage.Pages.Account.Manage.DownloadPersonalDataModel
+    name: DownloadPersonalDataModel
+  - uid: App.Areas.Manage.Pages.Account.Manage.EmailModel
+    name: EmailModel
+  - uid: App.Areas.Manage.Pages.Account.Manage.EmailModel.InputModel
+    name: EmailModel.InputModel
+  - uid: App.Areas.Manage.Pages.Account.Manage.IndexModel
+    name: IndexModel
+  - uid: App.Areas.Manage.Pages.Account.Manage.ManageNavPages
+    name: ManageNavPages
+  - uid: App.Areas.Manage.Pages.Account.Manage.PersonalDataModel
+    name: PersonalDataModel
+- uid: App.Areas.SignIn.Pages.Login
+  name: App.Areas.SignIn.Pages.Login
+  items:
+  - uid: App.Areas.SignIn.Pages.Login.LoginModel
+    name: LoginModel
+  - uid: App.Areas.SignIn.Pages.Login.LoginModel.InputModel
+    name: LoginModel.InputModel
+  - uid: App.Areas.SignIn.Pages.Login.LogoutModel
+    name: LogoutModel
+- uid: App.Auth.Models
+  name: App.Auth.Models
+  items:
+  - uid: App.Auth.Models.ApplicationUser
+    name: ApplicationUser
+- uid: App.Auth.Utils
+  name: App.Auth.Utils
+  items:
+  - uid: App.Auth.Utils.Claims
+    name: Claims
+  - uid: App.Auth.Utils.IdentityRoles
+    name: IdentityRoles
+  - uid: App.Auth.Utils.Policies
+    name: Policies
+  - uid: App.Auth.Utils.Role
+    name: Role
+  - uid: App.Auth.Utils.Utils
+    name: Utils
+- uid: App.Controllers
+  name: App.Controllers
+  items:
+  - uid: App.Controllers.CultureController
+    name: CultureController
+- uid: App.Data
+  name: App.Data
+  items:
+  - uid: App.Data.ApplicationDbContext
+    name: ApplicationDbContext
+- uid: App.Data.Constants
+  name: App.Data.Constants
+  items:
+  - uid: App.Data.Constants.Currency
+    name: Currency
+  - uid: App.Data.Constants.IRates
+    name: IRates
+  - uid: App.Data.Constants.IReservationConstant
+    name: IReservationConstant
+  - uid: App.Data.Constants.IUsageConstants
+    name: IUsageConstants
+  - uid: App.Data.Constants.Money
+    name: Money
+  - uid: App.Data.Constants.Rates
+    name: Rates
+  - uid: App.Data.Constants.ReservationConstant
+    name: ReservationConstant
+  - uid: App.Data.Constants.UsageContants
+    name: UsageContants
+- uid: App.Data.EFCoreServices
+  name: App.Data.EFCoreServices
+  items:
+  - uid: App.Data.EFCoreServices.BorrowableEntityService
+    name: BorrowableEntityService
+  - uid: App.Data.EFCoreServices.BorrowPersonService
+    name: BorrowPersonService
+  - uid: App.Data.EFCoreServices.BorrowService
+    name: BorrowService
+  - uid: App.Data.EFCoreServices.CrudService`1
+    name: CrudService<T>
+    name.vb: CrudService(Of T)
+  - uid: App.Data.EFCoreServices.CurrencyService
+    name: CurrencyService
+  - uid: App.Data.EFCoreServices.LocationService
+    name: LocationService
+  - uid: App.Data.EFCoreServices.ReservationService
+    name: ReservationService
+  - uid: App.Data.EFCoreServices.UsageChartingService`1
+    name: UsageChartingService<T>
+    name.vb: UsageChartingService(Of T)
+  - uid: App.Data.EFCoreServices.UsageService
+    name: UsageService
+  - uid: App.Data.EFCoreServices.UserService
+    name: UserService
+- uid: App.Data.LocServices
+  name: App.Data.LocServices
+  items:
+  - uid: App.Data.LocServices.LocalizationService
+    name: LocalizationService
+- uid: App.Data.ModelInterfaces
+  name: App.Data.ModelInterfaces
+  items:
+  - uid: App.Data.ModelInterfaces.IDBModel
+    name: IDBModel
+- uid: App.Data.Models
+  name: App.Data.Models
+  items:
+  - uid: App.Data.Models.Borrow
+    name: Borrow
+  - uid: App.Data.Models.BorrowableEntity
+    name: BorrowableEntity
+  - uid: App.Data.Models.BorrowableEntityUsage
+    name: BorrowableEntityUsage
+  - uid: App.Data.Models.BorrowableEntityUsage`1
+    name: BorrowableEntityUsage<T>
+    name.vb: BorrowableEntityUsage(Of T)
+  - uid: App.Data.Models.BorrowPerson
+    name: BorrowPerson
+  - uid: App.Data.Models.DryingRoom
+    name: DryingRoom
+  - uid: App.Data.Models.Location
+    name: Location
+  - uid: App.Data.Models.Manual
+    name: Manual
+  - uid: App.Data.Models.Reservation
+    name: Reservation
+  - uid: App.Data.Models.WashingMachine
+    name: WashingMachine
+- uid: App.Data.ServiceInterfaces
+  name: App.Data.ServiceInterfaces
+  items:
+  - uid: App.Data.ServiceInterfaces.IBorrowableEntityService
+    name: IBorrowableEntityService
+  - uid: App.Data.ServiceInterfaces.IBorrowPersonService
+    name: IBorrowPersonService
+  - uid: App.Data.ServiceInterfaces.IBorrowService
+    name: IBorrowService
+  - uid: App.Data.ServiceInterfaces.ICrudService`1
+    name: ICrudService<T>
+    name.vb: ICrudService(Of T)
+  - uid: App.Data.ServiceInterfaces.ICurrencyService
+    name: ICurrencyService
+  - uid: App.Data.ServiceInterfaces.ILocalizationService
+    name: ILocalizationService
+  - uid: App.Data.ServiceInterfaces.ILocationService
+    name: ILocationService
+  - uid: App.Data.ServiceInterfaces.IReservationsService
+    name: IReservationsService
+  - uid: App.Data.ServiceInterfaces.IUsageChartingService
+    name: IUsageChartingService
+  - uid: App.Data.ServiceInterfaces.IUsageChartingService`1
+    name: IUsageChartingService<T>
+    name.vb: IUsageChartingService(Of T)
+  - uid: App.Data.ServiceInterfaces.IUsageService
+    name: IUsageService
+  - uid: App.Data.ServiceInterfaces.IUserService
+    name: IUserService
+- uid: App.Data.Utils
+  name: App.Data.Utils
+  items:
+  - uid: App.Data.Utils.ModelUtils
+    name: ModelUtils
+  - uid: App.Data.Utils.SortOption`2
+    name: SortOption<T, TKey>
+    name.vb: SortOption(Of T, TKey)
+  - uid: App.Data.Utils.Status
+    name: Status
+  - uid: App.Data.Utils.UIVisibility
+    name: UIVisibility
+  - uid: App.Data.Utils.UIVisibilityEnum
+    name: UIVisibilityEnum
+- uid: App.Errors
+  name: App.Errors
+  items:
+  - uid: App.Errors.DbConcurrencyException
+    name: DbConcurrencyException
+  - uid: App.Errors.DbException
+    name: DbException
+  - uid: App.Errors.DbInsertException
+    name: DbInsertException
+  - uid: App.Errors.DbUpdateException
+    name: DbUpdateException
+- uid: App.Features
+  name: App.Features
+  items:
+  - uid: App.Features.Index
+    name: Index
+  - uid: App.Features.Test
+    name: Test
+- uid: App.Features.AdminPanel
+  name: App.Features.AdminPanel
+  items:
+  - uid: App.Features.AdminPanel.AdminConfig
+    name: AdminConfig
+  - uid: App.Features.AdminPanel.CrudAction
+    name: CrudAction
+- uid: App.Features.AdminPanel.Componenets
+  name: App.Features.AdminPanel.Componenets
+  items:
+  - uid: App.Features.AdminPanel.Componenets.AdminMenuNavBar
+    name: AdminMenuNavBar
+  - uid: App.Features.AdminPanel.Componenets.CrudForm`1
+    name: CrudForm<T>
+    name.vb: CrudForm(Of T)
+  - uid: App.Features.AdminPanel.Componenets.CrudTable`1
+    name: CrudTable<T>
+    name.vb: CrudTable(Of T)
+- uid: App.Features.AdminPanel.Pages
+  name: App.Features.AdminPanel.Pages
+  items:
+  - uid: App.Features.AdminPanel.Pages.AdminMenuPage
+    name: AdminMenuPage
+  - uid: App.Features.AdminPanel.Pages.ManageModelPage
+    name: ManageModelPage
+- uid: App.Features.BEManagment
+  name: App.Features.BEManagment
+  items:
+  - uid: App.Features.BEManagment.ManagementConfig
+    name: ManagementConfig
+- uid: App.Features.BEManagment.Desc
+  name: App.Features.BEManagment.Desc
+  items:
+  - uid: App.Features.BEManagment.Desc.BEDescription`1
+    name: BEDescription<T>
+    name.vb: BEDescription(Of T)
+  - uid: App.Features.BEManagment.Desc.BorrowDescription
+    name: BorrowDescription
+  - uid: App.Features.BEManagment.Desc.PriceBorrowCompute
+    name: PriceBorrowCompute
+  - uid: App.Features.BEManagment.Desc.WmDescription
+    name: WmDescription
+- uid: App.Features.BEManagment.Listing
+  name: App.Features.BEManagment.Listing
+  items:
+  - uid: App.Features.BEManagment.Listing.BETable`1
+    name: BETable<T>
+    name.vb: BETable(Of T)
+  - uid: App.Features.BEManagment.Listing.BorrowsTable`1
+    name: BorrowsTable<T>
+    name.vb: BorrowsTable(Of T)
+- uid: App.Features.BEManagment.Modals
+  name: App.Features.BEManagment.Modals
+  items:
+  - uid: App.Features.BEManagment.Modals.BorrowFormModal`1
+    name: BorrowFormModal<T>
+    name.vb: BorrowFormModal(Of T)
+  - uid: App.Features.BEManagment.Modals.BorrowRemoveModal`1
+    name: BorrowRemoveModal<T>
+    name.vb: BorrowRemoveModal(Of T)
+  - uid: App.Features.BEManagment.Modals.StatusChangeModal`1
+    name: StatusChangeModal<T>
+    name.vb: StatusChangeModal(Of T)
+- uid: App.Features.BEManagment.Pages
+  name: App.Features.BEManagment.Pages
+  items:
+  - uid: App.Features.BEManagment.Pages.AvailabilityListPage
+    name: AvailabilityListPage
+  - uid: App.Features.BEManagment.Pages.BorrowListPage
+    name: BorrowListPage
+- uid: App.Features.Charts
+  name: App.Features.Charts
+  items:
+  - uid: App.Features.Charts.ChartsConfig
+    name: ChartsConfig
+  - uid: App.Features.Charts.ChartsUtils
+    name: ChartsUtils
+- uid: App.Features.Charts.Components
+  name: App.Features.Charts.Components
+  items:
+  - uid: App.Features.Charts.Components.AvgHourlyUsage`1
+    name: AvgHourlyUsage<T>
+    name.vb: AvgHourlyUsage(Of T)
+  - uid: App.Features.Charts.Components.DailyBorrows`1
+    name: DailyBorrows<T>
+    name.vb: DailyBorrows(Of T)
+  - uid: App.Features.Charts.Components.HourlyBorrows`1
+    name: HourlyBorrows<T>
+    name.vb: HourlyBorrows(Of T)
+  - uid: App.Features.Charts.Components.HourlyUsage`1
+    name: HourlyUsage<T>
+    name.vb: HourlyUsage(Of T)
+  - uid: App.Features.Charts.Components.WeeklyUsage`1
+    name: WeeklyUsage<T>
+    name.vb: WeeklyUsage(Of T)
+- uid: App.Features.Charts.Pages
+  name: App.Features.Charts.Pages
+  items:
+  - uid: App.Features.Charts.Pages.ChartBasePage
+    name: ChartBasePage
+- uid: App.Features.Layout
+  name: App.Features.Layout
+  items:
+  - uid: App.Features.Layout.MainLayout
+    name: MainLayout
+  - uid: App.Features.Layout.NavMenu
+    name: NavMenu
+  - uid: App.Features.Layout.NotAuthorizedView
+    name: NotAuthorizedView
+- uid: App.Features.Reservations.Components
+  name: App.Features.Reservations.Components
+  items:
+  - uid: App.Features.Reservations.Components.CreateReservation`1
+    name: CreateReservation<T>
+    name.vb: CreateReservation(Of T)
+  - uid: App.Features.Reservations.Components.SuggestReservation`1
+    name: SuggestReservation<T>
+    name.vb: SuggestReservation(Of T)
+- uid: App.Features.Reservations.Components.Tables
+  name: App.Features.Reservations.Components.Tables
+  items:
+  - uid: App.Features.Reservations.Components.Tables.AvailableReservationTable`1
+    name: AvailableReservationTable<T>
+    name.vb: AvailableReservationTable(Of T)
+  - uid: App.Features.Reservations.Components.Tables.UserReservationTable
+    name: UserReservationTable
+  - uid: App.Features.Reservations.Components.Tables.UserReservationTable.ReservationStatus
+    name: UserReservationTable.ReservationStatus
+- uid: App.Features.Reservations.Pages
+  name: App.Features.Reservations.Pages
+  items:
+  - uid: App.Features.Reservations.Pages.ManageReservations
+    name: ManageReservations
+  - uid: App.Features.Reservations.Pages.MyReservations
+    name: MyReservations
+  - uid: App.Features.Reservations.Pages.ReservationPlanner
+    name: ReservationPlanner
+- uid: App.Features.UserPages.Components
+  name: App.Features.UserPages.Components
+  items:
+  - uid: App.Features.UserPages.Components.AddBalance
+    name: AddBalance
+  - uid: App.Features.UserPages.Components.ShowBalance
+    name: ShowBalance
+- uid: App.Features.UserPages.Pages
+  name: App.Features.UserPages.Pages
+  items:
+  - uid: App.Features.UserPages.Pages.MyBalance
+    name: MyBalance
+- uid: App.Middlewares
+  name: App.Middlewares
+  items:
+  - uid: App.Middlewares.ContextHookMiddleware
+    name: ContextHookMiddleware
+  - uid: App.Middlewares.IContextHookMiddleware
+    name: IContextHookMiddleware
+- uid: App.Pages
+  name: App.Pages
+  items:
+  - uid: App.Pages.BlazorApp
+    name: BlazorApp
+  - uid: App.Pages.ErrorModel
+    name: ErrorModel
+- uid: App.ServerServices
+  name: App.ServerServices
+  items:
+  - uid: App.ServerServices.DBTimedQueue`1
+    name: DBTimedQueue<TItem>
+    name.vb: DBTimedQueue(Of TItem)
+  - uid: App.ServerServices.IReservationManager
+    name: IReservationManager
+  - uid: App.ServerServices.ITimedQueue`1
+    name: ITimedQueue<TItem>
+    name.vb: ITimedQueue(Of TItem)
+  - uid: App.ServerServices.ITimedQueueManager`1
+    name: ITimedQueueManager<TItem>
+    name.vb: ITimedQueueManager(Of TItem)
+  - uid: App.ServerServices.ReservationManager
+    name: ReservationManager
+  - uid: App.ServerServices.TimedQueueManager`1
+    name: TimedQueueManager<TItem>
+    name.vb: TimedQueueManager(Of TItem)
+- uid: App.Shared.Components
+  name: App.Shared.Components
+  items:
+  - uid: App.Shared.Components.LazyRemoteTable`1
+    name: LazyRemoteTable<TItem>
+    name.vb: LazyRemoteTable(Of TItem)
+  - uid: App.Shared.Components.LocDNColumn`1
+    name: LocDNColumn<T>
+    name.vb: LocDNColumn(Of T)
+  - uid: App.Shared.Components.ModalForm`2
+    name: ModalForm<TMod, TResult>
+    name.vb: ModalForm(Of TMod, TResult)
+- uid: App.Shared.Components.NodaComponents
+  name: App.Shared.Components.NodaComponents
+  items:
+  - uid: App.Shared.Components.NodaComponents.DisabledDateTimesStore
+    name: DisabledDateTimesStore
+  - uid: App.Shared.Components.NodaComponents.DisabledTimesStore
+    name: DisabledTimesStore
+  - uid: App.Shared.Components.NodaComponents.DurationPicker
+    name: DurationPicker
+  - uid: App.Shared.Components.NodaComponents.InstantPicker
+    name: InstantPicker
+  - uid: App.Shared.Components.NodaComponents.InstantPickerNullable
+    name: InstantPickerNullable
+  - uid: App.Shared.Components.NodaComponents.LocalDatePickerNullable
+    name: LocalDatePickerNullable
+  - uid: App.Shared.Components.NodaComponents.LocalDateRangePicker
+    name: LocalDateRangePicker
+  - uid: App.Shared.Components.NodaComponents.LocalDateTimeRange
+    name: LocalDateTimeRange
+  - uid: App.Shared.Components.NodaComponents.NodaUtils
+    name: NodaUtils
+- uid: App.Shared.GenericComponenets
+  name: App.Shared.GenericComponenets
+  items:
+  - uid: App.Shared.GenericComponenets.CharInput`1
+    name: CharInput<TItem>
+    name.vb: CharInput(Of TItem)
+  - uid: App.Shared.GenericComponenets.GenericEntityBase`1
+    name: GenericEntityBase<T>
+    name.vb: GenericEntityBase(Of T)
+  - uid: App.Shared.GenericComponenets.ModelLoader
+    name: ModelLoader
+  - uid: App.Shared.GenericComponenets.ModelSelect`1
+    name: ModelSelect<TItem>
+    name.vb: ModelSelect(Of TItem)
+- uid: App.Shared.GenericComponenets.GenericForm
+  name: App.Shared.GenericComponenets.GenericForm
+  items:
+  - uid: App.Shared.GenericComponenets.GenericForm.GenericForm`1
+    name: GenericForm<TMod>
+    name.vb: GenericForm(Of TMod)
+  - uid: App.Shared.GenericComponenets.GenericForm.GenericInput`1
+    name: GenericInput<TModel>
+    name.vb: GenericInput(Of TModel)
+- uid: App.Utils
+  name: App.Utils
+  items:
+  - uid: App.Utils.EFExtensions
+    name: EFExtensions
+  - uid: App.Utils.GenericUtils
+    name: GenericUtils
+  - uid: App.Utils.IMessageServiceExtensions
+    name: IMessageServiceExtensions
+  - uid: App.Utils.ProgramInit
+    name: ProgramInit
+  - uid: App.Utils.ReflectionExtensions
+    name: ReflectionExtensions
