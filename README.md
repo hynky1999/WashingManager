@@ -1,3 +1,7 @@
+# Documentation
+Documentation can be found at https://hynky1999.github.io/WashingManager/
+
+
 # The goal of project is to develop a system for monitoring and managing washing machines.
 
 ## Description of system
