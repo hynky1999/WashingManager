@@ -1865,6 +1865,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/App.Migrations.bp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Migrations.bp.html",
+          "hash": "lSfg7FkQL7eKSW1yIECTXLtIh0KQb0Cy2BNOX1iDrok="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/App.Migrations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/App.Migrations.html",
+          "hash": "fsmWZOtHLNsW61LBmSwcCXDkBoPfmUSe+6dXxGKNQoM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/App.Pages.BlazorApp.yml",
       "output": {
         ".html": {
@@ -2361,7 +2385,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "2hYc78ZUw//SpR7pU02Yg8zIHil8H7I1QYywMg143UU="
+          "hash": "H2GhmQTUXifDSuPsnlEtHCaWlKRM449vCMmwTubm1Js="
         }
       },
       "is_incremental": false,
@@ -2392,15 +2416,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "UidNotFound"
-      ],
       "type": "Conceptual",
       "source_relative_path": "articles/prog_guide/auth.md",
       "output": {
         ".html": {
           "relative_path": "articles/prog_guide/auth.html",
-          "hash": "I0NKMgU9CP0VCMDpDTn0L2zKgiYY5hssK2B1ubv/3FY="
+          "hash": "uwnxyZs22QeNp+vhe+adeaJQdYO8SIeBcE40GvgRDdI="
         }
       },
       "is_incremental": false,
@@ -2642,7 +2663,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 195,
+          "total_file_count": 197,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

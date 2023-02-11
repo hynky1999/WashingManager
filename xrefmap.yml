@@ -7499,6 +7499,57 @@ references:
   isSpec: "True"
   fullName: App.Middlewares.IContextHookMiddleware.OnSave
   nameWithType: IContextHookMiddleware.OnSave
+- uid: App.Migrations
+  name: App.Migrations
+  href: api/App.Migrations.html
+  commentId: N:App.Migrations
+  fullName: App.Migrations
+  nameWithType: App.Migrations
+- uid: App.Migrations.bp
+  name: bp
+  href: api/App.Migrations.bp.html
+  commentId: T:App.Migrations.bp
+  fullName: App.Migrations.bp
+  nameWithType: bp
+- uid: App.Migrations.bp.BuildTargetModel(ModelBuilder)
+  name: BuildTargetModel(ModelBuilder)
+  href: api/App.Migrations.bp.html#App_Migrations_bp_BuildTargetModel_ModelBuilder_
+  commentId: M:App.Migrations.bp.BuildTargetModel(ModelBuilder)
+  fullName: App.Migrations.bp.BuildTargetModel(ModelBuilder)
+  nameWithType: bp.BuildTargetModel(ModelBuilder)
+- uid: App.Migrations.bp.BuildTargetModel*
+  name: BuildTargetModel
+  href: api/App.Migrations.bp.html#App_Migrations_bp_BuildTargetModel_
+  commentId: Overload:App.Migrations.bp.BuildTargetModel
+  isSpec: "True"
+  fullName: App.Migrations.bp.BuildTargetModel
+  nameWithType: bp.BuildTargetModel
+- uid: App.Migrations.bp.Down(MigrationBuilder)
+  name: Down(MigrationBuilder)
+  href: api/App.Migrations.bp.html#App_Migrations_bp_Down_MigrationBuilder_
+  commentId: M:App.Migrations.bp.Down(MigrationBuilder)
+  fullName: App.Migrations.bp.Down(MigrationBuilder)
+  nameWithType: bp.Down(MigrationBuilder)
+- uid: App.Migrations.bp.Down*
+  name: Down
+  href: api/App.Migrations.bp.html#App_Migrations_bp_Down_
+  commentId: Overload:App.Migrations.bp.Down
+  isSpec: "True"
+  fullName: App.Migrations.bp.Down
+  nameWithType: bp.Down
+- uid: App.Migrations.bp.Up(MigrationBuilder)
+  name: Up(MigrationBuilder)
+  href: api/App.Migrations.bp.html#App_Migrations_bp_Up_MigrationBuilder_
+  commentId: M:App.Migrations.bp.Up(MigrationBuilder)
+  fullName: App.Migrations.bp.Up(MigrationBuilder)
+  nameWithType: bp.Up(MigrationBuilder)
+- uid: App.Migrations.bp.Up*
+  name: Up
+  href: api/App.Migrations.bp.html#App_Migrations_bp_Up_
+  commentId: Overload:App.Migrations.bp.Up
+  isSpec: "True"
+  fullName: App.Migrations.bp.Up
+  nameWithType: bp.Up
 - uid: App.Pages
   name: App.Pages
   href: api/App.Pages.html
